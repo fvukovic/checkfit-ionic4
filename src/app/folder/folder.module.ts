@@ -16,6 +16,7 @@ import { FolderPage } from './folder.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     FolderPageRoutingModule
   ],
   declarations: [FolderPage]
@@ -24,11 +25,5 @@ export class FolderPageModule {
   constructor(translate: TranslateService) {
   // this language will be used as a fallback when a translation isn't found in the current language
   translate.setDefaultLang('en');
-
-  translate.get('HOME.title').subscribe(
-    value => {
-      // value is our translated string
-      alert(value);
-    }
-  )
+ 
 }}

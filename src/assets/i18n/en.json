@@ -1,5 +1,8 @@
 {
     "HOME": {
         "title" : "Check-fit"
+    },
+    "menu": {
+        "about.us" : "About us"
     }
 }

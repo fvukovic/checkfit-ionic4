@@ -5,8 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { FolderPageRoutingModule } from './folder-routing.module';
- import { TranslateService } from '@ngx-translate/core';
-  import {TranslateModule} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
+import {TranslateModule} from '@ngx-translate/core';
 
 
 import { FolderPage } from './folder.page';

@@ -1,5 +1,7 @@
 {
   "name": "checkfit-mobile",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

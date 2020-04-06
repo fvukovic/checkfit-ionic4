@@ -1,0 +1,13 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>about-us</ion-title>
+  </ion-toolbar> 
+
+<ion-content>
+  <ion-button (click)="loadMap()" shape="round" fill="outline"></ion-button>
+
+  <div #map id="map"></div>
+</ion-content>

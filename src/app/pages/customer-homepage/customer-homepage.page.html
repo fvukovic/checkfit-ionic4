@@ -4,10 +4,13 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>about-us</ion-title>
-  </ion-toolbar> 
+  </ion-toolbar>
 
-<ion-content>
-  <ion-button (click)="loadMap()" shape="round" fill="outline"></ion-button>
-
-  <div #map id="map"></div>
-</ion-content>
+  <ion-content class="map">
+    <style>
+      .map {
+        height: 100% !important;
+      }
+    </style>
+    <div #mapElement class="map"></div>
+  </ion-content>

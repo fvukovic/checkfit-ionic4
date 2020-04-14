@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import {ModalController} from '@ionic/angular';
 @Component({
   selector: 'app-street-picker',
   templateUrl: './street-picker.page.html',
@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StreetPickerPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalControler:ModalController) { }
 
   ngOnInit() {
+  }
+  closeModal(){ 
+    this.modalControler.dismiss();
   }
 
 }

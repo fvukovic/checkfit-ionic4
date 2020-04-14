@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'street-picker',
     loadChildren: () => import('./pages/popups/street-picker/street-picker.module').then( m => m.StreetPickerPageModule)
+  },
+  {
+    path: 'search-ride',
+    loadChildren: () => import('./pages/search-ride/search-ride.module').then( m => m.SearchRidePageModule)
   }
 ];
 

@@ -1,12 +1,12 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 
 import { StreetPickerPageRoutingModule } from './street-picker-routing.module';
 
-import { StreetPickerPage } from './street-picker.page';
+import { StreetPickerPage } from './street-picker.page'; 
 
 @NgModule({
   imports: [
@@ -17,4 +17,10 @@ import { StreetPickerPage } from './street-picker.page';
   ],
   declarations: [StreetPickerPage]
 })
-export class StreetPickerPageModule {}
+export class StreetPickerPageModule implements OnInit {
+  ngOnInit(): void { 
+  }
+  constructor(private modalController:ModalController){
+
+  }
+}

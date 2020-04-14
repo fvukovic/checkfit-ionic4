@@ -13,8 +13,8 @@
       } 
     </style>
     <div #mapElement class="map"></div> 
-<ion-card> Vinkovacka 14, Varaždin </ion-card>
-<ion-card> Vinkovacka 14, Varaždin </ion-card>
+<ion-card (click)="openStreetPicker('from')"> Vinkovacka 14, Varaždin </ion-card>
+<ion-card (click)="openStreetPicker('to')"> Vinkovacka 14, Varaždin </ion-card>
 <ion-radio-group>
   1<ion-radio>1</ion-radio>
   2<ion-radio>2</ion-radio>
@@ -22,5 +22,5 @@
   4<ion-radio>42</ion-radio>
 </ion-radio-group>
 <br/>
-  <ion-button>{{ "customerHomepage.myRides" | translate }}</ion-button>
+  <ion-button (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</ion-button>
   </ion-content>

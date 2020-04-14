@@ -13,18 +13,18 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http'; 
+import {StreetPickerPageModule} from './pages/popups/street-picker/street-picker.module';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
- 
- 
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    StreetPickerPageModule,
     IonicModule.forRoot(),
     HttpClientModule,
     TranslateModule.forRoot({

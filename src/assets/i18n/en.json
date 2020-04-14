@@ -3,6 +3,11 @@
         "title" : "Check-fit"
     },
     "menu": {
-        "about.us" : "About us"
+        "aboutUs" : "About us",
+        "customerHomePage" : "Order TAXI1"
+    },
+    "customerHomepage":{
+        "myRides" : "Order TAXI"
     }
+ 
 }

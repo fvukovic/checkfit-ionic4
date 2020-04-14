@@ -18,6 +18,14 @@ const routes: Routes = [
   {
     path: 'customer-homepage',
     loadChildren: () => import('./pages/customer-homepage/customer-homepage.module').then( m => m.CustomerHomepagePageModule)
+  },
+  {
+    path: 'my-rides',
+    loadChildren: () => import('./pages/my-rides/my-rides.module').then( m => m.MyRidesPageModule)
+  },
+  {
+    path: 'street-picker',
+    loadChildren: () => import('./pages/popups/street-picker/street-picker.module').then( m => m.StreetPickerPageModule)
   }
 ];
 

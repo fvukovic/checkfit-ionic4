@@ -1,6 +1,8 @@
-{
-    "filip":" AJDE VISEEE",
+{ 
     "HOME": {
         "title" : "Check-fit-de"
+    },
+    "menu": {
+        "aboutUs" : "About us"
     }
 }

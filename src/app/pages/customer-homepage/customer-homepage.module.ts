@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { CustomerHomepagePageRoutingModule } from './customer-homepage-routing.module';
 
 import { CustomerHomepagePage } from './customer-homepage.page';
- 
+import {TranslateModule} from '@ngx-translate/core';
+
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule, 
-    CustomerHomepagePageRoutingModule
+    CustomerHomepagePageRoutingModule,
+    TranslateModule
   ],
   declarations: [CustomerHomepagePage]
 })

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LoginPage } from './pages/login/login.page';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -19,11 +20,14 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router : Router
+    private router : Router,
+    translate: TranslateService
   ) {
     this.router.navigateByUrl('customer-homepage');
     this.initializeApp();
-  }
+    translate.setDefaultLang('en');
+
+  }  
 
   initializeApp() {
     this.platform.ready().then(() => {

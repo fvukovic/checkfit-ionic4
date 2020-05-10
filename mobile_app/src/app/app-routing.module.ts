@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'search-ride',
     loadChildren: () => import('./pages/search-ride/search-ride.module').then( m => m.SearchRidePageModule)
+  },
+  {
+    path: 'drive-request',
+    loadChildren: () => import('./pages/popups/drive-request/drive-request.module').then( m => m.DriveRequestPageModule)
   }
 ];
 

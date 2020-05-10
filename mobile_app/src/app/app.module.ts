@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http'; 
 import {StreetPickerPageModule} from './pages/popups/street-picker/street-picker.module';
+import {DriveRequestPageModule} from './pages/popups/drive-request/drive-request.module'
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -25,6 +26,7 @@ export function createTranslateLoader(http: HttpClient) {
   imports: [
     BrowserModule,
     StreetPickerPageModule,
+    DriveRequestPageModule,
     IonicModule.forRoot(),
     HttpClientModule,
     TranslateModule.forRoot({

@@ -9,7 +9,7 @@ import { SearchRidePageRoutingModule } from './search-ride-routing.module';
 import { SearchRidePage } from './search-ride.page';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
-const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
+ 
 
 
 @NgModule({
@@ -17,8 +17,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8988', options: {} };
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchRidePageRoutingModule,
-    SocketIoModule.forRoot(config)
+    SearchRidePageRoutingModule
   ],
   declarations: [SearchRidePage]
 })

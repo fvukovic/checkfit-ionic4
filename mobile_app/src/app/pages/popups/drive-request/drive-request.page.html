@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-toolbar>
+      <!-- Advanced: explicity set the icon for each platform -->
+  <ion-icon style="height: 30px;" (click) = "closeModal()"  name="arrow-back"></ion-icon>
+    <ion-title>New Drive Request</ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- "{"username":null,"type":"customer","messageType":"DRIVE_REQUEST","fromLat":"45.333","fromLong":"16.444","toLat":"45.333","toLong":"16.444"}" -->
+<ion-content>
+ from: {{message.fromLat + " - " + message.fromLong}} 
+ from: {{message.toLat + " - " + message.toLong}} 
+ <button (click) = "acceptRequst()" > Accept</button>
+ <button (click) = "closeModal()"  > Reject</button>
+
+</ion-content>

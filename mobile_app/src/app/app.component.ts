@@ -6,15 +6,15 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { LoginPage } from './pages/login/login.page';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import {WebSocketAPI} from './WebSocketAPI'
-import {SocketService} from './services/socket.service';
+import { SocketService} from './services/socket.service';
 import { StompState } from "@stomp/ng2-stompjs";
-import {ModalController} from '@ionic/angular';
-import {DriveRequestPage} from './pages/popups/drive-request/drive-request.page'
-
+import { ModalController} from '@ionic/angular';
+import { DriveRequestPage} from './pages/popups/drive-request/drive-request.page'
+import {Storage} from '@ionic/storage'; 
 
 const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
   socketServiceS: SocketService;
   greeting: any; 
   name: string;
+  isUserLoggedIn = false;
 
   constructor(
     private platform: Platform,
@@ -37,35 +38,42 @@ export class AppComponent implements OnInit {
     private router : Router,
     private socketService : SocketService,
     private modalcontroller:ModalController,
-    translate: TranslateService 
+    translate: TranslateService,
+    private storage: Storage
   ) { 
     this.socketServiceS = socketService;
     this.router.navigateByUrl('customer-homepage');
     this.initializeApp();
     translate.setDefaultLang('en');
-
   }  
 
-  initializeApp() {  
-    this.socketServiceS.initializeWebSocketConnection();
+  initializeApp() { 
+    this.storage.get('username').then((val) => { 
+      if(val!=null){
+        this.isUserLoggedIn = true;
+      } 
+      this.socketServiceS.initializeWebSocketConnection();
+    });  
+
 
     // Subscribe to its stream (to listen on messages)
-    this.socketServiceS.stream().subscribe((message: any) => {
-      this.messageHistory.unshift(message.body);
-      console.log(message); 
-      this._this.handleMessage(JSON.parse(message.body));
-    });
 
     setTimeout(() => 
-{ 
-
-},
-5000);
+    { 
+      this.socketServiceS.stream().subscribe((message: any) => {
+        this.messageHistory.unshift(message.body);
+        console.log(message);  
+        this._this.handleMessage(JSON.parse(message.body));
+      });
+  
+      this.socketServiceS.state().subscribe((state: StompState) => {  
+        this.state = StompState[state];
+      });
+    },
+    3000);
 
     // Subscribe to its state (to know its connected or not)
-    this.socketServiceS.state().subscribe((state: StompState) => { 
-      this.state = StompState[state];
-    });
+ 
 
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
@@ -81,6 +89,22 @@ export class AppComponent implements OnInit {
           console.log(message)
           modalElement.present();
         })
+        break;
+      }
+      case "INFORM_DRIVE_CUSTOMER":{
+           console.log(message)  
+           break;
+      }
+      case "INFORM_DRIVE_DRIVER":{ 
+        this.socketService.send("/server-receiver", {
+          type: "driver",
+          messageType: "INFORM_DRIVE_DRIVER",
+          fromLat: "45.333",
+          fromLong: "16.444",
+          toLat: "45.333",
+          toLong: "16.444"
+        });
+        break;
       }
     }
   }
@@ -89,5 +113,11 @@ export class AppComponent implements OnInit {
     const path = window.location.pathname.split('folder/')[1];
     if (path !== undefined) {
      }
+  }
+
+  logout(){
+    this.isUserLoggedIn = false;
+    location.reload();
+    this.storage.set("username",null);
   }
 }

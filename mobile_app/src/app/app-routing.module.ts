@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'drive-request',
     loadChildren: () => import('./pages/popups/drive-request/drive-request.module').then( m => m.DriveRequestPageModule)
+  },
+  {
+    path: 'driver-homepage',
+    loadChildren: () => import('./pages/driver-homepage/driver-homepage.module').then( m => m.DriverHomepagePageModule)
   }
 ];
 

@@ -15,8 +15,7 @@ export class WebSocketAPI {
         let ws = new SockJS(this.webSocketEndPoint);
         this.stompClient;
         const _this = this;
-        _this.stompClient.connect({}, function (frame) {
-            alert();
+        _this.stompClient.connect({}, function (frame) { 
 
             _this.stompClient.subscribe(_this.topic, function (sdkEvent) {
                 _this.onMessageReceived(sdkEvent);

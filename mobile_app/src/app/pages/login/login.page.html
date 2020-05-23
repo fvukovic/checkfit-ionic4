@@ -24,7 +24,7 @@
           <ion-icon name="mail" item-start class="text-primary"></ion-icon>
           Email
         </ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input [(ngModel)]="username" name="username" type="email"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -32,7 +32,7 @@
           <ion-icon name="lock" item-start class="text-primary"></ion-icon>
           Password
         </ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input [(ngModel)]="password" type="password" name="password"></ion-input>
       </ion-item>
     </form>
 

@@ -8,6 +8,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 import {TranslateModule} from '@ngx-translate/core';
+import { IonicStorageModule } from '@ionic/storage';
 
 
 @NgModule({
@@ -17,7 +18,7 @@ import {TranslateModule} from '@ngx-translate/core';
     IonicModule,
     TranslateModule,
     LoginPageRoutingModule
-  ],
+    ],
   declarations: [LoginPage]
 })
 export class LoginPageModule {}

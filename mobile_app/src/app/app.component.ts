@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-
-import { Platform } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { NativeGeocoderResult } from "@ionic-native/native-geocoder/ngx";
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { LoginPage } from './pages/login/login.page';
-import { Router } from '@angular/router';
+import { ModalController, Platform } from '@ionic/angular';
+import { Storage } from '@ionic/storage';
 import { TranslateService } from '@ngx-translate/core';
-import { SocketService} from './services/socket.service';
 import { StompState } from "@stomp/ng2-stompjs";
-import { ModalController} from '@ionic/angular';
-import { DriveRequestPage} from './pages/popups/drive-request/drive-request.page'
-import {Storage} from '@ionic/storage'; 
+import { DriveRequestPage } from './pages/popups/drive-request/drive-request.page';
+import { LocationService } from './services/location.service';
+import { SocketService } from './services/socket.service';
+
+
 
 const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
@@ -39,7 +40,8 @@ export class AppComponent implements OnInit {
     private socketService : SocketService,
     private modalcontroller:ModalController,
     translate: TranslateService,
-    private storage: Storage
+    private storage: Storage,
+    private locationService: LocationService
   ) { 
     this.socketServiceS = socketService;
     this.router.navigateByUrl('customer-homepage');
@@ -59,7 +61,16 @@ export class AppComponent implements OnInit {
     // Subscribe to its stream (to listen on messages)
 
     setTimeout(() => 
-    { 
+    {  
+      this.locationService.getReverseGeocode(45.5,19).then((result: NativeGeocoderResult[]) => 
+      { 
+        result[0]
+      });
+      this.locationService.getForwardGeocode("Vinkovačka 14, Varaždin, Croatia").then((result: NativeGeocoderResult[]) =>
+      {
+        //alert(result[0].latitude + result[0].longitude)
+      }
+     )
       this.socketServiceS.stream().subscribe((message: any) => {
         this.messageHistory.unshift(message.body);
         console.log(message);  
@@ -96,14 +107,18 @@ export class AppComponent implements OnInit {
            break;
       }
       case "INFORM_DRIVE_DRIVER":{ 
-        this.socketService.send("/server-receiver", {
-          type: "driver",
-          messageType: "INFORM_DRIVE_DRIVER",
-          fromLat: "45.333",
-          fromLong: "16.444",
-          toLat: "45.333",
-          toLong: "16.444"
-        });
+         this.locationService.getUserPosition().then(
+          (val) => { 
+              this.socketService.send("/server-receiver", {
+                type: "driver",
+                messageType: "INFORM_DRIVE_DRIVER",
+                fromLat: val["coords"].latitude,
+                fromLong: val["coords"].longitude
+              });
+          },
+          (err) => console.error(err)
+        ); 
+ 
         break;
       }
     }

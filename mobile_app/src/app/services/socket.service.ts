@@ -16,7 +16,6 @@ export class SocketService {
   private stompService: StompService;
   _this = this;
 
-
   initializeWebSocketConnection() {
     var userType = "customer";
     this.storage.get('username').then((val) => {
@@ -46,9 +45,6 @@ export class SocketService {
 
   }
  
-
-
-
   constructor(private storage:Storage) {
     // Create Stomp Configuration
   

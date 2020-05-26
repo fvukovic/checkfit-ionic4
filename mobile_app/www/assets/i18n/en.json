@@ -1,0 +1,13 @@
+{
+    "HOME": {
+        "title" : "Check-fit"
+    },
+    "menu": {
+        "aboutUs" : "About us",
+        "customerHomePage" : "Order TAXI1"
+    },
+    "customerHomepage":{
+        "myRides" : "Order TAXI"
+    }
+ 
+}

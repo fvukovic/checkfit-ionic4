@@ -16,6 +16,9 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import {StreetPickerPageModule} from './pages/popups/street-picker/street-picker.module';
 import {DriveRequestPageModule} from './pages/popups/drive-request/drive-request.module'
 import { IonicStorageModule } from '@ionic/storage';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -44,7 +47,10 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Geolocation,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    NativeGeocoder
   ],
   bootstrap: [AppComponent]
 })

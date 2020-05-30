@@ -4,7 +4,137 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["common"], {
+  /***/
+  "./node_modules/@ionic/core/dist/esm/cubic-bezier-2812fda3.js":
+  /*!********************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/cubic-bezier-2812fda3.js ***!
+    \********************************************************************/
+
+  /*! exports provided: P, g */
+
+  /***/
+  function node_modulesIonicCoreDistEsmCubicBezier2812fda3Js(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "P", function () {
+      return Point;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "g", function () {
+      return getTimeGivenProgression;
+    });
+    /**
+     * Based on:
+     * https://stackoverflow.com/questions/7348009/y-coordinate-for-a-given-x-cubic-bezier
+     * https://math.stackexchange.com/questions/26846/is-there-an-explicit-form-for-cubic-b%C3%A9zier-curves
+     * TODO: Reduce rounding error
+     */
+
+
+    var Point = function Point(x, y) {
+      _classCallCheck(this, Point);
+
+      this.x = x;
+      this.y = y;
+    };
+    /**
+     * Given a cubic-bezier curve, get the x value (time) given
+     * the y value (progression).
+     * Ex: cubic-bezier(0.32, 0.72, 0, 1);
+     * P0: (0, 0)
+     * P1: (0.32, 0.72)
+     * P2: (0, 1)
+     * P3: (1, 1)
+     *
+     * If you give a cubic bezier curve that never reaches the
+     * provided progression, this function will return NaN.
+     */
+
+
+    var getTimeGivenProgression = function getTimeGivenProgression(p0, p1, p2, p3, progression) {
+      var tValues = solveCubicBezier(p0.y, p1.y, p2.y, p3.y, progression);
+      return solveCubicParametricEquation(p0.x, p1.x, p2.x, p3.x, tValues[0]); // TODO: Add better strategy for dealing with multiple solutions
+    };
+    /**
+     * Solve a cubic equation in one dimension (time)
+     */
+
+
+    var solveCubicParametricEquation = function solveCubicParametricEquation(p0, p1, p2, p3, t) {
+      var partA = 3 * p1 * Math.pow(t - 1, 2);
+      var partB = -3 * p2 * t + 3 * p2 + p3 * t;
+      var partC = p0 * Math.pow(t - 1, 3);
+      return t * (partA + t * partB) - partC;
+    };
+    /**
+     * Find the `t` value for a cubic bezier using Cardano's formula
+     */
+
+
+    var solveCubicBezier = function solveCubicBezier(p0, p1, p2, p3, refPoint) {
+      p0 -= refPoint;
+      p1 -= refPoint;
+      p2 -= refPoint;
+      p3 -= refPoint;
+      var roots = solveCubicEquation(p3 - 3 * p2 + 3 * p1 - p0, 3 * p2 - 6 * p1 + 3 * p0, 3 * p1 - 3 * p0, p0);
+      return roots.filter(function (root) {
+        return root >= 0 && root <= 1;
+      });
+    };
+
+    var solveQuadraticEquation = function solveQuadraticEquation(a, b, c) {
+      var discriminant = b * b - 4 * a * c;
+
+      if (discriminant < 0) {
+        return [];
+      } else {
+        return [(-b + Math.sqrt(discriminant)) / (2 * a), (-b - Math.sqrt(discriminant)) / (2 * a)];
+      }
+    };
+
+    var solveCubicEquation = function solveCubicEquation(a, b, c, d) {
+      if (a === 0) {
+        return solveQuadraticEquation(b, c, d);
+      }
+
+      b /= a;
+      c /= a;
+      d /= a;
+      var p = (3 * c - b * b) / 3;
+      var q = (2 * b * b * b - 9 * b * c + 27 * d) / 27;
+
+      if (p === 0) {
+        return [Math.pow(-q, 1 / 3)];
+      } else if (q === 0) {
+        return [Math.sqrt(-p), -Math.sqrt(-p)];
+      }
+
+      var discriminant = Math.pow(q / 2, 2) + Math.pow(p / 3, 3);
+
+      if (discriminant === 0) {
+        return [Math.pow(q / 2, 1 / 2) - b / 3];
+      } else if (discriminant > 0) {
+        return [Math.pow(-(q / 2) + Math.sqrt(discriminant), 1 / 3) - Math.pow(q / 2 + Math.sqrt(discriminant), 1 / 3) - b / 3];
+      }
+
+      var r = Math.sqrt(Math.pow(-(p / 3), 3));
+      var phi = Math.acos(-(q / (2 * Math.sqrt(Math.pow(-(p / 3), 3)))));
+      var s = 2 * Math.pow(r, 1 / 3);
+      return [s * Math.cos(phi / 3) - b / 3, s * Math.cos((phi + 2 * Math.PI) / 3) - b / 3, s * Math.cos((phi + 4 * Math.PI) / 3) - b / 3];
+    };
+    /***/
+
+  },
+
   /***/
   "./node_modules/@ionic/core/dist/esm/framework-delegate-c2e2e1f4.js":
   /*!**************************************************************************!*\
@@ -359,15 +489,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
 
   /***/
-  "./node_modules/@ionic/core/dist/esm/index-4e2fa3c6.js":
+  "./node_modules/@ionic/core/dist/esm/index-6826f2f6.js":
   /*!*************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/index-4e2fa3c6.js ***!
+    !*** ./node_modules/@ionic/core/dist/esm/index-6826f2f6.js ***!
     \*************************************************************/
 
   /*! exports provided: d, g, l, s, t */
 
   /***/
-  function node_modulesIonicCoreDistEsmIndex4e2fa3c6Js(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIndex6826f2f6Js(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -404,9 +534,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     /* harmony import */
 
 
-    var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-0a8d4d2e.js */
-    "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
@@ -417,22 +547,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var iosTransitionAnimation = function iosTransitionAnimation() {
       return __webpack_require__.e(
       /*! import() */
-      89).then(__webpack_require__.bind(null,
-      /*! ./ios.transition-179652bb.js */
-      "./node_modules/@ionic/core/dist/esm/ios.transition-179652bb.js"));
+      95).then(__webpack_require__.bind(null,
+      /*! ./ios.transition-071bd421.js */
+      "./node_modules/@ionic/core/dist/esm/ios.transition-071bd421.js"));
     };
 
     var mdTransitionAnimation = function mdTransitionAnimation() {
       return __webpack_require__.e(
       /*! import() */
-      90).then(__webpack_require__.bind(null,
-      /*! ./md.transition-91524c12.js */
-      "./node_modules/@ionic/core/dist/esm/md.transition-91524c12.js"));
+      96).then(__webpack_require__.bind(null,
+      /*! ./md.transition-15a81b08.js */
+      "./node_modules/@ionic/core/dist/esm/md.transition-15a81b08.js"));
     };
 
     var transition = function transition(opts) {
       return new Promise(function (resolve, reject) {
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
           beforeTransition(opts);
           runTransition(opts).then(function (result) {
             if (result.animation) {
@@ -568,7 +698,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     var animation = /*#__PURE__*/function () {
       var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(animationBuilder, opts) {
-        var trans, didComplete;
+        var trans, mod, didComplete;
         return regeneratorRuntime.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
@@ -577,12 +707,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return waitForReady(opts, true);
 
               case 2:
+                _context4.prev = 2;
+                _context4.next = 5;
+                return __webpack_require__.e(
+                /*! import() */
+                3).then(__webpack_require__.bind(null,
+                /*! ./index-69c37885.js */
+                "./node_modules/@ionic/core/dist/esm/index-69c37885.js"));
+
+              case 5:
+                mod = _context4.sent;
+                _context4.next = 8;
+                return mod.create(animationBuilder, opts.baseEl, opts);
+
+              case 8:
+                trans = _context4.sent;
+                _context4.next = 14;
+                break;
+
+              case 11:
+                _context4.prev = 11;
+                _context4.t0 = _context4["catch"](2);
                 trans = animationBuilder(opts.baseEl, opts);
+
+              case 14:
                 fireWillEvents(opts.enteringEl, opts.leavingEl);
-                _context4.next = 6;
+                _context4.next = 17;
                 return playTransition(trans, opts);
 
-              case 6:
+              case 17:
                 didComplete = _context4.sent;
 
                 if (opts.progressCallback) {
@@ -598,12 +751,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   animation: trans
                 });
 
-              case 10:
+              case 21:
               case "end":
                 return _context4.stop();
             }
           }
-        }, _callee4);
+        }, _callee4, null, [[2, 11]]);
       }));
 
       return function animation(_x8, _x9) {
@@ -700,10 +853,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }();
 
     var playTransition = function playTransition(trans, opts) {
-      var progressCallback = opts.progressCallback;
+      var progressCallback = opts.progressCallback; // TODO: Remove AnimationBuilder
+
       var promise = new Promise(function (resolve) {
         trans.onFinish(function (currentStep) {
-          return resolve(currentStep === 1);
+          if (typeof currentStep === 'number') {
+            resolve(currentStep === 1);
+          } else if (trans.hasCompleted !== undefined) {
+            resolve(trans.hasCompleted);
+          }
         });
       }); // cool, let's do this, start the transition
 
@@ -840,137 +998,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
 
   /***/
-  "./node_modules/@ionic/core/dist/esm/spinner-configs-28520d80.js":
-  /*!***********************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/spinner-configs-28520d80.js ***!
-    \***********************************************************************/
-
-  /*! exports provided: S */
-
-  /***/
-  function node_modulesIonicCoreDistEsmSpinnerConfigs28520d80Js(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "S", function () {
-      return SPINNERS;
-    });
-
-    var spinners = {
-      'bubbles': {
-        dur: 1000,
-        circles: 9,
-        fn: function fn(dur, index, total) {
-          var animationDelay = "".concat(dur * index / total - dur, "ms");
-          var angle = 2 * Math.PI * index / total;
-          return {
-            r: 5,
-            style: {
-              'top': "".concat(9 * Math.sin(angle), "px"),
-              'left': "".concat(9 * Math.cos(angle), "px"),
-              'animation-delay': animationDelay
-            }
-          };
-        }
-      },
-      'circles': {
-        dur: 1000,
-        circles: 8,
-        fn: function fn(dur, index, total) {
-          var step = index / total;
-          var animationDelay = "".concat(dur * step - dur, "ms");
-          var angle = 2 * Math.PI * step;
-          return {
-            r: 5,
-            style: {
-              'top': "".concat(9 * Math.sin(angle), "px"),
-              'left': "".concat(9 * Math.cos(angle), "px"),
-              'animation-delay': animationDelay
-            }
-          };
-        }
-      },
-      'circular': {
-        dur: 1400,
-        elmDuration: true,
-        circles: 1,
-        fn: function fn() {
-          return {
-            r: 20,
-            cx: 48,
-            cy: 48,
-            fill: 'none',
-            viewBox: '24 24 48 48',
-            transform: 'translate(0,0)',
-            style: {}
-          };
-        }
-      },
-      'crescent': {
-        dur: 750,
-        circles: 1,
-        fn: function fn() {
-          return {
-            r: 26,
-            style: {}
-          };
-        }
-      },
-      'dots': {
-        dur: 750,
-        circles: 3,
-        fn: function fn(_, index) {
-          var animationDelay = -(110 * index) + 'ms';
-          return {
-            r: 6,
-            style: {
-              'left': "".concat(9 - 9 * index, "px"),
-              'animation-delay': animationDelay
-            }
-          };
-        }
-      },
-      'lines': {
-        dur: 1000,
-        lines: 12,
-        fn: function fn(dur, index, total) {
-          var transform = "rotate(".concat(30 * index + (index < 6 ? 180 : -180), "deg)");
-          var animationDelay = "".concat(dur * index / total - dur, "ms");
-          return {
-            y1: 17,
-            y2: 29,
-            style: {
-              'transform': transform,
-              'animation-delay': animationDelay
-            }
-          };
-        }
-      },
-      'lines-small': {
-        dur: 1000,
-        lines: 12,
-        fn: function fn(dur, index, total) {
-          var transform = "rotate(".concat(30 * index + (index < 6 ? 180 : -180), "deg)");
-          var animationDelay = "".concat(dur * index / total - dur, "ms");
-          return {
-            y1: 12,
-            y2: 20,
-            style: {
-              'transform': transform,
-              'animation-delay': animationDelay
-            }
-          };
-        }
-      }
-    };
-    var SPINNERS = spinners;
-    /***/
-  },
-
-  /***/
   "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js":
   /*!*************************************************************!*\
     !*** ./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js ***!
@@ -1087,6 +1114,68 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         return _ref10.apply(this, arguments);
       };
     }();
+    /***/
+
+  },
+
+  /***/
+  "./node_modules/@ionic/core/dist/esm/watch-options-2af96011.js":
+  /*!*********************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/watch-options-2af96011.js ***!
+    \*********************************************************************/
+
+  /*! exports provided: f, w */
+
+  /***/
+  function node_modulesIonicCoreDistEsmWatchOptions2af96011Js(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "f", function () {
+      return findCheckedOption;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "w", function () {
+      return watchForOptions;
+    });
+
+    var watchForOptions = function watchForOptions(containerEl, tagName, onChange) {
+      var mutation = new MutationObserver(function (mutationList) {
+        onChange(getSelectedOption(mutationList, tagName));
+      });
+      mutation.observe(containerEl, {
+        childList: true,
+        subtree: true
+      });
+      return mutation;
+    };
+
+    var getSelectedOption = function getSelectedOption(mutationList, tagName) {
+      var newOption;
+      mutationList.forEach(function (mut) {
+        // tslint:disable-next-line: prefer-for-of
+        for (var i = 0; i < mut.addedNodes.length; i++) {
+          newOption = findCheckedOption(mut.addedNodes[i], tagName) || newOption;
+        }
+      });
+      return newOption;
+    };
+
+    var findCheckedOption = function findCheckedOption(el, tagName) {
+      if (el.nodeType !== 1) {
+        return undefined;
+      }
+
+      var options = el.tagName === tagName.toUpperCase() ? [el] : Array.from(el.querySelectorAll(tagName));
+      return options.find(function (o) {
+        return o.checked === true;
+      });
+    };
     /***/
 
   }

@@ -1,308 +1,233 @@
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[7], {
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/customer-homepage/customer-homepage.page.html":
-  /*!***********************************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/customer-homepage/customer-homepage.page.html ***!
-    \***********************************************************************************************************/
+  "./node_modules/@ionic/core/dist/esm/tap-click-ca00ce7f.js":
+  /*!*****************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/tap-click-ca00ce7f.js ***!
+    \*****************************************************************/
 
-  /*! exports provided: default */
-
-  /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppPagesCustomerHomepageCustomerHomepagePageHtml(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony default export */
-
-
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>about-us</ion-title>\n  </ion-toolbar>\n</ion-header>\n  <ion-content class=\"mapp\"> \n    <style>\n      .map {\n        height: 80% !important;\n      } \n    </style>\n    <div #mapElement class=\"map\"></div> \n<ion-card (click)=\"openStreetPicker('from')\"> Vinkovacka 14, Varaždin </ion-card>\n<ion-card (click)=\"openStreetPicker('to')\"> Vinkovacka 14, Varaždin </ion-card>\n<ion-radio-group>\n  1<ion-radio>1</ion-radio>\n  2<ion-radio>2</ion-radio>\n  3<ion-radio>3</ion-radio>\n  4<ion-radio>42</ion-radio>\n</ion-radio-group>\n<br/>\n  <ion-button (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</ion-button>\n  </ion-content>";
-    /***/
-  },
+  /*! exports provided: startTapClick */
 
   /***/
-  "./src/app/pages/customer-homepage/customer-homepage-routing.module.ts":
-  /*!*****************************************************************************!*\
-    !*** ./src/app/pages/customer-homepage/customer-homepage-routing.module.ts ***!
-    \*****************************************************************************/
-
-  /*! exports provided: CustomerHomepagePageRoutingModule */
-
-  /***/
-  function srcAppPagesCustomerHomepageCustomerHomepageRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmTapClickCa00ce7fJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "CustomerHomepagePageRoutingModule", function () {
-      return CustomerHomepagePageRoutingModule;
+    __webpack_require__.d(__webpack_exports__, "startTapClick", function () {
+      return startTapClick;
     });
     /* harmony import */
 
 
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
+    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./helpers-46f4a262.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
+
+    var startTapClick = function startTapClick(config) {
+      var lastTouch = -MOUSE_WAIT * 10;
+      var lastActivated = 0;
+      var scrollingEl;
+      var activatableEle;
+      var activeRipple;
+      var activeDefer;
+      var useRippleEffect = config.getBoolean('animated', true) && config.getBoolean('rippleEffect', true);
+      var clearDefers = new WeakMap();
+
+      var isScrolling = function isScrolling() {
+        return scrollingEl !== undefined && scrollingEl.parentElement !== null;
+      }; // Touch Events
 
 
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
+      var onTouchStart = function onTouchStart(ev) {
+        lastTouch = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev);
+        pointerDown(ev);
+      };
+
+      var onTouchEnd = function onTouchEnd(ev) {
+        lastTouch = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev);
+        pointerUp(ev);
+      };
+
+      var onMouseDown = function onMouseDown(ev) {
+        var t = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev) - MOUSE_WAIT;
+
+        if (lastTouch < t) {
+          pointerDown(ev);
+        }
+      };
+
+      var onMouseUp = function onMouseUp(ev) {
+        var t = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__["n"])(ev) - MOUSE_WAIT;
+
+        if (lastTouch < t) {
+          pointerUp(ev);
+        }
+      };
+
+      var cancelActive = function cancelActive() {
+        clearTimeout(activeDefer);
+        activeDefer = undefined;
+
+        if (activatableEle) {
+          removeActivated(false);
+          activatableEle = undefined;
+        }
+      };
+
+      var pointerDown = function pointerDown(ev) {
+        if (activatableEle || isScrolling()) {
+          return;
+        }
+
+        scrollingEl = undefined;
+        setActivatedElement(getActivatableTarget(ev), ev);
+      };
+
+      var pointerUp = function pointerUp(ev) {
+        setActivatedElement(undefined, ev);
+      };
+
+      var setActivatedElement = function setActivatedElement(el, ev) {
+        // do nothing
+        if (el && el === activatableEle) {
+          return;
+        }
+
+        clearTimeout(activeDefer);
+        activeDefer = undefined;
+
+        var _Object = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__["p"])(ev),
+            x = _Object.x,
+            y = _Object.y; // deactivate selected
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @angular/router */
-    "./node_modules/@angular/router/fesm2015/router.js");
-    /* harmony import */
+        if (activatableEle) {
+          if (clearDefers.has(activatableEle)) {
+            throw new Error('internal error');
+          }
+
+          if (!activatableEle.classList.contains(ACTIVATED)) {
+            addActivated(activatableEle, x, y);
+          }
+
+          removeActivated(true);
+        } // activate
 
 
-    var _customer_homepage_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./customer-homepage.page */
-    "./src/app/pages/customer-homepage/customer-homepage.page.ts");
+        if (el) {
+          var deferId = clearDefers.get(el);
 
-    var routes = [{
-      path: '',
-      component: _customer_homepage_page__WEBPACK_IMPORTED_MODULE_3__["CustomerHomepagePage"]
-    }];
+          if (deferId) {
+            clearTimeout(deferId);
+            clearDefers.delete(el);
+          }
 
-    var CustomerHomepagePageRoutingModule = function CustomerHomepagePageRoutingModule() {
-      _classCallCheck(this, CustomerHomepagePageRoutingModule);
+          var delay = isInstant(el) ? 0 : ADD_ACTIVATED_DEFERS;
+          el.classList.remove(ACTIVATED);
+          activeDefer = setTimeout(function () {
+            addActivated(el, x, y);
+            activeDefer = undefined;
+          }, delay);
+        }
+
+        activatableEle = el;
+      };
+
+      var addActivated = function addActivated(el, x, y) {
+        lastActivated = Date.now();
+        el.classList.add(ACTIVATED);
+        var rippleEffect = useRippleEffect && getRippleEffect(el);
+
+        if (rippleEffect && rippleEffect.addRipple) {
+          removeRipple();
+          activeRipple = rippleEffect.addRipple(x, y);
+        }
+      };
+
+      var removeRipple = function removeRipple() {
+        if (activeRipple !== undefined) {
+          activeRipple.then(function (remove) {
+            return remove();
+          });
+          activeRipple = undefined;
+        }
+      };
+
+      var removeActivated = function removeActivated(smooth) {
+        removeRipple();
+        var active = activatableEle;
+
+        if (!active) {
+          return;
+        }
+
+        var time = CLEAR_STATE_DEFERS - Date.now() + lastActivated;
+
+        if (smooth && time > 0 && !isInstant(active)) {
+          var deferId = setTimeout(function () {
+            active.classList.remove(ACTIVATED);
+            clearDefers.delete(active);
+          }, CLEAR_STATE_DEFERS);
+          clearDefers.set(active, deferId);
+        } else {
+          active.classList.remove(ACTIVATED);
+        }
+      };
+
+      var doc = document;
+      doc.addEventListener('ionScrollStart', function (ev) {
+        scrollingEl = ev.target;
+        cancelActive();
+      });
+      doc.addEventListener('ionScrollEnd', function () {
+        scrollingEl = undefined;
+      });
+      doc.addEventListener('ionGestureCaptured', cancelActive);
+      doc.addEventListener('touchstart', onTouchStart, true);
+      doc.addEventListener('touchcancel', onTouchEnd, true);
+      doc.addEventListener('touchend', onTouchEnd, true);
+      doc.addEventListener('mousedown', onMouseDown, true);
+      doc.addEventListener('mouseup', onMouseUp, true);
     };
 
-    CustomerHomepagePageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
-      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })], CustomerHomepagePageRoutingModule);
-    /***/
-  },
+    var getActivatableTarget = function getActivatableTarget(ev) {
+      if (ev.composedPath) {
+        var path = ev.composedPath();
 
-  /***/
-  "./src/app/pages/customer-homepage/customer-homepage.module.ts":
-  /*!*********************************************************************!*\
-    !*** ./src/app/pages/customer-homepage/customer-homepage.module.ts ***!
-    \*********************************************************************/
+        for (var i = 0; i < path.length - 2; i++) {
+          var el = path[i];
 
-  /*! exports provided: CustomerHomepagePageModule */
-
-  /***/
-  function srcAppPagesCustomerHomepageCustomerHomepageModuleTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "CustomerHomepagePageModule", function () {
-      return CustomerHomepagePageModule;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @angular/common */
-    "./node_modules/@angular/common/fesm2015/common.js");
-    /* harmony import */
-
-
-    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @angular/forms */
-    "./node_modules/@angular/forms/fesm2015/forms.js");
-    /* harmony import */
-
-
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
-    /* harmony import */
-
-
-    var _customer_homepage_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./customer-homepage-routing.module */
-    "./src/app/pages/customer-homepage/customer-homepage-routing.module.ts");
-    /* harmony import */
-
-
-    var _customer_homepage_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./customer-homepage.page */
-    "./src/app/pages/customer-homepage/customer-homepage.page.ts");
-    /* harmony import */
-
-
-    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! @ngx-translate/core */
-    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
-
-    var CustomerHomepagePageModule = function CustomerHomepagePageModule() {
-      _classCallCheck(this, CustomerHomepagePageModule);
+          if (el.classList && el.classList.contains('ion-activatable')) {
+            return el;
+          }
+        }
+      } else {
+        return ev.target.closest('.ion-activatable');
+      }
     };
 
-    CustomerHomepagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _customer_homepage_routing_module__WEBPACK_IMPORTED_MODULE_5__["CustomerHomepagePageRoutingModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]],
-      declarations: [_customer_homepage_page__WEBPACK_IMPORTED_MODULE_6__["CustomerHomepagePage"]]
-    })], CustomerHomepagePageModule);
-    /***/
-  },
+    var isInstant = function isInstant(el) {
+      return el.classList.contains('ion-activatable-instant');
+    };
 
-  /***/
-  "./src/app/pages/customer-homepage/customer-homepage.page.scss":
-  /*!*********************************************************************!*\
-    !*** ./src/app/pages/customer-homepage/customer-homepage.page.scss ***!
-    \*********************************************************************/
+    var getRippleEffect = function getRippleEffect(el) {
+      if (el.shadowRoot) {
+        var ripple = el.shadowRoot.querySelector('ion-ripple-effect');
 
-  /*! exports provided: default */
-
-  /***/
-  function srcAppPagesCustomerHomepageCustomerHomepagePageScss(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony default export */
-
-
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2N1c3RvbWVyLWhvbWVwYWdlL2N1c3RvbWVyLWhvbWVwYWdlLnBhZ2Uuc2NzcyJ9 */";
-    /***/
-  },
-
-  /***/
-  "./src/app/pages/customer-homepage/customer-homepage.page.ts":
-  /*!*******************************************************************!*\
-    !*** ./src/app/pages/customer-homepage/customer-homepage.page.ts ***!
-    \*******************************************************************/
-
-  /*! exports provided: CustomerHomepagePage */
-
-  /***/
-  function srcAppPagesCustomerHomepageCustomerHomepagePageTs(module, __webpack_exports__, __webpack_require__) {
-    "use strict";
-
-    __webpack_require__.r(__webpack_exports__);
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "CustomerHomepagePage", function () {
-      return CustomerHomepagePage;
-    });
-    /* harmony import */
-
-
-    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! tslib */
-    "./node_modules/tslib/tslib.es6.js");
-    /* harmony import */
-
-
-    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
-    /*! @angular/core */
-    "./node_modules/@angular/core/fesm2015/core.js");
-    /* harmony import */
-
-
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
-    /* harmony import */
-
-
-    var _popups_street_picker_street_picker_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ../popups/street-picker/street-picker.page */
-    "./src/app/pages/popups/street-picker/street-picker.page.ts");
-    /* harmony import */
-
-
-    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! @angular/router */
-    "./node_modules/@angular/router/fesm2015/router.js");
-
-    var CustomerHomepagePage = /*#__PURE__*/function () {
-      function CustomerHomepagePage(modalcontroller, router) {
-        _classCallCheck(this, CustomerHomepagePage);
-
-        this.modalcontroller = modalcontroller;
-        this.router = router;
+        if (ripple) {
+          return ripple;
+        }
       }
 
-      _createClass(CustomerHomepagePage, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {}
-      }, {
-        key: "ngAfterContentInit",
-        value: function ngAfterContentInit() {
-          this.map = new google.maps.Map(this.mapElement.nativeElement, {
-            center: {
-              lat: -34.397,
-              lng: 150.644
-            },
-            zoom: 8
-          });
-        }
-      }, {
-        key: "openStreetPicker",
-        value: function openStreetPicker(picker) {
-          //TODO handle from and to address
-          if (picker == "from") {} else if ("to") {}
-
-          this.modalcontroller.create({
-            component: _popups_street_picker_street_picker_page__WEBPACK_IMPORTED_MODULE_3__["StreetPickerPage"]
-          }).then(function (modalElement) {
-            console.log(modalElement);
-            modalElement.present();
-          });
-        }
-      }, {
-        key: "orderTaxi",
-        value: function orderTaxi() {
-          var params = {
-            "from": "adasd",
-            "to": "12312"
-          };
-          this.router.navigate(['/search-ride']);
-        }
-      }]);
-
-      return CustomerHomepagePage;
-    }();
-
-    CustomerHomepagePage.ctorParameters = function () {
-      return [{
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
-      }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
-      }];
+      return el.querySelector('ion-ripple-effect');
     };
 
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])("mapElement", {
-      static: true
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)], CustomerHomepagePage.prototype, "mapElement", void 0);
-    CustomerHomepagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'app-customer-homepage',
-      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./customer-homepage.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/customer-homepage/customer-homepage.page.html")).default,
-      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./customer-homepage.page.scss */
-      "./src/app/pages/customer-homepage/customer-homepage.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])], CustomerHomepagePage);
+    var ACTIVATED = 'activated';
+    var ADD_ACTIVATED_DEFERS = 200;
+    var CLEAR_STATE_DEFERS = 200;
+    var MOUSE_WAIT = 2500;
     /***/
   }
 }]);

@@ -1,5 +1,3 @@
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
@@ -12,30 +10,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[86], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-toggle-ios.entry.js":
-  /*!*******************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-toggle-ios.entry.js ***!
-    \*******************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-tab_2.entry.js":
+  /*!**************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-tab_2.entry.js ***!
+    \**************************************************************/
 
-  /*! exports provided: ion_toggle */
+  /*! exports provided: ion_tab, ion_tabs */
 
   /***/
-  function node_modulesIonicCoreDistEsmIonToggleIosEntryJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonTab_2EntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_toggle", function () {
-      return Toggle;
+    __webpack_require__.d(__webpack_exports__, "ion_tab", function () {
+      return Tab;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_tabs", function () {
+      return Tabs;
     });
     /* harmony import */
 
 
-    var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-0a8d4d2e.js */
-    "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
@@ -45,130 +49,41 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./helpers-46f4a262.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
-    /* harmony import */
+    var _framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./framework-delegate-c2e2e1f4.js */
+    "./node_modules/@ionic/core/dist/esm/framework-delegate-c2e2e1f4.js");
 
+    var Tab = /*#__PURE__*/function () {
+      function Tab(hostRef) {
+        _classCallCheck(this, Tab);
 
-    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./theme-18cbe2cc.js */
-    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
-    /* harmony import */
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.loaded = false;
+        /** @internal */
 
-
-    var _haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./haptic-c8f1473e.js */
-    "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js");
-
-    var Toggle = /*#__PURE__*/function () {
-      function Toggle(hostRef) {
-        var _this = this;
-
-        _classCallCheck(this, Toggle);
-
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.inputId = "ion-tg-".concat(toggleIds++);
-        this.lastDrag = 0;
-        this.activated = false;
-        /**
-         * The name of the control, which is submitted with the form data.
-         */
-
-        this.name = this.inputId;
-        /**
-         * If `true`, the toggle is selected.
-         */
-
-        this.checked = false;
-        /**
-         * If `true`, the user cannot interact with the toggle.
-         */
-
-        this.disabled = false;
-        /**
-         * The value of the toggle does not mean if it's checked or not, use the `checked`
-         * property for that.
-         *
-         * The value of a toggle is analogous to the value of a `<input type="checkbox">`,
-         * it's only used when the toggle participates in a native `<form>`.
-         */
-
-        this.value = 'on';
-
-        this.onClick = function () {
-          if (_this.lastDrag + 300 < Date.now()) {
-            _this.checked = !_this.checked;
-          }
-        };
-
-        this.onFocus = function () {
-          _this.ionFocus.emit();
-        };
-
-        this.onBlur = function () {
-          _this.ionBlur.emit();
-        };
-
-        this.ionChange = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionChange", 7);
-        this.ionFocus = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionFocus", 7);
-        this.ionBlur = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionBlur", 7);
-        this.ionStyle = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionStyle", 7);
+        this.active = false;
       }
 
-      _createClass(Toggle, [{
-        key: "checkedChanged",
-        value: function checkedChanged(isChecked) {
-          this.ionChange.emit({
-            checked: isChecked,
-            value: this.value
-          });
-        }
-      }, {
-        key: "disabledChanged",
-        value: function disabledChanged() {
-          this.emitStyle();
+      _createClass(Tab, [{
+        key: "componentWillLoad",
+        value: function componentWillLoad() {}
+        /** Set the active component for the tab */
 
-          if (this.gesture) {
-            this.gesture.enable(!this.disabled);
-          }
-        }
       }, {
-        key: "connectedCallback",
+        key: "setActive",
         value: function () {
-          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var _this2 = this;
-
+          var _setActive = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
                     _context.next = 2;
-                    return Promise.resolve().then(__webpack_require__.bind(null,
-                    /*! ./index-c38df685.js */
-                    "./node_modules/@ionic/core/dist/esm/index-c38df685.js"));
+                    return this.prepareLazyLoaded();
 
                   case 2:
-                    _context.t0 = {
-                      el: this.el,
-                      gestureName: 'toggle',
-                      gesturePriority: 100,
-                      threshold: 5,
-                      passive: false,
-                      onStart: function onStart() {
-                        return _this2.onStart();
-                      },
-                      onMove: function onMove(ev) {
-                        return _this2.onMove(ev);
-                      },
-                      onEnd: function onEnd(ev) {
-                        return _this2.onEnd(ev);
-                      }
-                    };
-                    this.gesture = _context.sent.createGesture(_context.t0);
-                    this.disabledChanged();
+                    this.active = true;
 
-                  case 5:
+                  case 3:
                   case "end":
                     return _context.stop();
                 }
@@ -176,145 +91,414 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }, _callee, this);
           }));
 
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
+          function setActive() {
+            return _setActive.apply(this, arguments);
           }
 
-          return connectedCallback;
+          return setActive;
         }()
       }, {
-        key: "disconnectedCallback",
-        value: function disconnectedCallback() {
-          if (this.gesture) {
-            this.gesture.destroy();
-            this.gesture = undefined;
-          }
-        }
-      }, {
-        key: "componentWillLoad",
-        value: function componentWillLoad() {
-          this.emitStyle();
-        }
-      }, {
-        key: "emitStyle",
-        value: function emitStyle() {
-          this.ionStyle.emit({
-            'interactive-disabled': this.disabled
-          });
-        }
-      }, {
-        key: "onStart",
-        value: function onStart() {
-          this.activated = true; // touch-action does not work in iOS
+        key: "prepareLazyLoaded",
+        value: function prepareLazyLoaded() {
+          if (!this.loaded && this.component != null) {
+            this.loaded = true;
 
-          this.setFocus();
-        }
-      }, {
-        key: "onMove",
-        value: function onMove(detail) {
-          if (shouldToggle(document, this.checked, detail.deltaX, -10)) {
-            this.checked = !this.checked;
-            Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_4__["h"])();
+            try {
+              return Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_2__["a"])(this.delegate, this.el, this.component, ['ion-page']);
+            } catch (e) {
+              console.error(e);
+            }
           }
-        }
-      }, {
-        key: "onEnd",
-        value: function onEnd(ev) {
-          this.activated = false;
-          this.lastDrag = Date.now();
-          ev.event.preventDefault();
-          ev.event.stopImmediatePropagation();
-        }
-      }, {
-        key: "getValue",
-        value: function getValue() {
-          return this.value || '';
-        }
-      }, {
-        key: "setFocus",
-        value: function setFocus() {
-          if (this.buttonEl) {
-            this.buttonEl.focus();
-          }
+
+          return Promise.resolve(undefined);
         }
       }, {
         key: "render",
         value: function render() {
-          var _Object$assign,
-              _this3 = this;
-
-          var inputId = this.inputId,
-              disabled = this.disabled,
-              checked = this.checked,
-              activated = this.activated,
-              color = this.color,
-              el = this.el;
-          var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          var labelId = inputId + '-lbl';
-          var label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(el);
-          var value = this.getValue();
-
-          if (label) {
-            label.id = labelId;
-          }
-
-          Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["a"])(true, el, this.name, checked ? value : '', disabled);
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            onClick: this.onClick,
-            role: "checkbox",
-            "aria-disabled": disabled ? 'true' : null,
-            "aria-checked": "".concat(checked),
-            "aria-labelledby": labelId,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'toggle-activated', activated), _defineProperty(_Object$assign, 'toggle-checked', checked), _defineProperty(_Object$assign, 'toggle-disabled', disabled), _defineProperty(_Object$assign, 'interactive', true), _Object$assign))
-          }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "toggle-icon"
-          }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "toggle-inner"
-          })), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
-            type: "button",
-            onFocus: this.onFocus,
-            onBlur: this.onBlur,
-            disabled: disabled,
-            ref: function ref(btnEl) {
-              return _this3.buttonEl = btnEl;
+          var tab = this.tab,
+              active = this.active,
+              component = this.component;
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            role: "tabpanel",
+            "aria-hidden": !active ? 'true' : null,
+            "aria-labelledby": "tab-button-".concat(tab),
+            class: {
+              'ion-page': component === undefined,
+              'tab-hidden': !active
             }
-          }));
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
-        key: "watchers",
-        get: function get() {
-          return {
-            "checked": ["checkedChanged"],
-            "disabled": ["disabledChanged"]
-          };
-        }
-      }, {
         key: "style",
         get: function get() {
-          return ":host{-webkit-box-sizing:content-box!important;box-sizing:content-box!important;display:inline-block;outline:none;contain:content;cursor:pointer;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(.ion-focused) input{border:2px solid #5e9ed6}:host(.toggle-disabled){pointer-events:none}button{left:0;top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none}:host-context([dir=rtl]) button,[dir=rtl] button{left:unset;right:unset;right:0}button::-moz-focus-inner{border:0}:host{--background:rgba(var(--ion-text-color-rgb,0,0,0),0.088);--background-checked:var(--ion-color-primary,#3880ff);--handle-background:#fff;--handle-background-checked:#fff;--border-radius:16px;--handle-border-radius:14px;-webkit-box-sizing:content-box;box-sizing:content-box;position:relative;width:51px;height:32px;contain:strict}:host(.ion-color.toggle-checked) .toggle-icon{background:var(--ion-color-base)}.toggle-icon{border-radius:var(--border-radius);display:block;position:relative;width:100%;height:100%;-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-transition:background-color .3s;transition:background-color .3s;background:var(--background);overflow:hidden;pointer-events:none}.toggle-inner{left:2px;top:2px;border-radius:var(--handle-border-radius);position:absolute;width:28px;height:28px;-webkit-transition:width .12s ease-in-out 80ms,left .11s ease-in-out 80ms,right .11s ease-in-out 80ms,-webkit-transform .3s;transition:width .12s ease-in-out 80ms,left .11s ease-in-out 80ms,right .11s ease-in-out 80ms,-webkit-transform .3s;transition:transform .3s,width .12s ease-in-out 80ms,left .11s ease-in-out 80ms,right .11s ease-in-out 80ms;transition:transform .3s,width .12s ease-in-out 80ms,left .11s ease-in-out 80ms,right .11s ease-in-out 80ms,-webkit-transform .3s;background:var(--handle-background);-webkit-box-shadow:0 3px 12px rgba(0,0,0,.16),0 3px 1px rgba(0,0,0,.1);box-shadow:0 3px 12px rgba(0,0,0,.16),0 3px 1px rgba(0,0,0,.1);will-change:transform;contain:strict}:host-context([dir=rtl]) .toggle-inner,[dir=rtl] .toggle-inner{left:unset;right:unset;right:2px}:host(.toggle-checked) .toggle-icon{background:var(--background-checked)}:host(.toggle-activated) .toggle-icon:before,:host(.toggle-checked) .toggle-icon:before{-webkit-transform:scale3d(0,0,0);transform:scale3d(0,0,0)}:host(.toggle-checked) .toggle-inner{-webkit-transform:translate3d(19px,0,0);transform:translate3d(19px,0,0);background:var(--handle-background-checked)}:host-context([dir=rtl]).toggle-checked .toggle-inner,:host-context([dir=rtl]):host(.toggle-checked) .toggle-inner{-webkit-transform:translate3d(calc(-1 * 19px),0,0);transform:translate3d(calc(-1 * 19px),0,0)}:host(.toggle-activated.toggle-checked) .toggle-inner:before{-webkit-transform:scale3d(0,0,0);transform:scale3d(0,0,0)}:host(.toggle-activated) .toggle-inner{width:34px}:host(.toggle-activated.toggle-checked) .toggle-inner{left:-4px}:host-context([dir=rtl]).toggle-activated.toggle-checked .toggle-inner,:host-context([dir=rtl]):host(.toggle-activated.toggle-checked) .toggle-inner{left:unset;right:unset;right:-4px}:host(.toggle-disabled){opacity:.3}:host(.in-item[slot]){margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:20px;padding-right:10px;padding-top:6px;padding-bottom:5px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-item[slot]){padding-left:unset;padding-right:unset;-webkit-padding-start:20px;padding-inline-start:20px;-webkit-padding-end:10px;padding-inline-end:10px}}:host(.in-item[slot=start]){padding-left:0;padding-right:16px;padding-top:6px;padding-bottom:5px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-item[slot=start]){padding-left:unset;padding-right:unset;-webkit-padding-start:0;padding-inline-start:0;-webkit-padding-end:16px;padding-inline-end:16px}}";
+          return ":host(.tab-hidden){display:none!important}";
         }
       }]);
 
-      return Toggle;
+      return Tab;
     }();
 
-    var shouldToggle = function shouldToggle(doc, checked, deltaX, margin) {
-      var isRTL = doc.dir === 'rtl';
+    var Tabs = /*#__PURE__*/function () {
+      function Tabs(hostRef) {
+        var _this = this;
 
-      if (checked) {
-        return !isRTL && margin > deltaX || isRTL && -margin < deltaX;
-      } else {
-        return !isRTL && -margin < deltaX || isRTL && margin > deltaX;
+        _classCallCheck(this, Tabs);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.transitioning = false;
+        /** @internal */
+
+        this.useRouter = false;
+
+        this.onTabClicked = function (ev) {
+          var _ev$detail = ev.detail,
+              href = _ev$detail.href,
+              tab = _ev$detail.tab;
+
+          if (_this.useRouter && href !== undefined) {
+            var router = document.querySelector('ion-router');
+
+            if (router) {
+              router.push(href);
+            }
+          } else {
+            _this.select(tab);
+          }
+        };
+
+        this.ionNavWillLoad = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionNavWillLoad", 7);
+        this.ionTabsWillChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionTabsWillChange", 3);
+        this.ionTabsDidChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionTabsDidChange", 3);
       }
-    };
 
-    var toggleIds = 0;
+      _createClass(Tabs, [{
+        key: "componentWillLoad",
+        value: function () {
+          var _componentWillLoad = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var tabs;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    if (!this.useRouter) {
+                      this.useRouter = !!document.querySelector('ion-router') && !this.el.closest('[no-router]');
+                    }
+
+                    if (this.useRouter) {
+                      _context2.next = 5;
+                      break;
+                    }
+
+                    tabs = this.tabs;
+                    _context2.next = 5;
+                    return this.select(tabs[0]);
+
+                  case 5:
+                    this.ionNavWillLoad.emit();
+
+                  case 6:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+
+          function componentWillLoad() {
+            return _componentWillLoad.apply(this, arguments);
+          }
+
+          return componentWillLoad;
+        }()
+      }, {
+        key: "componentWillRender",
+        value: function componentWillRender() {
+          var tabBar = this.el.querySelector('ion-tab-bar');
+
+          if (tabBar) {
+            var tab = this.selectedTab ? this.selectedTab.tab : undefined;
+            tabBar.selectedTab = tab;
+          }
+        }
+        /**
+         * Select a tab by the value of its `tab` property or an element reference.
+         *
+         * @param tab The tab instance to select. If passed a string, it should be the value of the tab's `tab` property.
+         */
+
+      }, {
+        key: "select",
+        value: function () {
+          var _select = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(tab) {
+            var selectedTab;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    selectedTab = _getTab(this.tabs, tab);
+
+                    if (this.shouldSwitch(selectedTab)) {
+                      _context3.next = 3;
+                      break;
+                    }
+
+                    return _context3.abrupt("return", false);
+
+                  case 3:
+                    _context3.next = 5;
+                    return this.setActive(selectedTab);
+
+                  case 5:
+                    _context3.next = 7;
+                    return this.notifyRouter();
+
+                  case 7:
+                    this.tabSwitch();
+                    return _context3.abrupt("return", true);
+
+                  case 9:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, this);
+          }));
+
+          function select(_x) {
+            return _select.apply(this, arguments);
+          }
+
+          return select;
+        }()
+        /**
+         * Get a specific tab by the value of its `tab` property or an element reference.
+         *
+         * @param tab The tab instance to select. If passed a string, it should be the value of the tab's `tab` property.
+         */
+
+      }, {
+        key: "getTab",
+        value: function () {
+          var _getTab2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(tab) {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    return _context4.abrupt("return", _getTab(this.tabs, tab));
+
+                  case 1:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4, this);
+          }));
+
+          function getTab(_x2) {
+            return _getTab2.apply(this, arguments);
+          }
+
+          return getTab;
+        }()
+        /**
+         * Get the currently selected tab.
+         */
+
+      }, {
+        key: "getSelected",
+        value: function getSelected() {
+          return Promise.resolve(this.selectedTab ? this.selectedTab.tab : undefined);
+        }
+        /** @internal */
+
+      }, {
+        key: "setRouteId",
+        value: function () {
+          var _setRouteId = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(id) {
+            var _this2 = this;
+
+            var selectedTab;
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    selectedTab = _getTab(this.tabs, id);
+
+                    if (this.shouldSwitch(selectedTab)) {
+                      _context5.next = 3;
+                      break;
+                    }
+
+                    return _context5.abrupt("return", {
+                      changed: false,
+                      element: this.selectedTab
+                    });
+
+                  case 3:
+                    _context5.next = 5;
+                    return this.setActive(selectedTab);
+
+                  case 5:
+                    return _context5.abrupt("return", {
+                      changed: true,
+                      element: this.selectedTab,
+                      markVisible: function markVisible() {
+                        return _this2.tabSwitch();
+                      }
+                    });
+
+                  case 6:
+                  case "end":
+                    return _context5.stop();
+                }
+              }
+            }, _callee5, this);
+          }));
+
+          function setRouteId(_x3) {
+            return _setRouteId.apply(this, arguments);
+          }
+
+          return setRouteId;
+        }()
+        /** @internal */
+
+      }, {
+        key: "getRouteId",
+        value: function () {
+          var _getRouteId = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            var tabId;
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    tabId = this.selectedTab && this.selectedTab.tab;
+                    return _context6.abrupt("return", tabId !== undefined ? {
+                      id: tabId,
+                      element: this.selectedTab
+                    } : undefined);
+
+                  case 2:
+                  case "end":
+                    return _context6.stop();
+                }
+              }
+            }, _callee6, this);
+          }));
+
+          function getRouteId() {
+            return _getRouteId.apply(this, arguments);
+          }
+
+          return getRouteId;
+        }()
+      }, {
+        key: "setActive",
+        value: function setActive(selectedTab) {
+          if (this.transitioning) {
+            return Promise.reject('transitioning already happening');
+          }
+
+          this.transitioning = true;
+          this.leavingTab = this.selectedTab;
+          this.selectedTab = selectedTab;
+          this.ionTabsWillChange.emit({
+            tab: selectedTab.tab
+          });
+          return selectedTab.setActive();
+        }
+      }, {
+        key: "tabSwitch",
+        value: function tabSwitch() {
+          var selectedTab = this.selectedTab;
+          var leavingTab = this.leavingTab;
+          this.leavingTab = undefined;
+          this.transitioning = false;
+
+          if (!selectedTab) {
+            return;
+          }
+
+          if (leavingTab !== selectedTab) {
+            if (leavingTab) {
+              leavingTab.active = false;
+            }
+
+            this.ionTabsDidChange.emit({
+              tab: selectedTab.tab
+            });
+          }
+        }
+      }, {
+        key: "notifyRouter",
+        value: function notifyRouter() {
+          if (this.useRouter) {
+            var router = document.querySelector('ion-router');
+
+            if (router) {
+              return router.navChanged('forward');
+            }
+          }
+
+          return Promise.resolve(false);
+        }
+      }, {
+        key: "shouldSwitch",
+        value: function shouldSwitch(selectedTab) {
+          var leavingTab = this.selectedTab;
+          return selectedTab !== undefined && selectedTab !== leavingTab && !this.transitioning;
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            onIonTabButtonClick: this.onTabClicked
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+            name: "top"
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            class: "tabs-inner"
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
+            name: "bottom"
+          }));
+        }
+      }, {
+        key: "tabs",
+        get: function get() {
+          return Array.from(this.el.querySelectorAll('ion-tab'));
+        }
+      }, {
+        key: "el",
+        get: function get() {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+        }
+      }], [{
+        key: "style",
+        get: function get() {
+          return ":host{left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-direction:column;flex-direction:column;width:100%;height:100%;z-index:0}.tabs-inner,:host{contain:layout size style}.tabs-inner{position:relative;-ms-flex:1;flex:1}";
+        }
+      }]);
+
+      return Tabs;
+    }();
+
+    var _getTab = function _getTab(tabs, tab) {
+      var tabEl = typeof tab === 'string' ? tabs.find(function (t) {
+        return t.tab === tab;
+      }) : tab;
+
+      if (!tabEl) {
+        console.error("tab with id: \"".concat(tabEl, "\" does not exist"));
+      }
+
+      return tabEl;
+    };
     /***/
+
   }
 }]);
 //# sourceMappingURL=86-es5.js.map

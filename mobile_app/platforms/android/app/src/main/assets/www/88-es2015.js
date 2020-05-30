@@ -1,554 +1,221 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[88],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/ion-virtual-scroll.entry.js":
-/*!***********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/ion-virtual-scroll.entry.js ***!
-  \***********************************************************************/
-/*! exports provided: ion_virtual_scroll */
+/***/ "./node_modules/@ionic/core/dist/esm/ion-textarea-ios.entry.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/ion-textarea-ios.entry.js ***!
+  \*********************************************************************/
+/*! exports provided: ion_textarea */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_virtual_scroll", function() { return VirtualScroll; });
-/* harmony import */ var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-0a8d4d2e.js */ "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_textarea", function() { return Textarea; });
+/* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
 /* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
+/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
+/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
 
 
-const CELL_TYPE_ITEM = 'item';
-const CELL_TYPE_HEADER = 'header';
-const CELL_TYPE_FOOTER = 'footer';
-const NODE_CHANGE_NONE = 0;
-const NODE_CHANGE_POSITION = 1;
-const NODE_CHANGE_CELL = 2;
 
-const MIN_READS = 2;
-const updateVDom = (dom, heightIndex, cells, range) => {
-    // reset dom
-    for (const node of dom) {
-        node.change = NODE_CHANGE_NONE;
-        node.d = true;
-    }
-    // try to match into exisiting dom
-    const toMutate = [];
-    const end = range.offset + range.length;
-    for (let i = range.offset; i < end; i++) {
-        const cell = cells[i];
-        const node = dom.find(n => n.d && n.cell === cell);
-        if (node) {
-            const top = heightIndex[i];
-            if (top !== node.top) {
-                node.top = top;
-                node.change = NODE_CHANGE_POSITION;
+
+const Textarea = class {
+    constructor(hostRef) {
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.inputId = `ion-input-${textareaIds++}`;
+        this.didBlurAfterEdit = false;
+        this.hasFocus = false;
+        /**
+         * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        this.autocapitalize = 'none';
+        /**
+         * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        this.autofocus = false;
+        /**
+         * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+         */
+        this.clearOnEdit = false;
+        /**
+         * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke.
+         */
+        this.debounce = 0;
+        /**
+         * If `true`, the user cannot interact with the textarea.
+         */
+        this.disabled = false;
+        /**
+         * The name of the control, which is submitted with the form data.
+         */
+        this.name = this.inputId;
+        /**
+         * If `true`, the user cannot modify the value.
+         */
+        this.readonly = false;
+        /**
+         * If `true`, the user must fill in a value before submitting a form.
+         */
+        this.required = false;
+        /**
+         * If `true`, the element will have its spelling and grammar checked.
+         */
+        this.spellcheck = false;
+        /**
+         * If `true`, the element height will increase based on the value.
+         */
+        this.autoGrow = false;
+        /**
+         * The value of the textarea.
+         */
+        this.value = '';
+        this.onInput = (ev) => {
+            if (this.nativeInput) {
+                this.value = this.nativeInput.value;
             }
-            node.d = false;
+            this.emitStyle();
+            this.ionInput.emit(ev);
+        };
+        this.onFocus = () => {
+            this.hasFocus = true;
+            this.focusChange();
+            this.ionFocus.emit();
+        };
+        this.onBlur = () => {
+            this.hasFocus = false;
+            this.focusChange();
+            this.ionBlur.emit();
+        };
+        this.onKeyDown = () => {
+            this.checkClearOnEdit();
+        };
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
+        this.ionInput = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInput", 7);
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+    }
+    debounceChanged() {
+        this.ionChange = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["d"])(this.ionChange, this.debounce);
+    }
+    disabledChanged() {
+        this.emitStyle();
+    }
+    /**
+     * Update the native input element when the value changes
+     */
+    valueChanged() {
+        const nativeInput = this.nativeInput;
+        const value = this.getValue();
+        if (nativeInput && nativeInput.value !== value) {
+            nativeInput.value = value;
         }
-        else {
-            toMutate.push(cell);
+        this.runAutoGrow();
+        this.emitStyle();
+        this.ionChange.emit({ value });
+    }
+    connectedCallback() {
+        this.emitStyle();
+        this.debounceChanged();
+        {
+            this.el.dispatchEvent(new CustomEvent('ionInputDidLoad', {
+                detail: this.el
+            }));
         }
     }
-    // needs to append
-    const pool = dom.filter(n => n.d);
-    for (const cell of toMutate) {
-        const node = pool.find(n => n.d && n.cell.type === cell.type);
-        const index = cell.i;
-        if (node) {
-            node.d = false;
-            node.change = NODE_CHANGE_CELL;
-            node.cell = cell;
-            node.top = heightIndex[index];
+    disconnectedCallback() {
+        {
+            document.dispatchEvent(new CustomEvent('ionInputDidUnload', {
+                detail: this.el
+            }));
         }
-        else {
-            dom.push({
-                d: false,
-                cell,
-                visible: true,
-                change: NODE_CHANGE_CELL,
-                top: heightIndex[index],
+    }
+    componentDidLoad() {
+        this.runAutoGrow();
+    }
+    // TODO: performance hit, this cause layout thrashing
+    runAutoGrow() {
+        const nativeInput = this.nativeInput;
+        if (nativeInput && this.autoGrow) {
+            Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["f"])(() => {
+                nativeInput.style.height = 'inherit';
+                nativeInput.style.height = nativeInput.scrollHeight + 'px';
             });
         }
     }
-    dom
-        .filter(n => n.d && n.top !== -9999)
-        .forEach(n => {
-        n.change = NODE_CHANGE_POSITION;
-        n.top = -9999;
-    });
-};
-const doRender = (el, nodeRender, dom, updateCellHeight) => {
-    const children = Array.from(el.children).filter(n => n.tagName !== 'TEMPLATE');
-    const childrenNu = children.length;
-    let child;
-    for (let i = 0; i < dom.length; i++) {
-        const node = dom[i];
-        const cell = node.cell;
-        // the cell change, the content must be updated
-        if (node.change === NODE_CHANGE_CELL) {
-            if (i < childrenNu) {
-                child = children[i];
-                nodeRender(child, cell, i);
-            }
-            else {
-                const newChild = createNode(el, cell.type);
-                child = nodeRender(newChild, cell, i) || newChild;
-                child.classList.add('virtual-item');
-                el.appendChild(child);
-            }
-            child['$ionCell'] = cell;
-        }
-        else {
-            child = children[i];
-        }
-        // only update position when it changes
-        if (node.change !== NODE_CHANGE_NONE) {
-            child.style.transform = `translate3d(0,${node.top}px,0)`;
-        }
-        // update visibility
-        const visible = cell.visible;
-        if (node.visible !== visible) {
-            if (visible) {
-                child.classList.remove('virtual-loading');
-            }
-            else {
-                child.classList.add('virtual-loading');
-            }
-            node.visible = visible;
-        }
-        // dynamic height
-        if (cell.reads > 0) {
-            updateCellHeight(cell, child);
-            cell.reads--;
+    /**
+     * Sets focus on the specified `ion-textarea`. Use this method instead of the global
+     * `input.focus()`.
+     */
+    async setFocus() {
+        if (this.nativeInput) {
+            this.nativeInput.focus();
         }
     }
-};
-const createNode = (el, type) => {
-    const template = getTemplate(el, type);
-    if (template && el.ownerDocument) {
-        return el.ownerDocument.importNode(template.content, true).children[0];
+    /**
+     * Returns the native `<textarea>` element used under the hood.
+     */
+    getInputElement() {
+        return Promise.resolve(this.nativeInput);
     }
-    return null;
-};
-const getTemplate = (el, type) => {
-    switch (type) {
-        case CELL_TYPE_ITEM: return el.querySelector('template:not([name])');
-        case CELL_TYPE_HEADER: return el.querySelector('template[name=header]');
-        case CELL_TYPE_FOOTER: return el.querySelector('template[name=footer]');
-    }
-};
-const getViewport = (scrollTop, vierportHeight, margin) => {
-    return {
-        top: Math.max(scrollTop - margin, 0),
-        bottom: scrollTop + vierportHeight + margin
-    };
-};
-const getRange = (heightIndex, viewport, buffer) => {
-    const topPos = viewport.top;
-    const bottomPos = viewport.bottom;
-    // find top index
-    let i = 0;
-    for (; i < heightIndex.length; i++) {
-        if (heightIndex[i] > topPos) {
-            break;
-        }
-    }
-    const offset = Math.max(i - buffer - 1, 0);
-    // find bottom index
-    for (; i < heightIndex.length; i++) {
-        if (heightIndex[i] >= bottomPos) {
-            break;
-        }
-    }
-    const end = Math.min(i + buffer, heightIndex.length);
-    const length = end - offset;
-    return { offset, length };
-};
-const getShouldUpdate = (dirtyIndex, currentRange, range) => {
-    const end = range.offset + range.length;
-    return (dirtyIndex <= end ||
-        currentRange.offset !== range.offset ||
-        currentRange.length !== range.length);
-};
-const findCellIndex = (cells, index) => {
-    const max = cells.length > 0 ? cells[cells.length - 1].index : 0;
-    if (index === 0) {
-        return 0;
-    }
-    else if (index === max + 1) {
-        return cells.length;
-    }
-    else {
-        return cells.findIndex(c => c.index === index);
-    }
-};
-const inplaceUpdate = (dst, src, offset) => {
-    if (offset === 0 && src.length >= dst.length) {
-        return src;
-    }
-    for (let i = 0; i < src.length; i++) {
-        dst[i + offset] = src[i];
-    }
-    return dst;
-};
-const calcCells = (items, itemHeight, headerHeight, footerHeight, headerFn, footerFn, approxHeaderHeight, approxFooterHeight, approxItemHeight, j, offset, len) => {
-    const cells = [];
-    const end = len + offset;
-    for (let i = offset; i < end; i++) {
-        const item = items[i];
-        if (headerFn) {
-            const value = headerFn(item, i, items);
-            if (value != null) {
-                cells.push({
-                    i: j++,
-                    type: CELL_TYPE_HEADER,
-                    value,
-                    index: i,
-                    height: headerHeight ? headerHeight(value, i) : approxHeaderHeight,
-                    reads: headerHeight ? 0 : MIN_READS,
-                    visible: !!headerHeight,
-                });
-            }
-        }
-        cells.push({
-            i: j++,
-            type: CELL_TYPE_ITEM,
-            value: item,
-            index: i,
-            height: itemHeight ? itemHeight(item, i) : approxItemHeight,
-            reads: itemHeight ? 0 : MIN_READS,
-            visible: !!itemHeight,
+    emitStyle() {
+        this.ionStyle.emit({
+            'interactive': true,
+            'textarea': true,
+            'input': true,
+            'interactive-disabled': this.disabled,
+            'has-placeholder': this.placeholder != null,
+            'has-value': this.hasValue(),
+            'has-focus': this.hasFocus
         });
-        if (footerFn) {
-            const value = footerFn(item, i, items);
-            if (value != null) {
-                cells.push({
-                    i: j++,
-                    type: CELL_TYPE_FOOTER,
-                    value,
-                    index: i,
-                    height: footerHeight ? footerHeight(value, i) : approxFooterHeight,
-                    reads: footerHeight ? 0 : MIN_READS,
-                    visible: !!footerHeight,
-                });
-            }
-        }
-    }
-    return cells;
-};
-const calcHeightIndex = (buf, cells, index) => {
-    let acum = buf[index];
-    for (let i = index; i < buf.length; i++) {
-        buf[i] = acum;
-        acum += cells[i].height;
-    }
-    return acum;
-};
-const resizeBuffer = (buf, len) => {
-    if (!buf) {
-        return new Uint32Array(len);
-    }
-    if (buf.length === len) {
-        return buf;
-    }
-    else if (len > buf.length) {
-        const newBuf = new Uint32Array(len);
-        newBuf.set(buf);
-        return newBuf;
-    }
-    else {
-        return buf.subarray(0, len);
-    }
-};
-const positionForIndex = (index, cells, heightIndex) => {
-    const cell = cells.find(c => c.type === CELL_TYPE_ITEM && c.index === index);
-    if (cell) {
-        return heightIndex[cell.i];
-    }
-    return -1;
-};
-
-const VirtualScroll = class {
-    constructor(hostRef) {
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.range = { offset: 0, length: 0 };
-        this.viewportHeight = 0;
-        this.cells = [];
-        this.virtualDom = [];
-        this.isEnabled = false;
-        this.viewportOffset = 0;
-        this.currentScrollTop = 0;
-        this.indexDirty = 0;
-        this.lastItemLen = 0;
-        this.totalHeight = 0;
-        /**
-         * It is important to provide this
-         * if virtual item height will be significantly larger than the default
-         * The approximate height of each virtual item template's cell.
-         * This dimension is used to help determine how many cells should
-         * be created when initialized, and to help calculate the height of
-         * the scrollable area. This height value can only use `px` units.
-         * Note that the actual rendered size of each cell comes from the
-         * app's CSS, whereas this approximation is used to help calculate
-         * initial dimensions before the item has been rendered.
-         */
-        this.approxItemHeight = 45;
-        /**
-         * The approximate height of each header template's cell.
-         * This dimension is used to help determine how many cells should
-         * be created when initialized, and to help calculate the height of
-         * the scrollable area. This height value can only use `px` units.
-         * Note that the actual rendered size of each cell comes from the
-         * app's CSS, whereas this approximation is used to help calculate
-         * initial dimensions before the item has been rendered.
-         */
-        this.approxHeaderHeight = 30;
-        /**
-         * The approximate width of each footer template's cell.
-         * This dimension is used to help determine how many cells should
-         * be created when initialized, and to help calculate the height of
-         * the scrollable area. This height value can only use `px` units.
-         * Note that the actual rendered size of each cell comes from the
-         * app's CSS, whereas this approximation is used to help calculate
-         * initial dimensions before the item has been rendered.
-         */
-        this.approxFooterHeight = 30;
-        this.onScroll = () => {
-            this.updateVirtualScroll();
-        };
-    }
-    itemsChanged() {
-        this.calcCells();
-        this.updateVirtualScroll();
-    }
-    async connectedCallback() {
-        const contentEl = this.el.closest('ion-content');
-        if (!contentEl) {
-            console.error('<ion-virtual-scroll> must be used inside an <ion-content>');
-            return;
-        }
-        this.scrollEl = await contentEl.getScrollElement();
-        this.contentEl = contentEl;
-        this.calcCells();
-        this.updateState();
-    }
-    componentDidUpdate() {
-        this.updateState();
-    }
-    disconnectedCallback() {
-        this.scrollEl = undefined;
-    }
-    onResize() {
-        this.calcCells();
-        this.updateVirtualScroll();
     }
     /**
-     * Returns the position of the virtual item at the given index.
+     * Check if we need to clear the text input if clearOnEdit is enabled
      */
-    positionForItem(index) {
-        return Promise.resolve(positionForIndex(index, this.cells, this.getHeightIndex()));
-    }
-    /**
-     * This method marks a subset of items as dirty, so they can be re-rendered. Items should be marked as
-     * dirty any time the content or their style changes.
-     *
-     * The subset of items to be updated can are specifing by an offset and a length.
-     */
-    async checkRange(offset, len = -1) {
-        // TODO: kind of hacky how we do in-place updated of the cells
-        // array. this part needs a complete refactor
-        if (!this.items) {
+    checkClearOnEdit() {
+        if (!this.clearOnEdit) {
             return;
         }
-        const length = (len === -1)
-            ? this.items.length - offset
-            : len;
-        const cellIndex = findCellIndex(this.cells, offset);
-        const cells = calcCells(this.items, this.itemHeight, this.headerHeight, this.footerHeight, this.headerFn, this.footerFn, this.approxHeaderHeight, this.approxFooterHeight, this.approxItemHeight, cellIndex, offset, length);
-        this.cells = inplaceUpdate(this.cells, cells, cellIndex);
-        this.lastItemLen = this.items.length;
-        this.indexDirty = Math.max(offset - 1, 0);
-        this.scheduleUpdate();
+        // Did the input value change after it was blurred and edited?
+        if (this.didBlurAfterEdit && this.hasValue()) {
+            // Clear the input
+            this.value = '';
+        }
+        // Reset the flag
+        this.didBlurAfterEdit = false;
     }
-    /**
-     * This method marks the tail the items array as dirty, so they can be re-rendered.
-     *
-     * It's equivalent to calling:
-     *
-     * ```js
-     * virtualScroll.checkRange(lastItemLen);
-     * ```
-     */
-    async checkEnd() {
-        if (this.items) {
-            this.checkRange(this.lastItemLen);
+    focusChange() {
+        // If clearOnEdit is enabled and the input blurred but has a value, set a flag
+        if (this.clearOnEdit && !this.hasFocus && this.hasValue()) {
+            this.didBlurAfterEdit = true;
         }
+        this.emitStyle();
     }
-    updateVirtualScroll() {
-        // do nothing if virtual-scroll is disabled
-        if (!this.isEnabled || !this.scrollEl) {
-            return;
-        }
-        // unschedule future updates
-        if (this.timerUpdate) {
-            clearTimeout(this.timerUpdate);
-            this.timerUpdate = undefined;
-        }
-        // schedule DOM operations into the stencil queue
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["f"])(this.readVS.bind(this));
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["w"])(this.writeVS.bind(this));
+    hasValue() {
+        return this.getValue() !== '';
     }
-    readVS() {
-        const { contentEl, scrollEl, el } = this;
-        let topOffset = 0;
-        let node = el;
-        while (node && node !== contentEl) {
-            topOffset += node.offsetTop;
-            node = node.parentElement;
-        }
-        this.viewportOffset = topOffset;
-        if (scrollEl) {
-            this.viewportHeight = scrollEl.offsetHeight;
-            this.currentScrollTop = scrollEl.scrollTop;
-        }
-    }
-    writeVS() {
-        const dirtyIndex = this.indexDirty;
-        // get visible viewport
-        const scrollTop = this.currentScrollTop - this.viewportOffset;
-        const viewport = getViewport(scrollTop, this.viewportHeight, 100);
-        // compute lazily the height index
-        const heightIndex = this.getHeightIndex();
-        // get array bounds of visible cells base in the viewport
-        const range = getRange(heightIndex, viewport, 2);
-        // fast path, do nothing
-        const shouldUpdate = getShouldUpdate(dirtyIndex, this.range, range);
-        if (!shouldUpdate) {
-            return;
-        }
-        this.range = range;
-        // in place mutation of the virtual DOM
-        updateVDom(this.virtualDom, heightIndex, this.cells, range);
-        // Write DOM
-        // Different code paths taken depending of the render API used
-        if (this.nodeRender) {
-            doRender(this.el, this.nodeRender, this.virtualDom, this.updateCellHeight.bind(this));
-        }
-        else if (this.domRender) {
-            this.domRender(this.virtualDom);
-        }
-        else if (this.renderItem) {
-            this.el.forceUpdate();
-        }
-    }
-    updateCellHeight(cell, node) {
-        const update = () => {
-            if (node['$ionCell'] === cell) {
-                const style = window.getComputedStyle(node);
-                const height = node.offsetHeight + parseFloat(style.getPropertyValue('margin-bottom'));
-                this.setCellHeight(cell, height);
-            }
-        };
-        if (node && node.componentOnReady) {
-            node.componentOnReady().then(update);
-        }
-        else {
-            update();
-        }
-    }
-    setCellHeight(cell, height) {
-        const index = cell.i;
-        // the cell might changed since the height update was scheduled
-        if (cell !== this.cells[index]) {
-            return;
-        }
-        if (cell.height !== height || cell.visible !== true) {
-            cell.visible = true;
-            cell.height = height;
-            this.indexDirty = Math.min(this.indexDirty, index);
-            this.scheduleUpdate();
-        }
-    }
-    scheduleUpdate() {
-        clearTimeout(this.timerUpdate);
-        this.timerUpdate = setTimeout(() => this.updateVirtualScroll(), 100);
-    }
-    updateState() {
-        const shouldEnable = !!(this.scrollEl &&
-            this.cells);
-        if (shouldEnable !== this.isEnabled) {
-            this.enableScrollEvents(shouldEnable);
-            if (shouldEnable) {
-                this.updateVirtualScroll();
-            }
-        }
-    }
-    calcCells() {
-        if (!this.items) {
-            return;
-        }
-        this.lastItemLen = this.items.length;
-        this.cells = calcCells(this.items, this.itemHeight, this.headerHeight, this.footerHeight, this.headerFn, this.footerFn, this.approxHeaderHeight, this.approxFooterHeight, this.approxItemHeight, 0, 0, this.lastItemLen);
-        this.indexDirty = 0;
-    }
-    getHeightIndex() {
-        if (this.indexDirty !== Infinity) {
-            this.calcHeightIndex(this.indexDirty);
-        }
-        return this.heightIndex;
-    }
-    calcHeightIndex(index = 0) {
-        // TODO: optimize, we don't need to calculate all the cells
-        this.heightIndex = resizeBuffer(this.heightIndex, this.cells.length);
-        this.totalHeight = calcHeightIndex(this.heightIndex, this.cells, index);
-        this.indexDirty = Infinity;
-    }
-    enableScrollEvents(shouldListen) {
-        if (this.rmEvent) {
-            this.rmEvent();
-            this.rmEvent = undefined;
-        }
-        const scrollEl = this.scrollEl;
-        if (scrollEl) {
-            this.isEnabled = shouldListen;
-            scrollEl.addEventListener('scroll', this.onScroll);
-            this.rmEvent = () => {
-                scrollEl.removeEventListener('scroll', this.onScroll);
-            };
-        }
-    }
-    renderVirtualNode(node) {
-        const { type, value, index } = node.cell;
-        switch (type) {
-            case CELL_TYPE_ITEM: return this.renderItem(value, index);
-            case CELL_TYPE_HEADER: return this.renderHeader(value, index);
-            case CELL_TYPE_FOOTER: return this.renderFooter(value, index);
-        }
+    getValue() {
+        return this.value || '';
     }
     render() {
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], { style: {
-                height: `${this.totalHeight}px`
-            } }, this.renderItem && (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(VirtualProxy, { dom: this.virtualDom }, this.virtualDom.map(node => this.renderVirtualNode(node))))));
-    }
-    get el() { return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
-    static get watchers() { return {
-        "itemHeight": ["itemsChanged"],
-        "headerHeight": ["itemsChanged"],
-        "footerHeight": ["itemsChanged"],
-        "items": ["itemsChanged"]
-    }; }
-    static get style() { return "ion-virtual-scroll{display:block;position:relative;width:100%;contain:strict;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}ion-virtual-scroll>.virtual-loading{opacity:0}ion-virtual-scroll>.virtual-item{position:absolute!important;top:0!important;right:0!important;left:0!important;-webkit-transition-duration:0ms;transition-duration:0ms;will-change:transform}"; }
-};
-const VirtualProxy = ({ dom }, children, utils) => {
-    return utils.map(children, (child, i) => {
-        const node = dom[i];
-        const vattrs = child.vattrs || {};
-        let classes = vattrs.class || '';
-        classes += 'virtual-item ';
-        if (!node.visible) {
-            classes += 'virtual-loading';
+        const mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        const value = this.getValue();
+        const labelId = this.inputId + '-lbl';
+        const label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(this.el);
+        if (label) {
+            label.id = labelId;
         }
-        return Object.assign(Object.assign({}, child), { vattrs: Object.assign(Object.assign({}, vattrs), { class: classes, style: Object.assign(Object.assign({}, vattrs.style), { transform: `translate3d(0,${node.top}px,0)` }) }) });
-    });
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { "aria-disabled": this.disabled ? 'true' : null, class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), { [mode]: true }) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("textarea", { class: "native-textarea", ref: el => this.nativeInput = el, autoCapitalize: this.autocapitalize, autoFocus: this.autofocus, disabled: this.disabled, maxLength: this.maxlength, minLength: this.minlength, name: this.name, placeholder: this.placeholder || '', readOnly: this.readonly, required: this.required, spellCheck: this.spellcheck, cols: this.cols, rows: this.rows, wrap: this.wrap, onInput: this.onInput, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeyDown }, value)));
+    }
+    get el() { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
+    static get watchers() { return {
+        "debounce": ["debounceChanged"],
+        "disabled": ["disabledChanged"],
+        "value": ["valueChanged"]
+    }; }
+    static get style() { return ".sc-ion-textarea-ios-h{--background:initial;--color:initial;--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:.5;--padding-top:0;--padding-end:0;--padding-bottom:0;--border-radius:0;display:block;position:relative;-ms-flex:1;flex:1;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;background:var(--background);color:var(--color);font-family:var(--ion-font-family,inherit);white-space:pre-wrap;z-index:2}.ion-color.sc-ion-textarea-ios-h{background:initial;color:var(--ion-color-base)}ion-item.sc-ion-textarea-ios-h, ion-item .sc-ion-textarea-ios-h{-ms-flex-item-align:baseline;align-self:baseline}ion-item.sc-ion-textarea-ios-h:not(.item-label), ion-item:not(.item-label) .sc-ion-textarea-ios-h{--padding-start:0}.native-textarea.sc-ion-textarea-ios{border-radius:var(--border-radius);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;width:100%;max-width:100%;max-height:100%;border:0;outline:none;background:transparent;-webkit-box-sizing:border-box;box-sizing:border-box;resize:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.native-textarea.sc-ion-textarea-ios{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.native-textarea.sc-ion-textarea-ios::-webkit-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios::-moz-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios:-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios::-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-ios::placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea[disabled].sc-ion-textarea-ios{opacity:.4}.cloned-input.sc-ion-textarea-ios{left:0;top:0;position:absolute;pointer-events:none}[dir=rtl].sc-ion-textarea-ios-h .cloned-input.sc-ion-textarea-ios, [dir=rtl] .sc-ion-textarea-ios-h .cloned-input.sc-ion-textarea-ios, [dir=rtl].sc-ion-textarea-ios .cloned-input.sc-ion-textarea-ios{left:unset;right:unset;right:0}.sc-ion-textarea-ios-h{--padding-top:10px;--padding-end:8px;--padding-bottom:10px;--padding-start:0;font-size:inherit}.item-label-floating.sc-ion-textarea-ios-h, .item-label-floating .sc-ion-textarea-ios-h, .item-label-stacked.sc-ion-textarea-ios-h, .item-label-stacked .sc-ion-textarea-ios-h{--padding-top:8px;--padding-bottom:8px;--padding-start:0px}"; }
 };
+let textareaIds = 0;
 
 
 

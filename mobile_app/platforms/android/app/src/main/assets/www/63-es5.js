@@ -1,8 +1,8 @@
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -12,36 +12,36 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[63], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-reorder_2-ios.entry.js":
-  /*!**********************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-reorder_2-ios.entry.js ***!
-    \**********************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-radio_2-ios.entry.js":
+  /*!********************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-radio_2-ios.entry.js ***!
+    \********************************************************************/
 
-  /*! exports provided: ion_reorder, ion_reorder_group */
+  /*! exports provided: ion_radio, ion_radio_group */
 
   /***/
-  function node_modulesIonicCoreDistEsmIonReorder_2IosEntryJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonRadio_2IosEntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_reorder", function () {
-      return Reorder;
+    __webpack_require__.d(__webpack_exports__, "ion_radio", function () {
+      return Radio;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_reorder_group", function () {
-      return ReorderGroup;
+    __webpack_require__.d(__webpack_exports__, "ion_radio_group", function () {
+      return RadioGroup;
     });
     /* harmony import */
 
 
-    var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-0a8d4d2e.js */
-    "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
@@ -51,131 +51,275 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./haptic-c8f1473e.js */
-    "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js");
+    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ./helpers-46f4a262.js */
+    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
+    /* harmony import */
 
-    var Reorder = /*#__PURE__*/function () {
-      function Reorder(hostRef) {
-        _classCallCheck(this, Reorder);
 
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
+    /* harmony import */
+
+
+    var _watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./watch-options-2af96011.js */
+    "./node_modules/@ionic/core/dist/esm/watch-options-2af96011.js");
+
+    var Radio = /*#__PURE__*/function () {
+      function Radio(hostRef) {
+        var _this = this;
+
+        _classCallCheck(this, Radio);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.inputId = "ion-rb-".concat(radioButtonIds++);
+        /**
+         * The name of the control, which is submitted with the form data.
+         */
+
+        this.name = this.inputId;
+        /**
+         * If `true`, the user cannot interact with the radio.
+         */
+
+        this.disabled = false;
+        /**
+         * If `true`, the radio is selected.
+         */
+
+        this.checked = false;
+
+        this.onFocus = function () {
+          _this.ionFocus.emit();
+        };
+
+        this.onBlur = function () {
+          _this.ionBlur.emit();
+        };
+
+        this.onClick = function () {
+          if (_this.checked) {
+            _this.ionDeselect.emit();
+          } else {
+            _this.checked = true;
+          }
+        };
+
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+        this.ionSelect = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSelect", 7);
+        this.ionDeselect = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionDeselect", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
       }
 
-      _createClass(Reorder, [{
-        key: "onClick",
-        value: function onClick(ev) {
-          ev.preventDefault();
-          ev.stopImmediatePropagation();
+      _createClass(Radio, [{
+        key: "colorChanged",
+        value: function colorChanged() {
+          this.emitStyle();
+        }
+      }, {
+        key: "checkedChanged",
+        value: function checkedChanged(isChecked) {
+          if (isChecked) {
+            this.ionSelect.emit({
+              checked: true,
+              value: this.value
+            });
+          }
+
+          this.emitStyle();
+        }
+      }, {
+        key: "disabledChanged",
+        value: function disabledChanged() {
+          this.emitStyle();
+        }
+      }, {
+        key: "componentWillLoad",
+        value: function componentWillLoad() {
+          if (this.value === undefined) {
+            this.value = this.inputId;
+          }
+
+          this.emitStyle();
+        }
+      }, {
+        key: "emitStyle",
+        value: function emitStyle() {
+          this.ionStyle.emit({
+            'radio-checked': this.checked,
+            'interactive-disabled': this.disabled
+          });
         }
       }, {
         key: "render",
         value: function render() {
-          var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          var reorderIcon = mode === 'ios' ? 'reorder-three-outline' : 'reorder-two-sharp';
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: mode
-          }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
-            name: reorderIcon,
-            lazy: false,
-            class: "reorder-icon"
-          })));
+          var _Object$assign;
+
+          var inputId = this.inputId,
+              disabled = this.disabled,
+              checked = this.checked,
+              color = this.color,
+              el = this.el;
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var labelId = inputId + '-lbl';
+          var label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(el);
+
+          if (label) {
+            label.id = labelId;
+          }
+
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            onClick: this.onClick,
+            role: "radio",
+            "aria-disabled": disabled ? 'true' : null,
+            "aria-checked": "".concat(checked),
+            "aria-labelledby": labelId,
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'interactive', true), _defineProperty(_Object$assign, 'radio-checked', checked), _defineProperty(_Object$assign, 'radio-disabled', disabled), _Object$assign))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            class: "radio-icon"
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
+            class: "radio-inner"
+          })), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
+            type: "button",
+            onFocus: this.onFocus,
+            onBlur: this.onBlur,
+            disabled: disabled
+          }));
+        }
+      }, {
+        key: "el",
+        get: function get() {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
+        key: "watchers",
+        get: function get() {
+          return {
+            "color": ["colorChanged"],
+            "checked": ["checkedChanged"],
+            "disabled": ["disabledChanged"]
+          };
+        }
+      }, {
         key: "style",
         get: function get() {
-          return ":host([slot]){display:none;line-height:0;z-index:100}.reorder-icon{display:block;font-size:22px;font-size:34px;opacity:.4}";
+          return ":host{display:inline-block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(.radio-disabled){pointer-events:none}.radio-icon{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;contain:layout size style}.radio-icon,button{width:100%;height:100%}button{left:0;top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none}:host-context([dir=rtl]) button,[dir=rtl] button{left:unset;right:unset;right:0}button::-moz-focus-inner{border:0}.radio-icon,.radio-inner{-webkit-box-sizing:border-box;box-sizing:border-box}:host{--color-checked:var(--ion-color-primary,#3880ff);width:15px;height:24px}:host(.ion-color.radio-checked) .radio-inner{border-color:var(--ion-color-base)}.item-radio.item-ios ion-label{margin-left:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.item-radio.item-ios ion-label{margin-left:unset;-webkit-margin-start:0;margin-inline-start:0}}.radio-inner{width:33%;height:50%}:host(.radio-checked) .radio-inner{-webkit-transform:rotate(45deg);transform:rotate(45deg);border-width:2px;border-top-width:0;border-left-width:0;border-style:solid;border-color:var(--color-checked)}:host(.radio-disabled){opacity:.3}:host(.ion-focused) .radio-icon:after{border-radius:50%;left:-9px;top:-8px;display:block;position:absolute;width:36px;height:36px;background:var(--ion-color-primary-tint,#4c8dff);content:\"\";opacity:.2}:host-context([dir=rtl]).ion-focused .radio-icon:after,:host-context([dir=rtl]):host(.ion-focused) .radio-icon:after{left:unset;right:unset;right:-9px}:host(.in-item){margin-left:8px;margin-right:11px;margin-top:8px;margin-bottom:8px;display:block;position:static}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-item){margin-left:unset;margin-right:unset;-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:11px;margin-inline-end:11px}}:host(.in-item[slot=start]){margin-left:3px;margin-right:21px;margin-top:8px;margin-bottom:8px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-item[slot=start]){margin-left:unset;margin-right:unset;-webkit-margin-start:3px;margin-inline-start:3px;-webkit-margin-end:21px;margin-inline-end:21px}}";
         }
       }]);
 
-      return Reorder;
+      return Radio;
     }();
 
-    var ReorderGroup = /*#__PURE__*/function () {
-      function ReorderGroup(hostRef) {
-        _classCallCheck(this, ReorderGroup);
+    var radioButtonIds = 0;
 
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.lastToIndex = -1;
-        this.cachedHeights = [];
-        this.scrollElTop = 0;
-        this.scrollElBottom = 0;
-        this.scrollElInitial = 0;
-        this.containerTop = 0;
-        this.containerBottom = 0;
-        this.state = 0
-        /* Idle */
-        ;
+    var RadioGroup = /*#__PURE__*/function () {
+      function RadioGroup(hostRef) {
+        var _this2 = this;
+
+        _classCallCheck(this, RadioGroup);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.inputId = "ion-rg-".concat(radioGroupIds++);
+        this.labelId = "".concat(this.inputId, "-lbl");
         /**
-         * If `true`, the reorder will be hidden.
+         * If `true`, the radios can be deselected.
          */
 
-        this.disabled = true;
-        this.ionItemReorder = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionItemReorder", 7);
+        this.allowEmptySelection = false;
+        /**
+         * The name of the control, which is submitted with the form data.
+         */
+
+        this.name = this.inputId;
+
+        this.onSelect = function (ev) {
+          var selectedRadio = ev.target;
+
+          if (selectedRadio) {
+            _this2.value = selectedRadio.value;
+          }
+        };
+
+        this.onDeselect = function (ev) {
+          var selectedRadio = ev.target;
+
+          if (selectedRadio) {
+            selectedRadio.checked = false;
+            _this2.value = undefined;
+          }
+        };
+
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
       }
 
-      _createClass(ReorderGroup, [{
-        key: "disabledChanged",
-        value: function disabledChanged() {
-          if (this.gesture) {
-            this.gesture.enable(!this.disabled);
-          }
+      _createClass(RadioGroup, [{
+        key: "valueChanged",
+        value: function valueChanged(value) {
+          this.updateRadios();
+          this.ionChange.emit({
+            value: value
+          });
         }
       }, {
         key: "connectedCallback",
         value: function () {
           var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var _this = this;
+            var _this3 = this;
 
-            var contentEl;
+            var el, header, label, radio;
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    contentEl = this.el.closest('ion-content');
+                    // Get the list header if it exists and set the id
+                    // this is used to set aria-labelledby
+                    el = this.el;
+                    header = el.querySelector('ion-list-header') || el.querySelector('ion-item-divider');
 
-                    if (!contentEl) {
-                      _context.next = 5;
+                    if (header) {
+                      label = header.querySelector('ion-label');
+
+                      if (label) {
+                        this.labelId = label.id = this.name + '-lbl';
+                      }
+                    }
+
+                    if (!(this.value === undefined)) {
+                      _context.next = 9;
                       break;
                     }
 
-                    _context.next = 4;
-                    return contentEl.getScrollElement();
+                    radio = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__["f"])(el, 'ion-radio');
 
-                  case 4:
-                    this.scrollEl = _context.sent;
+                    if (!(radio !== undefined)) {
+                      _context.next = 9;
+                      break;
+                    }
 
-                  case 5:
-                    _context.next = 7;
-                    return Promise.resolve().then(__webpack_require__.bind(null,
-                    /*! ./index-c38df685.js */
-                    "./node_modules/@ionic/core/dist/esm/index-c38df685.js"));
+                    _context.next = 8;
+                    return radio.componentOnReady();
 
-                  case 7:
-                    _context.t0 = {
-                      el: this.el,
-                      gestureName: 'reorder',
-                      gesturePriority: 110,
-                      threshold: 0,
-                      direction: 'y',
-                      passive: false,
-                      canStart: function canStart(detail) {
-                        return _this.canStart(detail);
-                      },
-                      onStart: function onStart(ev) {
-                        return _this.onStart(ev);
-                      },
-                      onMove: function onMove(ev) {
-                        return _this.onMove(ev);
-                      },
-                      onEnd: function onEnd() {
-                        return _this.onEnd();
+                  case 8:
+                    if (this.value === undefined) {
+                      this.value = radio.value;
+                    }
+
+                  case 9:
+                    this.mutationO = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__["w"])(el, 'ion-radio', function (newOption) {
+                      if (newOption !== undefined) {
+                        newOption.componentOnReady().then(function () {
+                          _this3.value = newOption.value;
+                        });
+                      } else {
+                        _this3.updateRadios();
                       }
-                    };
-                    this.gesture = _context.sent.createGesture(_context.t0);
-                    this.disabledChanged();
+                    });
+                    this.updateRadios();
 
-                  case 10:
+                  case 11:
                   case "end":
                     return _context.stop();
                 }
@@ -192,320 +336,140 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "disconnectedCallback",
         value: function disconnectedCallback() {
-          this.onEnd();
-
-          if (this.gesture) {
-            this.gesture.destroy();
-            this.gesture = undefined;
+          if (this.mutationO) {
+            this.mutationO.disconnect();
+            this.mutationO = undefined;
           }
         }
-        /**
-         * Completes the reorder operation. Must be called by the `ionItemReorder` event.
-         *
-         * If a list of items is passed, the list will be reordered and returned in the
-         * proper order.
-         *
-         * If no parameters are passed or if `true` is passed in, the reorder will complete
-         * and the item will remain in the position it was dragged to. If `false` is passed,
-         * the reorder will complete and the item will bounce back to its original position.
-         *
-         * @param listOrReorder A list of items to be sorted and returned in the new order or a
-         * boolean of whether or not the reorder should reposition the item.
-         */
-
       }, {
-        key: "complete",
-        value: function complete(listOrReorder) {
-          return Promise.resolve(this.completeSync(listOrReorder));
-        }
-      }, {
-        key: "canStart",
-        value: function canStart(ev) {
-          if (this.selectedItemEl || this.state !== 0
-          /* Idle */
-          ) {
-              return false;
-            }
+        key: "updateRadios",
+        value: function () {
+          var _updateRadios = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var radios, value, hasChecked, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, radio;
 
-          var target = ev.event.target;
-          var reorderEl = target.closest('ion-reorder');
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return this.getRadios();
 
-          if (!reorderEl) {
-            return false;
-          }
+                  case 2:
+                    radios = _context2.sent;
+                    value = this.value;
+                    hasChecked = false; // Walk the DOM in reverse order, since the last selected one wins!
 
-          var item = findReorderItem(reorderEl, this.el);
+                    _iteratorNormalCompletion = true;
+                    _didIteratorError = false;
+                    _iteratorError = undefined;
+                    _context2.prev = 8;
 
-          if (!item) {
-            return false;
-          }
+                    for (_iterator = radios[Symbol.iterator](); !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                      radio = _step.value;
 
-          ev.data = item;
-          return true;
-        }
-      }, {
-        key: "onStart",
-        value: function onStart(ev) {
-          ev.event.preventDefault();
-          var item = this.selectedItemEl = ev.data;
-          var heights = this.cachedHeights;
-          heights.length = 0;
-          var el = this.el;
-          var children = el.children;
-
-          if (!children || children.length === 0) {
-            return;
-          }
-
-          var sum = 0;
-
-          for (var i = 0; i < children.length; i++) {
-            var child = children[i];
-            sum += child.offsetHeight;
-            heights.push(sum);
-            child.$ionIndex = i;
-          }
-
-          var box = el.getBoundingClientRect();
-          this.containerTop = box.top;
-          this.containerBottom = box.bottom;
-
-          if (this.scrollEl) {
-            var scrollBox = this.scrollEl.getBoundingClientRect();
-            this.scrollElInitial = this.scrollEl.scrollTop;
-            this.scrollElTop = scrollBox.top + AUTO_SCROLL_MARGIN;
-            this.scrollElBottom = scrollBox.bottom - AUTO_SCROLL_MARGIN;
-          } else {
-            this.scrollElInitial = 0;
-            this.scrollElTop = 0;
-            this.scrollElBottom = 0;
-          }
-
-          this.lastToIndex = indexForItem(item);
-          this.selectedItemHeight = item.offsetHeight;
-          this.state = 1
-          /* Active */
-          ;
-          item.classList.add(ITEM_REORDER_SELECTED);
-          Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["a"])();
-        }
-      }, {
-        key: "onMove",
-        value: function onMove(ev) {
-          var selectedItem = this.selectedItemEl;
-
-          if (!selectedItem) {
-            return;
-          } // Scroll if we reach the scroll margins
+                      if (!hasChecked && radio.value === value) {
+                        // correct value for this radio
+                        // but this radio isn't checked yet
+                        // and we haven't found a checked yet
+                        hasChecked = true;
+                        radio.checked = true;
+                      } else {
+                        // this radio doesn't have the correct value
+                        // or the radio group has been already checked
+                        radio.checked = false;
+                      }
+                    } // Reset value if
 
 
-          var scroll = this.autoscroll(ev.currentY); // // Get coordinate
+                    _context2.next = 16;
+                    break;
 
-          var top = this.containerTop - scroll;
-          var bottom = this.containerBottom - scroll;
-          var currentY = Math.max(top, Math.min(ev.currentY, bottom));
-          var deltaY = scroll + currentY - ev.startY;
-          var normalizedY = currentY - top;
-          var toIndex = this.itemIndexForTop(normalizedY);
+                  case 12:
+                    _context2.prev = 12;
+                    _context2.t0 = _context2["catch"](8);
+                    _didIteratorError = true;
+                    _iteratorError = _context2.t0;
 
-          if (toIndex !== this.lastToIndex) {
-            var fromIndex = indexForItem(selectedItem);
-            this.lastToIndex = toIndex;
-            Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["b"])();
-            this.reorderMove(fromIndex, toIndex);
-          } // Update selected item position
+                  case 16:
+                    _context2.prev = 16;
+                    _context2.prev = 17;
 
+                    if (!_iteratorNormalCompletion && _iterator.return != null) {
+                      _iterator.return();
+                    }
 
-          selectedItem.style.transform = "translateY(".concat(deltaY, "px)");
-        }
-      }, {
-        key: "onEnd",
-        value: function onEnd() {
-          var selectedItemEl = this.selectedItemEl;
-          this.state = 2
-          /* Complete */
-          ;
+                  case 19:
+                    _context2.prev = 19;
 
-          if (!selectedItemEl) {
-            this.state = 0
-            /* Idle */
-            ;
-            return;
-          }
+                    if (!_didIteratorError) {
+                      _context2.next = 22;
+                      break;
+                    }
 
-          var toIndex = this.lastToIndex;
-          var fromIndex = indexForItem(selectedItemEl);
+                    throw _iteratorError;
 
-          if (toIndex === fromIndex) {
-            this.completeSync();
-          } else {
-            this.ionItemReorder.emit({
-              from: fromIndex,
-              to: toIndex,
-              complete: this.completeSync.bind(this)
-            });
-          }
+                  case 22:
+                    return _context2.finish(19);
 
-          Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
-        }
-      }, {
-        key: "completeSync",
-        value: function completeSync(listOrReorder) {
-          var selectedItemEl = this.selectedItemEl;
+                  case 23:
+                    return _context2.finish(16);
 
-          if (selectedItemEl && this.state === 2
-          /* Complete */
-          ) {
-              var children = this.el.children;
-              var len = children.length;
-              var toIndex = this.lastToIndex;
-              var fromIndex = indexForItem(selectedItemEl);
+                  case 24:
+                    if (!hasChecked) {
+                      this.value = undefined;
+                    }
 
-              if (toIndex !== fromIndex && (!listOrReorder || listOrReorder === true)) {
-                var ref = fromIndex < toIndex ? children[toIndex + 1] : children[toIndex];
-                this.el.insertBefore(selectedItemEl, ref);
+                  case 25:
+                  case "end":
+                    return _context2.stop();
+                }
               }
+            }, _callee2, this, [[8, 12, 16, 24], [17,, 19, 23]]);
+          }));
 
-              if (Array.isArray(listOrReorder)) {
-                listOrReorder = reorderArray(listOrReorder, fromIndex, toIndex);
-              }
+          function updateRadios() {
+            return _updateRadios.apply(this, arguments);
+          }
 
-              for (var i = 0; i < len; i++) {
-                children[i].style['transform'] = '';
-              }
-
-              selectedItemEl.style.transition = '';
-              selectedItemEl.classList.remove(ITEM_REORDER_SELECTED);
-              this.selectedItemEl = undefined;
-              this.state = 0
-              /* Idle */
-              ;
-            }
-
-          return listOrReorder;
-        }
+          return updateRadios;
+        }()
       }, {
-        key: "itemIndexForTop",
-        value: function itemIndexForTop(deltaY) {
-          var heights = this.cachedHeights;
-          var i = 0; // TODO: since heights is a sorted array of integers, we can do
-          // speed up the search using binary search. Remember that linear-search is still
-          // faster than binary-search for small arrays (<64) due CPU branch misprediction.
-
-          for (i = 0; i < heights.length; i++) {
-            if (heights[i] > deltaY) {
-              break;
-            }
-          }
-
-          return i;
-        }
-        /********* DOM WRITE ********* */
-
-      }, {
-        key: "reorderMove",
-        value: function reorderMove(fromIndex, toIndex) {
-          var itemHeight = this.selectedItemHeight;
-          var children = this.el.children;
-
-          for (var i = 0; i < children.length; i++) {
-            var style = children[i].style;
-            var value = '';
-
-            if (i > fromIndex && i <= toIndex) {
-              value = "translateY(".concat(-itemHeight, "px)");
-            } else if (i < fromIndex && i >= toIndex) {
-              value = "translateY(".concat(itemHeight, "px)");
-            }
-
-            style['transform'] = value;
-          }
-        }
-      }, {
-        key: "autoscroll",
-        value: function autoscroll(posY) {
-          if (!this.scrollEl) {
-            return 0;
-          }
-
-          var amount = 0;
-
-          if (posY < this.scrollElTop) {
-            amount = -SCROLL_JUMP;
-          } else if (posY > this.scrollElBottom) {
-            amount = SCROLL_JUMP;
-          }
-
-          if (amount !== 0) {
-            this.scrollEl.scrollBy(0, amount);
-          }
-
-          return this.scrollEl.scrollTop - this.scrollElInitial;
+        key: "getRadios",
+        value: function getRadios() {
+          return Promise.all(Array.from(this.el.querySelectorAll('ion-radio')).map(function (r) {
+            return r.componentOnReady();
+          }));
         }
       }, {
         key: "render",
         value: function render() {
-          var _class;
-
-          var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'reorder-enabled', !this.disabled), _defineProperty(_class, 'reorder-list-active', this.state !== 0), _class)
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            role: "radiogroup",
+            "aria-labelledby": this.labelId,
+            onIonSelect: this.onSelect,
+            onIonDeselect: this.allowEmptySelection ? this.onDeselect : undefined,
+            class: Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this)
           });
         }
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",
         get: function get() {
           return {
-            "disabled": ["disabledChanged"]
+            "value": ["valueChanged"]
           };
-        }
-      }, {
-        key: "style",
-        get: function get() {
-          return ".reorder-list-active>*{-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s;will-change:transform}.reorder-enabled{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.reorder-enabled ion-reorder{display:block;cursor:-webkit-grab;cursor:grab;pointer-events:all;-ms-touch-action:none;touch-action:none}.reorder-selected,.reorder-selected ion-reorder{cursor:-webkit-grabbing;cursor:grabbing}.reorder-selected{position:relative;-webkit-transition:none!important;transition:none!important;-webkit-box-shadow:0 0 10px rgba(0,0,0,.4);box-shadow:0 0 10px rgba(0,0,0,.4);opacity:.8;z-index:100}.reorder-visible ion-reorder .reorder-icon{-webkit-transform:translateZ(0);transform:translateZ(0)}";
         }
       }]);
 
-      return ReorderGroup;
+      return RadioGroup;
     }();
 
-    var indexForItem = function indexForItem(element) {
-      return element['$ionIndex'];
-    };
-
-    var findReorderItem = function findReorderItem(node, container) {
-      var parent;
-
-      while (node) {
-        parent = node.parentElement;
-
-        if (parent === container) {
-          return node;
-        }
-
-        node = parent;
-      }
-
-      return undefined;
-    };
-
-    var AUTO_SCROLL_MARGIN = 60;
-    var SCROLL_JUMP = 10;
-    var ITEM_REORDER_SELECTED = 'reorder-selected';
-
-    var reorderArray = function reorderArray(array, from, to) {
-      var element = array[from];
-      array.splice(from, 1);
-      array.splice(to, 0, element);
-      return array.slice();
-    };
+    var radioGroupIds = 0;
     /***/
-
   }
 }]);
 //# sourceMappingURL=63-es5.js.map

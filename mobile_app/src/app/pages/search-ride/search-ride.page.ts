@@ -1,40 +1,56 @@
-import { Component, OnInit, AfterContentInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterContentInit, ViewChild } from "@angular/core";
 import { SocketService } from "../../services/socket.service";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from "@angular/router";
+import { Events } from "@ionic/angular";
+import { Sim } from "@ionic-native/sim/ngx";
 
-declare var google;
 @Component({
   selector: "app-search-ride",
   templateUrl: "./search-ride.page.html",
   styleUrls: ["./search-ride.page.scss"]
 })
-export class SearchRidePage implements OnInit, AfterContentInit {  
-  map:any;
+export class SearchRidePage implements OnInit, AfterContentInit {
+  map: any;
+  lat: String;
+  long: String;
+  lat2: String;
+  long2: String;
+  isDriveAccepted: boolean = false;
+  kms: String;
 
-  @ViewChild("mapElement", { static: true }) mapElement;
-  constructor(public socketService: SocketService,    private route: ActivatedRoute
-    ) {
+  constructor(
+    public socketService: SocketService,
+    private route: ActivatedRoute,
+    public events: Events,
+    private sim: Sim
+  ) { 
+    events.subscribe("driveAccepted", message => {
+      this.isDriveAccepted = true;
+    });
+ 
+
+    events.subscribe("informCustomer", message => {
+      console.log(message)
+      this.kms = message;
+    });
+
+    this.sim.getSimInfo().then(
+      info => console.log("Sim info: ", info),
+      err => console.log("Unable to get sim info: ", err)
+    );
+    const firstParam: string = this.route.snapshot.queryParamMap.get("data");
+    let params = JSON.parse(firstParam);
     socketService.send("/server-receiver", {
       type: "customer",
       messageType: "DRIVE_REQUEST",
-      fromLat: "45.333",
-      fromLong: "16.444",
-      toLat: "45.333",
-      toLong: "16.444"
+      fromLat: params.fromLat,
+      fromLong: params.fromLong,
+      toLat: params.toLat,
+      toLong: params.toLong
     });
   }
 
-  ngAfterContentInit(): void {
-    const firstParam: string = this.route.snapshot.queryParamMap.get('data');
-    let params = JSON.parse(firstParam);
-    alert(params["fromLat"])
-    this.map = new google.maps.Map(
-        this.mapElement.nativeElement,
-        {
-          center: {lat: params["fromLat"], lng: params["fromLong"]},
-          zoom: 8
-        });
-  }
+  ngAfterContentInit(): void {}
 
   ngOnInit() {}
 }

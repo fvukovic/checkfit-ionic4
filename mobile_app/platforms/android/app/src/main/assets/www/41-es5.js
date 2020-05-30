@@ -12,30 +12,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[41], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-input-md.entry.js":
-  /*!*****************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-input-md.entry.js ***!
-    \*****************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-fab_3-ios.entry.js":
+  /*!******************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-fab_3-ios.entry.js ***!
+    \******************************************************************/
 
-  /*! exports provided: ion_input */
+  /*! exports provided: ion_fab, ion_fab_button, ion_fab_list */
 
   /***/
-  function node_modulesIonicCoreDistEsmIonInputMdEntryJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonFab_3IosEntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_input", function () {
-      return Input;
+    __webpack_require__.d(__webpack_exports__, "ion_fab", function () {
+      return Fab;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_fab_button", function () {
+      return FabButton;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_fab_list", function () {
+      return FabList;
     });
     /* harmony import */
 
 
-    var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-0a8d4d2e.js */
-    "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
@@ -45,221 +57,78 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./helpers-46f4a262.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
-    /* harmony import */
-
-
-    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var Input = /*#__PURE__*/function () {
-      function Input(hostRef) {
+    var Fab = /*#__PURE__*/function () {
+      function Fab(hostRef) {
         var _this = this;
 
-        _classCallCheck(this, Input);
+        _classCallCheck(this, Fab);
 
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.inputId = "ion-input-".concat(inputIds++);
-        this.didBlurAfterEdit = false;
-        this.hasFocus = false;
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
-         * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         * If `true`, the fab will display on the edge of the header if
+         * `vertical` is `"top"`, and on the edge of the footer if
+         * it is `"bottom"`. Should be used with a `fixed` slot.
          */
 
-        this.autocapitalize = 'off';
+        this.edge = false;
         /**
-         * Indicates whether the value of the control can be automatically completed by the browser.
+         * If `true`, both the `ion-fab-button` and all `ion-fab-list` inside `ion-fab` will become active.
+         * That means `ion-fab-button` will become a `close` icon and `ion-fab-list` will become visible.
          */
 
-        this.autocomplete = 'off';
-        /**
-         * Whether auto correction should be enabled when the user is entering/editing the text value.
-         */
+        this.activated = false;
 
-        this.autocorrect = 'off';
-        /**
-         * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
-         */
+        this.onClick = function () {
+          var hasList = !!_this.el.querySelector('ion-fab-list');
 
-        this.autofocus = false;
-        /**
-         * If `true`, a clear icon will appear in the input when there is a value. Clicking it clears the input.
-         */
+          var getButton = _this.getFab();
 
-        this.clearInput = false;
-        /**
-         * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke.
-         */
+          var isButtonDisabled = getButton && getButton.disabled;
 
-        this.debounce = 0;
-        /**
-         * If `true`, the user cannot interact with the input.
-         */
-
-        this.disabled = false;
-        /**
-         * The name of the control, which is submitted with the form data.
-         */
-
-        this.name = this.inputId;
-        /**
-         * If `true`, the user cannot modify the value.
-         */
-
-        this.readonly = false;
-        /**
-         * If `true`, the user must fill in a value before submitting a form.
-         */
-
-        this.required = false;
-        /**
-         * If `true`, the element will have its spelling and grammar checked.
-         */
-
-        this.spellcheck = false;
-        /**
-         * The type of control to display. The default type is text.
-         */
-
-        this.type = 'text';
-        /**
-         * The value of the input.
-         */
-
-        this.value = '';
-
-        this.onInput = function (ev) {
-          var input = ev.target;
-
-          if (input) {
-            _this.value = input.value || '';
-          }
-
-          _this.ionInput.emit(ev);
-        };
-
-        this.onBlur = function () {
-          _this.hasFocus = false;
-
-          _this.focusChanged();
-
-          _this.emitStyle();
-
-          _this.ionBlur.emit();
-        };
-
-        this.onFocus = function () {
-          _this.hasFocus = true;
-
-          _this.focusChanged();
-
-          _this.emitStyle();
-
-          _this.ionFocus.emit();
-        };
-
-        this.onKeydown = function (ev) {
-          if (_this.shouldClearOnEdit()) {
-            // Did the input value change after it was blurred and edited?
-            // Do not clear if user is hitting Enter to submit form
-            if (_this.didBlurAfterEdit && _this.hasValue() && ev.key !== 'Enter') {
-              // Clear the input
-              _this.clearTextInput();
-            } // Reset the flag
-
-
-            _this.didBlurAfterEdit = false;
+          if (hasList && !isButtonDisabled) {
+            _this.activated = !_this.activated;
           }
         };
-
-        this.clearTextInput = function (ev) {
-          if (_this.clearInput && !_this.readonly && !_this.disabled && ev) {
-            ev.preventDefault();
-            ev.stopPropagation();
-          }
-
-          _this.value = '';
-          /**
-           * This is needed for clearOnEdit
-           * Otherwise the value will not be cleared
-           * if user is inside the input
-           */
-
-          if (_this.nativeInput) {
-            _this.nativeInput.value = '';
-          }
-        };
-
-        this.ionInput = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionInput", 7);
-        this.ionChange = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionChange", 7);
-        this.ionBlur = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionBlur", 7);
-        this.ionFocus = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionFocus", 7);
-        this.ionInputDidLoad = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionInputDidLoad", 7);
-        this.ionInputDidUnload = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionInputDidUnload", 7);
-        this.ionStyle = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionStyle", 7);
       }
 
-      _createClass(Input, [{
-        key: "debounceChanged",
-        value: function debounceChanged() {
-          this.ionChange = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["d"])(this.ionChange, this.debounce);
-        }
-      }, {
-        key: "disabledChanged",
-        value: function disabledChanged() {
-          this.emitStyle();
-        }
-        /**
-         * Update the native input element when the value changes
-         */
+      _createClass(Fab, [{
+        key: "activatedChanged",
+        value: function activatedChanged() {
+          var activated = this.activated;
+          var fab = this.getFab();
 
-      }, {
-        key: "valueChanged",
-        value: function valueChanged() {
-          this.emitStyle();
-          this.ionChange.emit({
-            value: this.value == null ? this.value : this.value.toString()
+          if (fab) {
+            fab.activated = activated;
+          }
+
+          Array.from(this.el.querySelectorAll('ion-fab-list')).forEach(function (list) {
+            list.activated = activated;
           });
         }
       }, {
-        key: "connectedCallback",
-        value: function connectedCallback() {
-          this.emitStyle();
-          this.debounceChanged();
-          {
-            this.el.dispatchEvent(new CustomEvent('ionInputDidLoad', {
-              detail: this.el
-            }));
-          }
-        }
-      }, {
-        key: "disconnectedCallback",
-        value: function disconnectedCallback() {
-          {
-            document.dispatchEvent(new CustomEvent('ionInputDidUnload', {
-              detail: this.el
-            }));
+        key: "componentDidLoad",
+        value: function componentDidLoad() {
+          if (this.activated) {
+            this.activatedChanged();
           }
         }
         /**
-         * Sets focus on the specified `ion-input`. Use this method instead of the global
-         * `input.focus()`.
+         * Close an active FAB list container.
          */
 
       }, {
-        key: "setFocus",
+        key: "close",
         value: function () {
-          var _setFocus = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          var _close = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    if (this.nativeInput) {
-                      this.nativeInput.focus();
-                    }
+                    this.activated = false;
 
                   case 1:
                   case "end":
@@ -269,142 +138,228 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }, _callee, this);
           }));
 
-          function setFocus() {
-            return _setFocus.apply(this, arguments);
+          function close() {
+            return _close.apply(this, arguments);
           }
 
-          return setFocus;
+          return close;
         }()
-        /**
-         * Returns the native `<input>` element used under the hood.
-         */
-
       }, {
-        key: "getInputElement",
-        value: function getInputElement() {
-          return Promise.resolve(this.nativeInput);
-        }
-      }, {
-        key: "shouldClearOnEdit",
-        value: function shouldClearOnEdit() {
-          var type = this.type,
-              clearOnEdit = this.clearOnEdit;
-          return clearOnEdit === undefined ? type === 'password' : clearOnEdit;
-        }
-      }, {
-        key: "getValue",
-        value: function getValue() {
-          return typeof this.value === 'number' ? this.value.toString() : (this.value || '').toString();
-        }
-      }, {
-        key: "emitStyle",
-        value: function emitStyle() {
-          this.ionStyle.emit({
-            'interactive': true,
-            'input': true,
-            'has-placeholder': this.placeholder != null,
-            'has-value': this.hasValue(),
-            'has-focus': this.hasFocus,
-            'interactive-disabled': this.disabled
-          });
-        }
-      }, {
-        key: "focusChanged",
-        value: function focusChanged() {
-          // If clearOnEdit is enabled and the input blurred but has a value, set a flag
-          if (!this.hasFocus && this.shouldClearOnEdit() && this.hasValue()) {
-            this.didBlurAfterEdit = true;
-          }
-        }
-      }, {
-        key: "hasValue",
-        value: function hasValue() {
-          return this.getValue().length > 0;
+        key: "getFab",
+        value: function getFab() {
+          return this.el.querySelector('ion-fab-button');
         }
       }, {
         key: "render",
         value: function render() {
-          var _Object$assign,
-              _this2 = this;
+          var _class;
 
-          var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          var value = this.getValue();
-          var labelId = this.inputId + '-lbl';
-          var label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(this.el);
-
-          if (label) {
-            label.id = labelId;
-          }
-
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            "aria-disabled": this.disabled ? 'true' : null,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'has-value', this.hasValue()), _defineProperty(_Object$assign, 'has-focus', this.hasFocus), _Object$assign))
-          }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", {
-            class: "native-input",
-            ref: function ref(input) {
-              return _this2.nativeInput = input;
-            },
-            "aria-labelledby": labelId,
-            disabled: this.disabled,
-            accept: this.accept,
-            autoCapitalize: this.autocapitalize,
-            autoComplete: this.autocomplete,
-            autoCorrect: this.autocorrect,
-            autoFocus: this.autofocus,
-            inputMode: this.inputmode,
-            min: this.min,
-            max: this.max,
-            minLength: this.minlength,
-            maxLength: this.maxlength,
-            multiple: this.multiple,
-            name: this.name,
-            pattern: this.pattern,
-            placeholder: this.placeholder || '',
-            readOnly: this.readonly,
-            required: this.required,
-            spellCheck: this.spellcheck,
-            step: this.step,
-            size: this.size,
-            type: this.type,
-            value: value,
-            onInput: this.onInput,
-            onBlur: this.onBlur,
-            onFocus: this.onFocus,
-            onKeyDown: this.onKeydown
-          }), this.clearInput && !this.readonly && !this.disabled && Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
-            type: "button",
-            class: "input-clear-icon",
-            tabindex: "-1",
-            onTouchStart: this.clearTextInput,
-            onMouseDown: this.clearTextInput
-          }));
+          var horizontal = this.horizontal,
+              vertical = this.vertical,
+              edge = this.edge;
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            onClick: this.onClick,
+            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "fab-horizontal-".concat(horizontal), horizontal !== undefined), _defineProperty(_class, "fab-vertical-".concat(vertical), vertical !== undefined), _defineProperty(_class, 'fab-edge', edge), _class)
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",
         get: function get() {
           return {
-            "debounce": ["debounceChanged"],
-            "disabled": ["disabledChanged"],
-            "value": ["valueChanged"]
+            "activated": ["activatedChanged"]
           };
         }
       }, {
         key: "style",
         get: function get() {
-          return ".sc-ion-input-md-h{--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:.5;--padding-top:0;--padding-bottom:0;--padding-start:0;--background:transparent;--color:initial;display:-ms-flexbox;display:flex;position:relative;-ms-flex:1;flex:1;-ms-flex-align:center;align-items:center;width:100%;padding:0!important;background:var(--background);color:var(--color);font-family:var(--ion-font-family,inherit);z-index:2}ion-item.sc-ion-input-md-h:not(.item-label), ion-item:not(.item-label) .sc-ion-input-md-h{--padding-start:0}.ion-color.sc-ion-input-md-h{color:var(--ion-color-base)}.native-input.sc-ion-input-md{border-radius:var(--border-radius);padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:inline-block;-ms-flex:1;flex:1;width:100%;max-width:100%;max-height:100%;border:0;outline:none;background:transparent;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.native-input.sc-ion-input-md{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.native-input.sc-ion-input-md::-webkit-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-md::-moz-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-md:-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-md::-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-md::placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-input.sc-ion-input-md:-webkit-autofill{background-color:transparent}.native-input.sc-ion-input-md:invalid{-webkit-box-shadow:none;box-shadow:none}.native-input.sc-ion-input-md::-ms-clear{display:none}.native-input[disabled].sc-ion-input-md{opacity:.4}.cloned-input.sc-ion-input-md{left:0;top:0;position:absolute;pointer-events:none}[dir=rtl].sc-ion-input-md-h .cloned-input.sc-ion-input-md, [dir=rtl] .sc-ion-input-md-h .cloned-input.sc-ion-input-md, [dir=rtl].sc-ion-input-md .cloned-input.sc-ion-input-md{left:unset;right:unset;right:0}.input-clear-icon.sc-ion-input-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;background-position:50%;border:0;outline:none;background-color:transparent;background-repeat:no-repeat;visibility:hidden;-webkit-appearance:none;-moz-appearance:none;appearance:none}.has-focus.has-value.sc-ion-input-md-h .input-clear-icon.sc-ion-input-md{visibility:visible}.has-focus.sc-ion-input-md-h{pointer-events:none}.has-focus.sc-ion-input-md-h a.sc-ion-input-md, .has-focus.sc-ion-input-md-h button.sc-ion-input-md, .has-focus.sc-ion-input-md-h input.sc-ion-input-md{pointer-events:auto}.sc-ion-input-md-h{--padding-top:10px;--padding-end:0;--padding-bottom:10px;--padding-start:8px;font-size:inherit}.item-label-floating.sc-ion-input-md-h, .item-label-floating .sc-ion-input-md-h, .item-label-stacked.sc-ion-input-md-h, .item-label-stacked .sc-ion-input-md-h{--padding-top:8px;--padding-bottom:8px;--padding-start:0}.input-clear-icon.sc-ion-input-md{background-image:url(\"data:image/svg+xml;charset=utf-8,<svg%20xmlns=\'http://www.w3.org/2000/svg\'%20viewBox=\'0%200%20512%20512\'><polygon%20fill=\'var(--ion-color-step-600,%20%23666666)\'%20points=\'405,136.798%20375.202,107%20256,226.202%20136.798,107%20107,136.798%20226.202,256%20107,375.202%20136.798,405%20256,285.798%20375.202,405%20405,375.202%20285.798,256\'/></svg>\");width:30px;height:30px;background-size:22px}";
+          return ":host{position:absolute;z-index:999}:host(.fab-horizontal-center){left:50%;margin-left:-28px}:host-context([dir=rtl]).fab-horizontal-center,:host-context([dir=rtl]):host(.fab-horizontal-center){left:unset;right:unset;right:50%}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-horizontal-center){margin-left:unset;-webkit-margin-start:-28px;margin-inline-start:-28px}}:host(.fab-horizontal-start){left:calc(10px + var(--ion-safe-area-left, 0px))}:host-context([dir=rtl]).fab-horizontal-start,:host-context([dir=rtl]):host(.fab-horizontal-start){left:unset;right:unset;right:calc(10px + var(--ion-safe-area-left, 0px))}:host(.fab-horizontal-end){right:calc(10px + var(--ion-safe-area-right, 0px))}:host-context([dir=rtl]).fab-horizontal-end,:host-context([dir=rtl]):host(.fab-horizontal-end){left:unset;right:unset;left:calc(10px + var(--ion-safe-area-right, 0px))}:host(.fab-vertical-top){top:10px}:host(.fab-vertical-top.fab-edge){top:-28px}:host(.fab-vertical-bottom){bottom:10px}:host(.fab-vertical-bottom.fab-edge){bottom:-28px}:host(.fab-vertical-center){margin-top:-28px;top:50%}";
         }
       }]);
 
-      return Input;
+      return Fab;
     }();
 
-    var inputIds = 0;
+    var FabButton = /*#__PURE__*/function () {
+      function FabButton(hostRef) {
+        var _this2 = this;
+
+        _classCallCheck(this, FabButton);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        /**
+         * If `true`, the fab button will be show a close icon.
+         */
+
+        this.activated = false;
+        /**
+         * If `true`, the user cannot interact with the fab button.
+         */
+
+        this.disabled = false;
+        /**
+         * When using a router, it specifies the transition direction when navigating to
+         * another page using `href`.
+         */
+
+        this.routerDirection = 'forward';
+        /**
+         * If `true`, the fab button will show when in a fab-list.
+         */
+
+        this.show = false;
+        /**
+         * If `true`, the fab button will be translucent.
+         * Only applies when the mode is `"ios"` and the device supports
+         * [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
+         */
+
+        this.translucent = false;
+        /**
+         * The type of the button.
+         */
+
+        this.type = 'button';
+
+        this.onFocus = function () {
+          _this2.ionFocus.emit();
+        };
+
+        this.onBlur = function () {
+          _this2.ionBlur.emit();
+        };
+
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+      }
+
+      _createClass(FabButton, [{
+        key: "render",
+        value: function render() {
+          var _Object$assign,
+              _this3 = this;
+
+          var el = this.el,
+              disabled = this.disabled,
+              color = this.color,
+              href = this.href,
+              activated = this.activated,
+              show = this.show,
+              translucent = this.translucent,
+              size = this.size;
+          var inList = Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-fab-list', el);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var TagType = href === undefined ? 'button' : 'a';
+          var attrs = TagType === 'button' ? {
+            type: this.type
+          } : {
+            download: this.download,
+            href: href,
+            rel: this.rel,
+            target: this.target
+          };
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            "aria-disabled": disabled ? 'true' : null,
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'fab-button-in-list', inList), _defineProperty(_Object$assign, 'fab-button-translucent-in-list', inList && translucent), _defineProperty(_Object$assign, 'fab-button-close-active', activated), _defineProperty(_Object$assign, 'fab-button-show', show), _defineProperty(_Object$assign, 'fab-button-disabled', disabled), _defineProperty(_Object$assign, 'fab-button-translucent', translucent), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _defineProperty(_Object$assign, "fab-button-".concat(size), size !== undefined), _Object$assign))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
+            class: "button-native",
+            disabled: disabled,
+            onFocus: this.onFocus,
+            onBlur: this.onBlur,
+            onClick: function onClick(ev) {
+              return Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["o"])(href, ev, _this3.routerDirection);
+            }
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+            class: "close-icon"
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
+            name: "close",
+            lazy: false
+          })), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+            class: "button-inner"
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), mode === 'md' && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)));
+        }
+      }, {
+        key: "el",
+        get: function get() {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+        }
+      }], [{
+        key: "style",
+        get: function get() {
+          return ":host{--color-hover:var(--color);--background-hover:var(--ion-color-primary-tint,#4c8dff);--transition:background-color,opacity 100ms linear;--ripple-color:currentColor;--border-radius:50%;--border-width:0;--border-style:none;--border-color:initial;--padding-top:0;--padding-end:0;--padding-bottom:0;--padding-start:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:block;width:56px;height:56px;font-size:14px;text-align:center;text-overflow:ellipsis;text-transform:none;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none}.button-native{border-radius:var(--border-radius);padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;position:relative;width:100%;height:100%;-webkit-transform:var(--transform);transform:var(--transform);-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);outline:none;background:var(--background);background-clip:padding-box;color:var(--color);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);contain:strict;cursor:pointer;overflow:hidden;z-index:0;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-box-sizing:border-box;box-sizing:border-box}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.button-inner{left:0;right:0;top:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100%;-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-transition-property:opacity,-webkit-transform;transition-property:opacity,-webkit-transform;transition-property:transform,opacity;transition-property:transform,opacity,-webkit-transform}:host(.ion-color) .button-native{background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(.fab-button-disabled){opacity:.5;pointer-events:none}:host(.fab-button-disabled) .button-native{cursor:default;pointer-events:none}\@media (any-hover:hover){:host(:hover) .button-native{background:var(--background-hover);color:var(--color-hover)}:host(.ion-color:hover) .button-native{background:var(--ion-color-tint);color:var(--ion-color-contrast)}}:host(.ion-focused) .button-native{background:var(--background-focused);color:var(--color-focused)}:host(.ion-color.ion-focused) .button-native{background:var(--ion-color-shade)}:host(.activated) .button-native{background:var(--background-activated);color:var(--color-activated)}:host(.ion-color.activated) .button-native,:host(.ion-color.ion-focused) .button-native{background:var(--ion-color-shade);color:var(--ion-color-contrast)}::slotted(ion-icon){line-height:1}:host(.fab-button-small){margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;width:40px;height:40px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-button-small){margin-left:unset;margin-right:unset;-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:8px;margin-inline-end:8px}}.close-icon{left:0;right:0;top:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100%;-webkit-transform:scale(.4) rotate(-45deg);transform:scale(.4) rotate(-45deg);-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-transition-property:opacity,-webkit-transform;transition-property:opacity,-webkit-transform;transition-property:transform,opacity;transition-property:transform,opacity,-webkit-transform;opacity:0}:host(.fab-button-close-active) .close-icon{-webkit-transform:scale(1) rotate(0deg);transform:scale(1) rotate(0deg);opacity:1}:host(.fab-button-close-active) .button-inner{-webkit-transform:scale(.4) rotate(45deg);transform:scale(.4) rotate(45deg);opacity:0}ion-ripple-effect{color:var(--ripple-color)}\@supports ((-webkit-backdrop-filter:blur(0)) or (backdrop-filter:blur(0))){:host(.fab-button-translucent) .button-native{-webkit-backdrop-filter:var(--backdrop-filter);backdrop-filter:var(--backdrop-filter)}}:host{--background:var(--ion-color-primary,#3880ff);--background-activated:var(--ion-color-primary-shade,#3171e0);--background-focused:var(--background-activated);--color:var(--ion-color-primary-contrast,#fff);--color-activated:var(--ion-color-primary-contrast,#fff);--color-focused:var(--color-activated);--transition:0.2s transform cubic-bezier(0.25,1.11,0.78,1.59)}:host,:host(.activated){--box-shadow:0 4px 16px rgba(0,0,0,0.12)}:host(.activated){--transform:scale(1.1);--transition:0.2s transform ease-out}.close-icon,::slotted(ion-icon){font-size:28px}:host(.fab-button-in-list){--background:var(--ion-color-light,#f4f5f8);--background-activated:var(--ion-color-light-shade,#d7d8da);--background-focused:var(--background-activated);--background-hover:var(--ion-color-light-tint,#f5f6f9);--color:var(--ion-color-light-contrast,#000);--color-activated:var(--ion-color-light-contrast,#000);--color-focused:var(--color-activated);--transition:transform 200ms ease 10ms,opacity 200ms ease 10ms}:host(.fab-button-in-list) ::slotted(ion-icon){font-size:18px}\@supports ((-webkit-backdrop-filter:blur(0)) or (backdrop-filter:blur(0))){:host(.fab-button-translucent){--background:rgba(var(--ion-color-primary-rgb,56,128,255),0.9);--background-hover:rgba(var(--ion-color-primary-rgb,56,128,255),0.8);--background-focused:rgba(var(--ion-color-primary-rgb,56,128,255),0.82);--backdrop-filter:saturate(180%) blur(20px)}:host(.fab-button-translucent-in-list){--background:rgba(var(--ion-color-light-rgb,244,245,248),0.9);--background-hover:rgba(var(--ion-color-light-rgb,244,245,248),0.8);--background-focused:rgba(var(--ion-color-light-rgb,244,245,248),0.82)}}\@supports ((-webkit-backdrop-filter:blur(0)) or (backdrop-filter:blur(0))){\@media (any-hover:hover){:host(.fab-button-translucent.ion-color:hover) .button-native{background:rgba(var(--ion-color-base-rgb),.8)}}:host(.ion-color.fab-button-translucent) .button-native{background:rgba(var(--ion-color-base-rgb),.9)}:host(.ion-color.activated.fab-button-translucent) .button-native,:host(.ion-color.ion-focused.fab-button-translucent) .button-native{background:var(--ion-color-base)}}";
+        }
+      }]);
+
+      return FabButton;
+    }();
+
+    var FabList = /*#__PURE__*/function () {
+      function FabList(hostRef) {
+        _classCallCheck(this, FabList);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        /**
+         * If `true`, the fab list will show all fab buttons in the list.
+         */
+
+        this.activated = false;
+        /**
+         * The side the fab list will show on relative to the main fab button.
+         */
+
+        this.side = 'bottom';
+      }
+
+      _createClass(FabList, [{
+        key: "activatedChanged",
+        value: function activatedChanged(activated) {
+          var fabs = Array.from(this.el.querySelectorAll('ion-fab-button')); // if showing the fabs add a timeout, else show immediately
+
+          var timeout = activated ? 30 : 0;
+          fabs.forEach(function (fab, i) {
+            setTimeout(function () {
+              return fab.show = activated;
+            }, i * timeout);
+          });
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          var _class2;
+
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'fab-list-active', this.activated), _defineProperty(_class2, "fab-list-side-".concat(this.side), true), _class2)
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
+        }
+      }, {
+        key: "el",
+        get: function get() {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+        }
+      }], [{
+        key: "watchers",
+        get: function get() {
+          return {
+            "activated": ["activatedChanged"]
+          };
+        }
+      }, {
+        key: "style",
+        get: function get() {
+          return ":host{margin-left:0;margin-right:0;margin-top:66px;margin-bottom:66px;display:none;position:absolute;top:0;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center;align-items:center;min-width:56px;min-height:56px}:host(.fab-list-active){display:-ms-flexbox;display:flex}::slotted(.fab-button-in-list){margin-left:0;margin-right:0;margin-top:8px;margin-bottom:8px;width:40px;height:40px;-webkit-transform:scale(0);transform:scale(0);opacity:0;visibility:hidden}:host(.fab-list-side-bottom) ::slotted(.fab-button-in-list),:host(.fab-list-side-top) ::slotted(.fab-button-in-list){margin-left:0;margin-right:0;margin-top:5px;margin-bottom:5px}:host(.fab-list-side-end) ::slotted(.fab-button-in-list),:host(.fab-list-side-start) ::slotted(.fab-button-in-list){margin-left:5px;margin-right:5px;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-list-side-end) ::slotted(.fab-button-in-list),:host(.fab-list-side-start) ::slotted(.fab-button-in-list){margin-left:unset;margin-right:unset;-webkit-margin-start:5px;margin-inline-start:5px;-webkit-margin-end:5px;margin-inline-end:5px}}::slotted(.fab-button-in-list.fab-button-show){-webkit-transform:scale(1);transform:scale(1);opacity:1;visibility:visible}:host(.fab-list-side-top){top:auto;bottom:0;-ms-flex-direction:column-reverse;flex-direction:column-reverse}:host(.fab-list-side-start){margin-left:66px;margin-right:66px;margin-top:0;margin-bottom:0;right:0;-ms-flex-direction:row-reverse;flex-direction:row-reverse}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-list-side-start){margin-left:unset;margin-right:unset;-webkit-margin-start:66px;margin-inline-start:66px;-webkit-margin-end:66px;margin-inline-end:66px}}:host-context([dir=rtl]).fab-list-side-start,:host-context([dir=rtl]):host(.fab-list-side-start){left:unset;right:unset;left:0}:host(.fab-list-side-end){margin-left:66px;margin-right:66px;margin-top:0;margin-bottom:0;left:0;-ms-flex-direction:row;flex-direction:row}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-list-side-end){margin-left:unset;margin-right:unset;-webkit-margin-start:66px;margin-inline-start:66px;-webkit-margin-end:66px;margin-inline-end:66px}}:host-context([dir=rtl]).fab-list-side-end,:host-context([dir=rtl]):host(.fab-list-side-end){left:unset;right:unset;right:0}";
+        }
+      }]);
+
+      return FabList;
+    }();
     /***/
+
   }
 }]);
 //# sourceMappingURL=41-es5.js.map

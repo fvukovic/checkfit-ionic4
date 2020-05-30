@@ -12,7 +12,6 @@ export class StreetPickerPage implements OnInit {
   address:String
 
   constructor( public navParams: NavParams, private modalControler:ModalController) {
-    
    }
 
   ngOnInit() {
@@ -20,8 +19,7 @@ export class StreetPickerPage implements OnInit {
   closeModal(){ 
     this.modalControler.dismiss();
   }
-  passAddress() {
-    alert(this.navParams.get("picker"))
+  passAddress() { 
     let data = {
       picker: this.navParams.get("picker"),
       address:this.address

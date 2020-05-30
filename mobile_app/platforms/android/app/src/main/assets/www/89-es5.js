@@ -1,37 +1,41 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[89], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ios.transition-179652bb.js":
-  /*!**********************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ios.transition-179652bb.js ***!
-    \**********************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-textarea-md.entry.js":
+  /*!********************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-textarea-md.entry.js ***!
+    \********************************************************************/
 
-  /*! exports provided: iosTransitionAnimation, shadow */
+  /*! exports provided: ion_textarea */
 
   /***/
-  function node_modulesIonicCoreDistEsmIosTransition179652bbJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonTextareaMdEntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "iosTransitionAnimation", function () {
-      return iosTransitionAnimation;
-    });
-    /* harmony export (binding) */
-
-
-    __webpack_require__.d(__webpack_exports__, "shadow", function () {
-      return shadow;
+    __webpack_require__.d(__webpack_exports__, "ion_textarea", function () {
+      return Textarea;
     });
     /* harmony import */
 
 
-    var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-0a8d4d2e.js */
-    "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
@@ -47,532 +51,341 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     /* harmony import */
 
 
-    var _animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./animation-56279521.js */
-    "./node_modules/@ionic/core/dist/esm/animation-56279521.js");
-    /* harmony import */
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./theme-18cbe2cc.js */
+    "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
+    var Textarea = /*#__PURE__*/function () {
+      function Textarea(hostRef) {
+        var _this = this;
 
-    var _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./constants-3c3e1099.js */
-    "./node_modules/@ionic/core/dist/esm/constants-3c3e1099.js");
-    /* harmony import */
+        _classCallCheck(this, Textarea);
 
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.inputId = "ion-input-".concat(textareaIds++);
+        this.didBlurAfterEdit = false;
+        this.hasFocus = false;
+        /**
+         * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
 
-    var _index_4e2fa3c6_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./index-4e2fa3c6.js */
-    "./node_modules/@ionic/core/dist/esm/index-4e2fa3c6.js");
+        this.autocapitalize = 'none';
+        /**
+         * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
 
-    var DURATION = 540;
+        this.autofocus = false;
+        /**
+         * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+         */
 
-    var getClonedElement = function getClonedElement(tagName) {
-      return document.querySelector("".concat(tagName, ".ion-cloned-element"));
-    };
+        this.clearOnEdit = false;
+        /**
+         * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke.
+         */
 
-    var shadow = function shadow(el) {
-      return el.shadowRoot || el;
-    };
+        this.debounce = 0;
+        /**
+         * If `true`, the user cannot interact with the textarea.
+         */
 
-    var getLargeTitle = function getLargeTitle(refEl) {
-      var tabs = refEl.tagName === 'ION-TABS' ? refEl : refEl.querySelector('ion-tabs');
-      var query = 'ion-header:not(.header-collapse-condense-inactive) ion-title[size=large]';
+        this.disabled = false;
+        /**
+         * The name of the control, which is submitted with the form data.
+         */
 
-      if (tabs != null) {
-        var activeTab = tabs.querySelector('ion-tab:not(.tab-hidden), .ion-page:not(.ion-page-hidden)');
-        return activeTab.querySelector(query);
+        this.name = this.inputId;
+        /**
+         * If `true`, the user cannot modify the value.
+         */
+
+        this.readonly = false;
+        /**
+         * If `true`, the user must fill in a value before submitting a form.
+         */
+
+        this.required = false;
+        /**
+         * If `true`, the element will have its spelling and grammar checked.
+         */
+
+        this.spellcheck = false;
+        /**
+         * If `true`, the element height will increase based on the value.
+         */
+
+        this.autoGrow = false;
+        /**
+         * The value of the textarea.
+         */
+
+        this.value = '';
+
+        this.onInput = function (ev) {
+          if (_this.nativeInput) {
+            _this.value = _this.nativeInput.value;
+          }
+
+          _this.emitStyle();
+
+          _this.ionInput.emit(ev);
+        };
+
+        this.onFocus = function () {
+          _this.hasFocus = true;
+
+          _this.focusChange();
+
+          _this.ionFocus.emit();
+        };
+
+        this.onBlur = function () {
+          _this.hasFocus = false;
+
+          _this.focusChange();
+
+          _this.ionBlur.emit();
+        };
+
+        this.onKeyDown = function () {
+          _this.checkClearOnEdit();
+        };
+
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
+        this.ionInput = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInput", 7);
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
       }
 
-      return refEl.querySelector(query);
-    };
-
-    var getBackButton = function getBackButton(refEl, backDirection) {
-      var tabs = refEl.tagName === 'ION-TABS' ? refEl : refEl.querySelector('ion-tabs');
-      var buttonsList = [];
-
-      if (tabs != null) {
-        var activeTab = tabs.querySelector('ion-tab:not(.tab-hidden), .ion-page:not(.ion-page-hidden)');
-        buttonsList = activeTab.querySelectorAll('ion-buttons');
-      } else {
-        buttonsList = refEl.querySelectorAll('ion-buttons');
-      }
-
-      var _iteratorNormalCompletion = true;
-      var _didIteratorError = false;
-      var _iteratorError = undefined;
-
-      try {
-        for (var _iterator = buttonsList[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-          var buttons = _step.value;
-          var parentHeader = buttons.closest('ion-header');
-          var activeHeader = parentHeader && !parentHeader.classList.contains('header-collapse-condense-inactive');
-          var backButton = buttons.querySelector('ion-back-button');
-          var buttonsCollapse = buttons.classList.contains('buttons-collapse');
-          var startSlot = buttons.slot === 'start' || buttons.slot === '';
-
-          if (backButton !== null && startSlot && (buttonsCollapse && activeHeader && backDirection || !buttonsCollapse)) {
-            return backButton;
-          }
+      _createClass(Textarea, [{
+        key: "debounceChanged",
+        value: function debounceChanged() {
+          this.ionChange = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["d"])(this.ionChange, this.debounce);
         }
-      } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-      } finally {
-        try {
-          if (!_iteratorNormalCompletion && _iterator.return != null) {
-            _iterator.return();
-          }
-        } finally {
-          if (_didIteratorError) {
-            throw _iteratorError;
-          }
+      }, {
+        key: "disabledChanged",
+        value: function disabledChanged() {
+          this.emitStyle();
         }
-      }
+        /**
+         * Update the native input element when the value changes
+         */
 
-      return null;
-    };
-
-    var createLargeTitleTransition = function createLargeTitleTransition(rootAnimation, rtl, backDirection, enteringEl, leavingEl) {
-      var enteringBackButton = getBackButton(enteringEl, backDirection);
-      var leavingLargeTitle = getLargeTitle(leavingEl);
-      var enteringLargeTitle = getLargeTitle(enteringEl);
-      var leavingBackButton = getBackButton(leavingEl, backDirection);
-      var shouldAnimationForward = enteringBackButton !== null && leavingLargeTitle !== null && !backDirection;
-      var shouldAnimationBackward = enteringLargeTitle !== null && leavingBackButton !== null && backDirection;
-
-      if (shouldAnimationForward) {
-        var leavingLargeTitleBox = leavingLargeTitle.getBoundingClientRect();
-        var enteringBackButtonBox = enteringBackButton.getBoundingClientRect();
-        animateLargeTitle(rootAnimation, rtl, backDirection, leavingLargeTitle, leavingLargeTitleBox, enteringBackButtonBox);
-        animateBackButton(rootAnimation, rtl, backDirection, enteringBackButton, leavingLargeTitleBox, enteringBackButtonBox);
-      } else if (shouldAnimationBackward) {
-        var enteringLargeTitleBox = enteringLargeTitle.getBoundingClientRect();
-        var leavingBackButtonBox = leavingBackButton.getBoundingClientRect();
-        animateLargeTitle(rootAnimation, rtl, backDirection, enteringLargeTitle, enteringLargeTitleBox, leavingBackButtonBox);
-        animateBackButton(rootAnimation, rtl, backDirection, leavingBackButton, enteringLargeTitleBox, leavingBackButtonBox);
-      }
-
-      return {
-        forward: shouldAnimationForward,
-        backward: shouldAnimationBackward
-      };
-    };
-
-    var animateBackButton = function animateBackButton(rootAnimation, rtl, backDirection, backButtonEl, largeTitleBox, backButtonBox) {
-      var BACK_BUTTON_START_OFFSET = rtl ? "calc(100% - ".concat(backButtonBox.right + 4, "px)") : "".concat(backButtonBox.left - 4, "px");
-      var START_TEXT_TRANSLATE = rtl ? '7px' : '-7px';
-      var END_TEXT_TRANSLATE = rtl ? '-4px' : '4px';
-      var ICON_TRANSLATE = rtl ? '-4px' : '4px';
-      var TEXT_ORIGIN_X = rtl ? 'right' : 'left';
-      var ICON_ORIGIN_X = rtl ? 'left' : 'right';
-      var FORWARD_TEXT_KEYFRAMES = [{
-        offset: 0,
-        opacity: 0,
-        transform: "translate3d(".concat(START_TEXT_TRANSLATE, ", ").concat(largeTitleBox.top - 40, "px, 0) scale(2.1)")
       }, {
-        offset: 1,
-        opacity: 1,
-        transform: "translate3d(".concat(END_TEXT_TRANSLATE, ", ").concat(backButtonBox.top - 46, "px, 0) scale(1)")
-      }];
-      var BACKWARD_TEXT_KEYFRAMES = [{
-        offset: 0,
-        opacity: 1,
-        transform: "translate3d(".concat(END_TEXT_TRANSLATE, ", ").concat(backButtonBox.top - 46, "px, 0) scale(1)")
-      }, {
-        offset: 0.6,
-        opacity: 0
-      }, {
-        offset: 1,
-        opacity: 0,
-        transform: "translate3d(".concat(START_TEXT_TRANSLATE, ", ").concat(largeTitleBox.top - 40, "px, 0) scale(2.1)")
-      }];
-      var TEXT_KEYFRAMES = backDirection ? BACKWARD_TEXT_KEYFRAMES : FORWARD_TEXT_KEYFRAMES;
-      var FORWARD_ICON_KEYFRAMES = [{
-        offset: 0,
-        opacity: 0,
-        transform: "translate3d(".concat(ICON_TRANSLATE, ", ").concat(backButtonBox.top - 41, "px, 0) scale(0.6)")
-      }, {
-        offset: 1,
-        opacity: 1,
-        transform: "translate3d(".concat(ICON_TRANSLATE, ", ").concat(backButtonBox.top - 46, "px, 0) scale(1)")
-      }];
-      var BACKWARD_ICON_KEYFRAMES = [{
-        offset: 0,
-        opacity: 1,
-        transform: "translate3d(".concat(ICON_TRANSLATE, ", ").concat(backButtonBox.top - 46, "px, 0) scale(1)")
-      }, {
-        offset: 0.2,
-        opacity: 0,
-        transform: "translate3d(".concat(ICON_TRANSLATE, ", ").concat(backButtonBox.top - 41, "px, 0) scale(0.6)")
-      }, {
-        offset: 1,
-        opacity: 0,
-        transform: "translate3d(".concat(ICON_TRANSLATE, ", ").concat(backButtonBox.top - 41, "px, 0) scale(0.6)")
-      }];
-      var ICON_KEYFRAMES = backDirection ? BACKWARD_ICON_KEYFRAMES : FORWARD_ICON_KEYFRAMES;
-      var enteringBackButtonTextAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var enteringBackButtonIconAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var clonedBackButtonEl = getClonedElement('ion-back-button');
-      var backButtonTextEl = shadow(clonedBackButtonEl).querySelector('.button-text');
-      var backButtonIconEl = shadow(clonedBackButtonEl).querySelector('ion-icon');
-      clonedBackButtonEl.text = backButtonEl.text;
-      clonedBackButtonEl.mode = backButtonEl.mode;
-      clonedBackButtonEl.icon = backButtonEl.icon;
-      clonedBackButtonEl.color = backButtonEl.color;
-      clonedBackButtonEl.disabled = backButtonEl.disabled;
-      clonedBackButtonEl.style.setProperty('display', 'block');
-      clonedBackButtonEl.style.setProperty('position', 'fixed');
-      enteringBackButtonIconAnimation.addElement(backButtonIconEl);
-      enteringBackButtonTextAnimation.addElement(backButtonTextEl);
-      enteringBackButtonTextAnimation.beforeStyles({
-        'transform-origin': "".concat(TEXT_ORIGIN_X, " center")
-      }).beforeAddWrite(function () {
-        backButtonEl.style.setProperty('display', 'none');
-        clonedBackButtonEl.style.setProperty(TEXT_ORIGIN_X, BACK_BUTTON_START_OFFSET);
-      }).afterAddWrite(function () {
-        backButtonEl.style.setProperty('display', '');
-        clonedBackButtonEl.style.setProperty('display', 'none');
-        clonedBackButtonEl.style.removeProperty(TEXT_ORIGIN_X);
-      }).keyframes(TEXT_KEYFRAMES);
-      enteringBackButtonIconAnimation.beforeStyles({
-        'transform-origin': "".concat(ICON_ORIGIN_X, " center")
-      }).keyframes(ICON_KEYFRAMES);
-      rootAnimation.addAnimation([enteringBackButtonTextAnimation, enteringBackButtonIconAnimation]);
-    };
+        key: "valueChanged",
+        value: function valueChanged() {
+          var nativeInput = this.nativeInput;
+          var value = this.getValue();
 
-    var animateLargeTitle = function animateLargeTitle(rootAnimation, rtl, backDirection, largeTitleEl, largeTitleBox, backButtonBox) {
-      var TITLE_START_OFFSET = rtl ? "calc(100% - ".concat(largeTitleEl.right, "px)") : "".concat(largeTitleEl.left, "px");
-      var START_TRANSLATE = rtl ? '-18px' : '18px';
-      var ORIGIN_X = rtl ? 'right' : 'left';
-      var BACKWARDS_KEYFRAMES = [{
-        offset: 0,
-        opacity: 0,
-        transform: "translate3d(".concat(START_TRANSLATE, ", ").concat(backButtonBox.top - 4, "px, 0) scale(0.49)")
-      }, {
-        offset: 0.1,
-        opacity: 0
-      }, {
-        offset: 1,
-        opacity: 1,
-        transform: "translate3d(0, ".concat(largeTitleBox.top - 2, "px, 0) scale(1)")
-      }];
-      var FORWARDS_KEYFRAMES = [{
-        offset: 0,
-        opacity: 0.99,
-        transform: "translate3d(0, ".concat(largeTitleBox.top - 2, "px, 0) scale(1)")
-      }, {
-        offset: 0.6,
-        opacity: 0
-      }, {
-        offset: 1,
-        opacity: 0,
-        transform: "translate3d(".concat(START_TRANSLATE, ", ").concat(backButtonBox.top - 4, "px, 0) scale(0.5)")
-      }];
-      var KEYFRAMES = backDirection ? BACKWARDS_KEYFRAMES : FORWARDS_KEYFRAMES;
-      var clonedTitleEl = getClonedElement('ion-title');
-      var clonedLargeTitleAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      clonedTitleEl.innerText = largeTitleEl.innerText;
-      clonedTitleEl.size = largeTitleEl.size;
-      clonedTitleEl.color = largeTitleEl.color;
-      clonedLargeTitleAnimation.addElement(clonedTitleEl);
-      clonedLargeTitleAnimation.beforeStyles(_defineProperty({
-        'transform-origin': "".concat(ORIGIN_X, " center"),
-        'height': '46px',
-        'display': '',
-        'position': 'relative'
-      }, ORIGIN_X, TITLE_START_OFFSET)).beforeAddWrite(function () {
-        largeTitleEl.style.setProperty('display', 'none');
-      }).afterAddWrite(function () {
-        largeTitleEl.style.setProperty('display', '');
-        clonedTitleEl.style.setProperty('display', 'none');
-      }).keyframes(KEYFRAMES);
-      rootAnimation.addAnimation(clonedLargeTitleAnimation);
-    };
-
-    var iosTransitionAnimation = function iosTransitionAnimation(navEl, opts) {
-      try {
-        var EASING = 'cubic-bezier(0.32,0.72,0,1)';
-        var OPACITY = 'opacity';
-        var TRANSFORM = 'transform';
-        var CENTER = '0%';
-        var OFF_OPACITY = 0.8;
-        var isRTL = navEl.ownerDocument.dir === 'rtl';
-        var OFF_RIGHT = isRTL ? '-99.5%' : '99.5%';
-        var OFF_LEFT = isRTL ? '33%' : '-33%';
-        var enteringEl = opts.enteringEl;
-        var leavingEl = opts.leavingEl;
-        var backDirection = opts.direction === 'back';
-        var contentEl = enteringEl.querySelector(':scope > ion-content');
-        var headerEls = enteringEl.querySelectorAll(':scope > ion-header > *:not(ion-toolbar), :scope > ion-footer > *');
-        var enteringToolBarEls = enteringEl.querySelectorAll(':scope > ion-header > ion-toolbar');
-        var rootAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-        var enteringContentAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-        rootAnimation.addElement(enteringEl).duration(opts.duration || DURATION).easing(opts.easing || EASING).fill('both').beforeRemoveClass('ion-page-invisible');
-
-        if (leavingEl && navEl) {
-          var navDecorAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-          navDecorAnimation.addElement(navEl);
-          rootAnimation.addAnimation(navDecorAnimation);
-        }
-
-        if (!contentEl && enteringToolBarEls.length === 0 && headerEls.length === 0) {
-          enteringContentAnimation.addElement(enteringEl.querySelector(':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs')); // REVIEW
-        } else {
-          enteringContentAnimation.addElement(contentEl); // REVIEW
-
-          enteringContentAnimation.addElement(headerEls);
-        }
-
-        rootAnimation.addAnimation(enteringContentAnimation);
-
-        if (backDirection) {
-          enteringContentAnimation.beforeClearStyles([OPACITY]).fromTo('transform', "translateX(".concat(OFF_LEFT, ")"), "translateX(".concat(CENTER, ")")).fromTo(OPACITY, OFF_OPACITY, 1);
-        } else {
-          // entering content, forward direction
-          enteringContentAnimation.beforeClearStyles([OPACITY]).fromTo('transform', "translateX(".concat(OFF_RIGHT, ")"), "translateX(".concat(CENTER, ")"));
-        }
-
-        if (contentEl) {
-          var enteringTransitionEffectEl = shadow(contentEl).querySelector('.transition-effect');
-
-          if (enteringTransitionEffectEl) {
-            var enteringTransitionCoverEl = enteringTransitionEffectEl.querySelector('.transition-cover');
-            var enteringTransitionShadowEl = enteringTransitionEffectEl.querySelector('.transition-shadow');
-            var enteringTransitionEffect = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            var enteringTransitionCover = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            var enteringTransitionShadow = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            enteringTransitionEffect.addElement(enteringTransitionEffectEl).beforeStyles({
-              opacity: '1',
-              display: 'block'
-            }).afterStyles({
-              opacity: '',
-              display: ''
-            });
-            enteringTransitionCover.addElement(enteringTransitionCoverEl) // REVIEW
-            .beforeClearStyles([OPACITY]).fromTo(OPACITY, 0, 0.1);
-            enteringTransitionShadow.addElement(enteringTransitionShadowEl) // REVIEW
-            .beforeClearStyles([OPACITY]).fromTo(OPACITY, 0.03, 0.70);
-            enteringTransitionEffect.addAnimation([enteringTransitionCover, enteringTransitionShadow]);
-            enteringContentAnimation.addAnimation([enteringTransitionEffect]);
-          }
-        }
-
-        var enteringContentHasLargeTitle = enteringEl.querySelector('ion-header.header-collapse-condense');
-
-        var _createLargeTitleTran = createLargeTitleTransition(rootAnimation, isRTL, backDirection, enteringEl, leavingEl),
-            forward = _createLargeTitleTran.forward,
-            backward = _createLargeTitleTran.backward;
-
-        enteringToolBarEls.forEach(function (enteringToolBarEl) {
-          var enteringToolBar = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-          enteringToolBar.addElement(enteringToolBarEl);
-          rootAnimation.addAnimation(enteringToolBar);
-          var enteringTitle = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-          enteringTitle.addElement(enteringToolBarEl.querySelector('ion-title')); // REVIEW
-
-          var enteringToolBarButtons = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-          var buttons = Array.from(enteringToolBarEl.querySelectorAll('ion-buttons,[menuToggle]'));
-          var parentHeader = enteringToolBarEl.closest('ion-header');
-          var inactiveHeader = parentHeader && parentHeader.classList.contains('header-collapse-condense-inactive');
-          var buttonsToAnimate;
-
-          if (backDirection) {
-            buttonsToAnimate = buttons.filter(function (button) {
-              var isCollapseButton = button.classList.contains('buttons-collapse');
-              return isCollapseButton && !inactiveHeader || !isCollapseButton;
-            });
-          } else {
-            buttonsToAnimate = buttons.filter(function (button) {
-              return !button.classList.contains('buttons-collapse');
-            });
+          if (nativeInput && nativeInput.value !== value) {
+            nativeInput.value = value;
           }
 
-          enteringToolBarButtons.addElement(buttonsToAnimate);
-          var enteringToolBarItems = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-          enteringToolBarItems.addElement(enteringToolBarEl.querySelectorAll(':scope > *:not(ion-title):not(ion-buttons):not([menuToggle])'));
-          var enteringToolBarBg = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-          enteringToolBarBg.addElement(shadow(enteringToolBarEl).querySelector('.toolbar-background')); // REVIEW
-
-          var enteringBackButton = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-          var backButtonEl = enteringToolBarEl.querySelector('ion-back-button');
-
-          if (backButtonEl) {
-            enteringBackButton.addElement(backButtonEl);
-          }
-
-          enteringToolBar.addAnimation([enteringTitle, enteringToolBarButtons, enteringToolBarItems, enteringToolBarBg, enteringBackButton]);
-          enteringToolBarButtons.fromTo(OPACITY, 0.01, 1);
-          enteringToolBarItems.fromTo(OPACITY, 0.01, 1);
-
-          if (backDirection) {
-            if (!inactiveHeader) {
-              enteringTitle.fromTo('transform', "translateX(".concat(OFF_LEFT, ")"), "translateX(".concat(CENTER, ")")).fromTo(OPACITY, 0.01, 1);
-            }
-
-            enteringToolBarItems.fromTo('transform', "translateX(".concat(OFF_LEFT, ")"), "translateX(".concat(CENTER, ")")); // back direction, entering page has a back button
-
-            enteringBackButton.fromTo(OPACITY, 0.01, 1);
-          } else {
-            // entering toolbar, forward direction
-            if (!enteringContentHasLargeTitle) {
-              enteringTitle.fromTo('transform', "translateX(".concat(OFF_RIGHT, ")"), "translateX(".concat(CENTER, ")")).fromTo(OPACITY, 0.01, 1);
-            }
-
-            enteringToolBarItems.fromTo('transform', "translateX(".concat(OFF_RIGHT, ")"), "translateX(".concat(CENTER, ")"));
-            enteringToolBarBg.beforeClearStyles([OPACITY, 'transform']);
-            var translucentHeader = parentHeader === null || parentHeader === void 0 ? void 0 : parentHeader.translucent;
-
-            if (!translucentHeader) {
-              enteringToolBarBg.fromTo(OPACITY, 0.01, 1);
-            } else {
-              enteringToolBarBg.fromTo('transform', isRTL ? 'translateX(-100%)' : 'translateX(100%)', 'translateX(0px)');
-            } // forward direction, entering page has a back button
-
-
-            if (!forward) {
-              enteringBackButton.fromTo(OPACITY, 0.01, 1);
-            }
-
-            if (backButtonEl && !forward) {
-              var enteringBackBtnText = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-              enteringBackBtnText.addElement(shadow(backButtonEl).querySelector('.button-text')) // REVIEW
-              .fromTo("transform", isRTL ? 'translateX(-100px)' : 'translateX(100px)', 'translateX(0px)');
-              enteringToolBar.addAnimation(enteringBackBtnText);
-            }
-          }
-        }); // setup leaving view
-
-        if (leavingEl) {
-          var leavingContent = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-          var leavingContentEl = leavingEl.querySelector(':scope > ion-content');
-          leavingContent.addElement(leavingContentEl); // REVIEW
-
-          leavingContent.addElement(leavingEl.querySelectorAll(':scope > ion-header > *:not(ion-toolbar), :scope > ion-footer > *'));
-          rootAnimation.addAnimation(leavingContent);
-
-          if (backDirection) {
-            // leaving content, back direction
-            leavingContent.beforeClearStyles([OPACITY]).fromTo('transform', "translateX(".concat(CENTER, ")"), isRTL ? 'translateX(-100%)' : 'translateX(100%)');
-            var leavingPage = Object(_index_4e2fa3c6_js__WEBPACK_IMPORTED_MODULE_5__["g"])(leavingEl);
-            rootAnimation.afterAddWrite(function () {
-              if (rootAnimation.getDirection() === 'normal') {
-                leavingPage.style.setProperty('display', 'none');
-              }
-            });
-          } else {
-            // leaving content, forward direction
-            leavingContent.fromTo('transform', "translateX(".concat(CENTER, ")"), "translateX(".concat(OFF_LEFT, ")")).fromTo(OPACITY, 1, OFF_OPACITY);
-          }
-
-          if (leavingContentEl) {
-            var leavingTransitionEffectEl = shadow(leavingContentEl).querySelector('.transition-effect');
-
-            if (leavingTransitionEffectEl) {
-              var leavingTransitionCoverEl = leavingTransitionEffectEl.querySelector('.transition-cover');
-              var leavingTransitionShadowEl = leavingTransitionEffectEl.querySelector('.transition-shadow');
-              var leavingTransitionEffect = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-              var leavingTransitionCover = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-              var leavingTransitionShadow = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-              leavingTransitionEffect.addElement(leavingTransitionEffectEl).beforeStyles({
-                opacity: '1',
-                display: 'block'
-              }).afterStyles({
-                opacity: '',
-                display: ''
-              });
-              leavingTransitionCover.addElement(leavingTransitionCoverEl) // REVIEW
-              .beforeClearStyles([OPACITY]).fromTo(OPACITY, 0.1, 0);
-              leavingTransitionShadow.addElement(leavingTransitionShadowEl) // REVIEW
-              .beforeClearStyles([OPACITY]).fromTo(OPACITY, 0.70, 0.03);
-              leavingTransitionEffect.addAnimation([leavingTransitionCover, leavingTransitionShadow]);
-              leavingContent.addAnimation([leavingTransitionEffect]);
-            }
-          }
-
-          var leavingToolBarEls = leavingEl.querySelectorAll(':scope > ion-header > ion-toolbar');
-          leavingToolBarEls.forEach(function (leavingToolBarEl) {
-            var leavingToolBar = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            leavingToolBar.addElement(leavingToolBarEl);
-            var leavingTitle = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            leavingTitle.addElement(leavingToolBarEl.querySelector('ion-title')); // REVIEW
-
-            var leavingToolBarButtons = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            var buttons = leavingToolBarEl.querySelectorAll('ion-buttons,[menuToggle]');
-            var parentHeader = leavingToolBarEl.closest('ion-header');
-            var inactiveHeader = parentHeader && parentHeader.classList.contains('header-collapse-condense-inactive');
-            var buttonsToAnimate = Array.from(buttons).filter(function (button) {
-              var isCollapseButton = button.classList.contains('buttons-collapse');
-              return isCollapseButton && !inactiveHeader || !isCollapseButton;
-            });
-            leavingToolBarButtons.addElement(buttonsToAnimate);
-            var leavingToolBarItems = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            var leavingToolBarItemEls = leavingToolBarEl.querySelectorAll(':scope > *:not(ion-title):not(ion-buttons):not([menuToggle])');
-
-            if (leavingToolBarItemEls.length > 0) {
-              leavingToolBarItems.addElement(leavingToolBarItemEls);
-            }
-
-            var leavingToolBarBg = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            leavingToolBarBg.addElement(shadow(leavingToolBarEl).querySelector('.toolbar-background')); // REVIEW
-
-            var leavingBackButton = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            var backButtonEl = leavingToolBarEl.querySelector('ion-back-button');
-
-            if (backButtonEl) {
-              leavingBackButton.addElement(backButtonEl);
-            }
-
-            leavingToolBar.addAnimation([leavingTitle, leavingToolBarButtons, leavingToolBarItems, leavingBackButton, leavingToolBarBg]);
-            rootAnimation.addAnimation(leavingToolBar); // fade out leaving toolbar items
-
-            leavingBackButton.fromTo(OPACITY, 0.99, 0);
-            leavingToolBarButtons.fromTo(OPACITY, 0.99, 0);
-            leavingToolBarItems.fromTo(OPACITY, 0.99, 0);
-
-            if (backDirection) {
-              if (!inactiveHeader) {
-                // leaving toolbar, back direction
-                leavingTitle.fromTo('transform', "translateX(".concat(CENTER, ")"), isRTL ? 'translateX(-100%)' : 'translateX(100%)').fromTo(OPACITY, 0.99, 0);
-              }
-
-              leavingToolBarItems.fromTo('transform', "translateX(".concat(CENTER, ")"), isRTL ? 'translateX(-100%)' : 'translateX(100%)');
-              leavingToolBarBg.beforeClearStyles([OPACITY, 'transform']); // leaving toolbar, back direction, and there's no entering toolbar
-              // should just slide out, no fading out
-
-              var translucentHeader = parentHeader === null || parentHeader === void 0 ? void 0 : parentHeader.translucent;
-
-              if (!translucentHeader) {
-                leavingToolBarBg.fromTo(OPACITY, 0.99, 0);
-              } else {
-                leavingToolBarBg.fromTo('transform', 'translateX(0px)', isRTL ? 'translateX(-100%)' : 'translateX(100%)');
-              }
-
-              if (backButtonEl && !backward) {
-                var leavingBackBtnText = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                leavingBackBtnText.addElement(shadow(backButtonEl).querySelector('.button-text')) // REVIEW
-                .fromTo('transform', "translateX(".concat(CENTER, ")"), "translateX(".concat((isRTL ? -124 : 124) + 'px', ")"));
-                leavingToolBar.addAnimation(leavingBackBtnText);
-              }
-            } else {
-              // leaving toolbar, forward direction
-              if (!inactiveHeader) {
-                leavingTitle.fromTo('transform', "translateX(".concat(CENTER, ")"), "translateX(".concat(OFF_LEFT, ")")).fromTo(OPACITY, 0.99, 0).afterClearStyles([TRANSFORM, OPACITY]);
-              }
-
-              leavingToolBarItems.fromTo('transform', "translateX(".concat(CENTER, ")"), "translateX(".concat(OFF_LEFT, ")")).afterClearStyles([TRANSFORM, OPACITY]);
-              leavingBackButton.afterClearStyles([OPACITY]);
-              leavingTitle.afterClearStyles([OPACITY]);
-              leavingToolBarButtons.afterClearStyles([OPACITY]);
-            }
+          this.runAutoGrow();
+          this.emitStyle();
+          this.ionChange.emit({
+            value: value
           });
         }
+      }, {
+        key: "connectedCallback",
+        value: function connectedCallback() {
+          this.emitStyle();
+          this.debounceChanged();
+          {
+            this.el.dispatchEvent(new CustomEvent('ionInputDidLoad', {
+              detail: this.el
+            }));
+          }
+        }
+      }, {
+        key: "disconnectedCallback",
+        value: function disconnectedCallback() {
+          {
+            document.dispatchEvent(new CustomEvent('ionInputDidUnload', {
+              detail: this.el
+            }));
+          }
+        }
+      }, {
+        key: "componentDidLoad",
+        value: function componentDidLoad() {
+          this.runAutoGrow();
+        } // TODO: performance hit, this cause layout thrashing
 
-        return rootAnimation;
-      } catch (err) {
-        throw err;
-      }
-    };
+      }, {
+        key: "runAutoGrow",
+        value: function runAutoGrow() {
+          var nativeInput = this.nativeInput;
+
+          if (nativeInput && this.autoGrow) {
+            Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["f"])(function () {
+              nativeInput.style.height = 'inherit';
+              nativeInput.style.height = nativeInput.scrollHeight + 'px';
+            });
+          }
+        }
+        /**
+         * Sets focus on the specified `ion-textarea`. Use this method instead of the global
+         * `input.focus()`.
+         */
+
+      }, {
+        key: "setFocus",
+        value: function () {
+          var _setFocus = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    if (this.nativeInput) {
+                      this.nativeInput.focus();
+                    }
+
+                  case 1:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+
+          function setFocus() {
+            return _setFocus.apply(this, arguments);
+          }
+
+          return setFocus;
+        }()
+        /**
+         * Returns the native `<textarea>` element used under the hood.
+         */
+
+      }, {
+        key: "getInputElement",
+        value: function getInputElement() {
+          return Promise.resolve(this.nativeInput);
+        }
+      }, {
+        key: "emitStyle",
+        value: function emitStyle() {
+          this.ionStyle.emit({
+            'interactive': true,
+            'textarea': true,
+            'input': true,
+            'interactive-disabled': this.disabled,
+            'has-placeholder': this.placeholder != null,
+            'has-value': this.hasValue(),
+            'has-focus': this.hasFocus
+          });
+        }
+        /**
+         * Check if we need to clear the text input if clearOnEdit is enabled
+         */
+
+      }, {
+        key: "checkClearOnEdit",
+        value: function checkClearOnEdit() {
+          if (!this.clearOnEdit) {
+            return;
+          } // Did the input value change after it was blurred and edited?
+
+
+          if (this.didBlurAfterEdit && this.hasValue()) {
+            // Clear the input
+            this.value = '';
+          } // Reset the flag
+
+
+          this.didBlurAfterEdit = false;
+        }
+      }, {
+        key: "focusChange",
+        value: function focusChange() {
+          // If clearOnEdit is enabled and the input blurred but has a value, set a flag
+          if (this.clearOnEdit && !this.hasFocus && this.hasValue()) {
+            this.didBlurAfterEdit = true;
+          }
+
+          this.emitStyle();
+        }
+      }, {
+        key: "hasValue",
+        value: function hasValue() {
+          return this.getValue() !== '';
+        }
+      }, {
+        key: "getValue",
+        value: function getValue() {
+          return this.value || '';
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          var _this2 = this;
+
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var value = this.getValue();
+          var labelId = this.inputId + '-lbl';
+          var label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(this.el);
+
+          if (label) {
+            label.id = labelId;
+          }
+
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            "aria-disabled": this.disabled ? 'true' : null,
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), _defineProperty({}, mode, true))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("textarea", {
+            class: "native-textarea",
+            ref: function ref(el) {
+              return _this2.nativeInput = el;
+            },
+            autoCapitalize: this.autocapitalize,
+            autoFocus: this.autofocus,
+            disabled: this.disabled,
+            maxLength: this.maxlength,
+            minLength: this.minlength,
+            name: this.name,
+            placeholder: this.placeholder || '',
+            readOnly: this.readonly,
+            required: this.required,
+            spellCheck: this.spellcheck,
+            cols: this.cols,
+            rows: this.rows,
+            wrap: this.wrap,
+            onInput: this.onInput,
+            onBlur: this.onBlur,
+            onFocus: this.onFocus,
+            onKeyDown: this.onKeyDown
+          }, value));
+        }
+      }, {
+        key: "el",
+        get: function get() {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+        }
+      }], [{
+        key: "watchers",
+        get: function get() {
+          return {
+            "debounce": ["debounceChanged"],
+            "disabled": ["disabledChanged"],
+            "value": ["valueChanged"]
+          };
+        }
+      }, {
+        key: "style",
+        get: function get() {
+          return ".sc-ion-textarea-md-h{--background:initial;--color:initial;--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:.5;--padding-top:0;--padding-bottom:0;--padding-start:0;--border-radius:0;display:block;position:relative;-ms-flex:1;flex:1;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;background:var(--background);color:var(--color);font-family:var(--ion-font-family,inherit);white-space:pre-wrap;z-index:2}.ion-color.sc-ion-textarea-md-h{background:initial;color:var(--ion-color-base)}ion-item.sc-ion-textarea-md-h, ion-item .sc-ion-textarea-md-h{-ms-flex-item-align:baseline;align-self:baseline}ion-item.sc-ion-textarea-md-h:not(.item-label), ion-item:not(.item-label) .sc-ion-textarea-md-h{--padding-start:0}.native-textarea.sc-ion-textarea-md{border-radius:var(--border-radius);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;width:100%;max-width:100%;max-height:100%;border:0;outline:none;background:transparent;-webkit-box-sizing:border-box;box-sizing:border-box;resize:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.native-textarea.sc-ion-textarea-md{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.native-textarea.sc-ion-textarea-md::-webkit-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md::-moz-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md:-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md::-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md::placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea[disabled].sc-ion-textarea-md{opacity:.4}.cloned-input.sc-ion-textarea-md{left:0;top:0;position:absolute;pointer-events:none}[dir=rtl].sc-ion-textarea-md-h .cloned-input.sc-ion-textarea-md, [dir=rtl] .sc-ion-textarea-md-h .cloned-input.sc-ion-textarea-md, [dir=rtl].sc-ion-textarea-md .cloned-input.sc-ion-textarea-md{left:unset;right:unset;right:0}.sc-ion-textarea-md-h{--padding-top:10px;--padding-end:0;--padding-bottom:11px;--padding-start:8px;margin-left:0;margin-right:0;margin-top:8px;margin-bottom:0;font-size:inherit}.item-label-floating.sc-ion-textarea-md-h, .item-label-floating .sc-ion-textarea-md-h, .item-label-stacked.sc-ion-textarea-md-h, .item-label-stacked .sc-ion-textarea-md-h{--padding-top:8px;--padding-bottom:8px;--padding-start:0}";
+        }
+      }]);
+
+      return Textarea;
+    }();
+
+    var textareaIds = 0;
     /***/
-
   }
 }]);
 //# sourceMappingURL=89-es5.js.map

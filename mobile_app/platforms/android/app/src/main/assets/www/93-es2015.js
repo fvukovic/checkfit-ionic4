@@ -1,399 +1,163 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[93],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/shadow-css-d7d058ec-d59cb009.js":
-/*!***************************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/shadow-css-d7d058ec-d59cb009.js ***!
-  \***************************************************************************/
-/*! exports provided: scopeCss */
+/***/ "./node_modules/@ionic/core/dist/esm/ion-toggle-md.entry.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/ion-toggle-md.entry.js ***!
+  \******************************************************************/
+/*! exports provided: ion_toggle */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "scopeCss", function() { return scopeCss; });
-/**
- * @license
- * Copyright Google Inc. All Rights Reserved.
- *
- * Use of this source code is governed by an MIT-style license that can be
- * found in the LICENSE file at https://angular.io/license
- *
- * This file is a port of shadowCSS from webcomponents.js to TypeScript.
- * https://github.com/webcomponents/webcomponentsjs/blob/4efecd7e0e/src/ShadowCSS/ShadowCSS.js
- * https://github.com/angular/angular/blob/master/packages/compiler/src/shadow_css.ts
- */
-const safeSelector = (selector) => {
-    const placeholders = [];
-    let index = 0;
-    let content;
-    // Replaces attribute selectors with placeholders.
-    // The WS in [attr="va lue"] would otherwise be interpreted as a selector separator.
-    selector = selector.replace(/(\[[^\]]*\])/g, (_, keep) => {
-        const replaceBy = `__ph-${index}__`;
-        placeholders.push(keep);
-        index++;
-        return replaceBy;
-    });
-    // Replaces the expression in `:nth-child(2n + 1)` with a placeholder.
-    // WS and "+" would otherwise be interpreted as selector separators.
-    content = selector.replace(/(:nth-[-\w]+)(\([^)]+\))/g, (_, pseudo, exp) => {
-        const replaceBy = `__ph-${index}__`;
-        placeholders.push(exp);
-        index++;
-        return pseudo + replaceBy;
-    });
-    const ss = {
-        content,
-        placeholders,
-    };
-    return ss;
-};
-const restoreSafeSelector = (placeholders, content) => {
-    return content.replace(/__ph-(\d+)__/g, (_, index) => placeholders[+index]);
-};
-const _polyfillHost = '-shadowcsshost';
-const _polyfillSlotted = '-shadowcssslotted';
-// note: :host-context pre-processed to -shadowcsshostcontext.
-const _polyfillHostContext = '-shadowcsscontext';
-const _parenSuffix = ')(?:\\((' +
-    '(?:\\([^)(]*\\)|[^)(]*)+?' +
-    ')\\))?([^,{]*)';
-const _cssColonHostRe = new RegExp('(' + _polyfillHost + _parenSuffix, 'gim');
-const _cssColonHostContextRe = new RegExp('(' + _polyfillHostContext + _parenSuffix, 'gim');
-const _cssColonSlottedRe = new RegExp('(' + _polyfillSlotted + _parenSuffix, 'gim');
-const _polyfillHostNoCombinator = _polyfillHost + '-no-combinator';
-const _polyfillHostNoCombinatorRe = /-shadowcsshost-no-combinator([^\s]*)/;
-const _shadowDOMSelectorsRe = [
-    /::shadow/g,
-    /::content/g
-];
-const _selectorReSuffix = '([>\\s~+\[.,{:][\\s\\S]*)?$';
-const _polyfillHostRe = /-shadowcsshost/gim;
-const _colonHostRe = /:host/gim;
-const _colonSlottedRe = /::slotted/gim;
-const _colonHostContextRe = /:host-context/gim;
-const _commentRe = /\/\*\s*[\s\S]*?\*\//g;
-const stripComments = (input) => {
-    return input.replace(_commentRe, '');
-};
-const _commentWithHashRe = /\/\*\s*#\s*source(Mapping)?URL=[\s\S]+?\*\//g;
-const extractCommentsWithHash = (input) => {
-    return input.match(_commentWithHashRe) || [];
-};
-const _ruleRe = /(\s*)([^;\{\}]+?)(\s*)((?:{%BLOCK%}?\s*;?)|(?:\s*;))/g;
-const _curlyRe = /([{}])/g;
-const OPEN_CURLY = '{';
-const CLOSE_CURLY = '}';
-const BLOCK_PLACEHOLDER = '%BLOCK%';
-const processRules = (input, ruleCallback) => {
-    const inputWithEscapedBlocks = escapeBlocks(input);
-    let nextBlockIndex = 0;
-    return inputWithEscapedBlocks.escapedString.replace(_ruleRe, (...m) => {
-        const selector = m[2];
-        let content = '';
-        let suffix = m[4];
-        let contentPrefix = '';
-        if (suffix && suffix.startsWith('{' + BLOCK_PLACEHOLDER)) {
-            content = inputWithEscapedBlocks.blocks[nextBlockIndex++];
-            suffix = suffix.substring(BLOCK_PLACEHOLDER.length + 1);
-            contentPrefix = '{';
-        }
-        const cssRule = {
-            selector,
-            content
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_toggle", function() { return Toggle; });
+/* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
+/* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
+/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
+/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
+/* harmony import */ var _haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./haptic-c8f1473e.js */ "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js");
+
+
+
+
+
+
+const Toggle = class {
+    constructor(hostRef) {
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.inputId = `ion-tg-${toggleIds++}`;
+        this.lastDrag = 0;
+        this.activated = false;
+        /**
+         * The name of the control, which is submitted with the form data.
+         */
+        this.name = this.inputId;
+        /**
+         * If `true`, the toggle is selected.
+         */
+        this.checked = false;
+        /**
+         * If `true`, the user cannot interact with the toggle.
+         */
+        this.disabled = false;
+        /**
+         * The value of the toggle does not mean if it's checked or not, use the `checked`
+         * property for that.
+         *
+         * The value of a toggle is analogous to the value of a `<input type="checkbox">`,
+         * it's only used when the toggle participates in a native `<form>`.
+         */
+        this.value = 'on';
+        this.onClick = () => {
+            if (this.lastDrag + 300 < Date.now()) {
+                this.checked = !this.checked;
+            }
         };
-        const rule = ruleCallback(cssRule);
-        return `${m[1]}${rule.selector}${m[3]}${contentPrefix}${rule.content}${suffix}`;
-    });
-};
-const escapeBlocks = (input) => {
-    const inputParts = input.split(_curlyRe);
-    const resultParts = [];
-    const escapedBlocks = [];
-    let bracketCount = 0;
-    let currentBlockParts = [];
-    for (let partIndex = 0; partIndex < inputParts.length; partIndex++) {
-        const part = inputParts[partIndex];
-        if (part === CLOSE_CURLY) {
-            bracketCount--;
-        }
-        if (bracketCount > 0) {
-            currentBlockParts.push(part);
-        }
-        else {
-            if (currentBlockParts.length > 0) {
-                escapedBlocks.push(currentBlockParts.join(''));
-                resultParts.push(BLOCK_PLACEHOLDER);
-                currentBlockParts = [];
-            }
-            resultParts.push(part);
-        }
-        if (part === OPEN_CURLY) {
-            bracketCount++;
+        this.onFocus = () => {
+            this.ionFocus.emit();
+        };
+        this.onBlur = () => {
+            this.ionBlur.emit();
+        };
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+    }
+    checkedChanged(isChecked) {
+        this.ionChange.emit({
+            checked: isChecked,
+            value: this.value
+        });
+    }
+    disabledChanged() {
+        this.emitStyle();
+        if (this.gesture) {
+            this.gesture.setDisabled(this.disabled);
         }
     }
-    if (currentBlockParts.length > 0) {
-        escapedBlocks.push(currentBlockParts.join(''));
-        resultParts.push(BLOCK_PLACEHOLDER);
+    async connectedCallback() {
+        this.gesture = (await Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-624eea58.js */ "./node_modules/@ionic/core/dist/esm/index-624eea58.js"))).createGesture({
+            el: this.el,
+            gestureName: 'toggle',
+            gesturePriority: 100,
+            threshold: 5,
+            passive: false,
+            onStart: () => this.onStart(),
+            onMove: ev => this.onMove(ev),
+            onEnd: ev => this.onEnd(ev),
+        });
+        this.disabledChanged();
     }
-    const strEscapedBlocks = {
-        escapedString: resultParts.join(''),
-        blocks: escapedBlocks
-    };
-    return strEscapedBlocks;
-};
-const insertPolyfillHostInCssText = (selector) => {
-    selector = selector
-        .replace(_colonHostContextRe, _polyfillHostContext)
-        .replace(_colonHostRe, _polyfillHost)
-        .replace(_colonSlottedRe, _polyfillSlotted);
-    return selector;
-};
-const convertColonRule = (cssText, regExp, partReplacer) => {
-    // m[1] = :host(-context), m[2] = contents of (), m[3] rest of rule
-    return cssText.replace(regExp, (...m) => {
-        if (m[2]) {
-            const parts = m[2].split(',');
-            const r = [];
-            for (let i = 0; i < parts.length; i++) {
-                const p = parts[i].trim();
-                if (!p)
-                    break;
-                r.push(partReplacer(_polyfillHostNoCombinator, p, m[3]));
-            }
-            return r.join(',');
+    disconnectedCallback() {
+        if (this.gesture) {
+            this.gesture.destroy();
+            this.gesture = undefined;
         }
-        else {
-            return _polyfillHostNoCombinator + m[3];
+    }
+    componentWillLoad() {
+        this.emitStyle();
+    }
+    emitStyle() {
+        this.ionStyle.emit({
+            'interactive-disabled': this.disabled,
+        });
+    }
+    onStart() {
+        this.activated = true;
+        // touch-action does not work in iOS
+        this.setFocus();
+    }
+    onMove(detail) {
+        if (shouldToggle(document, this.checked, detail.deltaX, -10)) {
+            this.checked = !this.checked;
+            Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_4__["h"])();
         }
-    });
+    }
+    onEnd(ev) {
+        this.activated = false;
+        this.lastDrag = Date.now();
+        ev.event.preventDefault();
+        ev.event.stopImmediatePropagation();
+    }
+    getValue() {
+        return this.value || '';
+    }
+    setFocus() {
+        if (this.buttonEl) {
+            this.buttonEl.focus();
+        }
+    }
+    render() {
+        const { inputId, disabled, checked, activated, color, el } = this;
+        const mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        const labelId = inputId + '-lbl';
+        const label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(el);
+        const value = this.getValue();
+        if (label) {
+            label.id = labelId;
+        }
+        Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["a"])(true, el, this.name, (checked ? value : ''), disabled);
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, role: "checkbox", "aria-disabled": disabled ? 'true' : null, "aria-checked": `${checked}`, "aria-labelledby": labelId, class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), { [mode]: true, 'in-item': Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el), 'toggle-activated': activated, 'toggle-checked': checked, 'toggle-disabled': disabled, 'interactive': true }) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "toggle-icon" }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "toggle-inner" })), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", onFocus: this.onFocus, onBlur: this.onBlur, disabled: disabled, ref: btnEl => this.buttonEl = btnEl })));
+    }
+    get el() { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
+    static get watchers() { return {
+        "checked": ["checkedChanged"],
+        "disabled": ["disabledChanged"]
+    }; }
+    static get style() { return ":host{-webkit-box-sizing:content-box!important;box-sizing:content-box!important;display:inline-block;outline:none;contain:content;cursor:pointer;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(.ion-focused) input{border:2px solid #5e9ed6}:host(.toggle-disabled){pointer-events:none}button{left:0;top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none}:host-context([dir=rtl]) button,[dir=rtl] button{left:unset;right:unset;right:0}button::-moz-focus-inner{border:0}:host{--background:rgba(var(--ion-text-color-rgb,0,0,0),0.3);--background-checked:rgba(var(--ion-color-primary-rgb,56,128,255),0.5);--handle-background:#fff;--handle-background-checked:var(--ion-color-primary,#3880ff);padding-left:12px;padding-right:12px;padding-top:12px;padding-bottom:12px;-webkit-box-sizing:content-box;box-sizing:content-box;position:relative;width:36px;height:14px;contain:strict}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:12px;padding-inline-start:12px;-webkit-padding-end:12px;padding-inline-end:12px}}:host(.ion-color.toggle-checked) .toggle-icon{background:rgba(var(--ion-color-base-rgb),.5)}:host(.ion-color.toggle-checked) .toggle-inner{background:var(--ion-color-base)}.toggle-icon{border-radius:14px;display:block;position:relative;width:100%;height:100%;-webkit-transition:background-color .16s;transition:background-color .16s;background:var(--background);pointer-events:none}.toggle-inner{left:0;top:-3px;border-radius:50%;position:absolute;width:20px;height:20px;-webkit-transition-duration:.16s;transition-duration:.16s;-webkit-transition-property:background-color,-webkit-transform;transition-property:background-color,-webkit-transform;transition-property:transform,background-color;transition-property:transform,background-color,-webkit-transform;-webkit-transition-timing-function:cubic-bezier(.4,0,.2,1);transition-timing-function:cubic-bezier(.4,0,.2,1);background:var(--handle-background);-webkit-box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);box-shadow:0 2px 2px 0 rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.2),0 1px 5px 0 rgba(0,0,0,.12);will-change:transform,background-color;contain:strict}:host-context([dir=rtl]) .toggle-inner,[dir=rtl] .toggle-inner{left:unset;right:unset;right:0}:host(.toggle-checked) .toggle-icon{background:var(--background-checked)}:host(.toggle-checked) .toggle-inner{-webkit-transform:translate3d(16px,0,0);transform:translate3d(16px,0,0);background:var(--handle-background-checked)}:host-context([dir=rtl]).toggle-checked .toggle-inner,:host-context([dir=rtl]):host(.toggle-checked) .toggle-inner{-webkit-transform:translate3d(calc(-1 * 16px),0,0);transform:translate3d(calc(-1 * 16px),0,0)}:host(.toggle-disabled){opacity:.3}:host(.in-item[slot]){margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:16px;padding-right:0;padding-top:12px;padding-bottom:12px;cursor:pointer}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-item[slot]){padding-left:unset;padding-right:unset;-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:0;padding-inline-end:0}}:host(.in-item[slot=start]){padding-left:2px;padding-right:18px;padding-top:12px;padding-bottom:12px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-item[slot=start]){padding-left:unset;padding-right:unset;-webkit-padding-start:2px;padding-inline-start:2px;-webkit-padding-end:18px;padding-inline-end:18px}}"; }
 };
-const colonHostPartReplacer = (host, part, suffix) => {
-    return host + part.replace(_polyfillHost, '') + suffix;
-};
-const convertColonHost = (cssText) => {
-    return convertColonRule(cssText, _cssColonHostRe, colonHostPartReplacer);
-};
-const colonHostContextPartReplacer = (host, part, suffix) => {
-    if (part.indexOf(_polyfillHost) > -1) {
-        return colonHostPartReplacer(host, part, suffix);
+const shouldToggle = (doc, checked, deltaX, margin) => {
+    const isRTL = doc.dir === 'rtl';
+    if (checked) {
+        return (!isRTL && (margin > deltaX)) ||
+            (isRTL && (-margin < deltaX));
     }
     else {
-        return host + part + suffix + ', ' + part + ' ' + host + suffix;
+        return (!isRTL && (-margin < deltaX)) ||
+            (isRTL && (margin > deltaX));
     }
 };
-const convertColonSlotted = (cssText, slotScopeId) => {
-    const slotClass = '.' + slotScopeId + ' > ';
-    const selectors = [];
-    cssText = cssText.replace(_cssColonSlottedRe, (...m) => {
-        if (m[2]) {
-            const compound = m[2].trim();
-            const suffix = m[3];
-            const slottedSelector = slotClass + compound + suffix;
-            let prefixSelector = '';
-            for (let i = m[4] - 1; i >= 0; i--) {
-                const char = m[5][i];
-                if (char === '}' || char === ',') {
-                    break;
-                }
-                prefixSelector = char + prefixSelector;
-            }
-            const orgSelector = prefixSelector + slottedSelector;
-            const addedSelector = `${prefixSelector.trimRight()}${slottedSelector.trim()}`;
-            if (orgSelector.trim() !== addedSelector.trim()) {
-                const updatedSelector = `${addedSelector}, ${orgSelector}`;
-                selectors.push({
-                    orgSelector,
-                    updatedSelector,
-                });
-            }
-            return slottedSelector;
-        }
-        else {
-            return _polyfillHostNoCombinator + m[3];
-        }
-    });
-    return {
-        selectors,
-        cssText
-    };
-};
-const convertColonHostContext = (cssText) => {
-    return convertColonRule(cssText, _cssColonHostContextRe, colonHostContextPartReplacer);
-};
-const convertShadowDOMSelectors = (cssText) => {
-    return _shadowDOMSelectorsRe.reduce((result, pattern) => result.replace(pattern, ' '), cssText);
-};
-const makeScopeMatcher = (scopeSelector) => {
-    const lre = /\[/g;
-    const rre = /\]/g;
-    scopeSelector = scopeSelector.replace(lre, '\\[').replace(rre, '\\]');
-    return new RegExp('^(' + scopeSelector + ')' + _selectorReSuffix, 'm');
-};
-const selectorNeedsScoping = (selector, scopeSelector) => {
-    const re = makeScopeMatcher(scopeSelector);
-    return !re.test(selector);
-};
-const applySimpleSelectorScope = (selector, scopeSelector, hostSelector) => {
-    // In Android browser, the lastIndex is not reset when the regex is used in String.replace()
-    _polyfillHostRe.lastIndex = 0;
-    if (_polyfillHostRe.test(selector)) {
-        const replaceBy = `.${hostSelector}`;
-        return selector
-            .replace(_polyfillHostNoCombinatorRe, (_, selector) => {
-            return selector.replace(/([^:]*)(:*)(.*)/, (_, before, colon, after) => {
-                return before + replaceBy + colon + after;
-            });
-        })
-            .replace(_polyfillHostRe, replaceBy + ' ');
-    }
-    return scopeSelector + ' ' + selector;
-};
-const applyStrictSelectorScope = (selector, scopeSelector, hostSelector) => {
-    const isRe = /\[is=([^\]]*)\]/g;
-    scopeSelector = scopeSelector.replace(isRe, (_, ...parts) => parts[0]);
-    const className = '.' + scopeSelector;
-    const _scopeSelectorPart = (p) => {
-        let scopedP = p.trim();
-        if (!scopedP) {
-            return '';
-        }
-        if (p.indexOf(_polyfillHostNoCombinator) > -1) {
-            scopedP = applySimpleSelectorScope(p, scopeSelector, hostSelector);
-        }
-        else {
-            // remove :host since it should be unnecessary
-            const t = p.replace(_polyfillHostRe, '');
-            if (t.length > 0) {
-                const matches = t.match(/([^:]*)(:*)(.*)/);
-                if (matches) {
-                    scopedP = matches[1] + className + matches[2] + matches[3];
-                }
-            }
-        }
-        return scopedP;
-    };
-    const safeContent = safeSelector(selector);
-    selector = safeContent.content;
-    let scopedSelector = '';
-    let startIndex = 0;
-    let res;
-    const sep = /( |>|\+|~(?!=))\s*/g;
-    // If a selector appears before :host it should not be shimmed as it
-    // matches on ancestor elements and not on elements in the host's shadow
-    // `:host-context(div)` is transformed to
-    // `-shadowcsshost-no-combinatordiv, div -shadowcsshost-no-combinator`
-    // the `div` is not part of the component in the 2nd selectors and should not be scoped.
-    // Historically `component-tag:host` was matching the component so we also want to preserve
-    // this behavior to avoid breaking legacy apps (it should not match).
-    // The behavior should be:
-    // - `tag:host` -> `tag[h]` (this is to avoid breaking legacy apps, should not match anything)
-    // - `tag :host` -> `tag [h]` (`tag` is not scoped because it's considered part of a
-    //   `:host-context(tag)`)
-    const hasHost = selector.indexOf(_polyfillHostNoCombinator) > -1;
-    // Only scope parts after the first `-shadowcsshost-no-combinator` when it is present
-    let shouldScope = !hasHost;
-    while ((res = sep.exec(selector)) !== null) {
-        const separator = res[1];
-        const part = selector.slice(startIndex, res.index).trim();
-        shouldScope = shouldScope || part.indexOf(_polyfillHostNoCombinator) > -1;
-        const scopedPart = shouldScope ? _scopeSelectorPart(part) : part;
-        scopedSelector += `${scopedPart} ${separator} `;
-        startIndex = sep.lastIndex;
-    }
-    const part = selector.substring(startIndex);
-    shouldScope = shouldScope || part.indexOf(_polyfillHostNoCombinator) > -1;
-    scopedSelector += shouldScope ? _scopeSelectorPart(part) : part;
-    // replace the placeholders with their original values
-    return restoreSafeSelector(safeContent.placeholders, scopedSelector);
-};
-const scopeSelector = (selector, scopeSelectorText, hostSelector, slotSelector) => {
-    return selector.split(',')
-        .map(shallowPart => {
-        if (slotSelector && shallowPart.indexOf('.' + slotSelector) > -1) {
-            return shallowPart.trim();
-        }
-        if (selectorNeedsScoping(shallowPart, scopeSelectorText)) {
-            return applyStrictSelectorScope(shallowPart, scopeSelectorText, hostSelector).trim();
-        }
-        else {
-            return shallowPart.trim();
-        }
-    })
-        .join(', ');
-};
-const scopeSelectors = (cssText, scopeSelectorText, hostSelector, slotSelector, commentOriginalSelector) => {
-    return processRules(cssText, (rule) => {
-        let selector = rule.selector;
-        let content = rule.content;
-        if (rule.selector[0] !== '@') {
-            selector = scopeSelector(rule.selector, scopeSelectorText, hostSelector, slotSelector);
-        }
-        else if (rule.selector.startsWith('@media') || rule.selector.startsWith('@supports') ||
-            rule.selector.startsWith('@page') || rule.selector.startsWith('@document')) {
-            content = scopeSelectors(rule.content, scopeSelectorText, hostSelector, slotSelector);
-        }
-        const cssRule = {
-            selector: selector.replace(/\s{2,}/g, ' ').trim(),
-            content
-        };
-        return cssRule;
-    });
-};
-const scopeCssText = (cssText, scopeId, hostScopeId, slotScopeId, commentOriginalSelector) => {
-    cssText = insertPolyfillHostInCssText(cssText);
-    cssText = convertColonHost(cssText);
-    cssText = convertColonHostContext(cssText);
-    const slotted = convertColonSlotted(cssText, slotScopeId);
-    cssText = slotted.cssText;
-    cssText = convertShadowDOMSelectors(cssText);
-    if (scopeId) {
-        cssText = scopeSelectors(cssText, scopeId, hostScopeId, slotScopeId);
-    }
-    cssText = cssText.replace(/-shadowcsshost-no-combinator/g, `.${hostScopeId}`);
-    cssText = cssText.replace(/>\s*\*\s+([^{, ]+)/gm, ' $1 ');
-    return {
-        cssText: cssText.trim(),
-        slottedSelectors: slotted.selectors,
-    };
-};
-const scopeCss = (cssText, scopeId, commentOriginalSelector) => {
-    const hostScopeId = scopeId + '-h';
-    const slotScopeId = scopeId + '-s';
-    const commentsWithHash = extractCommentsWithHash(cssText);
-    cssText = stripComments(cssText);
-    const orgSelectors = [];
-    if (commentOriginalSelector) {
-        const processCommentedSelector = (rule) => {
-            const placeholder = `/*!@___${orgSelectors.length}___*/`;
-            const comment = `/*!@${rule.selector}*/`;
-            orgSelectors.push({ placeholder, comment });
-            rule.selector = placeholder + rule.selector;
-            return rule;
-        };
-        cssText = processRules(cssText, rule => {
-            if (rule.selector[0] !== '@') {
-                return processCommentedSelector(rule);
-            }
-            else if (rule.selector.startsWith('@media') || rule.selector.startsWith('@supports') ||
-                rule.selector.startsWith('@page') || rule.selector.startsWith('@document')) {
-                rule.content = processRules(rule.content, processCommentedSelector);
-                return rule;
-            }
-            return rule;
-        });
-    }
-    const scoped = scopeCssText(cssText, scopeId, hostScopeId, slotScopeId);
-    cssText = [scoped.cssText, ...commentsWithHash].join('\n');
-    if (commentOriginalSelector) {
-        orgSelectors.forEach(({ placeholder, comment }) => {
-            cssText = cssText.replace(placeholder, comment);
-        });
-    }
-    scoped.slottedSelectors.forEach(slottedSelector => {
-        cssText = cssText.replace(slottedSelector.orgSelector, slottedSelector.updatedSelector);
-    });
-    return cssText;
-};
+let toggleIds = 0;
 
 
 

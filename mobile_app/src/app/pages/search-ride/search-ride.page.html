@@ -5,10 +5,15 @@
 </ion-header>
 
 <ion-content>
-  <style>
-    .map {
-      height: 80% !important;
-    } 
-  </style>
-  <div #mapElement class="map"></div> 
+  <div class=container4>
+    <div *ngIf="!isDriveAccepted" >
+      <p>Tražim slobodnog vozača...</p>
+      <ion-spinner style="width:150px" color="tertiary" class="ion-color ion-color-tertiary ios spinner-lines hydrated"
+        role="progressbar"></ion-spinner>
+    </div>
+    <div *ngIf="isDriveAccepted" >
+        <p>Vaše vozilo je udaljeno:</p> 
+        <p>{{kms}}</p> 
+      </div>
+  </div>
 </ion-content>

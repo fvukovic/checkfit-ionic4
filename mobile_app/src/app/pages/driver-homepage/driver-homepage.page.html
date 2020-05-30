@@ -1,9 +1,23 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>driver-homepage</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Driver homepage</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content class="mapp">
+  <style>
+    .map {
+      height: 80% !important;
+    }
+  </style>
+  <div #mapElement class="map"></div>
+  <ion-radio-group>
+    1<ion-radio>1</ion-radio>
+    2<ion-radio>2</ion-radio>
+    3<ion-radio>3</ion-radio>
+    4<ion-radio>42</ion-radio>
+  </ion-radio-group>
+  <br />
 </ion-content>

@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[0],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/swipe-back-d2cdbf9a.js":
+/***/ "./node_modules/@ionic/core/dist/esm/swipe-back-35ad8e37.js":
 /*!******************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/swipe-back-d2cdbf9a.js ***!
+  !*** ./node_modules/@ionic/core/dist/esm/swipe-back-35ad8e37.js ***!
   \******************************************************************/
 /*! exports provided: createSwipeBackGesture */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -10,9 +10,7 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createSwipeBackGesture", function() { return createSwipeBackGesture; });
-/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
-/* harmony import */ var _index_c38df685_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index-c38df685.js */ "./node_modules/@ionic/core/dist/esm/index-c38df685.js");
-
+/* harmony import */ var _index_624eea58_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index-624eea58.js */ "./node_modules/@ionic/core/dist/esm/index-624eea58.js");
 
 
 const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandler, onEndHandler) => {
@@ -42,13 +40,14 @@ const createSwipeBackGesture = (el, canStartHandler, onStartHandler, onMoveHandl
             realDur = Math.min(dur, 540);
         }
         /**
-         * TODO: stepValue can sometimes return negative values
-         * or values greater than 1 which should not be possible.
-         * Need to investigate more to find where the issue is.
+         * TODO: stepValue can sometimes return a negative
+         * value, but you can't have a negative time value
+         * for the cubic bezier curve (at least with web animations)
+         * Not sure if the negative step value is an error or not
          */
-        onEndHandler(shouldComplete, (stepValue <= 0) ? 0.01 : Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_0__["c"])(0, stepValue, 0.9999), realDur);
+        onEndHandler(shouldComplete, (stepValue <= 0) ? 0.01 : stepValue, realDur);
     };
-    return Object(_index_c38df685_js__WEBPACK_IMPORTED_MODULE_1__["createGesture"])({
+    return Object(_index_624eea58_js__WEBPACK_IMPORTED_MODULE_0__["createGesture"])({
         el,
         gestureName: 'goback-swipe',
         gesturePriority: 40,

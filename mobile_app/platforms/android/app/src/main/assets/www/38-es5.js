@@ -1,9 +1,5 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
@@ -12,394 +8,264 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[38], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-ios.entry.js":
-  /*!******************************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-ios.entry.js ***!
-    \******************************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-col_3.entry.js":
+  /*!**************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-col_3.entry.js ***!
+    \**************************************************************/
 
-  /*! exports provided: ion_infinite_scroll, ion_infinite_scroll_content */
+  /*! exports provided: ion_col, ion_grid, ion_row */
 
   /***/
-  function node_modulesIonicCoreDistEsmIonInfiniteScroll_2IosEntryJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonCol_3EntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_infinite_scroll", function () {
-      return InfiniteScroll;
+    __webpack_require__.d(__webpack_exports__, "ion_col", function () {
+      return Col;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_infinite_scroll_content", function () {
-      return InfiniteScrollContent;
+    __webpack_require__.d(__webpack_exports__, "ion_grid", function () {
+      return Grid;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_row", function () {
+      return Row;
     });
     /* harmony import */
 
 
-    var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-0a8d4d2e.js */
-    "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
     var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! ./config-3c7f3790.js */
     "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
-    /* harmony import */
 
+    var SIZE_TO_MEDIA = {
+      'xs': '(min-width: 0px)',
+      'sm': '(min-width: 576px)',
+      'md': '(min-width: 768px)',
+      'lg': '(min-width: 992px)',
+      'xl': '(min-width: 1200px)'
+    }; // Check if the window matches the media query
+    // at the breakpoint passed
+    // e.g. matchBreakpoint('sm') => true if screen width exceeds 576px
 
-    var _index_3476b023_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./index-3476b023.js */
-    "./node_modules/@ionic/core/dist/esm/index-3476b023.js");
-
-    var InfiniteScroll = /*#__PURE__*/function () {
-      function InfiniteScroll(hostRef) {
-        var _this = this;
-
-        _classCallCheck(this, InfiniteScroll);
-
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.thrPx = 0;
-        this.thrPc = 0;
-        this.didFire = false;
-        this.isBusy = false;
-        this.isLoading = false;
-        /**
-         * The threshold distance from the bottom
-         * of the content to call the `infinite` output event when scrolled.
-         * The threshold value can be either a percent, or
-         * in pixels. For example, use the value of `10%` for the `infinite`
-         * output event to get called when the user has scrolled 10%
-         * from the bottom of the page. Use the value `100px` when the
-         * scroll is within 100 pixels from the bottom of the page.
-         */
-
-        this.threshold = '15%';
-        /**
-         * If `true`, the infinite scroll will be hidden and scroll event listeners
-         * will be removed.
-         *
-         * Set this to true to disable the infinite scroll from actively
-         * trying to receive new data while scrolling. This is useful
-         * when it is known that there is no more data that can be added, and
-         * the infinite scroll is no longer needed.
-         */
-
-        this.disabled = false;
-        /**
-         * The position of the infinite scroll element.
-         * The value can be either `top` or `bottom`.
-         */
-
-        this.position = 'bottom';
-
-        this.onScroll = function () {
-          var scrollEl = _this.scrollEl;
-
-          if (!scrollEl || !_this.canStart()) {
-            return 1;
-          }
-
-          var infiniteHeight = _this.el.offsetHeight;
-
-          if (infiniteHeight === 0) {
-            // if there is no height of this element then do nothing
-            return 2;
-          }
-
-          var scrollTop = scrollEl.scrollTop;
-          var scrollHeight = scrollEl.scrollHeight;
-          var height = scrollEl.offsetHeight;
-          var threshold = _this.thrPc !== 0 ? height * _this.thrPc : _this.thrPx;
-          var distanceFromInfinite = _this.position === 'bottom' ? scrollHeight - infiniteHeight - scrollTop - threshold - height : scrollTop - infiniteHeight - threshold;
-
-          if (distanceFromInfinite < 0) {
-            if (!_this.didFire) {
-              _this.isLoading = true;
-              _this.didFire = true;
-
-              _this.ionInfinite.emit();
-
-              return 3;
-            }
-          } else {
-            _this.didFire = false;
-          }
-
-          return 4;
-        };
-
-        this.ionInfinite = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionInfinite", 7);
+    var matchBreakpoint = function matchBreakpoint(breakpoint) {
+      if (breakpoint === undefined || breakpoint === '') {
+        return true;
       }
 
-      _createClass(InfiniteScroll, [{
-        key: "thresholdChanged",
-        value: function thresholdChanged() {
-          var val = this.threshold;
+      if (window.matchMedia) {
+        var mediaQuery = SIZE_TO_MEDIA[breakpoint];
+        return window.matchMedia(mediaQuery).matches;
+      }
 
-          if (val.lastIndexOf('%') > -1) {
-            this.thrPx = 0;
-            this.thrPc = parseFloat(val) / 100;
-          } else {
-            this.thrPx = parseFloat(val);
-            this.thrPc = 0;
-          }
-        }
+      return false;
+    };
+
+    var win = window;
+    var SUPPORTS_VARS = !!(win.CSS && win.CSS.supports && win.CSS.supports('--a: 0'));
+    var BREAKPOINTS = ['', 'xs', 'sm', 'md', 'lg', 'xl'];
+
+    var Col = /*#__PURE__*/function () {
+      function Col(hostRef) {
+        _classCallCheck(this, Col);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+      }
+
+      _createClass(Col, [{
+        key: "onResize",
+        value: function onResize() {
+          this.el.forceUpdate();
+        } // Loop through all of the breakpoints to see if the media query
+        // matches and grab the column value from the relevant prop if so
+
       }, {
-        key: "disabledChanged",
-        value: function disabledChanged() {
-          var disabled = this.disabled;
+        key: "getColumns",
+        value: function getColumns(property) {
+          var matched;
+          var _iteratorNormalCompletion = true;
+          var _didIteratorError = false;
+          var _iteratorError = undefined;
 
-          if (disabled) {
-            this.isLoading = false;
-            this.isBusy = false;
-          }
+          try {
+            for (var _iterator = BREAKPOINTS[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+              var breakpoint = _step.value;
+              var matches = matchBreakpoint(breakpoint); // Grab the value of the property, if it exists and our
+              // media query matches we return the value
 
-          this.enableScrollEvents(!disabled);
-        }
-      }, {
-        key: "connectedCallback",
-        value: function () {
-          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var _this2 = this;
+              var columns = this[property + breakpoint.charAt(0).toUpperCase() + breakpoint.slice(1)];
 
-            var contentEl;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    contentEl = this.el.closest('ion-content');
-
-                    if (contentEl) {
-                      _context.next = 4;
-                      break;
-                    }
-
-                    console.error('<ion-infinite-scroll> must be used inside an <ion-content>');
-                    return _context.abrupt("return");
-
-                  case 4:
-                    _context.next = 6;
-                    return contentEl.getScrollElement();
-
-                  case 6:
-                    this.scrollEl = _context.sent;
-                    this.thresholdChanged();
-                    this.disabledChanged();
-
-                    if (this.position === 'top') {
-                      Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
-                        if (_this2.scrollEl) {
-                          _this2.scrollEl.scrollTop = _this2.scrollEl.scrollHeight - _this2.scrollEl.clientHeight;
-                        }
-                      });
-                    }
-
-                  case 10:
-                  case "end":
-                    return _context.stop();
-                }
+              if (matches && columns !== undefined) {
+                matched = columns;
               }
-            }, _callee, this);
-          }));
+            } // Return the last matched columns since the breakpoints
+            // increase in size and we want to return the largest match
 
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
-          }
-
-          return connectedCallback;
-        }()
-      }, {
-        key: "disconnectedCallback",
-        value: function disconnectedCallback() {
-          this.enableScrollEvents(false);
-          this.scrollEl = undefined;
-        }
-        /**
-         * Call `complete()` within the `ionInfinite` output event handler when
-         * your async operation has completed. For example, the `loading`
-         * state is while the app is performing an asynchronous operation,
-         * such as receiving more data from an AJAX request to add more items
-         * to a data list. Once the data has been received and UI updated, you
-         * then call this method to signify that the loading has completed.
-         * This method will change the infinite scroll's state from `loading`
-         * to `enabled`.
-         */
-
-      }, {
-        key: "complete",
-        value: function () {
-          var _complete = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this3 = this;
-
-            var scrollEl, prev;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    scrollEl = this.scrollEl;
-
-                    if (!(!this.isLoading || !scrollEl)) {
-                      _context2.next = 3;
-                      break;
-                    }
-
-                    return _context2.abrupt("return");
-
-                  case 3:
-                    this.isLoading = false;
-
-                    if (this.position === 'top') {
-                      /**
-                       * New content is being added at the top, but the scrollTop position stays the same,
-                       * which causes a scroll jump visually. This algorithm makes sure to prevent this.
-                       * (Frame 1)
-                       *    - complete() is called, but the UI hasn't had time to update yet.
-                       *    - Save the current content dimensions.
-                       *    - Wait for the next frame using _dom.read, so the UI will be updated.
-                       * (Frame 2)
-                       *    - Read the new content dimensions.
-                       *    - Calculate the height difference and the new scroll position.
-                       *    - Delay the scroll position change until other possible dom reads are done using _dom.write to be performant.
-                       * (Still frame 2, if I'm correct)
-                       *    - Change the scroll position (= visually maintain the scroll position).
-                       *    - Change the state to re-enable the InfiniteScroll.
-                       *    - This should be after changing the scroll position, or it could
-                       *    cause the InfiniteScroll to be triggered again immediately.
-                       * (Frame 3)
-                       *    Done.
-                       */
-                      this.isBusy = true; // ******** DOM READ ****************
-                      // Save the current content dimensions before the UI updates
-
-                      prev = scrollEl.scrollHeight - scrollEl.scrollTop; // ******** DOM READ ****************
-
-                      requestAnimationFrame(function () {
-                        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["f"])(function () {
-                          // UI has updated, save the new content dimensions
-                          var scrollHeight = scrollEl.scrollHeight; // New content was added on top, so the scroll position should be changed immediately to prevent it from jumping around
-
-                          var newScrollTop = scrollHeight - prev; // ******** DOM WRITE ****************
-
-                          requestAnimationFrame(function () {
-                            Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["w"])(function () {
-                              scrollEl.scrollTop = newScrollTop;
-                              _this3.isBusy = false;
-                            });
-                          });
-                        });
-                      });
-                    }
-
-                  case 5:
-                  case "end":
-                    return _context2.stop();
-                }
+          } catch (err) {
+            _didIteratorError = true;
+            _iteratorError = err;
+          } finally {
+            try {
+              if (!_iteratorNormalCompletion && _iterator.return != null) {
+                _iterator.return();
               }
-            }, _callee2, this);
-          }));
-
-          function complete() {
-            return _complete.apply(this, arguments);
-          }
-
-          return complete;
-        }()
-      }, {
-        key: "canStart",
-        value: function canStart() {
-          return !this.disabled && !this.isBusy && !!this.scrollEl && !this.isLoading;
-        }
-      }, {
-        key: "enableScrollEvents",
-        value: function enableScrollEvents(shouldListen) {
-          if (this.scrollEl) {
-            if (shouldListen) {
-              this.scrollEl.addEventListener('scroll', this.onScroll);
-            } else {
-              this.scrollEl.removeEventListener('scroll', this.onScroll);
+            } finally {
+              if (_didIteratorError) {
+                throw _iteratorError;
+              }
             }
           }
+
+          return matched;
+        }
+      }, {
+        key: "calculateSize",
+        value: function calculateSize() {
+          var columns = this.getColumns('size'); // If size wasn't set for any breakpoint
+          // or if the user set the size without a value
+          // it means we need to stick with the default and return
+          // e.g. <ion-col size-md>
+
+          if (!columns || columns === '') {
+            return;
+          } // If the size is set to auto then don't calculate a size
+
+
+          var colSize = columns === 'auto' ? 'auto' // If CSS supports variables we should use the grid columns var
+          : SUPPORTS_VARS ? "calc(calc(".concat(columns, " / var(--ion-grid-columns, 12)) * 100%)") // Convert the columns to a percentage by dividing by the total number
+          // of columns (12) and then multiplying by 100
+          : columns / 12 * 100 + '%';
+          return {
+            'flex': "0 0 ".concat(colSize),
+            'width': "".concat(colSize),
+            'max-width': "".concat(colSize)
+          };
+        } // Called by push, pull, and offset since they use the same calculations
+
+      }, {
+        key: "calculatePosition",
+        value: function calculatePosition(property, modifier) {
+          var columns = this.getColumns(property);
+
+          if (!columns) {
+            return;
+          } // If the number of columns passed are greater than 0 and less than
+          // 12 we can position the column, else default to auto
+
+
+          var amount = SUPPORTS_VARS // If CSS supports variables we should use the grid columns var
+          ? "calc(calc(".concat(columns, " / var(--ion-grid-columns, 12)) * 100%)") // Convert the columns to a percentage by dividing by the total number
+          // of columns (12) and then multiplying by 100
+          : columns > 0 && columns < 12 ? columns / 12 * 100 + '%' : 'auto';
+          return _defineProperty({}, modifier, amount);
+        }
+      }, {
+        key: "calculateOffset",
+        value: function calculateOffset(isRTL) {
+          return this.calculatePosition('offset', isRTL ? 'margin-right' : 'margin-left');
+        }
+      }, {
+        key: "calculatePull",
+        value: function calculatePull(isRTL) {
+          return this.calculatePosition('pull', isRTL ? 'left' : 'right');
+        }
+      }, {
+        key: "calculatePush",
+        value: function calculatePush(isRTL) {
+          return this.calculatePosition('push', isRTL ? 'right' : 'left');
         }
       }, {
         key: "render",
         value: function render() {
-          var _class;
-
-          var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          var disabled = this.disabled;
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, 'infinite-scroll-loading', this.isLoading), _defineProperty(_class, 'infinite-scroll-enabled', !disabled), _class)
-          });
+          var isRTL = document.dir === 'rtl';
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            class: _defineProperty({}, mode, true),
+            style: Object.assign(Object.assign(Object.assign(Object.assign({}, this.calculateOffset(isRTL)), this.calculatePull(isRTL)), this.calculatePush(isRTL)), this.calculateSize())
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
-        key: "watchers",
-        get: function get() {
-          return {
-            "threshold": ["thresholdChanged"],
-            "disabled": ["disabledChanged"]
-          };
-        }
-      }, {
         key: "style",
         get: function get() {
-          return "ion-infinite-scroll{display:none;width:100%}.infinite-scroll-enabled{display:block}";
+          return ":host{padding-left:var(--ion-grid-column-padding-xs,var(--ion-grid-column-padding,5px));padding-right:var(--ion-grid-column-padding-xs,var(--ion-grid-column-padding,5px));padding-top:var(--ion-grid-column-padding-xs,var(--ion-grid-column-padding,5px));padding-bottom:var(--ion-grid-column-padding-xs,var(--ion-grid-column-padding,5px));margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;-webkit-box-sizing:border-box;box-sizing:border-box;position:relative;-ms-flex-preferred-size:0;flex-basis:0;-ms-flex-positive:1;flex-grow:1;width:100%;max-width:100%;min-height:1px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--ion-grid-column-padding-xs,var(--ion-grid-column-padding,5px));padding-inline-start:var(--ion-grid-column-padding-xs,var(--ion-grid-column-padding,5px));-webkit-padding-end:var(--ion-grid-column-padding-xs,var(--ion-grid-column-padding,5px));padding-inline-end:var(--ion-grid-column-padding-xs,var(--ion-grid-column-padding,5px))}}\@media (min-width:576px){:host{padding-left:var(--ion-grid-column-padding-sm,var(--ion-grid-column-padding,5px));padding-right:var(--ion-grid-column-padding-sm,var(--ion-grid-column-padding,5px));padding-top:var(--ion-grid-column-padding-sm,var(--ion-grid-column-padding,5px));padding-bottom:var(--ion-grid-column-padding-sm,var(--ion-grid-column-padding,5px))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--ion-grid-column-padding-sm,var(--ion-grid-column-padding,5px));padding-inline-start:var(--ion-grid-column-padding-sm,var(--ion-grid-column-padding,5px));-webkit-padding-end:var(--ion-grid-column-padding-sm,var(--ion-grid-column-padding,5px));padding-inline-end:var(--ion-grid-column-padding-sm,var(--ion-grid-column-padding,5px))}}}\@media (min-width:768px){:host{padding-left:var(--ion-grid-column-padding-md,var(--ion-grid-column-padding,5px));padding-right:var(--ion-grid-column-padding-md,var(--ion-grid-column-padding,5px));padding-top:var(--ion-grid-column-padding-md,var(--ion-grid-column-padding,5px));padding-bottom:var(--ion-grid-column-padding-md,var(--ion-grid-column-padding,5px))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--ion-grid-column-padding-md,var(--ion-grid-column-padding,5px));padding-inline-start:var(--ion-grid-column-padding-md,var(--ion-grid-column-padding,5px));-webkit-padding-end:var(--ion-grid-column-padding-md,var(--ion-grid-column-padding,5px));padding-inline-end:var(--ion-grid-column-padding-md,var(--ion-grid-column-padding,5px))}}}\@media (min-width:992px){:host{padding-left:var(--ion-grid-column-padding-lg,var(--ion-grid-column-padding,5px));padding-right:var(--ion-grid-column-padding-lg,var(--ion-grid-column-padding,5px));padding-top:var(--ion-grid-column-padding-lg,var(--ion-grid-column-padding,5px));padding-bottom:var(--ion-grid-column-padding-lg,var(--ion-grid-column-padding,5px))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--ion-grid-column-padding-lg,var(--ion-grid-column-padding,5px));padding-inline-start:var(--ion-grid-column-padding-lg,var(--ion-grid-column-padding,5px));-webkit-padding-end:var(--ion-grid-column-padding-lg,var(--ion-grid-column-padding,5px));padding-inline-end:var(--ion-grid-column-padding-lg,var(--ion-grid-column-padding,5px))}}}\@media (min-width:1200px){:host{padding-left:var(--ion-grid-column-padding-xl,var(--ion-grid-column-padding,5px));padding-right:var(--ion-grid-column-padding-xl,var(--ion-grid-column-padding,5px));padding-top:var(--ion-grid-column-padding-xl,var(--ion-grid-column-padding,5px));padding-bottom:var(--ion-grid-column-padding-xl,var(--ion-grid-column-padding,5px))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--ion-grid-column-padding-xl,var(--ion-grid-column-padding,5px));padding-inline-start:var(--ion-grid-column-padding-xl,var(--ion-grid-column-padding,5px));-webkit-padding-end:var(--ion-grid-column-padding-xl,var(--ion-grid-column-padding,5px));padding-inline-end:var(--ion-grid-column-padding-xl,var(--ion-grid-column-padding,5px))}}}";
         }
       }]);
 
-      return InfiniteScroll;
+      return Col;
     }();
 
-    var InfiniteScrollContent = /*#__PURE__*/function () {
-      function InfiniteScrollContent(hostRef) {
-        _classCallCheck(this, InfiniteScrollContent);
+    var Grid = /*#__PURE__*/function () {
+      function Grid(hostRef) {
+        _classCallCheck(this, Grid);
 
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        /**
+         * If `true`, the grid will have a fixed width based on the screen size.
+         */
+
+        this.fixed = false;
       }
 
-      _createClass(InfiniteScrollContent, [{
-        key: "componentDidLoad",
-        value: function componentDidLoad() {
-          if (this.loadingSpinner === undefined) {
-            var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-            this.loadingSpinner = _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('infiniteLoadingSpinner', _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__["b"].get('spinner', mode === 'ios' ? 'lines' : 'crescent'));
-          }
-        }
-      }, {
+      _createClass(Grid, [{
         key: "render",
         value: function render() {
           var _class2;
 
-          var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, "infinite-scroll-content-".concat(mode), true), _class2)
-          }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "infinite-loading"
-          }, this.loadingSpinner && Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "infinite-loading-spinner"
-          }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-spinner", {
-            name: this.loadingSpinner
-          })), this.loadingText && Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "infinite-loading-text",
-            innerHTML: Object(_index_3476b023_js__WEBPACK_IMPORTED_MODULE_2__["s"])(this.loadingText)
-          })));
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'grid-fixed', this.fixed), _class2)
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }], [{
         key: "style",
         get: function get() {
-          return "ion-infinite-scroll-content{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center;min-height:84px;text-align:center;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.infinite-loading{margin-left:0;margin-right:0;margin-top:0;margin-bottom:32px;display:none;width:100%}.infinite-loading-text{margin-left:32px;margin-right:32px;margin-top:4px;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.infinite-loading-text{margin-left:unset;margin-right:unset;-webkit-margin-start:32px;margin-inline-start:32px;-webkit-margin-end:32px;margin-inline-end:32px}}.infinite-scroll-loading ion-infinite-scroll-content>.infinite-loading{display:block}.infinite-scroll-content-ios .infinite-loading-text{color:var(--ion-color-step-600,#666)}.infinite-scroll-content-ios .infinite-loading-spinner .spinner-crescent circle,.infinite-scroll-content-ios .infinite-loading-spinner .spinner-lines-ios line,.infinite-scroll-content-ios .infinite-loading-spinner .spinner-lines-small-ios line{stroke:var(--ion-color-step-600,#666)}.infinite-scroll-content-ios .infinite-loading-spinner .spinner-bubbles circle,.infinite-scroll-content-ios .infinite-loading-spinner .spinner-circles circle,.infinite-scroll-content-ios .infinite-loading-spinner .spinner-dots circle{fill:var(--ion-color-step-600,#666)}";
+          return ":host{padding-left:var(--ion-grid-padding-xs,var(--ion-grid-padding,5px));padding-right:var(--ion-grid-padding-xs,var(--ion-grid-padding,5px));padding-top:var(--ion-grid-padding-xs,var(--ion-grid-padding,5px));padding-bottom:var(--ion-grid-padding-xs,var(--ion-grid-padding,5px));margin-left:auto;margin-right:auto;display:block;-ms-flex:1;flex:1}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--ion-grid-padding-xs,var(--ion-grid-padding,5px));padding-inline-start:var(--ion-grid-padding-xs,var(--ion-grid-padding,5px));-webkit-padding-end:var(--ion-grid-padding-xs,var(--ion-grid-padding,5px));padding-inline-end:var(--ion-grid-padding-xs,var(--ion-grid-padding,5px))}}\@media (min-width:576px){:host{padding-left:var(--ion-grid-padding-sm,var(--ion-grid-padding,5px));padding-right:var(--ion-grid-padding-sm,var(--ion-grid-padding,5px));padding-top:var(--ion-grid-padding-sm,var(--ion-grid-padding,5px));padding-bottom:var(--ion-grid-padding-sm,var(--ion-grid-padding,5px))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--ion-grid-padding-sm,var(--ion-grid-padding,5px));padding-inline-start:var(--ion-grid-padding-sm,var(--ion-grid-padding,5px));-webkit-padding-end:var(--ion-grid-padding-sm,var(--ion-grid-padding,5px));padding-inline-end:var(--ion-grid-padding-sm,var(--ion-grid-padding,5px))}}}\@media (min-width:768px){:host{padding-left:var(--ion-grid-padding-md,var(--ion-grid-padding,5px));padding-right:var(--ion-grid-padding-md,var(--ion-grid-padding,5px));padding-top:var(--ion-grid-padding-md,var(--ion-grid-padding,5px));padding-bottom:var(--ion-grid-padding-md,var(--ion-grid-padding,5px))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--ion-grid-padding-md,var(--ion-grid-padding,5px));padding-inline-start:var(--ion-grid-padding-md,var(--ion-grid-padding,5px));-webkit-padding-end:var(--ion-grid-padding-md,var(--ion-grid-padding,5px));padding-inline-end:var(--ion-grid-padding-md,var(--ion-grid-padding,5px))}}}\@media (min-width:992px){:host{padding-left:var(--ion-grid-padding-lg,var(--ion-grid-padding,5px));padding-right:var(--ion-grid-padding-lg,var(--ion-grid-padding,5px));padding-top:var(--ion-grid-padding-lg,var(--ion-grid-padding,5px));padding-bottom:var(--ion-grid-padding-lg,var(--ion-grid-padding,5px))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--ion-grid-padding-lg,var(--ion-grid-padding,5px));padding-inline-start:var(--ion-grid-padding-lg,var(--ion-grid-padding,5px));-webkit-padding-end:var(--ion-grid-padding-lg,var(--ion-grid-padding,5px));padding-inline-end:var(--ion-grid-padding-lg,var(--ion-grid-padding,5px))}}}\@media (min-width:1200px){:host{padding-left:var(--ion-grid-padding-xl,var(--ion-grid-padding,5px));padding-right:var(--ion-grid-padding-xl,var(--ion-grid-padding,5px));padding-top:var(--ion-grid-padding-xl,var(--ion-grid-padding,5px));padding-bottom:var(--ion-grid-padding-xl,var(--ion-grid-padding,5px))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--ion-grid-padding-xl,var(--ion-grid-padding,5px));padding-inline-start:var(--ion-grid-padding-xl,var(--ion-grid-padding,5px));-webkit-padding-end:var(--ion-grid-padding-xl,var(--ion-grid-padding,5px));padding-inline-end:var(--ion-grid-padding-xl,var(--ion-grid-padding,5px));margin-left:unset;margin-right:unset;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto}}}:host(.grid-fixed){width:var(--ion-grid-width-xs,var(--ion-grid-width,100%));max-width:100%}\@media (min-width:576px){:host(.grid-fixed){width:var(--ion-grid-width-sm,var(--ion-grid-width,540px))}}\@media (min-width:768px){:host(.grid-fixed){width:var(--ion-grid-width-md,var(--ion-grid-width,720px))}}\@media (min-width:992px){:host(.grid-fixed){width:var(--ion-grid-width-lg,var(--ion-grid-width,960px))}}\@media (min-width:1200px){:host(.grid-fixed){width:var(--ion-grid-width-xl,var(--ion-grid-width,1140px))}}:host([no-padding]),:host([no-padding]) ::slotted(ion-col){padding-left:0;padding-right:0;padding-top:0;padding-bottom:0}";
         }
       }]);
 
-      return InfiniteScrollContent;
+      return Grid;
+    }();
+
+    var Row = /*#__PURE__*/function () {
+      function Row(hostRef) {
+        _classCallCheck(this, Row);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+      }
+
+      _createClass(Row, [{
+        key: "render",
+        value: function render() {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            class: Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this)
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
+        }
+      }], [{
+        key: "style",
+        get: function get() {
+          return ":host{display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}";
+        }
+      }]);
+
+      return Row;
     }();
     /***/
 

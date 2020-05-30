@@ -6,43 +6,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[11], {
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/search-ride/search-ride.page.html":
-  /*!***********************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/search-ride/search-ride.page.html ***!
-    \***********************************************************************************************/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html":
+  /*!***********************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html ***!
+    \***********************************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppPagesSearchRideSearchRidePageHtml(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesLoginLoginPageHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>search-ride</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <style>\n    .map {\n      height: 80% !important;\n    } \n  </style>\n  <div #mapElement class=\"map\"></div> \n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons> \n  </ion-toolbar>\n</ion-header>\n \n<ion-content padding class=\"animated fadeIn login auth-page\">\n  <div class=\"login-content\">\n\n    <!-- Logo -->\n    <div padding-horizontal text-center class=\"animated fadeInDown\">\n      <div class=\"logo\"></div>\n      <h2 ion-text class=\"text-primary\">\n        <strong>Login</strong> \n      </h2>\n    </div>\n\n    <!-- Login form -->\n    <form class=\"list-form\">\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name=\"mail\" item-start class=\"text-primary\"></ion-icon>\n          Email\n        </ion-label>\n        <ion-input [(ngModel)]=\"username\" name=\"username\" type=\"email\"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name=\"lock\" item-start class=\"text-primary\"></ion-icon>\n          Password\n        </ion-label>\n        <ion-input [(ngModel)]=\"password\" type=\"password\" name=\"password\"></ion-input>\n      </ion-item>\n    </form>\n\n    <p text-right ion-text color=\"secondary\" tappable (click)=\"forgotPass()\"><strong>Forgot Password?</strong></p>\n\n    <div>\n      <button ion-button icon-start block color=\"dark\" tappable (click)=\"login()\">\n        <ion-icon name=\"log-in\"></ion-icon>\n        {{ \"login.sing.in\" | translate }}      </button>\n    </div>\n   </div>\n</ion-content>\n";
     /***/
   },
 
   /***/
-  "./src/app/pages/search-ride/search-ride-routing.module.ts":
-  /*!*****************************************************************!*\
-    !*** ./src/app/pages/search-ride/search-ride-routing.module.ts ***!
-    \*****************************************************************/
+  "./src/app/pages/login/login-routing.module.ts":
+  /*!*****************************************************!*\
+    !*** ./src/app/pages/login/login-routing.module.ts ***!
+    \*****************************************************/
 
-  /*! exports provided: SearchRidePageRoutingModule */
+  /*! exports provided: LoginPageRoutingModule */
 
   /***/
-  function srcAppPagesSearchRideSearchRideRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesLoginLoginRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "SearchRidePageRoutingModule", function () {
-      return SearchRidePageRoutingModule;
+    __webpack_require__.d(__webpack_exports__, "LoginPageRoutingModule", function () {
+      return LoginPageRoutingModule;
     });
     /* harmony import */
 
@@ -65,44 +65,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _search_ride_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./search-ride.page */
-    "./src/app/pages/search-ride/search-ride.page.ts");
+    var _login_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./login.page */
+    "./src/app/pages/login/login.page.ts");
 
     var routes = [{
       path: '',
-      component: _search_ride_page__WEBPACK_IMPORTED_MODULE_3__["SearchRidePage"]
+      component: _login_page__WEBPACK_IMPORTED_MODULE_3__["LoginPage"]
     }];
 
-    var SearchRidePageRoutingModule = function SearchRidePageRoutingModule() {
-      _classCallCheck(this, SearchRidePageRoutingModule);
+    var LoginPageRoutingModule = function LoginPageRoutingModule() {
+      _classCallCheck(this, LoginPageRoutingModule);
     };
 
-    SearchRidePageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+    LoginPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })], SearchRidePageRoutingModule);
+    })], LoginPageRoutingModule);
     /***/
   },
 
   /***/
-  "./src/app/pages/search-ride/search-ride.module.ts":
-  /*!*********************************************************!*\
-    !*** ./src/app/pages/search-ride/search-ride.module.ts ***!
-    \*********************************************************/
+  "./src/app/pages/login/login.module.ts":
+  /*!*********************************************!*\
+    !*** ./src/app/pages/login/login.module.ts ***!
+    \*********************************************/
 
-  /*! exports provided: SearchRidePageModule */
+  /*! exports provided: LoginPageModule */
 
   /***/
-  function srcAppPagesSearchRideSearchRideModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesLoginLoginModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "SearchRidePageModule", function () {
-      return SearchRidePageModule;
+    __webpack_require__.d(__webpack_exports__, "LoginPageModule", function () {
+      return LoginPageModule;
     });
     /* harmony import */
 
@@ -133,69 +133,75 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    "./node_modules/@ionic/angular/dist/fesm5.js");
     /* harmony import */
 
 
-    var _search_ride_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./search-ride-routing.module */
-    "./src/app/pages/search-ride/search-ride-routing.module.ts");
+    var _login_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./login-routing.module */
+    "./src/app/pages/login/login-routing.module.ts");
     /* harmony import */
 
 
-    var _search_ride_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./search-ride.page */
-    "./src/app/pages/search-ride/search-ride.page.ts");
+    var _login_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./login.page */
+    "./src/app/pages/login/login.page.ts");
+    /* harmony import */
 
-    var SearchRidePageModule = function SearchRidePageModule() {
-      _classCallCheck(this, SearchRidePageModule);
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+    var LoginPageModule = function LoginPageModule() {
+      _classCallCheck(this, LoginPageModule);
     };
 
-    SearchRidePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _search_ride_routing_module__WEBPACK_IMPORTED_MODULE_5__["SearchRidePageRoutingModule"]],
-      declarations: [_search_ride_page__WEBPACK_IMPORTED_MODULE_6__["SearchRidePage"]]
-    })], SearchRidePageModule);
+    LoginPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"], _login_routing_module__WEBPACK_IMPORTED_MODULE_5__["LoginPageRoutingModule"]],
+      declarations: [_login_page__WEBPACK_IMPORTED_MODULE_6__["LoginPage"]]
+    })], LoginPageModule);
     /***/
   },
 
   /***/
-  "./src/app/pages/search-ride/search-ride.page.scss":
-  /*!*********************************************************!*\
-    !*** ./src/app/pages/search-ride/search-ride.page.scss ***!
-    \*********************************************************/
+  "./src/app/pages/login/login.page.scss":
+  /*!*********************************************!*\
+    !*** ./src/app/pages/login/login.page.scss ***!
+    \*********************************************/
 
   /*! exports provided: default */
 
   /***/
-  function srcAppPagesSearchRideSearchRidePageScss(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesLoginLoginPageScss(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3NlYXJjaC1yaWRlL3NlYXJjaC1yaWRlLnBhZ2Uuc2NzcyJ9 */";
+    __webpack_exports__["default"] = "ion-spinner {\n  -webkit-transform: scale(4);\n          transform: scale(4);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9maWxpcC52dWtvdmljL0RldmVsb3BtZW50L2NoZWNrZml0LW1vYmlsZS9tb2JpbGVfYXBwL3NyYy9hcHAvcGFnZXMvbG9naW4vbG9naW4ucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9sb2dpbi9sb2dpbi5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSwyQkFBQTtVQUFBLG1CQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9sb2dpbi9sb2dpbi5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24tc3Bpbm5lciB7XG4gICAgdHJhbnNmb3JtOiBzY2FsZSg0KTtcbn0iLCJpb24tc3Bpbm5lciB7XG4gIHRyYW5zZm9ybTogc2NhbGUoNCk7XG59Il19 */";
     /***/
   },
 
   /***/
-  "./src/app/pages/search-ride/search-ride.page.ts":
-  /*!*******************************************************!*\
-    !*** ./src/app/pages/search-ride/search-ride.page.ts ***!
-    \*******************************************************/
+  "./src/app/pages/login/login.page.ts":
+  /*!*******************************************!*\
+    !*** ./src/app/pages/login/login.page.ts ***!
+    \*******************************************/
 
-  /*! exports provided: SearchRidePage */
+  /*! exports provided: LoginPage */
 
   /***/
-  function srcAppPagesSearchRideSearchRidePageTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesLoginLoginPageTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "SearchRidePage", function () {
-      return SearchRidePage;
+    __webpack_require__.d(__webpack_exports__, "LoginPage", function () {
+      return LoginPage;
     });
     /* harmony import */
 
@@ -212,62 +218,66 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _services_socket_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ../../services/socket.service */
-    "./src/app/services/socket.service.ts");
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
 
-    var SearchRidePage = /*#__PURE__*/function () {
-      function SearchRidePage(socketService) {
-        _classCallCheck(this, SearchRidePage);
 
-        this.socketService = socketService;
-        socketService.send("/server-receiver", {
-          type: "customer",
-          messageType: "DRIVE_REQUEST",
-          fromLat: "45.333",
-          fromLong: "16.444",
-          toLat: "45.333",
-          toLong: "16.444"
-        });
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../app.component */
+    "./src/app/app.component.ts");
+
+    var LoginPage = /*#__PURE__*/function () {
+      function LoginPage(storage, router, appCompoent) {
+        _classCallCheck(this, LoginPage);
+
+        this.storage = storage;
+        this.router = router;
+        this.appCompoent = appCompoent;
       }
 
-      _createClass(SearchRidePage, [{
-        key: "ngAfterContentInit",
-        value: function ngAfterContentInit() {
-          this.map = new google.maps.Map(this.mapElement.nativeElement, {
-            center: {
-              lat: -34.397,
-              lng: 150.644
-            },
-            zoom: 8
-          });
-        }
-      }, {
+      _createClass(LoginPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {}
+      }, {
+        key: "login",
+        value: function login() {
+          this.appCompoent.isUserLoggedIn = true;
+          this.storage.set("username", this.username);
+          this.router.navigate(['/driver-homepage']);
+          location.reload();
+        }
       }]);
 
-      return SearchRidePage;
+      return LoginPage;
     }();
 
-    SearchRidePage.ctorParameters = function () {
+    LoginPage.ctorParameters = function () {
       return [{
-        type: _services_socket_service__WEBPACK_IMPORTED_MODULE_2__["SocketService"]
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
       }];
     };
 
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])("mapElement", {
-      static: true
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)], SearchRidePage.prototype, "mapElement", void 0);
-    SearchRidePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: "app-search-ride",
+    LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-login',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./search-ride.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/search-ride/search-ride.page.html")).default,
+      /*! raw-loader!./login.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html")).default,
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./search-ride.page.scss */
-      "./src/app/pages/search-ride/search-ride.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_socket_service__WEBPACK_IMPORTED_MODULE_2__["SocketService"]])], SearchRidePage);
+      /*! ./login.page.scss */
+      "./src/app/pages/login/login.page.scss")).default]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]])], LoginPage);
     /***/
   }
 }]);

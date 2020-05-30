@@ -1,391 +1,668 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[15],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/ion-alert-md.entry.js":
-/*!*****************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/ion-alert-md.entry.js ***!
-  \*****************************************************************/
-/*! exports provided: ion_alert */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ "./node_modules/@ionic/core/dist/esm/css-shim-206ea950-3169f23e.js":
+/*!*************************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/css-shim-206ea950-3169f23e.js ***!
+  \*************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_alert", function() { return Alert; });
-/* harmony import */ var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-0a8d4d2e.js */ "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
-/* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
-/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
-/* harmony import */ var _animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animation-56279521.js */ "./node_modules/@ionic/core/dist/esm/animation-56279521.js");
-/* harmony import */ var _hardware_back_button_1ed0083a_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./hardware-back-button-1ed0083a.js */ "./node_modules/@ionic/core/dist/esm/hardware-back-button-1ed0083a.js");
-/* harmony import */ var _overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./overlays-e336664a.js */ "./node_modules/@ionic/core/dist/esm/overlays-e336664a.js");
-/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
-/* harmony import */ var _index_3476b023_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./index-3476b023.js */ "./node_modules/@ionic/core/dist/esm/index-3476b023.js");
-
-
-
-
-
-
-
-
-
+/*
+Extremely simple css parser. Intended to be not more than what we need
+and definitely not necessarily correct =).
+*/
+/** @unrestricted */
+var StyleNode = /** @class */ (function () {
+    function StyleNode() {
+        this.start = 0;
+        this.end = 0;
+        this.previous = null;
+        this.parent = null;
+        this.rules = null;
+        this.parsedCssText = '';
+        this.cssText = '';
+        this.atRule = false;
+        this.type = 0;
+        this.keyframesName = '';
+        this.selector = '';
+        this.parsedSelector = '';
+    }
+    return StyleNode;
+}());
+// given a string of css, return a simple rule tree
 /**
- * iOS Alert Enter Animation
+ * @param {string} text
+ * @return {StyleNode}
  */
-const iosEnterAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const backdropAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const wrapperAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    backdropAnimation
-        .addElement(baseEl.querySelector('ion-backdrop'))
-        .fromTo('opacity', 0.01, 'var(--backdrop-opacity)');
-    wrapperAnimation
-        .addElement(baseEl.querySelector('.alert-wrapper'))
-        .keyframes([
-        { offset: 0, opacity: '0.01', transform: 'scale(1.1)' },
-        { offset: 1, opacity: '1', transform: 'scale(1)' }
-    ]);
-    return baseAnimation
-        .addElement(baseEl)
-        .easing('ease-in-out')
-        .duration(200)
-        .addAnimation([backdropAnimation, wrapperAnimation]);
-};
-
+function parse(text) {
+    text = clean(text);
+    return parseCss(lex(text), text);
+}
+// remove stuff we don't care about that may hinder parsing
 /**
- * iOS Alert Leave Animation
+ * @param {string} cssText
+ * @return {string}
  */
-const iosLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const backdropAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const wrapperAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    backdropAnimation
-        .addElement(baseEl.querySelector('ion-backdrop'))
-        .fromTo('opacity', 'var(--backdrop-opacity)', 0);
-    wrapperAnimation
-        .addElement(baseEl.querySelector('.alert-wrapper'))
-        .keyframes([
-        { offset: 0, opacity: 0.99, transform: 'scale(1)' },
-        { offset: 1, opacity: 0, transform: 'scale(0.9)' }
-    ]);
-    return baseAnimation
-        .addElement(baseEl)
-        .easing('ease-in-out')
-        .duration(200)
-        .addAnimation([backdropAnimation, wrapperAnimation]);
-};
-
+function clean(cssText) {
+    return cssText.replace(RX.comments, '').replace(RX.port, '');
+}
+// super simple {...} lexer that returns a node tree
 /**
- * Md Alert Enter Animation
+ * @param {string} text
+ * @return {StyleNode}
  */
-const mdEnterAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const backdropAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const wrapperAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    backdropAnimation
-        .addElement(baseEl.querySelector('ion-backdrop'))
-        .fromTo('opacity', 0.01, 'var(--backdrop-opacity)');
-    wrapperAnimation
-        .addElement(baseEl.querySelector('.alert-wrapper'))
-        .keyframes([
-        { offset: 0, opacity: '0.01', transform: 'scale(0.9)' },
-        { offset: 1, opacity: '1', transform: 'scale(1)' }
-    ]);
-    return baseAnimation
-        .addElement(baseEl)
-        .easing('ease-in-out')
-        .duration(150)
-        .addAnimation([backdropAnimation, wrapperAnimation]);
-};
-
-/**
- * Md Alert Leave Animation
- */
-const mdLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const backdropAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const wrapperAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    backdropAnimation
-        .addElement(baseEl.querySelector('ion-backdrop'))
-        .fromTo('opacity', 'var(--backdrop-opacity)', 0);
-    wrapperAnimation
-        .addElement(baseEl.querySelector('.alert-wrapper'))
-        .fromTo('opacity', 0.99, 0);
-    return baseAnimation
-        .addElement(baseEl)
-        .easing('ease-in-out')
-        .duration(150)
-        .addAnimation([backdropAnimation, wrapperAnimation]);
-};
-
-const Alert = class {
-    constructor(hostRef) {
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.processedInputs = [];
-        this.processedButtons = [];
-        this.presented = false;
-        this.mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-        /**
-         * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
-         */
-        this.keyboardClose = true;
-        /**
-         * Array of buttons to be added to the alert.
-         */
-        this.buttons = [];
-        /**
-         * Array of input to show in the alert.
-         */
-        this.inputs = [];
-        /**
-         * If `true`, the alert will be dismissed when the backdrop is clicked.
-         */
-        this.backdropDismiss = true;
-        /**
-         * If `true`, the alert will be translucent.
-         * Only applies when the mode is `"ios"` and the device supports
-         * [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
-         */
-        this.translucent = false;
-        /**
-         * If `true`, the alert will animate.
-         */
-        this.animated = true;
-        this.onBackdropTap = () => {
-            this.dismiss(undefined, _overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["B"]);
-        };
-        this.dispatchCancelHandler = (ev) => {
-            const role = ev.detail.role;
-            if (Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["i"])(role)) {
-                const cancelButton = this.processedButtons.find(b => b.role === 'cancel');
-                this.callButtonHandler(cancelButton);
+function lex(text) {
+    var root = new StyleNode();
+    root['start'] = 0;
+    root['end'] = text.length;
+    var n = root;
+    for (var i = 0, l = text.length; i < l; i++) {
+        if (text[i] === OPEN_BRACE) {
+            if (!n['rules']) {
+                n['rules'] = [];
             }
-        };
-        Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["d"])(this.el);
-        this.didPresent = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionAlertDidPresent", 7);
-        this.willPresent = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionAlertWillPresent", 7);
-        this.willDismiss = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionAlertWillDismiss", 7);
-        this.didDismiss = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionAlertDidDismiss", 7);
-    }
-    buttonsChanged() {
-        const buttons = this.buttons;
-        this.processedButtons = buttons.map(btn => {
-            return (typeof btn === 'string')
-                ? { text: btn, role: btn.toLowerCase() === 'cancel' ? 'cancel' : undefined }
-                : btn;
-        });
-    }
-    inputsChanged() {
-        const inputs = this.inputs;
-        // An alert can be created with several different inputs. Radios,
-        // checkboxes and inputs are all accepted, but they cannot be mixed.
-        const inputTypes = new Set(inputs.map(i => i.type));
-        if (inputTypes.has('checkbox') && inputTypes.has('radio')) {
-            console.warn(`Alert cannot mix input types: ${(Array.from(inputTypes.values()).join('/'))}. Please see alert docs for more info.`);
+            var p = n;
+            var previous = p['rules'][p['rules'].length - 1] || null;
+            n = new StyleNode();
+            n['start'] = i + 1;
+            n['parent'] = p;
+            n['previous'] = previous;
+            p['rules'].push(n);
         }
-        this.inputType = inputTypes.values().next().value;
-        this.processedInputs = inputs.map((i, index) => ({
-            type: i.type || 'text',
-            name: i.name || `${index}`,
-            placeholder: i.placeholder || '',
-            value: i.value,
-            label: i.label,
-            checked: !!i.checked,
-            disabled: !!i.disabled,
-            id: i.id || `alert-input-${this.overlayIndex}-${index}`,
-            handler: i.handler,
-            min: i.min,
-            max: i.max
-        }));
-    }
-    componentWillLoad() {
-        this.inputsChanged();
-        this.buttonsChanged();
-    }
-    /**
-     * Present the alert overlay after it has been created.
-     */
-    present() {
-        return Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["e"])(this, 'alertEnter', iosEnterAnimation, mdEnterAnimation);
-    }
-    /**
-     * Dismiss the alert overlay after it has been presented.
-     *
-     * @param data Any data to emit in the dismiss events.
-     * @param role The role of the element that is dismissing the alert.
-     * This can be useful in a button handler for determining which button was
-     * clicked to dismiss the alert.
-     * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
-     */
-    dismiss(data, role) {
-        return Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["f"])(this, data, role, 'alertLeave', iosLeaveAnimation, mdLeaveAnimation);
-    }
-    /**
-     * Returns a promise that resolves when the alert did dismiss.
-     */
-    onDidDismiss() {
-        return Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.el, 'ionAlertDidDismiss');
-    }
-    /**
-     * Returns a promise that resolves when the alert will dismiss.
-     */
-    onWillDismiss() {
-        return Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.el, 'ionAlertWillDismiss');
-    }
-    rbClick(selectedInput) {
-        for (const input of this.processedInputs) {
-            input.checked = input === selectedInput;
+        else if (text[i] === CLOSE_BRACE) {
+            n['end'] = i + 1;
+            n = n['parent'] || root;
         }
-        this.activeId = selectedInput.id;
-        Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["s"])(selectedInput.handler, selectedInput);
-        this.el.forceUpdate();
     }
-    cbClick(selectedInput) {
-        selectedInput.checked = !selectedInput.checked;
-        Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["s"])(selectedInput.handler, selectedInput);
-        this.el.forceUpdate();
-    }
-    buttonClick(button) {
-        const role = button.role;
-        const values = this.getValues();
-        if (Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["i"])(role)) {
-            return this.dismiss({ values }, role);
-        }
-        const returnData = this.callButtonHandler(button, values);
-        if (returnData !== false) {
-            return this.dismiss(Object.assign({ values }, returnData), button.role);
-        }
-        return Promise.resolve(false);
-    }
-    callButtonHandler(button, data) {
-        if (button && button.handler) {
-            // a handler has been provided, execute it
-            // pass the handler the values from the inputs
-            const returnData = Object(_overlays_e336664a_js__WEBPACK_IMPORTED_MODULE_5__["s"])(button.handler, data);
-            if (returnData === false) {
-                // if the return value of the handler is false then do not dismiss
-                return false;
+    return root;
+}
+// add selectors/cssText to node tree
+/**
+ * @param {StyleNode} node
+ * @param {string} text
+ * @return {StyleNode}
+ */
+function parseCss(node, text) {
+    var t = text.substring(node['start'], node['end'] - 1);
+    node['parsedCssText'] = node['cssText'] = t.trim();
+    if (node.parent) {
+        var ss = node.previous ? node.previous['end'] : node.parent['start'];
+        t = text.substring(ss, node['start'] - 1);
+        t = _expandUnicodeEscapes(t);
+        t = t.replace(RX.multipleSpaces, ' ');
+        // TODO(sorvell): ad hoc; make selector include only after last ;
+        // helps with mixin syntax
+        t = t.substring(t.lastIndexOf(';') + 1);
+        var s = node['parsedSelector'] = node['selector'] = t.trim();
+        node['atRule'] = (s.indexOf(AT_START) === 0);
+        // note, support a subset of rule types...
+        if (node['atRule']) {
+            if (s.indexOf(MEDIA_START) === 0) {
+                node['type'] = types.MEDIA_RULE;
             }
-            if (typeof returnData === 'object') {
-                return returnData;
+            else if (s.match(RX.keyframesRule)) {
+                node['type'] = types.KEYFRAMES_RULE;
+                node['keyframesName'] = node['selector'].split(RX.multipleSpaces).pop();
             }
         }
-        return {};
-    }
-    getValues() {
-        if (this.processedInputs.length === 0) {
-            // this is an alert without any options/inputs at all
-            return undefined;
-        }
-        if (this.inputType === 'radio') {
-            // this is an alert with radio buttons (single value select)
-            // return the one value which is checked, otherwise undefined
-            const checkedInput = this.processedInputs.find(i => !!i.checked);
-            return checkedInput ? checkedInput.value : undefined;
-        }
-        if (this.inputType === 'checkbox') {
-            // this is an alert with checkboxes (multiple value select)
-            // return an array of all the checked values
-            return this.processedInputs.filter(i => i.checked).map(i => i.value);
-        }
-        // this is an alert with text inputs
-        // return an object of all the values with the input name as the key
-        const values = {};
-        this.processedInputs.forEach(i => {
-            values[i.name] = i.value || '';
-        });
-        return values;
-    }
-    renderAlertInputs(labelledBy) {
-        switch (this.inputType) {
-            case 'checkbox': return this.renderCheckbox(labelledBy);
-            case 'radio': return this.renderRadio(labelledBy);
-            default: return this.renderInput(labelledBy);
-        }
-    }
-    renderCheckbox(labelledby) {
-        const inputs = this.processedInputs;
-        const mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-        if (inputs.length === 0) {
-            return null;
-        }
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-checkbox-group", "aria-labelledby": labelledby }, inputs.map(i => (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", onClick: () => this.cbClick(i), "aria-checked": `${i.checked}`, id: i.id, disabled: i.disabled, tabIndex: 0, role: "checkbox", class: {
-                'alert-tappable': true,
-                'alert-checkbox': true,
-                'alert-checkbox-button': true,
-                'ion-focusable': true,
-                'alert-checkbox-button-disabled': i.disabled || false
-            } }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-button-inner" }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-checkbox-icon" }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-checkbox-inner" })), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-checkbox-label" }, i.label)), mode === 'md' && Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null))))));
-    }
-    renderRadio(labelledby) {
-        const inputs = this.processedInputs;
-        if (inputs.length === 0) {
-            return null;
-        }
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-radio-group", role: "radiogroup", "aria-labelledby": labelledby, "aria-activedescendant": this.activeId }, inputs.map(i => (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", onClick: () => this.rbClick(i), "aria-checked": `${i.checked}`, disabled: i.disabled, id: i.id, tabIndex: 0, class: {
-                'alert-radio-button': true,
-                'alert-tappable': true,
-                'alert-radio': true,
-                'ion-focusable': true,
-                'alert-radio-button-disabled': i.disabled || false
-            }, role: "radio" }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-button-inner" }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-radio-icon" }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-radio-inner" })), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-radio-label" }, i.label)))))));
-    }
-    renderInput(labelledby) {
-        const inputs = this.processedInputs;
-        if (inputs.length === 0) {
-            return null;
-        }
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-input-group", "aria-labelledby": labelledby }, inputs.map(i => {
-            if (i.type === 'textarea') {
-                return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-input-wrapper" }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("textarea", { placeholder: i.placeholder, value: i.value, onInput: e => i.value = e.target.value, id: i.id, disabled: i.disabled, tabIndex: 0, class: {
-                        'alert-input': true,
-                        'alert-input-disabled': i.disabled || false
-                    } })));
+        else {
+            if (s.indexOf(VAR_START) === 0) {
+                node['type'] = types.MIXIN_RULE;
             }
             else {
-                return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-input-wrapper" }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("input", { placeholder: i.placeholder, value: i.value, type: i.type, min: i.min, max: i.max, onInput: e => i.value = e.target.value, id: i.id, disabled: i.disabled, tabIndex: 0, class: {
-                        'alert-input': true,
-                        'alert-input-disabled': i.disabled || false
-                    } })));
+                node['type'] = types.STYLE_RULE;
             }
-        })));
+        }
     }
-    renderAlertButtons() {
-        const buttons = this.processedButtons;
-        const mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-        const alertButtonGroupClass = {
-            'alert-button-group': true,
-            'alert-button-group-vertical': buttons.length > 2
+    var r$ = node['rules'];
+    if (r$) {
+        for (var i = 0, l = r$.length, r = void 0; (i < l) && (r = r$[i]); i++) {
+            parseCss(r, text);
+        }
+    }
+    return node;
+}
+/**
+ * conversion of sort unicode escapes with spaces like `\33 ` (and longer) into
+ * expanded form that doesn't require trailing space `\000033`
+ * @param {string} s
+ * @return {string}
+ */
+function _expandUnicodeEscapes(s) {
+    return s.replace(/\\([0-9a-f]{1,6})\s/gi, function () {
+        var code = arguments[1], repeat = 6 - code.length;
+        while (repeat--) {
+            code = '0' + code;
+        }
+        return '\\' + code;
+    });
+}
+/** @enum {number} */
+var types = {
+    STYLE_RULE: 1,
+    KEYFRAMES_RULE: 7,
+    MEDIA_RULE: 4,
+    MIXIN_RULE: 1000
+};
+var OPEN_BRACE = '{';
+var CLOSE_BRACE = '}';
+// helper regexp's
+var RX = {
+    comments: /\/\*[^*]*\*+([^/*][^*]*\*+)*\//gim,
+    port: /@import[^;]*;/gim,
+    customProp: /(?:^[^;\-\s}]+)?--[^;{}]*?:[^{};]*?(?:[;\n]|$)/gim,
+    mixinProp: /(?:^[^;\-\s}]+)?--[^;{}]*?:[^{};]*?{[^}]*?}(?:[;\n]|$)?/gim,
+    mixinApply: /@apply\s*\(?[^);]*\)?\s*(?:[;\n]|$)?/gim,
+    varApply: /[^;:]*?:[^;]*?var\([^;]*\)(?:[;\n]|$)?/gim,
+    keyframesRule: /^@[^\s]*keyframes/,
+    multipleSpaces: /\s+/g
+};
+var VAR_START = '--';
+var MEDIA_START = '@media';
+var AT_START = '@';
+function findRegex(regex, cssText, offset) {
+    regex['lastIndex'] = 0;
+    var r = cssText.substring(offset).match(regex);
+    if (r) {
+        var start = offset + r['index'];
+        return {
+            start: start,
+            end: start + r[0].length
         };
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: alertButtonGroupClass }, buttons.map(button => Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", class: buttonClass(button), tabIndex: 0, onClick: () => this.buttonClick(button) }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", { class: "alert-button-inner" }, button.text), mode === 'md' && Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)))));
     }
-    render() {
-        const { overlayIndex, header, subHeader } = this;
-        const mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-        const hdrId = `alert-${overlayIndex}-hdr`;
-        const subHdrId = `alert-${overlayIndex}-sub-hdr`;
-        const msgId = `alert-${overlayIndex}-msg`;
-        let labelledById;
-        if (header !== undefined) {
-            labelledById = hdrId;
-        }
-        else if (subHeader !== undefined) {
-            labelledById = subHdrId;
-        }
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "dialog", "aria-modal": "true", style: {
-                zIndex: `${20000 + overlayIndex}`,
-            }, class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__["g"])(this.cssClass)), { [mode]: true, 'alert-translucent': this.translucent }), onIonAlertWillDismiss: this.dispatchCancelHandler, onIonBackdropTap: this.onBackdropTap }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", { tappable: this.backdropDismiss }), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-wrapper" }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "alert-head" }, header && Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("h2", { id: hdrId, class: "alert-title" }, header), subHeader && Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("h2", { id: subHdrId, class: "alert-sub-title" }, subHeader)), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { id: msgId, class: "alert-message", innerHTML: Object(_index_3476b023_js__WEBPACK_IMPORTED_MODULE_7__["s"])(this.message) }), this.renderAlertInputs(labelledById), this.renderAlertButtons())));
+    return null;
+}
+var VAR_USAGE_START = /\bvar\(/;
+var VAR_ASSIGN_START = /\B--[\w-]+\s*:/;
+var COMMENTS = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//gim;
+var TRAILING_LINES = /^[\t ]+\n/gm;
+function resolveVar(props, prop, fallback) {
+    if (props[prop]) {
+        return props[prop];
     }
-    get el() { return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
-    static get watchers() { return {
-        "buttons": ["buttonsChanged"],
-        "inputs": ["inputsChanged"]
-    }; }
-    static get style() { return ".sc-ion-alert-md-h{--min-width:250px;--width:auto;--min-height:auto;--height:auto;--max-height:90%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;left:0;right:0;top:0;bottom:0;display:-ms-flexbox;display:flex;position:fixed;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;font-family:var(--ion-font-family,inherit);contain:strict;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1001}.overlay-hidden.sc-ion-alert-md-h{display:none}.alert-top.sc-ion-alert-md-h{padding-top:50px;-ms-flex-align:start;align-items:flex-start}.alert-wrapper.sc-ion-alert-md{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);background:var(--background);contain:content;opacity:0;z-index:10}.alert-title.sc-ion-alert-md{margin-top:0}.alert-sub-title.sc-ion-alert-md, .alert-title.sc-ion-alert-md{margin-left:0;margin-right:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0}.alert-sub-title.sc-ion-alert-md{margin-top:5px;font-weight:400}.alert-message.sc-ion-alert-md{-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-overflow-scrolling:touch;overflow-y:auto;overscroll-behavior-y:contain}.alert-checkbox-group.sc-ion-alert-md::-webkit-scrollbar, .alert-message.sc-ion-alert-md::-webkit-scrollbar, .alert-radio-group.sc-ion-alert-md::-webkit-scrollbar{display:none}.alert-input.sc-ion-alert-md{padding-left:0;padding-right:0;padding-top:10px;padding-bottom:10px;width:100%;border:0;background:inherit;font:inherit;-webkit-box-sizing:border-box;box-sizing:border-box}.alert-button-group.sc-ion-alert-md{display:-ms-flexbox;display:flex;-ms-flex-direction:row;flex-direction:row;width:100%}.alert-button-group-vertical.sc-ion-alert-md{-ms-flex-direction:column;flex-direction:column;-ms-flex-wrap:nowrap;flex-wrap:nowrap}.alert-button.sc-ion-alert-md{margin-right:0;display:block;border:0;font-size:14px;line-height:20px;z-index:0}.alert-button.ion-focused.sc-ion-alert-md, .alert-tappable.ion-focused.sc-ion-alert-md{background:var(--ion-color-step-100,#e6e6e6)}.alert-button-inner.sc-ion-alert-md{display:-ms-flexbox;display:flex;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%}.alert-checkbox-button-disabled.sc-ion-alert-md .alert-button-inner.sc-ion-alert-md, .alert-input-disabled.sc-ion-alert-md, .alert-radio-button-disabled.sc-ion-alert-md .alert-button-inner.sc-ion-alert-md{cursor:default;opacity:.5;pointer-events:none}.alert-tappable.sc-ion-alert-md{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;display:-ms-flexbox;display:flex;width:100%;border:0;background:transparent;font-size:inherit;line-height:normal;text-align:start;-webkit-appearance:none;-moz-appearance:none;appearance:none;contain:strict}.alert-button.sc-ion-alert-md, .alert-checkbox.sc-ion-alert-md, .alert-input.sc-ion-alert-md, .alert-radio.sc-ion-alert-md{outline:none}.alert-checkbox-icon.sc-ion-alert-md, .alert-checkbox-inner.sc-ion-alert-md, .alert-radio-icon.sc-ion-alert-md{-webkit-box-sizing:border-box;box-sizing:border-box}textarea.alert-input.sc-ion-alert-md{min-height:37px;resize:none}.sc-ion-alert-md-h{--background:var(--ion-overlay-background-color,var(--ion-background-color,#fff));--max-width:280px;--backdrop-opacity:var(--ion-backdrop-opacity,0.32);font-size:14px}.alert-wrapper.sc-ion-alert-md{border-radius:4px;-webkit-box-shadow:0 11px 15px -7px rgba(0,0,0,.2),0 24px 38px 3px rgba(0,0,0,.14),0 9px 46px 8px rgba(0,0,0,.12);box-shadow:0 11px 15px -7px rgba(0,0,0,.2),0 24px 38px 3px rgba(0,0,0,.14),0 9px 46px 8px rgba(0,0,0,.12)}.alert-head.sc-ion-alert-md{padding-left:23px;padding-right:23px;padding-top:20px;padding-bottom:15px;text-align:start}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.alert-head.sc-ion-alert-md{padding-left:unset;padding-right:unset;-webkit-padding-start:23px;padding-inline-start:23px;-webkit-padding-end:23px;padding-inline-end:23px}}.alert-title.sc-ion-alert-md{font-size:20px;font-weight:500}.alert-sub-title.sc-ion-alert-md, .alert-title.sc-ion-alert-md{color:var(--ion-text-color,#000)}.alert-sub-title.sc-ion-alert-md{font-size:16px}.alert-input-group.sc-ion-alert-md, .alert-message.sc-ion-alert-md{padding-left:24px;padding-right:24px;padding-top:20px;padding-bottom:20px;color:var(--ion-color-step-550,#737373)}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.alert-input-group.sc-ion-alert-md, .alert-message.sc-ion-alert-md{padding-left:unset;padding-right:unset;-webkit-padding-start:24px;padding-inline-start:24px;-webkit-padding-end:24px;padding-inline-end:24px}}.alert-message.sc-ion-alert-md{max-height:240px;font-size:16px}.alert-message.sc-ion-alert-md:empty{padding-left:0;padding-right:0;padding-top:0;padding-bottom:0}.alert-head.sc-ion-alert-md + .alert-message.sc-ion-alert-md{padding-top:0}.alert-input.sc-ion-alert-md{margin-left:0;margin-right:0;margin-top:5px;margin-bottom:5px;border-bottom:1px solid var(--ion-color-step-150,#d9d9d9);color:var(--ion-text-color,#000)}.alert-input.sc-ion-alert-md::-webkit-input-placeholder{color:var(--ion-placeholder-color,var(--ion-color-step-400,#999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-md::-moz-placeholder{color:var(--ion-placeholder-color,var(--ion-color-step-400,#999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-md:-ms-input-placeholder{color:var(--ion-placeholder-color,var(--ion-color-step-400,#999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-md::-ms-input-placeholder{color:var(--ion-placeholder-color,var(--ion-color-step-400,#999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-md::placeholder{color:var(--ion-placeholder-color,var(--ion-color-step-400,#999));font-family:inherit;font-weight:inherit}.alert-input.sc-ion-alert-md::-ms-clear{display:none}.alert-input.sc-ion-alert-md:focus{margin-bottom:4px;border-bottom:2px solid var(--ion-color-primary,#3880ff)}.alert-checkbox-group.sc-ion-alert-md, .alert-radio-group.sc-ion-alert-md{position:relative;max-height:240px;border-top:1px solid var(--ion-color-step-150,#d9d9d9);border-bottom:1px solid var(--ion-color-step-150,#d9d9d9);overflow:auto}.alert-tappable.sc-ion-alert-md{position:relative;height:48px;overflow:hidden}.alert-radio-label.sc-ion-alert-md{padding-left:52px;padding-right:26px;padding-top:13px;padding-bottom:13px;-ms-flex:1;flex:1;color:var(--ion-color-step-850,#262626);font-size:16px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.alert-radio-label.sc-ion-alert-md{padding-left:unset;padding-right:unset;-webkit-padding-start:52px;padding-inline-start:52px;-webkit-padding-end:26px;padding-inline-end:26px}}.alert-radio-icon.sc-ion-alert-md{left:26px;top:0;border-radius:50%;display:block;position:relative;width:20px;height:20px;border-width:2px;border-style:solid;border-color:var(--ion-color-step-550,#737373)}[dir=rtl].sc-ion-alert-md-h .alert-radio-icon.sc-ion-alert-md, [dir=rtl] .sc-ion-alert-md-h .alert-radio-icon.sc-ion-alert-md, [dir=rtl].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md{left:unset;right:unset;right:26px}.alert-radio-inner.sc-ion-alert-md{left:3px;top:3px;border-radius:50%;position:absolute;width:10px;height:10px;-webkit-transform:scale3d(0,0,0);transform:scale3d(0,0,0);-webkit-transition:-webkit-transform .28s cubic-bezier(.4,0,.2,1);transition:-webkit-transform .28s cubic-bezier(.4,0,.2,1);transition:transform .28s cubic-bezier(.4,0,.2,1);transition:transform .28s cubic-bezier(.4,0,.2,1),-webkit-transform .28s cubic-bezier(.4,0,.2,1);background-color:var(--ion-color-primary,#3880ff)}[dir=rtl].sc-ion-alert-md-h .alert-radio-inner.sc-ion-alert-md, [dir=rtl] .sc-ion-alert-md-h .alert-radio-inner.sc-ion-alert-md, [dir=rtl].sc-ion-alert-md .alert-radio-inner.sc-ion-alert-md{left:unset;right:unset;right:3px}[aria-checked=true].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md{color:var(--ion-color-step-850,#262626)}[aria-checked=true].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md{border-color:var(--ion-color-primary,#3880ff)}[aria-checked=true].sc-ion-alert-md .alert-radio-inner.sc-ion-alert-md{-webkit-transform:scaleX(1);transform:scaleX(1)}.alert-checkbox-label.sc-ion-alert-md{padding-left:53px;padding-right:26px;padding-top:13px;padding-bottom:13px;-ms-flex:1;flex:1;color:var(--ion-color-step-850,#262626);font-size:16px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.alert-checkbox-label.sc-ion-alert-md{padding-left:unset;padding-right:unset;-webkit-padding-start:53px;padding-inline-start:53px;-webkit-padding-end:26px;padding-inline-end:26px}}.alert-checkbox-icon.sc-ion-alert-md{left:26px;top:0;border-radius:2px;position:relative;width:16px;height:16px;border-width:2px;border-style:solid;border-color:var(--ion-color-step-550,#737373);contain:strict}[dir=rtl].sc-ion-alert-md-h .alert-checkbox-icon.sc-ion-alert-md, [dir=rtl] .sc-ion-alert-md-h .alert-checkbox-icon.sc-ion-alert-md, [dir=rtl].sc-ion-alert-md .alert-checkbox-icon.sc-ion-alert-md{left:unset;right:unset;right:26px}[aria-checked=true].sc-ion-alert-md .alert-checkbox-icon.sc-ion-alert-md{border-color:var(--ion-color-primary,#3880ff);background-color:var(--ion-color-primary,#3880ff)}[aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md{left:3px;top:0;position:absolute;width:6px;height:10px;-webkit-transform:rotate(45deg);transform:rotate(45deg);border-width:2px;border-top-width:0;border-left-width:0;border-style:solid;border-color:var(--ion-color-primary-contrast,#fff)}[dir=rtl].sc-ion-alert-md-h [aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md, [dir=rtl] .sc-ion-alert-md-h [aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md, [dir=rtl].sc-ion-alert-md [aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md{left:unset;right:unset;right:3px}.alert-button-group.sc-ion-alert-md{padding-left:8px;padding-right:8px;padding-top:8px;padding-bottom:8px;-webkit-box-sizing:border-box;box-sizing:border-box;-ms-flex-wrap:wrap-reverse;flex-wrap:wrap-reverse;-ms-flex-pack:end;justify-content:flex-end}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.alert-button-group.sc-ion-alert-md{padding-left:unset;padding-right:unset;-webkit-padding-start:8px;padding-inline-start:8px;-webkit-padding-end:8px;padding-inline-end:8px}}.alert-button.sc-ion-alert-md{border-radius:2px;margin-left:0;margin-right:8px;margin-top:0;margin-bottom:0;padding-left:10px;padding-right:10px;padding-top:10px;padding-bottom:10px;position:relative;background-color:transparent;color:var(--ion-color-primary,#3880ff);font-weight:500;text-align:end;text-transform:uppercase;overflow:hidden}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.alert-button.sc-ion-alert-md{margin-left:unset;margin-right:unset;-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:8px;margin-inline-end:8px;padding-left:unset;padding-right:unset;-webkit-padding-start:10px;padding-inline-start:10px;-webkit-padding-end:10px;padding-inline-end:10px}}.alert-button-inner.sc-ion-alert-md{-ms-flex-pack:end;justify-content:flex-end}"; }
-};
-const buttonClass = (button) => {
-    return Object.assign({ 'alert-button': true, 'ion-focusable': true, 'ion-activatable': true }, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_6__["g"])(button.cssClass));
-};
-
-
+    if (fallback) {
+        return executeTemplate(fallback, props);
+    }
+    return '';
+}
+function findVarEndIndex(cssText, offset) {
+    var count = 0;
+    var i = offset;
+    for (; i < cssText.length; i++) {
+        var c = cssText[i];
+        if (c === '(') {
+            count++;
+        }
+        else if (c === ')') {
+            count--;
+            if (count <= 0) {
+                return i + 1;
+            }
+        }
+    }
+    return i;
+}
+function parseVar(cssText, offset) {
+    var varPos = findRegex(VAR_USAGE_START, cssText, offset);
+    if (!varPos) {
+        return null;
+    }
+    var endVar = findVarEndIndex(cssText, varPos.start);
+    var varContent = cssText.substring(varPos.end, endVar - 1);
+    var _a = varContent.split(','), propName = _a[0], fallback = _a.slice(1);
+    return {
+        start: varPos.start,
+        end: endVar,
+        propName: propName.trim(),
+        fallback: fallback.length > 0 ? fallback.join(',').trim() : undefined
+    };
+}
+function compileVar(cssText, template, offset) {
+    var varMeta = parseVar(cssText, offset);
+    if (!varMeta) {
+        template.push(cssText.substring(offset, cssText.length));
+        return cssText.length;
+    }
+    var propName = varMeta.propName;
+    var fallback = varMeta.fallback != null ? compileTemplate(varMeta.fallback) : undefined;
+    template.push(cssText.substring(offset, varMeta.start), function (params) { return resolveVar(params, propName, fallback); });
+    return varMeta.end;
+}
+function executeTemplate(template, props) {
+    var final = '';
+    for (var i = 0; i < template.length; i++) {
+        var s = template[i];
+        final += (typeof s === 'string')
+            ? s
+            : s(props);
+    }
+    return final;
+}
+function findEndValue(cssText, offset) {
+    var onStr = false;
+    var double = false;
+    var i = offset;
+    for (; i < cssText.length; i++) {
+        var c = cssText[i];
+        if (onStr) {
+            if (double && c === '"') {
+                onStr = false;
+            }
+            if (!double && c === '\'') {
+                onStr = false;
+            }
+        }
+        else {
+            if (c === '"') {
+                onStr = true;
+                double = true;
+            }
+            else if (c === '\'') {
+                onStr = true;
+                double = false;
+            }
+            else if (c === ';') {
+                return i + 1;
+            }
+            else if (c === '}') {
+                return i;
+            }
+        }
+    }
+    return i;
+}
+function removeCustomAssigns(cssText) {
+    var final = '';
+    var offset = 0;
+    while (true) {
+        var assignPos = findRegex(VAR_ASSIGN_START, cssText, offset);
+        var start = assignPos ? assignPos.start : cssText.length;
+        final += cssText.substring(offset, start);
+        if (assignPos) {
+            offset = findEndValue(cssText, start);
+        }
+        else {
+            break;
+        }
+    }
+    return final;
+}
+function compileTemplate(cssText) {
+    var index = 0;
+    cssText = cssText.replace(COMMENTS, '');
+    cssText = removeCustomAssigns(cssText)
+        .replace(TRAILING_LINES, '');
+    var segments = [];
+    while (index < cssText.length) {
+        index = compileVar(cssText, segments, index);
+    }
+    return segments;
+}
+function resolveValues(selectors) {
+    var props = {};
+    selectors.forEach(function (selector) {
+        selector.declarations.forEach(function (dec) {
+            props[dec.prop] = dec.value;
+        });
+    });
+    var propsValues = {};
+    var entries = Object.entries(props);
+    var _loop_1 = function (i) {
+        var dirty = false;
+        entries.forEach(function (_a) {
+            var key = _a[0], value = _a[1];
+            var propValue = executeTemplate(value, propsValues);
+            if (propValue !== propsValues[key]) {
+                propsValues[key] = propValue;
+                dirty = true;
+            }
+        });
+        if (!dirty) {
+            return "break";
+        }
+    };
+    for (var i = 0; i < 10; i++) {
+        var state_1 = _loop_1();
+        if (state_1 === "break")
+            break;
+    }
+    return propsValues;
+}
+function getSelectors(root, index) {
+    if (index === void 0) { index = 0; }
+    if (!root.rules) {
+        return [];
+    }
+    var selectors = [];
+    root.rules
+        .filter(function (rule) { return rule.type === types.STYLE_RULE; })
+        .forEach(function (rule) {
+        var declarations = getDeclarations(rule.cssText);
+        if (declarations.length > 0) {
+            rule.parsedSelector.split(',').forEach(function (selector) {
+                selector = selector.trim();
+                selectors.push({
+                    selector: selector,
+                    declarations: declarations,
+                    specificity: computeSpecificity(),
+                    nu: index
+                });
+            });
+        }
+        index++;
+    });
+    return selectors;
+}
+function computeSpecificity(_selector) {
+    return 1;
+}
+var IMPORTANT = '!important';
+var FIND_DECLARATIONS = /(?:^|[;\s{]\s*)(--[\w-]*?)\s*:\s*(?:((?:'(?:\\'|.)*?'|"(?:\\"|.)*?"|\([^)]*?\)|[^};{])+)|\{([^}]*)\}(?:(?=[;\s}])|$))/gm;
+function getDeclarations(cssText) {
+    var declarations = [];
+    var xArray;
+    while (xArray = FIND_DECLARATIONS.exec(cssText.trim())) {
+        var _a = normalizeValue(xArray[2]), value = _a.value, important = _a.important;
+        declarations.push({
+            prop: xArray[1].trim(),
+            value: compileTemplate(value),
+            important: important,
+        });
+    }
+    return declarations;
+}
+function normalizeValue(value) {
+    var regex = /\s+/gim;
+    value = value.replace(regex, ' ').trim();
+    var important = value.endsWith(IMPORTANT);
+    if (important) {
+        value = value.substr(0, value.length - IMPORTANT.length).trim();
+    }
+    return {
+        value: value,
+        important: important
+    };
+}
+function getActiveSelectors(hostEl, hostScopeMap, globalScopes) {
+    // computes the css scopes that might affect this particular element
+    // avoiding using spread arrays to avoid ts helper fns when in es5
+    var scopes = [];
+    var scopesForElement = getScopesForElement(hostScopeMap, hostEl);
+    // globalScopes are always took into account
+    globalScopes.forEach(function (s) { return scopes.push(s); });
+    // the parent scopes are computed by walking parent dom until <html> is reached
+    scopesForElement.forEach(function (s) { return scopes.push(s); });
+    // each scope might have an array of associated selectors
+    // let's flatten the complete array of selectors from all the scopes
+    var selectorSet = getSelectorsForScopes(scopes);
+    // we filter to only the selectors that matches the hostEl
+    var activeSelectors = selectorSet.filter(function (selector) { return matches(hostEl, selector.selector); });
+    // sort selectors by specifity
+    return sortSelectors(activeSelectors);
+}
+function getScopesForElement(hostTemplateMap, node) {
+    var scopes = [];
+    while (node) {
+        var scope = hostTemplateMap.get(node);
+        if (scope) {
+            scopes.push(scope);
+        }
+        node = node.parentElement;
+    }
+    return scopes;
+}
+function getSelectorsForScopes(scopes) {
+    var selectors = [];
+    scopes.forEach(function (scope) {
+        selectors.push.apply(selectors, scope.selectors);
+    });
+    return selectors;
+}
+function sortSelectors(selectors) {
+    selectors.sort(function (a, b) {
+        if (a.specificity === b.specificity) {
+            return a.nu - b.nu;
+        }
+        return a.specificity - b.specificity;
+    });
+    return selectors;
+}
+function matches(el, selector) {
+    return selector === ':root' || selector === 'html' || el.matches(selector);
+}
+function parseCSS(original) {
+    var ast = parse(original);
+    var template = compileTemplate(original);
+    var selectors = getSelectors(ast);
+    return {
+        original: original,
+        template: template,
+        selectors: selectors,
+        usesCssVars: template.length > 1
+    };
+}
+function addGlobalStyle(globalScopes, styleEl) {
+    if (globalScopes.some(function (css) { return css.styleEl === styleEl; })) {
+        return false;
+    }
+    var css = parseCSS(styleEl.textContent);
+    css.styleEl = styleEl;
+    globalScopes.push(css);
+    return true;
+}
+function updateGlobalScopes(scopes) {
+    var selectors = getSelectorsForScopes(scopes);
+    var props = resolveValues(selectors);
+    scopes.forEach(function (scope) {
+        if (scope.usesCssVars) {
+            scope.styleEl.textContent = executeTemplate(scope.template, props);
+        }
+    });
+}
+function reScope(scope, scopeId) {
+    var template = scope.template.map(function (segment) {
+        return (typeof segment === 'string')
+            ? replaceScope(segment, scope.scopeId, scopeId)
+            : segment;
+    });
+    var selectors = scope.selectors.map(function (sel) {
+        return Object.assign(Object.assign({}, sel), { selector: replaceScope(sel.selector, scope.scopeId, scopeId) });
+    });
+    return Object.assign(Object.assign({}, scope), { template: template,
+        selectors: selectors,
+        scopeId: scopeId });
+}
+function replaceScope(original, oldScopeId, newScopeId) {
+    original = replaceAll(original, "\\." + oldScopeId, "." + newScopeId);
+    return original;
+}
+function replaceAll(input, find, replace) {
+    return input.replace(new RegExp(find, 'g'), replace);
+}
+function loadDocument(doc, globalScopes) {
+    loadDocumentStyles(doc, globalScopes);
+    return loadDocumentLinks(doc, globalScopes);
+}
+function startWatcher(doc, globalScopes) {
+    var mutation = new MutationObserver(function () {
+        if (loadDocumentStyles(doc, globalScopes)) {
+            updateGlobalScopes(globalScopes);
+        }
+    });
+    mutation.observe(document.head, { childList: true });
+}
+function loadDocumentLinks(doc, globalScopes) {
+    var promises = [];
+    var linkElms = doc.querySelectorAll('link[rel="stylesheet"][href]:not([data-no-shim])');
+    for (var i = 0; i < linkElms.length; i++) {
+        promises.push(addGlobalLink(doc, globalScopes, linkElms[i]));
+    }
+    return Promise.all(promises);
+}
+function loadDocumentStyles(doc, globalScopes) {
+    var styleElms = Array.from(doc.querySelectorAll('style:not([data-styles]):not([data-no-shim])'));
+    return styleElms
+        .map(function (style) { return addGlobalStyle(globalScopes, style); })
+        .some(Boolean);
+}
+function addGlobalLink(doc, globalScopes, linkElm) {
+    var url = linkElm.href;
+    return fetch(url).then(function (rsp) { return rsp.text(); }).then(function (text) {
+        if (hasCssVariables(text) && linkElm.parentNode) {
+            if (hasRelativeUrls(text)) {
+                text = fixRelativeUrls(text, url);
+            }
+            var styleEl = doc.createElement('style');
+            styleEl.setAttribute('data-styles', '');
+            styleEl.textContent = text;
+            addGlobalStyle(globalScopes, styleEl);
+            linkElm.parentNode.insertBefore(styleEl, linkElm);
+            linkElm.remove();
+        }
+    }).catch(function (err) {
+        console.error(err);
+    });
+}
+// This regexp tries to determine when a variable is declared, for example:
+//
+// .my-el { --highlight-color: green; }
+//
+// but we don't want to trigger when a classname uses "--" or a pseudo-class is
+// used. We assume that the only characters that can preceed a variable
+// declaration are "{", from an opening block, ";" from a preceeding rule, or a
+// space. This prevents the regexp from matching a word in a selector, since
+// they would need to start with a "." or "#". (We assume element names don't
+// start with "--").
+var CSS_VARIABLE_REGEXP = /[\s;{]--[-a-zA-Z0-9]+\s*:/m;
+function hasCssVariables(css) {
+    return css.indexOf('var(') > -1 || CSS_VARIABLE_REGEXP.test(css);
+}
+// This regexp find all url() usages with relative urls
+var CSS_URL_REGEXP = /url[\s]*\([\s]*['"]?(?!(?:https?|data)\:|\/)([^\'\"\)]*)[\s]*['"]?\)[\s]*/gim;
+function hasRelativeUrls(css) {
+    CSS_URL_REGEXP.lastIndex = 0;
+    return CSS_URL_REGEXP.test(css);
+}
+function fixRelativeUrls(css, originalUrl) {
+    // get the basepath from the original import url
+    var basePath = originalUrl.replace(/[^/]*$/, '');
+    // replace the relative url, with the new relative url
+    return css.replace(CSS_URL_REGEXP, function (fullMatch, url) {
+        // rhe new relative path is the base path + uri
+        // TODO: normalize relative URL
+        var relativeUrl = basePath + url;
+        return fullMatch.replace(url, relativeUrl);
+    });
+}
+var CustomStyle = /** @class */ (function () {
+    function CustomStyle(win, doc) {
+        this.win = win;
+        this.doc = doc;
+        this.count = 0;
+        this.hostStyleMap = new WeakMap();
+        this.hostScopeMap = new WeakMap();
+        this.globalScopes = [];
+        this.scopesMap = new Map();
+        this.didInit = false;
+    }
+    CustomStyle.prototype.initShim = function () {
+        var _this = this;
+        if (this.didInit) {
+            return Promise.resolve();
+        }
+        else {
+            this.didInit = true;
+            return new Promise(function (resolve) {
+                _this.win.requestAnimationFrame(function () {
+                    startWatcher(_this.doc, _this.globalScopes);
+                    loadDocument(_this.doc, _this.globalScopes).then(function () { return resolve(); });
+                });
+            });
+        }
+    };
+    CustomStyle.prototype.addLink = function (linkEl) {
+        var _this = this;
+        return addGlobalLink(this.doc, this.globalScopes, linkEl).then(function () {
+            _this.updateGlobal();
+        });
+    };
+    CustomStyle.prototype.addGlobalStyle = function (styleEl) {
+        if (addGlobalStyle(this.globalScopes, styleEl)) {
+            this.updateGlobal();
+        }
+    };
+    CustomStyle.prototype.createHostStyle = function (hostEl, cssScopeId, cssText, isScoped) {
+        if (this.hostScopeMap.has(hostEl)) {
+            throw new Error('host style already created');
+        }
+        var baseScope = this.registerHostTemplate(cssText, cssScopeId, isScoped);
+        var styleEl = this.doc.createElement('style');
+        styleEl.setAttribute('data-styles', '');
+        if (!baseScope.usesCssVars) {
+            // This component does not use (read) css variables
+            styleEl.textContent = cssText;
+        }
+        else if (isScoped) {
+            // This component is dynamic: uses css var and is scoped
+            styleEl['s-sc'] = cssScopeId = baseScope.scopeId + "-" + this.count;
+            styleEl.textContent = '/*needs update*/';
+            this.hostStyleMap.set(hostEl, styleEl);
+            this.hostScopeMap.set(hostEl, reScope(baseScope, cssScopeId));
+            this.count++;
+        }
+        else {
+            // This component uses css vars, but it's no-encapsulation (global static)
+            baseScope.styleEl = styleEl;
+            if (!baseScope.usesCssVars) {
+                styleEl.textContent = executeTemplate(baseScope.template, {});
+            }
+            this.globalScopes.push(baseScope);
+            this.updateGlobal();
+            this.hostScopeMap.set(hostEl, baseScope);
+        }
+        return styleEl;
+    };
+    CustomStyle.prototype.removeHost = function (hostEl) {
+        var css = this.hostStyleMap.get(hostEl);
+        if (css) {
+            css.remove();
+        }
+        this.hostStyleMap.delete(hostEl);
+        this.hostScopeMap.delete(hostEl);
+    };
+    CustomStyle.prototype.updateHost = function (hostEl) {
+        var scope = this.hostScopeMap.get(hostEl);
+        if (scope && scope.usesCssVars && scope.isScoped) {
+            var styleEl = this.hostStyleMap.get(hostEl);
+            if (styleEl) {
+                var selectors = getActiveSelectors(hostEl, this.hostScopeMap, this.globalScopes);
+                var props = resolveValues(selectors);
+                styleEl.textContent = executeTemplate(scope.template, props);
+            }
+        }
+    };
+    CustomStyle.prototype.updateGlobal = function () {
+        updateGlobalScopes(this.globalScopes);
+    };
+    CustomStyle.prototype.registerHostTemplate = function (cssText, scopeId, isScoped) {
+        var scope = this.scopesMap.get(scopeId);
+        if (!scope) {
+            scope = parseCSS(cssText);
+            scope.scopeId = scopeId;
+            scope.isScoped = isScoped;
+            this.scopesMap.set(scopeId, scope);
+        }
+        return scope;
+    };
+    return CustomStyle;
+}());
+var win = window;
+function needsShim() {
+    return !(win.CSS && win.CSS.supports && win.CSS.supports('color', 'var(--c)'));
+}
+if (!win.__stencil_cssshim && needsShim()) {
+    win.__stencil_cssshim = new CustomStyle(win, document);
+}
 
 
 /***/ })

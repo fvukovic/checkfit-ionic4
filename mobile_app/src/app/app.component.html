@@ -20,7 +20,6 @@
         </ion-list>
 
         <ion-list id="labels-list">
-          {{isUserLoggedIn}}
           <ion-label *ngIf="!isUserLoggedIn" routerLink="/login">{{ "menu.login" | translate }}</ion-label> 
           <ion-label *ngIf="isUserLoggedIn"  (click)="logout()">{{ "menu.logout" | translate }}</ion-label> 
 

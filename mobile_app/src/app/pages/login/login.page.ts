@@ -16,9 +16,7 @@ export class LoginPage implements OnInit {
   username:string;
   password:string;
 
-  constructor(private storage: Storage, private router: Router
-    , private socketService : SocketService
-    , private appCompoent: AppComponent) {
+  constructor(private storage: Storage, private router: Router, private appCompoent: AppComponent) {
 
   }
 
@@ -27,8 +25,7 @@ export class LoginPage implements OnInit {
 
   login() {
     this.appCompoent.isUserLoggedIn = true; 
-    this.storage.set("username", this.username);
-    this.router.navigate(['/driver-homepage'])
+    this.storage.set("username", this.username); 
     location.reload();
   }
 

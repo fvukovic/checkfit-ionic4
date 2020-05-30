@@ -1,8 +1,8 @@
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -12,42 +12,42 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[42], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-item-option_3-ios.entry.js":
-  /*!**************************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-item-option_3-ios.entry.js ***!
-    \**************************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-fab_3-md.entry.js":
+  /*!*****************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-fab_3-md.entry.js ***!
+    \*****************************************************************/
 
-  /*! exports provided: ion_item_option, ion_item_options, ion_item_sliding */
+  /*! exports provided: ion_fab, ion_fab_button, ion_fab_list */
 
   /***/
-  function node_modulesIonicCoreDistEsmIonItemOption_3IosEntryJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonFab_3MdEntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_item_option", function () {
-      return ItemOption;
+    __webpack_require__.d(__webpack_exports__, "ion_fab", function () {
+      return Fab;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_item_options", function () {
-      return ItemOptions;
+    __webpack_require__.d(__webpack_exports__, "ion_fab_button", function () {
+      return FabButton;
     });
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_item_sliding", function () {
-      return ItemSliding;
+    __webpack_require__.d(__webpack_exports__, "ion_fab_list", function () {
+      return FabList;
     });
     /* harmony import */
 
 
-    var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
-    /*! ./core-0a8d4d2e.js */
-    "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+    var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! ./core-ca0488fc.js */
+    "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
     /* harmony import */
 
 
@@ -57,127 +57,78 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./helpers-46f4a262.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
-    /* harmony import */
-
-
-    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
-    var ItemOption = /*#__PURE__*/function () {
-      function ItemOption(hostRef) {
-        _classCallCheck(this, ItemOption);
+    var Fab = /*#__PURE__*/function () {
+      function Fab(hostRef) {
+        var _this = this;
 
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        _classCallCheck(this, Fab);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
-         * If `true`, the user cannot interact with the item option.
+         * If `true`, the fab will display on the edge of the header if
+         * `vertical` is `"top"`, and on the edge of the footer if
+         * it is `"bottom"`. Should be used with a `fixed` slot.
          */
 
-        this.disabled = false;
+        this.edge = false;
         /**
-         * If `true`, the option will expand to take up the available width and cover any other options.
+         * If `true`, both the `ion-fab-button` and all `ion-fab-list` inside `ion-fab` will become active.
+         * That means `ion-fab-button` will become a `close` icon and `ion-fab-list` will become visible.
          */
 
-        this.expandable = false;
-        /**
-         * The type of the button.
-         */
+        this.activated = false;
 
-        this.type = 'button';
+        this.onClick = function () {
+          var hasList = !!_this.el.querySelector('ion-fab-list');
 
-        this.onClick = function (ev) {
-          var el = ev.target.closest('ion-item-option');
+          var getButton = _this.getFab();
 
-          if (el) {
-            ev.preventDefault();
+          var isButtonDisabled = getButton && getButton.disabled;
+
+          if (hasList && !isButtonDisabled) {
+            _this.activated = !_this.activated;
           }
         };
       }
 
-      _createClass(ItemOption, [{
-        key: "render",
-        value: function render() {
-          var _Object$assign;
+      _createClass(Fab, [{
+        key: "activatedChanged",
+        value: function activatedChanged() {
+          var activated = this.activated;
+          var fab = this.getFab();
 
-          var disabled = this.disabled,
-              expandable = this.expandable,
-              href = this.href;
-          var TagType = href === undefined ? 'button' : 'a';
-          var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          var attrs = TagType === 'button' ? {
-            type: this.type
-          } : {
-            download: this.download,
-            href: this.href,
-            target: this.target
-          };
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            onClick: this.onClick,
-            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'item-option-disabled', disabled), _defineProperty(_Object$assign, 'item-option-expandable', expandable), _defineProperty(_Object$assign, 'ion-activatable', true), _Object$assign))
-          }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
-            class: "button-native",
-            disabled: disabled
-          }), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            class: "button-inner"
-          }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
-            name: "top"
-          }), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "horizontal-wrapper"
-          }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
-            name: "start"
-          }), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
-            name: "icon-only"
-          }), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
-            name: "end"
-          })), Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", {
-            name: "bottom"
-          })), mode === 'md' && Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)));
+          if (fab) {
+            fab.activated = activated;
+          }
+
+          Array.from(this.el.querySelectorAll('ion-fab-list')).forEach(function (list) {
+            list.activated = activated;
+          });
         }
       }, {
-        key: "el",
-        get: function get() {
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+        key: "componentDidLoad",
+        value: function componentDidLoad() {
+          if (this.activated) {
+            this.activatedChanged();
+          }
         }
-      }], [{
-        key: "style",
-        get: function get() {
-          return ":host{--background:var(--ion-color-primary,#3880ff);--color:var(--ion-color-primary-contrast,#fff);background:var(--background);color:var(--color);font-family:var(--ion-font-family,inherit)}:host(.in-list.item-options-end:last-child){padding-right:calc(.7em + var(--ion-safe-area-right))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-list.item-options-end:last-child){padding-right:unset;-webkit-padding-end:calc(.7em + var(--ion-safe-area-right));padding-inline-end:calc(.7em + var(--ion-safe-area-right))}}:host(.in-list.item-options-start:first-child){padding-left:calc(.7em + var(--ion-safe-area-left))}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-list.item-options-start:first-child){padding-left:unset;-webkit-padding-start:calc(.7em + var(--ion-safe-area-left));padding-inline-start:calc(.7em + var(--ion-safe-area-left))}}:host(.ion-color){background:var(--ion-color-base);color:var(--ion-color-contrast)}.button-native{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-indent:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;padding-left:.7em;padding-right:.7em;padding-top:0;padding-bottom:0;display:inline-block;position:relative;width:100%;height:100%;border:0;outline:none;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-box-sizing:border-box;box-sizing:border-box}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:.7em;padding-inline-start:.7em;-webkit-padding-end:.7em;padding-inline-end:.7em}}.button-inner{-ms-flex-flow:column nowrap;flex-flow:column nowrap;height:100%}.button-inner,.horizontal-wrapper{display:-ms-flexbox;display:flex;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%}.horizontal-wrapper{-ms-flex-flow:row nowrap;flex-flow:row nowrap}::slotted(*){-ms-flex-negative:0;flex-shrink:0}::slotted([slot=start]){margin-left:0;margin-right:5px;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted([slot=start]){margin-left:unset;margin-right:unset;-webkit-margin-start:0;margin-inline-start:0;-webkit-margin-end:5px;margin-inline-end:5px}}::slotted([slot=end]){margin-left:5px;margin-right:0;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted([slot=end]){margin-left:unset;margin-right:unset;-webkit-margin-start:5px;margin-inline-start:5px;-webkit-margin-end:0;margin-inline-end:0}}::slotted([slot=icon-only]){padding-left:0;padding-right:0;padding-top:0;padding-bottom:0;margin-left:10px;margin-right:10px;margin-top:0;margin-bottom:0;min-width:.9em;font-size:1.8em}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted([slot=icon-only]){margin-left:unset;margin-right:unset;-webkit-margin-start:10px;margin-inline-start:10px;-webkit-margin-end:10px;margin-inline-end:10px}}:host(.item-option-expandable){-ms-flex-negative:0;flex-shrink:0;-webkit-transition-duration:0;transition-duration:0;-webkit-transition-property:none;transition-property:none;-webkit-transition-timing-function:cubic-bezier(.65,.05,.36,1);transition-timing-function:cubic-bezier(.65,.05,.36,1)}:host(.item-option-disabled){pointer-events:none}:host(.item-option-disabled) .button-native{cursor:default;opacity:.5;pointer-events:none}:host{font-size:16px}:host(.ion-activated){background:var(--ion-color-primary-shade,#3171e0)}:host(.ion-color.ion-activated){background:var(--ion-color-shade)}";
-        }
-      }]);
-
-      return ItemOption;
-    }();
-
-    var ItemOptions = /*#__PURE__*/function () {
-      function ItemOptions(hostRef) {
-        _classCallCheck(this, ItemOptions);
-
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
-         * The side the option button should be on. Possible values: `"start"` and `"end"`. If you have multiple `ion-item-options`, a side must be provided for each.
-         *
+         * Close an active FAB list container.
          */
 
-        this.side = 'end';
-        this.ionSwipe = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionSwipe", 7);
-      }
-      /** @internal */
-
-
-      _createClass(ItemOptions, [{
-        key: "fireSwipeEvent",
+      }, {
+        key: "close",
         value: function () {
-          var _fireSwipeEvent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+          var _close = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    this.ionSwipe.emit({
-                      side: this.side
-                    });
+                    this.activated = false;
 
                   case 1:
                   case "end":
@@ -187,673 +138,226 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }, _callee, this);
           }));
 
-          function fireSwipeEvent() {
-            return _fireSwipeEvent.apply(this, arguments);
-          }
-
-          return fireSwipeEvent;
-        }()
-      }, {
-        key: "render",
-        value: function render() {
-          var _class;
-
-          var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          var isEnd = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(this.side);
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "item-options-".concat(mode), true), _defineProperty(_class, 'item-options-start', !isEnd), _defineProperty(_class, 'item-options-end', isEnd), _class)
-          });
-        }
-      }, {
-        key: "el",
-        get: function get() {
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
-        }
-      }], [{
-        key: "style",
-        get: function get() {
-          return "ion-item-options{top:0;right:0;-ms-flex-pack:end;justify-content:flex-end;display:none;position:absolute;height:100%;font-size:14px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1}:host-context([dir=rtl]) ion-item-options,[dir=rtl] ion-item-options{-ms-flex-pack:start;justify-content:flex-start}:host-context([dir=rtl]) ion-item-options:not(.item-options-end),[dir=rtl] ion-item-options:not(.item-options-end){right:auto;left:0;-ms-flex-pack:end;justify-content:flex-end}.item-options-start{right:auto;left:0;-ms-flex-pack:start;justify-content:flex-start}:host-context([dir=rtl]) .item-options-start,[dir=rtl] .item-options-start{-ms-flex-pack:end;justify-content:flex-end}.item-options-start ion-item-option:first-child{padding-right:var(--ion-safe-area-left)}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.item-options-start ion-item-option:first-child{padding-right:unset;-webkit-padding-end:var(--ion-safe-area-left);padding-inline-end:var(--ion-safe-area-left)}}.item-options-end ion-item-option:last-child{padding-right:var(--ion-safe-area-right)}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.item-options-end ion-item-option:last-child{padding-right:unset;-webkit-padding-end:var(--ion-safe-area-right);padding-inline-end:var(--ion-safe-area-right)}}:host-context([dir=rtl]) .item-sliding-active-slide.item-sliding-active-options-start ion-item-options:not(.item-options-end),[dir=rtl] .item-sliding-active-slide.item-sliding-active-options-start ion-item-options:not(.item-options-end){width:100%;visibility:visible}.item-sliding-active-slide ion-item-options{display:-ms-flexbox;display:flex;visibility:hidden}.item-sliding-active-slide.item-sliding-active-options-end ion-item-options:not(.item-options-start),.item-sliding-active-slide.item-sliding-active-options-start .item-options-start{width:100%;visibility:visible}.item-options-ios{border-bottom-width:0;border-bottom-style:solid;border-bottom-color:var(--ion-item-border-color,var(--ion-border-color,var(--ion-color-step-250,#c8c7cc)))}.item-options-ios.item-options-end{border-bottom-width:.55px}.list-ios-lines-none .item-options-ios{border-bottom-width:0}.list-ios-lines-full .item-options-ios,.list-ios-lines-inset .item-options-ios.item-options-end{border-bottom-width:.55px}";
-        }
-      }]);
-
-      return ItemOptions;
-    }();
-
-    var SWIPE_MARGIN = 30;
-    var ELASTIC_FACTOR = 0.55;
-    var openSlidingItem;
-
-    var ItemSliding = /*#__PURE__*/function () {
-      function ItemSliding(hostRef) {
-        _classCallCheck(this, ItemSliding);
-
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.item = null;
-        this.openAmount = 0;
-        this.initialOpenAmount = 0;
-        this.optsWidthRightSide = 0;
-        this.optsWidthLeftSide = 0;
-        this.sides = 0
-        /* None */
-        ;
-        this.optsDirty = true;
-        this.state = 2
-        /* Disabled */
-        ;
-        /**
-         * If `true`, the user cannot interact with the sliding item.
-         */
-
-        this.disabled = false;
-        this.ionDrag = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionDrag", 7);
-      }
-
-      _createClass(ItemSliding, [{
-        key: "disabledChanged",
-        value: function disabledChanged() {
-          if (this.gesture) {
-            this.gesture.enable(!this.disabled);
-          }
-        }
-      }, {
-        key: "connectedCallback",
-        value: function () {
-          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this = this;
-
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    this.item = this.el.querySelector('ion-item');
-                    _context2.next = 3;
-                    return this.updateOptions();
-
-                  case 3:
-                    _context2.next = 5;
-                    return Promise.resolve().then(__webpack_require__.bind(null,
-                    /*! ./index-c38df685.js */
-                    "./node_modules/@ionic/core/dist/esm/index-c38df685.js"));
-
-                  case 5:
-                    _context2.t0 = {
-                      el: this.el,
-                      gestureName: 'item-swipe',
-                      gesturePriority: 100,
-                      threshold: 5,
-                      canStart: function canStart() {
-                        return _this.canStart();
-                      },
-                      onStart: function onStart() {
-                        return _this.onStart();
-                      },
-                      onMove: function onMove(ev) {
-                        return _this.onMove(ev);
-                      },
-                      onEnd: function onEnd(ev) {
-                        return _this.onEnd(ev);
-                      }
-                    };
-                    this.gesture = _context2.sent.createGesture(_context2.t0);
-                    this.disabledChanged();
-
-                  case 8:
-                  case "end":
-                    return _context2.stop();
-                }
-              }
-            }, _callee2, this);
-          }));
-
-          function connectedCallback() {
-            return _connectedCallback.apply(this, arguments);
-          }
-
-          return connectedCallback;
-        }()
-      }, {
-        key: "disconnectedCallback",
-        value: function disconnectedCallback() {
-          if (this.gesture) {
-            this.gesture.destroy();
-            this.gesture = undefined;
-          }
-
-          this.item = null;
-          this.leftOptions = this.rightOptions = undefined;
-
-          if (openSlidingItem === this.el) {
-            openSlidingItem = undefined;
-          }
-        }
-        /**
-         * Get the amount the item is open in pixels.
-         */
-
-      }, {
-        key: "getOpenAmount",
-        value: function getOpenAmount() {
-          return Promise.resolve(this.openAmount);
-        }
-        /**
-         * Get the ratio of the open amount of the item compared to the width of the options.
-         * If the number returned is positive, then the options on the right side are open.
-         * If the number returned is negative, then the options on the left side are open.
-         * If the absolute value of the number is greater than 1, the item is open more than
-         * the width of the options.
-         */
-
-      }, {
-        key: "getSlidingRatio",
-        value: function getSlidingRatio() {
-          return Promise.resolve(this.getSlidingRatioSync());
-        }
-        /**
-         * Open the sliding item.
-         *
-         * @param side The side of the options to open. If a side is not provided, it will open the first set of options it finds within the item.
-         */
-
-      }, {
-        key: "open",
-        value: function () {
-          var _open = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(side) {
-            var _this2 = this;
-
-            var optionsToOpen, isStartOpen, isEndOpen;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    if (!(this.item === null)) {
-                      _context3.next = 2;
-                      break;
-                    }
-
-                    return _context3.abrupt("return");
-
-                  case 2:
-                    optionsToOpen = this.getOptions(side);
-
-                    if (optionsToOpen) {
-                      _context3.next = 5;
-                      break;
-                    }
-
-                    return _context3.abrupt("return");
-
-                  case 5:
-                    /**
-                     * If side is not set, we need to infer the side
-                     * so we know which direction to move the options
-                     */
-                    if (side === undefined) {
-                      side = optionsToOpen === this.leftOptions ? 'start' : 'end';
-                    } // In RTL we want to switch the sides
-
-
-                    side = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(side) ? 'end' : 'start';
-                    isStartOpen = this.openAmount < 0;
-                    isEndOpen = this.openAmount > 0;
-                    /**
-                     * If a side is open and a user tries to
-                     * re-open the same side, we should not do anything
-                     */
-
-                    if (!(isStartOpen && optionsToOpen === this.leftOptions)) {
-                      _context3.next = 11;
-                      break;
-                    }
-
-                    return _context3.abrupt("return");
-
-                  case 11:
-                    if (!(isEndOpen && optionsToOpen === this.rightOptions)) {
-                      _context3.next = 13;
-                      break;
-                    }
-
-                    return _context3.abrupt("return");
-
-                  case 13:
-                    this.closeOpened();
-                    this.state = 4
-                    /* Enabled */
-                    ;
-                    requestAnimationFrame(function () {
-                      _this2.calculateOptsWidth();
-
-                      var width = side === 'end' ? _this2.optsWidthRightSide : -_this2.optsWidthLeftSide;
-                      openSlidingItem = _this2.el;
-
-                      _this2.setOpenAmount(width, false);
-
-                      _this2.state = side === 'end' ? 8
-                      /* End */
-                      : 16
-                      /* Start */
-                      ;
-                    });
-
-                  case 16:
-                  case "end":
-                    return _context3.stop();
-                }
-              }
-            }, _callee3, this);
-          }));
-
-          function open(_x) {
-            return _open.apply(this, arguments);
-          }
-
-          return open;
-        }()
-        /**
-         * Close the sliding item. Items can also be closed from the [List](../list).
-         */
-
-      }, {
-        key: "close",
-        value: function () {
-          var _close = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-            return regeneratorRuntime.wrap(function _callee4$(_context4) {
-              while (1) {
-                switch (_context4.prev = _context4.next) {
-                  case 0:
-                    this.setOpenAmount(0, true);
-
-                  case 1:
-                  case "end":
-                    return _context4.stop();
-                }
-              }
-            }, _callee4, this);
-          }));
-
           function close() {
             return _close.apply(this, arguments);
           }
 
           return close;
         }()
+      }, {
+        key: "getFab",
+        value: function getFab() {
+          return this.el.querySelector('ion-fab-button');
+        }
+      }, {
+        key: "render",
+        value: function render() {
+          var _class;
+
+          var horizontal = this.horizontal,
+              vertical = this.vertical,
+              edge = this.edge;
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            onClick: this.onClick,
+            class: (_class = {}, _defineProperty(_class, mode, true), _defineProperty(_class, "fab-horizontal-".concat(horizontal), horizontal !== undefined), _defineProperty(_class, "fab-vertical-".concat(vertical), vertical !== undefined), _defineProperty(_class, 'fab-edge', edge), _class)
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
+        }
+      }, {
+        key: "el",
+        get: function get() {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+        }
+      }], [{
+        key: "watchers",
+        get: function get() {
+          return {
+            "activated": ["activatedChanged"]
+          };
+        }
+      }, {
+        key: "style",
+        get: function get() {
+          return ":host{position:absolute;z-index:999}:host(.fab-horizontal-center){left:50%;margin-left:-28px}:host-context([dir=rtl]).fab-horizontal-center,:host-context([dir=rtl]):host(.fab-horizontal-center){left:unset;right:unset;right:50%}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-horizontal-center){margin-left:unset;-webkit-margin-start:-28px;margin-inline-start:-28px}}:host(.fab-horizontal-start){left:calc(10px + var(--ion-safe-area-left, 0px))}:host-context([dir=rtl]).fab-horizontal-start,:host-context([dir=rtl]):host(.fab-horizontal-start){left:unset;right:unset;right:calc(10px + var(--ion-safe-area-left, 0px))}:host(.fab-horizontal-end){right:calc(10px + var(--ion-safe-area-right, 0px))}:host-context([dir=rtl]).fab-horizontal-end,:host-context([dir=rtl]):host(.fab-horizontal-end){left:unset;right:unset;left:calc(10px + var(--ion-safe-area-right, 0px))}:host(.fab-vertical-top){top:10px}:host(.fab-vertical-top.fab-edge){top:-28px}:host(.fab-vertical-bottom){bottom:10px}:host(.fab-vertical-bottom.fab-edge){bottom:-28px}:host(.fab-vertical-center){margin-top:-28px;top:50%}";
+        }
+      }]);
+
+      return Fab;
+    }();
+
+    var FabButton = /*#__PURE__*/function () {
+      function FabButton(hostRef) {
+        var _this2 = this;
+
+        _classCallCheck(this, FabButton);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
         /**
-         * Close all of the sliding items in the list. Items can also be closed from the [List](../list).
+         * If `true`, the fab button will be show a close icon.
          */
 
-      }, {
-        key: "closeOpened",
-        value: function () {
-          var _closeOpened = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
-            return regeneratorRuntime.wrap(function _callee5$(_context5) {
-              while (1) {
-                switch (_context5.prev = _context5.next) {
-                  case 0:
-                    if (!(openSlidingItem !== undefined)) {
-                      _context5.next = 4;
-                      break;
-                    }
-
-                    openSlidingItem.close();
-                    openSlidingItem = undefined;
-                    return _context5.abrupt("return", true);
-
-                  case 4:
-                    return _context5.abrupt("return", false);
-
-                  case 5:
-                  case "end":
-                    return _context5.stop();
-                }
-              }
-            }, _callee5);
-          }));
-
-          function closeOpened() {
-            return _closeOpened.apply(this, arguments);
-          }
-
-          return closeOpened;
-        }()
+        this.activated = false;
         /**
-         * Given an optional side, return the ion-item-options element.
-         *
-         * @param side This side of the options to get. If a side is not provided it will
-         * return the first one available.
+         * If `true`, the user cannot interact with the fab button.
          */
 
-      }, {
-        key: "getOptions",
-        value: function getOptions(side) {
-          if (side === undefined) {
-            return this.leftOptions || this.rightOptions;
-          } else if (side === 'start') {
-            return this.leftOptions;
-          } else {
-            return this.rightOptions;
-          }
+        this.disabled = false;
+        /**
+         * When using a router, it specifies the transition direction when navigating to
+         * another page using `href`.
+         */
+
+        this.routerDirection = 'forward';
+        /**
+         * If `true`, the fab button will show when in a fab-list.
+         */
+
+        this.show = false;
+        /**
+         * If `true`, the fab button will be translucent.
+         * Only applies when the mode is `"ios"` and the device supports
+         * [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
+         */
+
+        this.translucent = false;
+        /**
+         * The type of the button.
+         */
+
+        this.type = 'button';
+
+        this.onFocus = function () {
+          _this2.ionFocus.emit();
+        };
+
+        this.onBlur = function () {
+          _this2.ionBlur.emit();
+        };
+
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+      }
+
+      _createClass(FabButton, [{
+        key: "render",
+        value: function render() {
+          var _Object$assign,
+              _this3 = this;
+
+          var el = this.el,
+              disabled = this.disabled,
+              color = this.color,
+              href = this.href,
+              activated = this.activated,
+              show = this.show,
+              translucent = this.translucent,
+              size = this.size;
+          var inList = Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-fab-list', el);
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var TagType = href === undefined ? 'button' : 'a';
+          var attrs = TagType === 'button' ? {
+            type: this.type
+          } : {
+            download: this.download,
+            href: href,
+            rel: this.rel,
+            target: this.target
+          };
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            "aria-disabled": disabled ? 'true' : null,
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'fab-button-in-list', inList), _defineProperty(_Object$assign, 'fab-button-translucent-in-list', inList && translucent), _defineProperty(_Object$assign, 'fab-button-close-active', activated), _defineProperty(_Object$assign, 'fab-button-show', show), _defineProperty(_Object$assign, 'fab-button-disabled', disabled), _defineProperty(_Object$assign, 'fab-button-translucent', translucent), _defineProperty(_Object$assign, 'ion-activatable', true), _defineProperty(_Object$assign, 'ion-focusable', true), _defineProperty(_Object$assign, "fab-button-".concat(size), size !== undefined), _Object$assign))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(TagType, Object.assign({}, attrs, {
+            class: "button-native",
+            disabled: disabled,
+            onFocus: this.onFocus,
+            onBlur: this.onBlur,
+            onClick: function onClick(ev) {
+              return Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_2__["o"])(href, ev, _this3.routerDirection);
+            }
+          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+            class: "close-icon"
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
+            name: "close",
+            lazy: false
+          })), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
+            class: "button-inner"
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)), mode === 'md' && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null)));
         }
       }, {
-        key: "updateOptions",
-        value: function () {
-          var _updateOptions = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
-            var options, sides, i, option, side;
-            return regeneratorRuntime.wrap(function _callee6$(_context6) {
-              while (1) {
-                switch (_context6.prev = _context6.next) {
-                  case 0:
-                    options = this.el.querySelectorAll('ion-item-options');
-                    sides = 0; // Reset left and right options in case they were removed
-
-                    this.leftOptions = this.rightOptions = undefined;
-                    i = 0;
-
-                  case 4:
-                    if (!(i < options.length)) {
-                      _context6.next = 13;
-                      break;
-                    }
-
-                    _context6.next = 7;
-                    return options.item(i).componentOnReady();
-
-                  case 7:
-                    option = _context6.sent;
-                    side = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["i"])(option.side) ? 'end' : 'start';
-
-                    if (side === 'start') {
-                      this.leftOptions = option;
-                      sides |= 1
-                      /* Start */
-                      ;
-                    } else {
-                      this.rightOptions = option;
-                      sides |= 2
-                      /* End */
-                      ;
-                    }
-
-                  case 10:
-                    i++;
-                    _context6.next = 4;
-                    break;
-
-                  case 13:
-                    this.optsDirty = true;
-                    this.sides = sides;
-
-                  case 15:
-                  case "end":
-                    return _context6.stop();
-                }
-              }
-            }, _callee6, this);
-          }));
-
-          function updateOptions() {
-            return _updateOptions.apply(this, arguments);
-          }
-
-          return updateOptions;
-        }()
-      }, {
-        key: "canStart",
-        value: function canStart() {
-          var selected = openSlidingItem;
-
-          if (selected && selected !== this.el) {
-            this.closeOpened();
-            return false;
-          }
-
-          return !!(this.rightOptions || this.leftOptions);
+        key: "el",
+        get: function get() {
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
-      }, {
-        key: "onStart",
-        value: function onStart() {
-          openSlidingItem = this.el;
-
-          if (this.tmr !== undefined) {
-            clearTimeout(this.tmr);
-            this.tmr = undefined;
-          }
-
-          if (this.openAmount === 0) {
-            this.optsDirty = true;
-            this.state = 4
-            /* Enabled */
-            ;
-          }
-
-          this.initialOpenAmount = this.openAmount;
-
-          if (this.item) {
-            this.item.style.transition = 'none';
-          }
+      }], [{
+        key: "style",
+        get: function get() {
+          return ":host{--color-hover:var(--color);--background-hover:var(--ion-color-primary-tint,#4c8dff);--transition:background-color,opacity 100ms linear;--ripple-color:currentColor;--border-radius:50%;--border-width:0;--border-style:none;--border-color:initial;--padding-top:0;--padding-end:0;--padding-bottom:0;--padding-start:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;display:block;width:56px;height:56px;font-size:14px;text-align:center;text-overflow:ellipsis;text-transform:none;white-space:nowrap;-webkit-font-kerning:none;font-kerning:none}.button-native{border-radius:var(--border-radius);padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;position:relative;width:100%;height:100%;-webkit-transform:var(--transform);transform:var(--transform);-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);outline:none;background:var(--background);background-clip:padding-box;color:var(--color);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);contain:strict;cursor:pointer;overflow:hidden;z-index:0;-webkit-appearance:none;-moz-appearance:none;appearance:none;-webkit-box-sizing:border-box;box-sizing:border-box}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.button-inner{left:0;right:0;top:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100%;-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-transition-property:opacity,-webkit-transform;transition-property:opacity,-webkit-transform;transition-property:transform,opacity;transition-property:transform,opacity,-webkit-transform}:host(.ion-color) .button-native{background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(.fab-button-disabled){opacity:.5;pointer-events:none}:host(.fab-button-disabled) .button-native{cursor:default;pointer-events:none}\@media (any-hover:hover){:host(:hover) .button-native{background:var(--background-hover);color:var(--color-hover)}:host(.ion-color:hover) .button-native{background:var(--ion-color-tint);color:var(--ion-color-contrast)}}:host(.ion-focused) .button-native{background:var(--background-focused);color:var(--color-focused)}:host(.ion-color.ion-focused) .button-native{background:var(--ion-color-shade)}:host(.activated) .button-native{background:var(--background-activated);color:var(--color-activated)}:host(.ion-color.activated) .button-native,:host(.ion-color.ion-focused) .button-native{background:var(--ion-color-shade);color:var(--ion-color-contrast)}::slotted(ion-icon){line-height:1}:host(.fab-button-small){margin-left:8px;margin-right:8px;margin-top:8px;margin-bottom:8px;width:40px;height:40px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-button-small){margin-left:unset;margin-right:unset;-webkit-margin-start:8px;margin-inline-start:8px;-webkit-margin-end:8px;margin-inline-end:8px}}.close-icon{left:0;right:0;top:0;display:-ms-flexbox;display:flex;position:absolute;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;height:100%;-webkit-transform:scale(.4) rotate(-45deg);transform:scale(.4) rotate(-45deg);-webkit-transition:all .3s ease-in-out;transition:all .3s ease-in-out;-webkit-transition-property:opacity,-webkit-transform;transition-property:opacity,-webkit-transform;transition-property:transform,opacity;transition-property:transform,opacity,-webkit-transform;opacity:0}:host(.fab-button-close-active) .close-icon{-webkit-transform:scale(1) rotate(0deg);transform:scale(1) rotate(0deg);opacity:1}:host(.fab-button-close-active) .button-inner{-webkit-transform:scale(.4) rotate(45deg);transform:scale(.4) rotate(45deg);opacity:0}ion-ripple-effect{color:var(--ripple-color)}\@supports ((-webkit-backdrop-filter:blur(0)) or (backdrop-filter:blur(0))){:host(.fab-button-translucent) .button-native{-webkit-backdrop-filter:var(--backdrop-filter);backdrop-filter:var(--backdrop-filter)}}:host{--background:var(--ion-color-primary,#3880ff);--background-activated:var(--background);--background-focused:var(--background-activated);--color:var(--ion-color-primary-contrast,#fff);--color-activated:var(--ion-color-primary-contrast,#fff);--color-focused:var(--color-activated);--box-shadow:0 3px 5px -1px rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.14),0 1px 18px 0 rgba(0,0,0,0.12);--transition:box-shadow 280ms cubic-bezier(0.4,0,0.2,1),background-color 280ms cubic-bezier(0.4,0,0.2,1),color 280ms cubic-bezier(0.4,0,0.2,1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0,0,0.2,1) 0ms}:host(.activated){--box-shadow:0 7px 8px -4px rgba(0,0,0,0.2),0 12px 17px 2px rgba(0,0,0,0.14),0 5px 22px 4px rgba(0,0,0,0.12)}.close-icon,::slotted(ion-icon){font-size:24px}:host(.fab-button-in-list){--color:rgba(var(--ion-text-color-rgb,0,0,0),0.54);--color-activated:rgba(var(--ion-text-color-rgb,0,0,0),0.54);--color-focused:var(--color-activated);--background:var(--ion-color-light,#f4f5f8);--background-activated:var(--ion-color-light-shade,#d7d8da);--background-focused:var(--background-activated);--background-hover:var(--ion-color-light-tint,#f5f6f9)}:host(.fab-button-in-list) ::slotted(ion-icon){font-size:18px}";
         }
-      }, {
-        key: "onMove",
-        value: function onMove(gesture) {
-          if (this.optsDirty) {
-            this.calculateOptsWidth();
-          }
+      }]);
 
-          var openAmount = this.initialOpenAmount - gesture.deltaX;
+      return FabButton;
+    }();
 
-          switch (this.sides) {
-            case 2
-            /* End */
-            :
-              openAmount = Math.max(0, openAmount);
-              break;
+    var FabList = /*#__PURE__*/function () {
+      function FabList(hostRef) {
+        _classCallCheck(this, FabList);
 
-            case 1
-            /* Start */
-            :
-              openAmount = Math.min(0, openAmount);
-              break;
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        /**
+         * If `true`, the fab list will show all fab buttons in the list.
+         */
 
-            case 3
-            /* Both */
-            :
-              break;
+        this.activated = false;
+        /**
+         * The side the fab list will show on relative to the main fab button.
+         */
 
-            case 0
-            /* None */
-            :
-              return;
+        this.side = 'bottom';
+      }
 
-            default:
-              console.warn('invalid ItemSideFlags value', this.sides);
-              break;
-          }
+      _createClass(FabList, [{
+        key: "activatedChanged",
+        value: function activatedChanged(activated) {
+          var fabs = Array.from(this.el.querySelectorAll('ion-fab-button')); // if showing the fabs add a timeout, else show immediately
 
-          var optsWidth;
-
-          if (openAmount > this.optsWidthRightSide) {
-            optsWidth = this.optsWidthRightSide;
-            openAmount = optsWidth + (openAmount - optsWidth) * ELASTIC_FACTOR;
-          } else if (openAmount < -this.optsWidthLeftSide) {
-            optsWidth = -this.optsWidthLeftSide;
-            openAmount = optsWidth + (openAmount - optsWidth) * ELASTIC_FACTOR;
-          }
-
-          this.setOpenAmount(openAmount, false);
-        }
-      }, {
-        key: "onEnd",
-        value: function onEnd(gesture) {
-          var velocity = gesture.velocityX;
-          var restingPoint = this.openAmount > 0 ? this.optsWidthRightSide : -this.optsWidthLeftSide; // Check if the drag didn't clear the buttons mid-point
-          // and we aren't moving fast enough to swipe open
-
-          var isResetDirection = this.openAmount > 0 === !(velocity < 0);
-          var isMovingFast = Math.abs(velocity) > 0.3;
-          var isOnCloseZone = Math.abs(this.openAmount) < Math.abs(restingPoint / 2);
-
-          if (swipeShouldReset(isResetDirection, isMovingFast, isOnCloseZone)) {
-            restingPoint = 0;
-          }
-
-          var state = this.state;
-          this.setOpenAmount(restingPoint, true);
-
-          if ((state & 32
-          /* SwipeEnd */
-          ) !== 0 && this.rightOptions) {
-            this.rightOptions.fireSwipeEvent();
-          } else if ((state & 64
-          /* SwipeStart */
-          ) !== 0 && this.leftOptions) {
-            this.leftOptions.fireSwipeEvent();
-          }
-        }
-      }, {
-        key: "calculateOptsWidth",
-        value: function calculateOptsWidth() {
-          this.optsWidthRightSide = 0;
-
-          if (this.rightOptions) {
-            this.rightOptions.style.display = 'flex';
-            this.optsWidthRightSide = this.rightOptions.offsetWidth;
-            this.rightOptions.style.display = '';
-          }
-
-          this.optsWidthLeftSide = 0;
-
-          if (this.leftOptions) {
-            this.leftOptions.style.display = 'flex';
-            this.optsWidthLeftSide = this.leftOptions.offsetWidth;
-            this.leftOptions.style.display = '';
-          }
-
-          this.optsDirty = false;
-        }
-      }, {
-        key: "setOpenAmount",
-        value: function setOpenAmount(openAmount, isFinal) {
-          var _this3 = this;
-
-          if (this.tmr !== undefined) {
-            clearTimeout(this.tmr);
-            this.tmr = undefined;
-          }
-
-          if (!this.item) {
-            return;
-          }
-
-          var style = this.item.style;
-          this.openAmount = openAmount;
-
-          if (isFinal) {
-            style.transition = '';
-          }
-
-          if (openAmount > 0) {
-            this.state = openAmount >= this.optsWidthRightSide + SWIPE_MARGIN ? 8
-            /* End */
-            | 32
-            /* SwipeEnd */
-            : 8
-            /* End */
-            ;
-          } else if (openAmount < 0) {
-            this.state = openAmount <= -this.optsWidthLeftSide - SWIPE_MARGIN ? 16
-            /* Start */
-            | 64
-            /* SwipeStart */
-            : 16
-            /* Start */
-            ;
-          } else {
-            this.tmr = setTimeout(function () {
-              _this3.state = 2
-              /* Disabled */
-              ;
-              _this3.tmr = undefined;
-            }, 600);
-            openSlidingItem = undefined;
-            style.transform = '';
-            return;
-          }
-
-          style.transform = "translate3d(".concat(-openAmount, "px,0,0)");
-          this.ionDrag.emit({
-            amount: openAmount,
-            ratio: this.getSlidingRatioSync()
+          var timeout = activated ? 30 : 0;
+          fabs.forEach(function (fab, i) {
+            setTimeout(function () {
+              return fab.show = activated;
+            }, i * timeout);
           });
-        }
-      }, {
-        key: "getSlidingRatioSync",
-        value: function getSlidingRatioSync() {
-          if (this.openAmount > 0) {
-            return this.openAmount / this.optsWidthRightSide;
-          } else if (this.openAmount < 0) {
-            return this.openAmount / this.optsWidthLeftSide;
-          } else {
-            return 0;
-          }
         }
       }, {
         key: "render",
         value: function render() {
           var _class2;
 
-          var mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'item-sliding-active-slide', this.state !== 2
-            /* Disabled */
-            ), _defineProperty(_class2, 'item-sliding-active-options-end', (this.state & 8
-            /* End */
-            ) !== 0), _defineProperty(_class2, 'item-sliding-active-options-start', (this.state & 16
-            /* Start */
-            ) !== 0), _defineProperty(_class2, 'item-sliding-active-swipe-end', (this.state & 32
-            /* SwipeEnd */
-            ) !== 0), _defineProperty(_class2, 'item-sliding-active-swipe-start', (this.state & 64
-            /* SwipeStart */
-            ) !== 0), _class2)
-          });
+          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
+            class: (_class2 = {}, _defineProperty(_class2, mode, true), _defineProperty(_class2, 'fab-list-active', this.activated), _defineProperty(_class2, "fab-list-side-".concat(this.side), true), _class2)
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null));
         }
       }, {
         key: "el",
         get: function get() {
-          return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
         key: "watchers",
         get: function get() {
           return {
-            "disabled": ["disabledChanged"]
+            "activated": ["activatedChanged"]
           };
         }
       }, {
         key: "style",
         get: function get() {
-          return "ion-item-sliding{display:block;position:relative;width:100%;overflow:hidden}ion-item-sliding,ion-item-sliding .item{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.item-sliding-active-slide .item{position:relative;-webkit-transition:-webkit-transform .5s cubic-bezier(.36,.66,.04,1);transition:-webkit-transform .5s cubic-bezier(.36,.66,.04,1);transition:transform .5s cubic-bezier(.36,.66,.04,1);transition:transform .5s cubic-bezier(.36,.66,.04,1),-webkit-transform .5s cubic-bezier(.36,.66,.04,1);opacity:1;z-index:2;pointer-events:none;will-change:transform}.item-sliding-active-swipe-end .item-options-end .item-option-expandable{padding-left:100%;-ms-flex-order:1;order:1;-webkit-transition-duration:.6s;transition-duration:.6s;-webkit-transition-property:padding-left;transition-property:padding-left}:host-context([dir=rtl]) .item-sliding-active-swipe-end .item-options-end .item-option-expandable,[dir=rtl] .item-sliding-active-swipe-end .item-options-end .item-option-expandable{-ms-flex-order:-1;order:-1}.item-sliding-active-swipe-start .item-options-start .item-option-expandable{padding-right:100%;-ms-flex-order:-1;order:-1;-webkit-transition-duration:.6s;transition-duration:.6s;-webkit-transition-property:padding-right;transition-property:padding-right}:host-context([dir=rtl]) .item-sliding-active-swipe-start .item-options-start .item-option-expandable,[dir=rtl] .item-sliding-active-swipe-start .item-options-start .item-option-expandable{-ms-flex-order:1;order:1}";
+          return ":host{margin-left:0;margin-right:0;margin-top:66px;margin-bottom:66px;display:none;position:absolute;top:0;-ms-flex-direction:column;flex-direction:column;-ms-flex-align:center;align-items:center;min-width:56px;min-height:56px}:host(.fab-list-active){display:-ms-flexbox;display:flex}::slotted(.fab-button-in-list){margin-left:0;margin-right:0;margin-top:8px;margin-bottom:8px;width:40px;height:40px;-webkit-transform:scale(0);transform:scale(0);opacity:0;visibility:hidden}:host(.fab-list-side-bottom) ::slotted(.fab-button-in-list),:host(.fab-list-side-top) ::slotted(.fab-button-in-list){margin-left:0;margin-right:0;margin-top:5px;margin-bottom:5px}:host(.fab-list-side-end) ::slotted(.fab-button-in-list),:host(.fab-list-side-start) ::slotted(.fab-button-in-list){margin-left:5px;margin-right:5px;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-list-side-end) ::slotted(.fab-button-in-list),:host(.fab-list-side-start) ::slotted(.fab-button-in-list){margin-left:unset;margin-right:unset;-webkit-margin-start:5px;margin-inline-start:5px;-webkit-margin-end:5px;margin-inline-end:5px}}::slotted(.fab-button-in-list.fab-button-show){-webkit-transform:scale(1);transform:scale(1);opacity:1;visibility:visible}:host(.fab-list-side-top){top:auto;bottom:0;-ms-flex-direction:column-reverse;flex-direction:column-reverse}:host(.fab-list-side-start){margin-left:66px;margin-right:66px;margin-top:0;margin-bottom:0;right:0;-ms-flex-direction:row-reverse;flex-direction:row-reverse}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-list-side-start){margin-left:unset;margin-right:unset;-webkit-margin-start:66px;margin-inline-start:66px;-webkit-margin-end:66px;margin-inline-end:66px}}:host-context([dir=rtl]).fab-list-side-start,:host-context([dir=rtl]):host(.fab-list-side-start){left:unset;right:unset;left:0}:host(.fab-list-side-end){margin-left:66px;margin-right:66px;margin-top:0;margin-bottom:0;left:0;-ms-flex-direction:row;flex-direction:row}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.fab-list-side-end){margin-left:unset;margin-right:unset;-webkit-margin-start:66px;margin-inline-start:66px;-webkit-margin-end:66px;margin-inline-end:66px}}:host-context([dir=rtl]).fab-list-side-end,:host-context([dir=rtl]):host(.fab-list-side-end){left:unset;right:unset;right:0}";
         }
       }]);
 
-      return ItemSliding;
+      return FabList;
     }();
-
-    var swipeShouldReset = function swipeShouldReset(isResetDirection, isMovingFast, isOnResetZone) {
-      // The logic required to know when the sliding item should close (openAmount=0)
-      // depends on three booleans (isResetDirection, isMovingFast, isOnResetZone)
-      // and it ended up being too complicated to be written manually without errors
-      // so the truth table is attached below: (0=false, 1=true)
-      // isResetDirection | isMovingFast | isOnResetZone || shouldClose
-      //         0        |       0      |       0       ||    0
-      //         0        |       0      |       1       ||    1
-      //         0        |       1      |       0       ||    0
-      //         0        |       1      |       1       ||    0
-      //         1        |       0      |       0       ||    0
-      //         1        |       0      |       1       ||    1
-      //         1        |       1      |       0       ||    1
-      //         1        |       1      |       1       ||    1
-      // The resulting expression was generated by resolving the K-map (Karnaugh map):
-      return !isMovingFast && isOnResetZone || isResetDirection && isMovingFast;
-    };
     /***/
 
   }

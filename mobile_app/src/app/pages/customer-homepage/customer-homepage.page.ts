@@ -3,12 +3,7 @@ import { ModalController } from "@ionic/angular";
 import { StreetPickerPage } from "../popups/street-picker/street-picker.page";
 import { Router } from "@angular/router";
 import { LocationService } from '../../services/location.service';
-import {
-  NativeGeocoder,
-  NativeGeocoderResult,
-  NativeGeocoderOptions
-} from "@ionic-native/native-geocoder/ngx";
-import { from } from 'rxjs';
+import { NativeGeocoderResult } from "@ionic-native/native-geocoder/ngx"; 
 
 declare var google;
 @Component({
@@ -20,6 +15,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
   map;
   fromAddress: String;
   toAddress: String;
+  currentLocation:any;
   @ViewChild("mapElement", { static: true }) mapElement;
 
   constructor(
@@ -33,15 +29,33 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
 
   ngOnInit() {}
 
-  ngAfterContentInit(): void {
-    this.map = new google.maps.Map(this.mapElement.nativeElement, {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8
-    });
+   ngAfterContentInit(): void { 
+    this.initializeMap();
   }
 
+ async initializeMap(){
+    this.currentLocation =  await this.locationService.getUserPosition();
+     this.map = new google.maps.Map(this.mapElement.nativeElement, {
+       center: { lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude },
+       zoom: 16
+     });
+      var streetLocation = await this.locationService.getReverseGeocode(this.currentLocation.coords.latitude,this.currentLocation.coords.longitude)
+      this.fromAddress = streetLocation[0].thoroughfare + "," + streetLocation[0].subThoroughfare + "," + streetLocation[0].locality
+      this.toAddress = streetLocation[0].thoroughfare + "," + streetLocation[0].subThoroughfare + "," + streetLocation[0].locality
+
+      console.log(this.fromAddress)
+      this.addMarker(this.map)
+    }
+
+    addMarker(map:any){
+      let marker = new google.maps.Marker({
+        map: map,
+        animation: google.maps.Animation.DROP,
+        position: map.getCenter()
+      });
+    }
+      
   async openStreetPicker(picker) {
-    let kk = await this.locationService.getForwardGeocode2("Vinkovacka 14, Varaždin, Croatia") 
     const modal = await this.modalcontroller.create({
       component: StreetPickerPage,
       componentProps: {
@@ -63,11 +77,8 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     return await modal.present();
   }
 
-  async orderTaxi() {
-    this.locationService.getReverseGeocode(45.5,19).then((result: NativeGeocoderResult[]) => 
-    { 
-      result[0]
-    });
+  async orderTaxi() { 
+    
     let fromAddress = await this.locationService.getForwardGeocode2(this.fromAddress + ", Varaždin, Croatia"); 
     let toAddress = await this.locationService.getForwardGeocode2(this.toAddress + ", Varaždin, Croatia");  
     let params = {
@@ -76,6 +87,13 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       toLat:toAddress["latitude"],
       toLong:toAddress["longitude"],
     };
+
+    //   let params = {
+    //   fromLat: "46.13123",
+    //   fromLong: "16.123144",
+    //   toLat: "46.13123",
+    //   toLong: "16.123144",
+    // };
 
     this.router.navigate(["/search-ride"],  { queryParams: {data:JSON.stringify(params)} });
   }

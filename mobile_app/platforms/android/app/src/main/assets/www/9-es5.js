@@ -6,43 +6,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[9], {
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html":
-  /*!***********************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html ***!
-    \***********************************************************************************/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/customer-homepage/customer-homepage.page.html":
+  /*!***********************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/customer-homepage/customer-homepage.page.html ***!
+    \***********************************************************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppPagesLoginLoginPageHtml(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesCustomerHomepageCustomerHomepagePageHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons> \n  </ion-toolbar>\n</ion-header>\n \n<ion-content padding class=\"animated fadeIn login auth-page\">\n  <div class=\"login-content\">\n\n    <!-- Logo -->\n    <div padding-horizontal text-center class=\"animated fadeInDown\">\n      <div class=\"logo\"></div>\n      <h2 ion-text class=\"text-primary\">\n        <strong>Login</strong> \n      </h2>\n    </div>\n\n    <!-- Login form -->\n    <form class=\"list-form\">\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name=\"mail\" item-start class=\"text-primary\"></ion-icon>\n          Email\n        </ion-label>\n        <ion-input [(ngModel)]=\"username\" name=\"username\" type=\"email\"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name=\"lock\" item-start class=\"text-primary\"></ion-icon>\n          Password\n        </ion-label>\n        <ion-input [(ngModel)]=\"password\" type=\"password\" name=\"password\"></ion-input>\n      </ion-item>\n    </form>\n\n    <p text-right ion-text color=\"secondary\" tappable (click)=\"forgotPass()\"><strong>Forgot Password?</strong></p>\n\n    <div>\n      <button ion-button icon-start block color=\"dark\" tappable (click)=\"login()\">\n        <ion-icon name=\"log-in\"></ion-icon>\n        {{ \"login.sing.in\" | translate }}      </button>\n    </div>\n   </div>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>about-us</ion-title>\n  </ion-toolbar>\n</ion-header>\n  <ion-content class=\"mapp\"> \n    <style>\n      .map {\n        height: 80% !important;\n      } \n    </style>\n    <div #mapElement class=\"map\"></div> \n<ion-card (click)=\"openStreetPicker('from')\"> {{fromAddress}} </ion-card>\n<ion-card (click)=\"openStreetPicker('to')\"> {{toAddress}} </ion-card>\n<ion-radio-group>\n  1<ion-radio>1</ion-radio>\n  2<ion-radio>2</ion-radio>\n  3<ion-radio>3</ion-radio>\n  4<ion-radio>42</ion-radio>\n</ion-radio-group>\n<br/>\n  <ion-button (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</ion-button>\n  </ion-content>";
     /***/
   },
 
   /***/
-  "./src/app/pages/login/login-routing.module.ts":
-  /*!*****************************************************!*\
-    !*** ./src/app/pages/login/login-routing.module.ts ***!
-    \*****************************************************/
+  "./src/app/pages/customer-homepage/customer-homepage-routing.module.ts":
+  /*!*****************************************************************************!*\
+    !*** ./src/app/pages/customer-homepage/customer-homepage-routing.module.ts ***!
+    \*****************************************************************************/
 
-  /*! exports provided: LoginPageRoutingModule */
+  /*! exports provided: CustomerHomepagePageRoutingModule */
 
   /***/
-  function srcAppPagesLoginLoginRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesCustomerHomepageCustomerHomepageRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "LoginPageRoutingModule", function () {
-      return LoginPageRoutingModule;
+    __webpack_require__.d(__webpack_exports__, "CustomerHomepagePageRoutingModule", function () {
+      return CustomerHomepagePageRoutingModule;
     });
     /* harmony import */
 
@@ -65,44 +65,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _login_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./login.page */
-    "./src/app/pages/login/login.page.ts");
+    var _customer_homepage_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./customer-homepage.page */
+    "./src/app/pages/customer-homepage/customer-homepage.page.ts");
 
     var routes = [{
       path: '',
-      component: _login_page__WEBPACK_IMPORTED_MODULE_3__["LoginPage"]
+      component: _customer_homepage_page__WEBPACK_IMPORTED_MODULE_3__["CustomerHomepagePage"]
     }];
 
-    var LoginPageRoutingModule = function LoginPageRoutingModule() {
-      _classCallCheck(this, LoginPageRoutingModule);
+    var CustomerHomepagePageRoutingModule = function CustomerHomepagePageRoutingModule() {
+      _classCallCheck(this, CustomerHomepagePageRoutingModule);
     };
 
-    LoginPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+    CustomerHomepagePageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })], LoginPageRoutingModule);
+    })], CustomerHomepagePageRoutingModule);
     /***/
   },
 
   /***/
-  "./src/app/pages/login/login.module.ts":
-  /*!*********************************************!*\
-    !*** ./src/app/pages/login/login.module.ts ***!
-    \*********************************************/
+  "./src/app/pages/customer-homepage/customer-homepage.module.ts":
+  /*!*********************************************************************!*\
+    !*** ./src/app/pages/customer-homepage/customer-homepage.module.ts ***!
+    \*********************************************************************/
 
-  /*! exports provided: LoginPageModule */
+  /*! exports provided: CustomerHomepagePageModule */
 
   /***/
-  function srcAppPagesLoginLoginModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesCustomerHomepageCustomerHomepageModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "LoginPageModule", function () {
-      return LoginPageModule;
+    __webpack_require__.d(__webpack_exports__, "CustomerHomepagePageModule", function () {
+      return CustomerHomepagePageModule;
     });
     /* harmony import */
 
@@ -133,19 +133,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    "./node_modules/@ionic/angular/dist/fesm5.js");
     /* harmony import */
 
 
-    var _login_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./login-routing.module */
-    "./src/app/pages/login/login-routing.module.ts");
+    var _customer_homepage_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./customer-homepage-routing.module */
+    "./src/app/pages/customer-homepage/customer-homepage-routing.module.ts");
     /* harmony import */
 
 
-    var _login_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./login.page */
-    "./src/app/pages/login/login.page.ts");
+    var _customer_homepage_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./customer-homepage.page */
+    "./src/app/pages/customer-homepage/customer-homepage.page.ts");
     /* harmony import */
 
 
@@ -153,55 +153,55 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ngx-translate/core */
     "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
 
-    var LoginPageModule = function LoginPageModule() {
-      _classCallCheck(this, LoginPageModule);
+    var CustomerHomepagePageModule = function CustomerHomepagePageModule() {
+      _classCallCheck(this, CustomerHomepagePageModule);
     };
 
-    LoginPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"], _login_routing_module__WEBPACK_IMPORTED_MODULE_5__["LoginPageRoutingModule"]],
-      declarations: [_login_page__WEBPACK_IMPORTED_MODULE_6__["LoginPage"]]
-    })], LoginPageModule);
+    CustomerHomepagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _customer_homepage_routing_module__WEBPACK_IMPORTED_MODULE_5__["CustomerHomepagePageRoutingModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]],
+      declarations: [_customer_homepage_page__WEBPACK_IMPORTED_MODULE_6__["CustomerHomepagePage"]]
+    })], CustomerHomepagePageModule);
     /***/
   },
 
   /***/
-  "./src/app/pages/login/login.page.scss":
-  /*!*********************************************!*\
-    !*** ./src/app/pages/login/login.page.scss ***!
-    \*********************************************/
+  "./src/app/pages/customer-homepage/customer-homepage.page.scss":
+  /*!*********************************************************************!*\
+    !*** ./src/app/pages/customer-homepage/customer-homepage.page.scss ***!
+    \*********************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function srcAppPagesLoginLoginPageScss(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesCustomerHomepageCustomerHomepagePageScss(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2xvZ2luL2xvZ2luLnBhZ2Uuc2NzcyJ9 */";
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2N1c3RvbWVyLWhvbWVwYWdlL2N1c3RvbWVyLWhvbWVwYWdlLnBhZ2Uuc2NzcyJ9 */";
     /***/
   },
 
   /***/
-  "./src/app/pages/login/login.page.ts":
-  /*!*******************************************!*\
-    !*** ./src/app/pages/login/login.page.ts ***!
-    \*******************************************/
+  "./src/app/pages/customer-homepage/customer-homepage.page.ts":
+  /*!*******************************************************************!*\
+    !*** ./src/app/pages/customer-homepage/customer-homepage.page.ts ***!
+    \*******************************************************************/
 
-  /*! exports provided: LoginPage */
+  /*! exports provided: CustomerHomepagePage */
 
   /***/
-  function srcAppPagesLoginLoginPageTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesCustomerHomepageCustomerHomepagePageTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "LoginPage", function () {
-      return LoginPage;
+    __webpack_require__.d(__webpack_exports__, "CustomerHomepagePage", function () {
+      return CustomerHomepagePage;
     });
     /* harmony import */
 
@@ -218,75 +218,212 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _popups_street_picker_street_picker_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../popups/street-picker/street-picker.page */
+    "./src/app/pages/popups/street-picker/street-picker.page.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @angular/router */
     "./node_modules/@angular/router/fesm2015/router.js");
     /* harmony import */
 
 
-    var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @ionic/storage */
-    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
-    /* harmony import */
+    var _services_location_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../../services/location.service */
+    "./src/app/services/location.service.ts");
 
+    var CustomerHomepagePage = /*#__PURE__*/function () {
+      function CustomerHomepagePage(modalcontroller, router, locationService) {
+        _classCallCheck(this, CustomerHomepagePage);
 
-    var _services_socket_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ../../services/socket.service */
-    "./src/app/services/socket.service.ts");
-    /* harmony import */
-
-
-    var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ../../app.component */
-    "./src/app/app.component.ts");
-
-    var LoginPage = /*#__PURE__*/function () {
-      function LoginPage(storage, router, socketService, appCompoent) {
-        _classCallCheck(this, LoginPage);
-
-        this.storage = storage;
+        this.modalcontroller = modalcontroller;
         this.router = router;
-        this.socketService = socketService;
-        this.appCompoent = appCompoent;
+        this.locationService = locationService;
+        this.fromAddress = "Kliknite za unos addrese";
+        this.toAddress = "Kliknite za unos addrese";
       }
 
-      _createClass(LoginPage, [{
+      _createClass(CustomerHomepagePage, [{
         key: "ngOnInit",
         value: function ngOnInit() {}
       }, {
-        key: "login",
-        value: function login() {
-          this.appCompoent.isUserLoggedIn = true;
-          this.storage.set("username", this.username);
-          this.router.navigate(['/driver-homepage']);
-          location.reload();
+        key: "ngAfterContentInit",
+        value: function ngAfterContentInit() {
+          this.initializeMap();
+        }
+      }, {
+        key: "initializeMap",
+        value: function initializeMap() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var streetLocation;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.locationService.getUserPosition();
+
+                  case 2:
+                    this.currentLocation = _context.sent;
+                    this.map = new google.maps.Map(this.mapElement.nativeElement, {
+                      center: {
+                        lat: this.currentLocation.coords.latitude,
+                        lng: this.currentLocation.coords.longitude
+                      },
+                      zoom: 16
+                    });
+                    _context.next = 6;
+                    return this.locationService.getReverseGeocode(this.currentLocation.coords.latitude, this.currentLocation.coords.longitude);
+
+                  case 6:
+                    streetLocation = _context.sent;
+                    this.fromAddress = streetLocation[0].thoroughfare + "," + streetLocation[0].subThoroughfare + "," + streetLocation[0].locality;
+                    this.toAddress = streetLocation[0].thoroughfare + "," + streetLocation[0].subThoroughfare + "," + streetLocation[0].locality;
+                    console.log(this.fromAddress);
+                    this.addMarker(this.map);
+
+                  case 11:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
+        key: "addMarker",
+        value: function addMarker(map) {
+          var marker = new google.maps.Marker({
+            map: map,
+            animation: google.maps.Animation.DROP,
+            position: map.getCenter()
+          });
+        }
+      }, {
+        key: "openStreetPicker",
+        value: function openStreetPicker(picker) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this = this;
+
+            var modal;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return this.modalcontroller.create({
+                      component: _popups_street_picker_street_picker_page__WEBPACK_IMPORTED_MODULE_3__["StreetPickerPage"],
+                      componentProps: {
+                        picker: picker
+                      }
+                    });
+
+                  case 2:
+                    modal = _context2.sent;
+                    modal.onDidDismiss().then(function (response) {
+                      var data = response["data"];
+
+                      if (data["address"] == null) {
+                        return;
+                      }
+
+                      if (data["picker"] == "from") {
+                        _this.fromAddress = data["address"];
+                      } else {
+                        _this.toAddress = data["address"];
+                      }
+                    });
+                    _context2.next = 6;
+                    return modal.present();
+
+                  case 6:
+                    return _context2.abrupt("return", _context2.sent);
+
+                  case 7:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+        }
+      }, {
+        key: "orderTaxi",
+        value: function orderTaxi() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var fromAddress, toAddress, params;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    this.locationService.getReverseGeocode(45.5, 19).then(function (result) {
+                      result[0];
+                    });
+                    _context3.next = 3;
+                    return this.locationService.getForwardGeocode2(this.fromAddress + ", Varaždin, Croatia");
+
+                  case 3:
+                    fromAddress = _context3.sent;
+                    _context3.next = 6;
+                    return this.locationService.getForwardGeocode2(this.toAddress + ", Varaždin, Croatia");
+
+                  case 6:
+                    toAddress = _context3.sent;
+                    params = {
+                      fromLat: fromAddress["latitude"],
+                      fromLong: fromAddress["longitude"],
+                      toLat: toAddress["latitude"],
+                      toLong: toAddress["longitude"]
+                    };
+                    this.router.navigate(["/search-ride"], {
+                      queryParams: {
+                        data: JSON.stringify(params)
+                      }
+                    });
+
+                  case 9:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, this);
+          }));
         }
       }]);
 
-      return LoginPage;
+      return CustomerHomepagePage;
     }();
 
-    LoginPage.ctorParameters = function () {
+    CustomerHomepagePage.ctorParameters = function () {
       return [{
-        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
       }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
       }, {
-        type: _services_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"]
-      }, {
-        type: _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]
+        type: _services_location_service__WEBPACK_IMPORTED_MODULE_5__["LocationService"]
       }];
     };
 
-    LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'app-login',
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])("mapElement", {
+      static: true
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)], CustomerHomepagePage.prototype, "mapElement", void 0);
+    CustomerHomepagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: "app-customer-homepage",
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./login.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html")).default,
+      /*! raw-loader!./customer-homepage.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/customer-homepage/customer-homepage.page.html")).default,
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./login.page.scss */
-      "./src/app/pages/login/login.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"], _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]])], LoginPage);
+      /*! ./customer-homepage.page.scss */
+      "./src/app/pages/customer-homepage/customer-homepage.page.scss")).default]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_location_service__WEBPACK_IMPORTED_MODULE_5__["LocationService"]])], CustomerHomepagePage);
     /***/
   }
 }]);

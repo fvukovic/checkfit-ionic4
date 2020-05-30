@@ -1,17 +1,0 @@
-
-isquid:HiddenFieldCheckO";Rename "message" which hides the field declared at line 52.(œİ­ùÿÿÿÿ8Å©÷Ê£.
-[
-squid:S106X"9Replace this use of System.out or System.err by a logger.(Ñ¥ˆèûÿÿÿÿ8õÃºß.
-fsquid:UnusedPrivateMethodU"5Remove this unused private "buildNextMessage" method.(¼¤Š±ùÿÿÿÿ8íåµã.
-Qsquid:S1199„"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8ŞıŸ.
-Qsquid:S1199•"-Extract this nested code block into a method.(ğáÏ†ûÿÿÿÿ8·‚ßÍ¢.
-\"squid:SwitchLastCaseIsDefaultChecks""Add a default case to this switch.(µ÷¤éşÿÿÿÿ8‡Àµä.
-[
-squid:S106A"9Replace this use of System.out or System.err by a logger.(ı¾Ïœÿÿÿÿÿ8‚½êš¤.
-Psquid:S1199w"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ8ÅŠØÊ£.
-Lsquid:S1199"-Extract this nested code block into a method.(¡í³š8İµ¯¤¢.
-Osquid:S1612N",Replace this lambda with a method reference.( ƒš’úÿÿÿÿ8“ÚöÊ£.
-`squid:UnusedPrivateMethod¡"3Remove this unused private "calculateRoute" method.(ÿûŸ¡8í€Âä.
-Osquid:S1068)"1Remove this unused "TYPE_CUSTOMER" private field.(©ùöá8ÄÇüõŸ.
-Usquid:S3655k"7Call "Optional#isPresent()" before accessing the value.(­û±8¸‚Ôà.
-Xsquid:S3655’"4Call "first.isPresent()" before accessing the value.(Á–Çõşÿÿÿÿ8ÒĞà¤.

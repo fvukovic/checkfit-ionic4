@@ -1,308 +1,223 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[64],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/ion-reorder_2-md.entry.js":
-/*!*********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/ion-reorder_2-md.entry.js ***!
-  \*********************************************************************/
-/*! exports provided: ion_reorder, ion_reorder_group */
+/***/ "./node_modules/@ionic/core/dist/esm/ion-radio_2-md.entry.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/ion-radio_2-md.entry.js ***!
+  \*******************************************************************/
+/*! exports provided: ion_radio, ion_radio_group */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_reorder", function() { return Reorder; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_reorder_group", function() { return ReorderGroup; });
-/* harmony import */ var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-0a8d4d2e.js */ "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_radio", function() { return Radio; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_radio_group", function() { return RadioGroup; });
+/* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
 /* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
-/* harmony import */ var _haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./haptic-c8f1473e.js */ "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js");
+/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
+/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
+/* harmony import */ var _watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./watch-options-2af96011.js */ "./node_modules/@ionic/core/dist/esm/watch-options-2af96011.js");
 
 
 
 
-const Reorder = class {
+
+
+const Radio = class {
     constructor(hostRef) {
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-    }
-    onClick(ev) {
-        ev.preventDefault();
-        ev.stopImmediatePropagation();
-    }
-    render() {
-        const mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-        const reorderIcon = mode === 'ios' ? 'reorder-three-outline' : 'reorder-two-sharp';
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: mode }, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null, Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", { name: reorderIcon, lazy: false, class: "reorder-icon" }))));
-    }
-    static get style() { return ":host([slot]){display:none;line-height:0;z-index:100}.reorder-icon{display:block;font-size:22px;font-size:31px;opacity:.3}"; }
-};
-
-const ReorderGroup = class {
-    constructor(hostRef) {
-        Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.lastToIndex = -1;
-        this.cachedHeights = [];
-        this.scrollElTop = 0;
-        this.scrollElBottom = 0;
-        this.scrollElInitial = 0;
-        this.containerTop = 0;
-        this.containerBottom = 0;
-        this.state = 0 /* Idle */;
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.inputId = `ion-rb-${radioButtonIds++}`;
         /**
-         * If `true`, the reorder will be hidden.
+         * The name of the control, which is submitted with the form data.
          */
-        this.disabled = true;
-        this.ionItemReorder = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this, "ionItemReorder", 7);
+        this.name = this.inputId;
+        /**
+         * If `true`, the user cannot interact with the radio.
+         */
+        this.disabled = false;
+        /**
+         * If `true`, the radio is selected.
+         */
+        this.checked = false;
+        this.onFocus = () => {
+            this.ionFocus.emit();
+        };
+        this.onBlur = () => {
+            this.ionBlur.emit();
+        };
+        this.onClick = () => {
+            if (this.checked) {
+                this.ionDeselect.emit();
+            }
+            else {
+                this.checked = true;
+            }
+        };
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+        this.ionSelect = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionSelect", 7);
+        this.ionDeselect = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionDeselect", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
     }
-    disabledChanged() {
-        if (this.gesture) {
-            this.gesture.enable(!this.disabled);
-        }
+    colorChanged() {
+        this.emitStyle();
     }
-    async connectedCallback() {
-        const contentEl = this.el.closest('ion-content');
-        if (contentEl) {
-            this.scrollEl = await contentEl.getScrollElement();
-        }
-        this.gesture = (await Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./index-c38df685.js */ "./node_modules/@ionic/core/dist/esm/index-c38df685.js"))).createGesture({
-            el: this.el,
-            gestureName: 'reorder',
-            gesturePriority: 110,
-            threshold: 0,
-            direction: 'y',
-            passive: false,
-            canStart: detail => this.canStart(detail),
-            onStart: ev => this.onStart(ev),
-            onMove: ev => this.onMove(ev),
-            onEnd: () => this.onEnd(),
-        });
-        this.disabledChanged();
-    }
-    disconnectedCallback() {
-        this.onEnd();
-        if (this.gesture) {
-            this.gesture.destroy();
-            this.gesture = undefined;
-        }
-    }
-    /**
-     * Completes the reorder operation. Must be called by the `ionItemReorder` event.
-     *
-     * If a list of items is passed, the list will be reordered and returned in the
-     * proper order.
-     *
-     * If no parameters are passed or if `true` is passed in, the reorder will complete
-     * and the item will remain in the position it was dragged to. If `false` is passed,
-     * the reorder will complete and the item will bounce back to its original position.
-     *
-     * @param listOrReorder A list of items to be sorted and returned in the new order or a
-     * boolean of whether or not the reorder should reposition the item.
-     */
-    complete(listOrReorder) {
-        return Promise.resolve(this.completeSync(listOrReorder));
-    }
-    canStart(ev) {
-        if (this.selectedItemEl || this.state !== 0 /* Idle */) {
-            return false;
-        }
-        const target = ev.event.target;
-        const reorderEl = target.closest('ion-reorder');
-        if (!reorderEl) {
-            return false;
-        }
-        const item = findReorderItem(reorderEl, this.el);
-        if (!item) {
-            return false;
-        }
-        ev.data = item;
-        return true;
-    }
-    onStart(ev) {
-        ev.event.preventDefault();
-        const item = this.selectedItemEl = ev.data;
-        const heights = this.cachedHeights;
-        heights.length = 0;
-        const el = this.el;
-        const children = el.children;
-        if (!children || children.length === 0) {
-            return;
-        }
-        let sum = 0;
-        for (let i = 0; i < children.length; i++) {
-            const child = children[i];
-            sum += child.offsetHeight;
-            heights.push(sum);
-            child.$ionIndex = i;
-        }
-        const box = el.getBoundingClientRect();
-        this.containerTop = box.top;
-        this.containerBottom = box.bottom;
-        if (this.scrollEl) {
-            const scrollBox = this.scrollEl.getBoundingClientRect();
-            this.scrollElInitial = this.scrollEl.scrollTop;
-            this.scrollElTop = scrollBox.top + AUTO_SCROLL_MARGIN;
-            this.scrollElBottom = scrollBox.bottom - AUTO_SCROLL_MARGIN;
-        }
-        else {
-            this.scrollElInitial = 0;
-            this.scrollElTop = 0;
-            this.scrollElBottom = 0;
-        }
-        this.lastToIndex = indexForItem(item);
-        this.selectedItemHeight = item.offsetHeight;
-        this.state = 1 /* Active */;
-        item.classList.add(ITEM_REORDER_SELECTED);
-        Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["a"])();
-    }
-    onMove(ev) {
-        const selectedItem = this.selectedItemEl;
-        if (!selectedItem) {
-            return;
-        }
-        // Scroll if we reach the scroll margins
-        const scroll = this.autoscroll(ev.currentY);
-        // // Get coordinate
-        const top = this.containerTop - scroll;
-        const bottom = this.containerBottom - scroll;
-        const currentY = Math.max(top, Math.min(ev.currentY, bottom));
-        const deltaY = scroll + currentY - ev.startY;
-        const normalizedY = currentY - top;
-        const toIndex = this.itemIndexForTop(normalizedY);
-        if (toIndex !== this.lastToIndex) {
-            const fromIndex = indexForItem(selectedItem);
-            this.lastToIndex = toIndex;
-            Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["b"])();
-            this.reorderMove(fromIndex, toIndex);
-        }
-        // Update selected item position
-        selectedItem.style.transform = `translateY(${deltaY}px)`;
-    }
-    onEnd() {
-        const selectedItemEl = this.selectedItemEl;
-        this.state = 2 /* Complete */;
-        if (!selectedItemEl) {
-            this.state = 0 /* Idle */;
-            return;
-        }
-        const toIndex = this.lastToIndex;
-        const fromIndex = indexForItem(selectedItemEl);
-        if (toIndex === fromIndex) {
-            this.completeSync();
-        }
-        else {
-            this.ionItemReorder.emit({
-                from: fromIndex,
-                to: toIndex,
-                complete: this.completeSync.bind(this)
+    checkedChanged(isChecked) {
+        if (isChecked) {
+            this.ionSelect.emit({
+                checked: true,
+                value: this.value
             });
         }
-        Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_2__["c"])();
+        this.emitStyle();
     }
-    completeSync(listOrReorder) {
-        const selectedItemEl = this.selectedItemEl;
-        if (selectedItemEl && this.state === 2 /* Complete */) {
-            const children = this.el.children;
-            const len = children.length;
-            const toIndex = this.lastToIndex;
-            const fromIndex = indexForItem(selectedItemEl);
-            if (toIndex !== fromIndex && (!listOrReorder || listOrReorder === true)) {
-                const ref = (fromIndex < toIndex)
-                    ? children[toIndex + 1]
-                    : children[toIndex];
-                this.el.insertBefore(selectedItemEl, ref);
-            }
-            if (Array.isArray(listOrReorder)) {
-                listOrReorder = reorderArray(listOrReorder, fromIndex, toIndex);
-            }
-            for (let i = 0; i < len; i++) {
-                children[i].style['transform'] = '';
-            }
-            selectedItemEl.style.transition = '';
-            selectedItemEl.classList.remove(ITEM_REORDER_SELECTED);
-            this.selectedItemEl = undefined;
-            this.state = 0 /* Idle */;
-        }
-        return listOrReorder;
+    disabledChanged() {
+        this.emitStyle();
     }
-    itemIndexForTop(deltaY) {
-        const heights = this.cachedHeights;
-        let i = 0;
-        // TODO: since heights is a sorted array of integers, we can do
-        // speed up the search using binary search. Remember that linear-search is still
-        // faster than binary-search for small arrays (<64) due CPU branch misprediction.
-        for (i = 0; i < heights.length; i++) {
-            if (heights[i] > deltaY) {
-                break;
-            }
+    componentWillLoad() {
+        if (this.value === undefined) {
+            this.value = this.inputId;
         }
-        return i;
+        this.emitStyle();
     }
-    /********* DOM WRITE ********* */
-    reorderMove(fromIndex, toIndex) {
-        const itemHeight = this.selectedItemHeight;
-        const children = this.el.children;
-        for (let i = 0; i < children.length; i++) {
-            const style = children[i].style;
-            let value = '';
-            if (i > fromIndex && i <= toIndex) {
-                value = `translateY(${-itemHeight}px)`;
-            }
-            else if (i < fromIndex && i >= toIndex) {
-                value = `translateY(${itemHeight}px)`;
-            }
-            style['transform'] = value;
-        }
-    }
-    autoscroll(posY) {
-        if (!this.scrollEl) {
-            return 0;
-        }
-        let amount = 0;
-        if (posY < this.scrollElTop) {
-            amount = -SCROLL_JUMP;
-        }
-        else if (posY > this.scrollElBottom) {
-            amount = SCROLL_JUMP;
-        }
-        if (amount !== 0) {
-            this.scrollEl.scrollBy(0, amount);
-        }
-        return this.scrollEl.scrollTop - this.scrollElInitial;
+    emitStyle() {
+        this.ionStyle.emit({
+            'radio-checked': this.checked,
+            'interactive-disabled': this.disabled,
+        });
     }
     render() {
-        const mode = Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this);
-        return (Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["H"], { class: {
-                [mode]: true,
-                'reorder-enabled': !this.disabled,
-                'reorder-list-active': this.state !== 0 /* Idle */,
-            } }));
+        const { inputId, disabled, checked, color, el } = this;
+        const mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        const labelId = inputId + '-lbl';
+        const label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(el);
+        if (label) {
+            label.id = labelId;
+        }
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { onClick: this.onClick, role: "radio", "aria-disabled": disabled ? 'true' : null, "aria-checked": `${checked}`, "aria-labelledby": labelId, class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), { [mode]: true, 'in-item': Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el), 'interactive': true, 'radio-checked': checked, 'radio-disabled': disabled }) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "radio-icon" }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", { class: "radio-inner" })), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", { type: "button", onFocus: this.onFocus, onBlur: this.onBlur, disabled: disabled })));
     }
-    get el() { return Object(_core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
+    get el() { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
     static get watchers() { return {
+        "color": ["colorChanged"],
+        "checked": ["checkedChanged"],
         "disabled": ["disabledChanged"]
     }; }
-    static get style() { return ".reorder-list-active>*{-webkit-transition:-webkit-transform .3s;transition:-webkit-transform .3s;transition:transform .3s;transition:transform .3s,-webkit-transform .3s;will-change:transform}.reorder-enabled{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.reorder-enabled ion-reorder{display:block;cursor:-webkit-grab;cursor:grab;pointer-events:all;-ms-touch-action:none;touch-action:none}.reorder-selected,.reorder-selected ion-reorder{cursor:-webkit-grabbing;cursor:grabbing}.reorder-selected{position:relative;-webkit-transition:none!important;transition:none!important;-webkit-box-shadow:0 0 10px rgba(0,0,0,.4);box-shadow:0 0 10px rgba(0,0,0,.4);opacity:.8;z-index:100}.reorder-visible ion-reorder .reorder-icon{-webkit-transform:translateZ(0);transform:translateZ(0)}"; }
+    static get style() { return ":host{display:inline-block;position:relative;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(.radio-disabled){pointer-events:none}.radio-icon{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;contain:layout size style}.radio-icon,button{width:100%;height:100%}button{left:0;top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none}:host-context([dir=rtl]) button,[dir=rtl] button{left:unset;right:unset;right:0}button::-moz-focus-inner{border:0}.radio-icon,.radio-inner{-webkit-box-sizing:border-box;box-sizing:border-box}:host{--color:var(--ion-color-step-400,#999);--color-checked:var(--ion-color-primary,#3880ff);--border-width:2px;--border-style:solid;width:20px;height:20px}:host(.ion-color) .radio-inner{background:var(--ion-color-base)}:host(.ion-color.radio-checked) .radio-icon{border-color:var(--ion-color-base)}.radio-icon{margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;border-radius:50%;border-width:var(--border-width);border-style:var(--border-style);border-color:var(--color)}.radio-inner{border-radius:50%;width:calc(50% + var(--border-width));height:calc(50% + var(--border-width));-webkit-transform:scale3d(0,0,0);transform:scale3d(0,0,0);-webkit-transition:-webkit-transform .28s cubic-bezier(.4,0,.2,1);transition:-webkit-transform .28s cubic-bezier(.4,0,.2,1);transition:transform .28s cubic-bezier(.4,0,.2,1);transition:transform .28s cubic-bezier(.4,0,.2,1),-webkit-transform .28s cubic-bezier(.4,0,.2,1);background:var(--color-checked)}:host(.radio-checked) .radio-icon{border-color:var(--color-checked)}:host(.radio-checked) .radio-inner{-webkit-transform:scaleX(1);transform:scaleX(1)}:host(.radio-disabled){opacity:.3}:host(.ion-focused) .radio-icon:after{border-radius:50%;left:-12px;top:-12px;display:block;position:absolute;width:36px;height:36px;background:var(--ion-color-primary-tint,#4c8dff);content:\"\";opacity:.2}:host-context([dir=rtl]).ion-focused .radio-icon:after,:host-context([dir=rtl]):host(.ion-focused) .radio-icon:after{left:unset;right:unset;right:-12px}:host(.in-item){margin-left:0;margin-right:0;margin-top:9px;margin-bottom:9px;display:block;position:static}:host(.in-item[slot=start]){margin-left:4px;margin-right:36px;margin-top:11px;margin-bottom:10px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-item[slot=start]){margin-left:unset;margin-right:unset;-webkit-margin-start:4px;margin-inline-start:4px;-webkit-margin-end:36px;margin-inline-end:36px}}"; }
 };
-const indexForItem = (element) => {
-    return element['$ionIndex'];
-};
-const findReorderItem = (node, container) => {
-    let parent;
-    while (node) {
-        parent = node.parentElement;
-        if (parent === container) {
-            return node;
-        }
-        node = parent;
+let radioButtonIds = 0;
+
+const RadioGroup = class {
+    constructor(hostRef) {
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.inputId = `ion-rg-${radioGroupIds++}`;
+        this.labelId = `${this.inputId}-lbl`;
+        /**
+         * If `true`, the radios can be deselected.
+         */
+        this.allowEmptySelection = false;
+        /**
+         * The name of the control, which is submitted with the form data.
+         */
+        this.name = this.inputId;
+        this.onSelect = (ev) => {
+            const selectedRadio = ev.target;
+            if (selectedRadio) {
+                this.value = selectedRadio.value;
+            }
+        };
+        this.onDeselect = (ev) => {
+            const selectedRadio = ev.target;
+            if (selectedRadio) {
+                selectedRadio.checked = false;
+                this.value = undefined;
+            }
+        };
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
     }
-    return undefined;
+    valueChanged(value) {
+        this.updateRadios();
+        this.ionChange.emit({ value });
+    }
+    async connectedCallback() {
+        // Get the list header if it exists and set the id
+        // this is used to set aria-labelledby
+        const el = this.el;
+        const header = el.querySelector('ion-list-header') || el.querySelector('ion-item-divider');
+        if (header) {
+            const label = header.querySelector('ion-label');
+            if (label) {
+                this.labelId = label.id = this.name + '-lbl';
+            }
+        }
+        if (this.value === undefined) {
+            const radio = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__["f"])(el, 'ion-radio');
+            if (radio !== undefined) {
+                await radio.componentOnReady();
+                if (this.value === undefined) {
+                    this.value = radio.value;
+                }
+            }
+        }
+        this.mutationO = Object(_watch_options_2af96011_js__WEBPACK_IMPORTED_MODULE_4__["w"])(el, 'ion-radio', newOption => {
+            if (newOption !== undefined) {
+                newOption.componentOnReady().then(() => {
+                    this.value = newOption.value;
+                });
+            }
+            else {
+                this.updateRadios();
+            }
+        });
+        this.updateRadios();
+    }
+    disconnectedCallback() {
+        if (this.mutationO) {
+            this.mutationO.disconnect();
+            this.mutationO = undefined;
+        }
+    }
+    async updateRadios() {
+        /**
+         * Make sure we get all radios first
+         * so values are up to date prior
+         * to caching the radio group value
+         */
+        const radios = await this.getRadios();
+        const { value } = this;
+        let hasChecked = false;
+        // Walk the DOM in reverse order, since the last selected one wins!
+        for (const radio of radios) {
+            if (!hasChecked && radio.value === value) {
+                // correct value for this radio
+                // but this radio isn't checked yet
+                // and we haven't found a checked yet
+                hasChecked = true;
+                radio.checked = true;
+            }
+            else {
+                // this radio doesn't have the correct value
+                // or the radio group has been already checked
+                radio.checked = false;
+            }
+        }
+        // Reset value if
+        if (!hasChecked) {
+            this.value = undefined;
+        }
+    }
+    getRadios() {
+        return Promise.all(Array
+            .from(this.el.querySelectorAll('ion-radio'))
+            .map(r => r.componentOnReady()));
+    }
+    render() {
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { role: "radiogroup", "aria-labelledby": this.labelId, onIonSelect: this.onSelect, onIonDeselect: this.allowEmptySelection ? this.onDeselect : undefined, class: Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this) }));
+    }
+    get el() { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
+    static get watchers() { return {
+        "value": ["valueChanged"]
+    }; }
 };
-const AUTO_SCROLL_MARGIN = 60;
-const SCROLL_JUMP = 10;
-const ITEM_REORDER_SELECTED = 'reorder-selected';
-const reorderArray = (array, from, to) => {
-    const element = array[from];
-    array.splice(from, 1);
-    array.splice(to, 0, element);
-    return array.slice();
-};
+let radioGroupIds = 0;
 
 
 

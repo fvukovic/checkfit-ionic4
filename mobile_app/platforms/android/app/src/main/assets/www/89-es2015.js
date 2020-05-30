@@ -1,470 +1,221 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[89],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/ios.transition-179652bb.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/ios.transition-179652bb.js ***!
-  \**********************************************************************/
-/*! exports provided: iosTransitionAnimation, shadow */
+/***/ "./node_modules/@ionic/core/dist/esm/ion-textarea-md.entry.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/ion-textarea-md.entry.js ***!
+  \********************************************************************/
+/*! exports provided: ion_textarea */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iosTransitionAnimation", function() { return iosTransitionAnimation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shadow", function() { return shadow; });
-/* harmony import */ var _core_0a8d4d2e_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-0a8d4d2e.js */ "./node_modules/@ionic/core/dist/esm/core-0a8d4d2e.js");
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_textarea", function() { return Textarea; });
+/* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
 /* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
 /* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
-/* harmony import */ var _animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animation-56279521.js */ "./node_modules/@ionic/core/dist/esm/animation-56279521.js");
-/* harmony import */ var _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants-3c3e1099.js */ "./node_modules/@ionic/core/dist/esm/constants-3c3e1099.js");
-/* harmony import */ var _index_4e2fa3c6_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-4e2fa3c6.js */ "./node_modules/@ionic/core/dist/esm/index-4e2fa3c6.js");
+/* harmony import */ var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./theme-18cbe2cc.js */ "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
 
 
 
 
 
-
-
-const DURATION = 540;
-const getClonedElement = (tagName) => {
-    return document.querySelector(`${tagName}.ion-cloned-element`);
-};
-const shadow = (el) => {
-    return el.shadowRoot || el;
-};
-const getLargeTitle = (refEl) => {
-    const tabs = (refEl.tagName === 'ION-TABS') ? refEl : refEl.querySelector('ion-tabs');
-    const query = 'ion-header:not(.header-collapse-condense-inactive) ion-title[size=large]';
-    if (tabs != null) {
-        const activeTab = tabs.querySelector('ion-tab:not(.tab-hidden), .ion-page:not(.ion-page-hidden)');
-        return activeTab.querySelector(query);
+const Textarea = class {
+    constructor(hostRef) {
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.inputId = `ion-input-${textareaIds++}`;
+        this.didBlurAfterEdit = false;
+        this.hasFocus = false;
+        /**
+         * Indicates whether and how the text value should be automatically capitalized as it is entered/edited by the user.
+         */
+        this.autocapitalize = 'none';
+        /**
+         * This Boolean attribute lets you specify that a form control should have input focus when the page loads.
+         */
+        this.autofocus = false;
+        /**
+         * If `true`, the value will be cleared after focus upon edit. Defaults to `true` when `type` is `"password"`, `false` for all other types.
+         */
+        this.clearOnEdit = false;
+        /**
+         * Set the amount of time, in milliseconds, to wait to trigger the `ionChange` event after each keystroke.
+         */
+        this.debounce = 0;
+        /**
+         * If `true`, the user cannot interact with the textarea.
+         */
+        this.disabled = false;
+        /**
+         * The name of the control, which is submitted with the form data.
+         */
+        this.name = this.inputId;
+        /**
+         * If `true`, the user cannot modify the value.
+         */
+        this.readonly = false;
+        /**
+         * If `true`, the user must fill in a value before submitting a form.
+         */
+        this.required = false;
+        /**
+         * If `true`, the element will have its spelling and grammar checked.
+         */
+        this.spellcheck = false;
+        /**
+         * If `true`, the element height will increase based on the value.
+         */
+        this.autoGrow = false;
+        /**
+         * The value of the textarea.
+         */
+        this.value = '';
+        this.onInput = (ev) => {
+            if (this.nativeInput) {
+                this.value = this.nativeInput.value;
+            }
+            this.emitStyle();
+            this.ionInput.emit(ev);
+        };
+        this.onFocus = () => {
+            this.hasFocus = true;
+            this.focusChange();
+            this.ionFocus.emit();
+        };
+        this.onBlur = () => {
+            this.hasFocus = false;
+            this.focusChange();
+            this.ionBlur.emit();
+        };
+        this.onKeyDown = () => {
+            this.checkClearOnEdit();
+        };
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
+        this.ionInput = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionInput", 7);
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
     }
-    return refEl.querySelector(query);
-};
-const getBackButton = (refEl, backDirection) => {
-    const tabs = (refEl.tagName === 'ION-TABS') ? refEl : refEl.querySelector('ion-tabs');
-    let buttonsList = [];
-    if (tabs != null) {
-        const activeTab = tabs.querySelector('ion-tab:not(.tab-hidden), .ion-page:not(.ion-page-hidden)');
-        buttonsList = activeTab.querySelectorAll('ion-buttons');
+    debounceChanged() {
+        this.ionChange = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["d"])(this.ionChange, this.debounce);
     }
-    else {
-        buttonsList = refEl.querySelectorAll('ion-buttons');
+    disabledChanged() {
+        this.emitStyle();
     }
-    for (const buttons of buttonsList) {
-        const parentHeader = buttons.closest('ion-header');
-        const activeHeader = parentHeader && !parentHeader.classList.contains('header-collapse-condense-inactive');
-        const backButton = buttons.querySelector('ion-back-button');
-        const buttonsCollapse = buttons.classList.contains('buttons-collapse');
-        const startSlot = buttons.slot === 'start' || buttons.slot === '';
-        if (backButton !== null && startSlot && ((buttonsCollapse && activeHeader && backDirection) || !buttonsCollapse)) {
-            return backButton;
+    /**
+     * Update the native input element when the value changes
+     */
+    valueChanged() {
+        const nativeInput = this.nativeInput;
+        const value = this.getValue();
+        if (nativeInput && nativeInput.value !== value) {
+            nativeInput.value = value;
+        }
+        this.runAutoGrow();
+        this.emitStyle();
+        this.ionChange.emit({ value });
+    }
+    connectedCallback() {
+        this.emitStyle();
+        this.debounceChanged();
+        {
+            this.el.dispatchEvent(new CustomEvent('ionInputDidLoad', {
+                detail: this.el
+            }));
         }
     }
-    return null;
-};
-const createLargeTitleTransition = (rootAnimation, rtl, backDirection, enteringEl, leavingEl) => {
-    const enteringBackButton = getBackButton(enteringEl, backDirection);
-    const leavingLargeTitle = getLargeTitle(leavingEl);
-    const enteringLargeTitle = getLargeTitle(enteringEl);
-    const leavingBackButton = getBackButton(leavingEl, backDirection);
-    const shouldAnimationForward = enteringBackButton !== null && leavingLargeTitle !== null && !backDirection;
-    const shouldAnimationBackward = enteringLargeTitle !== null && leavingBackButton !== null && backDirection;
-    if (shouldAnimationForward) {
-        const leavingLargeTitleBox = leavingLargeTitle.getBoundingClientRect();
-        const enteringBackButtonBox = enteringBackButton.getBoundingClientRect();
-        animateLargeTitle(rootAnimation, rtl, backDirection, leavingLargeTitle, leavingLargeTitleBox, enteringBackButtonBox);
-        animateBackButton(rootAnimation, rtl, backDirection, enteringBackButton, leavingLargeTitleBox, enteringBackButtonBox);
+    disconnectedCallback() {
+        {
+            document.dispatchEvent(new CustomEvent('ionInputDidUnload', {
+                detail: this.el
+            }));
+        }
     }
-    else if (shouldAnimationBackward) {
-        const enteringLargeTitleBox = enteringLargeTitle.getBoundingClientRect();
-        const leavingBackButtonBox = leavingBackButton.getBoundingClientRect();
-        animateLargeTitle(rootAnimation, rtl, backDirection, enteringLargeTitle, enteringLargeTitleBox, leavingBackButtonBox);
-        animateBackButton(rootAnimation, rtl, backDirection, leavingBackButton, enteringLargeTitleBox, leavingBackButtonBox);
+    componentDidLoad() {
+        this.runAutoGrow();
     }
-    return {
-        forward: shouldAnimationForward,
-        backward: shouldAnimationBackward
-    };
-};
-const animateBackButton = (rootAnimation, rtl, backDirection, backButtonEl, largeTitleBox, backButtonBox) => {
-    const BACK_BUTTON_START_OFFSET = (rtl) ? `calc(100% - ${backButtonBox.right + 4}px)` : `${backButtonBox.left - 4}px`;
-    const START_TEXT_TRANSLATE = (rtl) ? '7px' : '-7px';
-    const END_TEXT_TRANSLATE = (rtl) ? '-4px' : '4px';
-    const ICON_TRANSLATE = (rtl) ? '-4px' : '4px';
-    const TEXT_ORIGIN_X = (rtl) ? 'right' : 'left';
-    const ICON_ORIGIN_X = (rtl) ? 'left' : 'right';
-    const FORWARD_TEXT_KEYFRAMES = [
-        { offset: 0, opacity: 0, transform: `translate3d(${START_TEXT_TRANSLATE}, ${largeTitleBox.top - 40}px, 0) scale(2.1)` },
-        { offset: 1, opacity: 1, transform: `translate3d(${END_TEXT_TRANSLATE}, ${backButtonBox.top - 46}px, 0) scale(1)` }
-    ];
-    const BACKWARD_TEXT_KEYFRAMES = [
-        { offset: 0, opacity: 1, transform: `translate3d(${END_TEXT_TRANSLATE}, ${backButtonBox.top - 46}px, 0) scale(1)` },
-        { offset: 0.6, opacity: 0 },
-        { offset: 1, opacity: 0, transform: `translate3d(${START_TEXT_TRANSLATE}, ${largeTitleBox.top - 40}px, 0) scale(2.1)` }
-    ];
-    const TEXT_KEYFRAMES = (backDirection) ? BACKWARD_TEXT_KEYFRAMES : FORWARD_TEXT_KEYFRAMES;
-    const FORWARD_ICON_KEYFRAMES = [
-        { offset: 0, opacity: 0, transform: `translate3d(${ICON_TRANSLATE}, ${backButtonBox.top - 41}px, 0) scale(0.6)` },
-        { offset: 1, opacity: 1, transform: `translate3d(${ICON_TRANSLATE}, ${backButtonBox.top - 46}px, 0) scale(1)` }
-    ];
-    const BACKWARD_ICON_KEYFRAMES = [
-        { offset: 0, opacity: 1, transform: `translate3d(${ICON_TRANSLATE}, ${backButtonBox.top - 46}px, 0) scale(1)` },
-        { offset: 0.2, opacity: 0, transform: `translate3d(${ICON_TRANSLATE}, ${backButtonBox.top - 41}px, 0) scale(0.6)` },
-        { offset: 1, opacity: 0, transform: `translate3d(${ICON_TRANSLATE}, ${backButtonBox.top - 41}px, 0) scale(0.6)` }
-    ];
-    const ICON_KEYFRAMES = (backDirection) ? BACKWARD_ICON_KEYFRAMES : FORWARD_ICON_KEYFRAMES;
-    const enteringBackButtonTextAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const enteringBackButtonIconAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const clonedBackButtonEl = getClonedElement('ion-back-button');
-    const backButtonTextEl = shadow(clonedBackButtonEl).querySelector('.button-text');
-    const backButtonIconEl = shadow(clonedBackButtonEl).querySelector('ion-icon');
-    clonedBackButtonEl.text = backButtonEl.text;
-    clonedBackButtonEl.mode = backButtonEl.mode;
-    clonedBackButtonEl.icon = backButtonEl.icon;
-    clonedBackButtonEl.color = backButtonEl.color;
-    clonedBackButtonEl.disabled = backButtonEl.disabled;
-    clonedBackButtonEl.style.setProperty('display', 'block');
-    clonedBackButtonEl.style.setProperty('position', 'fixed');
-    enteringBackButtonIconAnimation.addElement(backButtonIconEl);
-    enteringBackButtonTextAnimation.addElement(backButtonTextEl);
-    enteringBackButtonTextAnimation
-        .beforeStyles({
-        'transform-origin': `${TEXT_ORIGIN_X} center`
-    })
-        .beforeAddWrite(() => {
-        backButtonEl.style.setProperty('display', 'none');
-        clonedBackButtonEl.style.setProperty(TEXT_ORIGIN_X, BACK_BUTTON_START_OFFSET);
-    })
-        .afterAddWrite(() => {
-        backButtonEl.style.setProperty('display', '');
-        clonedBackButtonEl.style.setProperty('display', 'none');
-        clonedBackButtonEl.style.removeProperty(TEXT_ORIGIN_X);
-    })
-        .keyframes(TEXT_KEYFRAMES);
-    enteringBackButtonIconAnimation
-        .beforeStyles({
-        'transform-origin': `${ICON_ORIGIN_X} center`
-    })
-        .keyframes(ICON_KEYFRAMES);
-    rootAnimation.addAnimation([enteringBackButtonTextAnimation, enteringBackButtonIconAnimation]);
-};
-const animateLargeTitle = (rootAnimation, rtl, backDirection, largeTitleEl, largeTitleBox, backButtonBox) => {
-    const TITLE_START_OFFSET = (rtl) ? `calc(100% - ${largeTitleEl.right}px)` : `${largeTitleEl.left}px`;
-    const START_TRANSLATE = (rtl) ? '-18px' : '18px';
-    const ORIGIN_X = (rtl) ? 'right' : 'left';
-    const BACKWARDS_KEYFRAMES = [
-        { offset: 0, opacity: 0, transform: `translate3d(${START_TRANSLATE}, ${backButtonBox.top - 4}px, 0) scale(0.49)` },
-        { offset: 0.1, opacity: 0 },
-        { offset: 1, opacity: 1, transform: `translate3d(0, ${largeTitleBox.top - 2}px, 0) scale(1)` }
-    ];
-    const FORWARDS_KEYFRAMES = [
-        { offset: 0, opacity: 0.99, transform: `translate3d(0, ${largeTitleBox.top - 2}px, 0) scale(1)` },
-        { offset: 0.6, opacity: 0 },
-        { offset: 1, opacity: 0, transform: `translate3d(${START_TRANSLATE}, ${backButtonBox.top - 4}px, 0) scale(0.5)` }
-    ];
-    const KEYFRAMES = (backDirection) ? BACKWARDS_KEYFRAMES : FORWARDS_KEYFRAMES;
-    const clonedTitleEl = getClonedElement('ion-title');
-    const clonedLargeTitleAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    clonedTitleEl.innerText = largeTitleEl.innerText;
-    clonedTitleEl.size = largeTitleEl.size;
-    clonedTitleEl.color = largeTitleEl.color;
-    clonedLargeTitleAnimation.addElement(clonedTitleEl);
-    clonedLargeTitleAnimation
-        .beforeStyles({
-        'transform-origin': `${ORIGIN_X} center`,
-        'height': '46px',
-        'display': '',
-        'position': 'relative',
-        [ORIGIN_X]: TITLE_START_OFFSET
-    })
-        .beforeAddWrite(() => {
-        largeTitleEl.style.setProperty('display', 'none');
-    })
-        .afterAddWrite(() => {
-        largeTitleEl.style.setProperty('display', '');
-        clonedTitleEl.style.setProperty('display', 'none');
-    })
-        .keyframes(KEYFRAMES);
-    rootAnimation.addAnimation(clonedLargeTitleAnimation);
-};
-const iosTransitionAnimation = (navEl, opts) => {
-    try {
-        const EASING = 'cubic-bezier(0.32,0.72,0,1)';
-        const OPACITY = 'opacity';
-        const TRANSFORM = 'transform';
-        const CENTER = '0%';
-        const OFF_OPACITY = 0.8;
-        const isRTL = navEl.ownerDocument.dir === 'rtl';
-        const OFF_RIGHT = isRTL ? '-99.5%' : '99.5%';
-        const OFF_LEFT = isRTL ? '33%' : '-33%';
-        const enteringEl = opts.enteringEl;
-        const leavingEl = opts.leavingEl;
-        const backDirection = (opts.direction === 'back');
-        const contentEl = enteringEl.querySelector(':scope > ion-content');
-        const headerEls = enteringEl.querySelectorAll(':scope > ion-header > *:not(ion-toolbar), :scope > ion-footer > *');
-        const enteringToolBarEls = enteringEl.querySelectorAll(':scope > ion-header > ion-toolbar');
-        const rootAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-        const enteringContentAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-        rootAnimation
-            .addElement(enteringEl)
-            .duration(opts.duration || DURATION)
-            .easing(opts.easing || EASING)
-            .fill('both')
-            .beforeRemoveClass('ion-page-invisible');
-        if (leavingEl && navEl) {
-            const navDecorAnimation = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            navDecorAnimation.addElement(navEl);
-            rootAnimation.addAnimation(navDecorAnimation);
-        }
-        if (!contentEl && enteringToolBarEls.length === 0 && headerEls.length === 0) {
-            enteringContentAnimation.addElement(enteringEl.querySelector(':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs')); // REVIEW
-        }
-        else {
-            enteringContentAnimation.addElement(contentEl); // REVIEW
-            enteringContentAnimation.addElement(headerEls);
-        }
-        rootAnimation.addAnimation(enteringContentAnimation);
-        if (backDirection) {
-            enteringContentAnimation
-                .beforeClearStyles([OPACITY])
-                .fromTo('transform', `translateX(${OFF_LEFT})`, `translateX(${CENTER})`)
-                .fromTo(OPACITY, OFF_OPACITY, 1);
-        }
-        else {
-            // entering content, forward direction
-            enteringContentAnimation
-                .beforeClearStyles([OPACITY])
-                .fromTo('transform', `translateX(${OFF_RIGHT})`, `translateX(${CENTER})`);
-        }
-        if (contentEl) {
-            const enteringTransitionEffectEl = shadow(contentEl).querySelector('.transition-effect');
-            if (enteringTransitionEffectEl) {
-                const enteringTransitionCoverEl = enteringTransitionEffectEl.querySelector('.transition-cover');
-                const enteringTransitionShadowEl = enteringTransitionEffectEl.querySelector('.transition-shadow');
-                const enteringTransitionEffect = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                const enteringTransitionCover = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                const enteringTransitionShadow = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                enteringTransitionEffect
-                    .addElement(enteringTransitionEffectEl)
-                    .beforeStyles({ opacity: '1', display: 'block' })
-                    .afterStyles({ opacity: '', display: '' });
-                enteringTransitionCover
-                    .addElement(enteringTransitionCoverEl) // REVIEW
-                    .beforeClearStyles([OPACITY])
-                    .fromTo(OPACITY, 0, 0.1);
-                enteringTransitionShadow
-                    .addElement(enteringTransitionShadowEl) // REVIEW
-                    .beforeClearStyles([OPACITY])
-                    .fromTo(OPACITY, 0.03, 0.70);
-                enteringTransitionEffect.addAnimation([enteringTransitionCover, enteringTransitionShadow]);
-                enteringContentAnimation.addAnimation([enteringTransitionEffect]);
-            }
-        }
-        const enteringContentHasLargeTitle = enteringEl.querySelector('ion-header.header-collapse-condense');
-        const { forward, backward } = createLargeTitleTransition(rootAnimation, isRTL, backDirection, enteringEl, leavingEl);
-        enteringToolBarEls.forEach(enteringToolBarEl => {
-            const enteringToolBar = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            enteringToolBar.addElement(enteringToolBarEl);
-            rootAnimation.addAnimation(enteringToolBar);
-            const enteringTitle = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            enteringTitle.addElement(enteringToolBarEl.querySelector('ion-title')); // REVIEW
-            const enteringToolBarButtons = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            const buttons = Array.from(enteringToolBarEl.querySelectorAll('ion-buttons,[menuToggle]'));
-            const parentHeader = enteringToolBarEl.closest('ion-header');
-            const inactiveHeader = parentHeader && parentHeader.classList.contains('header-collapse-condense-inactive');
-            let buttonsToAnimate;
-            if (backDirection) {
-                buttonsToAnimate = buttons.filter(button => {
-                    const isCollapseButton = button.classList.contains('buttons-collapse');
-                    return (isCollapseButton && !inactiveHeader) || !isCollapseButton;
-                });
-            }
-            else {
-                buttonsToAnimate = buttons.filter(button => !button.classList.contains('buttons-collapse'));
-            }
-            enteringToolBarButtons.addElement(buttonsToAnimate);
-            const enteringToolBarItems = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            enteringToolBarItems.addElement(enteringToolBarEl.querySelectorAll(':scope > *:not(ion-title):not(ion-buttons):not([menuToggle])'));
-            const enteringToolBarBg = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            enteringToolBarBg.addElement(shadow(enteringToolBarEl).querySelector('.toolbar-background')); // REVIEW
-            const enteringBackButton = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            const backButtonEl = enteringToolBarEl.querySelector('ion-back-button');
-            if (backButtonEl) {
-                enteringBackButton.addElement(backButtonEl);
-            }
-            enteringToolBar.addAnimation([enteringTitle, enteringToolBarButtons, enteringToolBarItems, enteringToolBarBg, enteringBackButton]);
-            enteringToolBarButtons.fromTo(OPACITY, 0.01, 1);
-            enteringToolBarItems.fromTo(OPACITY, 0.01, 1);
-            if (backDirection) {
-                if (!inactiveHeader) {
-                    enteringTitle
-                        .fromTo('transform', `translateX(${OFF_LEFT})`, `translateX(${CENTER})`)
-                        .fromTo(OPACITY, 0.01, 1);
-                }
-                enteringToolBarItems.fromTo('transform', `translateX(${OFF_LEFT})`, `translateX(${CENTER})`);
-                // back direction, entering page has a back button
-                enteringBackButton.fromTo(OPACITY, 0.01, 1);
-            }
-            else {
-                // entering toolbar, forward direction
-                if (!enteringContentHasLargeTitle) {
-                    enteringTitle
-                        .fromTo('transform', `translateX(${OFF_RIGHT})`, `translateX(${CENTER})`)
-                        .fromTo(OPACITY, 0.01, 1);
-                }
-                enteringToolBarItems.fromTo('transform', `translateX(${OFF_RIGHT})`, `translateX(${CENTER})`);
-                enteringToolBarBg.beforeClearStyles([OPACITY, 'transform']);
-                const translucentHeader = parentHeader === null || parentHeader === void 0 ? void 0 : parentHeader.translucent;
-                if (!translucentHeader) {
-                    enteringToolBarBg.fromTo(OPACITY, 0.01, 1);
-                }
-                else {
-                    enteringToolBarBg.fromTo('transform', (isRTL ? 'translateX(-100%)' : 'translateX(100%)'), 'translateX(0px)');
-                }
-                // forward direction, entering page has a back button
-                if (!forward) {
-                    enteringBackButton.fromTo(OPACITY, 0.01, 1);
-                }
-                if (backButtonEl && !forward) {
-                    const enteringBackBtnText = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                    enteringBackBtnText
-                        .addElement(shadow(backButtonEl).querySelector('.button-text')) // REVIEW
-                        .fromTo(`transform`, (isRTL ? 'translateX(-100px)' : 'translateX(100px)'), 'translateX(0px)');
-                    enteringToolBar.addAnimation(enteringBackBtnText);
-                }
-            }
-        });
-        // setup leaving view
-        if (leavingEl) {
-            const leavingContent = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            const leavingContentEl = leavingEl.querySelector(':scope > ion-content');
-            leavingContent.addElement(leavingContentEl); // REVIEW
-            leavingContent.addElement(leavingEl.querySelectorAll(':scope > ion-header > *:not(ion-toolbar), :scope > ion-footer > *'));
-            rootAnimation.addAnimation(leavingContent);
-            if (backDirection) {
-                // leaving content, back direction
-                leavingContent
-                    .beforeClearStyles([OPACITY])
-                    .fromTo('transform', `translateX(${CENTER})`, (isRTL ? 'translateX(-100%)' : 'translateX(100%)'));
-                const leavingPage = Object(_index_4e2fa3c6_js__WEBPACK_IMPORTED_MODULE_5__["g"])(leavingEl);
-                rootAnimation.afterAddWrite(() => {
-                    if (rootAnimation.getDirection() === 'normal') {
-                        leavingPage.style.setProperty('display', 'none');
-                    }
-                });
-            }
-            else {
-                // leaving content, forward direction
-                leavingContent
-                    .fromTo('transform', `translateX(${CENTER})`, `translateX(${OFF_LEFT})`)
-                    .fromTo(OPACITY, 1, OFF_OPACITY);
-            }
-            if (leavingContentEl) {
-                const leavingTransitionEffectEl = shadow(leavingContentEl).querySelector('.transition-effect');
-                if (leavingTransitionEffectEl) {
-                    const leavingTransitionCoverEl = leavingTransitionEffectEl.querySelector('.transition-cover');
-                    const leavingTransitionShadowEl = leavingTransitionEffectEl.querySelector('.transition-shadow');
-                    const leavingTransitionEffect = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                    const leavingTransitionCover = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                    const leavingTransitionShadow = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                    leavingTransitionEffect
-                        .addElement(leavingTransitionEffectEl)
-                        .beforeStyles({ opacity: '1', display: 'block' })
-                        .afterStyles({ opacity: '', display: '' });
-                    leavingTransitionCover
-                        .addElement(leavingTransitionCoverEl) // REVIEW
-                        .beforeClearStyles([OPACITY])
-                        .fromTo(OPACITY, 0.1, 0);
-                    leavingTransitionShadow
-                        .addElement(leavingTransitionShadowEl) // REVIEW
-                        .beforeClearStyles([OPACITY])
-                        .fromTo(OPACITY, 0.70, 0.03);
-                    leavingTransitionEffect.addAnimation([leavingTransitionCover, leavingTransitionShadow]);
-                    leavingContent.addAnimation([leavingTransitionEffect]);
-                }
-            }
-            const leavingToolBarEls = leavingEl.querySelectorAll(':scope > ion-header > ion-toolbar');
-            leavingToolBarEls.forEach(leavingToolBarEl => {
-                const leavingToolBar = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                leavingToolBar.addElement(leavingToolBarEl);
-                const leavingTitle = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                leavingTitle.addElement(leavingToolBarEl.querySelector('ion-title')); // REVIEW
-                const leavingToolBarButtons = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                const buttons = leavingToolBarEl.querySelectorAll('ion-buttons,[menuToggle]');
-                const parentHeader = leavingToolBarEl.closest('ion-header');
-                const inactiveHeader = parentHeader && parentHeader.classList.contains('header-collapse-condense-inactive');
-                const buttonsToAnimate = Array.from(buttons).filter(button => {
-                    const isCollapseButton = button.classList.contains('buttons-collapse');
-                    return (isCollapseButton && !inactiveHeader) || !isCollapseButton;
-                });
-                leavingToolBarButtons.addElement(buttonsToAnimate);
-                const leavingToolBarItems = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                const leavingToolBarItemEls = leavingToolBarEl.querySelectorAll(':scope > *:not(ion-title):not(ion-buttons):not([menuToggle])');
-                if (leavingToolBarItemEls.length > 0) {
-                    leavingToolBarItems.addElement(leavingToolBarItemEls);
-                }
-                const leavingToolBarBg = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                leavingToolBarBg.addElement(shadow(leavingToolBarEl).querySelector('.toolbar-background')); // REVIEW
-                const leavingBackButton = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                const backButtonEl = leavingToolBarEl.querySelector('ion-back-button');
-                if (backButtonEl) {
-                    leavingBackButton.addElement(backButtonEl);
-                }
-                leavingToolBar.addAnimation([leavingTitle, leavingToolBarButtons, leavingToolBarItems, leavingBackButton, leavingToolBarBg]);
-                rootAnimation.addAnimation(leavingToolBar);
-                // fade out leaving toolbar items
-                leavingBackButton.fromTo(OPACITY, 0.99, 0);
-                leavingToolBarButtons.fromTo(OPACITY, 0.99, 0);
-                leavingToolBarItems.fromTo(OPACITY, 0.99, 0);
-                if (backDirection) {
-                    if (!inactiveHeader) {
-                        // leaving toolbar, back direction
-                        leavingTitle
-                            .fromTo('transform', `translateX(${CENTER})`, (isRTL ? 'translateX(-100%)' : 'translateX(100%)'))
-                            .fromTo(OPACITY, 0.99, 0);
-                    }
-                    leavingToolBarItems.fromTo('transform', `translateX(${CENTER})`, (isRTL ? 'translateX(-100%)' : 'translateX(100%)'));
-                    leavingToolBarBg.beforeClearStyles([OPACITY, 'transform']);
-                    // leaving toolbar, back direction, and there's no entering toolbar
-                    // should just slide out, no fading out
-                    const translucentHeader = parentHeader === null || parentHeader === void 0 ? void 0 : parentHeader.translucent;
-                    if (!translucentHeader) {
-                        leavingToolBarBg.fromTo(OPACITY, 0.99, 0);
-                    }
-                    else {
-                        leavingToolBarBg.fromTo('transform', 'translateX(0px)', (isRTL ? 'translateX(-100%)' : 'translateX(100%)'));
-                    }
-                    if (backButtonEl && !backward) {
-                        const leavingBackBtnText = Object(_animation_56279521_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                        leavingBackBtnText
-                            .addElement(shadow(backButtonEl).querySelector('.button-text')) // REVIEW
-                            .fromTo('transform', `translateX(${CENTER})`, `translateX(${(isRTL ? -124 : 124) + 'px'})`);
-                        leavingToolBar.addAnimation(leavingBackBtnText);
-                    }
-                }
-                else {
-                    // leaving toolbar, forward direction
-                    if (!inactiveHeader) {
-                        leavingTitle
-                            .fromTo('transform', `translateX(${CENTER})`, `translateX(${OFF_LEFT})`)
-                            .fromTo(OPACITY, 0.99, 0)
-                            .afterClearStyles([TRANSFORM, OPACITY]);
-                    }
-                    leavingToolBarItems
-                        .fromTo('transform', `translateX(${CENTER})`, `translateX(${OFF_LEFT})`)
-                        .afterClearStyles([TRANSFORM, OPACITY]);
-                    leavingBackButton.afterClearStyles([OPACITY]);
-                    leavingTitle.afterClearStyles([OPACITY]);
-                    leavingToolBarButtons.afterClearStyles([OPACITY]);
-                }
+    // TODO: performance hit, this cause layout thrashing
+    runAutoGrow() {
+        const nativeInput = this.nativeInput;
+        if (nativeInput && this.autoGrow) {
+            Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["f"])(() => {
+                nativeInput.style.height = 'inherit';
+                nativeInput.style.height = nativeInput.scrollHeight + 'px';
             });
         }
-        return rootAnimation;
     }
-    catch (err) {
-        throw err;
+    /**
+     * Sets focus on the specified `ion-textarea`. Use this method instead of the global
+     * `input.focus()`.
+     */
+    async setFocus() {
+        if (this.nativeInput) {
+            this.nativeInput.focus();
+        }
     }
+    /**
+     * Returns the native `<textarea>` element used under the hood.
+     */
+    getInputElement() {
+        return Promise.resolve(this.nativeInput);
+    }
+    emitStyle() {
+        this.ionStyle.emit({
+            'interactive': true,
+            'textarea': true,
+            'input': true,
+            'interactive-disabled': this.disabled,
+            'has-placeholder': this.placeholder != null,
+            'has-value': this.hasValue(),
+            'has-focus': this.hasFocus
+        });
+    }
+    /**
+     * Check if we need to clear the text input if clearOnEdit is enabled
+     */
+    checkClearOnEdit() {
+        if (!this.clearOnEdit) {
+            return;
+        }
+        // Did the input value change after it was blurred and edited?
+        if (this.didBlurAfterEdit && this.hasValue()) {
+            // Clear the input
+            this.value = '';
+        }
+        // Reset the flag
+        this.didBlurAfterEdit = false;
+    }
+    focusChange() {
+        // If clearOnEdit is enabled and the input blurred but has a value, set a flag
+        if (this.clearOnEdit && !this.hasFocus && this.hasValue()) {
+            this.didBlurAfterEdit = true;
+        }
+        this.emitStyle();
+    }
+    hasValue() {
+        return this.getValue() !== '';
+    }
+    getValue() {
+        return this.value || '';
+    }
+    render() {
+        const mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        const value = this.getValue();
+        const labelId = this.inputId + '-lbl';
+        const label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(this.el);
+        if (label) {
+            label.id = labelId;
+        }
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { "aria-disabled": this.disabled ? 'true' : null, class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), { [mode]: true }) }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("textarea", { class: "native-textarea", ref: el => this.nativeInput = el, autoCapitalize: this.autocapitalize, autoFocus: this.autofocus, disabled: this.disabled, maxLength: this.maxlength, minLength: this.minlength, name: this.name, placeholder: this.placeholder || '', readOnly: this.readonly, required: this.required, spellCheck: this.spellcheck, cols: this.cols, rows: this.rows, wrap: this.wrap, onInput: this.onInput, onBlur: this.onBlur, onFocus: this.onFocus, onKeyDown: this.onKeyDown }, value)));
+    }
+    get el() { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
+    static get watchers() { return {
+        "debounce": ["debounceChanged"],
+        "disabled": ["disabledChanged"],
+        "value": ["valueChanged"]
+    }; }
+    static get style() { return ".sc-ion-textarea-md-h{--background:initial;--color:initial;--placeholder-color:initial;--placeholder-font-style:initial;--placeholder-font-weight:initial;--placeholder-opacity:.5;--padding-top:0;--padding-bottom:0;--padding-start:0;--border-radius:0;display:block;position:relative;-ms-flex:1;flex:1;width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;background:var(--background);color:var(--color);font-family:var(--ion-font-family,inherit);white-space:pre-wrap;z-index:2}.ion-color.sc-ion-textarea-md-h{background:initial;color:var(--ion-color-base)}ion-item.sc-ion-textarea-md-h, ion-item .sc-ion-textarea-md-h{-ms-flex-item-align:baseline;align-self:baseline}ion-item.sc-ion-textarea-md-h:not(.item-label), ion-item:not(.item-label) .sc-ion-textarea-md-h{--padding-start:0}.native-textarea.sc-ion-textarea-md{border-radius:var(--border-radius);margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;width:100%;max-width:100%;max-height:100%;border:0;outline:none;background:transparent;-webkit-box-sizing:border-box;box-sizing:border-box;resize:none;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.native-textarea.sc-ion-textarea-md{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.native-textarea.sc-ion-textarea-md::-webkit-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md::-moz-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md:-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md::-ms-input-placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea.sc-ion-textarea-md::placeholder{color:var(--placeholder-color);font-family:inherit;font-style:var(--placeholder-font-style);font-weight:var(--placeholder-font-weight);opacity:var(--placeholder-opacity)}.native-textarea[disabled].sc-ion-textarea-md{opacity:.4}.cloned-input.sc-ion-textarea-md{left:0;top:0;position:absolute;pointer-events:none}[dir=rtl].sc-ion-textarea-md-h .cloned-input.sc-ion-textarea-md, [dir=rtl] .sc-ion-textarea-md-h .cloned-input.sc-ion-textarea-md, [dir=rtl].sc-ion-textarea-md .cloned-input.sc-ion-textarea-md{left:unset;right:unset;right:0}.sc-ion-textarea-md-h{--padding-top:10px;--padding-end:0;--padding-bottom:11px;--padding-start:8px;margin-left:0;margin-right:0;margin-top:8px;margin-bottom:0;font-size:inherit}.item-label-floating.sc-ion-textarea-md-h, .item-label-floating .sc-ion-textarea-md-h, .item-label-stacked.sc-ion-textarea-md-h, .item-label-stacked .sc-ion-textarea-md-h{--padding-top:8px;--padding-bottom:8px;--padding-start:0}"; }
 };
+let textareaIds = 0;
 
 
 

@@ -38,6 +38,10 @@ const routes: Routes = [
   {
     path: 'driver-homepage',
     loadChildren: () => import('./pages/driver-homepage/driver-homepage.module').then( m => m.DriverHomepagePageModule)
+  },
+  {
+    path: 'floting-search-drive',
+    loadChildren: () => import('./pages/popups/floting-search-drive/floting-search-drive.module').then( m => m.FlotingSearchDrivePageModule)
   }
 ];
 

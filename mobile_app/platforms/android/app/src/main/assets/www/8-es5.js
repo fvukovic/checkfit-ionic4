@@ -6,43 +6,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[8], {
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/driver-homepage/driver-homepage.page.html":
-  /*!*******************************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/driver-homepage/driver-homepage.page.html ***!
-    \*******************************************************************************************************/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/about-us/about-us.page.html":
+  /*!*****************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/about-us/about-us.page.html ***!
+    \*****************************************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppPagesDriverHomepageDriverHomepagePageHtml(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesAboutUsAboutUsPageHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>driver-homepage</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>about-us</ion-title>\n    </ion-toolbar>\n  </ion-header> \n<ion-content>\nNesto o kompaniji\n<p>{{ \"HOME.title\" | translate }}</p>\n\n</ion-content>\n";
     /***/
   },
 
   /***/
-  "./src/app/pages/driver-homepage/driver-homepage-routing.module.ts":
-  /*!*************************************************************************!*\
-    !*** ./src/app/pages/driver-homepage/driver-homepage-routing.module.ts ***!
-    \*************************************************************************/
+  "./src/app/pages/about-us/about-us-routing.module.ts":
+  /*!***********************************************************!*\
+    !*** ./src/app/pages/about-us/about-us-routing.module.ts ***!
+    \***********************************************************/
 
-  /*! exports provided: DriverHomepagePageRoutingModule */
+  /*! exports provided: AboutUsPageRoutingModule */
 
   /***/
-  function srcAppPagesDriverHomepageDriverHomepageRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesAboutUsAboutUsRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "DriverHomepagePageRoutingModule", function () {
-      return DriverHomepagePageRoutingModule;
+    __webpack_require__.d(__webpack_exports__, "AboutUsPageRoutingModule", function () {
+      return AboutUsPageRoutingModule;
     });
     /* harmony import */
 
@@ -65,44 +65,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _driver_homepage_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./driver-homepage.page */
-    "./src/app/pages/driver-homepage/driver-homepage.page.ts");
+    var _about_us_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./about-us.page */
+    "./src/app/pages/about-us/about-us.page.ts");
 
     var routes = [{
       path: '',
-      component: _driver_homepage_page__WEBPACK_IMPORTED_MODULE_3__["DriverHomepagePage"]
+      component: _about_us_page__WEBPACK_IMPORTED_MODULE_3__["AboutUsPage"]
     }];
 
-    var DriverHomepagePageRoutingModule = function DriverHomepagePageRoutingModule() {
-      _classCallCheck(this, DriverHomepagePageRoutingModule);
+    var AboutUsPageRoutingModule = function AboutUsPageRoutingModule() {
+      _classCallCheck(this, AboutUsPageRoutingModule);
     };
 
-    DriverHomepagePageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+    AboutUsPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })], DriverHomepagePageRoutingModule);
+    })], AboutUsPageRoutingModule);
     /***/
   },
 
   /***/
-  "./src/app/pages/driver-homepage/driver-homepage.module.ts":
-  /*!*****************************************************************!*\
-    !*** ./src/app/pages/driver-homepage/driver-homepage.module.ts ***!
-    \*****************************************************************/
+  "./src/app/pages/about-us/about-us.module.ts":
+  /*!***************************************************!*\
+    !*** ./src/app/pages/about-us/about-us.module.ts ***!
+    \***************************************************/
 
-  /*! exports provided: DriverHomepagePageModule */
+  /*! exports provided: AboutUsPageModule */
 
   /***/
-  function srcAppPagesDriverHomepageDriverHomepageModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesAboutUsAboutUsModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "DriverHomepagePageModule", function () {
-      return DriverHomepagePageModule;
+    __webpack_require__.d(__webpack_exports__, "AboutUsPageModule", function () {
+      return AboutUsPageModule;
     });
     /* harmony import */
 
@@ -133,69 +133,75 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    "./node_modules/@ionic/angular/dist/fesm5.js");
     /* harmony import */
 
 
-    var _driver_homepage_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./driver-homepage-routing.module */
-    "./src/app/pages/driver-homepage/driver-homepage-routing.module.ts");
+    var _about_us_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./about-us-routing.module */
+    "./src/app/pages/about-us/about-us-routing.module.ts");
     /* harmony import */
 
 
-    var _driver_homepage_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./driver-homepage.page */
-    "./src/app/pages/driver-homepage/driver-homepage.page.ts");
+    var _about_us_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./about-us.page */
+    "./src/app/pages/about-us/about-us.page.ts");
+    /* harmony import */
 
-    var DriverHomepagePageModule = function DriverHomepagePageModule() {
-      _classCallCheck(this, DriverHomepagePageModule);
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+    var AboutUsPageModule = function AboutUsPageModule() {
+      _classCallCheck(this, AboutUsPageModule);
     };
 
-    DriverHomepagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _driver_homepage_routing_module__WEBPACK_IMPORTED_MODULE_5__["DriverHomepagePageRoutingModule"]],
-      declarations: [_driver_homepage_page__WEBPACK_IMPORTED_MODULE_6__["DriverHomepagePage"]]
-    })], DriverHomepagePageModule);
+    AboutUsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"], _about_us_routing_module__WEBPACK_IMPORTED_MODULE_5__["AboutUsPageRoutingModule"]],
+      declarations: [_about_us_page__WEBPACK_IMPORTED_MODULE_6__["AboutUsPage"]]
+    })], AboutUsPageModule);
     /***/
   },
 
   /***/
-  "./src/app/pages/driver-homepage/driver-homepage.page.scss":
-  /*!*****************************************************************!*\
-    !*** ./src/app/pages/driver-homepage/driver-homepage.page.scss ***!
-    \*****************************************************************/
+  "./src/app/pages/about-us/about-us.page.scss":
+  /*!***************************************************!*\
+    !*** ./src/app/pages/about-us/about-us.page.scss ***!
+    \***************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function srcAppPagesDriverHomepageDriverHomepagePageScss(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesAboutUsAboutUsPageScss(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2RyaXZlci1ob21lcGFnZS9kcml2ZXItaG9tZXBhZ2UucGFnZS5zY3NzIn0= */";
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2Fib3V0LXVzL2Fib3V0LXVzLnBhZ2Uuc2NzcyJ9 */";
     /***/
   },
 
   /***/
-  "./src/app/pages/driver-homepage/driver-homepage.page.ts":
-  /*!***************************************************************!*\
-    !*** ./src/app/pages/driver-homepage/driver-homepage.page.ts ***!
-    \***************************************************************/
+  "./src/app/pages/about-us/about-us.page.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/pages/about-us/about-us.page.ts ***!
+    \*************************************************/
 
-  /*! exports provided: DriverHomepagePage */
+  /*! exports provided: AboutUsPage */
 
   /***/
-  function srcAppPagesDriverHomepageDriverHomepagePageTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesAboutUsAboutUsPageTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "DriverHomepagePage", function () {
-      return DriverHomepagePage;
+    __webpack_require__.d(__webpack_exports__, "AboutUsPage", function () {
+      return AboutUsPage;
     });
     /* harmony import */
 
@@ -210,28 +216,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
 
-    var DriverHomepagePage = /*#__PURE__*/function () {
-      function DriverHomepagePage() {
-        _classCallCheck(this, DriverHomepagePage);
+    var AboutUsPage = /*#__PURE__*/function () {
+      function AboutUsPage() {
+        _classCallCheck(this, AboutUsPage);
       }
 
-      _createClass(DriverHomepagePage, [{
+      _createClass(AboutUsPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {}
       }]);
 
-      return DriverHomepagePage;
+      return AboutUsPage;
     }();
 
-    DriverHomepagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'app-driver-homepage',
+    AboutUsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-about-us',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./driver-homepage.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/driver-homepage/driver-homepage.page.html")).default,
+      /*! raw-loader!./about-us.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/about-us/about-us.page.html")).default,
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./driver-homepage.page.scss */
-      "./src/app/pages/driver-homepage/driver-homepage.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], DriverHomepagePage);
+      /*! ./about-us.page.scss */
+      "./src/app/pages/about-us/about-us.page.scss")).default]
+    })], AboutUsPage);
     /***/
   }
 }]);

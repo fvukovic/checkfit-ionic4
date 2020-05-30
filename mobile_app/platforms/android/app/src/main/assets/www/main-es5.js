@@ -46,83 +46,84 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   /***/
   function node_modulesIonicCoreDistEsmLazyRecursiveEntryJs$IncludeEntryJs$ExcludeSystemEntryJs$(module, exports, __webpack_require__) {
     var map = {
-      "./ion-action-sheet-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-action-sheet-ios.entry.js", "common", 12],
-      "./ion-action-sheet-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-action-sheet-md.entry.js", "common", 13],
-      "./ion-alert-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-alert-ios.entry.js", "common", 14],
-      "./ion-alert-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-alert-md.entry.js", "common", 15],
-      "./ion-app_8-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-app_8-ios.entry.js", "common", 16],
-      "./ion-app_8-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-app_8-md.entry.js", "common", 17],
-      "./ion-avatar_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-avatar_3-ios.entry.js", "common", 18],
-      "./ion-avatar_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-avatar_3-md.entry.js", "common", 19],
-      "./ion-back-button-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-back-button-ios.entry.js", "common", 20],
-      "./ion-back-button-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-back-button-md.entry.js", "common", 21],
-      "./ion-backdrop-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-backdrop-ios.entry.js", 22],
-      "./ion-backdrop-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-backdrop-md.entry.js", 23],
-      "./ion-button_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-button_2-ios.entry.js", "common", 24],
-      "./ion-button_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-button_2-md.entry.js", "common", 25],
-      "./ion-card_5-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-card_5-ios.entry.js", "common", 26],
-      "./ion-card_5-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-card_5-md.entry.js", "common", 27],
-      "./ion-checkbox-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-checkbox-ios.entry.js", "common", 28],
-      "./ion-checkbox-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-checkbox-md.entry.js", "common", 29],
-      "./ion-chip-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-chip-ios.entry.js", "common", 30],
-      "./ion-chip-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-chip-md.entry.js", "common", 31],
-      "./ion-col_3.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-col_3.entry.js", 32],
-      "./ion-datetime_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-datetime_3-ios.entry.js", "common", 33],
-      "./ion-datetime_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-datetime_3-md.entry.js", "common", 34],
-      "./ion-fab_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-fab_3-ios.entry.js", "common", 35],
-      "./ion-fab_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-fab_3-md.entry.js", "common", 36],
-      "./ion-img.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-img.entry.js", 37],
-      "./ion-infinite-scroll_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-ios.entry.js", "common", 38],
-      "./ion-infinite-scroll_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-md.entry.js", "common", 39],
-      "./ion-input-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-input-ios.entry.js", "common", 40],
-      "./ion-input-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-input-md.entry.js", "common", 41],
-      "./ion-item-option_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-item-option_3-ios.entry.js", "common", 42],
-      "./ion-item-option_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-item-option_3-md.entry.js", "common", 43],
-      "./ion-item_8-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-item_8-ios.entry.js", "common", 44],
-      "./ion-item_8-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-item_8-md.entry.js", "common", 45],
-      "./ion-loading-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-loading-ios.entry.js", "common", 46],
-      "./ion-loading-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-loading-md.entry.js", "common", 47],
-      "./ion-menu_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-menu_3-ios.entry.js", "common", 48],
-      "./ion-menu_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-menu_3-md.entry.js", "common", 49],
-      "./ion-modal-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-modal-ios.entry.js", "common", 50],
-      "./ion-modal-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-modal-md.entry.js", "common", 51],
-      "./ion-nav_2.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-nav_2.entry.js", "common", 52],
-      "./ion-popover-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-popover-ios.entry.js", "common", 53],
-      "./ion-popover-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-popover-md.entry.js", "common", 54],
-      "./ion-progress-bar-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-progress-bar-ios.entry.js", "common", 55],
-      "./ion-progress-bar-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-progress-bar-md.entry.js", "common", 56],
-      "./ion-radio_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-radio_2-ios.entry.js", "common", 57],
-      "./ion-radio_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-radio_2-md.entry.js", "common", 58],
-      "./ion-range-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-range-ios.entry.js", "common", 59],
-      "./ion-range-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-range-md.entry.js", "common", 60],
-      "./ion-refresher_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-refresher_2-ios.entry.js", "common", 61],
-      "./ion-refresher_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-refresher_2-md.entry.js", "common", 62],
-      "./ion-reorder_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-reorder_2-ios.entry.js", "common", 63],
-      "./ion-reorder_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-reorder_2-md.entry.js", "common", 64],
-      "./ion-ripple-effect.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-ripple-effect.entry.js", 65],
-      "./ion-route_4.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-route_4.entry.js", "common", 66],
-      "./ion-searchbar-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-searchbar-ios.entry.js", "common", 67],
-      "./ion-searchbar-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-searchbar-md.entry.js", "common", 68],
-      "./ion-segment_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-segment_2-ios.entry.js", "common", 69],
-      "./ion-segment_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-segment_2-md.entry.js", "common", 70],
-      "./ion-select_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-select_3-ios.entry.js", "common", 71],
-      "./ion-select_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-select_3-md.entry.js", "common", 72],
-      "./ion-slide_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-slide_2-ios.entry.js", 73],
-      "./ion-slide_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-slide_2-md.entry.js", 74],
-      "./ion-spinner.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-spinner.entry.js", "common", 75],
-      "./ion-split-pane-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-split-pane-ios.entry.js", 76],
-      "./ion-split-pane-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-split-pane-md.entry.js", 77],
-      "./ion-tab-bar_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-tab-bar_2-ios.entry.js", "common", 78],
-      "./ion-tab-bar_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-tab-bar_2-md.entry.js", "common", 79],
-      "./ion-tab_2.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-tab_2.entry.js", "common", 80],
-      "./ion-text.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-text.entry.js", "common", 81],
-      "./ion-textarea-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-textarea-ios.entry.js", "common", 82],
-      "./ion-textarea-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-textarea-md.entry.js", "common", 83],
-      "./ion-toast-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-toast-ios.entry.js", "common", 84],
-      "./ion-toast-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-toast-md.entry.js", "common", 85],
-      "./ion-toggle-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-toggle-ios.entry.js", "common", 86],
-      "./ion-toggle-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-toggle-md.entry.js", "common", 87],
-      "./ion-virtual-scroll.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-virtual-scroll.entry.js", 88]
+      "./ion-action-sheet-controller_8.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-action-sheet-controller_8.entry.js", "common", 17],
+      "./ion-action-sheet-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-action-sheet-ios.entry.js", "common", 18],
+      "./ion-action-sheet-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-action-sheet-md.entry.js", "common", 19],
+      "./ion-alert-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-alert-ios.entry.js", "common", 20],
+      "./ion-alert-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-alert-md.entry.js", "common", 21],
+      "./ion-app_8-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-app_8-ios.entry.js", "common", 22],
+      "./ion-app_8-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-app_8-md.entry.js", "common", 23],
+      "./ion-avatar_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-avatar_3-ios.entry.js", "common", 24],
+      "./ion-avatar_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-avatar_3-md.entry.js", "common", 25],
+      "./ion-back-button-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-back-button-ios.entry.js", "common", 26],
+      "./ion-back-button-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-back-button-md.entry.js", "common", 27],
+      "./ion-backdrop-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-backdrop-ios.entry.js", 28],
+      "./ion-backdrop-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-backdrop-md.entry.js", 29],
+      "./ion-button_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-button_2-ios.entry.js", "common", 30],
+      "./ion-button_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-button_2-md.entry.js", "common", 31],
+      "./ion-card_5-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-card_5-ios.entry.js", "common", 32],
+      "./ion-card_5-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-card_5-md.entry.js", "common", 33],
+      "./ion-checkbox-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-checkbox-ios.entry.js", "common", 34],
+      "./ion-checkbox-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-checkbox-md.entry.js", "common", 35],
+      "./ion-chip-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-chip-ios.entry.js", "common", 36],
+      "./ion-chip-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-chip-md.entry.js", "common", 37],
+      "./ion-col_3.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-col_3.entry.js", 38],
+      "./ion-datetime_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-datetime_3-ios.entry.js", "common", 39],
+      "./ion-datetime_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-datetime_3-md.entry.js", "common", 40],
+      "./ion-fab_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-fab_3-ios.entry.js", "common", 41],
+      "./ion-fab_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-fab_3-md.entry.js", "common", 42],
+      "./ion-img.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-img.entry.js", 43],
+      "./ion-infinite-scroll_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-ios.entry.js", "common", 44],
+      "./ion-infinite-scroll_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-md.entry.js", "common", 45],
+      "./ion-input-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-input-ios.entry.js", "common", 46],
+      "./ion-input-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-input-md.entry.js", "common", 47],
+      "./ion-item-option_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-item-option_3-ios.entry.js", "common", 48],
+      "./ion-item-option_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-item-option_3-md.entry.js", "common", 49],
+      "./ion-item_8-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-item_8-ios.entry.js", "common", 50],
+      "./ion-item_8-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-item_8-md.entry.js", "common", 51],
+      "./ion-loading-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-loading-ios.entry.js", "common", 52],
+      "./ion-loading-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-loading-md.entry.js", "common", 53],
+      "./ion-menu_4-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-menu_4-ios.entry.js", "common", 54],
+      "./ion-menu_4-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-menu_4-md.entry.js", "common", 55],
+      "./ion-modal-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-modal-ios.entry.js", "common", 56],
+      "./ion-modal-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-modal-md.entry.js", "common", 57],
+      "./ion-nav_5.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-nav_5.entry.js", "common", 58],
+      "./ion-popover-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-popover-ios.entry.js", "common", 59],
+      "./ion-popover-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-popover-md.entry.js", "common", 60],
+      "./ion-progress-bar-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-progress-bar-ios.entry.js", "common", 61],
+      "./ion-progress-bar-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-progress-bar-md.entry.js", "common", 62],
+      "./ion-radio_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-radio_2-ios.entry.js", "common", 63],
+      "./ion-radio_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-radio_2-md.entry.js", "common", 64],
+      "./ion-range-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-range-ios.entry.js", "common", 65],
+      "./ion-range-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-range-md.entry.js", "common", 66],
+      "./ion-refresher_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-refresher_2-ios.entry.js", "common", 67],
+      "./ion-refresher_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-refresher_2-md.entry.js", "common", 68],
+      "./ion-reorder_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-reorder_2-ios.entry.js", "common", 69],
+      "./ion-reorder_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-reorder_2-md.entry.js", "common", 70],
+      "./ion-ripple-effect.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-ripple-effect.entry.js", 71],
+      "./ion-route_4.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-route_4.entry.js", "common", 72],
+      "./ion-searchbar-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-searchbar-ios.entry.js", "common", 73],
+      "./ion-searchbar-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-searchbar-md.entry.js", "common", 74],
+      "./ion-segment_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-segment_2-ios.entry.js", "common", 75],
+      "./ion-segment_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-segment_2-md.entry.js", "common", 76],
+      "./ion-select_3-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-select_3-ios.entry.js", "common", 77],
+      "./ion-select_3-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-select_3-md.entry.js", "common", 78],
+      "./ion-slide_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-slide_2-ios.entry.js", 79],
+      "./ion-slide_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-slide_2-md.entry.js", 80],
+      "./ion-spinner.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-spinner.entry.js", "common", 81],
+      "./ion-split-pane-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-split-pane-ios.entry.js", 82],
+      "./ion-split-pane-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-split-pane-md.entry.js", 83],
+      "./ion-tab-bar_2-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-tab-bar_2-ios.entry.js", "common", 84],
+      "./ion-tab-bar_2-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-tab-bar_2-md.entry.js", "common", 85],
+      "./ion-tab_2.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-tab_2.entry.js", "common", 86],
+      "./ion-text.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-text.entry.js", "common", 87],
+      "./ion-textarea-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-textarea-ios.entry.js", "common", 88],
+      "./ion-textarea-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-textarea-md.entry.js", "common", 89],
+      "./ion-toast-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-toast-ios.entry.js", "common", 90],
+      "./ion-toast-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-toast-md.entry.js", "common", 91],
+      "./ion-toggle-ios.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-toggle-ios.entry.js", "common", 92],
+      "./ion-toggle-md.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-toggle-md.entry.js", "common", 93],
+      "./ion-virtual-scroll.entry.js": ["./node_modules/@ionic/core/dist/esm/ion-virtual-scroll.entry.js", 94]
     };
 
     function webpackAsyncContext(req) {
@@ -166,7 +167,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <ion-content>\n        <ion-list id=\"inbox-list\">\n          <ion-list-header>Taxi</ion-list-header> \n\n          <ion-menu-toggle auto-hide=\"false\" >\n         \n            <ion-item>\n              <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n           </ion-item>\n           <ion-item>\n            <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n         </ion-item> \n         <ion-item>\n          <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n       </ion-item> \n          </ion-menu-toggle>\n        </ion-list>\n\n        <ion-list id=\"labels-list\">\n          {{isUserLoggedIn}}\n          <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n          <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
+    __webpack_exports__["default"] = "<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <ion-content>\n        <ion-list id=\"inbox-list\">\n          <ion-list-header>Taxi</ion-list-header> \n\n          <ion-menu-toggle auto-hide=\"false\" >\n         \n            <ion-item>\n              <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n           </ion-item>\n           <ion-item>\n            <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n         </ion-item> \n         <ion-item>\n          <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n       </ion-item> \n          </ion-menu-toggle>\n        </ion-list>\n\n        <ion-list id=\"labels-list\">\n          <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n          <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
     /***/
   },
 
@@ -206,7 +207,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n      <!-- Advanced: explicity set the icon for each platform -->\n  <ion-icon style=\"height: 30px;\" (click) = \"closeModal()\"  name=\"arrow-back\"></ion-icon>\n    <ion-title>street-picker</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\nasdads\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n      <!-- Advanced: explicity set the icon for each platform -->\n  <ion-icon style=\"height: 30px;\" (click) = \"closeModal()\"  name=\"arrow-back\"></ion-icon>\n    <ion-title>street-picker</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-textarea [(ngModel)]=\"address\" placeholder=\"Unesi Adresu!\"></ion-textarea>\n<button (click)=\"passAddress()\">Odaberi Addresu</button>\n</ion-content>\n";
     /***/
   },
 
@@ -850,7 +851,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return __webpack_require__.e(
         /*! import() */
-        9).then(__webpack_require__.bind(null,
+        11).then(__webpack_require__.bind(null,
         /*! ./pages/login/login.module */
         "./src/app/pages/login/login.module.ts")).then(function (m) {
           return m.LoginPageModule;
@@ -861,7 +862,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return __webpack_require__.e(
         /*! import() */
-        6).then(__webpack_require__.bind(null,
+        8).then(__webpack_require__.bind(null,
         /*! ./pages/about-us/about-us.module */
         "./src/app/pages/about-us/about-us.module.ts")).then(function (m) {
           return m.AboutUsPageModule;
@@ -872,7 +873,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return __webpack_require__.e(
         /*! import() */
-        7).then(__webpack_require__.bind(null,
+        9).then(__webpack_require__.bind(null,
         /*! ./pages/customer-homepage/customer-homepage.module */
         "./src/app/pages/customer-homepage/customer-homepage.module.ts")).then(function (m) {
           return m.CustomerHomepagePageModule;
@@ -883,7 +884,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return __webpack_require__.e(
         /*! import() */
-        10).then(__webpack_require__.bind(null,
+        12).then(__webpack_require__.bind(null,
         /*! ./pages/my-rides/my-rides.module */
         "./src/app/pages/my-rides/my-rides.module.ts")).then(function (m) {
           return m.MyRidesPageModule;
@@ -903,7 +904,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return __webpack_require__.e(
         /*! import() */
-        11).then(__webpack_require__.bind(null,
+        14).then(__webpack_require__.bind(null,
         /*! ./pages/search-ride/search-ride.module */
         "./src/app/pages/search-ride/search-ride.module.ts")).then(function (m) {
           return m.SearchRidePageModule;
@@ -923,10 +924,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       loadChildren: function loadChildren() {
         return __webpack_require__.e(
         /*! import() */
-        8).then(__webpack_require__.bind(null,
+        10).then(__webpack_require__.bind(null,
         /*! ./pages/driver-homepage/driver-homepage.module */
         "./src/app/pages/driver-homepage/driver-homepage.module.ts")).then(function (m) {
           return m.DriverHomepagePageModule;
+        });
+      }
+    }, {
+      path: 'floting-search-drive',
+      loadChildren: function loadChildren() {
+        return __webpack_require__.e(
+        /*! import() */
+        13).then(__webpack_require__.bind(null,
+        /*! ./pages/popups/floting-search-drive/floting-search-drive.module */
+        "./src/app/pages/popups/floting-search-drive/floting-search-drive.module.ts")).then(function (m) {
+          return m.FlotingSearchDrivePageModule;
         });
       }
     }];
@@ -998,9 +1010,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
     /* harmony import */
 
 
@@ -1016,21 +1028,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! @angular/router */
-    "./node_modules/@angular/router/fesm2015/router.js");
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
     /* harmony import */
 
 
-    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @ngx-translate/core */
     "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
-    /* harmony import */
-
-
-    var _services_socket_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
-    /*! ./services/socket.service */
-    "./src/app/services/socket.service.ts");
     /* harmony import */
 
 
@@ -1046,21 +1058,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _ionic_storage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
-    /*! @ionic/storage */
-    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    var _services_location_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ./services/location.service */
+    "./src/app/services/location.service.ts");
     /* harmony import */
 
 
-    var _services_location_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
-    /*! ./services/location.service */
-    "./src/app/services/location.service.ts");
+    var _services_socket_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! ./services/socket.service */
+    "./src/app/services/socket.service.ts");
+    /* harmony import */
+
+
+    var _ionic_native_sim_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! @ionic-native/sim/ngx */
+    "./node_modules/@ionic-native/sim/ngx/index.js");
 
     var WEBSOCKET_URL = "ws://localhost:9092/socket";
     var EXAMPLE_URL = "/topic/server-broadcaster";
 
     var AppComponent = /*#__PURE__*/function () {
-      function AppComponent(platform, splashScreen, statusBar, router, socketService, modalcontroller, translate, storage, locationService) {
+      function AppComponent(platform, splashScreen, statusBar, router, socketService, modalcontroller, translate, storage, locationService, events, sim) {
         _classCallCheck(this, AppComponent);
 
         this.platform = platform;
@@ -1071,15 +1089,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.modalcontroller = modalcontroller;
         this.storage = storage;
         this.locationService = locationService;
+        this.events = events;
+        this.sim = sim;
         this._this = this;
         this.messageHistory = [];
         this.state = "NOT CONNECTED";
-        this.labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
         this.isUserLoggedIn = false;
         this.socketServiceS = socketService;
-        this.router.navigateByUrl('customer-homepage');
+        this.router.navigateByUrl("customer-homepage");
         this.initializeApp();
-        translate.setDefaultLang('en');
+        translate.setDefaultLang("en");
       }
 
       _createClass(AppComponent, [{
@@ -1087,7 +1106,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function initializeApp() {
           var _this = this;
 
-          this.storage.get('username').then(function (val) {
+          this.storage.get("username").then(function (val) {
             if (val != null) {
               _this.isUserLoggedIn = true;
             }
@@ -1096,12 +1115,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }); // Subscribe to its stream (to listen on messages)
 
           setTimeout(function () {
-            _this.locationService.getReverseGeocode(45.5, 19).then(function (result) {
-              return alert(JSON.stringify(result[0]));
-            });
-
-            alert(_this.locationService.getForwardGeocode("Berlin, Germany"));
-
             _this.socketServiceS.stream().subscribe(function (message) {
               _this.messageHistory.unshift(message.body);
 
@@ -1112,6 +1125,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this.socketServiceS.state().subscribe(function (state) {
               _this.state = _stomp_ng2_stompjs__WEBPACK_IMPORTED_MODULE_8__["StompState"][state];
+            });
+
+            _this.sim.requestReadPermission().then(function () {
+              return console.log('Permission granted');
+            }, function () {
+              return console.log('Permission denied');
             });
           }, 3000); // Subscribe to its state (to know its connected or not)
 
@@ -1132,7 +1151,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 this.modalcontroller.create({
                   component: _pages_popups_drive_request_drive_request_page__WEBPACK_IMPORTED_MODULE_9__["DriveRequestPage"],
                   componentProps: {
-                    "message": message
+                    message: message
                   }
                 }).then(function (modalElement) {
                   console.log(message);
@@ -1143,7 +1162,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             case "INFORM_DRIVE_CUSTOMER":
               {
-                console.log(message);
+                this.updateDistance(message);
                 break;
               }
 
@@ -1153,20 +1172,51 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   _this2.socketService.send("/server-receiver", {
                     type: "driver",
                     messageType: "INFORM_DRIVE_DRIVER",
-                    fromLat: val["coords"].latitude,
-                    fromLong: val["coords"].longitude
+                    toLat: val["coords"].latitude,
+                    toLong: val["coords"].longitude
                   });
                 }, function (err) {
                   return console.error(err);
                 });
                 break;
               }
+
+            case "ACCEPT_DRIVE":
+              {
+                //TODO remove popup 
+                this.events.publish("driveAccepted", message);
+                break;
+              }
           }
+        }
+      }, {
+        key: "updateDistance",
+        value: function updateDistance(message) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var distance;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.locationService.getDistanceFromLatLonInKm(message.fromLat, message.fromLong, message.toLat, message.toLat);
+
+                  case 2:
+                    distance = _context.sent;
+                    this.events.publish("informCustomer", distance);
+
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
         }
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var path = window.location.pathname.split('folder/')[1];
+          var path = window.location.pathname.split("folder/")[1];
 
           if (path !== undefined) {}
         }
@@ -1184,35 +1234,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     AppComponent.ctorParameters = function () {
       return [{
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"]
       }, {
         type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"]
       }, {
         type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]
       }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
       }, {
-        type: _services_socket_service__WEBPACK_IMPORTED_MODULE_7__["SocketService"]
+        type: _services_socket_service__WEBPACK_IMPORTED_MODULE_11__["SocketService"]
       }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"]
       }, {
-        type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__["TranslateService"]
+        type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"]
       }, {
-        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_10__["Storage"]
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]
       }, {
-        type: _services_location_service__WEBPACK_IMPORTED_MODULE_11__["LocationService"]
+        type: _services_location_service__WEBPACK_IMPORTED_MODULE_10__["LocationService"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"]
+      }, {
+        type: _ionic_native_sim_ngx__WEBPACK_IMPORTED_MODULE_12__["Sim"]
       }];
     };
 
     AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'app-root',
+      selector: "app-root",
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./app.component.html */
       "./node_modules/raw-loader/dist/cjs.js!./src/app/app.component.html")).default,
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./app.component.scss */
       "./src/app/app.component.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _services_socket_service__WEBPACK_IMPORTED_MODULE_7__["SocketService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__["TranslateService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_10__["Storage"], _services_location_service__WEBPACK_IMPORTED_MODULE_11__["LocationService"]])], AppComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_socket_service__WEBPACK_IMPORTED_MODULE_11__["SocketService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"], _services_location_service__WEBPACK_IMPORTED_MODULE_10__["LocationService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"], _ionic_native_sim_ngx__WEBPACK_IMPORTED_MODULE_12__["Sim"]])], AppComponent);
     /***/
   },
 
@@ -1270,7 +1324,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    "./node_modules/@ionic/angular/dist/fesm5.js");
     /* harmony import */
 
 
@@ -1343,6 +1397,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
     /*! @ionic-native/native-geocoder/ngx */
     "./node_modules/@ionic-native/native-geocoder/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_sim_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    /*! @ionic-native/sim/ngx */
+    "./node_modules/@ionic-native/sim/ngx/index.js");
 
     function createTranslateLoader(http) {
       return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_7__["TranslateHttpLoader"](http, './assets/i18n/', '.json');
@@ -1368,7 +1428,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_15__["Geolocation"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
-      }, _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_16__["NativeGeocoder"]],
+      }, _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_16__["NativeGeocoder"], _ionic_native_sim_ngx__WEBPACK_IMPORTED_MODULE_17__["Sim"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })], AppModule);
     /***/
@@ -1482,7 +1542,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    "./node_modules/@ionic/angular/dist/fesm5.js");
     /* harmony import */
 
 
@@ -1571,21 +1631,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    "./node_modules/@ionic/angular/dist/fesm5.js");
     /* harmony import */
 
 
     var _services_socket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ../../../services/socket.service */
     "./src/app/services/socket.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
 
     var DriveRequestPage = /*#__PURE__*/function () {
-      function DriveRequestPage(modalControler, navParams, socketService) {
+      function DriveRequestPage(modalControler, navParams, socketService, router) {
         _classCallCheck(this, DriveRequestPage);
 
         this.modalControler = modalControler;
         this.navParams = navParams;
         this.socketService = socketService;
+        this.router = router;
         this.message = this.navParams.get("message");
       }
 
@@ -1609,6 +1676,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             toLong: "16.444",
             customer: this.message.username
           });
+          this.router.navigate(["/drive-request"], {
+            queryParams: {
+              data: JSON.stringify(this.message)
+            }
+          });
           /**TODO otvori novi popup i tamo stavi buttone: 1. na lokaciji sam
             kad klikne na lokaciji sam, pokazi mu button nazovi i izadi
           */
@@ -1625,6 +1697,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"]
       }, {
         type: _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
       }];
     };
 
@@ -1636,7 +1710,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./drive-request.page.scss */
       "./src/app/pages/popups/drive-request/drive-request.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"]])], DriveRequestPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])], DriveRequestPage);
     /***/
   },
 
@@ -1748,7 +1822,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    "./node_modules/@ionic/angular/dist/fesm5.js");
     /* harmony import */
 
 
@@ -1846,12 +1920,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @ionic/angular */
-    "./node_modules/@ionic/angular/fesm2015/ionic-angular.js");
+    "./node_modules/@ionic/angular/dist/fesm5.js");
 
     var StreetPickerPage = /*#__PURE__*/function () {
-      function StreetPickerPage(modalControler) {
+      function StreetPickerPage(navParams, modalControler) {
         _classCallCheck(this, StreetPickerPage);
 
+        this.navParams = navParams;
         this.modalControler = modalControler;
       }
 
@@ -1863,6 +1938,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function closeModal() {
           this.modalControler.dismiss();
         }
+      }, {
+        key: "passAddress",
+        value: function passAddress() {
+          var data = {
+            picker: this.navParams.get("picker"),
+            address: this.address
+          };
+          this.modalControler.dismiss(data);
+        }
       }]);
 
       return StreetPickerPage;
@@ -1870,6 +1954,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
     StreetPickerPage.ctorParameters = function () {
       return [{
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"]
+      }, {
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
       }];
     };
@@ -1882,7 +1968,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./street-picker.page.scss */
       "./src/app/pages/popups/street-picker/street-picker.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])], StreetPickerPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])], StreetPickerPage);
     /***/
   },
 
@@ -1952,15 +2038,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "getForwardGeocode",
         value: function getForwardGeocode(address) {
-          this.nativeGeocoder.forwardGeocode(address, this.optionsGeocode).then(function (result) {
-            return result[0];
-          }).catch(function (error) {
+          return this.nativeGeocoder.forwardGeocode(address, this.optionsGeocode).catch(function (error) {
             return console.log(error);
           });
         }
       }, {
-        key: "getUserPosition",
-        value: function getUserPosition() {
+        key: "getForwardGeocode2",
+        value: function getForwardGeocode2(address) {
           var _this3 = this;
 
           return new Promise(function (resolve, reject) {
@@ -1968,9 +2052,54 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               enableHighAccuracy: true,
               timeout: 10000
             };
+            _this3.nativeGeocoder.forwardGeocode(address, _this3.optionsGeocode).then(function (result) {
+              resolve(result[0]);
+            }), function (err) {
+              console.log("error : " + err.message);
+              reject(err.message);
+            };
+          });
+        }
+      }, {
+        key: "getReverseGeocode2",
+        value: function getReverseGeocode2(latitude, longitude) {
+          var _this4 = this;
 
-            _this3.geolocation.getCurrentPosition(_this3.options).then(function (pos) {
-              _this3.currentPos = pos;
+          return new Promise(function (resolve, reject) {
+            _this4.options = {
+              enableHighAccuracy: true,
+              timeout: 10000
+            };
+            _this4.nativeGeocoder.reverseGeocode(latitude, longitude, _this4.optionsGeocode).then(function (result) {
+              resolve(result[0]);
+            }), function (err) {
+              console.log("error : " + err.message);
+              reject(err.message);
+            };
+          });
+        } //   this.locationService.getReverseGeocode(45.5,19).then((result: NativeGeocoderResult[]) => 
+        //   { 
+        //     result[0]
+        //   });
+        //   this.locationService.getForwardGeocode("Berlin, Germany").then((result: NativeGeocoderResult[]) =>
+        //   {
+        //     alert(JSON.stringify(result[0])) 
+        //   }
+        //  )
+
+      }, {
+        key: "getUserPosition",
+        value: function getUserPosition() {
+          var _this5 = this;
+
+          return new Promise(function (resolve, reject) {
+            _this5.options = {
+              enableHighAccuracy: true,
+              timeout: 10000
+            };
+
+            _this5.geolocation.getCurrentPosition(_this5.options).then(function (pos) {
+              _this5.currentPos = pos;
               console.log(pos);
               var location = {
                 lat: pos.coords.latitude,
@@ -1984,6 +2113,39 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               reject(err.message);
             });
           });
+        }
+      }, {
+        key: "getPosition",
+        value: function getPosition() {
+          return new Promise(function (resolve, reject) {
+            navigator.geolocation.getCurrentPosition(function (resp) {
+              resolve({
+                lng: resp.coords.longitude,
+                lat: resp.coords.latitude
+              });
+            }, function (err) {
+              reject(err);
+            });
+          });
+        }
+      }, {
+        key: "getDistanceFromLatLonInKm",
+        value: function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+          var R = 6371; // Radius of the earth in kilometers
+
+          var dLat = this.deg2rad(lat2 - lat1); // deg2rad below
+
+          var dLon = this.deg2rad(lon2 - lon1);
+          var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) + Math.cos(this.deg2rad(lat1)) * Math.cos(this.deg2rad(lat2)) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+          var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+          var d = R * c; // Distance in KM
+
+          return Math.round(d * 100) / 100 + " km";
+        }
+      }, {
+        key: "deg2rad",
+        value: function deg2rad(deg) {
+          return deg * (Math.PI / 180);
         }
       }]);
 
@@ -2048,25 +2210,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ionic/storage */
     "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 
-    var WEBSOCKET_URL = "ws://localhost:9092/socket";
+    var WEBSOCKET_URL = "ws://taxi-mura.herokuapp.com/socket";
     var EXAMPLE_URL = "/topic/server-broadcaster";
 
     var SocketService = /*#__PURE__*/function () {
       function SocketService(storage) {
         _classCallCheck(this, SocketService);
 
-        // Create Stomp Configuration
         this.storage = storage;
-        this._this = this;
+        this._this = this; // Create Stomp Configuration
       }
 
       _createClass(SocketService, [{
         key: "initializeWebSocketConnection",
         value: function initializeWebSocketConnection() {
-          var _this4 = this;
+          var _this6 = this;
 
           var userType = "customer";
-          this.storage.get('username').then(function (val) {
+          this.storage.get("username").then(function (val) {
             if (val != null) {
               userType = "driver";
             }
@@ -2074,7 +2235,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             var stompConfig = {
               url: WEBSOCKET_URL,
               headers: {
-                //TODO add 
+                //TODO add
                 username: "customer",
                 type: userType
               },
@@ -2084,9 +2245,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               debug: true
             }; // Create Stomp Service
 
-            _this4.stompService = new _stomp_ng2_stompjs__WEBPACK_IMPORTED_MODULE_1__["StompService"](stompConfig); // Connect to a Stream
+            _this6.stompService = new _stomp_ng2_stompjs__WEBPACK_IMPORTED_MODULE_1__["StompService"](stompConfig); // Connect to a Stream
 
-            _this4.messages = _this4.stompService.subscribe("/user" + EXAMPLE_URL);
+            _this6.messages = _this6.stompService.subscribe("/user" + EXAMPLE_URL);
           });
         }
       }, {
@@ -2116,7 +2277,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     };
 
     SocketService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
-      providedIn: 'root'
+      providedIn: "root"
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]])], SocketService);
     /***/
   },

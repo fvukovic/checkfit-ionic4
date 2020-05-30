@@ -18,6 +18,7 @@ import {DriveRequestPageModule} from './pages/popups/drive-request/drive-request
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
+import { Sim } from '@ionic-native/sim/ngx';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -50,7 +51,8 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    NativeGeocoder
+    NativeGeocoder,
+    Sim
   ],
   bootstrap: [AppComponent]
 })

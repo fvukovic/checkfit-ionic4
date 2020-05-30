@@ -6,10 +6,15 @@
   </ion-toolbar>
 </ion-header>
 <!-- "{"username":null,"type":"customer","messageType":"DRIVE_REQUEST","fromLat":"45.333","fromLong":"16.444","toLat":"45.333","toLong":"16.444"}" -->
-<ion-content>
- from: {{message.fromLat + " - " + message.fromLong}} 
- from: {{message.toLat + " - " + message.toLong}} 
- <button (click) = "acceptRequst()" > Accept</button>
- <button (click) = "closeModal()"  > Reject</button>
-
+<ion-content >
+ <div style="padding: 20px;">
+ <br/>
+  from: {{fromAddress}}
+ <br/>
+ to: {{toAddress}}
+ <br/>
+ <br/>
+ <button style="margin: 20px;" (click) = "acceptRequst()" > Accept</button>
+ <button style="margin: 20px;" (click) = "closeModal()"  > Reject</button>
+</div>
 </ion-content>

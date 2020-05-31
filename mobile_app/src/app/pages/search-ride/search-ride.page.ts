@@ -2,7 +2,6 @@ import { Component, OnInit, AfterContentInit, ViewChild } from "@angular/core";
 import { SocketService } from "../../services/socket.service";
 import { ActivatedRoute } from "@angular/router";
 import { Events } from "@ionic/angular";
-import { Sim } from "@ionic-native/sim/ngx";
 
 @Component({
   selector: "app-search-ride",
@@ -21,26 +20,35 @@ export class SearchRidePage implements OnInit, AfterContentInit {
   constructor(
     public socketService: SocketService,
     private route: ActivatedRoute,
-    public events: Events,
-    private sim: Sim
-  ) { 
+    public events: Events
+  ) {
+    alert(this.isDriveAccepted)
+    // var handle = setInterval(data => {
+    //   if (this.isDriveAccepted) {
+    //     clearInterval(handle);
+    //   } else {
+    //   }
+    // }, 5000);
+
     events.subscribe("driveAccepted", message => {
       this.isDriveAccepted = true;
     });
- 
 
     events.subscribe("informCustomer", message => {
-      console.log(message)
+      console.log(message);
       this.kms = message;
     });
 
-    this.sim.getSimInfo().then(
-      info => console.log("Sim info: ", info),
-      err => console.log("Unable to get sim info: ", err)
-    );
+    events.subscribe("driveIsFinished", message => {
+      this.isDriveAccepted = false;
+      this.kms = message;
+    });
+    this.requestDrive();
+  }
+  requestDrive() {
     const firstParam: string = this.route.snapshot.queryParamMap.get("data");
     let params = JSON.parse(firstParam);
-    socketService.send("/server-receiver", {
+    this.socketService.send("/server-receiver", {
       type: "customer",
       messageType: "DRIVE_REQUEST",
       fromLat: params.fromLat,

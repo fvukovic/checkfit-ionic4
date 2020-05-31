@@ -11,8 +11,8 @@ import { DriveRequestPage } from "./pages/popups/drive-request/drive-request.pag
 import { LocationService } from "./services/location.service";
 import { SocketService } from "./services/socket.service";
 import { Events } from "@ionic/angular";
-import { Sim } from '@ionic-native/sim/ngx';
-
+import { UniqueDeviceID } from "@ionic-native/unique-device-id/ngx";
+import { PhoneNumberPage } from "./pages/popups/phone-number/phone-number.page";
 
 const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
@@ -26,7 +26,7 @@ export class AppComponent implements OnInit {
   _this = this;
   messageHistory = [];
   state: string = "NOT CONNECTED";
- 
+
   socketServiceS: SocketService;
   greeting: any;
   name: string;
@@ -42,8 +42,7 @@ export class AppComponent implements OnInit {
     translate: TranslateService,
     private storage: Storage,
     private locationService: LocationService,
-    public events: Events,
-    private sim:Sim
+    public events: Events
   ) {
     this.socketServiceS = socketService;
     this.router.navigateByUrl("customer-homepage");
@@ -52,11 +51,10 @@ export class AppComponent implements OnInit {
   }
 
   initializeApp() {
-    this.storage.get("username").then(val => {
-      if (val != null) {
-        this.isUserLoggedIn = true;
+    this.storage.get("phoneNumber").then(val => {
+      if (val == null) {
+        this.openPhoneNumberPopup();
       }
-      this.socketServiceS.initializeWebSocketConnection();
     });
 
     // Subscribe to its stream (to listen on messages)
@@ -71,10 +69,6 @@ export class AppComponent implements OnInit {
       this.socketServiceS.state().subscribe((state: StompState) => {
         this.state = StompState[state];
       });
-      this.sim.requestReadPermission().then(
-        () => console.log('Permission granted'),
-        () => console.log('Permission denied')
-    );
     }, 3000);
 
     // Subscribe to its state (to know its connected or not)
@@ -104,15 +98,15 @@ export class AppComponent implements OnInit {
         break;
       }
       case "INFORM_DRIVE_DRIVER": {
-        // TODO removaj ovo 
+        // TODO removaj ovo
         this.socketService.send("/server-receiver", {
           type: "driver",
           messageType: "INFORM_DRIVE_DRIVER",
           toLat: "46.1231231",
           toLong: "16.312312",
           fromLat: message.fromLat,
-          fromLong:  message.fromLong
-        }); 
+          fromLong: message.fromLong
+        });
         this.locationService.getUserPosition().then(
           val => {
             this.socketService.send("/server-receiver", {
@@ -121,7 +115,7 @@ export class AppComponent implements OnInit {
               toLat: val["coords"].latitude,
               toLong: val["coords"].longitude,
               fromLat: message.fromLat,
-              fromLong:  message.fromLong
+              fromLong: message.fromLong
             });
           },
           err => console.error(err)
@@ -129,14 +123,26 @@ export class AppComponent implements OnInit {
         break;
       }
       case "ACCEPT_DRIVE": {
-        //TODO remove popup 
+        //TODO remove popup
         this.events.publish("driveAccepted", message);
+        break;
+      }
+      case "ACCEPT_DRIVE_DRIVER": {
+        this.router.navigate(["/driver-homepage"], {
+          queryParams: { data: JSON.stringify(message), driveIsStarted: true }
+        });
+        break;
+      }
+      case "FINISH_DRIVE_CUSTOMER": {
+        //TODO remove popup
+        this.router.navigate(["/customer-homepage"]);
+        alert("Vaše vozilo je na mjestu!");
         break;
       }
     }
   }
 
-  async updateDistance(message) { 
+  async updateDistance(message) {
     let distance = await this.locationService.getDistanceFromLatLonInKm(
       message.fromLat,
       message.fromLong,
@@ -156,5 +162,15 @@ export class AppComponent implements OnInit {
     this.isUserLoggedIn = false;
     location.reload();
     this.storage.set("username", null);
+  }
+
+  openPhoneNumberPopup() {
+    this.modalcontroller
+      .create({
+        component: PhoneNumberPage
+      })
+      .then(modalElement => {
+        modalElement.present();
+      });
   }
 }

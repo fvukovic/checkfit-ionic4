@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- Advanced: explicity set the icon for each platform -->
+    <ion-icon style="height: 30px;"   name="arrow-back"></ion-icon> 
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content style="background-color: gray;">
+    Enter phone number:<br/>
+    <ion-textarea [(ngModel)]="phoneNumber" placeholder="Unesi Broj telefona!"></ion-textarea>
+    <button (click) = "saveNumber()">Save number</button>
+   </ion-content>
+  

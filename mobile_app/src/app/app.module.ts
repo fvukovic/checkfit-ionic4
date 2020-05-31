@@ -17,9 +17,9 @@ import {StreetPickerPageModule} from './pages/popups/street-picker/street-picker
 import {DriveRequestPageModule} from './pages/popups/drive-request/drive-request.module'
 import { IonicStorageModule } from '@ionic/storage';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
-import { Sim } from '@ionic-native/sim/ngx';
-
+import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx"; 
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+import { PhoneNumberPageModule } from "./pages/popups/phone-number/phone-number.module";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -32,6 +32,7 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     StreetPickerPageModule,
     DriveRequestPageModule,
+    PhoneNumberPageModule,
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(),
     HttpClientModule,
@@ -52,7 +53,7 @@ export function createTranslateLoader(http: HttpClient) {
     Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     NativeGeocoder,
-    Sim
+    UniqueDeviceID
   ],
   bootstrap: [AppComponent]
 })

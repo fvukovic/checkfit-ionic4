@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { FlotingSearchDrivePage } from './floting-search-drive.page';
+import { PhoneNumberPage } from './phone-number.page';
 
-describe('FlotingSearchDrivePage', () => {
-  let component: FlotingSearchDrivePage;
-  let fixture: ComponentFixture<FlotingSearchDrivePage>;
+describe('PhoneNumberPage', () => {
+  let component: PhoneNumberPage;
+  let fixture: ComponentFixture<PhoneNumberPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlotingSearchDrivePage ],
+      declarations: [ PhoneNumberPage ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(FlotingSearchDrivePage);
+    fixture = TestBed.createComponent(PhoneNumberPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

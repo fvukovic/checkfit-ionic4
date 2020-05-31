@@ -16,6 +16,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
   fromAddress: String;
   toAddress: String;
   currentLocation:any;
+  numberOfPersons:String
   @ViewChild("mapElement", { static: true }) mapElement;
 
   constructor(
@@ -62,6 +63,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
         picker: picker
       }
     });
+    
     modal.onDidDismiss().then(response => {
       const data = response["data"];
       if (data["address"] == null) {
@@ -77,8 +79,11 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     return await modal.present();
   }
 
-  async orderTaxi() { 
-    
+  setNumberOfPersons(numberOfPersons){
+    this.numberOfPersons = numberOfPersons;
+  }
+
+  async orderTaxi() {  
     let fromAddress = await this.locationService.getForwardGeocode2(this.fromAddress + ", Varaždin, Croatia"); 
     let toAddress = await this.locationService.getForwardGeocode2(this.toAddress + ", Varaždin, Croatia");  
     let params = {
@@ -86,6 +91,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       fromLong: fromAddress["longitude"],
       toLat:toAddress["latitude"],
       toLong:toAddress["longitude"],
+      persons: this.numberOfPersons
     };
 
     //   let params = {
@@ -94,7 +100,6 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     //   toLat: "46.13123",
     //   toLong: "16.123144",
     // };
-
     this.router.navigate(["/search-ride"],  { queryParams: {data:JSON.stringify(params)} });
   }
 }

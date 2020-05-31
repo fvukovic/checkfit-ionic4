@@ -45,6 +45,12 @@
     },
     "cordova-plugin-sim": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-uniquedeviceid": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "mx.ferreyra.callnumber": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {}

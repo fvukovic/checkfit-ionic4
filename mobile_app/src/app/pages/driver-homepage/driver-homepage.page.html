@@ -12,12 +12,9 @@
       height: 80% !important;
     }
   </style>
-  <div #mapElement class="map"></div>
-  <ion-radio-group>
-    1<ion-radio>1</ion-radio>
-    2<ion-radio>2</ion-radio>
-    3<ion-radio>3</ion-radio>
-    4<ion-radio>42</ion-radio>
-  </ion-radio-group>
+  <div #mapElement class="map"></div> 
+  <ion-button *ngIf="isDriveStarted"  >Call Customer</ion-button>
+  <ion-button *ngIf="isDriveStarted" (click)="endDrive()" >End Drive</ion-button>
+
   <br />
 </ion-content>

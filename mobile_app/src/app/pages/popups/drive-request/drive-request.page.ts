@@ -46,10 +46,9 @@ export class DriveRequestPage implements OnInit {
       messageType: "ACCEPT_DRIVE",
       customer: this.message.username
     });
-    this.router.navigate(["/driver-homepage"],  { queryParams: {data:JSON.stringify(this.message)} }); 
+    //this.router.navigate(["/driver-homepage"],  { queryParams: {data:JSON.stringify(this.message)} }); 
     this.closeModal();
-    /**TODO otvori novi popup i tamo stavi buttone: 1. na lokaciji sam
-      kad klikne na lokaciji sam, pokazi mu button nazovi i izadi 
+    /**TODO dodaj alert za 5 sekunda ako voznja nije prihvacena
     */
   }
 }

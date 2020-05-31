@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { FlotingSearchDrivePage } from './floting-search-drive.page';
+import { PhoneNumberPage } from './phone-number.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: FlotingSearchDrivePage
+    component: PhoneNumberPage
   }
 ];
 
@@ -14,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class FlotingSearchDrivePageRoutingModule {}
+export class PhoneNumberPageRoutingModule {}

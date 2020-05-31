@@ -7,11 +7,14 @@
 <ion-content>
   <div class=container4>
     <div *ngIf="!isDriveAccepted" >
+      
       <p>Tražim slobodnog vozača...</p>
       <ion-spinner style="width:150px" color="tertiary" class="ion-color ion-color-tertiary ios spinner-lines hydrated"
         role="progressbar"></ion-spinner>
     </div>
     <div *ngIf="isDriveAccepted" >
+        <h2>Vaše vozilo stiže!!</h2>
+
         <p>Vaše vozilo je udaljeno:</p> 
         <p>{{kms}}</p> 
       </div>

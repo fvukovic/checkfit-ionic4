@@ -15,11 +15,11 @@
     <div #mapElement class="map"></div> 
 <ion-card (click)="openStreetPicker('from')"> {{fromAddress}} </ion-card>
 <ion-card (click)="openStreetPicker('to')"> {{toAddress}} </ion-card>
-<ion-radio-group>
-  1<ion-radio>1</ion-radio>
-  2<ion-radio>2</ion-radio>
-  3<ion-radio>3</ion-radio>
-  4<ion-radio>42</ion-radio>
+<ion-radio-group> 
+  1<ion-radio  (click)="setNumberOfPersons(1)"></ion-radio>
+  2<ion-radio  (click)="setNumberOfPersons(2)"></ion-radio>
+  3<ion-radio  (click)="setNumberOfPersons(3)"></ion-radio>
+  4<ion-radio  (click)="setNumberOfPersons(4)"></ion-radio>
 </ion-radio-group>
 <br/>
   <ion-button (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</ion-button>

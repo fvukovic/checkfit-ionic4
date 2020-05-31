@@ -3,9 +3,10 @@ import { Message } from "@stomp/stompjs";
 import { Observable, BehaviorSubject } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
+import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 
 const WEBSOCKET_URL = "ws://taxi-mura.herokuapp.com/socket";
-// const WEBSOCKET_URL = "ws://localhost:9092/socket";
+//  const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
 @Injectable({
   providedIn: "root"
@@ -13,6 +14,7 @@ const EXAMPLE_URL = "/topic/server-broadcaster";
 export class SocketService {
   private messages: Observable<Message>;
   private stompService: StompService;
+  public uniqueID: any
   _this = this;
 
   initializeWebSocketConnection() {
@@ -20,13 +22,14 @@ export class SocketService {
     this.storage.get("username").then(val => {
       if (val != null) {
         userType = "driver";
-      }
+      } 
       let stompConfig: StompConfig = {
-        url: WEBSOCKET_URL,
+        url: WEBSOCKET_URL + "?" + this.uniqueID,
         headers: {
           //TODO add
           username: "customer",
-          type: userType
+          type: userType,
+          id: this.uniqueID
         },
  
         heartbeat_in: 0,
@@ -43,8 +46,8 @@ export class SocketService {
     });
   }
 
-  constructor(private storage: Storage) {
-    // Create Stomp Configuration
+  constructor(private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
+    this.getUniqueId();
   }
 
   public stream(): Observable<Message> {
@@ -57,5 +60,27 @@ export class SocketService {
 
   public state(): BehaviorSubject<StompState> {
     return this.stompService.state;
+  }
+
+ async getUniqueId(){
+  var x = await this.callGetUniqueIdAPI()
+  this.uniqueID = x; 
+ }
+
+  callGetUniqueIdAPI(){
+ 
+    return new Promise((resolve, reject) => {
+ 
+      this.uniqueDeviceID.get().then(
+        (uuid: any) => { 
+          resolve(uuid);
+        },
+        (err: PositionError) => {
+          resolve("123123123")
+        }
+      );
+    });
+
+
   }
 }

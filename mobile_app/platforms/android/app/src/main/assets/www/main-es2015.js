@@ -34,382 +34,382 @@ var map = {
 	"./ion-action-sheet-controller_8.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-action-sheet-controller_8.entry.js",
 		"common",
-		17
+		16
 	],
 	"./ion-action-sheet-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-action-sheet-ios.entry.js",
 		"common",
-		18
+		17
 	],
 	"./ion-action-sheet-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-action-sheet-md.entry.js",
 		"common",
-		19
+		18
 	],
 	"./ion-alert-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-alert-ios.entry.js",
 		"common",
-		20
+		19
 	],
 	"./ion-alert-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-alert-md.entry.js",
 		"common",
-		21
+		20
 	],
 	"./ion-app_8-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-app_8-ios.entry.js",
 		"common",
-		22
+		21
 	],
 	"./ion-app_8-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-app_8-md.entry.js",
 		"common",
-		23
+		22
 	],
 	"./ion-avatar_3-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-avatar_3-ios.entry.js",
 		"common",
-		24
+		23
 	],
 	"./ion-avatar_3-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-avatar_3-md.entry.js",
 		"common",
-		25
+		24
 	],
 	"./ion-back-button-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-back-button-ios.entry.js",
 		"common",
-		26
+		25
 	],
 	"./ion-back-button-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-back-button-md.entry.js",
 		"common",
-		27
+		26
 	],
 	"./ion-backdrop-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-backdrop-ios.entry.js",
-		28
+		27
 	],
 	"./ion-backdrop-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-backdrop-md.entry.js",
-		29
+		28
 	],
 	"./ion-button_2-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-button_2-ios.entry.js",
 		"common",
-		30
+		29
 	],
 	"./ion-button_2-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-button_2-md.entry.js",
 		"common",
-		31
+		30
 	],
 	"./ion-card_5-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-card_5-ios.entry.js",
 		"common",
-		32
+		31
 	],
 	"./ion-card_5-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-card_5-md.entry.js",
 		"common",
-		33
+		32
 	],
 	"./ion-checkbox-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-checkbox-ios.entry.js",
 		"common",
-		34
+		33
 	],
 	"./ion-checkbox-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-checkbox-md.entry.js",
 		"common",
-		35
+		34
 	],
 	"./ion-chip-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-chip-ios.entry.js",
 		"common",
-		36
+		35
 	],
 	"./ion-chip-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-chip-md.entry.js",
 		"common",
-		37
+		36
 	],
 	"./ion-col_3.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-col_3.entry.js",
-		38
+		37
 	],
 	"./ion-datetime_3-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-datetime_3-ios.entry.js",
 		"common",
-		39
+		38
 	],
 	"./ion-datetime_3-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-datetime_3-md.entry.js",
 		"common",
-		40
+		39
 	],
 	"./ion-fab_3-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-fab_3-ios.entry.js",
 		"common",
-		41
+		40
 	],
 	"./ion-fab_3-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-fab_3-md.entry.js",
 		"common",
-		42
+		41
 	],
 	"./ion-img.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-img.entry.js",
-		43
+		42
 	],
 	"./ion-infinite-scroll_2-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-ios.entry.js",
 		"common",
-		44
+		43
 	],
 	"./ion-infinite-scroll_2-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-infinite-scroll_2-md.entry.js",
 		"common",
-		45
+		44
 	],
 	"./ion-input-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-input-ios.entry.js",
 		"common",
-		46
+		45
 	],
 	"./ion-input-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-input-md.entry.js",
 		"common",
-		47
+		46
 	],
 	"./ion-item-option_3-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-item-option_3-ios.entry.js",
 		"common",
-		48
+		47
 	],
 	"./ion-item-option_3-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-item-option_3-md.entry.js",
 		"common",
-		49
+		48
 	],
 	"./ion-item_8-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-item_8-ios.entry.js",
 		"common",
-		50
+		49
 	],
 	"./ion-item_8-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-item_8-md.entry.js",
 		"common",
-		51
+		50
 	],
 	"./ion-loading-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-loading-ios.entry.js",
 		"common",
-		52
+		51
 	],
 	"./ion-loading-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-loading-md.entry.js",
 		"common",
-		53
+		52
 	],
 	"./ion-menu_4-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-menu_4-ios.entry.js",
 		"common",
-		54
+		53
 	],
 	"./ion-menu_4-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-menu_4-md.entry.js",
 		"common",
-		55
+		54
 	],
 	"./ion-modal-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-modal-ios.entry.js",
 		"common",
-		56
+		55
 	],
 	"./ion-modal-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-modal-md.entry.js",
 		"common",
-		57
+		56
 	],
 	"./ion-nav_5.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-nav_5.entry.js",
 		"common",
-		58
+		57
 	],
 	"./ion-popover-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-popover-ios.entry.js",
 		"common",
-		59
+		58
 	],
 	"./ion-popover-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-popover-md.entry.js",
 		"common",
-		60
+		59
 	],
 	"./ion-progress-bar-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-progress-bar-ios.entry.js",
 		"common",
-		61
+		60
 	],
 	"./ion-progress-bar-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-progress-bar-md.entry.js",
 		"common",
-		62
+		61
 	],
 	"./ion-radio_2-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-radio_2-ios.entry.js",
 		"common",
-		63
+		62
 	],
 	"./ion-radio_2-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-radio_2-md.entry.js",
 		"common",
-		64
+		63
 	],
 	"./ion-range-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-range-ios.entry.js",
 		"common",
-		65
+		64
 	],
 	"./ion-range-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-range-md.entry.js",
 		"common",
-		66
+		65
 	],
 	"./ion-refresher_2-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-refresher_2-ios.entry.js",
 		"common",
-		67
+		66
 	],
 	"./ion-refresher_2-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-refresher_2-md.entry.js",
 		"common",
-		68
+		67
 	],
 	"./ion-reorder_2-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-reorder_2-ios.entry.js",
 		"common",
-		69
+		68
 	],
 	"./ion-reorder_2-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-reorder_2-md.entry.js",
 		"common",
-		70
+		69
 	],
 	"./ion-ripple-effect.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-ripple-effect.entry.js",
-		71
+		70
 	],
 	"./ion-route_4.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-route_4.entry.js",
 		"common",
-		72
+		71
 	],
 	"./ion-searchbar-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-searchbar-ios.entry.js",
 		"common",
-		73
+		72
 	],
 	"./ion-searchbar-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-searchbar-md.entry.js",
 		"common",
-		74
+		73
 	],
 	"./ion-segment_2-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-segment_2-ios.entry.js",
 		"common",
-		75
+		74
 	],
 	"./ion-segment_2-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-segment_2-md.entry.js",
 		"common",
-		76
+		75
 	],
 	"./ion-select_3-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-select_3-ios.entry.js",
 		"common",
-		77
+		76
 	],
 	"./ion-select_3-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-select_3-md.entry.js",
 		"common",
-		78
+		77
 	],
 	"./ion-slide_2-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-slide_2-ios.entry.js",
-		79
+		78
 	],
 	"./ion-slide_2-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-slide_2-md.entry.js",
-		80
+		79
 	],
 	"./ion-spinner.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-spinner.entry.js",
 		"common",
-		81
+		80
 	],
 	"./ion-split-pane-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-split-pane-ios.entry.js",
-		82
+		81
 	],
 	"./ion-split-pane-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-split-pane-md.entry.js",
-		83
+		82
 	],
 	"./ion-tab-bar_2-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-tab-bar_2-ios.entry.js",
 		"common",
-		84
+		83
 	],
 	"./ion-tab-bar_2-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-tab-bar_2-md.entry.js",
 		"common",
-		85
+		84
 	],
 	"./ion-tab_2.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-tab_2.entry.js",
 		"common",
-		86
+		85
 	],
 	"./ion-text.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-text.entry.js",
 		"common",
-		87
+		86
 	],
 	"./ion-textarea-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-textarea-ios.entry.js",
 		"common",
-		88
+		87
 	],
 	"./ion-textarea-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-textarea-md.entry.js",
 		"common",
-		89
+		88
 	],
 	"./ion-toast-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-toast-ios.entry.js",
 		"common",
-		90
+		89
 	],
 	"./ion-toast-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-toast-md.entry.js",
 		"common",
-		91
+		90
 	],
 	"./ion-toggle-ios.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-toggle-ios.entry.js",
 		"common",
-		92
+		91
 	],
 	"./ion-toggle-md.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-toggle-md.entry.js",
 		"common",
-		93
+		92
 	],
 	"./ion-virtual-scroll.entry.js": [
 		"./node_modules/@ionic/core/dist/esm/ion-virtual-scroll.entry.js",
-		94
+		93
 	]
 };
 function webpackAsyncContext(req) {
@@ -443,7 +443,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <ion-content>\n        <ion-list id=\"inbox-list\">\n          <ion-list-header>Taxi</ion-list-header> \n\n          <ion-menu-toggle auto-hide=\"false\" >\n         \n            <ion-item>\n              <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n           </ion-item>\n           <ion-item>\n            <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n         </ion-item> \n         <ion-item>\n          <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n       </ion-item> \n          </ion-menu-toggle>\n        </ion-list>\n\n        <ion-list id=\"labels-list\">\n          <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n          <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\">\n      <ion-content>\n        <ion-list id=\"inbox-list\">\n          <ion-list-header>Taxi</ion-list-header> \n\n          <ion-menu-toggle auto-hide=\"false\" >\n         \n            <ion-item>\n              <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n           </ion-item>\n           <ion-item>\n            <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n         </ion-item> \n         <ion-item>\n          <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n       </ion-item> \n       <ion-item>\n          <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n       </ion-item> \n          </ion-menu-toggle>\n        </ion-list>\n\n        <ion-list id=\"labels-list\">\n          <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n          <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
 
 /***/ }),
 
@@ -456,7 +456,20 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n      <!-- Advanced: explicity set the icon for each platform -->\n  <ion-icon style=\"height: 30px;\" (click) = \"closeModal()\"  name=\"arrow-back\"></ion-icon>\n    <ion-title>New Drive Request</ion-title>\n  </ion-toolbar>\n</ion-header>\n<!-- \"{\"username\":null,\"type\":\"customer\",\"messageType\":\"DRIVE_REQUEST\",\"fromLat\":\"45.333\",\"fromLong\":\"16.444\",\"toLat\":\"45.333\",\"toLong\":\"16.444\"}\" -->\n<ion-content>\n from: {{message.fromLat + \" - \" + message.fromLong}} \n from: {{message.toLat + \" - \" + message.toLong}} \n <button (click) = \"acceptRequst()\" > Accept</button>\n <button (click) = \"closeModal()\"  > Reject</button>\n\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n      <!-- Advanced: explicity set the icon for each platform -->\n  <ion-icon style=\"height: 30px;\" (click) = \"closeModal()\"  name=\"arrow-back\"></ion-icon>\n    <ion-title>New Drive Request</ion-title>\n  </ion-toolbar>\n</ion-header>\n<!-- \"{\"username\":null,\"type\":\"customer\",\"messageType\":\"DRIVE_REQUEST\",\"fromLat\":\"45.333\",\"fromLong\":\"16.444\",\"toLat\":\"45.333\",\"toLong\":\"16.444\"}\" -->\n<ion-content >\n <div style=\"padding: 20px;\">\n <br/>\n  from: {{fromAddress}}\n <br/>\n to: {{toAddress}}\n <br/>\n <br/>\n <button style=\"margin: 20px;\" (click) = \"acceptRequst()\" > Accept</button>\n <button style=\"margin: 20px;\" (click) = \"closeModal()\"  > Reject</button>\n</div>\n</ion-content>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popups/phone-number/phone-number.page.html":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popups/phone-number/phone-number.page.html ***!
+  \********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n    <ion-toolbar>\n        <!-- Advanced: explicity set the icon for each platform -->\n    <ion-icon style=\"height: 30px;\"   name=\"arrow-back\"></ion-icon> \n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content style=\"background-color: gray;\">\n    Enter phone number:<br/>\n    <ion-textarea [(ngModel)]=\"phoneNumber\" placeholder=\"Unesi Broj telefona!\"></ion-textarea>\n    <button (click) = \"saveNumber()\">Save number</button>\n   </ion-content>\n  ");
 
 /***/ }),
 
@@ -765,7 +778,7 @@ const routes = [
     },
     {
         path: 'search-ride',
-        loadChildren: () => __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ./pages/search-ride/search-ride.module */ "./src/app/pages/search-ride/search-ride.module.ts")).then(m => m.SearchRidePageModule)
+        loadChildren: () => __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ./pages/search-ride/search-ride.module */ "./src/app/pages/search-ride/search-ride.module.ts")).then(m => m.SearchRidePageModule)
     },
     {
         path: 'drive-request',
@@ -776,8 +789,8 @@ const routes = [
         loadChildren: () => __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ./pages/driver-homepage/driver-homepage.module */ "./src/app/pages/driver-homepage/driver-homepage.module.ts")).then(m => m.DriverHomepagePageModule)
     },
     {
-        path: 'floting-search-drive',
-        loadChildren: () => __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ./pages/popups/floting-search-drive/floting-search-drive.module */ "./src/app/pages/popups/floting-search-drive/floting-search-drive.module.ts")).then(m => m.FlotingSearchDrivePageModule)
+        path: 'phone-number',
+        loadChildren: () => Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./pages/popups/phone-number/phone-number.module */ "./src/app/pages/popups/phone-number/phone-number.module.ts")).then(m => m.PhoneNumberPageModule)
     }
 ];
 let AppRoutingModule = class AppRoutingModule {
@@ -830,7 +843,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _pages_popups_drive_request_drive_request_page__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./pages/popups/drive-request/drive-request.page */ "./src/app/pages/popups/drive-request/drive-request.page.ts");
 /* harmony import */ var _services_location_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/location.service */ "./src/app/services/location.service.ts");
 /* harmony import */ var _services_socket_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/socket.service */ "./src/app/services/socket.service.ts");
-/* harmony import */ var _ionic_native_sim_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @ionic-native/sim/ngx */ "./node_modules/@ionic-native/sim/ngx/index.js");
+/* harmony import */ var _pages_popups_phone_number_phone_number_page__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/popups/phone-number/phone-number.page */ "./src/app/pages/popups/phone-number/phone-number.page.ts");
 
 
 
@@ -848,7 +861,7 @@ __webpack_require__.r(__webpack_exports__);
 const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
 let AppComponent = class AppComponent {
-    constructor(platform, splashScreen, statusBar, router, socketService, modalcontroller, translate, storage, locationService, events, sim) {
+    constructor(platform, splashScreen, statusBar, router, socketService, modalcontroller, translate, storage, locationService, events) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
@@ -858,35 +871,40 @@ let AppComponent = class AppComponent {
         this.storage = storage;
         this.locationService = locationService;
         this.events = events;
-        this.sim = sim;
         this._this = this;
         this.messageHistory = [];
         this.state = "NOT CONNECTED";
         this.isUserLoggedIn = false;
-        this.socketServiceS = socketService;
+        //socketService.getUniqueId();
         this.router.navigateByUrl("customer-homepage");
         this.initializeApp();
         translate.setDefaultLang("en");
+        this.platform.ready().then(() => {
+            this.socketService.initializeWebSocketConnection();
+            setTimeout(() => {
+                this.socketService.stream().subscribe((message) => {
+                    this.messageHistory.unshift(message.body);
+                    console.log(message);
+                    this._this.handleMessage(JSON.parse(message.body));
+                });
+                this.socketService.state().subscribe((state) => {
+                    this.state = _stomp_ng2_stompjs__WEBPACK_IMPORTED_MODULE_8__["StompState"][state];
+                });
+            }, 3000);
+        });
     }
     initializeApp() {
+        this.storage.get("phoneNumber").then(val => {
+            if (val == null) {
+                this.openPhoneNumberPopup();
+            }
+        });
         this.storage.get("username").then(val => {
             if (val != null) {
                 this.isUserLoggedIn = true;
             }
-            this.socketServiceS.initializeWebSocketConnection();
         });
         // Subscribe to its stream (to listen on messages)
-        setTimeout(() => {
-            this.socketServiceS.stream().subscribe((message) => {
-                this.messageHistory.unshift(message.body);
-                console.log(message);
-                this._this.handleMessage(JSON.parse(message.body));
-            });
-            this.socketServiceS.state().subscribe((state) => {
-                this.state = _stomp_ng2_stompjs__WEBPACK_IMPORTED_MODULE_8__["StompState"][state];
-            });
-            this.sim.requestReadPermission().then(() => console.log('Permission granted'), () => console.log('Permission denied'));
-        }, 3000);
         // Subscribe to its state (to know its connected or not)
         this.platform.ready().then(() => {
             this.statusBar.styleDefault();
@@ -905,6 +923,7 @@ let AppComponent = class AppComponent {
                     console.log(message);
                     modalElement.present();
                 });
+                alert(JSON.stringify(message));
                 break;
             }
             case "INFORM_DRIVE_CUSTOMER": {
@@ -912,26 +931,49 @@ let AppComponent = class AppComponent {
                 break;
             }
             case "INFORM_DRIVE_DRIVER": {
+                // TODO removaj ovo
+                this.socketService.send("/server-receiver", {
+                    type: "driver",
+                    messageType: "INFORM_DRIVE_DRIVER",
+                    toLat: "46.1231231",
+                    toLong: "16.312312",
+                    fromLat: message.fromLat,
+                    fromLong: message.fromLong
+                });
                 this.locationService.getUserPosition().then(val => {
                     this.socketService.send("/server-receiver", {
                         type: "driver",
                         messageType: "INFORM_DRIVE_DRIVER",
                         toLat: val["coords"].latitude,
-                        toLong: val["coords"].longitude
+                        toLong: val["coords"].longitude,
+                        fromLat: message.fromLat,
+                        fromLong: message.fromLong
                     });
                 }, err => console.error(err));
                 break;
             }
             case "ACCEPT_DRIVE": {
-                //TODO remove popup 
+                //TODO remove popup
                 this.events.publish("driveAccepted", message);
+                break;
+            }
+            case "ACCEPT_DRIVE_DRIVER": {
+                this.router.navigate(["/driver-homepage"], {
+                    queryParams: { data: JSON.stringify(message), driveIsStarted: true }
+                });
+                break;
+            }
+            case "FINISH_DRIVE_CUSTOMER": {
+                //TODO remove popup
+                this.router.navigate(["/customer-homepage"]);
+                alert("Vaše vozilo je na mjestu!");
                 break;
             }
         }
     }
     updateDistance(message) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            let distance = yield this.locationService.getDistanceFromLatLonInKm(message.fromLat, message.fromLong, message.toLat, message.toLat);
+            let distance = yield this.locationService.getDistanceFromLatLonInKm(message.fromLat, message.fromLong, message.toLat, message.toLong);
             this.events.publish("informCustomer", distance);
         });
     }
@@ -945,6 +987,15 @@ let AppComponent = class AppComponent {
         location.reload();
         this.storage.set("username", null);
     }
+    openPhoneNumberPopup() {
+        this.modalcontroller
+            .create({
+            component: _pages_popups_phone_number_phone_number_page__WEBPACK_IMPORTED_MODULE_12__["PhoneNumberPage"]
+        })
+            .then(modalElement => {
+            modalElement.present();
+        });
+    }
 };
 AppComponent.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"] },
@@ -956,8 +1007,7 @@ AppComponent.ctorParameters = () => [
     { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"] },
     { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"] },
     { type: _services_location_service__WEBPACK_IMPORTED_MODULE_10__["LocationService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"] },
-    { type: _ionic_native_sim_ngx__WEBPACK_IMPORTED_MODULE_12__["Sim"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"] }
 ];
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -974,8 +1024,7 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"],
         _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"],
         _services_location_service__WEBPACK_IMPORTED_MODULE_10__["LocationService"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"],
-        _ionic_native_sim_ngx__WEBPACK_IMPORTED_MODULE_12__["Sim"]])
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"]])
 ], AppComponent);
 
 
@@ -1010,7 +1059,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 /* harmony import */ var _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/native-geocoder/ngx */ "./node_modules/@ionic-native/native-geocoder/ngx/index.js");
-/* harmony import */ var _ionic_native_sim_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/sim/ngx */ "./node_modules/@ionic-native/sim/ngx/index.js");
+/* harmony import */ var _ionic_native_unique_device_id_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/unique-device-id/ngx */ "./node_modules/@ionic-native/unique-device-id/ngx/index.js");
+/* harmony import */ var _pages_popups_phone_number_phone_number_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/popups/phone-number/phone-number.module */ "./src/app/pages/popups/phone-number/phone-number.module.ts");
+/* harmony import */ var _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/android-permissions/ngx */ "./node_modules/@ionic-native/android-permissions/ngx/index.js");
+
+
 
 
 
@@ -1042,6 +1095,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"],
             _pages_popups_street_picker_street_picker_module__WEBPACK_IMPORTED_MODULE_12__["StreetPickerPageModule"],
             _pages_popups_drive_request_drive_request_module__WEBPACK_IMPORTED_MODULE_13__["DriveRequestPageModule"],
+            _pages_popups_phone_number_phone_number_module__WEBPACK_IMPORTED_MODULE_18__["PhoneNumberPageModule"],
             _ionic_storage__WEBPACK_IMPORTED_MODULE_14__["IonicStorageModule"].forRoot(),
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
             _angular_common_http__WEBPACK_IMPORTED_MODULE_11__["HttpClientModule"],
@@ -1060,7 +1114,9 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
             _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_15__["Geolocation"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
-            _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_16__["NativeGeocoder"], _ionic_native_sim_ngx__WEBPACK_IMPORTED_MODULE_17__["Sim"]
+            _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_16__["NativeGeocoder"],
+            _ionic_native_unique_device_id_ngx__WEBPACK_IMPORTED_MODULE_17__["UniqueDeviceID"],
+            _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_19__["AndroidPermissions"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })
@@ -1183,7 +1239,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _services_socket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../services/socket.service */ "./src/app/services/socket.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _services_location_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../services/location.service */ "./src/app/services/location.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
 
 
 
@@ -1191,14 +1249,25 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let DriveRequestPage = class DriveRequestPage {
-    constructor(modalControler, navParams, socketService, router) {
+    constructor(modalControler, navParams, socketService, router, locationService) {
         this.modalControler = modalControler;
         this.navParams = navParams;
         this.socketService = socketService;
         this.router = router;
+        this.locationService = locationService;
         this.message = this.navParams.get("message");
+        this.populateAddresses();
     }
-    ngOnInit() { }
+    populateAddresses() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            var fromAddress = yield this.locationService.getReverseGeocode(this.message.fromLat, this.message.fromLong);
+            this.fromAddress = fromAddress[0].thoroughfare + "," + fromAddress[0].subThoroughfare + "," + fromAddress[0].locality;
+            var toAddress = yield this.locationService.getReverseGeocode(this.message.fromLat, this.message.fromLong);
+            this.toAddress = toAddress[0].thoroughfare + "," + toAddress[0].subThoroughfare + "," + toAddress[0].locality;
+        });
+    }
+    ngOnInit() {
+    }
     closeModal() {
         this.modalControler.dismiss();
     }
@@ -1206,15 +1275,16 @@ let DriveRequestPage = class DriveRequestPage {
         this.socketService.send("/server-receiver", {
             type: "customer",
             messageType: "ACCEPT_DRIVE",
-            fromLat: "45.333",
-            fromLong: "16.444",
-            toLat: "45.333",
-            toLong: "16.444",
-            customer: this.message.username
+            customer: this.message.username,
+            phoneNumber: this.message.phoneNumber,
+            fromLat: this.message.fromLat,
+            fromLong: this.message.fromLong,
+            toLat: this.message.toLat,
+            toLong: this.message.toLong,
         });
-        this.router.navigate(["/drive-request"], { queryParams: { data: JSON.stringify(this.message) } });
-        /**TODO otvori novi popup i tamo stavi buttone: 1. na lokaciji sam
-          kad klikne na lokaciji sam, pokazi mu button nazovi i izadi
+        //this.router.navigate(["/driver-homepage"],  { queryParams: {data:JSON.stringify(this.message)} }); 
+        this.closeModal();
+        /**TODO dodaj alert za 5 sekunda ako voznja nije prihvacena
         */
     }
 };
@@ -1222,7 +1292,8 @@ DriveRequestPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] },
     { type: _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"] },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
+    { type: _services_location_service__WEBPACK_IMPORTED_MODULE_4__["LocationService"] }
 ];
 DriveRequestPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1233,8 +1304,153 @@ DriveRequestPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"],
         _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"],
-        _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]])
+        _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+        _services_location_service__WEBPACK_IMPORTED_MODULE_4__["LocationService"]])
 ], DriveRequestPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/popups/phone-number/phone-number-routing.module.ts":
+/*!**************************************************************************!*\
+  !*** ./src/app/pages/popups/phone-number/phone-number-routing.module.ts ***!
+  \**************************************************************************/
+/*! exports provided: PhoneNumberPageRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhoneNumberPageRoutingModule", function() { return PhoneNumberPageRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _phone_number_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./phone-number.page */ "./src/app/pages/popups/phone-number/phone-number.page.ts");
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _phone_number_page__WEBPACK_IMPORTED_MODULE_3__["PhoneNumberPage"]
+    }
+];
+let PhoneNumberPageRoutingModule = class PhoneNumberPageRoutingModule {
+};
+PhoneNumberPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]],
+    })
+], PhoneNumberPageRoutingModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/popups/phone-number/phone-number.module.ts":
+/*!******************************************************************!*\
+  !*** ./src/app/pages/popups/phone-number/phone-number.module.ts ***!
+  \******************************************************************/
+/*! exports provided: PhoneNumberPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhoneNumberPageModule", function() { return PhoneNumberPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _phone_number_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./phone-number-routing.module */ "./src/app/pages/popups/phone-number/phone-number-routing.module.ts");
+/* harmony import */ var _phone_number_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./phone-number.page */ "./src/app/pages/popups/phone-number/phone-number.page.ts");
+
+
+
+
+
+
+
+let PhoneNumberPageModule = class PhoneNumberPageModule {
+};
+PhoneNumberPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+            _phone_number_routing_module__WEBPACK_IMPORTED_MODULE_5__["PhoneNumberPageRoutingModule"]
+        ],
+        declarations: [_phone_number_page__WEBPACK_IMPORTED_MODULE_6__["PhoneNumberPage"]]
+    })
+], PhoneNumberPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/popups/phone-number/phone-number.page.scss":
+/*!******************************************************************!*\
+  !*** ./src/app/pages/popups/phone-number/phone-number.page.scss ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3BvcHVwcy9waG9uZS1udW1iZXIvcGhvbmUtbnVtYmVyLnBhZ2Uuc2NzcyJ9 */");
+
+/***/ }),
+
+/***/ "./src/app/pages/popups/phone-number/phone-number.page.ts":
+/*!****************************************************************!*\
+  !*** ./src/app/pages/popups/phone-number/phone-number.page.ts ***!
+  \****************************************************************/
+/*! exports provided: PhoneNumberPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PhoneNumberPage", function() { return PhoneNumberPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
+
+
+
+let PhoneNumberPage = class PhoneNumberPage {
+    constructor(storage, modalControler) {
+        this.storage = storage;
+        this.modalControler = modalControler;
+        this.storage.get("phoneNumber").then(val => {
+            if (val != null) {
+                this.phoneNumber = val;
+            }
+        });
+    }
+    ngOnInit() { }
+    saveNumber() {
+        this.storage.set("phoneNumber", this.phoneNumber);
+        this.modalControler.dismiss();
+    }
+};
+PhoneNumberPage.ctorParameters = () => [
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] }
+];
+PhoneNumberPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: "app-phone-number",
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./phone-number.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popups/phone-number/phone-number.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./phone-number.page.scss */ "./src/app/pages/popups/phone-number/phone-number.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])
+], PhoneNumberPage);
 
 
 
@@ -1496,6 +1712,7 @@ let LocationService = class LocationService {
     getPosition() {
         return new Promise((resolve, reject) => {
             navigator.geolocation.getCurrentPosition(resp => {
+                alert(JSON.stringify(resp));
                 resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
             }, err => {
                 reject(err);
@@ -1503,6 +1720,8 @@ let LocationService = class LocationService {
         });
     }
     getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+        console.log("1111111");
+        console.log(lat1 + " " + lon1 + " " + lat2 + " " + lon1);
         var R = 6371; // Radius of the earth in kilometers
         var dLat = this.deg2rad(lat2 - lat1); // deg2rad below
         var dLon = this.deg2rad(lon2 - lon1);
@@ -1511,6 +1730,8 @@ let LocationService = class LocationService {
                 Math.sin(dLon / 2) * Math.sin(dLon / 2);
         var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         var d = R * c; // Distance in KM
+        console.log(d);
+        console.log((Math.round(d * 100) / 100) + " km");
         return (Math.round(d * 100) / 100) + " km";
     }
     deg2rad(deg) {
@@ -1547,41 +1768,47 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _stomp_ng2_stompjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stomp/ng2-stompjs */ "./node_modules/@stomp/ng2-stompjs/fesm2015/stomp-ng2-stompjs.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _ionic_native_unique_device_id_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic-native/unique-device-id/ngx */ "./node_modules/@ionic-native/unique-device-id/ngx/index.js");
+
 
 
 
 
 const WEBSOCKET_URL = "ws://taxi-mura.herokuapp.com/socket";
+//  const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
 let SocketService = class SocketService {
-    constructor(storage) {
+    constructor(storage, uniqueDeviceID) {
         this.storage = storage;
+        this.uniqueDeviceID = uniqueDeviceID;
         this._this = this;
-        // Create Stomp Configuration
     }
     initializeWebSocketConnection() {
-        var userType = "customer";
-        this.storage.get("username").then(val => {
-            if (val != null) {
-                userType = "driver";
-            }
-            let stompConfig = {
-                url: WEBSOCKET_URL,
-                headers: {
-                    //TODO add
-                    username: "customer",
-                    type: userType
-                },
-                heartbeat_in: 0,
-                heartbeat_out: 20000,
-                reconnect_delay: 5000,
-                debug: true
-            };
-            // Create Stomp Service
-            this.stompService = new _stomp_ng2_stompjs__WEBPACK_IMPORTED_MODULE_1__["StompService"](stompConfig);
-            // Connect to a Stream
-            this.messages = this.stompService.subscribe("/user" + EXAMPLE_URL);
-        });
+        this.uniqueDeviceID.get().then((uuid) => {
+            var userType = "customer";
+            this.storage.get("username").then(val => {
+                if (val != null) {
+                    userType = "driver";
+                }
+                let stompConfig = {
+                    url: WEBSOCKET_URL + "?" + uuid,
+                    headers: {
+                        //TODO add
+                        username: "customer",
+                        type: userType,
+                        id: uuid
+                    },
+                    heartbeat_in: 0,
+                    heartbeat_out: 20000,
+                    reconnect_delay: 5000,
+                    debug: true
+                };
+                // Create Stomp Service
+                this.stompService = new _stomp_ng2_stompjs__WEBPACK_IMPORTED_MODULE_1__["StompService"](stompConfig);
+                // Connect to a Stream
+                this.messages = this.stompService.subscribe("/user" + EXAMPLE_URL);
+            });
+        }, (err) => { });
     }
     stream() {
         return this.messages;
@@ -1594,13 +1821,15 @@ let SocketService = class SocketService {
     }
 };
 SocketService.ctorParameters = () => [
-    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"] }
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"] },
+    { type: _ionic_native_unique_device_id_ngx__WEBPACK_IMPORTED_MODULE_4__["UniqueDeviceID"] }
 ];
 SocketService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
         providedIn: "root"
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"],
+        _ionic_native_unique_device_id_ngx__WEBPACK_IMPORTED_MODULE_4__["UniqueDeviceID"]])
 ], SocketService);
 
 

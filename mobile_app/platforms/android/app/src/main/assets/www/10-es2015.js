@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>Driver homepage</ion-title>\n    </ion-toolbar>\n  </ion-header>\n    <ion-content class=\"mapp\"> \n      <style>\n        .map {\n          height: 80% !important;\n        } \n      </style>\n      <div #mapElement class=\"map\"></div> \n  <ion-card (click)=\"openStreetPicker('from')\"> {{fromAddress}} </ion-card>\n  <ion-card (click)=\"openStreetPicker('to')\"> {{toAddress}} </ion-card>\n  <ion-radio-group>\n    1<ion-radio>1</ion-radio>\n    2<ion-radio>2</ion-radio>\n    3<ion-radio>3</ion-radio>\n    4<ion-radio>42</ion-radio>\n  </ion-radio-group>\n  <br/>\n    <ion-button (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</ion-button>\n    </ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Driver homepage</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content class=\"mapp\">\n  <style>\n    .map {\n      height: 80% !important;\n    }\n  </style>\n  <div #mapElement class=\"map\"></div> \n<ion-button *ngIf=\"isDriveStarted\" href=\"tel:{{phoneNumber}}\">>Call Customer</ion-button>\n  <ion-button *ngIf=\"isDriveStarted\" (click)=\"endDrive()\" >End Drive</ion-button>\n  <br />\n</ion-content>");
 
 /***/ }),
 
@@ -118,27 +118,90 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _services_location_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/location.service */ "./src/app/services/location.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _services_socket_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/socket.service */ "./src/app/services/socket.service.ts");
+
+
 
 
 
 let DriverHomepagePage = class DriverHomepagePage {
-    constructor(locationService) {
+    constructor(locationService, route, socketService) {
         this.locationService = locationService;
+        this.route = route;
+        this.socketService = socketService;
+        const firstParam = this.route.snapshot.queryParamMap.get("data");
+        let message = JSON.parse(firstParam);
+        this.message = message;
+        this.phoneNumber = message.phoneNumber;
+        alert(this.phoneNumber);
+        const driveIsStarted = this.route.snapshot.queryParamMap.get("driveIsStarted");
+        if (driveIsStarted == "true") {
+            //TODO makni ovo na kraju
+            //this.populateAddress(message)
+            this.isDriveStarted = true;
+        }
+        this.initializeMap();
+    }
+    populateAddress(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            var fromAddress = yield this.locationService.getReverseGeocode(message.fromLat, message.fromLong);
+            this.fromAddress =
+                fromAddress[0].thoroughfare +
+                    "," +
+                    fromAddress[0].subThoroughfare +
+                    "," +
+                    fromAddress[0].locality;
+            var toAddress = yield this.locationService.getReverseGeocode(message.fromLat, message.fromLong);
+            this.toAddress =
+                toAddress[0].thoroughfare +
+                    "," +
+                    toAddress[0].subThoroughfare +
+                    "," +
+                    toAddress[0].locality;
+        });
     }
     initializeMap() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             this.currentLocation = yield this.locationService.getUserPosition();
+            var directionsDisplay = new google.maps.DirectionsRenderer();
             this.map = new google.maps.Map(this.mapElement.nativeElement, {
-                center: { lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude },
+                center: {
+                    lat: this.currentLocation.coords.latitude,
+                    lng: this.currentLocation.coords.longitude
+                },
                 zoom: 16
             });
+            var directionsService = new google.maps.DirectionsService();
+            directionsDisplay.setMap(this.map);
+            var directionsDisplay = new google.maps.DirectionsRenderer();
+            this.displayDirection(directionsService, directionsDisplay);
         });
     }
-    ngOnInit() {
+    endDrive() {
+        this.socketService.send("/server-receiver", {
+            type: "customer",
+            messageType: "FINISH_DRIVE",
+            customer: this.message.driver
+        });
     }
+    displayDirection(directionsService, directionsDisplay) {
+        directionsService.route({
+            origin: new google.maps.LatLng(41.850033, -87.6500523),
+            destination: new google.maps.LatLng(41.850033, -87.6500523),
+            travelMode: "DRIVING"
+        }, (response, status) => {
+            if (status === "OK") {
+                directionsDisplay.setDirections(response);
+            }
+        });
+    }
+    ngOnInit() { }
 };
 DriverHomepagePage.ctorParameters = () => [
-    { type: _services_location_service__WEBPACK_IMPORTED_MODULE_2__["LocationService"] }
+    { type: _services_location_service__WEBPACK_IMPORTED_MODULE_2__["LocationService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"] },
+    { type: _services_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"] }
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])("mapElement", { static: true }),
@@ -146,11 +209,13 @@ tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 ], DriverHomepagePage.prototype, "mapElement", void 0);
 DriverHomepagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        selector: 'app-driver-homepage',
+        selector: "app-driver-homepage",
         template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./driver-homepage.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/driver-homepage/driver-homepage.page.html")).default,
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./driver-homepage.page.scss */ "./src/app/pages/driver-homepage/driver-homepage.page.scss")).default]
     }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_location_service__WEBPACK_IMPORTED_MODULE_2__["LocationService"]])
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_location_service__WEBPACK_IMPORTED_MODULE_2__["LocationService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"],
+        _services_socket_service__WEBPACK_IMPORTED_MODULE_4__["SocketService"]])
 ], DriverHomepagePage);
 
 

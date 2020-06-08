@@ -7,8 +7,6 @@ import { NativeGeocoderResult } from "@ionic-native/native-geocoder/ngx";
 import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../../services/socket.service";
 
-
-
 declare var google;
 @Component({
   selector: "app-driver-homepage",
@@ -23,25 +21,53 @@ export class DriverHomepagePage implements OnInit {
   toddress: String;
   isDriveStarted: boolean;
   message: any;
+  phoneNumber: String;
+
   @ViewChild("mapElement", { static: true }) mapElement;
-  constructor(private locationService: LocationService, private route: ActivatedRoute, private socketService: SocketService) {
+  constructor(
+    private locationService: LocationService,
+    private route: ActivatedRoute,
+    private socketService: SocketService
+  ) {
     const firstParam: string = this.route.snapshot.queryParamMap.get("data");
     let message = JSON.parse(firstParam);
     this.message = message;
-    const driveIsStarted: string = this.route.snapshot.queryParamMap.get("driveIsStarted");
-    if(driveIsStarted=="true"){
+    this.phoneNumber = message.phoneNumber;
+    alert(this.phoneNumber)
+    const driveIsStarted: string = this.route.snapshot.queryParamMap.get(
+      "driveIsStarted"
+    );
+
+    if (driveIsStarted == "true") {
+      //TODO makni ovo na kraju
       //this.populateAddress(message)
-      this.isDriveStarted=true;
+      this.isDriveStarted = true;
     }
 
     this.initializeMap();
   }
 
-  async populateAddress(message){
-    var fromAddress = await this.locationService.getReverseGeocode(message.fromLat, message.fromLong); 
-    this.fromAddress = fromAddress[0].thoroughfare + "," + fromAddress[0].subThoroughfare + "," + fromAddress[0].locality
-    var toAddress = await this.locationService.getReverseGeocode(message.fromLat, message.fromLong);
-    this.toAddress = toAddress[0].thoroughfare + "," + toAddress[0].subThoroughfare + "," + toAddress[0].locality
+  async populateAddress(message) {
+    var fromAddress = await this.locationService.getReverseGeocode(
+      message.fromLat,
+      message.fromLong
+    );
+    this.fromAddress =
+      fromAddress[0].thoroughfare +
+      "," +
+      fromAddress[0].subThoroughfare +
+      "," +
+      fromAddress[0].locality;
+    var toAddress = await this.locationService.getReverseGeocode(
+      message.fromLat,
+      message.fromLong
+    );
+    this.toAddress =
+      toAddress[0].thoroughfare +
+      "," +
+      toAddress[0].subThoroughfare +
+      "," +
+      toAddress[0].locality;
   }
 
   async initializeMap() {
@@ -60,7 +86,7 @@ export class DriverHomepagePage implements OnInit {
     this.displayDirection(directionsService, directionsDisplay);
   }
 
-  endDrive(){
+  endDrive() {
     this.socketService.send("/server-receiver", {
       type: "customer",
       messageType: "FINISH_DRIVE",

@@ -547,7 +547,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var iosTransitionAnimation = function iosTransitionAnimation() {
       return __webpack_require__.e(
       /*! import() */
-      95).then(__webpack_require__.bind(null,
+      94).then(__webpack_require__.bind(null,
       /*! ./ios.transition-071bd421.js */
       "./node_modules/@ionic/core/dist/esm/ios.transition-071bd421.js"));
     };
@@ -555,7 +555,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var mdTransitionAnimation = function mdTransitionAnimation() {
       return __webpack_require__.e(
       /*! import() */
-      96).then(__webpack_require__.bind(null,
+      95).then(__webpack_require__.bind(null,
       /*! ./md.transition-15a81b08.js */
       "./node_modules/@ionic/core/dist/esm/md.transition-15a81b08.js"));
     };

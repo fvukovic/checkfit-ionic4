@@ -6,43 +6,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[13], {
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popups/floting-search-drive/floting-search-drive.page.html":
-  /*!************************************************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popups/floting-search-drive/floting-search-drive.page.html ***!
-    \************************************************************************************************************************/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/search-ride/search-ride.page.html":
+  /*!***********************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/search-ride/search-ride.page.html ***!
+    \***********************************************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppPagesPopupsFlotingSearchDriveFlotingSearchDrivePageHtml(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesSearchRideSearchRidePageHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>floting-search-drive</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>search-ride</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div class=container4>\n    <div *ngIf=\"!isDriveAccepted\" >\n      \n      <p>Tražim slobodnog vozača...</p>\n      <ion-spinner style=\"width:150px\" color=\"tertiary\" class=\"ion-color ion-color-tertiary ios spinner-lines hydrated\"\n        role=\"progressbar\"></ion-spinner>\n    </div>\n    <div *ngIf=\"isDriveAccepted\" >\n        <h2>Vaše vozilo stiže!!</h2>\n\n        <p>Vaše vozilo je udaljeno:</p> \n        <p>{{kms}}</p> \n      </div>\n  </div>\n</ion-content>";
     /***/
   },
 
   /***/
-  "./src/app/pages/popups/floting-search-drive/floting-search-drive-routing.module.ts":
-  /*!******************************************************************************************!*\
-    !*** ./src/app/pages/popups/floting-search-drive/floting-search-drive-routing.module.ts ***!
-    \******************************************************************************************/
+  "./src/app/pages/search-ride/search-ride-routing.module.ts":
+  /*!*****************************************************************!*\
+    !*** ./src/app/pages/search-ride/search-ride-routing.module.ts ***!
+    \*****************************************************************/
 
-  /*! exports provided: FlotingSearchDrivePageRoutingModule */
+  /*! exports provided: SearchRidePageRoutingModule */
 
   /***/
-  function srcAppPagesPopupsFlotingSearchDriveFlotingSearchDriveRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesSearchRideSearchRideRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "FlotingSearchDrivePageRoutingModule", function () {
-      return FlotingSearchDrivePageRoutingModule;
+    __webpack_require__.d(__webpack_exports__, "SearchRidePageRoutingModule", function () {
+      return SearchRidePageRoutingModule;
     });
     /* harmony import */
 
@@ -65,44 +65,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _floting_search_drive_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./floting-search-drive.page */
-    "./src/app/pages/popups/floting-search-drive/floting-search-drive.page.ts");
+    var _search_ride_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./search-ride.page */
+    "./src/app/pages/search-ride/search-ride.page.ts");
 
     var routes = [{
       path: '',
-      component: _floting_search_drive_page__WEBPACK_IMPORTED_MODULE_3__["FlotingSearchDrivePage"]
+      component: _search_ride_page__WEBPACK_IMPORTED_MODULE_3__["SearchRidePage"]
     }];
 
-    var FlotingSearchDrivePageRoutingModule = function FlotingSearchDrivePageRoutingModule() {
-      _classCallCheck(this, FlotingSearchDrivePageRoutingModule);
+    var SearchRidePageRoutingModule = function SearchRidePageRoutingModule() {
+      _classCallCheck(this, SearchRidePageRoutingModule);
     };
 
-    FlotingSearchDrivePageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+    SearchRidePageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })], FlotingSearchDrivePageRoutingModule);
+    })], SearchRidePageRoutingModule);
     /***/
   },
 
   /***/
-  "./src/app/pages/popups/floting-search-drive/floting-search-drive.module.ts":
-  /*!**********************************************************************************!*\
-    !*** ./src/app/pages/popups/floting-search-drive/floting-search-drive.module.ts ***!
-    \**********************************************************************************/
+  "./src/app/pages/search-ride/search-ride.module.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/pages/search-ride/search-ride.module.ts ***!
+    \*********************************************************/
 
-  /*! exports provided: FlotingSearchDrivePageModule */
+  /*! exports provided: SearchRidePageModule */
 
   /***/
-  function srcAppPagesPopupsFlotingSearchDriveFlotingSearchDriveModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesSearchRideSearchRideModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "FlotingSearchDrivePageModule", function () {
-      return FlotingSearchDrivePageModule;
+    __webpack_require__.d(__webpack_exports__, "SearchRidePageModule", function () {
+      return SearchRidePageModule;
     });
     /* harmony import */
 
@@ -137,65 +137,65 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _floting_search_drive_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./floting-search-drive-routing.module */
-    "./src/app/pages/popups/floting-search-drive/floting-search-drive-routing.module.ts");
+    var _search_ride_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./search-ride-routing.module */
+    "./src/app/pages/search-ride/search-ride-routing.module.ts");
     /* harmony import */
 
 
-    var _floting_search_drive_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./floting-search-drive.page */
-    "./src/app/pages/popups/floting-search-drive/floting-search-drive.page.ts");
+    var _search_ride_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./search-ride.page */
+    "./src/app/pages/search-ride/search-ride.page.ts");
 
-    var FlotingSearchDrivePageModule = function FlotingSearchDrivePageModule() {
-      _classCallCheck(this, FlotingSearchDrivePageModule);
+    var SearchRidePageModule = function SearchRidePageModule() {
+      _classCallCheck(this, SearchRidePageModule);
     };
 
-    FlotingSearchDrivePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _floting_search_drive_routing_module__WEBPACK_IMPORTED_MODULE_5__["FlotingSearchDrivePageRoutingModule"]],
-      declarations: [_floting_search_drive_page__WEBPACK_IMPORTED_MODULE_6__["FlotingSearchDrivePage"]]
-    })], FlotingSearchDrivePageModule);
+    SearchRidePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _search_ride_routing_module__WEBPACK_IMPORTED_MODULE_5__["SearchRidePageRoutingModule"]],
+      declarations: [_search_ride_page__WEBPACK_IMPORTED_MODULE_6__["SearchRidePage"]]
+    })], SearchRidePageModule);
     /***/
   },
 
   /***/
-  "./src/app/pages/popups/floting-search-drive/floting-search-drive.page.scss":
-  /*!**********************************************************************************!*\
-    !*** ./src/app/pages/popups/floting-search-drive/floting-search-drive.page.scss ***!
-    \**********************************************************************************/
+  "./src/app/pages/search-ride/search-ride.page.scss":
+  /*!*********************************************************!*\
+    !*** ./src/app/pages/search-ride/search-ride.page.scss ***!
+    \*********************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function srcAppPagesPopupsFlotingSearchDriveFlotingSearchDrivePageScss(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesSearchRideSearchRidePageScss(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3BvcHVwcy9mbG90aW5nLXNlYXJjaC1kcml2ZS9mbG90aW5nLXNlYXJjaC1kcml2ZS5wYWdlLnNjc3MifQ== */";
+    __webpack_exports__["default"] = ".container4 {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  -webkit-transform: translateX(-50%) translateY(-50%);\n          transform: translateX(-50%) translateY(-50%);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9maWxpcC52dWtvdmljL0RldmVsb3BtZW50L2NoZWNrZml0LW1vYmlsZS9tb2JpbGVfYXBwL3NyYy9hcHAvcGFnZXMvc2VhcmNoLXJpZGUvc2VhcmNoLXJpZGUucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9zZWFyY2gtcmlkZS9zZWFyY2gtcmlkZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxrQkFBQTtFQUNBLFFBQUE7RUFDQSxTQUFBO0VBQ0Esb0RBQUE7VUFBQSw0Q0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvc2VhcmNoLXJpZGUvc2VhcmNoLXJpZGUucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmNvbnRhaW5lcjQge1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDUwJTtcbiAgICBsZWZ0OiA1MCU7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC01MCUpIHRyYW5zbGF0ZVkoLTUwJSk7XG59IiwiLmNvbnRhaW5lcjQge1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIHRvcDogNTAlO1xuICBsZWZ0OiA1MCU7XG4gIHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNTAlKSB0cmFuc2xhdGVZKC01MCUpO1xufSJdfQ== */";
     /***/
   },
 
   /***/
-  "./src/app/pages/popups/floting-search-drive/floting-search-drive.page.ts":
-  /*!********************************************************************************!*\
-    !*** ./src/app/pages/popups/floting-search-drive/floting-search-drive.page.ts ***!
-    \********************************************************************************/
+  "./src/app/pages/search-ride/search-ride.page.ts":
+  /*!*******************************************************!*\
+    !*** ./src/app/pages/search-ride/search-ride.page.ts ***!
+    \*******************************************************/
 
-  /*! exports provided: FlotingSearchDrivePage */
+  /*! exports provided: SearchRidePage */
 
   /***/
-  function srcAppPagesPopupsFlotingSearchDriveFlotingSearchDrivePageTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesSearchRideSearchRidePageTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "FlotingSearchDrivePage", function () {
-      return FlotingSearchDrivePage;
+    __webpack_require__.d(__webpack_exports__, "SearchRidePage", function () {
+      return SearchRidePage;
     });
     /* harmony import */
 
@@ -209,29 +209,113 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
 
-    var FlotingSearchDrivePage = /*#__PURE__*/function () {
-      function FlotingSearchDrivePage() {
-        _classCallCheck(this, FlotingSearchDrivePage);
+
+    var _services_socket_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../../services/socket.service */
+    "./src/app/services/socket.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
+    var SearchRidePage = /*#__PURE__*/function () {
+      function SearchRidePage(socketService, route, events, storage) {
+        var _this = this;
+
+        _classCallCheck(this, SearchRidePage);
+
+        // var handle = setInterval(data => {
+        //   if (this.isDriveAccepted) {
+        //     clearInterval(handle);
+        //   } else {
+        //   }
+        // }, 5000);
+        this.socketService = socketService;
+        this.route = route;
+        this.events = events;
+        this.storage = storage;
+        this.isDriveAccepted = false;
+        events.subscribe("driveAccepted", function (message) {
+          _this.isDriveAccepted = true;
+        });
+        events.subscribe("informCustomer", function (message) {
+          console.log(message);
+          _this.kms = message;
+        });
+        events.subscribe("driveIsFinished", function (message) {
+          _this.isDriveAccepted = false;
+          _this.kms = message;
+        });
+        this.requestDrive();
       }
 
-      _createClass(FlotingSearchDrivePage, [{
+      _createClass(SearchRidePage, [{
+        key: "requestDrive",
+        value: function requestDrive() {
+          var _this2 = this;
+
+          var firstParam = this.route.snapshot.queryParamMap.get("data");
+          var params = JSON.parse(firstParam);
+          this.storage.get("phoneNumber").then(function (val) {
+            _this2.socketService.send("/server-receiver", {
+              type: "customer",
+              messageType: "DRIVE_REQUEST",
+              fromLat: params.fromLat,
+              fromLong: params.fromLong,
+              toLat: params.toLat,
+              toLong: params.toLong,
+              phoneNumber: val
+            });
+          });
+        }
+      }, {
+        key: "ngAfterContentInit",
+        value: function ngAfterContentInit() {}
+      }, {
         key: "ngOnInit",
         value: function ngOnInit() {}
       }]);
 
-      return FlotingSearchDrivePage;
+      return SearchRidePage;
     }();
 
-    FlotingSearchDrivePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'app-floting-search-drive',
+    SearchRidePage.ctorParameters = function () {
+      return [{
+        type: _services_socket_service__WEBPACK_IMPORTED_MODULE_2__["SocketService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Events"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]
+      }];
+    };
+
+    SearchRidePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: "app-search-ride",
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./floting-search-drive.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/popups/floting-search-drive/floting-search-drive.page.html")).default,
+      /*! raw-loader!./search-ride.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/search-ride/search-ride.page.html")).default,
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./floting-search-drive.page.scss */
-      "./src/app/pages/popups/floting-search-drive/floting-search-drive.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], FlotingSearchDrivePage);
+      /*! ./search-ride.page.scss */
+      "./src/app/pages/search-ride/search-ride.page.scss")).default]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_socket_service__WEBPACK_IMPORTED_MODULE_2__["SocketService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Events"], _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]])], SearchRidePage);
     /***/
   }
 }]);

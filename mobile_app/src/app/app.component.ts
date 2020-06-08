@@ -11,7 +11,7 @@ import { DriveRequestPage } from "./pages/popups/drive-request/drive-request.pag
 import { LocationService } from "./services/location.service";
 import { SocketService } from "./services/socket.service";
 import { Events } from "@ionic/angular";
-import { UniqueDeviceID } from "@ionic-native/unique-device-id/ngx";
+import { AndroidPermissions } from "@ionic-native/android-permissions/ngx";
 import { PhoneNumberPage } from "./pages/popups/phone-number/phone-number.page";
 
 const WEBSOCKET_URL = "ws://localhost:9092/socket";
@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
   messageHistory = [];
   state: string = "NOT CONNECTED";
 
-  socketServiceS: SocketService;
   greeting: any;
   name: string;
   isUserLoggedIn = false;
@@ -42,12 +41,27 @@ export class AppComponent implements OnInit {
     translate: TranslateService,
     private storage: Storage,
     private locationService: LocationService,
-    public events: Events
+    public events: Events,
   ) {
-    this.socketServiceS = socketService;
+    //socketService.getUniqueId();
     this.router.navigateByUrl("customer-homepage");
     this.initializeApp();
     translate.setDefaultLang("en");
+    this.platform.ready().then(() => {
+    this.socketService.initializeWebSocketConnection();
+ 
+     setTimeout(() => {
+      this.socketService.stream().subscribe((message: any) => {
+        this.messageHistory.unshift(message.body);
+        console.log(message);
+        this._this.handleMessage(JSON.parse(message.body));
+      });
+
+      this.socketService.state().subscribe((state: StompState) => {
+        this.state = StompState[state];
+      });
+    }, 3000);
+    });
   }
 
   initializeApp() {
@@ -56,20 +70,15 @@ export class AppComponent implements OnInit {
         this.openPhoneNumberPopup();
       }
     });
+    this.storage.get("username").then(val => {
+      if (val != null) {
+        this.isUserLoggedIn = true;
+      }
+    });
 
     // Subscribe to its stream (to listen on messages)
 
-    setTimeout(() => {
-      this.socketServiceS.stream().subscribe((message: any) => {
-        this.messageHistory.unshift(message.body);
-        console.log(message);
-        this._this.handleMessage(JSON.parse(message.body));
-      });
-
-      this.socketServiceS.state().subscribe((state: StompState) => {
-        this.state = StompState[state];
-      });
-    }, 3000);
+ 
 
     // Subscribe to its state (to know its connected or not)
 

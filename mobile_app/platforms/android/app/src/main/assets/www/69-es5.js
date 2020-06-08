@@ -12,15 +12,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[69], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-reorder_2-ios.entry.js":
-  /*!**********************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-reorder_2-ios.entry.js ***!
-    \**********************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-reorder_2-md.entry.js":
+  /*!*********************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-reorder_2-md.entry.js ***!
+    \*********************************************************************/
 
   /*! exports provided: ion_reorder, ion_reorder_group */
 
   /***/
-  function node_modulesIonicCoreDistEsmIonReorder_2IosEntryJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonReorder_2MdEntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -82,7 +82,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }], [{
         key: "style",
         get: function get() {
-          return ":host([slot]){display:none;line-height:0;z-index:100}.reorder-icon{display:block;font-size:22px;font-size:34px;opacity:.4}";
+          return ":host([slot]){display:none;line-height:0;z-index:100}.reorder-icon{display:block;font-size:22px;font-size:31px;opacity:.3}";
         }
       }]);
 

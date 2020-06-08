@@ -13,8 +13,8 @@ import { AppComponent } from '../../app.component';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  username:string;
-  password:string;
+  email:String;
+  password:String;
 
   constructor(private storage: Storage, private router: Router, private appCompoent: AppComponent) {
 
@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
 
   login() {
     this.appCompoent.isUserLoggedIn = true; 
-    this.storage.set("username", this.username); 
+    this.storage.set("username", this.email);
     location.reload();
   }
 

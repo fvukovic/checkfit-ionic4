@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons> \n  </ion-toolbar>\n</ion-header>\n \n<ion-content padding class=\"animated fadeIn login auth-page\">\n  <div class=\"login-content\">\n\n    <!-- Logo -->\n    <div padding-horizontal text-center class=\"animated fadeInDown\">\n      <div class=\"logo\"></div>\n      <h2 ion-text class=\"text-primary\">\n        <strong>Login</strong> \n      </h2>\n    </div>\n\n    <!-- Login form -->\n    <form class=\"list-form\">\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name=\"mail\" item-start class=\"text-primary\"></ion-icon>\n          Email\n        </ion-label>\n        <ion-input [(ngModel)]=\"username\" name=\"username\" type=\"email\"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name=\"lock\" item-start class=\"text-primary\"></ion-icon>\n          Password\n        </ion-label>\n        <ion-input [(ngModel)]=\"password\" type=\"password\" name=\"password\"></ion-input>\n      </ion-item>\n    </form>\n\n    <p text-right ion-text color=\"secondary\" tappable (click)=\"forgotPass()\"><strong>Forgot Password?</strong></p>\n\n    <div>\n      <button ion-button icon-start block color=\"dark\" tappable (click)=\"login()\">\n        <ion-icon name=\"log-in\"></ion-icon>\n        {{ \"login.sing.in\" | translate }}      </button>\n    </div>\n   </div>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons> \n  </ion-toolbar>\n</ion-header>\n \n<ion-content padding class=\"animated fadeIn login auth-page\">\n  <div class=\"login-content\">\n\n    <!-- Logo -->\n    <div padding-horizontal text-center class=\"animated fadeInDown\">\n      <div class=\"logo\"></div>\n      <h2 ion-text class=\"text-primary\">\n        <strong>Login</strong> \n      </h2>\n    </div>\n\n    <!-- Login form -->\n    <form class=\"list-form\">\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name=\"mail\" item-start class=\"text-primary\"></ion-icon>\n          Email\n        </ion-label>\n        <input [(ngModel)]=\"email\" name=\"email\" type=\"email\"/>\n      </ion-item>\n\n      <ion-item>\n        <ion-label floating>\n          <ion-icon name=\"lock\" item-start class=\"text-primary\"></ion-icon>\n          Password\n        </ion-label>\n        <input [(ngModel)]=\"password\" type=\"password\" name=\"password\"/>\n      </ion-item>\n    </form>\n\n    <p text-right ion-text color=\"secondary\" tappable (click)=\"forgotPass()\"><strong>Forgot Password?</strong></p>\n\n    <div>\n      <button  ion-button icon-start block color=\"dark\" tappable (click)=\"login()\">\n        <ion-icon name=\"log-in\"></ion-icon>\n        {{ \"login.sing.in\" | translate }}      </button>\n    </div>\n   </div>\n</ion-content>\n");
 
 /***/ }),
 
@@ -138,8 +138,7 @@ let LoginPage = class LoginPage {
     }
     login() {
         this.appCompoent.isUserLoggedIn = true;
-        this.storage.set("username", this.username);
-        this.router.navigate(['/driver-homepage']);
+        this.storage.set("username", this.email);
         location.reload();
     }
 };

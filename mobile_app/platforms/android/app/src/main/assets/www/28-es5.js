@@ -8,15 +8,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[28], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-backdrop-ios.entry.js":
-  /*!*********************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-backdrop-ios.entry.js ***!
-    \*********************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-backdrop-md.entry.js":
+  /*!********************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-backdrop-md.entry.js ***!
+    \********************************************************************/
 
   /*! exports provided: ion_backdrop */
 
   /***/
-  function node_modulesIonicCoreDistEsmIonBackdropIosEntryJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonBackdropMdEntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);

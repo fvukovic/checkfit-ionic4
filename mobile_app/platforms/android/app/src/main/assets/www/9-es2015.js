@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>about-us</ion-title>\n  </ion-toolbar>\n</ion-header>\n  <ion-content class=\"mapp\"> \n    <style>\n      .map {\n        height: 80% !important;\n      } \n    </style>\n    <div #mapElement class=\"map\"></div> \n<ion-card (click)=\"openStreetPicker('from')\"> {{fromAddress}} </ion-card>\n<ion-card (click)=\"openStreetPicker('to')\"> {{toAddress}} </ion-card>\n<ion-radio-group>\n  1<ion-radio>1</ion-radio>\n  2<ion-radio>2</ion-radio>\n  3<ion-radio>3</ion-radio>\n  4<ion-radio>42</ion-radio>\n</ion-radio-group>\n<br/>\n  <ion-button (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</ion-button>\n  </ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>about-us</ion-title>\n  </ion-toolbar>\n</ion-header>\n  <ion-content class=\"mapp\"> \n    <style>\n      .map {\n        height: 80% !important;\n      } \n    </style>\n    <div #mapElement class=\"map\"></div> \n<ion-card (click)=\"openStreetPicker('from')\"> {{fromAddress}} </ion-card>\n<ion-card (click)=\"openStreetPicker('to')\"> {{toAddress}} </ion-card>\n<ion-button   href=\"tel:+4316800820\">>Call Customer</ion-button>\n\n<ion-radio-group> \n  1<ion-radio  (click)=\"setNumberOfPersons(1)\"></ion-radio>\n  2<ion-radio  (click)=\"setNumberOfPersons(2)\"></ion-radio>\n  3<ion-radio  (click)=\"setNumberOfPersons(3)\"></ion-radio>\n  4<ion-radio  (click)=\"setNumberOfPersons(4)\"></ion-radio>\n</ion-radio-group>\n<br/>\n  <ion-button (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</ion-button>\n  </ion-content>");
 
 /***/ }),
 
@@ -124,6 +124,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _popups_street_picker_street_picker_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../popups/street-picker/street-picker.page */ "./src/app/pages/popups/street-picker/street-picker.page.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _services_location_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/location.service */ "./src/app/services/location.service.ts");
+/* harmony import */ var _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/android-permissions/ngx */ "./node_modules/@ionic-native/android-permissions/ngx/index.js");
+/* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
+
+
 
 
 
@@ -131,16 +135,31 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CustomerHomepagePage = class CustomerHomepagePage {
-    constructor(modalcontroller, router, locationService) {
+    constructor(modalcontroller, router, locationService, androidPermissions, platform, geolocation) {
         this.modalcontroller = modalcontroller;
         this.router = router;
         this.locationService = locationService;
+        this.androidPermissions = androidPermissions;
+        this.platform = platform;
+        this.geolocation = geolocation;
         this.fromAddress = "Kliknite za unos addrese";
         this.toAddress = "Kliknite za unos addrese";
     }
     ngOnInit() { }
     ngAfterContentInit() {
-        this.initializeMap();
+        this.platform.ready().then(() => {
+            let perms = ["android.permission.ACCESS_COARSE_LOCATION",
+                "android.permission.ACCESS_FINE_LOCATION",
+                "android.permission.ACCESS_BACKGROUND_LOCATION"
+            ];
+            this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.ACCESS_BACKGROUND_LOCATION, this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION, this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION]).then((result) => {
+                alert('Has permission?' + result.hasPermission),
+                    navigator.geolocation.getCurrentPosition(resp => {
+                        alert();
+                        this.initializeMap();
+                    });
+            });
+        });
     }
     initializeMap() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
@@ -186,11 +205,11 @@ let CustomerHomepagePage = class CustomerHomepagePage {
             return yield modal.present();
         });
     }
+    setNumberOfPersons(numberOfPersons) {
+        this.numberOfPersons = numberOfPersons;
+    }
     orderTaxi() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-            this.locationService.getReverseGeocode(45.5, 19).then((result) => {
-                result[0];
-            });
             let fromAddress = yield this.locationService.getForwardGeocode2(this.fromAddress + ", Varaždin, Croatia");
             let toAddress = yield this.locationService.getForwardGeocode2(this.toAddress + ", Varaždin, Croatia");
             let params = {
@@ -198,7 +217,14 @@ let CustomerHomepagePage = class CustomerHomepagePage {
                 fromLong: fromAddress["longitude"],
                 toLat: toAddress["latitude"],
                 toLong: toAddress["longitude"],
+                persons: this.numberOfPersons
             };
+            //   let params = {
+            //   fromLat: "46.13123",
+            //   fromLong: "16.123144",
+            //   toLat: "46.13123",
+            //   toLong: "16.123144",
+            // };
             this.router.navigate(["/search-ride"], { queryParams: { data: JSON.stringify(params) } });
         });
     }
@@ -206,7 +232,10 @@ let CustomerHomepagePage = class CustomerHomepagePage {
 CustomerHomepagePage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
-    { type: _services_location_service__WEBPACK_IMPORTED_MODULE_5__["LocationService"] }
+    { type: _services_location_service__WEBPACK_IMPORTED_MODULE_5__["LocationService"] },
+    { type: _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_6__["AndroidPermissions"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
+    { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_7__["Geolocation"] }
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])("mapElement", { static: true }),
@@ -220,7 +249,10 @@ CustomerHomepagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
         _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
-        _services_location_service__WEBPACK_IMPORTED_MODULE_5__["LocationService"]])
+        _services_location_service__WEBPACK_IMPORTED_MODULE_5__["LocationService"],
+        _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_6__["AndroidPermissions"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
+        _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_7__["Geolocation"]])
 ], CustomerHomepagePage);
 
 

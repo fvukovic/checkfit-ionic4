@@ -13,8 +13,7 @@
     }
   </style>
   <div #mapElement class="map"></div> 
-  <ion-button *ngIf="isDriveStarted"  >Call Customer</ion-button>
+<ion-button *ngIf="isDriveStarted" href="tel:{{phoneNumber}}">>Call Customer</ion-button>
   <ion-button *ngIf="isDriveStarted" (click)="endDrive()" >End Drive</ion-button>
-
   <br />
 </ion-content>

@@ -44,7 +44,12 @@ export class DriveRequestPage implements OnInit {
     this.socketService.send("/server-receiver", {
       type: "customer",
       messageType: "ACCEPT_DRIVE",
-      customer: this.message.username
+      customer: this.message.username,
+      phoneNumber: this.message.phoneNumber,
+      fromLat: this.message.fromLat,
+      fromLong: this.message.fromLong,
+      toLat: this.message.toLat,
+      toLong: this.message.toLong,
     });
     //this.router.navigate(["/driver-homepage"],  { queryParams: {data:JSON.stringify(this.message)} }); 
     this.closeModal();

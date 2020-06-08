@@ -12,23 +12,23 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[91], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-toast-md.entry.js":
-  /*!*****************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-toast-md.entry.js ***!
-    \*****************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-toggle-ios.entry.js":
+  /*!*******************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-toggle-ios.entry.js ***!
+    \*******************************************************************/
 
-  /*! exports provided: ion_toast */
+  /*! exports provided: ion_toggle */
 
   /***/
-  function node_modulesIonicCoreDistEsmIonToastMdEntryJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonToggleIosEntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_toast", function () {
-      return Toast;
+    __webpack_require__.d(__webpack_exports__, "ion_toggle", function () {
+      return Toggle;
     });
     /* harmony import */
 
@@ -51,209 +51,124 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./animation-af478fe9.js */
-    "./node_modules/@ionic/core/dist/esm/animation-af478fe9.js");
-    /* harmony import */
-
-
-    var _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
-    /*! ./overlays-10640d86.js */
-    "./node_modules/@ionic/core/dist/esm/overlays-10640d86.js");
-    /* harmony import */
-
-
-    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
     /* harmony import */
 
 
-    var _index_3476b023_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./index-3476b023.js */
-    "./node_modules/@ionic/core/dist/esm/index-3476b023.js");
-    /**
-     * iOS Toast Enter Animation
-     */
+    var _haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ./haptic-c8f1473e.js */
+    "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js");
 
+    var Toggle = /*#__PURE__*/function () {
+      function Toggle(hostRef) {
+        var _this = this;
 
-    var iosEnterAnimation = function iosEnterAnimation(baseEl, position) {
-      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var hostEl = baseEl.host || baseEl;
-      var wrapperEl = baseEl.querySelector('.toast-wrapper');
-      var bottom = "calc(-10px - var(--ion-safe-area-bottom, 0px))";
-      var top = "calc(10px + var(--ion-safe-area-top, 0px))";
-      wrapperAnimation.addElement(wrapperEl);
-
-      switch (position) {
-        case 'top':
-          wrapperAnimation.fromTo('transform', 'translateY(-100%)', "translateY(".concat(top, ")"));
-          break;
-
-        case 'middle':
-          var topPosition = Math.floor(hostEl.clientHeight / 2 - wrapperEl.clientHeight / 2);
-          wrapperEl.style.top = "".concat(topPosition, "px");
-          wrapperAnimation.fromTo('opacity', 0.01, 1);
-          break;
-
-        default:
-          wrapperAnimation.fromTo('transform', 'translateY(100%)', "translateY(".concat(bottom, ")"));
-          break;
-      }
-
-      return baseAnimation.addElement(hostEl).easing('cubic-bezier(.155,1.105,.295,1.12)').duration(400).addAnimation(wrapperAnimation);
-    };
-    /**
-     * iOS Toast Leave Animation
-     */
-
-
-    var iosLeaveAnimation = function iosLeaveAnimation(baseEl, position) {
-      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var hostEl = baseEl.host || baseEl;
-      var wrapperEl = baseEl.querySelector('.toast-wrapper');
-      var bottom = "calc(-10px - var(--ion-safe-area-bottom, 0px))";
-      var top = "calc(10px + var(--ion-safe-area-top, 0px))";
-      wrapperAnimation.addElement(wrapperEl);
-
-      switch (position) {
-        case 'top':
-          wrapperAnimation.fromTo('transform', "translateY(".concat(top, ")"), 'translateY(-100%)');
-          break;
-
-        case 'middle':
-          wrapperAnimation.fromTo('opacity', 0.99, 0);
-          break;
-
-        default:
-          wrapperAnimation.fromTo('transform', "translateY(".concat(bottom, ")"), 'translateY(100%)');
-          break;
-      }
-
-      return baseAnimation.addElement(hostEl).easing('cubic-bezier(.36,.66,.04,1)').duration(300).addAnimation(wrapperAnimation);
-    };
-    /**
-     * MD Toast Enter Animation
-     */
-
-
-    var mdEnterAnimation = function mdEnterAnimation(baseEl, position) {
-      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var hostEl = baseEl.host || baseEl;
-      var wrapperEl = baseEl.querySelector('.toast-wrapper');
-      var bottom = "calc(8px + var(--ion-safe-area-bottom, 0px))";
-      var top = "calc(8px + var(--ion-safe-area-top, 0px))";
-      wrapperAnimation.addElement(wrapperEl);
-
-      switch (position) {
-        case 'top':
-          wrapperEl.style.top = top;
-          wrapperAnimation.fromTo('opacity', 0.01, 1);
-          break;
-
-        case 'middle':
-          var topPosition = Math.floor(hostEl.clientHeight / 2 - wrapperEl.clientHeight / 2);
-          wrapperEl.style.top = "".concat(topPosition, "px");
-          wrapperAnimation.fromTo('opacity', 0.01, 1);
-          break;
-
-        default:
-          wrapperEl.style.bottom = bottom;
-          wrapperAnimation.fromTo('opacity', 0.01, 1);
-          break;
-      }
-
-      return baseAnimation.addElement(hostEl).easing('cubic-bezier(.36,.66,.04,1)').duration(400).addAnimation(wrapperAnimation);
-    };
-    /**
-     * md Toast Leave Animation
-     */
-
-
-    var mdLeaveAnimation = function mdLeaveAnimation(baseEl) {
-      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var hostEl = baseEl.host || baseEl;
-      var wrapperEl = baseEl.querySelector('.toast-wrapper');
-      wrapperAnimation.addElement(wrapperEl).fromTo('opacity', 0.99, 0);
-      return baseAnimation.addElement(hostEl).easing('cubic-bezier(.36,.66,.04,1)').duration(300).addAnimation(wrapperAnimation);
-    };
-
-    var Toast = /*#__PURE__*/function () {
-      function Toast(hostRef) {
-        _classCallCheck(this, Toast);
+        _classCallCheck(this, Toggle);
 
         Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.presented = false;
-        this.mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+        this.inputId = "ion-tg-".concat(toggleIds++);
+        this.lastDrag = 0;
+        this.activated = false;
         /**
-         * How many milliseconds to wait before hiding the toast. By default, it will show
-         * until `dismiss()` is called.
+         * The name of the control, which is submitted with the form data.
          */
 
-        this.duration = 0;
+        this.name = this.inputId;
         /**
-         * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
+         * If `true`, the toggle is selected.
          */
 
-        this.keyboardClose = false;
+        this.checked = false;
         /**
-         * The position of the toast on the screen.
+         * If `true`, the user cannot interact with the toggle.
          */
 
-        this.position = 'bottom';
+        this.disabled = false;
         /**
-         * @deprecated Use `buttons` instead. If `true`, the close button will be displayed.
+         * The value of the toggle does not mean if it's checked or not, use the `checked`
+         * property for that.
+         *
+         * The value of a toggle is analogous to the value of a `<input type="checkbox">`,
+         * it's only used when the toggle participates in a native `<form>`.
          */
 
-        this.showCloseButton = false;
-        /**
-         * If `true`, the toast will be translucent.
-         * Only applies when the mode is `"ios"` and the device supports
-         * [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
-         */
+        this.value = 'on';
 
-        this.translucent = false;
-        /**
-         * If `true`, the toast will animate.
-         */
+        this.onClick = function () {
+          if (_this.lastDrag + 300 < Date.now()) {
+            _this.checked = !_this.checked;
+          }
+        };
 
-        this.animated = true;
-        Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["d"])(this.el);
-        this.didPresent = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionToastDidPresent", 7);
-        this.willPresent = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionToastWillPresent", 7);
-        this.willDismiss = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionToastWillDismiss", 7);
-        this.didDismiss = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionToastDidDismiss", 7);
+        this.onFocus = function () {
+          _this.ionFocus.emit();
+        };
+
+        this.onBlur = function () {
+          _this.ionBlur.emit();
+        };
+
+        this.ionChange = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionChange", 7);
+        this.ionFocus = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionFocus", 7);
+        this.ionBlur = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionBlur", 7);
+        this.ionStyle = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionStyle", 7);
       }
-      /**
-       * Present the toast overlay after it has been created.
-       */
 
+      _createClass(Toggle, [{
+        key: "checkedChanged",
+        value: function checkedChanged(isChecked) {
+          this.ionChange.emit({
+            checked: isChecked,
+            value: this.value
+          });
+        }
+      }, {
+        key: "disabledChanged",
+        value: function disabledChanged() {
+          this.emitStyle();
 
-      _createClass(Toast, [{
-        key: "present",
+          if (this.gesture) {
+            this.gesture.setDisabled(this.disabled);
+          }
+        }
+      }, {
+        key: "connectedCallback",
         value: function () {
-          var _present = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var _this = this;
+          var _connectedCallback = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this2 = this;
 
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
                     _context.next = 2;
-                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'toastEnter', iosEnterAnimation, mdEnterAnimation, this.position);
+                    return Promise.resolve().then(__webpack_require__.bind(null,
+                    /*! ./index-624eea58.js */
+                    "./node_modules/@ionic/core/dist/esm/index-624eea58.js"));
 
                   case 2:
-                    if (this.duration > 0) {
-                      this.durationTimeout = setTimeout(function () {
-                        return _this.dismiss(undefined, 'timeout');
-                      }, this.duration);
-                    }
+                    _context.t0 = {
+                      el: this.el,
+                      gestureName: 'toggle',
+                      gesturePriority: 100,
+                      threshold: 5,
+                      passive: false,
+                      onStart: function onStart() {
+                        return _this2.onStart();
+                      },
+                      onMove: function onMove(ev) {
+                        return _this2.onMove(ev);
+                      },
+                      onEnd: function onEnd(ev) {
+                        return _this2.onEnd(ev);
+                      }
+                    };
+                    this.gesture = _context.sent.createGesture(_context.t0);
+                    this.disabledChanged();
 
-                  case 3:
+                  case 5:
                   case "end":
                     return _context.stop();
                 }
@@ -261,246 +176,109 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }, _callee, this);
           }));
 
-          function present() {
-            return _present.apply(this, arguments);
+          function connectedCallback() {
+            return _connectedCallback.apply(this, arguments);
           }
 
-          return present;
-        }()
-        /**
-         * Dismiss the toast overlay after it has been presented.
-         *
-         * @param data Any data to emit in the dismiss events.
-         * @param role The role of the element that is dismissing the toast.
-         * This can be useful in a button handler for determining which button was
-         * clicked to dismiss the toast.
-         * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
-         */
-
-      }, {
-        key: "dismiss",
-        value: function dismiss(data, role) {
-          if (this.durationTimeout) {
-            clearTimeout(this.durationTimeout);
-          }
-
-          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["f"])(this, data, role, 'toastLeave', iosLeaveAnimation, mdLeaveAnimation, this.position);
-        }
-        /**
-         * Returns a promise that resolves when the toast did dismiss.
-         */
-
-      }, {
-        key: "onDidDismiss",
-        value: function onDidDismiss() {
-          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["g"])(this.el, 'ionToastDidDismiss');
-        }
-        /**
-         * Returns a promise that resolves when the toast will dismiss.
-         */
-
-      }, {
-        key: "onWillDismiss",
-        value: function onWillDismiss() {
-          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["g"])(this.el, 'ionToastWillDismiss');
-        }
-      }, {
-        key: "getButtons",
-        value: function getButtons() {
-          var _this2 = this;
-
-          var buttons = this.buttons ? this.buttons.map(function (b) {
-            return typeof b === 'string' ? {
-              text: b
-            } : b;
-          }) : []; // tslint:disable-next-line: deprecation
-
-          if (this.showCloseButton) {
-            buttons.push({
-              // tslint:disable-next-line: deprecation
-              text: this.closeButtonText || 'Close',
-              handler: function handler() {
-                return _this2.dismiss(undefined, 'cancel');
-              }
-            });
-          }
-
-          return buttons;
-        }
-      }, {
-        key: "buttonClick",
-        value: function () {
-          var _buttonClick = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(button) {
-            var role, shouldDismiss;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    role = button.role;
-
-                    if (!Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["i"])(role)) {
-                      _context2.next = 3;
-                      break;
-                    }
-
-                    return _context2.abrupt("return", this.dismiss(undefined, role));
-
-                  case 3:
-                    _context2.next = 5;
-                    return this.callButtonHandler(button);
-
-                  case 5:
-                    shouldDismiss = _context2.sent;
-
-                    if (!shouldDismiss) {
-                      _context2.next = 8;
-                      break;
-                    }
-
-                    return _context2.abrupt("return", this.dismiss(undefined, button.role));
-
-                  case 8:
-                    return _context2.abrupt("return", Promise.resolve());
-
-                  case 9:
-                  case "end":
-                    return _context2.stop();
-                }
-              }
-            }, _callee2, this);
-          }));
-
-          function buttonClick(_x) {
-            return _buttonClick.apply(this, arguments);
-          }
-
-          return buttonClick;
+          return connectedCallback;
         }()
       }, {
-        key: "callButtonHandler",
-        value: function () {
-          var _callButtonHandler = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(button) {
-            var rtn;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    if (!(button && button.handler)) {
-                      _context3.next = 12;
-                      break;
-                    }
-
-                    _context3.prev = 1;
-                    _context3.next = 4;
-                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["s"])(button.handler);
-
-                  case 4:
-                    rtn = _context3.sent;
-
-                    if (!(rtn === false)) {
-                      _context3.next = 7;
-                      break;
-                    }
-
-                    return _context3.abrupt("return", false);
-
-                  case 7:
-                    _context3.next = 12;
-                    break;
-
-                  case 9:
-                    _context3.prev = 9;
-                    _context3.t0 = _context3["catch"](1);
-                    console.error(_context3.t0);
-
-                  case 12:
-                    return _context3.abrupt("return", true);
-
-                  case 13:
-                  case "end":
-                    return _context3.stop();
-                }
-              }
-            }, _callee3, null, [[1, 9]]);
-          }));
-
-          function callButtonHandler(_x2) {
-            return _callButtonHandler.apply(this, arguments);
+        key: "disconnectedCallback",
+        value: function disconnectedCallback() {
+          if (this.gesture) {
+            this.gesture.destroy();
+            this.gesture = undefined;
           }
-
-          return callButtonHandler;
-        }()
+        }
       }, {
-        key: "renderButtons",
-        value: function renderButtons(buttons, side) {
-          var _this3 = this;
+        key: "componentWillLoad",
+        value: function componentWillLoad() {
+          this.emitStyle();
+        }
+      }, {
+        key: "emitStyle",
+        value: function emitStyle() {
+          this.ionStyle.emit({
+            'interactive-disabled': this.disabled
+          });
+        }
+      }, {
+        key: "onStart",
+        value: function onStart() {
+          this.activated = true; // touch-action does not work in iOS
 
-          if (buttons.length === 0) {
-            return;
+          this.setFocus();
+        }
+      }, {
+        key: "onMove",
+        value: function onMove(detail) {
+          if (shouldToggle(document, this.checked, detail.deltaX, -10)) {
+            this.checked = !this.checked;
+            Object(_haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_4__["h"])();
           }
-
-          var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-
-          var buttonGroupsClasses = _defineProperty({
-            'toast-button-group': true
-          }, "toast-button-group-".concat(side), true);
-
-          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: buttonGroupsClasses
-          }, buttons.map(function (b) {
-            return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
-              type: "button",
-              class: buttonClass(b),
-              tabIndex: 0,
-              onClick: function onClick() {
-                return _this3.buttonClick(b);
-              }
-            }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-              class: "toast-button-inner"
-            }, b.icon && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
-              icon: b.icon,
-              slot: b.text === undefined ? 'icon-only' : undefined,
-              class: "toast-icon"
-            }), b.text), mode === 'md' && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", {
-              type: b.icon !== undefined && b.text === undefined ? 'unbounded' : 'bounded'
-            }));
-          }));
+        }
+      }, {
+        key: "onEnd",
+        value: function onEnd(ev) {
+          this.activated = false;
+          this.lastDrag = Date.now();
+          ev.event.preventDefault();
+          ev.event.stopImmediatePropagation();
+        }
+      }, {
+        key: "getValue",
+        value: function getValue() {
+          return this.value || '';
+        }
+      }, {
+        key: "setFocus",
+        value: function setFocus() {
+          if (this.buttonEl) {
+            this.buttonEl.focus();
+          }
         }
       }, {
         key: "render",
         value: function render() {
-          var allButtons = this.getButtons();
-          var startButtons = allButtons.filter(function (b) {
-            return b.side === 'start';
-          });
-          var endButtons = allButtons.filter(function (b) {
-            return b.side !== 'start';
-          });
+          var _Object$assign,
+              _this3 = this;
+
+          var inputId = this.inputId,
+              disabled = this.disabled,
+              checked = this.checked,
+              activated = this.activated,
+              color = this.color,
+              el = this.el;
           var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
+          var labelId = inputId + '-lbl';
+          var label = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["f"])(el);
+          var value = this.getValue();
 
-          var wrapperClass = _defineProperty({
-            'toast-wrapper': true
-          }, "toast-".concat(this.position), true);
+          if (label) {
+            label.id = labelId;
+          }
 
+          Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["a"])(true, el, this.name, checked ? value : '', disabled);
           return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            style: {
-              zIndex: "".concat(60000 + this.overlayIndex)
-            },
-            class: Object.assign(Object.assign(Object.assign(_defineProperty({}, mode, true), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["c"])(this.color)), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.cssClass)), {
-              'toast-translucent': this.translucent
-            })
+            onClick: this.onClick,
+            role: "checkbox",
+            "aria-disabled": disabled ? 'true' : null,
+            "aria-checked": "".concat(checked),
+            "aria-labelledby": labelId,
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'in-item', Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["h"])('ion-item', el)), _defineProperty(_Object$assign, 'toggle-activated', activated), _defineProperty(_Object$assign, 'toggle-checked', checked), _defineProperty(_Object$assign, 'toggle-disabled', disabled), _defineProperty(_Object$assign, 'interactive', true), _Object$assign))
           }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: wrapperClass
+            class: "toggle-icon"
           }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "toast-container"
-          }, this.renderButtons(startButtons, 'start'), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "toast-content"
-          }, this.header !== undefined && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "toast-header"
-          }, this.header), this.message !== undefined && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "toast-message",
-            innerHTML: Object(_index_3476b023_js__WEBPACK_IMPORTED_MODULE_6__["s"])(this.message)
-          })), this.renderButtons(endButtons, 'end'))));
+            class: "toggle-inner"
+          })), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
+            type: "button",
+            onFocus: this.onFocus,
+            onBlur: this.onBlur,
+            disabled: disabled,
+            ref: function ref(btnEl) {
+              return _this3.buttonEl = btnEl;
+            }
+          }));
         }
       }, {
         key: "el",
@@ -508,25 +286,35 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
         }
       }], [{
+        key: "watchers",
+        get: function get() {
+          return {
+            "checked": ["checkedChanged"],
+            "disabled": ["disabledChanged"]
+          };
+        }
+      }, {
         key: "style",
         get: function get() {
-          return ":host{--border-width:0;--border-style:none;--border-color:initial;--box-shadow:none;--min-width:auto;--width:auto;--min-height:auto;--height:auto;--max-height:auto;left:0;top:0;display:block;position:absolute;width:100%;height:100%;color:var(--color);font-family:var(--ion-font-family,inherit);contain:strict;z-index:1001;pointer-events:none}:host-context([dir=rtl]){left:unset;right:unset;right:0}:host(.overlay-hidden){display:none}:host(.ion-color){--button-color:inherit;color:var(--ion-color-contrast)}:host(.ion-color) .toast-wrapper{background:var(--ion-color-base)}.toast-wrapper{border-radius:var(--border-radius);left:var(--start);right:var(--end);width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);background:var(--background);-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow)}:host-context([dir=rtl]) .toast-wrapper,[dir=rtl] .toast-wrapper{left:unset;right:unset;left:var(--end);right:var(--start)}.toast-container{-ms-flex-align:center;align-items:center;pointer-events:auto;contain:content}.toast-container,.toast-content{display:-ms-flexbox;display:flex}.toast-content{-ms-flex:1;flex:1;-ms-flex-direction:column;flex-direction:column;-ms-flex-pack:center;justify-content:center}.toast-message{-ms-flex:1;flex:1;white-space:pre-wrap}.toast-button-group{display:-ms-flexbox;display:flex}.toast-button{border:0;outline:none;color:var(--button-color);z-index:0}.toast-icon{font-size:1.4em}.toast-button-inner{display:-ms-flexbox;display:flex;-ms-flex-align:center;align-items:center}\@media (any-hover:hover){.toast-button:hover{cursor:pointer}}:host{--background:var(--ion-color-step-800,#333);--border-radius:4px;--box-shadow:0 3px 5px -1px rgba(0,0,0,0.2),0 6px 10px 0 rgba(0,0,0,0.14),0 1px 18px 0 rgba(0,0,0,0.12);--button-color:var(--ion-color-primary,#3880ff);--color:var(--ion-color-step-50,#f2f2f2);--max-width:700px;--start:8px;--end:8px;font-size:14px}.toast-wrapper{margin-left:auto;margin-right:auto;margin-top:auto;margin-bottom:auto;display:block;position:absolute;opacity:.01;z-index:10}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.toast-wrapper{margin-left:unset;margin-right:unset;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto}}.toast-content{padding-left:16px;padding-right:16px;padding-top:14px;padding-bottom:14px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.toast-content{padding-left:unset;padding-right:unset;-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:16px;padding-inline-end:16px}}.toast-header{margin-bottom:2px;font-weight:500}.toast-header,.toast-message{line-height:20px}.toast-button-group-start{margin-left:8px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.toast-button-group-start{margin-left:unset;-webkit-margin-start:8px;margin-inline-start:8px}}.toast-button-group-end{margin-right:8px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.toast-button-group-end{margin-right:unset;-webkit-margin-end:8px;margin-inline-end:8px}}.toast-button{padding-left:15px;padding-right:15px;padding-top:10px;padding-bottom:10px;position:relative;background-color:transparent;font-family:var(--ion-font-family);font-size:14px;font-weight:500;letter-spacing:.84px;text-transform:uppercase;overflow:hidden}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.toast-button{padding-left:unset;padding-right:unset;-webkit-padding-start:15px;padding-inline-start:15px;-webkit-padding-end:15px;padding-inline-end:15px}}.toast-button-cancel{color:var(--ion-color-step-100,#e6e6e6)}.toast-button-icon-only{border-radius:50%;padding-left:9px;padding-right:9px;padding-top:9px;padding-bottom:9px;width:36px;height:36px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.toast-button-icon-only{padding-left:unset;padding-right:unset;-webkit-padding-start:9px;padding-inline-start:9px;-webkit-padding-end:9px;padding-inline-end:9px}}\@media (any-hover:hover){.toast-button:hover{background-color:rgba(var(--ion-color-primary-rgb,56,128,255),.08)}.toast-button-cancel:hover{background-color:rgba(var(--ion-background-color-rgb,255,255,255),.08)}}";
+          return ":host{-webkit-box-sizing:content-box!important;box-sizing:content-box!important;display:inline-block;outline:none;contain:content;cursor:pointer;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:2}:host(.ion-focused) input{border:2px solid #5e9ed6}:host(.toggle-disabled){pointer-events:none}button{left:0;top:0;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;position:absolute;width:100%;height:100%;border:0;background:transparent;cursor:pointer;-webkit-appearance:none;-moz-appearance:none;appearance:none;outline:none}:host-context([dir=rtl]) button,[dir=rtl] button{left:unset;right:unset;right:0}button::-moz-focus-inner{border:0}:host{--background:rgba(var(--ion-text-color-rgb,0,0,0),0.088);--background-checked:var(--ion-color-primary,#3880ff);--handle-background:#fff;--handle-background-checked:#fff;-webkit-box-sizing:content-box;box-sizing:content-box;position:relative;width:51px;height:32px;contain:strict}:host(.ion-color.toggle-checked) .toggle-icon{background:var(--ion-color-base)}.toggle-icon{border-radius:16px;display:block;position:relative;width:100%;height:100%;-webkit-transform:translateZ(0);transform:translateZ(0);-webkit-transition:background-color .3s;transition:background-color .3s;background:var(--background);overflow:hidden;pointer-events:none}.toggle-inner{left:2px;top:2px;border-radius:14px;position:absolute;width:28px;height:28px;-webkit-transition:width .12s ease-in-out 80ms,left .11s ease-in-out 80ms,right .11s ease-in-out 80ms,-webkit-transform .3s;transition:width .12s ease-in-out 80ms,left .11s ease-in-out 80ms,right .11s ease-in-out 80ms,-webkit-transform .3s;transition:transform .3s,width .12s ease-in-out 80ms,left .11s ease-in-out 80ms,right .11s ease-in-out 80ms;transition:transform .3s,width .12s ease-in-out 80ms,left .11s ease-in-out 80ms,right .11s ease-in-out 80ms,-webkit-transform .3s;background:var(--handle-background);-webkit-box-shadow:0 3px 12px rgba(0,0,0,.16),0 3px 1px rgba(0,0,0,.1);box-shadow:0 3px 12px rgba(0,0,0,.16),0 3px 1px rgba(0,0,0,.1);will-change:transform;contain:strict}:host-context([dir=rtl]) .toggle-inner,[dir=rtl] .toggle-inner{left:unset;right:unset;right:2px}:host(.toggle-checked) .toggle-icon{background:var(--background-checked)}:host(.toggle-activated) .toggle-icon:before,:host(.toggle-checked) .toggle-icon:before{-webkit-transform:scale3d(0,0,0);transform:scale3d(0,0,0)}:host(.toggle-checked) .toggle-inner{-webkit-transform:translate3d(19px,0,0);transform:translate3d(19px,0,0);background:var(--handle-background-checked)}:host-context([dir=rtl]).toggle-checked .toggle-inner,:host-context([dir=rtl]):host(.toggle-checked) .toggle-inner{-webkit-transform:translate3d(calc(-1 * 19px),0,0);transform:translate3d(calc(-1 * 19px),0,0)}:host(.toggle-activated.toggle-checked) .toggle-inner:before{-webkit-transform:scale3d(0,0,0);transform:scale3d(0,0,0)}:host(.toggle-activated) .toggle-inner{width:34px}:host(.toggle-activated.toggle-checked) .toggle-inner{left:-4px}:host-context([dir=rtl]).toggle-activated.toggle-checked .toggle-inner,:host-context([dir=rtl]):host(.toggle-activated.toggle-checked) .toggle-inner{left:unset;right:unset;right:-4px}:host(.toggle-disabled){opacity:.3}:host(.in-item[slot]){margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:16px;padding-right:8px;padding-top:6px;padding-bottom:5px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-item[slot]){padding-left:unset;padding-right:unset;-webkit-padding-start:16px;padding-inline-start:16px;-webkit-padding-end:8px;padding-inline-end:8px}}:host(.in-item[slot=start]){padding-left:0;padding-right:16px;padding-top:6px;padding-bottom:5px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host(.in-item[slot=start]){padding-left:unset;padding-right:unset;-webkit-padding-start:0;padding-inline-start:0;-webkit-padding-end:16px;padding-inline-end:16px}}";
         }
       }]);
 
-      return Toast;
+      return Toggle;
     }();
 
-    var buttonClass = function buttonClass(button) {
-      var _Object$assign2;
+    var shouldToggle = function shouldToggle(doc, checked, deltaX, margin) {
+      var isRTL = doc.dir === 'rtl';
 
-      return Object.assign((_Object$assign2 = {
-        'toast-button': true,
-        'toast-button-icon-only': button.icon !== undefined && button.text === undefined
-      }, _defineProperty(_Object$assign2, "toast-button-".concat(button.role), button.role !== undefined), _defineProperty(_Object$assign2, 'ion-focusable', true), _defineProperty(_Object$assign2, 'ion-activatable', true), _Object$assign2), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(button.cssClass));
+      if (checked) {
+        return !isRTL && margin > deltaX || isRTL && -margin < deltaX;
+      } else {
+        return !isRTL && -margin < deltaX || isRTL && margin > deltaX;
+      }
     };
-    /***/
 
+    var toggleIds = 0;
+    /***/
   }
 }]);
 //# sourceMappingURL=91-es5.js.map

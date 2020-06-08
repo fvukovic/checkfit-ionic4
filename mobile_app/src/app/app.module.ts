@@ -20,6 +20,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx"; 
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { PhoneNumberPageModule } from "./pages/popups/phone-number/phone-number.module";
+import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -53,7 +54,8 @@ export function createTranslateLoader(http: HttpClient) {
     Geolocation,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     NativeGeocoder,
-    UniqueDeviceID
+    UniqueDeviceID,
+    AndroidPermissions
   ],
   bootstrap: [AppComponent]
 })

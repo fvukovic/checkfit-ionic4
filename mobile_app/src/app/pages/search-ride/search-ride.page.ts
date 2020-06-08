@@ -2,6 +2,7 @@ import { Component, OnInit, AfterContentInit, ViewChild } from "@angular/core";
 import { SocketService } from "../../services/socket.service";
 import { ActivatedRoute } from "@angular/router";
 import { Events } from "@ionic/angular";
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-search-ride",
@@ -20,9 +21,10 @@ export class SearchRidePage implements OnInit, AfterContentInit {
   constructor(
     public socketService: SocketService,
     private route: ActivatedRoute,
-    public events: Events
+    public events: Events,
+    private storage: Storage
   ) {
-    alert(this.isDriveAccepted)
+    
     // var handle = setInterval(data => {
     //   if (this.isDriveAccepted) {
     //     clearInterval(handle);
@@ -48,13 +50,16 @@ export class SearchRidePage implements OnInit, AfterContentInit {
   requestDrive() {
     const firstParam: string = this.route.snapshot.queryParamMap.get("data");
     let params = JSON.parse(firstParam);
-    this.socketService.send("/server-receiver", {
-      type: "customer",
-      messageType: "DRIVE_REQUEST",
-      fromLat: params.fromLat,
-      fromLong: params.fromLong,
-      toLat: params.toLat,
-      toLong: params.toLong
+    this.storage.get("phoneNumber").then(val => {
+      this.socketService.send("/server-receiver", {
+        type: "customer",
+        messageType: "DRIVE_REQUEST",
+        fromLat: params.fromLat,
+        fromLong: params.fromLong,
+        toLat: params.toLat,
+        toLong: params.toLong,
+        phoneNumber: val
+      });
     });
   }
 

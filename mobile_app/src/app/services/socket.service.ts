@@ -3,7 +3,7 @@ import { Message } from "@stomp/stompjs";
 import { Observable, BehaviorSubject } from "rxjs";
 import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
-import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
+import { UniqueDeviceID } from "@ionic-native/unique-device-id/ngx";
 
 const WEBSOCKET_URL = "ws://taxi-mura.herokuapp.com/socket";
 //  const WEBSOCKET_URL = "ws://localhost:9092/socket";
@@ -14,41 +14,47 @@ const EXAMPLE_URL = "/topic/server-broadcaster";
 export class SocketService {
   private messages: Observable<Message>;
   private stompService: StompService;
-  public uniqueID: any
+  public uniqueID: any;
   _this = this;
 
   initializeWebSocketConnection() {
-    var userType = "customer";
-    this.storage.get("username").then(val => {
-      if (val != null) {
-        userType = "driver";
-      } 
-      let stompConfig: StompConfig = {
-        url: WEBSOCKET_URL + "?" + this.uniqueID,
-        headers: {
-          //TODO add
-          username: "customer",
-          type: userType,
-          id: this.uniqueID
-        },
- 
-        heartbeat_in: 0,
-        heartbeat_out: 20000,
-        reconnect_delay: 5000,
-        debug: true
-      };
-      // Create Stomp Service
-      this.stompService = new StompService(stompConfig);
+    this.uniqueDeviceID.get().then(
+      (uuid: any) => {
+        var userType = "customer";
+        this.storage.get("username").then(val => {
+          if (val != null) {
+            userType = "driver";
+          }
+          let stompConfig: StompConfig = {
+            url: WEBSOCKET_URL + "?" + uuid,
+            headers: {
+              //TODO add
+              username: "customer",
+              type: userType,
+              id: uuid
+            },
 
-      // Connect to a Stream
+            heartbeat_in: 0,
+            heartbeat_out: 20000,
+            reconnect_delay: 5000,
+            debug: true
+          };
+          // Create Stomp Service
+          this.stompService = new StompService(stompConfig);
 
-      this.messages = this.stompService.subscribe("/user" + EXAMPLE_URL);
-    });
+          // Connect to a Stream
+
+          this.messages = this.stompService.subscribe("/user" + EXAMPLE_URL);
+        });
+      },
+      (err: PositionError) => {}
+    );
   }
 
-  constructor(private storage: Storage, private uniqueDeviceID: UniqueDeviceID) {
-    this.getUniqueId();
-  }
+  constructor(
+    private storage: Storage,
+    private uniqueDeviceID: UniqueDeviceID
+  ) {}
 
   public stream(): Observable<Message> {
     return this.messages;
@@ -60,27 +66,5 @@ export class SocketService {
 
   public state(): BehaviorSubject<StompState> {
     return this.stompService.state;
-  }
-
- async getUniqueId(){
-  var x = await this.callGetUniqueIdAPI()
-  this.uniqueID = x; 
- }
-
-  callGetUniqueIdAPI(){
- 
-    return new Promise((resolve, reject) => {
- 
-      this.uniqueDeviceID.get().then(
-        (uuid: any) => { 
-          resolve(uuid);
-        },
-        (err: PositionError) => {
-          resolve("123123123")
-        }
-      );
-    });
-
-
   }
 }

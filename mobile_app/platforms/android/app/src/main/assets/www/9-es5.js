@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>about-us</ion-title>\n  </ion-toolbar>\n</ion-header>\n  <ion-content class=\"mapp\"> \n    <style>\n      .map {\n        height: 80% !important;\n      } \n    </style>\n    <div #mapElement class=\"map\"></div> \n<ion-card (click)=\"openStreetPicker('from')\"> {{fromAddress}} </ion-card>\n<ion-card (click)=\"openStreetPicker('to')\"> {{toAddress}} </ion-card>\n<ion-radio-group>\n  1<ion-radio>1</ion-radio>\n  2<ion-radio>2</ion-radio>\n  3<ion-radio>3</ion-radio>\n  4<ion-radio>42</ion-radio>\n</ion-radio-group>\n<br/>\n  <ion-button (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</ion-button>\n  </ion-content>";
+    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>about-us</ion-title>\n  </ion-toolbar>\n</ion-header>\n  <ion-content class=\"mapp\"> \n    <style>\n      .map {\n        height: 80% !important;\n      } \n    </style>\n    <div #mapElement class=\"map\"></div> \n<ion-card (click)=\"openStreetPicker('from')\"> {{fromAddress}} </ion-card>\n<ion-card (click)=\"openStreetPicker('to')\"> {{toAddress}} </ion-card>\n<ion-button   href=\"tel:+4316800820\">>Call Customer</ion-button>\n\n<ion-radio-group> \n  1<ion-radio  (click)=\"setNumberOfPersons(1)\"></ion-radio>\n  2<ion-radio  (click)=\"setNumberOfPersons(2)\"></ion-radio>\n  3<ion-radio  (click)=\"setNumberOfPersons(3)\"></ion-radio>\n  4<ion-radio  (click)=\"setNumberOfPersons(4)\"></ion-radio>\n</ion-radio-group>\n<br/>\n  <ion-button (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</ion-button>\n  </ion-content>";
     /***/
   },
 
@@ -239,14 +239,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _services_location_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../../services/location.service */
     "./src/app/services/location.service.ts");
+    /* harmony import */
+
+
+    var _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic-native/android-permissions/ngx */
+    "./node_modules/@ionic-native/android-permissions/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ionic-native/geolocation/ngx */
+    "./node_modules/@ionic-native/geolocation/ngx/index.js");
 
     var CustomerHomepagePage = /*#__PURE__*/function () {
-      function CustomerHomepagePage(modalcontroller, router, locationService) {
+      function CustomerHomepagePage(modalcontroller, router, locationService, androidPermissions, platform, geolocation) {
         _classCallCheck(this, CustomerHomepagePage);
 
         this.modalcontroller = modalcontroller;
         this.router = router;
         this.locationService = locationService;
+        this.androidPermissions = androidPermissions;
+        this.platform = platform;
+        this.geolocation = geolocation;
         this.fromAddress = "Kliknite za unos addrese";
         this.toAddress = "Kliknite za unos addrese";
       }
@@ -257,7 +272,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngAfterContentInit",
         value: function ngAfterContentInit() {
-          this.initializeMap();
+          var _this = this;
+
+          this.platform.ready().then(function () {
+            var perms = ["android.permission.ACCESS_COARSE_LOCATION", "android.permission.ACCESS_FINE_LOCATION", "android.permission.ACCESS_BACKGROUND_LOCATION"];
+
+            _this.androidPermissions.requestPermissions([_this.androidPermissions.PERMISSION.ACCESS_BACKGROUND_LOCATION, _this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION, _this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION]).then(function (result) {
+              alert('Has permission?' + result.hasPermission), navigator.geolocation.getCurrentPosition(function (resp) {
+                alert();
+
+                _this.initializeMap();
+              });
+            });
+          });
         }
       }, {
         key: "initializeMap",
@@ -311,7 +338,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "openStreetPicker",
         value: function openStreetPicker(picker) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this = this;
+            var _this2 = this;
 
             var modal;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -336,9 +363,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       }
 
                       if (data["picker"] == "from") {
-                        _this.fromAddress = data["address"];
+                        _this2.fromAddress = data["address"];
                       } else {
-                        _this.toAddress = data["address"];
+                        _this2.toAddress = data["address"];
                       }
                     });
                     _context2.next = 6;
@@ -356,6 +383,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }));
         }
       }, {
+        key: "setNumberOfPersons",
+        value: function setNumberOfPersons(numberOfPersons) {
+          this.numberOfPersons = numberOfPersons;
+        }
+      }, {
         key: "orderTaxi",
         value: function orderTaxi() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
@@ -364,32 +396,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               while (1) {
                 switch (_context3.prev = _context3.next) {
                   case 0:
-                    this.locationService.getReverseGeocode(45.5, 19).then(function (result) {
-                      result[0];
-                    });
-                    _context3.next = 3;
+                    _context3.next = 2;
                     return this.locationService.getForwardGeocode2(this.fromAddress + ", Varaždin, Croatia");
 
-                  case 3:
+                  case 2:
                     fromAddress = _context3.sent;
-                    _context3.next = 6;
+                    _context3.next = 5;
                     return this.locationService.getForwardGeocode2(this.toAddress + ", Varaždin, Croatia");
 
-                  case 6:
+                  case 5:
                     toAddress = _context3.sent;
                     params = {
                       fromLat: fromAddress["latitude"],
                       fromLong: fromAddress["longitude"],
                       toLat: toAddress["latitude"],
-                      toLong: toAddress["longitude"]
-                    };
+                      toLong: toAddress["longitude"],
+                      persons: this.numberOfPersons
+                    }; //   let params = {
+                    //   fromLat: "46.13123",
+                    //   fromLong: "16.123144",
+                    //   toLat: "46.13123",
+                    //   toLong: "16.123144",
+                    // };
+
                     this.router.navigate(["/search-ride"], {
                       queryParams: {
                         data: JSON.stringify(params)
                       }
                     });
 
-                  case 9:
+                  case 8:
                   case "end":
                     return _context3.stop();
                 }
@@ -409,6 +445,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
       }, {
         type: _services_location_service__WEBPACK_IMPORTED_MODULE_5__["LocationService"]
+      }, {
+        type: _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_6__["AndroidPermissions"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]
+      }, {
+        type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_7__["Geolocation"]
       }];
     };
 
@@ -423,7 +465,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./customer-homepage.page.scss */
       "./src/app/pages/customer-homepage/customer-homepage.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_location_service__WEBPACK_IMPORTED_MODULE_5__["LocationService"]])], CustomerHomepagePage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _services_location_service__WEBPACK_IMPORTED_MODULE_5__["LocationService"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_6__["AndroidPermissions"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_7__["Geolocation"]])], CustomerHomepagePage);
     /***/
   }
 }]);

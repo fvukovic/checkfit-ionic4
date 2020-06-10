@@ -1,0 +1,27 @@
+{
+  "taximuraApp": {
+    "drive": {
+      "home": {
+        "title": "Drives",
+        "createLabel": "Create a new Drive",
+        "createOrEditLabel": "Create or edit a Drive",
+        "notFound": "No Drives found"
+      },
+      "created": "A new Drive is created with identifier {{ param }}",
+      "updated": "A Drive is updated with identifier {{ param }}",
+      "deleted": "A Drive is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Drive {{ id }}?"
+      },
+      "detail": {
+        "title": "Drive"
+      },
+      "fromLat": "From Lat",
+      "fromLong": "From Long",
+      "toLat": "To Lat",
+      "price": "Price",
+      "userRel": "User Rel",
+      "user": "User"
+    }
+  }
+}

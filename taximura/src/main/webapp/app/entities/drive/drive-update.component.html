@@ -1,0 +1,66 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-drive-heading" jhiTranslate="taximuraApp.drive.home.createOrEditLabel">Create or edit a Drive</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taximuraApp.drive.fromLat" for="field_fromLat">From Lat</label>
+                    <input type="text" class="form-control" name="fromLat" id="field_fromLat"
+                           formControlName="fromLat"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taximuraApp.drive.fromLong" for="field_fromLong">From Long</label>
+                    <input type="text" class="form-control" name="fromLong" id="field_fromLong"
+                           formControlName="fromLong"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taximuraApp.drive.toLat" for="field_toLat">To Lat</label>
+                    <input type="text" class="form-control" name="toLat" id="field_toLat"
+                           formControlName="toLat"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taximuraApp.drive.price" for="field_price">Price</label>
+                    <input type="number" class="form-control" name="price" id="field_price"
+                           formControlName="price"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taximuraApp.drive.userRel" for="field_userRel">User Rel</label>
+                    <select class="form-control" id="field_userRel" name="userRel" formControlName="userRel">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userRelOption.id === editForm.get('userRel')!.value?.id ? editForm.get('userRel')!.value : userRelOption" *ngFor="let userRelOption of userrels; trackBy: trackById">{{ userRelOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="taximuraApp.drive.user" for="field_user">User</label>
+                    <select class="form-control" id="field_user" name="user" formControlName="user">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="userRelOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userRelOption" *ngFor="let userRelOption of userrels; trackBy: trackById">{{ userRelOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "taximuraApp": {
+    "drive": {
+      "home": {
+        "title": "Drives",
+        "createLabel": "Kreiraj novi Drive",
+        "createOrEditLabel": "Kreirajte ili izmenite Drive",
+        "notFound": "No Drives found"
+      },
+      "created": "Kreiran je novi Drive pod nazivom {{ param }}",
+      "updated": "Drive pod nazivom {{ param }} je ažuriran",
+      "deleted": "Drive pod nazivom {{ param }} je obrisan",
+      "delete": {
+        "question": "Da li ste sigurni da želite da obrišete Drive pod nazivom {{ id }}?"
+      },
+      "detail": {
+        "title": "Drive"
+      },
+      "fromLat": "From Lat",
+      "fromLong": "From Long",
+      "toLat": "To Lat",
+      "price": "Price",
+      "userRel": "User Rel",
+      "user": "User"
+    }
+  }
+}

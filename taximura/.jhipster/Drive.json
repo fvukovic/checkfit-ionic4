@@ -1,0 +1,46 @@
+{
+  "name": "Drive",
+  "fields": [
+    {
+      "fieldName": "fromLat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fromLong",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "toLat",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Double"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userRel",
+      "otherEntityRelationshipName": "allDrives"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "userRel",
+      "otherEntityRelationshipName": "drive",
+      "relationshipName": "user",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200608182255",
+  "entityTableName": "drive",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

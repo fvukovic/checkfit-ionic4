@@ -1,0 +1,24 @@
+{
+  "taximuraApp": {
+    "userRel": {
+      "home": {
+        "title": "User Rels",
+        "createLabel": "Create a new User Rel",
+        "createOrEditLabel": "Create or edit a User Rel",
+        "notFound": "No User Rels found"
+      },
+      "created": "A new User Rel is created with identifier {{ param }}",
+      "updated": "A User Rel is updated with identifier {{ param }}",
+      "deleted": "A User Rel is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Rel {{ id }}?"
+      },
+      "detail": {
+        "title": "User Rel"
+      },
+      "user": "User",
+      "drive": "Drive",
+      "allDrives": "All Drives"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "taximuraApp": {
+    "userRel": {
+      "home": {
+        "title": "User Rels",
+        "createLabel": "Kreiraj novi User Rel",
+        "createOrEditLabel": "Kreirajte ili izmenite User Rel",
+        "notFound": "No User Rels found"
+      },
+      "created": "Kreiran je novi User Rel pod nazivom {{ param }}",
+      "updated": "User Rel pod nazivom {{ param }} je ažuriran",
+      "deleted": "User Rel pod nazivom {{ param }} je obrisan",
+      "delete": {
+        "question": "Da li ste sigurni da želite da obrišete User Rel pod nazivom {{ id }}?"
+      },
+      "detail": {
+        "title": "User Rel"
+      },
+      "user": "User",
+      "drive": "Drive",
+      "allDrives": "All Drives"
+    }
+  }
+}

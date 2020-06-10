@@ -1,0 +1,45 @@
+entity Drive {
+    fromLat String,
+    fromLong String,
+    toLat String,
+    toLat String,
+    price Double
+}
+
+entity Price {
+	amount Double,
+    fromPlace String,
+    toPlace String,
+    fromLat String,
+    fromLong String,
+    toLong String,
+    toLsat String,
+}
+
+entity UserRel {
+user Long
+}
+
+
+enum Language {
+    SERBIAN, ENGLISH
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	UserRel to  Drive{user}
+}
+
+relationship ManyToOne {
+	Drive to  UserRel{allDrives}
+}
+
+
+// Use Data Transfert Objects (DTO)
+// dto * with mapstruct
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

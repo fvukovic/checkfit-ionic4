@@ -1,0 +1,79 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="taximuraApp.drive.home.title">Drives</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-drive" [routerLink]="['/drive/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span  jhiTranslate="taximuraApp.drive.home.createLabel">
+            Create a new Drive
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="drives?.length === 0">
+        <span jhiTranslate="taximuraApp.drive.home.notFound">No drives found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="drives && drives.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span jhiTranslate="global.field.id">ID</span></th>
+                    <th scope="col" ><span jhiTranslate="taximuraApp.drive.fromLat">From Lat</span></th>
+                    <th scope="col" ><span jhiTranslate="taximuraApp.drive.fromLong">From Long</span></th>
+                    <th scope="col" ><span jhiTranslate="taximuraApp.drive.toLat">To Lat</span></th>
+                    <th scope="col" ><span jhiTranslate="taximuraApp.drive.price">Price</span></th>
+                    <th scope="col" ><span jhiTranslate="taximuraApp.drive.userRel">User Rel</span></th>
+                    <th scope="col" ><span jhiTranslate="taximuraApp.drive.user">User</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let drive of drives ;trackBy: trackId">
+                    <td><a [routerLink]="['/drive', drive.id, 'view']">{{ drive.id }}</a></td>
+                    <td>{{ drive.fromLat }}</td>
+                    <td>{{ drive.fromLong }}</td>
+                    <td>{{ drive.toLat }}</td>
+                    <td>{{ drive.price }}</td>
+                    <td>
+                        <div *ngIf="drive.userRel">
+                            <a [routerLink]="['/user-rel', drive.userRel?.id, 'view']" >{{ drive.userRel?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="drive.user">
+                            <a [routerLink]="['/user-rel', drive.user?.id, 'view']" >{{ drive.user?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/drive', drive.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/drive', drive.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(drive)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

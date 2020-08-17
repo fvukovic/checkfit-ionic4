@@ -5,8 +5,8 @@ import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
 import { UniqueDeviceID } from "@ionic-native/unique-device-id/ngx";
 
-// const WEBSOCKET_URL = "ws://taxi-mura.herokuapp.com/socket";
- const WEBSOCKET_URL = "ws://localhost:8080/socket";
+const WEBSOCKET_URL = "ws://taxi-mura.herokuapp.com/socket";
+//  const WEBSOCKET_URL = "ws://localhost:8080/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
 @Injectable({
   providedIn: "root"
@@ -41,7 +41,7 @@ export class SocketService {
           this.stompService = new StompService(stompConfig);
 
           // Connect to a Stream
-
+          alert();
           this.messages = this.stompService.subscribe("/user" + EXAMPLE_URL);
         }); 
      

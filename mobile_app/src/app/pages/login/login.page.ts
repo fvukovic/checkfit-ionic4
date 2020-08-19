@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import {Storage} from '@ionic/storage'; 
 import {SocketService} from '../../services/socket.service';
 import { AppComponent } from '../../app.component';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginPage implements OnInit {
   email:String;
   password:String;
 
-  constructor(private storage: Storage, private router: Router, private appCompoent: AppComponent) {
+  constructor(private storage: Storage, private http: HttpClient,
+    private router: Router, private appCompoent: AppComponent) {
 
   }
 
@@ -24,6 +26,7 @@ export class LoginPage implements OnInit {
   }
 
   login() {
+     JSON.stringify(this.http.post("http://localhost:8080/api/authenticate", {username:"admin", password: "admin"}))
     this.appCompoent.isUserLoggedIn = true; 
     this.storage.set("username", this.email);
     location.reload();

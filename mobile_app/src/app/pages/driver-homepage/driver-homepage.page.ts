@@ -33,7 +33,6 @@ export class DriverHomepagePage implements OnInit {
     let message = JSON.parse(firstParam);
     this.message = message;
     this.phoneNumber = message.phoneNumber;
-    alert(this.phoneNumber)
     const driveIsStarted: string = this.route.snapshot.queryParamMap.get(
       "driveIsStarted"
     );
@@ -92,6 +91,7 @@ export class DriverHomepagePage implements OnInit {
       messageType: "FINISH_DRIVE",
       customer: this.message.driver
     });
+    location.reload();
   }
 
   displayDirection(directionsService, directionsDisplay) {

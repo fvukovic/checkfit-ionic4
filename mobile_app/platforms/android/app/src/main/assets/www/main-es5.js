@@ -2470,8 +2470,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "getPosition",
         value: function getPosition() {
           return new Promise(function (resolve, reject) {
-            navigator.geolocation.getCurrentPosition(function (resp) {
-              alert(JSON.stringify(resp));
+            navigator.geolocation.getCurrentPosition(function (resp) { 
               resolve({
                 lng: resp.coords.longitude,
                 lat: resp.coords.latitude
@@ -2613,7 +2612,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this8.stompService = new _stomp_ng2_stompjs__WEBPACK_IMPORTED_MODULE_1__["StompService"](stompConfig); // Connect to a Stream
 
-            alert();
             _this8.messages = _this8.stompService.subscribe("/user" + EXAMPLE_URL);
           });
         }

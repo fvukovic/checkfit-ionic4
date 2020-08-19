@@ -1,27 +1,31 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar class="koko">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>about-us</ion-title>
+    <ion-title>Naruči vožnju</ion-title>
   </ion-toolbar>
 </ion-header>
   <ion-content class="mapp"> 
     <style>
       .map {
-        height: 80% !important;
+        height: 65% !important;
       } 
     </style>
     <div #mapElement class="map"></div> 
-<ion-card (click)="openStreetPicker('from')"> {{fromAddress}} </ion-card>
-<ion-card (click)="openStreetPicker('to')"> {{toAddress}} </ion-card>
+    <div class="location-from">
+        <ion-card (click)="openStreetPicker('from')"> {{fromAddress}} </ion-card>
+    </div>
+    <div class="location-to">
+      <ion-card (click)="openStreetPicker('to')"> {{toAddress}} </ion-card>
+    </div>
 
-<ion-radio-group> 
+<!-- <ion-radio-group> 
   1<ion-radio  (click)="setNumberOfPersons(1)"></ion-radio>
   2<ion-radio  (click)="setNumberOfPersons(2)"></ion-radio>
   3<ion-radio  (click)="setNumberOfPersons(3)"></ion-radio>
   4<ion-radio  (click)="setNumberOfPersons(4)"></ion-radio>
-</ion-radio-group>
-<br/>
-  <ion-button (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</ion-button>
+</ion-radio-group> -->
+
+  <ion-button class="order" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</ion-button>
   </ion-content>

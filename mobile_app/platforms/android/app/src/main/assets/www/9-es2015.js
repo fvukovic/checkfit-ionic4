@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>about-us</ion-title>\n  </ion-toolbar>\n</ion-header>\n  <ion-content class=\"mapp\"> \n    <style>\n      .map {\n        height: 80% !important;\n      } \n    </style>\n    <div #mapElement class=\"map\"></div> \n<ion-card (click)=\"openStreetPicker('from')\"> {{fromAddress}} </ion-card>\n<ion-card (click)=\"openStreetPicker('to')\"> {{toAddress}} </ion-card>\n<ion-button   href=\"tel:+4316800820\">>Call Customer</ion-button>\n\n<ion-radio-group> \n  1<ion-radio  (click)=\"setNumberOfPersons(1)\"></ion-radio>\n  2<ion-radio  (click)=\"setNumberOfPersons(2)\"></ion-radio>\n  3<ion-radio  (click)=\"setNumberOfPersons(3)\"></ion-radio>\n  4<ion-radio  (click)=\"setNumberOfPersons(4)\"></ion-radio>\n</ion-radio-group>\n<br/>\n  <ion-button (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</ion-button>\n  </ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-title>Order taxi</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n  <ion-content class=\"mapp\"> \r\n    <style>\r\n      .map {\r\n        height: 80% !important;\r\n      } \r\n    </style>\r\n    <div #mapElement class=\"map\"></div> \r\n    <div class=\"location-from\">\r\n        <ion-card (click)=\"openStreetPicker('from')\"> {{fromAddress}} </ion-card>\r\n    </div>\r\n    <div class=\"location-to\">\r\n      <ion-card (click)=\"openStreetPicker('to')\"> {{toAddress}} </ion-card>\r\n    </div>\r\n\r\n<!-- <ion-radio-group> \r\n  1<ion-radio  (click)=\"setNumberOfPersons(1)\"></ion-radio>\r\n  2<ion-radio  (click)=\"setNumberOfPersons(2)\"></ion-radio>\r\n  3<ion-radio  (click)=\"setNumberOfPersons(3)\"></ion-radio>\r\n  4<ion-radio  (click)=\"setNumberOfPersons(4)\"></ion-radio>\r\n</ion-radio-group> -->\r\n\r\n<br/>\r\n  <ion-button (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</ion-button>\r\n  </ion-content>");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ CustomerHomepagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2N1c3RvbWVyLWhvbWVwYWdlL2N1c3RvbWVyLWhvbWVwYWdlLnBhZ2Uuc2NzcyJ9 */");
+/* harmony default export */ __webpack_exports__["default"] = (".location-from .sc-ion-card-ios-h,\n.location-to .sc-ion-card-ios-h {\n  border-bottom: 1px solid #000;\n  height: 40px;\n  border-radius: 0;\n  padding: 10px 20px;\n}\n\n.button {\n  width: 100%;\n  padding: 0 15px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY3VzdG9tZXItaG9tZXBhZ2UvQzpcXG11cmFBcHBcXGNoZWNrZml0LWlvbmljNFxcbW9iaWxlX2FwcC9zcmNcXGFwcFxccGFnZXNcXGN1c3RvbWVyLWhvbWVwYWdlXFxjdXN0b21lci1ob21lcGFnZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2N1c3RvbWVyLWhvbWVwYWdlL2N1c3RvbWVyLWhvbWVwYWdlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7RUFFSSw2QkFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLGtCQUFBO0FDQ0o7O0FEQ0E7RUFDSSxXQUFBO0VBQ0EsZUFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY3VzdG9tZXItaG9tZXBhZ2UvY3VzdG9tZXItaG9tZXBhZ2UucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmxvY2F0aW9uLWZyb20gLnNjLWlvbi1jYXJkLWlvcy1oLFxyXG4ubG9jYXRpb24tdG8gLnNjLWlvbi1jYXJkLWlvcy1oIHtcclxuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMDAwO1xyXG4gICAgaGVpZ2h0OiA0MHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMDtcclxuICAgIHBhZGRpbmc6IDEwcHggMjBweDtcclxufVxyXG4uYnV0dG9uIHtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgcGFkZGluZzogMCAxNXB4O1xyXG59IiwiLmxvY2F0aW9uLWZyb20gLnNjLWlvbi1jYXJkLWlvcy1oLFxuLmxvY2F0aW9uLXRvIC5zYy1pb24tY2FyZC1pb3MtaCB7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMDAwO1xuICBoZWlnaHQ6IDQwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDA7XG4gIHBhZGRpbmc6IDEwcHggMjBweDtcbn1cblxuLmJ1dHRvbiB7XG4gIHdpZHRoOiAxMDAlO1xuICBwYWRkaW5nOiAwIDE1cHg7XG59Il19 */");
 
 /***/ }),
 
@@ -142,22 +142,26 @@ let CustomerHomepagePage = class CustomerHomepagePage {
         this.androidPermissions = androidPermissions;
         this.platform = platform;
         this.geolocation = geolocation;
-        this.fromAddress = "Kliknite za unos addrese";
-        this.toAddress = "Kliknite za unos addrese";
+        this.fromAddress = "Unesite adresu polaska!";
+        this.toAddress = "Unesite adresu odredišta!";
     }
     ngOnInit() { }
     ngAfterContentInit() {
         this.platform.ready().then(() => {
-            let perms = ["android.permission.ACCESS_COARSE_LOCATION",
+            let perms = [
+                "android.permission.ACCESS_COARSE_LOCATION",
                 "android.permission.ACCESS_FINE_LOCATION",
                 "android.permission.ACCESS_BACKGROUND_LOCATION"
             ];
-            this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.ACCESS_BACKGROUND_LOCATION, this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION, this.androidPermissions.PERMISSION.ACCESS_COARSE_LOCATION]).then((result) => {
-                alert('Has permission?' + result.hasPermission),
-                    navigator.geolocation.getCurrentPosition(resp => {
-                        alert();
-                        this.initializeMap();
-                    });
+            this.androidPermissions
+                .checkPermission(this.androidPermissions.PERMISSION.ACCESS_FINE_LOCATION)
+                .then(result => {
+                if (result.hasPermission == false) {
+                    location.reload();
+                }
+                navigator.geolocation.getCurrentPosition(resp => {
+                    this.initializeMap();
+                });
             });
         });
     }
@@ -165,12 +169,25 @@ let CustomerHomepagePage = class CustomerHomepagePage {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             this.currentLocation = yield this.locationService.getUserPosition();
             this.map = new google.maps.Map(this.mapElement.nativeElement, {
-                center: { lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude },
+                center: {
+                    lat: this.currentLocation.coords.latitude,
+                    lng: this.currentLocation.coords.longitude
+                },
                 zoom: 16
             });
             var streetLocation = yield this.locationService.getReverseGeocode(this.currentLocation.coords.latitude, this.currentLocation.coords.longitude);
-            this.fromAddress = streetLocation[0].thoroughfare + "," + streetLocation[0].subThoroughfare + "," + streetLocation[0].locality;
-            this.toAddress = streetLocation[0].thoroughfare + "," + streetLocation[0].subThoroughfare + "," + streetLocation[0].locality;
+            this.fromAddress =
+                streetLocation[0].thoroughfare +
+                    "," +
+                    streetLocation[0].subThoroughfare +
+                    "," +
+                    streetLocation[0].locality;
+            this.toAddress =
+                streetLocation[0].thoroughfare +
+                    "," +
+                    streetLocation[0].subThoroughfare +
+                    "," +
+                    streetLocation[0].locality;
             console.log(this.fromAddress);
             this.addMarker(this.map);
         });
@@ -225,7 +242,9 @@ let CustomerHomepagePage = class CustomerHomepagePage {
             //   toLat: "46.13123",
             //   toLong: "16.123144",
             // };
-            this.router.navigate(["/search-ride"], { queryParams: { data: JSON.stringify(params) } });
+            this.router.navigate(["/search-ride"], {
+                queryParams: { data: JSON.stringify(params) }
+            });
         });
     }
 };

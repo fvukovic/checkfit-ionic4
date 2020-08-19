@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>about-us</ion-title>\n    </ion-toolbar>\n  </ion-header> \n<ion-content>\nNesto o kompaniji\n<p>{{ \"HOME.title\" | translate }}</p>\n\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n    <ion-toolbar>\r\n      <ion-buttons slot=\"start\">\r\n        <ion-menu-button></ion-menu-button>\r\n      </ion-buttons>\r\n      <ion-title>about-us</ion-title>\r\n    </ion-toolbar>\r\n  </ion-header> \r\n<ion-content>\r\n<div class=\"about-text\">\r\n  Mura TAXI usluge, jednostavno društvo s ograničenom odgovornošću za prijevoz i druge usluge, osnovano u studenom 2019 godine. \r\n  Poslujemo u dva grada, Murskom Središću i Čakovcu te trenutno brojimo 4 zaposlenika. Opremljeni smo najnovijim vozilima te pružamo \r\n  najmodernije usluge prijevoza. REZERVIRAJ svoju vožnju odmah!!\r\n</div>\r\n<p>{{ \"HOME.title\" | translate }}</p>\r\n\r\n</ion-content>\r\n";
     /***/
   },
 

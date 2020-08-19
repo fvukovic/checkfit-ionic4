@@ -1,0 +1,33 @@
+.insert-text {
+    text-align: center;
+    margin: 40px 20px;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.submit-number {
+    margin: 20px;
+}
+.area-number {
+    padding: 0px 20px;
+    margin-bottom: 25px;
+    height: 40px;
+    text-align: center;
+    --background: #393939;
+    color: #46e169;
+}
+
+button {
+    width: 100%;
+    padding: 0px 20px;
+    margin-bottom: 25px;
+    height: 40px;
+    text-align: center;
+    background: #393939;
+    color: #46e169; 
+    font-size: 14px;
+}
+
+ion-input {
+    --placeholder-color: #fff;
+}

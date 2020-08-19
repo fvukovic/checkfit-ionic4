@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-menu-button></ion-menu-button>\n    </ion-buttons>\n    <ion-title>Driver homepage</ion-title>\n  </ion-toolbar>\n</ion-header>\n<ion-content class=\"mapp\">\n  <style>\n    .map {\n      height: 80% !important;\n    }\n  </style>\n  <div #mapElement class=\"map\"></div> \n<ion-button *ngIf=\"isDriveStarted\" href=\"tel:{{phoneNumber}}\">>Call Customer</ion-button>\n  <ion-button *ngIf=\"isDriveStarted\" (click)=\"endDrive()\" >End Drive</ion-button>\n  <br />\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <ion-buttons slot=\"start\">\r\n      <ion-menu-button></ion-menu-button>\r\n    </ion-buttons>\r\n    <ion-title>Driver homepage</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content class=\"mapp\">\r\n  <style>\r\n    .map {\r\n      height: 80% !important;\r\n    }\r\n  </style>\r\n  <div #mapElement class=\"map\"></div> \r\n<ion-button *ngIf=\"isDriveStarted\" href=\"tel:{{phoneNumber}}\">>Call Customer</ion-button>\r\n  <ion-button *ngIf=\"isDriveStarted\" (click)=\"endDrive()\" >End Drive</ion-button>\r\n  <br />\r\n</ion-content>";
     /***/
   },
 

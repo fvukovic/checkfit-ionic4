@@ -1,0 +1,21 @@
+ion-content{
+    --ion-background-color:#fff;
+    text-align: center;
+    
+    .about-img {
+        max-width: 60%; 
+    }
+    h2 {
+        color: white;
+        text-align: center;  
+    }
+    .about-text,
+    .order-text {
+        margin: 40px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #000;
+    }
+    .order-text {
+        font-weight: bold;
+    }
+}

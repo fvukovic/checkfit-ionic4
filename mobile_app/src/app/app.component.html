@@ -1,32 +1,40 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
-    <ion-menu contentId="main-content" type="overlay">
+    <ion-menu contentId="main-content" type="overlay"> 
       <ion-content>
         <ion-list id="inbox-list">
-          <ion-list-header>Taxi</ion-list-header> 
+              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->
+              <img src="http://murataxi.com/images/resources/taxiLogo.png" class="menu-img">
 
-          <ion-menu-toggle auto-hide="false" >
-         
-            <ion-item>
-              <ion-label routerLink="/customer-homepage">{{ "menu.customerHomePage" | translate }}</ion-label>
-           </ion-item>
-           <ion-item>
-            <ion-label routerLink="/about-us">{{ "menu.aboutUs" | translate }}</ion-label>
-         </ion-item> 
-         <ion-item>
-          <ion-label routerLink="/my-rides">{{ "menu.myRides" | translate }}</ion-label>
-       </ion-item> 
-       <ion-item>
-          <ion-label (click)="openPhoneNumberPopup()">{{ "change.number" | translate }}</ion-label>
-       </ion-item> 
-          </ion-menu-toggle>
+              <div class="menu-list">Izbornik</div> 
+                  <ion-menu-toggle auto-hide="false" >
+
+                  <ion-item class="list-item">
+                      <ion-label routerLink="/customer-homepage">{{ "menu.customerHomePage" | translate }}</ion-label>
+                  </ion-item>
+
+                  <ion-item class="list-item">
+                      <ion-label routerLink="/about-us">{{ "menu.aboutUs" | translate }}</ion-label>
+                  </ion-item> 
+
+                  <ion-item class="list-item">
+                      <ion-label routerLink="/my-rides">{{ "menu.myRides" | translate }}</ion-label>
+                  </ion-item> 
+
+                  <ion-item class="list-item">
+                      <ion-label (click)="openPhoneNumberPopup()">{{ "change.number" | translate }}</ion-label>
+                  </ion-item> 
+                
+                
+                </ion-menu-toggle>
+            </ion-list>
+
+            <ion-list id="labels-list">
+            <ion-label *ngIf="!isUserLoggedIn" routerLink="/login">{{ "menu.login" | translate }}</ion-label> 
+            <ion-label *ngIf="isUserLoggedIn"  (click)="logout()">{{ "menu.logout" | translate }}</ion-label> 
+
         </ion-list>
-
-        <ion-list id="labels-list">
-          <ion-label *ngIf="!isUserLoggedIn" routerLink="/login">{{ "menu.login" | translate }}</ion-label> 
-          <ion-label *ngIf="isUserLoggedIn"  (click)="logout()">{{ "menu.logout" | translate }}</ion-label> 
-
-        </ion-list>
+      <p class="text-moto">Najkvalitetnija usluga prijevoza u gradu!</p>
       </ion-content>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>

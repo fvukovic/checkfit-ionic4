@@ -33,8 +33,8 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     private platform: Platform,
     private geolocation: Geolocation
   ) {
-    this.fromAddress = "Kliknite za unos addrese";
-    this.toAddress = "Kliknite za unos addrese";
+    this.fromAddress = "Unesite adresu polaska!";
+    this.toAddress = "Unesite adresu odredišta!";
   }
 
   ngOnInit() {}

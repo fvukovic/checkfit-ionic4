@@ -1,0 +1,26 @@
+.location-from .sc-ion-card-md-h,
+.location-to .sc-ion-card-md-h {
+    box-shadow: none;
+    border-radius: 0;
+    padding: 15px 20px;
+    height: 45px;
+    text-align: center;
+    margin: 15px 10px;
+    color: #46e169;
+    background: #393939;
+    text-transform: uppercase;
+    font-size: 12px; 
+}
+
+ion-button {
+    --background: #393939; 
+    width: 100%;
+    padding: 0 10px; 
+    height: 40px;
+    box-shadow: none !important;    
+    --border-radius: 0 !important;
+    color: #46e169;
+    margin: 0;
+    font-size: 12px; 
+}
+

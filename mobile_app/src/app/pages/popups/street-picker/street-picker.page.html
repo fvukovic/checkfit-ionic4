@@ -1,12 +1,16 @@
 <ion-header>
   <ion-toolbar>
       <!-- Advanced: explicity set the icon for each platform -->
-  <ion-icon style="height: 30px;" (click) = "closeModal()"  name="arrow-back"></ion-icon>
-    <ion-title>street-picker</ion-title>
+    <ion-icon (click) = "closeModal()"  name="ios-arrow-back"></ion-icon>
+    <ion-title>Unos adrese</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<ion-textarea [(ngModel)]="address" placeholder="Unesi Adresu!"></ion-textarea>
-<button (click)="passAddress()">Odaberi Addresu</button>
-</ion-content>
+  <div class="add-locations">
+    <ion-textarea [(ngModel)]="address" placeholder="Unesi željenu adresu!"></ion-textarea>
+    <button class="save-locations" (click)="passAddress()">Spremi</button>
+</div>
+<img src="https://cdn.pixabay.com/photo/2016/02/07/23/42/ill-be-right-back-1185861__340.jpg" class="about-img">
+<p class="text-moto">Najkvalitetnija i najbrža usluga prijevoza u gradu!</p>
+</ion-content> 

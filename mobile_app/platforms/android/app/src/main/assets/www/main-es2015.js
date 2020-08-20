@@ -1710,7 +1710,8 @@ let LocationService = class LocationService {
     }
     getPosition() {
         return new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(resp => { 
+            navigator.geolocation.getCurrentPosition(resp => {
+                alert(JSON.stringify(resp));
                 resolve({ lng: resp.coords.longitude, lat: resp.coords.latitude });
             }, err => {
                 reject(err);
@@ -1803,6 +1804,7 @@ let SocketService = class SocketService {
             // Create Stomp Service
             this.stompService = new _stomp_ng2_stompjs__WEBPACK_IMPORTED_MODULE_1__["StompService"](stompConfig);
             // Connect to a Stream
+            alert();
             this.messages = this.stompService.subscribe("/user" + EXAMPLE_URL);
         });
     }

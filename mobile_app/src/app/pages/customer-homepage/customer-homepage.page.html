@@ -9,7 +9,7 @@
   <ion-content class="mapp"> 
     <style>
       .map {
-        height: 65% !important;
+        height: 60% !important;
       } 
     </style>
     <div #mapElement class="map"></div> 
@@ -19,13 +19,19 @@
     <div class="location-to">
       <ion-card (click)="openStreetPicker('to')"> {{toAddress}} </ion-card>
     </div>
-
-<!-- <ion-radio-group> 
-  1<ion-radio  (click)="setNumberOfPersons(1)"></ion-radio>
-  2<ion-radio  (click)="setNumberOfPersons(2)"></ion-radio>
-  3<ion-radio  (click)="setNumberOfPersons(3)"></ion-radio>
-  4<ion-radio  (click)="setNumberOfPersons(4)"></ion-radio>
-</ion-radio-group> -->
+    <div class="passengers">
+        <div class="title">Broj putnika:</div>
+        <ion-radio-group class="passengers-nr"> 
+          <ion-label>1</ion-label>
+          <ion-radio (click)="setNumberOfPersons(1)"></ion-radio>
+          <ion-label>2</ion-label>
+          <ion-radio (click)="setNumberOfPersons(2)"></ion-radio>
+          <ion-label>3</ion-label>
+          <ion-radio (click)="setNumberOfPersons(3)"></ion-radio>
+          <ion-label>4</ion-label>
+          <ion-radio (click)="setNumberOfPersons(4)"></ion-radio>
+        </ion-radio-group>
+    </div>
 
   <ion-button class="order" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</ion-button>
-  </ion-content>
+  </ion-content> 

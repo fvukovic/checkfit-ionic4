@@ -5,22 +5,57 @@
     padding: 15px 20px;
     height: 45px;
     text-align: center;
-    margin: 15px 10px;
+    margin: 10px 10px;
     color: #46e169;
     background: #393939;
     text-transform: uppercase;
     font-size: 12px; 
 }
 
+.location-to .sc-ion-card-md-h {
+    margin-bottom: 0;
+}
 ion-button {
-    --background: #393939; 
+    --background: #46e169; 
     width: 100%;
     padding: 0 10px; 
     height: 40px;
     box-shadow: none !important;    
     --border-radius: 0 !important;
-    color: #46e169;
+    color: #393939;
     margin: 0;
     font-size: 12px; 
 }
 
+ion-radio-group {
+    display: flex;
+}
+
+ion-label {
+    margin-top: 2px;  
+}
+
+ion-radio {
+    border: 1px solid #46e169;
+    border-radius: 50%;
+    margin: 0px 5px;
+    --color-checked: #46e169;
+    width: 15px;
+    height: 15px;
+}
+.passengers {
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 10px 10px;
+    background: #393939;
+    color: #46e169;
+    height: 45px;
+    font-size: 12px;
+    text-transform: uppercase;
+    
+}
+ion-menu-button {
+    --color: #393939;
+}

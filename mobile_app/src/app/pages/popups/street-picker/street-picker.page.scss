@@ -1,0 +1,56 @@
+.add-locations {
+    margin: 45px 15px;
+
+    ion-textarea {
+        --background: #393939; 
+        width: 100%;
+        padding: 0 10px; 
+        height: 40px;
+        box-shadow: none !important;    
+        --border-radius: 0 !important;
+        color: #46e169;        
+        font-size: 12px;
+        text-align: center;
+        height: 45px;
+        padding-top: 5px;
+        margin-bottom: 15px; 
+    }
+    .save-locations {
+        background: #46e169; 
+        width: 100%;
+        padding: 0 10px; 
+        height: 40px;
+        box-shadow: none !important;    
+        --border-radius: 0 !important;
+        color: #393939;        
+        font-size: 12px;
+        text-align: center;
+        height: 45px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 15px;
+    }
+}
+
+.text-moto {
+    border-bottom: 1px solid;
+    padding-bottom: 15px;
+    line-height: 26px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 0 30px 15px 30px;
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  ion-icon {
+      float: left;
+      margin-left: 15px;
+      margin-top: 0px;
+      font-size: 30px;
+  }
+  ion-title{
+      margin-top: 3px;
+  }

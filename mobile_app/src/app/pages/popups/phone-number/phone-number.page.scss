@@ -31,3 +31,43 @@ button {
 ion-input {
     --placeholder-color: #fff;
 }
+
+ion-icon {
+    float: left;
+    margin-left: 15px;
+    margin-top: 0px;
+    font-size: 30px;
+}
+ion-title{
+    margin-top: 3px;
+}
+
+.text-moto {
+    border-bottom: 1px solid;
+    padding-bottom: 15px;
+    line-height: 26px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 14px;
+    padding: 0 20px 15px 20px;
+    margin-top: 30px;
+  }
+
+  .menu-img {
+      max-width: 35%;
+  }
+  .change-number-logo {
+    text-align: center;
+    margin-top: 80px;
+    border-bottom: 1px solid;
+    padding-bottom: 20px;
+    margin: 60px 20px 0 20px;
+  }
+  .rich-text {
+    line-height: 26px;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 14px;
+    text-align: center;
+    margin-top: 20px;
+  }

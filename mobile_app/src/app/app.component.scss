@@ -6,11 +6,11 @@ ion-menu ion-content {
 ion-menu.md ion-content {
   --padding-start: 8px;
   --padding-end: 8px;
-  --padding-top: 20px;
-  --padding-bottom: 20px;
+  --padding-top: 10px;
+  --padding-bottom: 0;
 }
 
-ion-menu.md ion-list {
+ion-menu.md ion-list { 
   padding: 20px 0;
 }
 
@@ -72,11 +72,12 @@ ion-menu.ios ion-content {
 
 ion-menu.ios ion-list {
   padding: 20px 0 0 0;
+  margin-bottom: 0;
 }
 
 ion-menu.ios ion-note {
   line-height: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 20px; 
 }
 
 ion-menu.ios ion-item {
@@ -154,4 +155,14 @@ ion-item.selected {
   font-size: 16px;
   text-transform: uppercase;
   padding: 0 30px 15px 30px; 
+}
+
+ion-menu {
+  --min-width: 100%;
+}
+.menu-close {
+  padding: 0;
+  text-transform: uppercase;
+  background: transparent;
+  font-weight: bold;
 }

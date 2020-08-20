@@ -8,7 +8,8 @@
         "myRides" : "Moje vožnje",
         "number" : "Promjeni broj",
         "login" : "Prijava (za vozača)",
-        "logout" : "Odjava"
+        "logout" : "Odjava",
+        "closeMenu" : "Natrag"
         
     },
     "change": {

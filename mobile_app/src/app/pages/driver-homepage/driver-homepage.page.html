@@ -4,7 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Driver homepage</ion-title>
-    <button (click)="callSOS()">SOS</button>
+    <button *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
   </ion-toolbar>
 </ion-header>
 <ion-content class="mapp">

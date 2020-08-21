@@ -8,12 +8,18 @@ import { LocationService } from 'src/app/services/location.service';
   styleUrls: ['./about-us.page.scss'],
 })
 export class AboutUsPage implements OnInit {
- 
+  isUserLoggedIn: boolean = false;
+
   constructor( 
     private locationService: LocationService, 
     private storage: Storage,
     private socketService: SocketService
   ) { 
+    this.storage.get("username").then(val => {
+      if (val != null) {
+        this.isUserLoggedIn = true;
+      }
+    });
   } 
   ngOnInit() {
   }
@@ -34,4 +40,6 @@ export class AboutUsPage implements OnInit {
      });
     });
   }
+
+  
 }

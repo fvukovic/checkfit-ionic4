@@ -23,7 +23,7 @@ export class DriverHomepagePage implements OnInit {
   isDriveStarted: boolean;
   message: any;
   phoneNumber: String;
-
+  isUserLoggedIn: boolean = false;
 
 
   @ViewChild("mapElement", { static: true }) mapElement: ElementRef;
@@ -37,6 +37,12 @@ export class DriverHomepagePage implements OnInit {
     private socketService: SocketService,
     private storage: Storage
   ) {
+    this.storage.get("username").then(val => {
+      if (val != null) {
+        this.isUserLoggedIn = true;
+      }
+    });
+
     const firstParam: string = this.route.snapshot.queryParamMap.get("data");
     let message = JSON.parse(firstParam);
     this.message = message;

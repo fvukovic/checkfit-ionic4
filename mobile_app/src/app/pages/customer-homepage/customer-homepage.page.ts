@@ -25,6 +25,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
   toAddress: String;
   currentLocation: any;
   numberOfPersons: String;
+  isUserLoggedIn:boolean = false;
   @ViewChild("mapElement", { static: true }) mapElement;
 
   constructor(
@@ -41,7 +42,13 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     this.toAddress = "Unesite adresu odredišta!";
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.storage.get("username").then(val => {
+      if (val != null) {
+        this.isUserLoggedIn = true;
+      }
+    });
+  }
 
   ngAfterContentInit(): void {
     this.platform.ready().then(() => {
@@ -174,5 +181,5 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       });
      });
     });
-  }
+  } 
 }

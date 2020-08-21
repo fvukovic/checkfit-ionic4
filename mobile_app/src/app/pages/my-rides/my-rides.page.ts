@@ -9,12 +9,19 @@ import { Storage } from "@ionic/storage";
   styleUrls: ['./my-rides.page.scss'],
 })
 export class MyRidesPage implements OnInit {
+  isUserLoggedIn: boolean = false;
 
   constructor(
     private locationService: LocationService, 
     private socketService: SocketService,
     private storage: Storage
-  ) {}
+  ) {
+    this.storage.get("username").then(val => {
+      if (val != null) {
+        this.isUserLoggedIn = true;
+      }
+    });
+  }
 
   ngOnInit() {
   }

@@ -29,7 +29,7 @@ export class DriveRequestPage implements OnInit {
   async populateAddresses(){
     var fromAddress = await this.locationService.getReverseGeocode(this.message.fromLat, this.message.fromLong); 
     this.fromAddress = fromAddress[0].thoroughfare + "," + fromAddress[0].subThoroughfare + "," + fromAddress[0].locality
-    var toAddress = await this.locationService.getReverseGeocode(this.message.fromLat, this.message.fromLong);
+    var toAddress = await this.locationService.getReverseGeocode(this.message.toLat, this.message.toLong);
     this.toAddress = toAddress[0].thoroughfare + "," + toAddress[0].subThoroughfare + "," + toAddress[0].locality
   }
 

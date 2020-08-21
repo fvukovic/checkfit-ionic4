@@ -129,10 +129,10 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
 
   async orderTaxi() {
     let fromAddress = await this.locationService.getForwardGeocode2(
-      this.fromAddress + ", Varaždin, Croatia"
+      this.fromAddress 
     );
     let toAddress = await this.locationService.getForwardGeocode2(
-      this.toAddress + ", Varaždin, Croatia"
+      this.toAddress
     );
     let params = {
       fromLat: fromAddress["latitude"],

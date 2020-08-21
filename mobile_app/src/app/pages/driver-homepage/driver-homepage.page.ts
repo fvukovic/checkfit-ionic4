@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, ViewChild } from "@angular/core";
+import { Component, OnInit, AfterContentInit, ViewChild, ElementRef } from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { StreetPickerPage } from "../popups/street-picker/street-picker.page";
 import { Router } from "@angular/router";
@@ -23,7 +23,13 @@ export class DriverHomepagePage implements OnInit {
   message: any;
   phoneNumber: String;
 
-  @ViewChild("mapElement", { static: true }) mapElement;
+
+
+  @ViewChild("mapElement", { static: true }) mapElement: ElementRef;
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer; 
+  
+
   constructor(
     private locationService: LocationService,
     private route: ActivatedRoute,
@@ -37,14 +43,35 @@ export class DriverHomepagePage implements OnInit {
       "driveIsStarted"
     );
 
-    if (driveIsStarted == "true") {
-      //TODO makni ovo na kraju
-      //this.populateAddress(message)
+    // if (driveIsStarted == "true") {
+    //   //TODO makni ovo na kraju
       this.isDriveStarted = true;
-    }
+   // }
 
     this.initializeMap();
+    this.directionsDisplay.setMap(this.map);
+    //this.calculateAndDisplayRoute()
+    this.populateAddress(this.message)
   }
+  ngAfterContentInit(){
+
+  }
+
+  calculateAndDisplayRoute() {
+     const that = this;
+    this.directionsService.route({
+      origin: this.fromAddress,
+      destination: this.toAddress,
+      travelMode: 'DRIVING'
+    }, (response, status) => {
+      if (status === 'OK') {
+        that.directionsDisplay.setDirections(response);
+      } else {
+        window.alert('Directions request failed due to ' + status);
+      }
+    });
+  }
+
 
   async populateAddress(message) {
     var fromAddress = await this.locationService.getReverseGeocode(
@@ -57,9 +84,11 @@ export class DriverHomepagePage implements OnInit {
       fromAddress[0].subThoroughfare +
       "," +
       fromAddress[0].locality;
+ 
+ 
     var toAddress = await this.locationService.getReverseGeocode(
-      message.fromLat,
-      message.fromLong
+      message.toLat,
+      message.toLong
     );
     this.toAddress =
       toAddress[0].thoroughfare +
@@ -67,18 +96,18 @@ export class DriverHomepagePage implements OnInit {
       toAddress[0].subThoroughfare +
       "," +
       toAddress[0].locality;
+      this.calculateAndDisplayRoute()
+
   }
 
   async initializeMap() {
-    this.currentLocation = await this.locationService.getUserPosition();
+    this.currentLocation = await this.locationService.getUserPosition(); 
     var directionsDisplay = new google.maps.DirectionsRenderer();
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
-      center: {
-        lat: this.currentLocation.coords.latitude,
-        lng: this.currentLocation.coords.longitude
-      },
-      zoom: 16
-    });
+    zoom: 7,
+    center: {lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude}
+  });
+    this.directionsDisplay.setMap(this.map);
     var directionsService = new google.maps.DirectionsService();
     directionsDisplay.setMap(this.map);
     var directionsDisplay = new google.maps.DirectionsRenderer();
@@ -97,8 +126,8 @@ export class DriverHomepagePage implements OnInit {
   displayDirection(directionsService, directionsDisplay) {
     directionsService.route(
       {
-        origin: new google.maps.LatLng(41.850033, -87.6500523),
-        destination: new google.maps.LatLng(41.850033, -87.6500523),
+        origin: new google.maps.LatLng(this.currentLocation.coords.latitude, this.currentLocation.coords.longitude),
+        destination: this.toAddress,
         travelMode: "DRIVING"
       },
       (response, status) => {

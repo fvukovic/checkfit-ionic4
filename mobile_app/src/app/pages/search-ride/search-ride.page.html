@@ -1,22 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>search-ride</ion-title>
+    <ion-title>Zahtjev za voznju</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class=container4>
+  <div class=container>
     <div *ngIf="!isDriveAccepted" >
-      
-      <p>Tražim slobodnog vozača...</p>
-      <ion-spinner style="width:150px" color="tertiary" class="ion-color ion-color-tertiary ios spinner-lines hydrated"
-        role="progressbar"></ion-spinner>
+
+      <div class="wrapper-request">  
+        <ion-icon name="checkbox"></ion-icon>
+        <p>Vaš zahtjev je uspješno poslan!</p>
+      </div>    
+
+      <div class="seacrhing-driver">
+           <p>Tražim slobodnog vozača...</p>
+          <!-- <ion-spinner style="width:150px" color="tertiary" class="ion-color ion-color-tertiary ios spinner-lines hydrated"
+        role="progressbar"></ion-spinner>  -->
+        <ion-spinner name="bubbles"></ion-spinner>
+        <p class="details">Detalji će uskoro biti vidljivi na ekranu:</p>
+      </div>
+
     </div>
+
     <div *ngIf="isDriveAccepted" >
         <h2>Vaše vozilo stiže!!</h2>
 
         <p>Vaše vozilo je udaljeno:</p> 
         <p>{{kms}}</p> 
       </div>
+
+      <div class="logo">
+        <img src="http://murataxi.com/images/resources/taxiLogo.png" class="menu-img">      
+        <p class="rich-text">Najkvalitetnija i najbrža usluga prijevoza u gradu!</p>
+    </div>
+
   </div>
+
 </ion-content>

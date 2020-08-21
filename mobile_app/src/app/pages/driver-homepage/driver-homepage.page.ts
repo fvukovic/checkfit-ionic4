@@ -6,6 +6,7 @@ import { LocationService } from "../../services/location.service";
 import { NativeGeocoderResult } from "@ionic-native/native-geocoder/ngx";
 import { ActivatedRoute } from "@angular/router";
 import { SocketService } from "../../services/socket.service";
+import { Storage } from "@ionic/storage";
 
 declare var google;
 @Component({
@@ -33,7 +34,8 @@ export class DriverHomepagePage implements OnInit {
   constructor(
     private locationService: LocationService,
     private route: ActivatedRoute,
-    private socketService: SocketService
+    private socketService: SocketService,
+    private storage: Storage
   ) {
     const firstParam: string = this.route.snapshot.queryParamMap.get("data");
     let message = JSON.parse(firstParam);
@@ -138,4 +140,22 @@ export class DriverHomepagePage implements OnInit {
     );
   }
   ngOnInit() {}
+
+  async callSOS(){
+    let currentLocation = await this.locationService.getUserPosition();
+    console.log("DSAD")
+    console.log(currentLocation)
+    this.storage.get("username").then(username => {
+      this.storage.get("username").then(phone => {
+      this.socketService.send("/server-receiver", {
+        type: "customer",
+        messageType: "SOS",
+        driver: username,
+        phoneNumber: phone,
+        fromLat: currentLocation.coords.latitude,
+        fromLong: currentLocation.coords.longitude,
+      });
+     });
+    });
+  }
 }

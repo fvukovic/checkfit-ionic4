@@ -10,6 +10,8 @@ import {
   Geoposition,
   PositionError
 } from "@ionic-native/geolocation/ngx";
+import { Storage } from "@ionic/storage";
+import { SocketService } from "../../services/socket.service";
 
 declare var google;
 @Component({
@@ -31,7 +33,9 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     private locationService: LocationService,
     private androidPermissions: AndroidPermissions,
     private platform: Platform,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    private storage: Storage,
+    private socketService: SocketService
   ) {
     this.fromAddress = "Unesite adresu polaska!";
     this.toAddress = "Unesite adresu odredišta!";
@@ -141,6 +145,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       toLong: toAddress["longitude"],
       persons: this.numberOfPersons
     };
+ 
 
     //   let params = {
     //   fromLat: "46.13123",
@@ -150,6 +155,24 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     // };
     this.router.navigate(["/search-ride"], {
       queryParams: { data: JSON.stringify(params) }
+    });
+  }
+     
+  async callSOS(){
+    let currentLocation = await this.locationService.getUserPosition();
+    console.log("DSAD")
+    console.log(currentLocation)
+    this.storage.get("username").then(username => {
+      this.storage.get("username").then(phone => {
+      this.socketService.send("/server-receiver", {
+        type: "customer",
+        messageType: "SOS",
+        driver: username,
+        phoneNumber: phone,
+        fromLat: currentLocation.coords.latitude,
+        fromLong: currentLocation.coords.longitude,
+      });
+     });
     });
   }
 }

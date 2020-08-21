@@ -30,6 +30,7 @@ export class AppComponent implements OnInit {
   greeting: any;
   name: string;
   isUserLoggedIn = false;
+  fromAddress:String;
 
   constructor(
     private platform: Platform,
@@ -88,7 +89,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-  handleMessage(message) {
+  async handleMessage(message) {
     switch (message.messageType) {
       case "DRIVE_REQUEST": {
         this.modalcontroller
@@ -148,7 +149,30 @@ export class AppComponent implements OnInit {
         alert("Vaše vozilo je na mjestu!");
         break;
       }
+      case "SOS":{
+ 
+        var streetLocation = await this.locationService.getReverseGeocode(
+          message.fromLat,
+          message.fromLong,
+        );
+        this.fromAddress =
+          streetLocation[0].thoroughfare +
+          "," +
+          streetLocation[0].subThoroughfare +
+          "," +
+          streetLocation[0].locality;
+
+
+
+        alert("Vozač: " + message.driver + " je u nevolji!!! \n Lokacija: " + this.fromAddress)
+      }
     }
+  }
+
+  async getAddressFromGeolocation(latitude, longitude){ 
+   await this.locationService.getReverseGeocode2(
+      latitude, longitude
+  );
   }
 
   async updateDistance(message) {
@@ -182,4 +206,22 @@ export class AppComponent implements OnInit {
         modalElement.present();
       });
   }
+
+}
+export async function callSOS(){
+  let currentLocation = await this.locationService.getUserPosition();
+  console.log("DSAD")
+  console.log(currentLocation)
+  this.storage.get("username").then(username => {
+    this.storage.get("username").then(phone => {
+    this.socketService.send("/server-receiver", {
+      type: "customer",
+      messageType: "SOS",
+      driver: username,
+      phoneNumber: phone,
+      fromLat: currentLocation.coords.latitude,
+      fromLong: currentLocation.coords.longitude,
+    });
+   });
+  });
 }

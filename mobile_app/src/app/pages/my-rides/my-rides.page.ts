@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { LocationService } from "../../services/location.service";
+import { SocketService } from "../../services/socket.service";
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: 'app-my-rides',
@@ -6,10 +9,39 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-rides.page.scss'],
 })
 export class MyRidesPage implements OnInit {
+  isUserLoggedIn: boolean = false;
 
-  constructor() { }
+  constructor(
+    private locationService: LocationService, 
+    private socketService: SocketService,
+    private storage: Storage
+  ) {
+    this.storage.get("username").then(val => {
+      if (val != null) {
+        this.isUserLoggedIn = true;
+      }
+    });
+  }
 
   ngOnInit() {
+  }
+
+  async callSOS(){
+    let currentLocation = await this.locationService.getUserPosition();
+    console.log("DSAD")
+    console.log(currentLocation)
+    this.storage.get("username").then(username => {
+      this.storage.get("username").then(phone => {
+      this.socketService.send("/server-receiver", {
+        type: "customer",
+        messageType: "SOS",
+        driver: username,
+        phoneNumber: phone,
+        fromLat: currentLocation.coords.latitude,
+        fromLong: currentLocation.coords.longitude,
+      });
+     });
+    });
   }
 
 }

@@ -44,7 +44,6 @@ export class SocketService {
      
           this.messages = this.stompService.subscribe("/user" + EXAMPLE_URL);
         }); 
-     
   }
 
   constructor(

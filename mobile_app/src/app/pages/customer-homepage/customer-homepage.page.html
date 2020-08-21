@@ -4,6 +4,7 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Naruči vožnju</ion-title>
+    <button *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
   </ion-toolbar>
 </ion-header>
   <ion-content class="mapp"> 

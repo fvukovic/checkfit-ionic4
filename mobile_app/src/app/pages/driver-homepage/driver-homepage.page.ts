@@ -25,7 +25,6 @@ export class DriverHomepagePage implements OnInit {
   phoneNumber: String;
   isUserLoggedIn: boolean = false;
 
-
   @ViewChild("mapElement", { static: true }) mapElement: ElementRef;
   directionsService = new google.maps.DirectionsService;
   directionsDisplay = new google.maps.DirectionsRenderer; 
@@ -148,9 +147,8 @@ export class DriverHomepagePage implements OnInit {
   ngOnInit() {}
 
   async callSOS(){
-    let currentLocation = await this.locationService.getUserPosition();
-    console.log("DSAD")
-    console.log(currentLocation)
+   this.currentLocation   = await this.locationService.getUserPosition();
+    console.log("DSAD") 
     this.storage.get("username").then(username => {
       this.storage.get("username").then(phone => {
       this.socketService.send("/server-receiver", {
@@ -158,8 +156,8 @@ export class DriverHomepagePage implements OnInit {
         messageType: "SOS",
         driver: username,
         phoneNumber: phone,
-        fromLat: currentLocation.coords.latitude,
-        fromLong: currentLocation.coords.longitude,
+        fromLat: this.currentLocation.coords.latitude,
+        fromLong: this.currentLocation.coords.longitude,
       });
      });
     });

@@ -9,6 +9,7 @@ import { LocationService } from 'src/app/services/location.service';
 })
 export class AboutUsPage implements OnInit {
   isUserLoggedIn: boolean = false;
+  currentLocation: any;
 
   constructor( 
     private locationService: LocationService, 
@@ -24,9 +25,8 @@ export class AboutUsPage implements OnInit {
   ngOnInit() {
   }
   async callSOS(){
-    let currentLocation = await this.locationService.getUserPosition();
-    console.log("DSAD")
-    console.log(currentLocation)
+    this.currentLocation = await this.locationService.getUserPosition();
+    
     this.storage.get("username").then(username => {
       this.storage.get("username").then(phone => {
       this.socketService.send("/server-receiver", {
@@ -34,8 +34,8 @@ export class AboutUsPage implements OnInit {
         messageType: "SOS",
         driver: username,
         phoneNumber: phone,
-        fromLat: currentLocation.coords.latitude,
-        fromLong: currentLocation.coords.longitude,
+        fromLat: this.currentLocation.coords.latitude,
+        fromLong: this.currentLocation.coords.longitude,
       });
      });
     });

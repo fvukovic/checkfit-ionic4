@@ -13,6 +13,7 @@ import { SocketService } from "./services/socket.service";
 import { Events } from "@ionic/angular";
 import { AndroidPermissions } from "@ionic-native/android-permissions/ngx";
 import { PhoneNumberPage } from "./pages/popups/phone-number/phone-number.page";
+import { Variable } from '@angular/compiler/src/render3/r3_ast';
 
 const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit {
   name: string;
   isUserLoggedIn = false;
   fromAddress:String;
+  task: Variable;
 
   constructor(
     private platform: Platform,
@@ -50,6 +52,10 @@ export class AppComponent implements OnInit {
     translate.setDefaultLang("en");
     this.platform.ready().then(() => {
     this.socketService.initializeWebSocketConnection();
+
+    setInterval(() => { 
+    }, 300);
+
  
      setTimeout(() => {
       this.socketService.stream().subscribe((message: any) => {
@@ -207,21 +213,4 @@ export class AppComponent implements OnInit {
       });
   }
 
-}
-export async function callSOS(){
-  let currentLocation = await this.locationService.getUserPosition();
-  console.log("DSAD")
-  console.log(currentLocation)
-  this.storage.get("username").then(username => {
-    this.storage.get("username").then(phone => {
-    this.socketService.send("/server-receiver", {
-      type: "customer",
-      messageType: "SOS",
-      driver: username,
-      phoneNumber: phone,
-      fromLat: currentLocation.coords.latitude,
-      fromLong: currentLocation.coords.longitude,
-    });
-   });
-  });
 }

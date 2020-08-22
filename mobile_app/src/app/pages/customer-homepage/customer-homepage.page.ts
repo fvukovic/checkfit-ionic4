@@ -176,8 +176,8 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
         messageType: "SOS",
         driver: username,
         phoneNumber: phone,
-        fromLat: currentLocation.coords.latitude,
-        fromLong: currentLocation.coords.longitude,
+        fromLat: this.currentLocation.coords.latitude,
+        fromLong: this.currentLocation.coords.longitude,
       });
      });
     });

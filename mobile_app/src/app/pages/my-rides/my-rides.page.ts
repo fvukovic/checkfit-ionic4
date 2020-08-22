@@ -37,8 +37,8 @@ export class MyRidesPage implements OnInit {
         messageType: "SOS",
         driver: username,
         phoneNumber: phone,
-        fromLat: currentLocation.coords.latitude,
-        fromLong: currentLocation.coords.longitude,
+        fromLat: currentLocation["cords"]["latitude"],
+        fromLong: currentLocation["cords"]["latitude"],
       });
      });
     });

@@ -13,7 +13,7 @@ import { SocketService } from "./services/socket.service";
 import { Events } from "@ionic/angular";
 import { AndroidPermissions } from "@ionic-native/android-permissions/ngx";
 import { PhoneNumberPage } from "./pages/popups/phone-number/phone-number.page";
-import { Variable } from '@angular/compiler/src/render3/r3_ast';
+import { Variable } from "@angular/compiler/src/render3/r3_ast";
 
 const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
@@ -31,8 +31,9 @@ export class AppComponent implements OnInit {
   greeting: any;
   name: string;
   isUserLoggedIn = false;
-  fromAddress:String;
+  fromAddress: String;
   task: Variable;
+  interval;
 
   constructor(
     private platform: Platform,
@@ -44,30 +45,44 @@ export class AppComponent implements OnInit {
     translate: TranslateService,
     private storage: Storage,
     private locationService: LocationService,
-    public events: Events,
+    public events: Events
   ) {
     //socketService.getUniqueId();
     this.router.navigateByUrl("customer-homepage");
     this.initializeApp();
     translate.setDefaultLang("en");
     this.platform.ready().then(() => {
-    this.socketService.initializeWebSocketConnection();
-
-    setInterval(() => { 
-    }, 300);
-
- 
-     setTimeout(() => {
-      this.socketService.stream().subscribe((message: any) => {
-        this.messageHistory.unshift(message.body);
-        console.log(message);
-        this._this.handleMessage(JSON.parse(message.body));
+      this.socketService.initializeWebSocketConnection();
+      this.storage.get("username").then(username => {
+        if (username != null) {
+          setInterval(() => {
+            this.locationService.getUserPosition().then(
+              val => {
+                 this.socketService.send("/server-receiver", {
+                  type: "driver",
+                  driver: username,
+                  messageType: "DRIVER_INFO",
+                  toLat: val["coords"].latitude,
+                  toLong: val["coords"].longitude
+                });
+              },
+              err => console.error(err)
+            );
+          }, 4000);
+        }
       });
 
-      this.socketService.state().subscribe((state: StompState) => {
-        this.state = StompState[state];
-      });
-    }, 3000);
+      setTimeout(() => {
+        this.socketService.stream().subscribe((message: any) => {
+          this.messageHistory.unshift(message.body);
+          console.log(message);
+          this._this.handleMessage(JSON.parse(message.body));
+        });
+
+        this.socketService.state().subscribe((state: StompState) => {
+          this.state = StompState[state];
+        });
+      }, 3000);
     });
   }
 
@@ -84,8 +99,6 @@ export class AppComponent implements OnInit {
     });
 
     // Subscribe to its stream (to listen on messages)
-
- 
 
     // Subscribe to its state (to know its connected or not)
 
@@ -155,11 +168,10 @@ export class AppComponent implements OnInit {
         alert("Vaše vozilo je na mjestu!");
         break;
       }
-      case "SOS":{
- 
+      case "SOS": {
         var streetLocation = await this.locationService.getReverseGeocode(
           message.fromLat,
-          message.fromLong,
+          message.fromLong
         );
         this.fromAddress =
           streetLocation[0].thoroughfare +
@@ -168,17 +180,21 @@ export class AppComponent implements OnInit {
           "," +
           streetLocation[0].locality;
 
-
-
-        alert("Vozač: " + message.driver + " je u nevolji!!! \n Lokacija: " + this.fromAddress)
+        alert(
+          "Vozač: " +
+            message.driver +
+            " je u nevolji!!! \n Lokacija: " +
+            this.fromAddress
+        );
+      }
+      case "DRIVER_INFO":{
+        this.events.publish("driverInfo", message);
       }
     }
   }
 
-  async getAddressFromGeolocation(latitude, longitude){ 
-   await this.locationService.getReverseGeocode2(
-      latitude, longitude
-  );
+  async getAddressFromGeolocation(latitude, longitude) {
+    await this.locationService.getReverseGeocode2(latitude, longitude);
   }
 
   async updateDistance(message) {
@@ -212,5 +228,4 @@ export class AppComponent implements OnInit {
         modalElement.present();
       });
   }
-
 }

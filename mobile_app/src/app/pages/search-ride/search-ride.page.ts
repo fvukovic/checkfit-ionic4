@@ -35,6 +35,7 @@ export class SearchRidePage implements OnInit, AfterContentInit {
     events.subscribe("driveAccepted", message => {
       this.isDriveAccepted = true;
     });
+    
 
     events.subscribe("informCustomer", message => {
       console.log(message);

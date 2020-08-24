@@ -12,6 +12,7 @@ import {
 } from "@ionic-native/geolocation/ngx";
 import { Storage } from "@ionic/storage";
 import { SocketService } from "../../services/socket.service";
+import { Events } from "@ionic/angular";
 
 declare var google;
 @Component({
@@ -25,7 +26,9 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
   toAddress: String;
   currentLocation: any;
   numberOfPersons: String;
-  isUserLoggedIn:boolean = false;
+  isUserLoggedIn: boolean = false;
+  markers: any = [];
+
   @ViewChild("mapElement", { static: true }) mapElement;
 
   constructor(
@@ -36,7 +39,8 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     private platform: Platform,
     private geolocation: Geolocation,
     private storage: Storage,
-    private socketService: SocketService
+    private socketService: SocketService,
+    private events: Events
   ) {
     this.fromAddress = "Unesite adresu polaska!";
     this.toAddress = "Unesite adresu odredišta!";
@@ -51,6 +55,21 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit(): void {
+    this.events.subscribe("driverInfo", message => {
+      this.setMapOnAll(null); 
+      Object.entries(JSON.parse(message["drivers"])).forEach(([key, value]) => {
+             let marker = new google.maps.Marker({
+          map: this.map,
+          animation: google.maps.Animation.BOUNCE,
+          icon:'./assets/619006.svg',
+          position: new google.maps.LatLng(value["latitude"], value["longitude"])
+        });
+        this.markers.push(marker); 
+    
+      });
+
+     });
+
     this.platform.ready().then(() => {
       let perms = [
         "android.permission.ACCESS_COARSE_LOCATION",
@@ -71,6 +90,12 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
           });
         });
     });
+  }
+
+  setMapOnAll(map: any | null) {
+    for (let i = 0; i < this.markers.length; i++) {
+      this.markers[i].setMap(map);
+    }
   }
 
   async initializeMap() {
@@ -108,7 +133,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       map: map,
       animation: google.maps.Animation.DROP,
       position: map.getCenter()
-    });
+    }); 
   }
 
   async openStreetPicker(picker) {
@@ -140,7 +165,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
 
   async orderTaxi() {
     let fromAddress = await this.locationService.getForwardGeocode2(
-      this.fromAddress 
+      this.fromAddress
     );
     let toAddress = await this.locationService.getForwardGeocode2(
       this.toAddress
@@ -152,7 +177,6 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       toLong: toAddress["longitude"],
       persons: this.numberOfPersons
     };
- 
 
     //   let params = {
     //   fromLat: "46.13123",
@@ -164,22 +188,22 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       queryParams: { data: JSON.stringify(params) }
     });
   }
-     
-  async callSOS(){
+
+  async callSOS() {
     let currentLocation = await this.locationService.getUserPosition();
-    console.log("DSAD")
-    console.log(currentLocation)
+    console.log("DSAD");
+    console.log(currentLocation);
     this.storage.get("username").then(username => {
       this.storage.get("username").then(phone => {
-      this.socketService.send("/server-receiver", {
-        type: "customer",
-        messageType: "SOS",
-        driver: username,
-        phoneNumber: phone,
-        fromLat: this.currentLocation.coords.latitude,
-        fromLong: this.currentLocation.coords.longitude,
+        this.socketService.send("/server-receiver", {
+          type: "customer",
+          messageType: "SOS",
+          driver: username,
+          phoneNumber: phone,
+          fromLat: this.currentLocation.coords.latitude,
+          fromLong: this.currentLocation.coords.longitude
+        });
       });
-     });
     });
-  } 
+  }
 }

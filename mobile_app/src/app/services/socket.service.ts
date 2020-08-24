@@ -27,7 +27,7 @@ export class SocketService {
             url: WEBSOCKET_URL + "?123123",
             headers: {
               //TODO add
-              username: "customer",
+              username: val,
               type: userType,
               id: "123"
             },

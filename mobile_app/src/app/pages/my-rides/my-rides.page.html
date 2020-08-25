@@ -1,12 +1,24 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>my-rides</ion-title>
+    <ion-title>Moje vožnje</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-<div *ngFor="let item of invoiceList">
-  Od: {{item.fromAddress}} <br>
-  Do: {{item.toAddress}} 
+<div *ngFor="let item of invoiceList" class="my-rides">
+  <div class="details-ride">
+    <span class="text">Polazište:</span>
+    <span class="value">{{item.fromAddress}}</span>
+  </div>
+
+  <div class="details-ride">
+    <span class="text">Odredište:</span>
+    <span class="value">{{item.toAddress}} </span>
+  </div>
+
+  <div class="details-ride">
+    <span class="text">Udaljenost:</span>
+    <span class="value">28km </span>
+  </div>
 </div>
 </ion-content>

@@ -122,10 +122,17 @@ export class DriverHomepagePage implements OnInit {
   }
 
   endDrive() {
+     var km = this.locationService.getDistanceFromLatLonInKm(
+      this.message.fromLat,
+      this.message.fromLong,
+      this.message.toLat,
+      this.message.toLong
+    ); 
     this.socketService.send("/server-receiver", {
       type: "customer",
       messageType: "FINISH_DRIVE",
-      customer: this.message.driver
+      customer: this.message.driver,
+      km: km
     });
     location.reload();
   }
@@ -157,7 +164,7 @@ export class DriverHomepagePage implements OnInit {
         driver: username,
         phoneNumber: phone,
         fromLat: this.currentLocation.coords.latitude,
-        fromLong: this.currentLocation.coords.longitude,
+        fromLong: this.currentLocation.coords.longitude
       });
      });
     });

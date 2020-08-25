@@ -65,9 +65,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
           position: new google.maps.LatLng(value["latitude"], value["longitude"])
         });
         this.markers.push(marker); 
-    
       });
-
      });
 
     this.platform.ready().then(() => {
@@ -170,6 +168,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     let toAddress = await this.locationService.getForwardGeocode2(
       this.toAddress
     );
+    
     let params = {
       fromLat: fromAddress["latitude"],
       fromLong: fromAddress["longitude"],

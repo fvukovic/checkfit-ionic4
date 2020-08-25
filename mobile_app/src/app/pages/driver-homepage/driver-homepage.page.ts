@@ -1,4 +1,10 @@
-import { Component, OnInit, AfterContentInit, ViewChild, ElementRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  AfterContentInit,
+  ViewChild,
+  ElementRef
+} from "@angular/core";
 import { ModalController } from "@ionic/angular";
 import { StreetPickerPage } from "../popups/street-picker/street-picker.page";
 import { Router } from "@angular/router";
@@ -26,9 +32,8 @@ export class DriverHomepagePage implements OnInit {
   isUserLoggedIn: boolean = false;
 
   @ViewChild("mapElement", { static: true }) mapElement: ElementRef;
-  directionsService = new google.maps.DirectionsService;
-  directionsDisplay = new google.maps.DirectionsRenderer; 
-  
+  directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
 
   constructor(
     private locationService: LocationService,
@@ -52,33 +57,33 @@ export class DriverHomepagePage implements OnInit {
 
     // if (driveIsStarted == "true") {
     //   //TODO makni ovo na kraju
-      this.isDriveStarted = true;
-   // }
+    this.isDriveStarted = true;
+    // }
 
     this.initializeMap();
     this.directionsDisplay.setMap(this.map);
     //this.calculateAndDisplayRoute()
-    this.populateAddress(this.message)
+    this.populateAddress(this.message);
   }
-  ngAfterContentInit(){
-
-  }
+  ngAfterContentInit() {}
 
   calculateAndDisplayRoute() {
-     const that = this;
-    this.directionsService.route({
-      origin: this.fromAddress,
-      destination: this.toAddress,
-      travelMode: 'DRIVING'
-    }, (response, status) => {
-      if (status === 'OK') {
-        that.directionsDisplay.setDirections(response);
-      } else {
-        window.alert('Directions request failed due to ' + status);
+    const that = this;
+    this.directionsService.route(
+      {
+        origin: this.fromAddress,
+        destination: this.toAddress,
+        travelMode: "DRIVING"
+      },
+      (response, status) => {
+        if (status === "OK") {
+          that.directionsDisplay.setDirections(response);
+        } else {
+          window.alert("Directions request failed due to " + status);
+        }
       }
-    });
+    );
   }
-
 
   async populateAddress(message) {
     var fromAddress = await this.locationService.getReverseGeocode(
@@ -91,8 +96,7 @@ export class DriverHomepagePage implements OnInit {
       fromAddress[0].subThoroughfare +
       "," +
       fromAddress[0].locality;
- 
- 
+
     var toAddress = await this.locationService.getReverseGeocode(
       message.toLat,
       message.toLong
@@ -103,17 +107,19 @@ export class DriverHomepagePage implements OnInit {
       toAddress[0].subThoroughfare +
       "," +
       toAddress[0].locality;
-      this.calculateAndDisplayRoute()
-
+    this.calculateAndDisplayRoute();
   }
 
   async initializeMap() {
-    this.currentLocation = await this.locationService.getUserPosition(); 
+    this.currentLocation = await this.locationService.getUserPosition();
     var directionsDisplay = new google.maps.DirectionsRenderer();
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
-    zoom: 7,
-    center: {lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude}
-  });
+      zoom: 7,
+      center: {
+        lat: this.currentLocation.coords.latitude,
+        lng: this.currentLocation.coords.longitude
+      }
+    });
     this.directionsDisplay.setMap(this.map);
     var directionsService = new google.maps.DirectionsService();
     directionsDisplay.setMap(this.map);
@@ -122,17 +128,13 @@ export class DriverHomepagePage implements OnInit {
   }
 
   endDrive() {
-     var km = this.locationService.getDistanceFromLatLonInKm(
-      this.message.fromLat,
-      this.message.fromLong,
-      this.message.toLat,
-      this.message.toLong
-    ); 
-    this.socketService.send("/server-receiver", {
-      type: "customer",
-      messageType: "FINISH_DRIVE",
-      customer: this.message.driver,
-      km: km
+  
+    this.storage.get("username").then(username => {
+      this.socketService.send("/server-receiver", {
+        type: "customer",
+        messageType: "FINISH_DRIVE",
+        driver: username
+      });
     });
     location.reload();
   }
@@ -140,7 +142,10 @@ export class DriverHomepagePage implements OnInit {
   displayDirection(directionsService, directionsDisplay) {
     directionsService.route(
       {
-        origin: new google.maps.LatLng(this.currentLocation.coords.latitude, this.currentLocation.coords.longitude),
+        origin: new google.maps.LatLng(
+          this.currentLocation.coords.latitude,
+          this.currentLocation.coords.longitude
+        ),
         destination: this.toAddress,
         travelMode: "DRIVING"
       },
@@ -153,20 +158,20 @@ export class DriverHomepagePage implements OnInit {
   }
   ngOnInit() {}
 
-  async callSOS(){
-   this.currentLocation   = await this.locationService.getUserPosition();
-    console.log("DSAD") 
+  async callSOS() {
+    this.currentLocation = await this.locationService.getUserPosition();
+    console.log("DSAD");
     this.storage.get("username").then(username => {
       this.storage.get("username").then(phone => {
-      this.socketService.send("/server-receiver", {
-        type: "customer",
-        messageType: "SOS",
-        driver: username,
-        phoneNumber: phone,
-        fromLat: this.currentLocation.coords.latitude,
-        fromLong: this.currentLocation.coords.longitude
+        this.socketService.send("/server-receiver", {
+          type: "customer",
+          messageType: "SOS",
+          driver: username,
+          phoneNumber: phone,
+          fromLat: this.currentLocation.coords.latitude,
+          fromLong: this.currentLocation.coords.longitude
+        });
       });
-     });
     });
   }
 }

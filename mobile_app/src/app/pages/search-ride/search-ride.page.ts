@@ -3,6 +3,7 @@ import { SocketService } from "../../services/socket.service";
 import { ActivatedRoute } from "@angular/router";
 import { Events } from "@ionic/angular";
 import { Storage } from "@ionic/storage";
+import { LocationService } from "../../services/location.service";
 
 @Component({
   selector: "app-search-ride",
@@ -22,7 +23,8 @@ export class SearchRidePage implements OnInit, AfterContentInit {
     public socketService: SocketService,
     private route: ActivatedRoute,
     public events: Events,
-    private storage: Storage
+    private storage: Storage,
+    private locationService: LocationService 
   ) {
     
     // var handle = setInterval(data => {
@@ -51,7 +53,14 @@ export class SearchRidePage implements OnInit, AfterContentInit {
   requestDrive() {
     const firstParam: string = this.route.snapshot.queryParamMap.get("data");
     let params = JSON.parse(firstParam);
-    this.storage.get("phoneNumber").then(val => {
+    this.storage.get("phoneNumber").then(val => { 
+      var km = this.locationService.getDistanceFromLatLonInKm(
+        params.fromLat,
+        params.fromLong,
+        params.toLat,
+        params.toLong
+      );
+
       this.socketService.send("/server-receiver", {
         type: "customer",
         messageType: "DRIVE_REQUEST",
@@ -59,7 +68,9 @@ export class SearchRidePage implements OnInit, AfterContentInit {
         fromLong: params.fromLong,
         toLat: params.toLat,
         toLong: params.toLong,
-        phoneNumber: val
+        persons: params.persons,
+        phoneNumber: val,
+        km:km
       });
     });
   }

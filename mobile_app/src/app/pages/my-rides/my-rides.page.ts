@@ -52,7 +52,7 @@ export class MyRidesPage implements OnInit {
         this.locationService.getReverseGeocode(value.fromLat, value.fromLong).then(
           from =>{
             this.locationService.getReverseGeocode(value.toLat, value.toLong).then(
-              to =>{ 
+              to =>{  
                 this.invoiceList.push({"fromAddress": 
                 from[0].thoroughfare +
                 "," +
@@ -63,7 +63,7 @@ export class MyRidesPage implements OnInit {
                 "," +
                 to[0].subThoroughfare +
                 "," +
-                to[0].locality })
+                to[0].locality, "persons": value.persons, km:value.km })
                 console.log(JSON.stringify(this.invoiceList))
               }
             )

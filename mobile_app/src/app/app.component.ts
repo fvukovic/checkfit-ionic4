@@ -203,7 +203,7 @@ export class AppComponent implements OnInit {
       message.fromLong,
       message.toLat,
       message.toLong
-    );
+    ) + " km";
     this.events.publish("informCustomer", distance);
   }
 

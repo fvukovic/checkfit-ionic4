@@ -24,16 +24,7 @@
     </div>
     <div class="passengers">
         <div class="title">Broj putnika:</div>
-        <ion-radio-group class="passengers-nr"> 
-          <ion-label>1</ion-label>
-          <ion-radio (click)="setNumberOfPersons(1)"></ion-radio>
-          <ion-label>2</ion-label>
-          <ion-radio (click)="setNumberOfPersons(2)"></ion-radio>
-          <ion-label>3</ion-label>
-          <ion-radio (click)="setNumberOfPersons(3)"></ion-radio>
-          <ion-label>4</ion-label>
-          <ion-radio (click)="setNumberOfPersons(4)"></ion-radio>
-        </ion-radio-group>
+        <input type="text" [(ngModel)]="numberOfPersons" />
     </div>
 
   <ion-button class="order" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</ion-button>

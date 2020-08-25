@@ -167,8 +167,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     );
     let toAddress = await this.locationService.getForwardGeocode2(
       this.toAddress
-    );
-    
+    ); 
     let params = {
       fromLat: fromAddress["latitude"],
       fromLong: fromAddress["longitude"],

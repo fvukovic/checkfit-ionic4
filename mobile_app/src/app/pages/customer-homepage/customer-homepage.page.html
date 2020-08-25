@@ -1,10 +1,12 @@
 <ion-header [translucent]="true">
-  <ion-toolbar class="koko">
+  <ion-toolbar>
+    <div class="header-box">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>Naruči vožnju</ion-title>
-    <button *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
+    <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
+  </div>
   </ion-toolbar>
 </ion-header>
   <ion-content class="mapp"> 

@@ -1,10 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Driver homepage</ion-title>
-    <button *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
+    <div class="header-box">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Mura Taxi</ion-title>
+      <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
+  </div>
   </ion-toolbar>
 </ion-header>
 <ion-content class="mapp">
@@ -13,8 +15,11 @@
       height: 80% !important;
     }
   </style>
-  <div #mapElement class="map"></div> 
-<ion-button *ngIf="isDriveStarted" href="tel:{{phoneNumber}}">>Call Customer</ion-button>
-  <ion-button *ngIf="isDriveStarted" (click)="endDrive()" >End Drive</ion-button>
-  <br />
+  
+    <div #mapElement class="map"></div> 
+    <div class="buttons">
+      <ion-button class="call-customer" *ngIf="isDriveStarted" href="tel:{{phoneNumber}}">Nazovi korisnika</ion-button>
+      <ion-button class="finish-drive" *ngIf="isDriveStarted" (click)="endDrive()" >Završi vožnju</ion-button>
+    </div>
+
 </ion-content>

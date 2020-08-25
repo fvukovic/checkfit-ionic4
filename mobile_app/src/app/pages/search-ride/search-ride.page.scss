@@ -52,7 +52,8 @@
     }
     .logo {
         text-align: center;
-        border-bottom: 1px solid #000;        
+        border-bottom: 1px solid #000;    
+        margin-top: 30px;    
 
         .menu-img {            
             max-width: 40%;
@@ -63,4 +64,41 @@
             font-weight: bold;
         }
     }
+
+    .accepted-ride {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+
+        h2 {
+            text-transform: uppercase;
+            border-bottom: 1px solid #000;
+            padding-bottom: 15px;
+        }
+        img {
+            max-width: 55%;
+        }
+
+        .distance {
+            color: #46e169;
+            background: #393939;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        span {
+            text-transform: uppercase;
+        }
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        .driver {
+            margin: 20px 0;
+            font-style: italic;;
+        }
+        .km {
+            font-size: 30px;
+        }
+    }
+    
 }

@@ -1,10 +1,12 @@
 <ion-header [translucent]="true">
     <ion-toolbar>
+      <div class="header-box">
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-title>O nama</ion-title>
-      <button *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
+      <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
+    </div>
     </ion-toolbar>
   </ion-header> 
 <ion-content>

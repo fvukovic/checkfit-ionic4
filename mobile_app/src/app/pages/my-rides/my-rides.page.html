@@ -5,5 +5,8 @@
 </ion-header>
 
 <ion-content>
-
+<div *ngFor="let item of invoiceList">
+  Od: {{item.fromAddress}} <br>
+  Do: {{item.toAddress}} 
+</div>
 </ion-content>

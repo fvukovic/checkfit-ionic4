@@ -24,7 +24,7 @@
     </div>
     <div class="passengers">
         <div class="title">Broj putnika:</div>
-        <input type="text" [(ngModel)]="numberOfPersons" />
+        <input type="text" class="passenger-number" placeholder="Upišite broj putnika!" [(ngModel)]="numberOfPersons" />
     </div>
     <div class="btn-wrapper">
       <button class="order" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</button>

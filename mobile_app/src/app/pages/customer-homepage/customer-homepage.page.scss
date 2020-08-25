@@ -9,7 +9,7 @@
     color: #46e169;
     background: #393939;
     text-transform: uppercase;
-    font-size: 12px; 
+    font-size: 12px;
 }
 
 .location-to .sc-ion-card-md-h {
@@ -57,6 +57,12 @@ ion-radio {
     font-size: 12px;
     text-transform: uppercase;
     
+    .passenger-number {
+        background: #393939;
+;
+        border: 0;
+
+    }
 }
 ion-menu-button {
     --color: #393939;

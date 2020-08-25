@@ -3,11 +3,21 @@
         "title" : "Check-fit"
     },
     "menu": {
-        "aboutUs" : "About us",
-        "customerHomePage" : "Order TAXI1"
+        "aboutUs" : "O nama",
+        "customerHomePage" : "Naruči vožnju",
+        "myRides" : "Moje vožnje",
+        "number" : "Promjeni broj",
+        "login" : "Prijava (za vozača)",
+        "logout" : "Odjava",
+        "closeMenu" : "Natrag"
+        
+    },
+    "change": {
+        "number" : "Promjeni broj"
+        
     },
     "customerHomepage":{
-        "myRides" : "Order TAXI"
+        "myRides" : "Naruči vožnju" 
     }
  
 }

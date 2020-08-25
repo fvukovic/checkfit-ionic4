@@ -15,16 +15,18 @@
 .location-to .sc-ion-card-md-h {
     margin-bottom: 0;
 }
-ion-button {
-    --background: #46e169; 
+.btn-wrapper {
+    margin: 0 10px;
+}
+.order {
+    background: #46e169; 
     width: 100%;
-    padding: 0 10px; 
     height: 40px;
     box-shadow: none !important;    
-    --border-radius: 0 !important;
+    border-radius: 0 !important;
     color: #393939;
-    margin: 0;
     font-size: 12px; 
+    text-transform: uppercase;
 }
 
 ion-radio-group {
@@ -48,7 +50,7 @@ ion-radio {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin: 10px 10px;
+    margin: 10px;
     background: #393939;
     color: #46e169;
     height: 45px;

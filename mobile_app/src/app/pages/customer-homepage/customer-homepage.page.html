@@ -26,6 +26,8 @@
         <div class="title">Broj putnika:</div>
         <input type="text" [(ngModel)]="numberOfPersons" />
     </div>
-
-  <ion-button class="order" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</ion-button>
+    <div class="btn-wrapper">
+      <button class="order" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</button>
+    </div>
+  
   </ion-content> 

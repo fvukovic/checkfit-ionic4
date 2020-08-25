@@ -1,0 +1,48 @@
+.map {
+    margin: 20px;
+}
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    border-bottom: 1px solid #000;
+    padding-bottom: 15px;
+    margin: 20px;
+
+    .call-customer {
+        --background: #46e169;
+        color: #393939;
+        font-size: 13px;
+    }
+    .finish-drive {
+        --background: #393939;
+        color: #46e169;
+        font-size: 13px;
+    }
+}
+.header-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 0;
+
+    ion-title {
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    .sos {
+        background: #DC143C;
+        float: right;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        padding: 0;
+        margin: 0 20px 0 0;
+        color: white;
+        font-weight: bold;
+    }
+}
+

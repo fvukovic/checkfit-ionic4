@@ -1,20 +1,36 @@
 <ion-header>
   <ion-toolbar>
       <!-- Advanced: explicity set the icon for each platform -->
-  <ion-icon style="height: 30px;" (click) = "closeModal()"  name="arrow-back"></ion-icon>
-    <ion-title>New Drive Request</ion-title>
+  <ion-icon (click) = "closeModal()"  name="arrow-back"></ion-icon>
+    <ion-title>Novi zahtjev za vožnju!</ion-title>
   </ion-toolbar>
 </ion-header>
 <!-- "{"username":null,"type":"customer","messageType":"DRIVE_REQUEST","fromLat":"45.333","fromLong":"16.444","toLat":"45.333","toLong":"16.444"}" -->
-<ion-content >
- <div style="padding: 20px;">
- <br/>
-  from: {{fromAddress}}
- <br/>
- to: {{toAddress}}
- <br/>
- <br/>
- <button style="margin: 20px;" (click) = "acceptRequst()" > Accept</button>
- <button style="margin: 20px;" (click) = "closeModal()"  > Reject</button>
+<ion-content class="request-wrapper">
+  <div class="img-wrapper">
+    <img src="http://murataxi.com/images/app/callTaxi1.png" class="menu-img">      
+    
 </div>
+ <div class="drive-request">
+    <div class="location-from">
+        <span class="text">Polazište:</span>
+        <span class="value">{{fromAddress}}</span> 
+    </div>
+
+    <div class="location-from">
+        <span class="text">Odredište:</span>
+        <span class="value">{{toAddress}}</span>
+    </div>
+
+    <div class="location-from">
+      <span class="text">Broj putnika:</span>
+      <span class="value"></span>
+    </div>
+
+    <div class="buttons">
+      <button class="btn accept" (click) = "acceptRequst()" > Prihvati</button>
+      <button class="btn reject" (click) = "closeModal()"  > Odbij</button>
+    </div> 
+ 
+  </div>
 </ion-content>

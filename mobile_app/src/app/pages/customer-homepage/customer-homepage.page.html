@@ -34,7 +34,10 @@
           <ion-label>4</ion-label>
           <ion-radio (click)="setNumberOfPersons(4)"></ion-radio>
         </ion-radio-group>
+        
     </div>
-
-  <ion-button class="order" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</ion-button>
+    <div class="btn-wrapper">
+      <button class="order" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</button>
+    </div>
+  
   </ion-content> 

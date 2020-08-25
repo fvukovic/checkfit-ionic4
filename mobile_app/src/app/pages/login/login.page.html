@@ -13,35 +13,45 @@
     <div padding-horizontal text-center class="animated fadeInDown">
       <div class="logo"></div>
       <h2 ion-text class="text-primary">
-        <strong>Login</strong> 
+        <strong>Prijava vozača</strong> 
       </h2>
+      <img src="http://murataxi.com/images/app/login.png" class="login-img">
     </div>
 
     <!-- Login form -->
     <form class="list-form">
-      <ion-item>
+      <!-- <ion-item>
         <ion-label floating>
           <ion-icon name="mail" item-start class="text-primary"></ion-icon>
-          Email
+          E-mail
         </ion-label>
         <input [(ngModel)]="email" name="email" type="email"/>
-      </ion-item>
+      </ion-item> -->
+      <div class="box-element">
+          <span class="text">Email:</span>
+          <input [(ngModel)]="email" name="email" type="email" class="email-inp"/>
+      </div>
 
-      <ion-item>
+      <!-- <ion-item>
         <ion-label floating>
           <ion-icon name="lock" item-start class="text-primary"></ion-icon>
-          Password
+          Lozinka
         </ion-label>
         <input [(ngModel)]="password" type="password" name="password"/>
-      </ion-item>
+      </ion-item> -->
+
+      <div class="box-element">
+        <span class="text">Lozinka:</span>
+        <input [(ngModel)]="password" type="password" name="password" class="pass-inp"/>
+    </div>
     </form>
 
-    <p text-right ion-text color="secondary" tappable (click)="forgotPass()"><strong>Forgot Password?</strong></p>
+    <!-- <p text-right ion-text color="secondary" tappable (click)="forgotPass()"><strong>Zaboravljena lozinka?</strong></p> -->
 
     <div>
-      <button  ion-button icon-start block color="dark" tappable (click)="login()">
-        <ion-icon name="log-in"></ion-icon>
-        {{ "login.sing.in" | translate }}      </button>
+      <button class="login-btn" tappable (click)="login()">
+        Prijavi se  
+      </button>
     </div>
    </div>
 </ion-content>

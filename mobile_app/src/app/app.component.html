@@ -9,9 +9,14 @@
               <div class="menu-list">Izbornik</div> 
                   <ion-menu-toggle auto-hide="false" >
 
-                  <ion-item class="list-item">
+                  <ion-item *ngIf="!isUserLoggedIn" class="list-item">
                       <ion-label routerLink="/customer-homepage">{{ "menu.customerHomePage" | translate }}</ion-label>
                   </ion-item>
+
+                  <ion-item *ngIf="isUserLoggedIn" class="list-item">
+                    <ion-label routerLink="/driver-homepage">Početna</ion-label>
+                </ion-item> 
+
 
                   <ion-item class="list-item">
                       <ion-label routerLink="/about-us">{{ "menu.aboutUs" | translate }}</ion-label>

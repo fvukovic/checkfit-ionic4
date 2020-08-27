@@ -42,16 +42,18 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     private socketService: SocketService,
     private events: Events
   ) {
+    this.storage.get("username").then(val => {
+      if (val != null) {
+        this.isUserLoggedIn = true;
+        this.router.navigate(["/driver-homepage"])        
+      }
+    });
     this.fromAddress = "Unesite adresu polaska!";
     this.toAddress = "Unesite adresu odredišta!";
   }
 
   ngOnInit() {
-    this.storage.get("username").then(val => {
-      if (val != null) {
-        this.isUserLoggedIn = true;
-      }
-    });
+
   }
 
   ngAfterContentInit(): void {

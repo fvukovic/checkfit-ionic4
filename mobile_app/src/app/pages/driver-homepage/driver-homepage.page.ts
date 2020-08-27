@@ -46,24 +46,26 @@ export class DriverHomepagePage implements OnInit {
         this.isUserLoggedIn = true;
       }
     });
+    this.initializeMap();
 
     const firstParam: string = this.route.snapshot.queryParamMap.get("data");
-    let message = JSON.parse(firstParam);
-    this.message = message;
-    this.phoneNumber = message.phoneNumber;
-    const driveIsStarted: string = this.route.snapshot.queryParamMap.get(
-      "driveIsStarted"
-    );
+    if (firstParam != null) {
+      let message = JSON.parse(firstParam);
+      this.message = message;
+      this.phoneNumber = message.phoneNumber;
+      const driveIsStarted: string = this.route.snapshot.queryParamMap.get(
+        "driveIsStarted"
+      );
 
-    // if (driveIsStarted == "true") {
-    //   //TODO makni ovo na kraju
-    this.isDriveStarted = true;
-    // }
+      if (driveIsStarted == "true") {
+        //TODO makni ovo na kraju
+        this.isDriveStarted = true;
+      }
 
-    this.initializeMap();
-    this.directionsDisplay.setMap(this.map);
-    //this.calculateAndDisplayRoute()
-    this.populateAddress(this.message);
+      this.directionsDisplay.setMap(this.map);
+      //this.calculateAndDisplayRoute()
+      this.populateAddress(this.message);
+    }
   }
   ngAfterContentInit() {}
 
@@ -128,7 +130,6 @@ export class DriverHomepagePage implements OnInit {
   }
 
   endDrive() {
-  
     this.storage.get("username").then(username => {
       this.socketService.send("/server-receiver", {
         type: "customer",

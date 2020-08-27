@@ -443,7 +443,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\"> \n      <ion-content>\n        <ion-list id=\"inbox-list\">\n              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->\n              <img src=\"http://murataxi.com/images/resources/taxiLogo.png\" class=\"menu-img\">\n\n              <div class=\"menu-list\">Izbornik</div> \n                  <ion-menu-toggle auto-hide=\"false\" >\n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n                  </ion-item>\n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n                  </ion-item> \n                  <ion-item class=\"list-item\">\n                    <button class=\"menu-close\" ion-button menuClose>{{ \"menu.closeMenu\" | translate }}</button>\n                </ion-item> \n                \n                \n                </ion-menu-toggle>\n            </ion-list>\n\n            <ion-list id=\"labels-list\">\n            <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n            <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      <p class=\"text-moto\">Najkvalitetnija usluga prijevoza u gradu!</p>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\"> \n      <ion-content>\n        <ion-list id=\"inbox-list\">\n              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->\n              <img src=\"http://murataxi.com/images/resources/taxiLogo.png\" class=\"menu-img\">\n\n              <div class=\"menu-list\">Izbornik</div> \n                  <ion-menu-toggle auto-hide=\"false\" >\n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n                  </ion-item>\n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n                  </ion-item> \n                  <ion-item class=\"list-item\">\n                    <button class=\"menu-close\" ion-button menuClose>{{ \"menu.closeMenu\" | translate }}</button>\n                </ion-item> \n                \n                \n                </ion-menu-toggle>\n            </ion-list>\n\n            <ion-list id=\"labels-list\">\n            <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n            <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      <p class=\"text-moto\">Najkvalitetnija usluga prijevoza u gradu!</p>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
 
 /***/ }),
 
@@ -456,7 +456,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n      <!-- Advanced: explicity set the icon for each platform -->\n  <ion-icon (click) = \"closeModal()\"  name=\"arrow-back\"></ion-icon>\n    <ion-title>Novi zahtjev za vožnju!</ion-title>\n  </ion-toolbar>\n</ion-header>\n<!-- \"{\"username\":null,\"type\":\"customer\",\"messageType\":\"DRIVE_REQUEST\",\"fromLat\":\"45.333\",\"fromLong\":\"16.444\",\"toLat\":\"45.333\",\"toLong\":\"16.444\"}\" -->\n<ion-content class=\"request-wrapper\">\n  <div class=\"img-wrapper\">\n    <img src=\"http://murataxi.com/images/app/callTaxi1.png\" class=\"menu-img\">      \n    \n</div>\n <div class=\"drive-request\">\n    <div class=\"location-from\">\n        <span class=\"text\">Polazište:</span>\n        <span class=\"value\">{{fromAddress}}</span> \n    </div>\n\n    <div class=\"location-from\">\n        <span class=\"text\">Odredište:</span>\n        <span class=\"value\">{{toAddress}}</span>\n    </div>\n\n    <div class=\"location-from\">\n      <span class=\"text\">Broj putnika:</span>\n      <span class=\"value\"></span>\n    </div>\n\n    <div class=\"buttons\">\n      <button class=\"btn accept\" (click) = \"acceptRequst()\" > Prihvati</button>\n      <button class=\"btn reject\" (click) = \"closeModal()\"  > Odbij</button>\n    </div> \n \n  </div>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n      <!-- Advanced: explicity set the icon for each platform -->\n  <ion-icon (click) = \"closeModal()\"  name=\"arrow-back\"></ion-icon>\n    <ion-title>Novi zahtjev za vožnju!</ion-title>\n  </ion-toolbar>\n</ion-header>\n<!-- \"{\"username\":null,\"type\":\"customer\",\"messageType\":\"DRIVE_REQUEST\",\"fromLat\":\"45.333\",\"fromLong\":\"16.444\",\"toLat\":\"45.333\",\"toLong\":\"16.444\"}\" -->\n<ion-content class=\"request-wrapper\">\n  <div class=\"img-wrapper\">\n    <img src=\"http://murataxi.com/images/app/callTaxi1.png\" class=\"menu-img\">      \n    \n</div>\n <div class=\"drive-request\">\n    <div class=\"location-from\">\n        <span class=\"text\">Polazište:</span>\n        <span class=\"value\">{{fromAddress}}</span> \n    </div>\n\n    <div class=\"location-from\">\n        <span class=\"text\">Odredište:</span>\n        <span class=\"value\">{{toAddress}}</span>\n    </div>\n\n    <div class=\"location-from\">\n      <span class=\"text\">Broj putnika:</span>\n    <span class=\"value\">{{message.persons}}</span>\n    </div>\n\n    <div class=\"buttons\">\n      <button class=\"btn accept\" (click) = \"acceptRequst()\" > Prihvati</button>\n      <button class=\"btn reject\" (click) = \"closeModal()\"  > Odbij</button>\n    </div> \n \n  </div>\n</ion-content>\n");
 
 /***/ }),
 
@@ -1298,13 +1298,22 @@ let DriveRequestPage = class DriveRequestPage {
     populateAddresses() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             var fromAddress = yield this.locationService.getReverseGeocode(this.message.fromLat, this.message.fromLong);
-            this.fromAddress = fromAddress[0].thoroughfare + "," + fromAddress[0].subThoroughfare + "," + fromAddress[0].locality;
+            this.fromAddress =
+                fromAddress[0].thoroughfare +
+                    "," +
+                    fromAddress[0].subThoroughfare +
+                    "," +
+                    fromAddress[0].locality;
             var toAddress = yield this.locationService.getReverseGeocode(this.message.toLat, this.message.toLong);
-            this.toAddress = toAddress[0].thoroughfare + "," + toAddress[0].subThoroughfare + "," + toAddress[0].locality;
+            this.toAddress =
+                toAddress[0].thoroughfare +
+                    "," +
+                    toAddress[0].subThoroughfare +
+                    "," +
+                    toAddress[0].locality;
         });
     }
-    ngOnInit() {
-    }
+    ngOnInit() { }
     closeModal() {
         this.modalControler.dismiss();
     }
@@ -1317,12 +1326,12 @@ let DriveRequestPage = class DriveRequestPage {
             fromLat: this.message.fromLat,
             fromLong: this.message.fromLong,
             toLat: this.message.toLat,
-            toLong: this.message.toLong,
+            toLong: this.message.toLong
         });
-        //this.router.navigate(["/driver-homepage"],  { queryParams: {data:JSON.stringify(this.message)} }); 
+        //this.router.navigate(["/driver-homepage"],  { queryParams: {data:JSON.stringify(this.message)} });
         this.closeModal();
         /**TODO dodaj alert za 5 sekunda ako voznja nije prihvacena
-        */
+         */
     }
 };
 DriveRequestPage.ctorParameters = () => [

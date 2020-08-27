@@ -1,33 +1,39 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <div class="header-box">
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Naruči vožnju</ion-title>
-    <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
-  </div>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Nova vožnja</ion-title>
+      <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
+      <img src="http://murataxi.com/images/resources/taxiLogo.png">
+    </div>
   </ion-toolbar>
 </ion-header>
   <ion-content class="mapp"> 
-    <style>
-      .map {
-        height: 60% !important;
-      } 
-    </style>
     <div #mapElement class="map"></div> 
-    <div class="location-from">
-        <ion-card (click)="openStreetPicker('from')"> {{fromAddress}} </ion-card>
+    <div class="location-wrapper">
+      <h3 class="title">Upišite tražene podatke:</h3>
+      <div class="location-details">
+          <span class="text">Polazište:</span>
+          <span class="value">
+            <ion-card class="destination" (click)="openStreetPicker('from')"> {{fromAddress}} </ion-card>
+          </span>
+      </div>
+      <div class="location-details">
+        <span class="text">Odredište:</span>
+        <span class="value">
+          <ion-card class="destination" (click)="openStreetPicker('to')"> {{toAddress}} </ion-card>
+        </span>
+      </div>
+      <div class="location-details">
+          <span class="text">Putnici:</span>
+          <span class="value">
+            <input class="passengers" type="text" placeholder="Upišite broj putnika!" [(ngModel)]="numberOfPersons" />
+          </span>
+      </div>
+      <div class="location-details">
+        <button class="order-ride" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</button>
+      </div>
     </div>
-    <div class="location-to">
-      <ion-card (click)="openStreetPicker('to')"> {{toAddress}} </ion-card>
-    </div>
-    <div class="passengers">
-        <div class="title">Broj putnika:</div>
-        <input type="text" class="passenger-number" placeholder="Upišite broj putnika!" [(ngModel)]="numberOfPersons" />
-    </div>
-    <div class="btn-wrapper">
-      <button class="order" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</button>
-    </div>
-  
   </ion-content> 

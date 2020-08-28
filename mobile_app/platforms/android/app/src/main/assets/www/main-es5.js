@@ -167,7 +167,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\"> \n      <ion-content>\n        <ion-list id=\"inbox-list\">\n              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->\n              <img src=\"http://murataxi.com/images/resources/taxiLogo.png\" class=\"menu-img\">\n\n              <div class=\"menu-list\">Izbornik</div> \n                  <ion-menu-toggle auto-hide=\"false\" >\n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n                  </ion-item>\n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n                  </ion-item> \n                  <ion-item class=\"list-item\">\n                    <button class=\"menu-close\" ion-button menuClose>{{ \"menu.closeMenu\" | translate }}</button>\n                </ion-item> \n                \n                \n                </ion-menu-toggle>\n            </ion-list>\n\n            <ion-list id=\"labels-list\">\n            <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n            <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      <p class=\"text-moto\">Najkvalitetnija usluga prijevoza u gradu!</p>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
+    __webpack_exports__["default"] = "<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\"> \n      <ion-content>\n        <ion-list id=\"inbox-list\">\n              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->\n              <img src=\"http://murataxi.com/images/resources/taxiLogo.png\" class=\"menu-img\">\n\n              <div class=\"menu-list\">Izbornik</div> \n                  <ion-menu-toggle auto-hide=\"false\" >\n\n                  <ion-item *ngIf=\"!isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n                  </ion-item>\n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                    <ion-label routerLink=\"/driver-homepage\">Početna</ion-label>\n                </ion-item> \n\n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n                  </ion-item> \n                  <ion-item class=\"list-item\">\n                    <button class=\"menu-close\" ion-button menuClose>{{ \"menu.closeMenu\" | translate }}</button>\n                </ion-item> \n                \n                \n                </ion-menu-toggle>\n            </ion-list>\n\n            <ion-list id=\"labels-list\">\n            <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n            <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      <p class=\"text-moto\">Najkvalitetnija usluga prijevoza u gradu!</p>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
     /***/
   },
 
@@ -1091,12 +1091,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _pages_popups_phone_number_phone_number_page__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
     /*! ./pages/popups/phone-number/phone-number.page */
     "./src/app/pages/popups/phone-number/phone-number.page.ts");
+    /* harmony import */
+
+
+    var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! @ionic-native/native-audio/ngx */
+    "./node_modules/@ionic-native/native-audio/ngx/index.js");
 
     var WEBSOCKET_URL = "ws://localhost:9092/socket";
     var EXAMPLE_URL = "/topic/server-broadcaster";
 
     var AppComponent = /*#__PURE__*/function () {
-      function AppComponent(platform, splashScreen, statusBar, router, socketService, modalcontroller, translate, storage, locationService, events) {
+      function AppComponent(platform, splashScreen, statusBar, router, socketService, modalcontroller, translate, storage, locationService, events, nativeAudio) {
         var _this = this;
 
         _classCallCheck(this, AppComponent);
@@ -1110,10 +1116,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.storage = storage;
         this.locationService = locationService;
         this.events = events;
+        this.nativeAudio = nativeAudio;
         this._this = this;
         this.messageHistory = [];
         this.state = "NOT CONNECTED";
-        this.isUserLoggedIn = false; //socketService.getUniqueId();
+        this.isUserLoggedIn = false;
+        this.nativeAudio.preloadSimple('uniqueId1', './assets/619006.svg').then(this.onSuccess, this.onError); //socketService.getUniqueId();
 
         this.router.navigateByUrl("customer-homepage");
         this.initializeApp();
@@ -1156,6 +1164,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       _createClass(AppComponent, [{
+        key: "onSuccess",
+        value: function onSuccess() {
+          this.nativeAudio.play('uniqueId1');
+        }
+      }, {
+        key: "onError",
+        value: function onError() {}
+      }, {
         key: "initializeApp",
         value: function initializeApp() {
           var _this2 = this;
@@ -1366,6 +1382,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _services_location_service__WEBPACK_IMPORTED_MODULE_10__["LocationService"]
       }, {
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"]
+      }, {
+        type: _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_13__["NativeAudio"]
       }];
     };
 
@@ -1377,7 +1395,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./app.component.scss */
       "./src/app/app.component.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_socket_service__WEBPACK_IMPORTED_MODULE_11__["SocketService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"], _services_location_service__WEBPACK_IMPORTED_MODULE_10__["LocationService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"]])], AppComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _services_socket_service__WEBPACK_IMPORTED_MODULE_11__["SocketService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ModalController"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"], _services_location_service__WEBPACK_IMPORTED_MODULE_10__["LocationService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"], _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_13__["NativeAudio"]])], AppComponent);
     /***/
   },
 
@@ -1526,6 +1544,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
     /*! @ionic-native/android-permissions/ngx */
     "./node_modules/@ionic-native/android-permissions/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    /*! @ionic-native/native-audio/ngx */
+    "./node_modules/@ionic-native/native-audio/ngx/index.js");
 
     function createTranslateLoader(http) {
       return new _ngx_translate_http_loader__WEBPACK_IMPORTED_MODULE_7__["TranslateHttpLoader"](http, './assets/i18n/', '.json');
@@ -1551,7 +1575,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_15__["Geolocation"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
-      }, _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_16__["NativeGeocoder"], _ionic_native_unique_device_id_ngx__WEBPACK_IMPORTED_MODULE_17__["UniqueDeviceID"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_19__["AndroidPermissions"]],
+      }, _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_16__["NativeGeocoder"], _ionic_native_unique_device_id_ngx__WEBPACK_IMPORTED_MODULE_17__["UniqueDeviceID"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_19__["AndroidPermissions"], _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_20__["NativeAudio"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })], AppModule);
     /***/

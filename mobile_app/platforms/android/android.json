@@ -9,7 +9,7 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<config-file parent=\"/manifest\" target=\"AndroidManifest.xml\"><uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" /><uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" /><uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\" /><uses-permission android:name=\"android.permission.LOCATION\" /></config-file>",
+              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
               "count": 2,
               "mode": "merge",
               "id": "config.xml",
@@ -24,7 +24,7 @@
               }
             },
             {
-              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
+              "xml": "<config-file parent=\"/manifest\" target=\"AndroidManifest.xml\"><uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" /><uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" /><uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\" /><uses-permission android:name=\"android.permission.LOCATION\" /></config-file>",
               "count": 1,
               "mode": "merge",
               "id": "config.xml",
@@ -150,7 +150,7 @@
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
-              "count": 2
+              "count": 3
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.CALL_PHONE\" />",
@@ -158,6 +158,14 @@
             },
             {
               "xml": "<uses-feature android:name=\"android.hardware.telephony\" android:required=\"false\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\" />",
+              "count": 1
+            },
+            {
+              "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
               "count": 1
             }
           ]
@@ -208,6 +216,10 @@
             },
             {
               "xml": "<feature name=\"Permissions\"><param name=\"android-package\" value=\"com.android.plugins.Permissions\" /></feature>",
+              "count": 1
+            },
+            {
+              "xml": "<feature name=\"NativeAudio\"><param name=\"android-package\" value=\"com.rjfun.cordova.plugin.nativeaudio.NativeAudio\" /></feature>",
               "count": 1
             }
           ]
@@ -351,6 +363,9 @@
     },
     "cordova-plugin-android-permissions": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {},
@@ -469,6 +484,14 @@
       "clobbers": [
         "cordova.plugins.permissions"
       ]
+    },
+    {
+      "id": "cordova-plugin-nativeaudio.nativeaudio",
+      "file": "plugins/cordova-plugin-nativeaudio/www/nativeaudio.js",
+      "pluginId": "cordova-plugin-nativeaudio",
+      "clobbers": [
+        "window.plugins.NativeAudio"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -484,6 +507,7 @@
     "cordova-plugin-sim": "1.3.3",
     "cordova-plugin-uniquedeviceid": "1.3.2",
     "mx.ferreyra.callnumber": "0.0.2",
-    "cordova-plugin-android-permissions": "1.0.2"
+    "cordova-plugin-android-permissions": "1.0.2",
+    "cordova-plugin-nativeaudio": "3.0.9"
   }
 }

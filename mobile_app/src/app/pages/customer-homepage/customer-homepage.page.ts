@@ -44,8 +44,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
   ) {
     this.storage.get("username").then(val => {
       if (val != null) {
-        this.isUserLoggedIn = true;
-        this.router.navigate(["/driver-homepage"])        
+        this.isUserLoggedIn = true;       
       }
     });
     this.fromAddress = "Unesite adresu polaska!";

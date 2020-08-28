@@ -443,7 +443,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\"> \n      <ion-content>\n        <ion-list id=\"inbox-list\">\n              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->\n              <img src=\"http://murataxi.com/images/resources/taxiLogo.png\" class=\"menu-img\">\n\n              <div class=\"menu-list\">Izbornik</div> \n                  <ion-menu-toggle auto-hide=\"false\" >\n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n                  </ion-item>\n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n                  </ion-item> \n                  <ion-item class=\"list-item\">\n                    <button class=\"menu-close\" ion-button menuClose>{{ \"menu.closeMenu\" | translate }}</button>\n                </ion-item> \n                \n                \n                </ion-menu-toggle>\n            </ion-list>\n\n            <ion-list id=\"labels-list\">\n            <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n            <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      <p class=\"text-moto\">Najkvalitetnija usluga prijevoza u gradu!</p>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\"> \n      <ion-content>\n        <ion-list id=\"inbox-list\">\n              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->\n              <img src=\"http://murataxi.com/images/resources/taxiLogo.png\" class=\"menu-img\">\n\n              <div class=\"menu-list\">Izbornik</div> \n                  <ion-menu-toggle auto-hide=\"false\" >\n\n                  <ion-item *ngIf=\"!isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n                  </ion-item>\n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                    <ion-label routerLink=\"/driver-homepage\">Početna</ion-label>\n                </ion-item> \n\n\n                  <ion-item class=\"list-item\">\n                      <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n                  </ion-item> \n                  <ion-item class=\"list-item\">\n                    <button class=\"menu-close\" ion-button menuClose>{{ \"menu.closeMenu\" | translate }}</button>\n                </ion-item> \n                \n                \n                </ion-menu-toggle>\n            </ion-list>\n\n            <ion-list id=\"labels-list\">\n            <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n            <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      <p class=\"text-moto\">Najkvalitetnija usluga prijevoza u gradu!</p>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
 
 /***/ }),
 
@@ -844,6 +844,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_location_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./services/location.service */ "./src/app/services/location.service.ts");
 /* harmony import */ var _services_socket_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./services/socket.service */ "./src/app/services/socket.service.ts");
 /* harmony import */ var _pages_popups_phone_number_phone_number_page__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./pages/popups/phone-number/phone-number.page */ "./src/app/pages/popups/phone-number/phone-number.page.ts");
+/* harmony import */ var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic-native/native-audio/ngx */ "./node_modules/@ionic-native/native-audio/ngx/index.js");
+
 
 
 
@@ -861,7 +863,7 @@ __webpack_require__.r(__webpack_exports__);
 const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
 let AppComponent = class AppComponent {
-    constructor(platform, splashScreen, statusBar, router, socketService, modalcontroller, translate, storage, locationService, events) {
+    constructor(platform, splashScreen, statusBar, router, socketService, modalcontroller, translate, storage, locationService, events, nativeAudio) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
@@ -871,10 +873,12 @@ let AppComponent = class AppComponent {
         this.storage = storage;
         this.locationService = locationService;
         this.events = events;
+        this.nativeAudio = nativeAudio;
         this._this = this;
         this.messageHistory = [];
         this.state = "NOT CONNECTED";
         this.isUserLoggedIn = false;
+        this.nativeAudio.preloadSimple('uniqueId1', './assets/619006.svg').then(this.onSuccess, this.onError);
         //socketService.getUniqueId();
         this.router.navigateByUrl("customer-homepage");
         this.initializeApp();
@@ -907,6 +911,11 @@ let AppComponent = class AppComponent {
                 });
             }, 3000);
         });
+    }
+    onSuccess() {
+        this.nativeAudio.play('uniqueId1');
+    }
+    onError() {
     }
     initializeApp() {
         this.storage.get("phoneNumber").then(val => {
@@ -1044,7 +1053,8 @@ AppComponent.ctorParameters = () => [
     { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"] },
     { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"] },
     { type: _services_location_service__WEBPACK_IMPORTED_MODULE_10__["LocationService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"] },
+    { type: _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_13__["NativeAudio"] }
 ];
 AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1061,7 +1071,8 @@ AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateService"],
         _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"],
         _services_location_service__WEBPACK_IMPORTED_MODULE_10__["LocationService"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"]])
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Events"],
+        _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_13__["NativeAudio"]])
 ], AppComponent);
 
 
@@ -1099,6 +1110,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ionic_native_unique_device_id_ngx__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @ionic-native/unique-device-id/ngx */ "./node_modules/@ionic-native/unique-device-id/ngx/index.js");
 /* harmony import */ var _pages_popups_phone_number_phone_number_module__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./pages/popups/phone-number/phone-number.module */ "./src/app/pages/popups/phone-number/phone-number.module.ts");
 /* harmony import */ var _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @ionic-native/android-permissions/ngx */ "./node_modules/@ionic-native/android-permissions/ngx/index.js");
+/* harmony import */ var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @ionic-native/native-audio/ngx */ "./node_modules/@ionic-native/native-audio/ngx/index.js");
+
 
 
 
@@ -1153,7 +1166,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
             _ionic_native_native_geocoder_ngx__WEBPACK_IMPORTED_MODULE_16__["NativeGeocoder"],
             _ionic_native_unique_device_id_ngx__WEBPACK_IMPORTED_MODULE_17__["UniqueDeviceID"],
-            _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_19__["AndroidPermissions"]
+            _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_19__["AndroidPermissions"],
+            _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_20__["NativeAudio"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })

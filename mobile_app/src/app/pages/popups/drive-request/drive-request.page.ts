@@ -14,6 +14,7 @@ export class DriveRequestPage implements OnInit {
   message: any;
   fromAddress: String;
   toAddress: String;
+  selectedTime: number;
   constructor(
     private modalControler: ModalController,
     public navParams: NavParams,
@@ -54,7 +55,7 @@ export class DriveRequestPage implements OnInit {
     this.modalControler.dismiss();
   }
 
-  acceptRequst() {
+  acceptRequst() { 
     this.socketService.send("/server-receiver", {
       type: "customer",
       messageType: "ACCEPT_DRIVE",
@@ -63,7 +64,8 @@ export class DriveRequestPage implements OnInit {
       fromLat: this.message.fromLat,
       fromLong: this.message.fromLong,
       toLat: this.message.toLat,
-      toLong: this.message.toLong
+      toLong: this.message.toLong,
+      time: this.selectedTime
     });
     //this.router.navigate(["/driver-homepage"],  { queryParams: {data:JSON.stringify(this.message)} });
     this.closeModal();

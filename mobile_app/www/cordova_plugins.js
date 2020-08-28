@@ -114,6 +114,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "cordova.plugins.permissions"
       ]
+    },
+    {
+      "id": "cordova-plugin-nativeaudio.nativeaudio",
+      "file": "plugins/cordova-plugin-nativeaudio/www/nativeaudio.js",
+      "pluginId": "cordova-plugin-nativeaudio",
+      "clobbers": [
+        "window.plugins.NativeAudio"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -129,6 +137,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-sim": "1.3.3",
     "cordova-plugin-uniquedeviceid": "1.3.2",
     "mx.ferreyra.callnumber": "0.0.2",
-    "cordova-plugin-android-permissions": "1.0.2"
+    "cordova-plugin-android-permissions": "1.0.2",
+    "cordova-plugin-nativeaudio": "3.0.9"
   };
 });

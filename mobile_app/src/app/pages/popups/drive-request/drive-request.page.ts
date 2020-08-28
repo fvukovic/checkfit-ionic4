@@ -4,6 +4,7 @@ import { NavParams } from "@ionic/angular";
 import { SocketService } from "../../../services/socket.service";
 import { LocationService } from "../../../services/location.service";
 import { Router } from "@angular/router";
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-drive-request",
@@ -20,7 +21,8 @@ export class DriveRequestPage implements OnInit {
     public navParams: NavParams,
     private socketService: SocketService,
     private router: Router,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private storage: Storage
   ) {
     this.message = this.navParams.get("message");
     this.populateAddresses();
@@ -56,6 +58,10 @@ export class DriveRequestPage implements OnInit {
   }
 
   acceptRequst() { 
+
+    this.storage.get("username").then(username => {
+ 
+  
     this.socketService.send("/server-receiver", {
       type: "customer",
       messageType: "ACCEPT_DRIVE",
@@ -65,8 +71,10 @@ export class DriveRequestPage implements OnInit {
       fromLong: this.message.fromLong,
       toLat: this.message.toLat,
       toLong: this.message.toLong,
-      time: this.selectedTime
+      time: this.selectedTime,
+      driver: username
     });
+  });
     //this.router.navigate(["/driver-homepage"],  { queryParams: {data:JSON.stringify(this.message)} });
     this.closeModal();
     /**TODO dodaj alert za 5 sekunda ako voznja nije prihvacena

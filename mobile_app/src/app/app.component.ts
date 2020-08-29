@@ -15,6 +15,7 @@ import { AndroidPermissions } from "@ionic-native/android-permissions/ngx";
 import { PhoneNumberPage } from "./pages/popups/phone-number/phone-number.page";
 import { Variable } from "@angular/compiler/src/render3/r3_ast";
 import { NativeAudio } from "@ionic-native/native-audio/ngx";
+import { AlertController } from '@ionic/angular';
 
 const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
@@ -33,6 +34,7 @@ export class AppComponent implements OnInit {
   name: string;
   isUserLoggedIn = false;
   fromAddress: String;
+  toAddress: String;
   task: Variable;
   interval;
 
@@ -47,7 +49,8 @@ export class AppComponent implements OnInit {
     private storage: Storage,
     private locationService: LocationService,
     public events: Events,
-    private nativeAudio: NativeAudio
+    private nativeAudio: NativeAudio,
+    private alertController: AlertController
   ) {
     //socketService.getUniqueId();
     this.router.navigateByUrl("customer-homepage");
@@ -173,9 +176,38 @@ export class AppComponent implements OnInit {
         });
         break;
       }
-      case "REQUEST_INCOMING": {
+      case "REQUEST_INCOMING": { 
+        // this.presentAlert();
+        var streetLocation = await this.locationService.getReverseGeocode(
+          message.fromLat,
+          message.fromLong
+        );
+        this.fromAddress =
+          streetLocation[0].thoroughfare +
+          "," +
+          streetLocation[0].subThoroughfare +
+          "," +
+          streetLocation[0].locality;
         this.nativeAudio.play("uniqueId1");
-        alert("Nova Vožnja dolazi!!");
+
+        var streetLocation2 = await this.locationService.getReverseGeocode(
+          message.toLat,
+          message.toLong
+        );
+        this.toAddress =
+        streetLocation2[0].thoroughfare +
+          "," +
+          streetLocation2[0].subThoroughfare +
+          "," +
+          streetLocation2[0].locality;
+        this.nativeAudio.play("uniqueId1");
+
+        alert(
+          "Dolazi nova Vožnja! \n \n" +
+          "OD: " + this.fromAddress + "\n" +
+          "DO: " + this.toAddress + "\n"  
+        );
+ 
         break;
       }
       case "FINISH_DRIVE_CUSTOMER": {
@@ -245,5 +277,16 @@ export class AppComponent implements OnInit {
       .then(modalElement => {
         modalElement.present();
       });
+  }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

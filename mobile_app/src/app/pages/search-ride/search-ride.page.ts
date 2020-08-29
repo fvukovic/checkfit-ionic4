@@ -63,10 +63,9 @@ export class SearchRidePage implements OnInit, AfterContentInit {
         params.toLat,
         params.toLong
       );
-
       this.socketService.send("/server-receiver", {
         type: "customer",
-        messageType: "DRIVE_REQUEST",
+        messageType: "REQUEST_INCOMING",
         fromLat: params.fromLat,
         fromLong: params.fromLong,
         toLat: params.toLat,
@@ -75,6 +74,23 @@ export class SearchRidePage implements OnInit, AfterContentInit {
         phoneNumber: val,
         km:km
       });
+
+   setTimeout(data => {
+    this.socketService.send("/server-receiver", {
+      type: "customer",
+      messageType: "DRIVE_REQUEST",
+      fromLat: params.fromLat,
+      fromLong: params.fromLong,
+      toLat: params.toLat,
+      toLong: params.toLong,
+      persons: params.persons,
+      phoneNumber: val,
+      km:km
+    });
+    }, 4000);
+   
+
+
     });
   }
 

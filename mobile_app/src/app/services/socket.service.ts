@@ -46,10 +46,7 @@ export class SocketService {
         }); 
   }
 
-  constructor(
-    private storage: Storage,
-    private uniqueDeviceID: UniqueDeviceID
-  ) {}
+  constructor(private storage: Storage) {}
 
   public stream(): Observable<Message> {
     return this.messages;

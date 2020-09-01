@@ -16,9 +16,7 @@ import { PhoneNumberPage } from "./pages/popups/phone-number/phone-number.page";
 import { Variable } from "@angular/compiler/src/render3/r3_ast";
 import { NativeAudio } from "@ionic-native/native-audio/ngx";
 import { AlertController } from '@ionic/angular';
-
-const WEBSOCKET_URL = "ws://localhost:9092/socket";
-const EXAMPLE_URL = "/topic/server-broadcaster";
+ 
 
 @Component({
   selector: "app-root",
@@ -78,7 +76,7 @@ export class AppComponent implements OnInit {
             );
           }, 4000);
         }
-      });
+      }); 
 
       setTimeout(() => {
         this.socketService.stream().subscribe((message: any) => {

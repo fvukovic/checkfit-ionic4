@@ -14,6 +14,8 @@ import { Events } from "@ionic/angular";
 import { AndroidPermissions } from "@ionic-native/android-permissions/ngx";
 import { PhoneNumberPage } from "./pages/popups/phone-number/phone-number.page";
 import { Variable } from "@angular/compiler/src/render3/r3_ast";
+import { NativeAudio } from "@ionic-native/native-audio/ngx";
+import { AlertController } from '@ionic/angular';
 
 const WEBSOCKET_URL = "ws://localhost:9092/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
@@ -32,6 +34,7 @@ export class AppComponent implements OnInit {
   name: string;
   isUserLoggedIn = false;
   fromAddress: String;
+  toAddress: String;
   task: Variable;
   interval;
 
@@ -45,20 +48,25 @@ export class AppComponent implements OnInit {
     translate: TranslateService,
     private storage: Storage,
     private locationService: LocationService,
-    public events: Events
+    public events: Events,
+    private nativeAudio: NativeAudio,
+    private alertController: AlertController
   ) {
     //socketService.getUniqueId();
     this.router.navigateByUrl("customer-homepage");
     this.initializeApp();
     translate.setDefaultLang("en");
     this.platform.ready().then(() => {
+      this.nativeAudio
+        .preloadSimple("uniqueId1", "assets/mp3.mp3")
+        .then(this.onSuccess, this.onError);
       this.socketService.initializeWebSocketConnection();
       this.storage.get("username").then(username => {
         if (username != null) {
           setInterval(() => {
             this.locationService.getUserPosition().then(
               val => {
-                 this.socketService.send("/server-receiver", {
+                this.socketService.send("/server-receiver", {
                   type: "driver",
                   driver: username,
                   messageType: "DRIVER_INFO",
@@ -85,6 +93,9 @@ export class AppComponent implements OnInit {
       }, 3000);
     });
   }
+  onSuccess(ee) {}
+
+  onError(ee) {}
 
   initializeApp() {
     this.storage.get("phoneNumber").then(val => {
@@ -111,15 +122,18 @@ export class AppComponent implements OnInit {
   async handleMessage(message) {
     switch (message.messageType) {
       case "DRIVE_REQUEST": {
-        this.modalcontroller
+        setTimeout(() => {
+          this.modalcontroller
           .create({
             component: DriveRequestPage,
             componentProps: { message: message }
           })
           .then(modalElement => {
-            console.log(message);
+            this.nativeAudio.play("uniqueId1");
             modalElement.present();
           });
+        }, 0);
+        
         break;
       }
       case "INFORM_DRIVE_CUSTOMER": {
@@ -162,6 +176,40 @@ export class AppComponent implements OnInit {
         });
         break;
       }
+      case "REQUEST_INCOMING": { 
+        // this.presentAlert();
+        var streetLocation = await this.locationService.getReverseGeocode(
+          message.fromLat,
+          message.fromLong
+        );
+        this.fromAddress =
+          streetLocation[0].thoroughfare +
+          "," +
+          streetLocation[0].subThoroughfare +
+          "," +
+          streetLocation[0].locality;
+        this.nativeAudio.play("uniqueId1");
+
+        var streetLocation2 = await this.locationService.getReverseGeocode(
+          message.toLat,
+          message.toLong
+        );
+        this.toAddress =
+        streetLocation2[0].thoroughfare +
+          "," +
+          streetLocation2[0].subThoroughfare +
+          "," +
+          streetLocation2[0].locality;
+        this.nativeAudio.play("uniqueId1");
+
+        alert(
+          "Dolazi nova Vožnja! \n \n" +
+          "OD: " + this.fromAddress + "\n" +
+          "DO: " + this.toAddress + "\n"  
+        );
+ 
+        break;
+      }
       case "FINISH_DRIVE_CUSTOMER": {
         //TODO remove popup
         this.router.navigate(["/customer-homepage"]);
@@ -179,6 +227,7 @@ export class AppComponent implements OnInit {
           streetLocation[0].subThoroughfare +
           "," +
           streetLocation[0].locality;
+        this.nativeAudio.play("uniqueId1");
 
         alert(
           "Vozač: " +
@@ -187,7 +236,7 @@ export class AppComponent implements OnInit {
             this.fromAddress
         );
       }
-      case "DRIVER_INFO":{
+      case "DRIVER_INFO": {
         this.events.publish("driverInfo", message);
       }
     }
@@ -198,12 +247,13 @@ export class AppComponent implements OnInit {
   }
 
   async updateDistance(message) {
-    let distance = await this.locationService.getDistanceFromLatLonInKm(
-      message.fromLat,
-      message.fromLong,
-      message.toLat,
-      message.toLong
-    ) + " km";
+    let distance =
+      (await this.locationService.getDistanceFromLatLonInKm(
+        message.fromLat,
+        message.fromLong,
+        message.toLat,
+        message.toLong
+      )) + " km";
     this.events.publish("informCustomer", distance);
   }
 
@@ -215,8 +265,8 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.isUserLoggedIn = false;
-    location.reload();
     this.storage.set("username", null);
+    location.reload();
   }
 
   openPhoneNumberPopup() {
@@ -227,5 +277,16 @@ export class AppComponent implements OnInit {
       .then(modalElement => {
         modalElement.present();
       });
+  }
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: 'This is an alert message.',
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 }

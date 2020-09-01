@@ -21,6 +21,7 @@ import { NativeGeocoder } from "@ionic-native/native-geocoder/ngx";
 import { UniqueDeviceID } from '@ionic-native/unique-device-id/ngx';
 import { PhoneNumberPageModule } from "./pages/popups/phone-number/phone-number.module";
 import { AndroidPermissions } from '@ionic-native/android-permissions/ngx';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -55,7 +56,8 @@ export function createTranslateLoader(http: HttpClient) {
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     NativeGeocoder,
     UniqueDeviceID,
-    AndroidPermissions
+    AndroidPermissions,
+    NativeAudio
   ],
   bootstrap: [AppComponent]
 })

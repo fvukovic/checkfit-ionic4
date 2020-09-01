@@ -54,6 +54,9 @@
     },
     "cordova-plugin-android-permissions": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {}

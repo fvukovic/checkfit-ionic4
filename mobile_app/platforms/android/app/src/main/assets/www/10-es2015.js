@@ -141,19 +141,21 @@ let DriverHomepagePage = class DriverHomepagePage {
                 this.isUserLoggedIn = true;
             }
         });
-        const firstParam = this.route.snapshot.queryParamMap.get("data");
-        let message = JSON.parse(firstParam);
-        this.message = message;
-        this.phoneNumber = message.phoneNumber;
-        const driveIsStarted = this.route.snapshot.queryParamMap.get("driveIsStarted");
-        // if (driveIsStarted == "true") {
-        //   //TODO makni ovo na kraju
-        this.isDriveStarted = true;
-        // }
         this.initializeMap();
-        this.directionsDisplay.setMap(this.map);
-        //this.calculateAndDisplayRoute()
-        this.populateAddress(this.message);
+        const firstParam = this.route.snapshot.queryParamMap.get("data");
+        if (firstParam != null) {
+            let message = JSON.parse(firstParam);
+            this.message = message;
+            this.phoneNumber = message.phoneNumber;
+            const driveIsStarted = this.route.snapshot.queryParamMap.get("driveIsStarted");
+            if (driveIsStarted == "true") {
+                //TODO makni ovo na kraju
+                this.isDriveStarted = true;
+            }
+            this.directionsDisplay.setMap(this.map);
+            //this.calculateAndDisplayRoute()
+            this.populateAddress(this.message);
+        }
     }
     ngAfterContentInit() { }
     calculateAndDisplayRoute() {

@@ -252,19 +252,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this.isUserLoggedIn = true;
           }
         });
-        var firstParam = this.route.snapshot.queryParamMap.get("data");
-        var message = JSON.parse(firstParam);
-        this.message = message;
-        this.phoneNumber = message.phoneNumber;
-        var driveIsStarted = this.route.snapshot.queryParamMap.get("driveIsStarted"); // if (driveIsStarted == "true") {
-        //   //TODO makni ovo na kraju
-
-        this.isDriveStarted = true; // }
-
         this.initializeMap();
-        this.directionsDisplay.setMap(this.map); //this.calculateAndDisplayRoute()
+        var firstParam = this.route.snapshot.queryParamMap.get("data");
 
-        this.populateAddress(this.message);
+        if (firstParam != null) {
+          var message = JSON.parse(firstParam);
+          this.message = message;
+          this.phoneNumber = message.phoneNumber;
+          var driveIsStarted = this.route.snapshot.queryParamMap.get("driveIsStarted");
+
+          if (driveIsStarted == "true") {
+            //TODO makni ovo na kraju
+            this.isDriveStarted = true;
+          }
+
+          this.directionsDisplay.setMap(this.map); //this.calculateAndDisplayRoute()
+
+          this.populateAddress(this.message);
+        }
       }
 
       _createClass(DriverHomepagePage, [{

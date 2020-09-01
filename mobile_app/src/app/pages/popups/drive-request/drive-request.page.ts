@@ -4,7 +4,7 @@ import { NavParams } from "@ionic/angular";
 import { SocketService } from "../../../services/socket.service";
 import { LocationService } from "../../../services/location.service";
 import { Router } from "@angular/router";
-
+import { Storage } from "@ionic/storage";
 
 @Component({
   selector: "app-drive-request",
@@ -13,34 +13,55 @@ import { Router } from "@angular/router";
 })
 export class DriveRequestPage implements OnInit {
   message: any;
-  fromAddress:String;
-  toAddress:String;
+  fromAddress: String;
+  toAddress: String;
+  selectedTime: number;
   constructor(
     private modalControler: ModalController,
     public navParams: NavParams,
     private socketService: SocketService,
     private router: Router,
-    private locationService: LocationService
+    private locationService: LocationService,
+    private storage: Storage
   ) {
     this.message = this.navParams.get("message");
     this.populateAddresses();
   }
 
-  async populateAddresses(){ 
-    var fromAddress = await this.locationService.getReverseGeocode(this.message.fromLat, this.message.fromLong); 
-    this.fromAddress = fromAddress[0].thoroughfare + "," + fromAddress[0].subThoroughfare + "," + fromAddress[0].locality
-    var toAddress = await this.locationService.getReverseGeocode(this.message.toLat, this.message.toLong);
-    this.toAddress = toAddress[0].thoroughfare + "," + toAddress[0].subThoroughfare + "," + toAddress[0].locality
+  async populateAddresses() {
+    var fromAddress = await this.locationService.getReverseGeocode(
+      this.message.fromLat,
+      this.message.fromLong
+    );
+    this.fromAddress =
+      fromAddress[0].thoroughfare +
+      "," +
+      fromAddress[0].subThoroughfare +
+      "," +
+      fromAddress[0].locality;
+    var toAddress = await this.locationService.getReverseGeocode(
+      this.message.toLat,
+      this.message.toLong
+    );
+    this.toAddress =
+      toAddress[0].thoroughfare +
+      "," +
+      toAddress[0].subThoroughfare +
+      "," +
+      toAddress[0].locality;
   }
 
-  ngOnInit(){
-  }
-  
+  ngOnInit() {}
+
   closeModal() {
     this.modalControler.dismiss();
   }
 
-  acceptRequst() {
+  acceptRequst() { 
+
+    this.storage.get("username").then(username => {
+ 
+  
     this.socketService.send("/server-receiver", {
       type: "customer",
       messageType: "ACCEPT_DRIVE",
@@ -50,12 +71,13 @@ export class DriveRequestPage implements OnInit {
       fromLong: this.message.fromLong,
       toLat: this.message.toLat,
       toLong: this.message.toLong,
+      time: this.selectedTime,
+      driver: username
     });
-    //this.router.navigate(["/driver-homepage"],  { queryParams: {data:JSON.stringify(this.message)} }); 
+  });
+    //this.router.navigate(["/driver-homepage"],  { queryParams: {data:JSON.stringify(this.message)} });
     this.closeModal();
     /**TODO dodaj alert za 5 sekunda ako voznja nije prihvacena
-    */
+     */
   }
-
-  
 }

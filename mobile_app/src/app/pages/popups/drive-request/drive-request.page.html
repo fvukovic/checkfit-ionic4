@@ -26,7 +26,20 @@
       <span class="text">Broj putnika:</span>
     <span class="value">{{message.persons}}</span>
     </div>
-
+    <ion-item>
+      <ion-label>Vrijeme:</ion-label>
+      <ion-select [(ngModel)]="selectedTime">
+        <ion-select-option value="2">2 min</ion-select-option> 
+        <ion-select-option value="5">5 min</ion-select-option> 
+        <ion-select-option value="10">10 min</ion-select-option> 
+        <ion-select-option value="15">15 min</ion-select-option> 
+        <ion-select-option value="20">20 min</ion-select-option> 
+        <ion-select-option value="25">25 min</ion-select-option> 
+        <ion-select-option value="30">30 min</ion-select-option> 
+        <ion-select-option value="45">45 min</ion-select-option> 
+        <ion-select-option value="60">60 min</ion-select-option> 
+      </ion-select>
+    </ion-item>
     <div class="buttons">
       <button class="btn accept" (click) = "acceptRequst()" > Prihvati</button>
       <button class="btn reject" (click) = "closeModal()"  > Odbij</button>

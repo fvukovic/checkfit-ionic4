@@ -130,6 +130,7 @@ ion-item.selected {
   text-transform: uppercase;
   font-size: 14px;
   font-style: italic;
+  text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
 }
 #labels-list ion-label {
   color: white;
@@ -138,6 +139,7 @@ ion-item.selected {
     font-size: 12px;
     font-weight: bold;
     font-style: italic;
+    text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
 }
 .menu-list {
   height: 40px;
@@ -145,6 +147,8 @@ ion-item.selected {
   text-transform: uppercase;
   font-weight: bold;
   font-style: italic;
+  text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
+   
 }
 .text-moto {
   border-bottom: 1px solid;
@@ -155,6 +159,8 @@ ion-item.selected {
   font-size: 16px;
   text-transform: uppercase;
   padding: 0 30px 15px 30px; 
+  text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
+  margin-top: 25px;
 }
 
 ion-menu {
@@ -165,4 +171,8 @@ ion-menu {
   text-transform: uppercase;
   background: transparent;
   font-weight: bold;
+  text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
+}
+#labels-list {
+  margin-top: 10px;
 }

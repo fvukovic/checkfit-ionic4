@@ -4,15 +4,16 @@
       <ion-buttons slot="start">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
-      <ion-title>Nova vožnja</ion-title>
+      <ion-title *ngIf="!isUserLoggedIn">Nova vožnja</ion-title>
+      <ion-title *ngIf="isUserLoggedIn">Lokacije vozača</ion-title>
       <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
-      <img src="http://murataxi.com/images/resources/taxiLogo.png">
+      
     </div>
   </ion-toolbar>
 </ion-header>
   <ion-content class="mapp"> 
-    <div #mapElement     [ngStyle]="{'height': !isUserLoggedIn ? '100%' : '37%'}"></div> 
-    <div class="location-wrapper" *ngIf="isUserLoggedIn">
+    <div #mapElement     [ngStyle]="{'height': isUserLoggedIn ? '90%' : '37%', 'margin': '20px'}"></div> 
+    <div class="location-wrapper" *ngIf="!isUserLoggedIn">
       <h3 class="title">Upišite tražene podatke:</h3>
       <div class="location-details">
           <span class="text">Polazište:</span>

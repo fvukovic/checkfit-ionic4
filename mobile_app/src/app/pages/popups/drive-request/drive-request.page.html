@@ -1,8 +1,10 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-      <!-- Advanced: explicity set the icon for each platform -->
-  <ion-icon (click) = "closeModal()"  name="arrow-back"></ion-icon>
-    <ion-title>Novi zahtjev za vožnju!</ion-title>
+    <div class="header-box">
+      <ion-title>Novi zahtjev za vožnju!</ion-title>
+      <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
+      <img src="http://murataxi.com/images/resources/taxiLogo.png">
+    </div>
   </ion-toolbar>
 </ion-header>
 <!-- "{"username":null,"type":"customer","messageType":"DRIVE_REQUEST","fromLat":"45.333","fromLong":"16.444","toLat":"45.333","toLong":"16.444"}" -->
@@ -26,9 +28,9 @@
       <span class="text">Broj putnika:</span>
     <span class="value">{{message.persons}}</span>
     </div>
-    <ion-item>
-      <ion-label>Vrijeme:</ion-label>
-      <ion-select [(ngModel)]="selectedTime">
+    <div class="time-wrapper">
+      <ion-label class="select-time">Odaberi vrijeme:</ion-label>
+      <ion-select class="choose-time" [(ngModel)]="selectedTime" style="max-width: 100%; width: 100%; text-align: right;">
         <ion-select-option value="2">2 min</ion-select-option> 
         <ion-select-option value="5">5 min</ion-select-option> 
         <ion-select-option value="10">10 min</ion-select-option> 
@@ -39,7 +41,7 @@
         <ion-select-option value="45">45 min</ion-select-option> 
         <ion-select-option value="60">60 min</ion-select-option> 
       </ion-select>
-    </ion-item>
+    </div>
     <div class="buttons">
       <button class="btn accept" (click) = "acceptRequst()" > Prihvati</button>
       <button class="btn reject" (click) = "closeModal()"  > Odbij</button>

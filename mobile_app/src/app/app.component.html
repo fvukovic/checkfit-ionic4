@@ -18,7 +18,7 @@
                 </ion-item> 
 
 
-                  <ion-item class="list-item">
+                  <ion-item *ngIf="!isUserLoggedIn" class="list-item">
                       <ion-label routerLink="/about-us">{{ "menu.aboutUs" | translate }}</ion-label>
                   </ion-item> 
 
@@ -42,7 +42,7 @@
             <ion-label *ngIf="isUserLoggedIn"  (click)="logout()">{{ "menu.logout" | translate }}</ion-label> 
 
         </ion-list>
-      <p class="text-moto">Najkvalitetnija usluga prijevoza u gradu!</p>
+      <p class="text-moto">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>
       </ion-content>
       
     </ion-menu>

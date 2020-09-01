@@ -1,25 +1,32 @@
-  <ion-header>
-    <ion-toolbar>
-        <!-- Advanced: explicity set the icon for each platform -->
-      <ion-icon (click) = "closeModal()"  name="ios-arrow-back"></ion-icon>
-      <ion-title>Kontakt broj</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="header-box">
+      <ion-title>Promjeni broj</ion-title>
+      <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
+      <img src="http://murataxi.com/images/resources/taxiLogo.png">
+    </div>
+  </ion-toolbar>
+</ion-header>
   
   <ion-content>
-    <p class="text-moto">Kako bi Vas mogli kontaktirati nakon što zaprimimo zahtjev za novu vožnju, molimo Vas da unesete broj mobitela!</p>
-    <div class="insert-text">
-
-      Unesite broj mobitela:
-    </div>
-    <div class="submit-number">
-    <ion-input [(ngModel)]="phoneNumber" placeholder="xxx xxx xxx" class="area-number"></ion-input> 
-    <button (click) = "saveNumber()">Spremi</button>
-    </div>
-    <div class="change-number-logo">
-      <img src="http://murataxi.com/images/resources/taxiLogo.png" class="menu-img">      
-  </div>
-  <p class="rich-text">Najkvalitetnija i najbrža usluga prijevoza u gradu!</p>
     
+    <div class="wrapper">
+      <div class="title">Kako bi Vas mogli kontaktirati nakon što zaprimimo zahtjev za novu vožnju, molimo Vas da unesete broj mobitela!</div>
+      <div class="form-box">
+         <div class="text">Upišite broj:</div>
+        <ion-input [(ngModel)]="phoneNumber" placeholder="....................." class="area-number"></ion-input> 
+      </div>
+      <button class="save-number" (click) = "saveNumber()">Spremi</button>
+      <div class="icon">
+        <img src="http://murataxi.com/images/resources/taxiLogo.png">
+        <div class="text">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</div>
+      </div>
+      
+    </div>
+    
+    
+    
+    
+
    </ion-content>  
   

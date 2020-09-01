@@ -1,6 +1,9 @@
-<ion-header>
+<ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Zahtjev za voznju</ion-title>
+    <div class="header-box">
+      <ion-title>Novi zahtjev za vožnju!</ion-title>
+      <img src="http://murataxi.com/images/resources/taxiLogo.png">
+    </div>
   </ion-toolbar>
 </ion-header>
 
@@ -21,26 +24,28 @@
         <p class="details">Detalji će uskoro biti vidljivi na ekranu:</p>
       </div>
 
+      <div class="logo">
+        <img src="http://murataxi.com/images/resources/taxiLogo.png" class="menu-img">      
+        <p class="rich-text">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>
+    </div>
+
     </div>
 
     <div *ngIf="isDriveAccepted" >
       <div class="accepted-ride">
         <img src="http://murataxi.com/images/app/accepted-ride.png" class="menu-img">
           <h2>Zahtjev je prihvaćen!</h2>
-          Vrijeme:{{message.time}}
-          Vozac: {{message.driverUser.login}}
-          <p class="driver">Naš vozač će Vas uskoro kontaktirati...</p>
+          <p class="driver">Vozač {{message.driverUser.login}} će Vas uskoro kontaktirati...</p>
           <div class="distance">
           <span>Vaše vozilo je udaljeno:</span> 
           <p class="km">{{kms}}</p>
+        </div>
+        <div class="distance">
+          <span>Vozilo stiže za:</span> 
+          <p class="km">{{message.time}} min</p>
         </div> 
         </div>
       </div>
-
-      <div class="logo">
-        <img src="http://murataxi.com/images/resources/taxiLogo.png" class="menu-img">      
-        <p class="rich-text">Najkvalitetnija i najbrža usluga prijevoza u gradu!</p>
-    </div>
 
   </div>
 

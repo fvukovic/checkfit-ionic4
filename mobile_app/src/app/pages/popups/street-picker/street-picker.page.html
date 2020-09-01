@@ -1,16 +1,26 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
-      <!-- Advanced: explicity set the icon for each platform -->
     <ion-icon (click) = "closeModal()"  name="ios-arrow-back"></ion-icon>
     <ion-title>Unos adrese</ion-title>
   </ion-toolbar>
+</ion-header> -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div class="header-box">
+      <ion-icon (click) = "closeModal()"  name="ios-arrow-back"></ion-icon>
+      <ion-title>Unos adrese</ion-title>
+      <img src="http://murataxi.com/images/resources/taxiLogo.png">
+    </div>
+  </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <div class="add-locations">
-    <ion-textarea [(ngModel)]="address" placeholder="Unesi željenu adresu!"></ion-textarea>
+    <div class="text">Upiši željenu adresu:</div>
+    <ion-textarea [(ngModel)]="address"></ion-textarea>
     <button class="save-locations" (click)="passAddress()">Spremi</button>
+  </div>
+<div class="box">
+  <img src="https://cdn.pixabay.com/photo/2016/02/07/23/42/ill-be-right-back-1185861__340.jpg" class="about-img">
+  <p class="text-moto">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>
 </div>
-<img src="https://cdn.pixabay.com/photo/2016/02/07/23/42/ill-be-right-back-1185861__340.jpg" class="about-img">
-<p class="text-moto">Najkvalitetnija i najbrža usluga prijevoza u gradu!</p>
 </ion-content> 

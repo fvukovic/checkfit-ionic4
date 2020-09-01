@@ -1,8 +1,13 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons> 
+    <div class="header-box">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Prijava vozača</ion-title>
+      <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
+      <img src="http://murataxi.com/images/resources/taxiLogo.png">
+    </div>
   </ion-toolbar>
 </ion-header>
  
@@ -12,46 +17,37 @@
     <!-- Logo -->
     <div padding-horizontal text-center class="animated fadeInDown">
       <div class="logo"></div>
-      <h2 ion-text class="text-primary">
-        <strong>Prijava vozača</strong> 
+      <h2 ion-text class="title">
+        <strong>Upišite tražene podatke</strong> 
       </h2>
       <img src="http://murataxi.com/images/app/login.png" class="login-img">
     </div>
 
     <!-- Login form -->
     <form class="list-form">
-      <!-- <ion-item>
-        <ion-label floating>
-          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
-          E-mail
-        </ion-label>
-        <input [(ngModel)]="email" name="email" type="email"/>
-      </ion-item> -->
+
       <div class="box-element">
           <span class="text">Email:</span>
-          <input [(ngModel)]="email" name="email" type="email" class="email-inp"/>
+          <span class="value">
+            <input [(ngModel)]="email" name="email" type="email" class="destination"/>
+          </span>
       </div>
-
-      <!-- <ion-item>
-        <ion-label floating>
-          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
-          Lozinka
-        </ion-label>
-        <input [(ngModel)]="password" type="password" name="password"/>
-      </ion-item> -->
 
       <div class="box-element">
         <span class="text">Lozinka:</span>
-        <input [(ngModel)]="password" type="password" name="password" class="pass-inp"/>
+        <span class="value">
+          <input [(ngModel)]="password" type="password" name="password" class="destination"/>
+      </span>
     </div>
+
     </form>
 
-    <!-- <p text-right ion-text color="secondary" tappable (click)="forgotPass()"><strong>Zaboravljena lozinka?</strong></p> -->
-
     <div>
-      <button class="login-btn" tappable (click)="login()">
-        Prijavi se  
-      </button>
+      <div class="box-element">
+        <button class="login-btn" tappable (click)="login()">
+          Prijavi se  
+        </button>
+      </div>
     </div>
    </div>
 </ion-content>

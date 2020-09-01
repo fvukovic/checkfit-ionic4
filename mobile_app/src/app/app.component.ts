@@ -118,6 +118,7 @@ export class AppComponent implements OnInit {
   }
 
   async handleMessage(message) {
+    console.log(JSON.stringify(message))
     switch (message.messageType) {
       case "DRIVE_REQUEST": {
         setTimeout(() => {
@@ -163,9 +164,9 @@ export class AppComponent implements OnInit {
         );
         break;
       }
-      case "ACCEPT_DRIVE": {
-        //TODO remove popup
-        this.events.publish("driveAccepted", message);
+      case 'ACCEPT_DRIVE': {
+        // TODO remove popup
+        this.events.publish('driveAccepted', message);
         break;
       }
       case "ACCEPT_DRIVE_DRIVER": {
@@ -233,9 +234,14 @@ export class AppComponent implements OnInit {
             " je u nevolji!!! \n Lokacija: " +
             this.fromAddress
         );
+        break;
       }
       case "DRIVER_INFO": {
         this.events.publish("driverInfo", message);
+        break;
+      }
+      case "DRIVER_NOTIFICATION": {
+        alert("Nova poruka: \n \n "+ message.driver);
       }
     }
   }

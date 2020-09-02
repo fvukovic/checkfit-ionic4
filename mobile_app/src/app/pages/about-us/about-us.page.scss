@@ -12,6 +12,8 @@ ion-content{
         margin: 30px 40px;
         padding-bottom: 15px;
         border-bottom: 1px solid #000;
+        text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
+        font-style: italic;
     }
     
     .order-text {
@@ -21,24 +23,22 @@ ion-content{
 .header-box {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin: 10px 0;
-    padding: 0;
+    padding: 10px;
 
     ion-title {
-        margin: 0;
-        padding: 0;
-        text-align: center;
+        text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
+        --color: #000;
+        text-transform: uppercase;
     }
-    .sos {
-        background: #DC143C;
-        float: right;
+    ion-menu-button {
+        text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
+        --color: #000;
+        --background: #f4f0ec;
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        padding: 0;
-        margin: 0 20px 0 0;
-        color: white;
-        font-weight: bold;
+    }
+    img {
+        max-width: 50px;
     }
 }

@@ -5,7 +5,7 @@
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
       <ion-title *ngIf="!isUserLoggedIn">Nova vožnja</ion-title>
-      <img *ngIf="!isUserLoggedIn" src="http://murataxi.com/images/resources/taxiLogo.png">
+      <img *ngIf="!isUserLoggedIn" src="../../../assets/img/taxiLogo.png">
       <ion-title *ngIf="isUserLoggedIn">Lokacije vozača</ion-title>
       <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
       

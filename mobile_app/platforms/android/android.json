@@ -9,7 +9,7 @@
         "parents": {
           "/manifest/application": [
             {
-              "xml": "<config-file parent=\"/manifest\" target=\"AndroidManifest.xml\"><uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" /><uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" /><uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\" /><uses-permission android:name=\"android.permission.LOCATION\" /></config-file>",
+              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
               "count": 2,
               "mode": "merge",
               "id": "config.xml",
@@ -24,7 +24,7 @@
               }
             },
             {
-              "xml": "<application android:networkSecurityConfig=\"@xml/network_security_config\" />",
+              "xml": "<config-file parent=\"/manifest\" target=\"AndroidManifest.xml\"><uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" /><uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" /><uses-permission android:name=\"android.permission.ACCESS_LOCATION_EXTRA_COMMANDS\" /><uses-permission android:name=\"android.permission.LOCATION\" /></config-file>",
               "count": 1,
               "mode": "merge",
               "id": "config.xml",

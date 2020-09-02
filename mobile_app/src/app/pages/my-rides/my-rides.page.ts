@@ -38,8 +38,7 @@ export class MyRidesPage implements OnInit {
       username: "admin", 
     })
     .pipe(
-      catchError((err: any) => {
-        alert("Login je bio neuspješan");
+      catchError((err: any) => { 
         return Observable.throw(err || 'Internal Server error');
 
       })

@@ -28,14 +28,7 @@ export class SearchRidePage implements OnInit, AfterContentInit {
     private storage: Storage,
     private locationService: LocationService 
   ) {
-    
-    // var handle = setInterval(data => {
-    //   if (this.isDriveAccepted) {
-    //     clearInterval(handle);
-    //   } else {
-    //   }
-    // }, 5000);
-
+ 
     events.subscribe("driveAccepted", message => {
       this.isDriveAccepted = true;
       this.message = message;  
@@ -56,40 +49,41 @@ export class SearchRidePage implements OnInit, AfterContentInit {
   requestDrive() {
     const firstParam: string = this.route.snapshot.queryParamMap.get("data");
     let params = JSON.parse(firstParam);
+    var _this = this;
     this.storage.get("phoneNumber").then(val => { 
-      var km = this.locationService.getDistanceFromLatLonInKm(
+        this.locationService.getDistanceFromLatLonInKm(
         params.fromLat,
         params.fromLong,
         params.toLat,
-        params.toLong
-      );
-      this.socketService.send("/server-receiver", {
-        type: "customer",
-        messageType: "REQUEST_INCOMING",
-        fromLat: params.fromLat,
-        fromLong: params.fromLong,
-        toLat: params.toLat,
-        toLong: params.toLong,
-        persons: params.persons,
-        phoneNumber: val,
-        km:km
-      });
-
-   setTimeout(data => {
-    this.socketService.send("/server-receiver", {
-      type: "customer",
-      messageType: "DRIVE_REQUEST",
-      fromLat: params.fromLat,
-      fromLong: params.fromLong,
-      toLat: params.toLat,
-      toLong: params.toLong,
-      persons: params.persons,
-      phoneNumber: val,
-      km:km
-    });
-    }, 4000);
-   
-
+        params.toLong,
+        function(response, status) {  
+          _this.socketService.send("/server-receiver", {
+            type: "customer",
+            messageType: "REQUEST_INCOMING",
+            fromLat: params.fromLat,
+            fromLong: params.fromLong,
+            toLat: params.toLat,
+            toLong: params.toLong,
+            persons: params.persons,
+            phoneNumber: val,
+            km:response.rows[0].elements[0].distance.value / 1000
+          });
+    
+       setTimeout(data => {
+        _this.socketService.send("/server-receiver", {
+          type: "customer",
+          messageType: "DRIVE_REQUEST",
+          fromLat: params.fromLat,
+          fromLong: params.fromLong,
+          toLat: params.toLat,
+          toLong: params.toLong,
+          persons: params.persons,
+          phoneNumber: val,
+          km:response.rows[0].elements[0].distance.value / 1000
+        });
+        }, 4000);
+        }
+      ); 
 
     });
   }

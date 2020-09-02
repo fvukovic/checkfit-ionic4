@@ -141,14 +141,7 @@ export class AppComponent implements OnInit {
       }
       case "INFORM_DRIVE_DRIVER": {
         // TODO removaj ovo
-        this.socketService.send("/server-receiver", {
-          type: "driver",
-          messageType: "INFORM_DRIVE_DRIVER",
-          toLat: "46.1231231",
-          toLong: "16.312312",
-          fromLat: message.fromLat,
-          fromLong: message.fromLong
-        });
+   
         this.locationService.getUserPosition().then(
           val => {
             this.socketService.send("/server-receiver", {
@@ -251,14 +244,17 @@ export class AppComponent implements OnInit {
   }
 
   async updateDistance(message) {
-    let distance =
-      (await this.locationService.getDistanceFromLatLonInKm(
+    var _this = this;
+      this.locationService.getDistanceFromLatLonInKm(
         message.fromLat,
         message.fromLong,
         message.toLat,
-        message.toLong
-      )) + " km";
-    this.events.publish("informCustomer", distance);
+        message.toLong,
+        function(response, status) {  
+          console.log("TUUUUU")
+          console.log(message)
+          _this.events.publish("informCustomer", response.rows[0].elements[0].distance.text);
+        });
   }
 
   ngOnInit() {

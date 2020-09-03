@@ -51,7 +51,11 @@
     <name>Taxi Mura</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
+<<<<<<< HEAD
     <content original-src="index.html" src="http://localhost:8100" />
+=======
+    <content original-src="index.html" src="http://localhost:8102" />
+>>>>>>> 10f44272cdd5f783e705373dde70e745b8399fe8
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -61,6 +65,7 @@
     <allow-intent href="geo:*" />
     <allow-navigation href="http://localhost:8101" sessionid="c2c1f868" />
     <allow-navigation href="http://localhost:8100" sessionid="44283108" />
+    <allow-navigation href="http://localhost:8102" sessionid="9b7b0394" />
     <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
         <application android:networkSecurityConfig="@xml/network_security_config" />
         <config-file parent="/manifest" target="AndroidManifest.xml">

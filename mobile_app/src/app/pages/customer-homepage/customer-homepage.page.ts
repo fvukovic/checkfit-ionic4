@@ -59,12 +59,23 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     this.events.subscribe("driverInfo", message => {
       this.setMapOnAll(null); 
       Object.entries(JSON.parse(message["drivers"])).forEach(([key, value]) => {
-             let marker = new google.maps.Marker({
-          map: this.map,
-          animation: google.maps.Animation.BOUNCE,
-          icon:'./assets/619006.svg',
-          position: new google.maps.LatLng(value["latitude"], value["longitude"])
-        });
+        let marker;
+        if(value["free"]==true){
+          marker = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.BOUNCE,
+            icon:'./assets/available-taxi.svg',
+            position: new google.maps.LatLng(value["latitude"], value["longitude"])
+          });
+        }else{
+           marker = new google.maps.Marker({
+            map: this.map,
+            animation: google.maps.Animation.BOUNCE,
+            icon:'./assets/not-available-taxi.svg',
+            position: new google.maps.LatLng(value["latitude"], value["longitude"])
+          });
+        }
+   
         this.markers.push(marker); 
       });
      });

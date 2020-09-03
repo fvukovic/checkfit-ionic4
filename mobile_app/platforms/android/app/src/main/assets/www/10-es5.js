@@ -314,12 +314,23 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   key = _ref2[0],
                   value = _ref2[1];
 
-              var marker = new google.maps.Marker({
-                map: _this2.map,
-                animation: google.maps.Animation.BOUNCE,
-                icon: './assets/619006.svg',
-                position: new google.maps.LatLng(value["latitude"], value["longitude"])
-              });
+              var marker;
+
+              if (value["free"] == true) {
+                marker = new google.maps.Marker({
+                  map: _this2.map,
+                  animation: google.maps.Animation.BOUNCE,
+                  icon: './assets/available-taxi.svg',
+                  position: new google.maps.LatLng(value["latitude"], value["longitude"])
+                });
+              } else {
+                marker = new google.maps.Marker({
+                  map: _this2.map,
+                  animation: google.maps.Animation.BOUNCE,
+                  icon: './assets/not-available-taxi.svg',
+                  position: new google.maps.LatLng(value["latitude"], value["longitude"])
+                });
+              }
 
               _this2.markers.push(marker);
             });

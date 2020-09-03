@@ -62,7 +62,7 @@ export class MyRidesPage implements OnInit {
                 "," +
                 to[0].subThoroughfare +
                 "," +
-                to[0].locality, "persons": value.persons, km:value.km })
+                to[0].locality, "persons": value.persons, km:value.km, time:value.time.replace("T"," ").replace("Z", "") })
                 console.log(JSON.stringify(this.invoiceList))
               }
             )

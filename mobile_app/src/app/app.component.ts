@@ -243,6 +243,7 @@ export class AppComponent implements OnInit {
         break;
       }
       case 'DRIVER_INFO': {
+        console.log(JSON.stringify(message))
         this.events.publish("driverInfo", message);
         break;
       }
@@ -293,9 +294,11 @@ export class AppComponent implements OnInit {
   }
 
   logout() {
-    this.isUserLoggedIn = false;
     this.storage.set("username", null);
-    location.reload();
+    this.isUserLoggedIn = false;
+    setTimeout(() => {
+      location.reload();
+    }, 2000);
   }
 
   openPhoneNumberPopup() {

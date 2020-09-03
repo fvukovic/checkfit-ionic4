@@ -8,15 +8,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[36], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-chip-md.entry.js":
-  /*!****************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-chip-md.entry.js ***!
-    \****************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-chip-ios.entry.js":
+  /*!*****************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-chip-ios.entry.js ***!
+    \*****************************************************************/
 
   /*! exports provided: ion_chip */
 
   /***/
-  function node_modulesIonicCoreDistEsmIonChipMdEntryJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonChipIosEntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);

@@ -297,7 +297,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         "fromAddress": from[0].thoroughfare + "," + from[0].subThoroughfare + "," + from[0].locality,
                         "toAddress": to[0].thoroughfare + "," + to[0].subThoroughfare + "," + to[0].locality,
                         "persons": value.persons,
-                        km: value.km
+                        km: value.km,
+                        time: value.time.replace("T", " ").replace("Z", "")
                       });
 
                       console.log(JSON.stringify(_this2.invoiceList));

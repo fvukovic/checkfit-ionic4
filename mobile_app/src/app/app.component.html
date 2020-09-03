@@ -16,6 +16,9 @@
                   <ion-item *ngIf="isUserLoggedIn" class="list-item">
                     <ion-label routerLink="/customer-homepage">Početna</ion-label>
                 </ion-item> 
+                  <ion-item *ngIf="isUserLoggedIn" class="list-item">
+                    <ion-label routerLink="/active-rides">Aktivne vožnje</ion-label>
+                </ion-item> 
 
 
                   <ion-item *ngIf="!isUserLoggedIn" class="list-item">

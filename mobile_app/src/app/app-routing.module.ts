@@ -42,6 +42,10 @@ const routes: Routes = [
   {
     path: 'phone-number',
     loadChildren: () => import('./pages/popups/phone-number/phone-number.module').then( m => m.PhoneNumberPageModule)
+  },
+  {
+    path: 'active-rides',
+    loadChildren: () => import('./pages/active-rides/active-rides.module').then( m => m.ActiveRidesModule)
   }
 ];
 

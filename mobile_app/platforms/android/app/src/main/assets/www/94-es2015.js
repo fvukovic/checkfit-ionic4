@@ -1,445 +1,553 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[94],{
 
-/***/ "./node_modules/@ionic/core/dist/esm/ios.transition-071bd421.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/@ionic/core/dist/esm/ios.transition-071bd421.js ***!
-  \**********************************************************************/
-/*! exports provided: iosTransitionAnimation, shadow */
+/***/ "./node_modules/@ionic/core/dist/esm/ion-virtual-scroll.entry.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@ionic/core/dist/esm/ion-virtual-scroll.entry.js ***!
+  \***********************************************************************/
+/*! exports provided: ion_virtual_scroll */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iosTransitionAnimation", function() { return iosTransitionAnimation; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "shadow", function() { return shadow; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ion_virtual_scroll", function() { return VirtualScroll; });
 /* harmony import */ var _core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./core-ca0488fc.js */ "./node_modules/@ionic/core/dist/esm/core-ca0488fc.js");
 /* harmony import */ var _config_3c7f3790_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config-3c7f3790.js */ "./node_modules/@ionic/core/dist/esm/config-3c7f3790.js");
-/* harmony import */ var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers-46f4a262.js */ "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
-/* harmony import */ var _animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./animation-af478fe9.js */ "./node_modules/@ionic/core/dist/esm/animation-af478fe9.js");
-/* harmony import */ var _constants_3c3e1099_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./constants-3c3e1099.js */ "./node_modules/@ionic/core/dist/esm/constants-3c3e1099.js");
-/* harmony import */ var _index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./index-6826f2f6.js */ "./node_modules/@ionic/core/dist/esm/index-6826f2f6.js");
 
 
 
+const CELL_TYPE_ITEM = 'item';
+const CELL_TYPE_HEADER = 'header';
+const CELL_TYPE_FOOTER = 'footer';
+const NODE_CHANGE_NONE = 0;
+const NODE_CHANGE_POSITION = 1;
+const NODE_CHANGE_CELL = 2;
 
-
-
-
-const DURATION = 540;
-const addSafeArea = (val, side = 'top') => {
-    return `calc(${val}px + var(--ion-safe-area-${side}))`;
-};
-const getClonedElement = (tagName) => {
-    return document.querySelector(`${tagName}.ion-cloned-element`);
-};
-const shadow = (el) => {
-    return el.shadowRoot || el;
-};
-const getLargeTitle = (refEl) => {
-    return refEl.querySelector('ion-header:not(.header-collapse-condense-inactive) ion-title[size=large]');
-};
-const getBackButton = (refEl, backDirection) => {
-    const buttonsList = refEl.querySelectorAll('ion-buttons');
-    for (const buttons of buttonsList) {
-        const parentHeader = buttons.closest('ion-header');
-        const activeHeader = parentHeader && !parentHeader.classList.contains('header-collapse-condense-inactive');
-        const backButton = buttons.querySelector('ion-back-button');
-        const buttonsCollapse = buttons.classList.contains('buttons-collapse');
-        if (backButton !== null && ((buttonsCollapse && activeHeader && backDirection) || !buttonsCollapse)) {
-            return backButton;
+const MIN_READS = 2;
+const updateVDom = (dom, heightIndex, cells, range) => {
+    // reset dom
+    for (const node of dom) {
+        node.change = NODE_CHANGE_NONE;
+        node.d = true;
+    }
+    // try to match into exisiting dom
+    const toMutate = [];
+    const end = range.offset + range.length;
+    for (let i = range.offset; i < end; i++) {
+        const cell = cells[i];
+        const node = dom.find(n => n.d && n.cell === cell);
+        if (node) {
+            const top = heightIndex[i];
+            if (top !== node.top) {
+                node.top = top;
+                node.change = NODE_CHANGE_POSITION;
+            }
+            node.d = false;
         }
+        else {
+            toMutate.push(cell);
+        }
+    }
+    // needs to append
+    const pool = dom.filter(n => n.d);
+    for (const cell of toMutate) {
+        const node = pool.find(n => n.d && n.cell.type === cell.type);
+        const index = cell.i;
+        if (node) {
+            node.d = false;
+            node.change = NODE_CHANGE_CELL;
+            node.cell = cell;
+            node.top = heightIndex[index];
+        }
+        else {
+            dom.push({
+                d: false,
+                cell,
+                visible: true,
+                change: NODE_CHANGE_CELL,
+                top: heightIndex[index],
+            });
+        }
+    }
+    dom
+        .filter(n => n.d && n.top !== -9999)
+        .forEach(n => {
+        n.change = NODE_CHANGE_POSITION;
+        n.top = -9999;
+    });
+};
+const doRender = (el, nodeRender, dom, updateCellHeight) => {
+    const children = Array.from(el.children).filter(n => n.tagName !== 'TEMPLATE');
+    const childrenNu = children.length;
+    let child;
+    for (let i = 0; i < dom.length; i++) {
+        const node = dom[i];
+        const cell = node.cell;
+        // the cell change, the content must be updated
+        if (node.change === NODE_CHANGE_CELL) {
+            if (i < childrenNu) {
+                child = children[i];
+                nodeRender(child, cell, i);
+            }
+            else {
+                const newChild = createNode(el, cell.type);
+                child = nodeRender(newChild, cell, i) || newChild;
+                child.classList.add('virtual-item');
+                el.appendChild(child);
+            }
+            child['$ionCell'] = cell;
+        }
+        else {
+            child = children[i];
+        }
+        // only update position when it changes
+        if (node.change !== NODE_CHANGE_NONE) {
+            child.style.transform = `translate3d(0,${node.top}px,0)`;
+        }
+        // update visibility
+        const visible = cell.visible;
+        if (node.visible !== visible) {
+            if (visible) {
+                child.classList.remove('virtual-loading');
+            }
+            else {
+                child.classList.add('virtual-loading');
+            }
+            node.visible = visible;
+        }
+        // dynamic height
+        if (cell.reads > 0) {
+            updateCellHeight(cell, child);
+            cell.reads--;
+        }
+    }
+};
+const createNode = (el, type) => {
+    const template = getTemplate(el, type);
+    if (template && el.ownerDocument) {
+        return el.ownerDocument.importNode(template.content, true).children[0];
     }
     return null;
 };
-const createLargeTitleTransition = (rootAnimation, rtl, backDirection, enteringEl, leavingEl) => {
-    const enteringBackButton = getBackButton(enteringEl, backDirection);
-    const leavingLargeTitle = getLargeTitle(leavingEl);
-    const enteringLargeTitle = getLargeTitle(enteringEl);
-    const leavingBackButton = getBackButton(leavingEl, backDirection);
-    const shouldAnimationForward = enteringBackButton !== null && leavingLargeTitle !== null && !backDirection;
-    const shouldAnimationBackward = enteringLargeTitle !== null && leavingBackButton !== null && backDirection;
-    if (shouldAnimationForward) {
-        animateLargeTitle(rootAnimation, rtl, backDirection, leavingLargeTitle);
-        animateBackButton(rootAnimation, rtl, backDirection, enteringBackButton);
+const getTemplate = (el, type) => {
+    switch (type) {
+        case CELL_TYPE_ITEM: return el.querySelector('template:not([name])');
+        case CELL_TYPE_HEADER: return el.querySelector('template[name=header]');
+        case CELL_TYPE_FOOTER: return el.querySelector('template[name=footer]');
     }
-    else if (shouldAnimationBackward) {
-        animateLargeTitle(rootAnimation, rtl, backDirection, enteringLargeTitle);
-        animateBackButton(rootAnimation, rtl, backDirection, leavingBackButton);
-    }
+};
+const getViewport = (scrollTop, vierportHeight, margin) => {
     return {
-        forward: shouldAnimationForward,
-        backward: shouldAnimationBackward
+        top: Math.max(scrollTop - margin, 0),
+        bottom: scrollTop + vierportHeight + margin
     };
 };
-const animateBackButton = (rootAnimation, rtl, backDirection, backButtonEl) => {
-    const backButtonBounds = backButtonEl.getBoundingClientRect();
-    const BACK_BUTTON_START_OFFSET = (rtl) ? `calc(100% - ${backButtonBounds.right + 4}px)` : `${backButtonBounds.left - 4}px`;
-    const START_TEXT_TRANSLATE = (rtl) ? '7px' : '-7px';
-    const END_TEXT_TRANSLATE = (rtl) ? '-4px' : '4px';
-    const ICON_TRANSLATE = (rtl) ? '-4px' : '4px';
-    const TEXT_ORIGIN_X = (rtl) ? 'right' : 'left';
-    const ICON_ORIGIN_X = (rtl) ? 'left' : 'right';
-    const FORWARD_TEXT_KEYFRAMES = [
-        { offset: 0, opacity: 0, transform: `translate(${START_TEXT_TRANSLATE}, ${addSafeArea(8)}) scale(2.1)` },
-        { offset: 1, opacity: 1, transform: `translate(${END_TEXT_TRANSLATE}, ${addSafeArea(-40)}) scale(1)` }
-    ];
-    const BACKWARD_TEXT_KEYFRAMES = [
-        { offset: 0, opacity: 1, transform: `translate(${END_TEXT_TRANSLATE}, ${addSafeArea(-40)}) scale(1)` },
-        { offset: 0.6, opacity: 0 },
-        { offset: 1, opacity: 0, transform: `translate(${START_TEXT_TRANSLATE}, ${addSafeArea(8)}) scale(2.1)` }
-    ];
-    const TEXT_KEYFRAMES = (backDirection) ? BACKWARD_TEXT_KEYFRAMES : FORWARD_TEXT_KEYFRAMES;
-    const FORWARD_ICON_KEYFRAMES = [
-        { offset: 0, opacity: 0, transform: `translate3d(${ICON_TRANSLATE}, ${addSafeArea(-35)}, 0) scale(0.6)` },
-        { offset: 1, opacity: 1, transform: `translate3d(${ICON_TRANSLATE}, ${addSafeArea(-40)}, 0) scale(1)` }
-    ];
-    const BACKWARD_ICON_KEYFRAMES = [
-        { offset: 0, opacity: 1, transform: `translate(${ICON_TRANSLATE}, ${addSafeArea(-40)}) scale(1)` },
-        { offset: 0.2, opacity: 0, transform: `translate(${ICON_TRANSLATE}, ${addSafeArea(-35)}) scale(0.6)` },
-        { offset: 1, opacity: 0, transform: `translate(${ICON_TRANSLATE}, ${addSafeArea(-35)}) scale(0.6)` }
-    ];
-    const ICON_KEYFRAMES = (backDirection) ? BACKWARD_ICON_KEYFRAMES : FORWARD_ICON_KEYFRAMES;
-    const enteringBackButtonTextAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const enteringBackButtonIconAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const clonedBackButtonEl = getClonedElement('ion-back-button');
-    const backButtonTextEl = clonedBackButtonEl.querySelector('.button-text');
-    const backButtonIconEl = clonedBackButtonEl.querySelector('ion-icon');
-    clonedBackButtonEl.text = backButtonEl.text;
-    clonedBackButtonEl.mode = backButtonEl.mode;
-    clonedBackButtonEl.icon = backButtonEl.icon;
-    clonedBackButtonEl.color = backButtonEl.color;
-    clonedBackButtonEl.disabled = backButtonEl.disabled;
-    clonedBackButtonEl.style.setProperty('display', 'block');
-    clonedBackButtonEl.style.setProperty('position', 'fixed');
-    enteringBackButtonIconAnimation.addElement(backButtonIconEl);
-    enteringBackButtonTextAnimation.addElement(backButtonTextEl);
-    enteringBackButtonTextAnimation
-        .beforeStyles({
-        'transform-origin': `${TEXT_ORIGIN_X} center`
-    })
-        .beforeAddWrite(() => {
-        backButtonEl.style.setProperty('display', 'none');
-        clonedBackButtonEl.style.setProperty(TEXT_ORIGIN_X, BACK_BUTTON_START_OFFSET);
-    })
-        .afterAddWrite(() => {
-        backButtonEl.style.setProperty('display', '');
-        clonedBackButtonEl.style.setProperty('display', 'none');
-        clonedBackButtonEl.style.removeProperty(TEXT_ORIGIN_X);
-    })
-        .keyframes(TEXT_KEYFRAMES);
-    enteringBackButtonIconAnimation
-        .beforeStyles({
-        'transform-origin': `${ICON_ORIGIN_X} center`
-    })
-        .keyframes(ICON_KEYFRAMES);
-    rootAnimation.addAnimation([enteringBackButtonTextAnimation, enteringBackButtonIconAnimation]);
+const getRange = (heightIndex, viewport, buffer) => {
+    const topPos = viewport.top;
+    const bottomPos = viewport.bottom;
+    // find top index
+    let i = 0;
+    for (; i < heightIndex.length; i++) {
+        if (heightIndex[i] > topPos) {
+            break;
+        }
+    }
+    const offset = Math.max(i - buffer - 1, 0);
+    // find bottom index
+    for (; i < heightIndex.length; i++) {
+        if (heightIndex[i] >= bottomPos) {
+            break;
+        }
+    }
+    const end = Math.min(i + buffer, heightIndex.length);
+    const length = end - offset;
+    return { offset, length };
 };
-const animateLargeTitle = (rootAnimation, rtl, backDirection, largeTitleEl) => {
-    const largeTitleBounds = largeTitleEl.getBoundingClientRect();
-    const TITLE_START_OFFSET = (rtl) ? `calc(100% - ${largeTitleBounds.right}px)` : `${largeTitleBounds.left}px`;
-    const START_TRANSLATE = (rtl) ? '-18px' : '18px';
-    const ORIGIN_X = (rtl) ? 'right' : 'left';
-    const BACKWARDS_KEYFRAMES = [
-        { offset: 0, opacity: 0, transform: `translate(${START_TRANSLATE}, ${addSafeArea(0)}) scale(0.49)` },
-        { offset: 0.1, opacity: 0 },
-        { offset: 1, opacity: 1, transform: `translate(0, ${addSafeArea(49)}) scale(1)` }
-    ];
-    const FORWARDS_KEYFRAMES = [
-        { offset: 0, opacity: 0.99, transform: `translate(0, ${addSafeArea(49)}) scale(1)` },
-        { offset: 0.6, opacity: 0 },
-        { offset: 1, opacity: 0, transform: `translate(${START_TRANSLATE}, ${addSafeArea(0)}) scale(0.5)` }
-    ];
-    const KEYFRAMES = (backDirection) ? BACKWARDS_KEYFRAMES : FORWARDS_KEYFRAMES;
-    const clonedTitleEl = getClonedElement('ion-title');
-    const clonedLargeTitleAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    clonedTitleEl.innerText = largeTitleEl.innerText;
-    clonedTitleEl.size = largeTitleEl.size;
-    clonedTitleEl.color = largeTitleEl.color;
-    clonedLargeTitleAnimation.addElement(clonedTitleEl);
-    clonedLargeTitleAnimation
-        .beforeStyles({
-        'transform-origin': `${ORIGIN_X} center`,
-        'height': '46px',
-        'display': '',
-        'position': 'relative',
-        [ORIGIN_X]: TITLE_START_OFFSET
-    })
-        .beforeAddWrite(() => {
-        largeTitleEl.style.setProperty('display', 'none');
-    })
-        .afterAddWrite(() => {
-        largeTitleEl.style.setProperty('display', '');
-        clonedTitleEl.style.setProperty('display', 'none');
-    })
-        .keyframes(KEYFRAMES);
-    rootAnimation.addAnimation(clonedLargeTitleAnimation);
+const getShouldUpdate = (dirtyIndex, currentRange, range) => {
+    const end = range.offset + range.length;
+    return (dirtyIndex <= end ||
+        currentRange.offset !== range.offset ||
+        currentRange.length !== range.length);
 };
-const iosTransitionAnimation = (navEl, opts) => {
-    try {
-        const EASING = 'cubic-bezier(0.32,0.72,0,1)';
-        const OPACITY = 'opacity';
-        const TRANSFORM = 'transform';
-        const CENTER = '0%';
-        const OFF_OPACITY = 0.8;
-        const isRTL = navEl.ownerDocument.dir === 'rtl';
-        const OFF_RIGHT = isRTL ? '-99.5%' : '99.5%';
-        const OFF_LEFT = isRTL ? '33%' : '-33%';
-        const enteringEl = opts.enteringEl;
-        const leavingEl = opts.leavingEl;
-        const backDirection = (opts.direction === 'back');
-        const contentEl = enteringEl.querySelector(':scope > ion-content');
-        const headerEls = enteringEl.querySelectorAll(':scope > ion-header > *:not(ion-toolbar), :scope > ion-footer > *');
-        const enteringToolBarEls = enteringEl.querySelectorAll(':scope > ion-header > ion-toolbar');
-        const rootAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-        const enteringContentAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-        rootAnimation
-            .addElement(enteringEl)
-            .duration(opts.duration || DURATION)
-            .easing(opts.easing || EASING)
-            .fill('both')
-            .beforeRemoveClass('ion-page-invisible');
-        if (leavingEl && navEl) {
-            const navDecorAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            navDecorAnimation.addElement(navEl);
-            rootAnimation.addAnimation(navDecorAnimation);
-        }
-        if (!contentEl && enteringToolBarEls.length === 0 && headerEls.length === 0) {
-            enteringContentAnimation.addElement(enteringEl.querySelector(':scope > .ion-page, :scope > ion-nav, :scope > ion-tabs')); // REVIEW
-        }
-        else {
-            enteringContentAnimation.addElement(contentEl); // REVIEW
-            enteringContentAnimation.addElement(headerEls);
-        }
-        rootAnimation.addAnimation(enteringContentAnimation);
-        if (backDirection) {
-            enteringContentAnimation
-                .beforeClearStyles([OPACITY])
-                .fromTo('transform', `translateX(${OFF_LEFT})`, `translateX(${CENTER})`)
-                .fromTo(OPACITY, OFF_OPACITY, 1);
-        }
-        else {
-            // entering content, forward direction
-            enteringContentAnimation
-                .beforeClearStyles([OPACITY])
-                .fromTo('transform', `translateX(${OFF_RIGHT})`, `translateX(${CENTER})`);
-        }
-        if (contentEl) {
-            const enteringTransitionEffectEl = shadow(contentEl).querySelector('.transition-effect');
-            if (enteringTransitionEffectEl) {
-                const enteringTransitionCoverEl = enteringTransitionEffectEl.querySelector('.transition-cover');
-                const enteringTransitionShadowEl = enteringTransitionEffectEl.querySelector('.transition-shadow');
-                const enteringTransitionEffect = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                const enteringTransitionCover = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                const enteringTransitionShadow = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                enteringTransitionEffect
-                    .addElement(enteringTransitionEffectEl)
-                    .beforeStyles({ opacity: '1' })
-                    .afterStyles({ opacity: '' });
-                enteringTransitionCover
-                    .addElement(enteringTransitionCoverEl) // REVIEW
-                    .beforeClearStyles([OPACITY])
-                    .fromTo(OPACITY, 0, 0.1);
-                enteringTransitionShadow
-                    .addElement(enteringTransitionShadowEl) // REVIEW
-                    .beforeClearStyles([OPACITY])
-                    .fromTo(OPACITY, 0.03, 0.70);
-                enteringTransitionEffect.addAnimation([enteringTransitionCover, enteringTransitionShadow]);
-                enteringContentAnimation.addAnimation([enteringTransitionEffect]);
-            }
-        }
-        const enteringContentHasLargeTitle = enteringEl.querySelector('ion-header.header-collapse-condense');
-        const { forward, backward } = createLargeTitleTransition(rootAnimation, isRTL, backDirection, enteringEl, leavingEl);
-        enteringToolBarEls.forEach(enteringToolBarEl => {
-            const enteringToolBar = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            enteringToolBar.addElement(enteringToolBarEl);
-            rootAnimation.addAnimation(enteringToolBar);
-            const enteringTitle = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            enteringTitle.addElement(enteringToolBarEl.querySelector('ion-title')); // REVIEW
-            const enteringToolBarButtons = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            const buttons = Array.from(enteringToolBarEl.querySelectorAll('ion-buttons,[menuToggle]'));
-            const parentHeader = enteringToolBarEl.closest('ion-header');
-            const inactiveHeader = parentHeader && parentHeader.classList.contains('header-collapse-condense-inactive');
-            let buttonsToAnimate;
-            if (backDirection) {
-                buttonsToAnimate = buttons.filter(button => {
-                    const isCollapseButton = button.classList.contains('buttons-collapse');
-                    return (isCollapseButton && !inactiveHeader) || !isCollapseButton;
+const findCellIndex = (cells, index) => {
+    const max = cells.length > 0 ? cells[cells.length - 1].index : 0;
+    if (index === 0) {
+        return 0;
+    }
+    else if (index === max + 1) {
+        return cells.length;
+    }
+    else {
+        return cells.findIndex(c => c.index === index);
+    }
+};
+const inplaceUpdate = (dst, src, offset) => {
+    if (offset === 0 && src.length >= dst.length) {
+        return src;
+    }
+    for (let i = 0; i < src.length; i++) {
+        dst[i + offset] = src[i];
+    }
+    return dst;
+};
+const calcCells = (items, itemHeight, headerHeight, footerHeight, headerFn, footerFn, approxHeaderHeight, approxFooterHeight, approxItemHeight, j, offset, len) => {
+    const cells = [];
+    const end = len + offset;
+    for (let i = offset; i < end; i++) {
+        const item = items[i];
+        if (headerFn) {
+            const value = headerFn(item, i, items);
+            if (value != null) {
+                cells.push({
+                    i: j++,
+                    type: CELL_TYPE_HEADER,
+                    value,
+                    index: i,
+                    height: headerHeight ? headerHeight(value, i) : approxHeaderHeight,
+                    reads: headerHeight ? 0 : MIN_READS,
+                    visible: !!headerHeight,
                 });
             }
-            else {
-                buttonsToAnimate = buttons.filter(button => !button.classList.contains('buttons-collapse'));
-            }
-            enteringToolBarButtons.addElement(buttonsToAnimate);
-            const enteringToolBarItems = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            enteringToolBarItems.addElement(enteringToolBarEl.querySelectorAll(':scope > *:not(ion-title):not(ion-buttons):not([menuToggle])'));
-            const enteringToolBarBg = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            enteringToolBarBg.addElement(shadow(enteringToolBarEl).querySelector('.toolbar-background')); // REVIEW
-            const enteringBackButton = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            const backButtonEl = enteringToolBarEl.querySelector('ion-back-button');
-            if (backButtonEl) {
-                enteringBackButton.addElement(backButtonEl);
-            }
-            enteringToolBar.addAnimation([enteringTitle, enteringToolBarButtons, enteringToolBarItems, enteringToolBarBg, enteringBackButton]);
-            enteringToolBarButtons.fromTo(OPACITY, 0.01, 1);
-            enteringToolBarItems.fromTo(OPACITY, 0.01, 1);
-            if (backDirection) {
-                if (!inactiveHeader) {
-                    enteringTitle
-                        .fromTo('transform', `translateX(${OFF_LEFT})`, `translateX(${CENTER})`)
-                        .fromTo(OPACITY, 0.01, 1);
-                }
-                enteringToolBarItems.fromTo('transform', `translateX(${OFF_LEFT})`, `translateX(${CENTER})`);
-                // back direction, entering page has a back button
-                enteringBackButton.fromTo(OPACITY, 0.01, 1);
-            }
-            else {
-                // entering toolbar, forward direction
-                if (!enteringContentHasLargeTitle) {
-                    enteringTitle
-                        .fromTo('transform', `translateX(${OFF_RIGHT})`, `translateX(${CENTER})`)
-                        .fromTo(OPACITY, 0.01, 1);
-                }
-                enteringToolBarItems.fromTo('transform', `translateX(${OFF_RIGHT})`, `translateX(${CENTER})`);
-                enteringToolBarBg
-                    .beforeClearStyles([OPACITY])
-                    .fromTo(OPACITY, 0.01, 1);
-                // forward direction, entering page has a back button
-                if (!forward) {
-                    enteringBackButton.fromTo(OPACITY, 0.01, 1);
-                }
-                if (backButtonEl && !forward) {
-                    const enteringBackBtnText = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                    enteringBackBtnText
-                        .addElement(shadow(backButtonEl).querySelector('.button-text')) // REVIEW
-                        .fromTo(`transform`, (isRTL ? 'translateX(-100px)' : 'translateX(100px)'), 'translateX(0px)');
-                    enteringToolBar.addAnimation(enteringBackBtnText);
-                }
-            }
+        }
+        cells.push({
+            i: j++,
+            type: CELL_TYPE_ITEM,
+            value: item,
+            index: i,
+            height: itemHeight ? itemHeight(item, i) : approxItemHeight,
+            reads: itemHeight ? 0 : MIN_READS,
+            visible: !!itemHeight,
         });
-        // setup leaving view
-        if (leavingEl) {
-            const leavingContent = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-            const leavingContentEl = leavingEl.querySelector(':scope > ion-content');
-            leavingContent.addElement(leavingContentEl); // REVIEW
-            leavingContent.addElement(leavingEl.querySelectorAll(':scope > ion-header > *:not(ion-toolbar), :scope > ion-footer > *'));
-            rootAnimation.addAnimation(leavingContent);
-            if (backDirection) {
-                // leaving content, back direction
-                leavingContent
-                    .beforeClearStyles([OPACITY])
-                    .fromTo('transform', `translateX(${CENTER})`, (isRTL ? 'translateX(-100%)' : 'translateX(100%)'));
-                const leavingPage = Object(_index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_5__["g"])(leavingEl);
-                rootAnimation.afterAddWrite(() => {
-                    if (rootAnimation.getDirection() === 'normal') {
-                        leavingPage.style.setProperty('display', 'none');
-                    }
+        if (footerFn) {
+            const value = footerFn(item, i, items);
+            if (value != null) {
+                cells.push({
+                    i: j++,
+                    type: CELL_TYPE_FOOTER,
+                    value,
+                    index: i,
+                    height: footerHeight ? footerHeight(value, i) : approxFooterHeight,
+                    reads: footerHeight ? 0 : MIN_READS,
+                    visible: !!footerHeight,
                 });
             }
-            else {
-                // leaving content, forward direction
-                leavingContent
-                    .fromTo('transform', `translateX(${CENTER})`, `translateX(${OFF_LEFT})`)
-                    .fromTo(OPACITY, 1, OFF_OPACITY);
-            }
-            if (leavingContentEl) {
-                const leavingTransitionEffectEl = shadow(leavingContentEl).querySelector('.transition-effect');
-                if (leavingTransitionEffectEl) {
-                    const leavingTransitionCoverEl = leavingTransitionEffectEl.querySelector('.transition-cover');
-                    const leavingTransitionShadowEl = leavingTransitionEffectEl.querySelector('.transition-shadow');
-                    const leavingTransitionEffect = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                    const leavingTransitionCover = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                    const leavingTransitionShadow = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                    leavingTransitionEffect
-                        .addElement(leavingTransitionEffectEl)
-                        .beforeStyles({ opacity: '1' })
-                        .afterStyles({ opacity: '' });
-                    leavingTransitionCover
-                        .addElement(leavingTransitionCoverEl) // REVIEW
-                        .beforeClearStyles([OPACITY])
-                        .fromTo(OPACITY, 0.1, 0);
-                    leavingTransitionShadow
-                        .addElement(leavingTransitionShadowEl) // REVIEW
-                        .beforeClearStyles([OPACITY])
-                        .fromTo(OPACITY, 0.70, 0.03);
-                    leavingTransitionEffect.addAnimation([leavingTransitionCover, leavingTransitionShadow]);
-                    leavingContent.addAnimation([leavingTransitionEffect]);
-                }
-            }
-            const leavingToolBarEls = leavingEl.querySelectorAll(':scope > ion-header > ion-toolbar');
-            leavingToolBarEls.forEach(leavingToolBarEl => {
-                const leavingToolBar = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                leavingToolBar.addElement(leavingToolBarEl);
-                const leavingTitle = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                leavingTitle.addElement(leavingToolBarEl.querySelector('ion-title')); // REVIEW
-                const leavingToolBarButtons = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                const buttons = leavingToolBarEl.querySelectorAll('ion-buttons,[menuToggle]');
-                const parentHeader = leavingToolBarEl.closest('ion-header');
-                const inactiveHeader = parentHeader && parentHeader.classList.contains('header-collapse-condense-inactive');
-                const buttonsToAnimate = Array.from(buttons).filter(button => {
-                    const isCollapseButton = button.classList.contains('buttons-collapse');
-                    return (isCollapseButton && !inactiveHeader) || !isCollapseButton;
-                });
-                leavingToolBarButtons.addElement(buttonsToAnimate);
-                const leavingToolBarItems = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                const leavingToolBarItemEls = leavingToolBarEl.querySelectorAll(':scope > *:not(ion-title):not(ion-buttons):not([menuToggle])');
-                if (leavingToolBarItemEls.length > 0) {
-                    leavingToolBarItems.addElement(leavingToolBarItemEls);
-                }
-                const leavingToolBarBg = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                leavingToolBarBg.addElement(shadow(leavingToolBarEl).querySelector('.toolbar-background')); // REVIEW
-                const leavingBackButton = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                const backButtonEl = leavingToolBarEl.querySelector('ion-back-button');
-                if (backButtonEl) {
-                    leavingBackButton.addElement(backButtonEl);
-                }
-                leavingToolBar.addAnimation([leavingTitle, leavingToolBarButtons, leavingToolBarItems, leavingBackButton, leavingToolBarBg]);
-                rootAnimation.addAnimation(leavingToolBar);
-                // fade out leaving toolbar items
-                leavingBackButton.fromTo(OPACITY, 0.99, 0);
-                leavingToolBarButtons.fromTo(OPACITY, 0.99, 0);
-                leavingToolBarItems.fromTo(OPACITY, 0.99, 0);
-                if (backDirection) {
-                    if (!inactiveHeader) {
-                        // leaving toolbar, back direction
-                        leavingTitle
-                            .fromTo('transform', `translateX(${CENTER})`, (isRTL ? 'translateX(-100%)' : 'translateX(100%)'))
-                            .fromTo(OPACITY, 0.99, 0);
-                    }
-                    leavingToolBarItems.fromTo('transform', `translateX(${CENTER})`, (isRTL ? 'translateX(-100%)' : 'translateX(100%)'));
-                    // leaving toolbar, back direction, and there's no entering toolbar
-                    // should just slide out, no fading out
-                    leavingToolBarBg
-                        .beforeClearStyles([OPACITY])
-                        .fromTo(OPACITY, 1, 0.01);
-                    if (backButtonEl && !backward) {
-                        const leavingBackBtnText = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-                        leavingBackBtnText
-                            .addElement(shadow(backButtonEl).querySelector('.button-text')) // REVIEW
-                            .fromTo('transform', `translateX(${CENTER})`, `translateX(${(isRTL ? -124 : 124) + 'px'})`);
-                        leavingToolBar.addAnimation(leavingBackBtnText);
-                    }
-                }
-                else {
-                    // leaving toolbar, forward direction
-                    if (!inactiveHeader) {
-                        leavingTitle
-                            .fromTo('transform', `translateX(${CENTER})`, `translateX(${OFF_LEFT})`)
-                            .fromTo(OPACITY, 0.99, 0)
-                            .afterClearStyles([TRANSFORM, OPACITY]);
-                    }
-                    leavingToolBarItems
-                        .fromTo('transform', `translateX(${CENTER})`, `translateX(${OFF_LEFT})`)
-                        .afterClearStyles([TRANSFORM, OPACITY]);
-                    leavingBackButton.afterClearStyles([OPACITY]);
-                    leavingTitle.afterClearStyles([OPACITY]);
-                    leavingToolBarButtons.afterClearStyles([OPACITY]);
-                }
-            });
         }
-        return rootAnimation;
     }
-    catch (err) {
-        throw err;
+    return cells;
+};
+const calcHeightIndex = (buf, cells, index) => {
+    let acum = buf[index];
+    for (let i = index; i < buf.length; i++) {
+        buf[i] = acum;
+        acum += cells[i].height;
     }
+    return acum;
+};
+const resizeBuffer = (buf, len) => {
+    if (!buf) {
+        return new Uint32Array(len);
+    }
+    if (buf.length === len) {
+        return buf;
+    }
+    else if (len > buf.length) {
+        const newBuf = new Uint32Array(len);
+        newBuf.set(buf);
+        return newBuf;
+    }
+    else {
+        return buf.subarray(0, len);
+    }
+};
+const positionForIndex = (index, cells, heightIndex) => {
+    const cell = cells.find(c => c.type === CELL_TYPE_ITEM && c.index === index);
+    if (cell) {
+        return heightIndex[cell.i];
+    }
+    return -1;
+};
+
+const VirtualScroll = class {
+    constructor(hostRef) {
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        this.range = { offset: 0, length: 0 };
+        this.viewportHeight = 0;
+        this.cells = [];
+        this.virtualDom = [];
+        this.isEnabled = false;
+        this.viewportOffset = 0;
+        this.currentScrollTop = 0;
+        this.indexDirty = 0;
+        this.lastItemLen = 0;
+        this.totalHeight = 0;
+        /**
+         * It is important to provide this
+         * if virtual item height will be significantly larger than the default
+         * The approximate height of each virtual item template's cell.
+         * This dimension is used to help determine how many cells should
+         * be created when initialized, and to help calculate the height of
+         * the scrollable area. This height value can only use `px` units.
+         * Note that the actual rendered size of each cell comes from the
+         * app's CSS, whereas this approximation is used to help calculate
+         * initial dimensions before the item has been rendered.
+         */
+        this.approxItemHeight = 45;
+        /**
+         * The approximate height of each header template's cell.
+         * This dimension is used to help determine how many cells should
+         * be created when initialized, and to help calculate the height of
+         * the scrollable area. This height value can only use `px` units.
+         * Note that the actual rendered size of each cell comes from the
+         * app's CSS, whereas this approximation is used to help calculate
+         * initial dimensions before the item has been rendered.
+         */
+        this.approxHeaderHeight = 30;
+        /**
+         * The approximate width of each footer template's cell.
+         * This dimension is used to help determine how many cells should
+         * be created when initialized, and to help calculate the height of
+         * the scrollable area. This height value can only use `px` units.
+         * Note that the actual rendered size of each cell comes from the
+         * app's CSS, whereas this approximation is used to help calculate
+         * initial dimensions before the item has been rendered.
+         */
+        this.approxFooterHeight = 30;
+        this.onScroll = () => {
+            this.updateVirtualScroll();
+        };
+    }
+    itemsChanged() {
+        this.calcCells();
+        this.updateVirtualScroll();
+    }
+    async connectedCallback() {
+        const contentEl = this.el.closest('ion-content');
+        if (!contentEl) {
+            console.error('<ion-virtual-scroll> must be used inside an <ion-content>');
+            return;
+        }
+        this.scrollEl = await contentEl.getScrollElement();
+        this.contentEl = contentEl;
+        this.calcCells();
+        this.updateState();
+    }
+    componentDidUpdate() {
+        this.updateState();
+    }
+    disconnectedCallback() {
+        this.scrollEl = undefined;
+    }
+    onResize() {
+        this.calcCells();
+        this.updateVirtualScroll();
+    }
+    /**
+     * Returns the position of the virtual item at the given index.
+     */
+    positionForItem(index) {
+        return Promise.resolve(positionForIndex(index, this.cells, this.getHeightIndex()));
+    }
+    /**
+     * This method marks a subset of items as dirty, so they can be re-rendered. Items should be marked as
+     * dirty any time the content or their style changes.
+     *
+     * The subset of items to be updated can are specifing by an offset and a length.
+     */
+    async checkRange(offset, len = -1) {
+        // TODO: kind of hacky how we do in-place updated of the cells
+        // array. this part needs a complete refactor
+        if (!this.items) {
+            return;
+        }
+        const length = (len === -1)
+            ? this.items.length - offset
+            : len;
+        const cellIndex = findCellIndex(this.cells, offset);
+        const cells = calcCells(this.items, this.itemHeight, this.headerHeight, this.footerHeight, this.headerFn, this.footerFn, this.approxHeaderHeight, this.approxFooterHeight, this.approxItemHeight, cellIndex, offset, length);
+        this.cells = inplaceUpdate(this.cells, cells, cellIndex);
+        this.lastItemLen = this.items.length;
+        this.indexDirty = Math.max(offset - 1, 0);
+        this.scheduleUpdate();
+    }
+    /**
+     * This method marks the tail the items array as dirty, so they can be re-rendered.
+     *
+     * It's equivalent to calling:
+     *
+     * ```js
+     * virtualScroll.checkRange(lastItemLen);
+     * ```
+     */
+    async checkEnd() {
+        if (this.items) {
+            this.checkRange(this.lastItemLen);
+        }
+    }
+    updateVirtualScroll() {
+        // do nothing if virtual-scroll is disabled
+        if (!this.isEnabled || !this.scrollEl) {
+            return;
+        }
+        // unschedule future updates
+        if (this.timerUpdate) {
+            clearTimeout(this.timerUpdate);
+            this.timerUpdate = undefined;
+        }
+        // schedule DOM operations into the stencil queue
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["f"])(this.readVS.bind(this));
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["w"])(this.writeVS.bind(this));
+    }
+    readVS() {
+        const { contentEl, scrollEl, el } = this;
+        let topOffset = 0;
+        let node = el;
+        while (node && node !== contentEl) {
+            topOffset += node.offsetTop;
+            node = node.parentElement;
+        }
+        this.viewportOffset = topOffset;
+        if (scrollEl) {
+            this.viewportHeight = scrollEl.offsetHeight;
+            this.currentScrollTop = scrollEl.scrollTop;
+        }
+    }
+    writeVS() {
+        const dirtyIndex = this.indexDirty;
+        // get visible viewport
+        const scrollTop = this.currentScrollTop - this.viewportOffset;
+        const viewport = getViewport(scrollTop, this.viewportHeight, 100);
+        // compute lazily the height index
+        const heightIndex = this.getHeightIndex();
+        // get array bounds of visible cells base in the viewport
+        const range = getRange(heightIndex, viewport, 2);
+        // fast path, do nothing
+        const shouldUpdate = getShouldUpdate(dirtyIndex, this.range, range);
+        if (!shouldUpdate) {
+            return;
+        }
+        this.range = range;
+        // in place mutation of the virtual DOM
+        updateVDom(this.virtualDom, heightIndex, this.cells, range);
+        // Write DOM
+        // Different code paths taken depending of the render API used
+        if (this.nodeRender) {
+            doRender(this.el, this.nodeRender, this.virtualDom, this.updateCellHeight.bind(this));
+        }
+        else if (this.domRender) {
+            this.domRender(this.virtualDom);
+        }
+        else if (this.renderItem) {
+            this.el.forceUpdate();
+        }
+    }
+    updateCellHeight(cell, node) {
+        const update = () => {
+            if (node['$ionCell'] === cell) {
+                const style = window.getComputedStyle(node);
+                const height = node.offsetHeight + parseFloat(style.getPropertyValue('margin-bottom'));
+                this.setCellHeight(cell, height);
+            }
+        };
+        if (node && node.componentOnReady) {
+            node.componentOnReady().then(update);
+        }
+        else {
+            update();
+        }
+    }
+    setCellHeight(cell, height) {
+        const index = cell.i;
+        // the cell might changed since the height update was scheduled
+        if (cell !== this.cells[index]) {
+            return;
+        }
+        if (cell.height !== height || cell.visible !== true) {
+            cell.visible = true;
+            cell.height = height;
+            this.indexDirty = Math.min(this.indexDirty, index);
+            this.scheduleUpdate();
+        }
+    }
+    scheduleUpdate() {
+        clearTimeout(this.timerUpdate);
+        this.timerUpdate = setTimeout(() => this.updateVirtualScroll(), 100);
+    }
+    updateState() {
+        const shouldEnable = !!(this.scrollEl &&
+            this.cells);
+        if (shouldEnable !== this.isEnabled) {
+            this.enableScrollEvents(shouldEnable);
+            if (shouldEnable) {
+                this.updateVirtualScroll();
+            }
+        }
+    }
+    calcCells() {
+        if (!this.items) {
+            return;
+        }
+        this.lastItemLen = this.items.length;
+        this.cells = calcCells(this.items, this.itemHeight, this.headerHeight, this.footerHeight, this.headerFn, this.footerFn, this.approxHeaderHeight, this.approxFooterHeight, this.approxItemHeight, 0, 0, this.lastItemLen);
+        this.indexDirty = 0;
+    }
+    getHeightIndex() {
+        if (this.indexDirty !== Infinity) {
+            this.calcHeightIndex(this.indexDirty);
+        }
+        return this.heightIndex;
+    }
+    calcHeightIndex(index = 0) {
+        // TODO: optimize, we don't need to calculate all the cells
+        this.heightIndex = resizeBuffer(this.heightIndex, this.cells.length);
+        this.totalHeight = calcHeightIndex(this.heightIndex, this.cells, index);
+        this.indexDirty = Infinity;
+    }
+    enableScrollEvents(shouldListen) {
+        if (this.rmEvent) {
+            this.rmEvent();
+            this.rmEvent = undefined;
+        }
+        const scrollEl = this.scrollEl;
+        if (scrollEl) {
+            this.isEnabled = shouldListen;
+            scrollEl.addEventListener('scroll', this.onScroll);
+            this.rmEvent = () => {
+                scrollEl.removeEventListener('scroll', this.onScroll);
+            };
+        }
+    }
+    renderVirtualNode(node) {
+        const { type, value, index } = node.cell;
+        switch (type) {
+            case CELL_TYPE_ITEM: return this.renderItem(value, index);
+            case CELL_TYPE_HEADER: return this.renderHeader(value, index);
+            case CELL_TYPE_FOOTER: return this.renderFooter(value, index);
+        }
+    }
+    render() {
+        return (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], { style: {
+                height: `${this.totalHeight}px`
+            } }, this.renderItem && (Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(VirtualProxy, { dom: this.virtualDom }, this.virtualDom.map(node => this.renderVirtualNode(node))))));
+    }
+    get el() { return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this); }
+    static get watchers() { return {
+        "itemHeight": ["itemsChanged"],
+        "headerHeight": ["itemsChanged"],
+        "footerHeight": ["itemsChanged"],
+        "items": ["itemsChanged"]
+    }; }
+    static get style() { return "ion-virtual-scroll{display:block;position:relative;width:100%;contain:strict;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}ion-virtual-scroll>.virtual-loading{opacity:0}ion-virtual-scroll>.virtual-item{position:absolute!important;top:0!important;right:0!important;left:0!important;-webkit-transition-duration:0ms;transition-duration:0ms;will-change:transform}"; }
+};
+const VirtualProxy = ({ dom }, children, utils) => {
+    return utils.map(children, (child, i) => {
+        const node = dom[i];
+        const vattrs = child.vattrs || {};
+        let classes = vattrs.class || '';
+        classes += 'virtual-item ';
+        if (!node.visible) {
+            classes += 'virtual-loading';
+        }
+        return Object.assign(Object.assign({}, child), { vattrs: Object.assign(Object.assign({}, vattrs), { class: classes, style: Object.assign(Object.assign({}, vattrs.style), { transform: `translate3d(0,${node.top}px,0)` }) }) });
+    });
 };
 
 

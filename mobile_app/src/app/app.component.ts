@@ -255,6 +255,11 @@ export class AppComponent implements OnInit {
             message.driver + '</div>',
           buttons: ["OK"]
         }); 
+        break;
+      }
+      case "ACTIVE_DRIVES":{
+        this.events.publish("activeDrives", message);
+
       }
     }
   }

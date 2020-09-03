@@ -30,7 +30,7 @@ export class MyRidesPage implements OnInit {
   }
 
   ngOnInit() {
-     this.storage.get("id_token").then(val => { 
+     this.storage.get("username").then(val => { 
       if (val != null) { 
  
     this.http

@@ -36,15 +36,15 @@
                     <button class="menu-close" ion-button menuClose>{{ "menu.closeMenu" | translate }}</button>
                 </ion-item> 
                 
-                
+                <ion-list id="labels-list">
+                    <ion-label *ngIf="!isUserLoggedIn" routerLink="/login">{{ "menu.login" | translate }}</ion-label> 
+                    <ion-label *ngIf="isUserLoggedIn"  (click)="logout()">{{ "menu.logout" | translate }}</ion-label> 
+                  </ion-list>
                 </ion-menu-toggle>
             </ion-list>
 
-            <ion-list id="labels-list">
-            <ion-label *ngIf="!isUserLoggedIn" routerLink="/login">{{ "menu.login" | translate }}</ion-label> 
-            <ion-label *ngIf="isUserLoggedIn"  (click)="logout()">{{ "menu.logout" | translate }}</ion-label> 
-
-        </ion-list>
+     
+ 
       <p class="text-moto">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>
       </ion-content>
       

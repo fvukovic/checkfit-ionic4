@@ -15,8 +15,7 @@ import { AndroidPermissions } from "@ionic-native/android-permissions/ngx";
 import { PhoneNumberPage } from "./pages/popups/phone-number/phone-number.page";
 import { Variable } from "@angular/compiler/src/render3/r3_ast";
 import { NativeAudio } from "@ionic-native/native-audio/ngx";
-import { AlertController } from '@ionic/angular';
- 
+import { AlertController } from "@ionic/angular";
 
 @Component({
   selector: "app-root",
@@ -50,6 +49,7 @@ export class AppComponent implements OnInit {
     private nativeAudio: NativeAudio,
     private alertController: AlertController
   ) {
+  
     //socketService.getUniqueId();
     this.router.navigateByUrl("customer-homepage");
     this.initializeApp();
@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
             );
           }, 4000);
         }
-      }); 
+      });
 
       setTimeout(() => {
         this.socketService.stream().subscribe((message: any) => {
@@ -118,21 +118,21 @@ export class AppComponent implements OnInit {
   }
 
   async handleMessage(message) {
-    console.log(JSON.stringify(message))
+    console.log(JSON.stringify(message));
     switch (message.messageType) {
       case "DRIVE_REQUEST": {
         setTimeout(() => {
           this.modalcontroller
-          .create({
-            component: DriveRequestPage,
-            componentProps: { message: message }
-          })
-          .then(modalElement => {
-            this.nativeAudio.play("uniqueId1");
-            modalElement.present();
-          });
+            .create({
+              component: DriveRequestPage,
+              componentProps: { message: message }
+            })
+            .then(modalElement => {
+              this.nativeAudio.play("uniqueId1");
+              modalElement.present();
+            });
         }, 0);
-        
+
         break;
       }
       case "INFORM_DRIVE_CUSTOMER": {
@@ -141,7 +141,7 @@ export class AppComponent implements OnInit {
       }
       case "INFORM_DRIVE_DRIVER": {
         // TODO removaj ovo
-   
+
         this.locationService.getUserPosition().then(
           val => {
             this.socketService.send("/server-receiver", {
@@ -157,9 +157,9 @@ export class AppComponent implements OnInit {
         );
         break;
       }
-      case 'ACCEPT_DRIVE': {
+      case "ACCEPT_DRIVE": {
         // TODO remove popup
-        this.events.publish('driveAccepted', message);
+        this.events.publish("driveAccepted", message);
         break;
       }
       case "ACCEPT_DRIVE_DRIVER": {
@@ -168,7 +168,7 @@ export class AppComponent implements OnInit {
         });
         break;
       }
-      case "REQUEST_INCOMING": { 
+      case "REQUEST_INCOMING": {
         // this.presentAlert();
         var streetLocation = await this.locationService.getReverseGeocode(
           message.fromLat,
@@ -187,25 +187,34 @@ export class AppComponent implements OnInit {
           message.toLong
         );
         this.toAddress =
-        streetLocation2[0].thoroughfare +
+          streetLocation2[0].thoroughfare +
           "," +
           streetLocation2[0].subThoroughfare +
           "," +
           streetLocation2[0].locality;
         this.nativeAudio.play("uniqueId1");
 
-        alert(
-          "Dolazi nova Vožnja! \n \n" +
-          "OD: " + this.fromAddress + "\n" +
-          "DO: " + this.toAddress + "\n"  
-        );
+        this.presentAlert({
+          cssClass: "myClass",
+          header: "Obavijest", 
+          message:
+            'Dolazi nova Vožnja!',
+          buttons: ["OK"]
+        });
  
+
         break;
       }
       case "FINISH_DRIVE_CUSTOMER": {
         //TODO remove popup
         this.router.navigate(["/customer-homepage"]);
-        alert("Vaše vozilo je na mjestu!");
+        this.presentAlert({
+          cssClass: "myClass",
+          header: "Obavijest", 
+          message:
+            '<div style="height: 100%"> Vaše vozilo vas čeka na polazištu! </div>',
+          buttons: ["OK"]
+        });   
         break;
       }
       case "SOS": {
@@ -221,20 +230,31 @@ export class AppComponent implements OnInit {
           streetLocation[0].locality;
         this.nativeAudio.play("uniqueId1");
 
-        alert(
-          "Vozač: " +
+        this.presentAlert({
+          cssClass: "myClass",
+          header: "Obavijest", 
+          message:
+            '<div style="height: 100%"> Vozač: ' +
             message.driver +
-            " je u nevolji!!! \n Lokacija: " +
-            this.fromAddress
-        );
+            ' je u nevolji!!! \n Lokacija: ' +
+            this.fromAddress + '</div>',
+          buttons: ["OK"]
+        });
         break;
       }
-      case "DRIVER_INFO": {
+      case 'DRIVER_INFO': {
         this.events.publish("driverInfo", message);
         break;
       }
       case "DRIVER_NOTIFICATION": {
-        alert("Nova poruka: \n \n "+ message.driver);
+        this.presentAlert({
+          cssClass: "myClass",
+          header: "Obavijest", 
+          message:
+            '<div style="height: 100%">   ' +
+            message.driver + '</div>',
+          buttons: ["OK"]
+        }); 
       }
     }
   }
@@ -245,16 +265,20 @@ export class AppComponent implements OnInit {
 
   async updateDistance(message) {
     var _this = this;
-      this.locationService.getDistanceFromLatLonInKm(
-        message.fromLat,
-        message.fromLong,
-        message.toLat,
-        message.toLong,
-        function(response, status) {  
-          console.log("TUUUUU")
-          console.log(message)
-          _this.events.publish("informCustomer", response.rows[0].elements[0].distance.text);
-        });
+    this.locationService.getDistanceFromLatLonInKm(
+      message.fromLat,
+      message.fromLong,
+      message.toLat,
+      message.toLong,
+      function(response, status) {
+        console.log("TUUUUU");
+        console.log(message);
+        _this.events.publish(
+          "informCustomer",
+          response.rows[0].elements[0].distance.text
+        );
+      }
+    );
   }
 
   ngOnInit() {
@@ -278,14 +302,15 @@ export class AppComponent implements OnInit {
         modalElement.present();
       });
   }
-  async presentAlert() {
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      header: 'Alert',
-      subHeader: 'Subtitle',
-      message: 'This is an alert message.',
-      buttons: ['OK']
-    });
+  async presentAlert(options) {
+    // {
+    //   cssClass: 'myClass',
+    //   header: 'Alert',
+    //   subHeader: 'Subtitle',
+    //   message: '<div style="height: 100%"> This is an alert message. </div>',
+    //   buttons: ['OK']
+    // }
+    const alert = await this.alertController.create(options);
 
     await alert.present();
   }

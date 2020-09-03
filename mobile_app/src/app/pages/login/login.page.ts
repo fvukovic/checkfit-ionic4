@@ -7,7 +7,9 @@ import { SocketService } from "../../services/socket.service";
 import { AppComponent } from "../../app.component";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { catchError } from "rxjs/operators";
-import { Observable,throwError } from 'rxjs'; 
+import { Observable, throwError } from "rxjs";
+import { AlertController } from "@ionic/angular";
+
 @Component({
   selector: "app-login",
   templateUrl: "./login.page.html",
@@ -21,7 +23,8 @@ export class LoginPage implements OnInit {
     private storage: Storage,
     private http: HttpClient,
     private router: Router,
-    private appCompoent: AppComponent
+    private appCompoent: AppComponent,
+    private alertController: AlertController
   ) {}
 
   ngOnInit() {}
@@ -35,17 +38,27 @@ export class LoginPage implements OnInit {
       })
       .pipe(
         catchError((err: any) => {
-          alert("Login je bio neuspješan");
-          return Observable.throw(err || 'Internal Server error');
-
+          this.presentAlert();
+          return Observable.throw(err || "Internal Server error");
         })
       )
       .subscribe(data => {
-        this.storage.set("username", this.email); 
+        this.storage.set("username", this.email);
         this.storage.set("id_token", data["id_token"]);
         location.reload();
       });
 
     this.appCompoent.isUserLoggedIn = true;
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: "myClass",
+      header: "Obavijest",
+      message: '<div style="height: 100%"> Login je bio neuspješan. </div>',
+      buttons: ["OK"]
+    });
+
+    await alert.present();
   }
 }

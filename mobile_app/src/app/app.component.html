@@ -10,37 +10,37 @@
                   <ion-menu-toggle auto-hide="false" >
 
                   <ion-item *ngIf="!isUserLoggedIn" class="list-item">
-                      <ion-label routerLink="/customer-homepage">{{ "menu.customerHomePage" | translate }}</ion-label>
+                      <ion-label class="menu-list-item" routerLink="/customer-homepage">{{ "menu.customerHomePage" | translate }}</ion-label>
                   </ion-item>
 
                   <ion-item *ngIf="isUserLoggedIn" class="list-item">
-                    <ion-label routerLink="/customer-homepage">Početna</ion-label>
+                    <ion-label class="menu-list-item" routerLink="/customer-homepage">Početna</ion-label>
                 </ion-item> 
                   <ion-item *ngIf="isUserLoggedIn" class="list-item">
-                    <ion-label routerLink="/active-rides">Aktivne vožnje</ion-label>
+                    <ion-label class="menu-list-item" routerLink="/active-rides">Aktivne vožnje</ion-label>
                 </ion-item> 
                   <ion-item *ngIf="isUserLoggedIn" class="list-item">
                     <ion-label routerLink="/inactive-rides">Trenutni zahtjevi</ion-label>
                 </ion-item> 
                 
                   <ion-item *ngIf="!isUserLoggedIn" class="list-item">
-                      <ion-label routerLink="/about-us">{{ "menu.aboutUs" | translate }}</ion-label>
+                      <ion-label class="menu-list-item" routerLink="/about-us">{{ "menu.aboutUs" | translate }}</ion-label>
                   </ion-item> 
 
                   <ion-item *ngIf="isUserLoggedIn" class="list-item">
-                      <ion-label routerLink="/my-rides">{{ "menu.myRides" | translate }}</ion-label>
+                      <ion-label class="menu-list-item" routerLink="/my-rides">{{ "menu.myRides" | translate }}</ion-label>
                   </ion-item> 
 
                   <ion-item class="list-item">
-                      <ion-label (click)="openPhoneNumberPopup()">{{ "change.number" | translate }}</ion-label>
+                      <ion-label (click)="openPhoneNumberPopup()" class="menu-list-item">{{ "change.number" | translate }}</ion-label>
                   </ion-item> 
                   <ion-item class="list-item">
                     <button class="menu-close" ion-button menuClose>{{ "menu.closeMenu" | translate }}</button>
                 </ion-item> 
                 
                 <ion-list id="labels-list">
-                    <ion-label *ngIf="!isUserLoggedIn" routerLink="/login">{{ "menu.login" | translate }}</ion-label> 
-                    <ion-label *ngIf="isUserLoggedIn"  (click)="logout()">{{ "menu.logout" | translate }}</ion-label> 
+                    <ion-label *ngIf="!isUserLoggedIn" routerLink="/login" class="login-out">{{ "menu.login" | translate }}</ion-label> 
+                    <ion-label *ngIf="isUserLoggedIn"  (click)="logout()" class="login-out">{{ "menu.logout" | translate }}</ion-label> 
                   </ion-list>
                 </ion-menu-toggle>
             </ion-list>

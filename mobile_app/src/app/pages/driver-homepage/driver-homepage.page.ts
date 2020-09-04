@@ -50,7 +50,7 @@ export class DriverHomepagePage implements OnInit {
 
     const firstParam: string = this.route.snapshot.queryParamMap.get("data");
     if (firstParam != null) {
-      let message = JSON.parse(firstParam);
+      let message = JSON.parse(firstParam); 
       this.message = message;
       this.phoneNumber = message.phoneNumber;
       const driveIsStarted: string = this.route.snapshot.queryParamMap.get(
@@ -88,6 +88,7 @@ export class DriverHomepagePage implements OnInit {
   }
 
   async populateAddress(message) {
+    // alert(JSON.stringify(message))
     var fromAddress = await this.locationService.getReverseGeocode(
       message.fromLat,
       message.fromLong
@@ -290,7 +291,7 @@ export class DriverHomepagePage implements OnInit {
     this.displayDirection(directionsService, directionsDisplay);
   }
 
-  endDrive() {
+  endDrive(){
     this.storage.get("username").then(username => {
       this.socketService.send("/server-receiver", {
         type: "customer",
@@ -299,6 +300,17 @@ export class DriverHomepagePage implements OnInit {
       });
     });
     location.reload();
+  }
+
+  driverIsOnSpot() {
+    this.storage.get("username").then(username => {
+      this.socketService.send("/server-receiver", {
+        type: "customer",
+        messageType: "ON_SPOT",
+        driver: username,
+        customer: this.message.username
+      });
+    });
   }
 
   displayDirection(directionsService, directionsDisplay) {

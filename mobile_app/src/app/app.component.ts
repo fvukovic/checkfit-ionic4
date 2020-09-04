@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
   toAddress: String;
   task: Variable;
   interval;
+  modal: any;
 
   constructor(
     private platform: Platform,
@@ -117,12 +118,14 @@ export class AppComponent implements OnInit {
     });
   }
 
-  async handleMessage(message) {
-    console.log(JSON.stringify(message));
+  async handleMessage(message) { 
+    if(message.messageType!= "DRIVER_INFO"){
+      // alert(JSON.stringify(message))
+    }
     switch (message.messageType) {
       case "DRIVE_REQUEST": {
-        setTimeout(() => {
-          this.modalcontroller
+         setTimeout(() => {
+          this.modal =  this.modalcontroller
             .create({
               component: DriveRequestPage,
               componentProps: { message: message }
@@ -130,6 +133,7 @@ export class AppComponent implements OnInit {
             .then(modalElement => {
               this.nativeAudio.play("uniqueId1");
               modalElement.present();
+              // this.modal.dismis()
             });
         }, 0);
 
@@ -248,6 +252,7 @@ export class AppComponent implements OnInit {
         break;
       }
       case "DRIVER_NOTIFICATION": {
+        this.nativeAudio.play("uniqueId1");
         this.presentAlert({
           cssClass: "myClass",
           header: "Obavijest", 
@@ -260,7 +265,21 @@ export class AppComponent implements OnInit {
       }
       case "ACTIVE_DRIVES":{
         this.events.publish("activeDrives", message);
-
+        break;
+      }
+      case "WEB_DRIVES":{
+        this.events.publish("webDrives", message);
+        break;
+      }
+      case "REMOVE_REQUEST": {
+        this.modalcontroller.dismiss();
+        this.presentAlert({
+          cssClass: "myClass",
+          header: "Obavijest", 
+          message:
+            '<div style="height: 100%"> Vožnja je prihvaćena od strane drugog vozača!   </div>',
+          buttons: ["OK"]
+        });
       }
     }
   }

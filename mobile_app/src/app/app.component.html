@@ -19,8 +19,10 @@
                   <ion-item *ngIf="isUserLoggedIn" class="list-item">
                     <ion-label routerLink="/active-rides">Aktivne vožnje</ion-label>
                 </ion-item> 
-
-
+                  <ion-item *ngIf="isUserLoggedIn" class="list-item">
+                    <ion-label routerLink="/inactive-rides">Trenutni zahtjevi</ion-label>
+                </ion-item> 
+                
                   <ion-item *ngIf="!isUserLoggedIn" class="list-item">
                       <ion-label routerLink="/about-us">{{ "menu.aboutUs" | translate }}</ion-label>
                   </ion-item> 

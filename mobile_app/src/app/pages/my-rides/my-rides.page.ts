@@ -35,7 +35,7 @@ export class MyRidesPage implements OnInit {
  
     this.http
     .post("https://taxi-mura.herokuapp.com/api/drivesByUsername", { 
-      username: "admin", 
+      username: val, 
     })
     .pipe(
       catchError((err: any) => { 

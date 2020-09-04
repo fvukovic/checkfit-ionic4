@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'active-rides',
     loadChildren: () => import('./pages/active-rides/active-rides.module').then( m => m.ActiveRidesModule)
+  },
+  {
+    path: 'inactive-rides',
+    loadChildren: () => import('./pages/inactive-rides/inactive-rides.module').then( m => m.InactiveRidesModule)
   }
 ];
 

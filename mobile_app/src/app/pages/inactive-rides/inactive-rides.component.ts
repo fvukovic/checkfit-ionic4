@@ -9,11 +9,11 @@ import { Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
 
 @Component({
-  selector: "app-active-rides",
-  templateUrl: "./active-rides.component.html",
-  styleUrls: ["./active-rides.component.scss"]
+  selector: "app-inactive-rides",
+  templateUrl: "./inactive-rides.component.html",
+  styleUrls: ["./inactive-rides.component.scss"]
 })
-export class ActiveRidesComponent implements OnInit {
+export class InactiveRidesComponent implements OnInit {
   invoiceList: any[] = [];
 
   constructor(
@@ -24,7 +24,8 @@ export class ActiveRidesComponent implements OnInit {
     private socketService: SocketService,
     public events: Events
   ) {
-    events.subscribe("activeDrives", message => { 
+    events.subscribe("webDrives", message => { 
+      // alert(JSON.stringify(message['drives']))
       Object.entries(message['drives']).forEach(([key, value]) => {   
         this.locationService
           .getReverseGeocode(value["fromLat"], value["fromLong"])
@@ -51,18 +52,20 @@ export class ActiveRidesComponent implements OnInit {
                     to[0].locality,
                   persons: value["persons"],
                   km: value["km"],
-                  phoneNumber: value["phoneNumber"]
+                  phoneNumber: value["phoneNumber"],
+                  customer: value["customer"]
                 }); 
               });
           });
       }); 
-    });
+    }); 
+
     this.storage.get("username").then(val => {
-      if (val != null) {
+      if (val != null) { 
         this.socketService.send("/server-receiver", {
           type: "driver",
           driver: val,
-          messageType: "ACTIVE_DRIVES",
+          messageType: "WEB_DRIVES",
           toLat: "46",
           toLong: "16"
         });
@@ -71,8 +74,19 @@ export class ActiveRidesComponent implements OnInit {
   }
 
   navigateToDrive(drive): void {
-    this.router.navigate(["/driver-homepage"], {
-      queryParams: { data: JSON.stringify(drive), driveIsStarted: true }
+    this.storage.get("username").then(username => {
+ 
+      this.socketService.send("/server-receiver", {
+        type: "customer",
+        messageType: "ACCEPT_DRIVE",
+        customer: drive.customer,
+        phoneNumber: drive.phoneNumber,
+        fromLat: drive.fromLat,
+        fromLong: drive.fromLong,
+        toLat: drive.toLat,
+        toLong: drive.toLong,
+        driver: username
+      });
     });
   }
 

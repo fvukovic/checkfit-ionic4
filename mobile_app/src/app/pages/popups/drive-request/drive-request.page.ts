@@ -61,9 +61,7 @@ export class DriveRequestPage implements OnInit {
   acceptRequst() { 
 
     this.storage.get("username").then(username => {
- 
-  
-    this.socketService.send("/server-receiver", {
+     this.socketService.send("/server-receiver", {
       type: "customer",
       messageType: "ACCEPT_DRIVE",
       customer: this.message.username,
@@ -81,4 +79,9 @@ export class DriveRequestPage implements OnInit {
     /**TODO dodaj alert za 5 sekunda ako voznja nije prihvacena
      */
   }
+
+  radioGroupChange(event) {
+    console.log("radioGroupChange",event.detail);
+    this.selectedTime = event.detail.value;
+    }
 }

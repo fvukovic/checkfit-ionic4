@@ -119,9 +119,9 @@ export class AppComponent implements OnInit {
   }
 
   async handleMessage(message) { 
-    if(message.messageType!= "DRIVER_INFO"){
-      // alert(JSON.stringify(message))
-    }
+    // if(message.messageType!= "DRIVER_INFO"){
+    //   alert(JSON.stringify(message))
+    // }
     switch (message.messageType) {
       case "DRIVE_REQUEST": {
          setTimeout(() => {

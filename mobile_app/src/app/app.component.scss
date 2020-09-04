@@ -150,6 +150,7 @@ ion-item.selected {
 }
 .login-out {
   padding: 10px 30px;
+  margin: 0;
 }
 #labels-list ion-label {
   color: white;
@@ -171,16 +172,14 @@ ion-item.selected {
    
 }
 .text-moto {
-  border-bottom: 1px solid;
-  padding-bottom: 15px;
-  line-height: 26px;
+  line-height: 20px;
   font-weight: bold;
   font-style: italic;
-  font-size: 16px;
+  font-size: 12px;
   text-transform: uppercase;
   padding: 0 30px 15px 30px; 
   text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
-  margin-top: 25px;
+  margin: 0;
 }
 
 ion-menu {

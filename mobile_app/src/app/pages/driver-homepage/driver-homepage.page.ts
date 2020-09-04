@@ -296,7 +296,8 @@ export class DriverHomepagePage implements OnInit {
       this.socketService.send("/server-receiver", {
         type: "customer",
         messageType: "FINISH_DRIVE",
-        driver: username
+        driver: username,
+        customer: this.message.customer
       });
     });
     location.reload();
@@ -308,7 +309,7 @@ export class DriverHomepagePage implements OnInit {
         type: "customer",
         messageType: "ON_SPOT",
         driver: username,
-        customer: this.message.username
+        customer: this.message.customer
       });
     });
   }

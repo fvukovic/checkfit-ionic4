@@ -93,3 +93,9 @@ ion-menu-button {
 ion-radio {
     --color-checked: #393939;
 }
+
+.accept[disabled],
+.accept[disabled="true"],
+.accept:disabled {
+  border: 1px solid #DC143C;
+}

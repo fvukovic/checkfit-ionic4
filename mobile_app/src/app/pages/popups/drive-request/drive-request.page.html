@@ -31,7 +31,7 @@
     <div class="text-minutes">Dolazak na lokaciju (min):</div>
     <div class="select-time">     
       
-        <ion-radio-group [(ngModel)]="minutes"> 
+        <ion-radio-group (ionChange)="radioGroupChange($event)"> 
           <ion-row>
         <ion-col style="padding: 0; margin: 0;">
           <ion-item lines="none">
@@ -87,7 +87,7 @@
   
     </div>
     <div class="buttons">
-      <button class="btn accept" (click) = "acceptRequst()" > Prihvati</button>
+      <button  class="btn accept" [disabled]="!selectedTime" full ion-button round="true" (click) = "acceptRequst()" > Prihvati</button>
       <button class="btn reject" (click) = "closeModal()"  > Odbij</button>
     </div> 
  

@@ -4,7 +4,6 @@
 .buttons {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     border-bottom: 1px solid #000;
     padding-bottom: 15px;
     margin: 20px;
@@ -13,11 +12,19 @@
         --background: #46e169;
         color: #393939;
         font-size: 13px;
+        width: 100px;
     }
     .finish-drive {
         --background: #393939;
         color: #46e169;
         font-size: 13px;
+        width: 100px;
+    }
+    .end-drive {
+        --background: #9c9cac;
+        color: #fff;
+        font-size: 13px;
+        width: 100px;
     }
 }
 

@@ -443,7 +443,7 @@ module.exports = webpackAsyncContext;
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\"> \n      <ion-content>\n        <ion-list id=\"inbox-list\">\n              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->\n              <img src=\"../../../assets/img/taxiLogo.png\" class=\"menu-img\">\n\n              <div class=\"menu-list\">Izbornik</div> \n                  <ion-menu-toggle auto-hide=\"false\" >\n\n                  <ion-item *ngIf=\"!isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n                  </ion-item>\n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                    <ion-label routerLink=\"/customer-homepage\">Početna</ion-label>\n                </ion-item> \n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                    <ion-label routerLink=\"/active-rides\">Aktivne vožnje</ion-label>\n                </ion-item> \n\n\n                  <ion-item *ngIf=\"!isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n                  </ion-item> \n                  <ion-item class=\"list-item\">\n                    <button class=\"menu-close\" ion-button menuClose>{{ \"menu.closeMenu\" | translate }}</button>\n                </ion-item> \n                \n                \n                </ion-menu-toggle>\n            </ion-list>\n\n            <ion-list id=\"labels-list\">\n            <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n            <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      <p class=\"text-moto\">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\"> \n      <ion-content>\n        <ion-list id=\"inbox-list\">\n              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->\n              <img src=\"../../../assets/img/taxiLogo.png\" class=\"menu-img\">\n\n              <div class=\"menu-list\">Izbornik</div> \n                  <ion-menu-toggle auto-hide=\"false\" >\n\n                  <ion-item *ngIf=\"!isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n                  </ion-item>\n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                    <ion-label routerLink=\"/customer-homepage\">Početna</ion-label>\n                </ion-item> \n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                    <ion-label routerLink=\"/active-rides\">Aktivne vožnje</ion-label>\n                </ion-item> \n\n\n                  <ion-item *ngIf=\"!isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n                  </ion-item> \n                  <ion-item class=\"list-item\">\n                    <button class=\"menu-close\" ion-button menuClose>{{ \"menu.closeMenu\" | translate }}</button>\n                </ion-item> \n                \n                <ion-list id=\"labels-list\">\n                    <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n                    <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n                  </ion-list>\n                </ion-menu-toggle>\n            </ion-list>\n\n     \n \n      <p class=\"text-moto\">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n");
 
 /***/ }),
 
@@ -1043,6 +1043,7 @@ let AppComponent = class AppComponent {
                     break;
                 }
                 case 'DRIVER_INFO': {
+                    console.log(JSON.stringify(message));
                     this.events.publish("driverInfo", message);
                     break;
                 }
@@ -1083,9 +1084,11 @@ let AppComponent = class AppComponent {
         }
     }
     logout() {
-        this.isUserLoggedIn = false;
         this.storage.set("username", null);
-        location.reload();
+        this.isUserLoggedIn = false;
+        setTimeout(() => {
+            location.reload();
+        }, 2000);
     }
     openPhoneNumberPopup() {
         this.modalcontroller

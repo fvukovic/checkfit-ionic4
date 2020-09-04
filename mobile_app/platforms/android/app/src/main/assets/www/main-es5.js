@@ -167,7 +167,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\"> \n      <ion-content>\n        <ion-list id=\"inbox-list\">\n              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->\n              <img src=\"../../../assets/img/taxiLogo.png\" class=\"menu-img\">\n\n              <div class=\"menu-list\">Izbornik</div> \n                  <ion-menu-toggle auto-hide=\"false\" >\n\n                  <ion-item *ngIf=\"!isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n                  </ion-item>\n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                    <ion-label routerLink=\"/customer-homepage\">Početna</ion-label>\n                </ion-item> \n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                    <ion-label routerLink=\"/active-rides\">Aktivne vožnje</ion-label>\n                </ion-item> \n\n\n                  <ion-item *ngIf=\"!isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n                  </ion-item> \n                  <ion-item class=\"list-item\">\n                    <button class=\"menu-close\" ion-button menuClose>{{ \"menu.closeMenu\" | translate }}</button>\n                </ion-item> \n                \n                \n                </ion-menu-toggle>\n            </ion-list>\n\n            <ion-list id=\"labels-list\">\n            <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n            <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n\n        </ion-list>\n      <p class=\"text-moto\">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
+    __webpack_exports__["default"] = "<ion-app>\n  <ion-split-pane contentId=\"main-content\">\n    <ion-menu contentId=\"main-content\" type=\"overlay\"> \n      <ion-content>\n        <ion-list id=\"inbox-list\">\n              <!-- <ion-list-header>Mura Taxi</ion-list-header>  -->\n              <img src=\"../../../assets/img/taxiLogo.png\" class=\"menu-img\">\n\n              <div class=\"menu-list\">Izbornik</div> \n                  <ion-menu-toggle auto-hide=\"false\" >\n\n                  <ion-item *ngIf=\"!isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/customer-homepage\">{{ \"menu.customerHomePage\" | translate }}</ion-label>\n                  </ion-item>\n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                    <ion-label routerLink=\"/customer-homepage\">Početna</ion-label>\n                </ion-item> \n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                    <ion-label routerLink=\"/active-rides\">Aktivne vožnje</ion-label>\n                </ion-item> \n\n\n                  <ion-item *ngIf=\"!isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/about-us\">{{ \"menu.aboutUs\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item *ngIf=\"isUserLoggedIn\" class=\"list-item\">\n                      <ion-label routerLink=\"/my-rides\">{{ \"menu.myRides\" | translate }}</ion-label>\n                  </ion-item> \n\n                  <ion-item class=\"list-item\">\n                      <ion-label (click)=\"openPhoneNumberPopup()\">{{ \"change.number\" | translate }}</ion-label>\n                  </ion-item> \n                  <ion-item class=\"list-item\">\n                    <button class=\"menu-close\" ion-button menuClose>{{ \"menu.closeMenu\" | translate }}</button>\n                </ion-item> \n                \n                <ion-list id=\"labels-list\">\n                    <ion-label *ngIf=\"!isUserLoggedIn\" routerLink=\"/login\">{{ \"menu.login\" | translate }}</ion-label> \n                    <ion-label *ngIf=\"isUserLoggedIn\"  (click)=\"logout()\">{{ \"menu.logout\" | translate }}</ion-label> \n                  </ion-list>\n                </ion-menu-toggle>\n            </ion-list>\n\n     \n \n      <p class=\"text-moto\">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>\n      </ion-content>\n      \n    </ion-menu>\n    <ion-router-outlet id=\"main-content\"></ion-router-outlet>\n  </ion-split-pane>\n</ion-app>\n";
     /***/
   },
 
@@ -1215,7 +1215,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   case 0:
                     console.log(JSON.stringify(message));
                     _context.t0 = message.messageType;
-                    _context.next = _context.t0 === "DRIVE_REQUEST" ? 4 : _context.t0 === "INFORM_DRIVE_CUSTOMER" ? 6 : _context.t0 === "INFORM_DRIVE_DRIVER" ? 8 : _context.t0 === "ACCEPT_DRIVE" ? 10 : _context.t0 === "ACCEPT_DRIVE_DRIVER" ? 12 : _context.t0 === "REQUEST_INCOMING" ? 14 : _context.t0 === "FINISH_DRIVE_CUSTOMER" ? 26 : _context.t0 === "SOS" ? 29 : _context.t0 === 'DRIVER_INFO' ? 36 : _context.t0 === "DRIVER_NOTIFICATION" ? 38 : _context.t0 === "ACTIVE_DRIVES" ? 40 : 41;
+                    _context.next = _context.t0 === "DRIVE_REQUEST" ? 4 : _context.t0 === "INFORM_DRIVE_CUSTOMER" ? 6 : _context.t0 === "INFORM_DRIVE_DRIVER" ? 8 : _context.t0 === "ACCEPT_DRIVE" ? 10 : _context.t0 === "ACCEPT_DRIVE_DRIVER" ? 12 : _context.t0 === "REQUEST_INCOMING" ? 14 : _context.t0 === "FINISH_DRIVE_CUSTOMER" ? 26 : _context.t0 === "SOS" ? 29 : _context.t0 === 'DRIVER_INFO' ? 36 : _context.t0 === "DRIVER_NOTIFICATION" ? 39 : _context.t0 === "ACTIVE_DRIVES" ? 41 : 42;
                     break;
 
                   case 4:
@@ -1231,11 +1231,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         modalElement.present();
                       });
                     }, 0);
-                    return _context.abrupt("break", 41);
+                    return _context.abrupt("break", 42);
 
                   case 6:
                     this.updateDistance(message);
-                    return _context.abrupt("break", 41);
+                    return _context.abrupt("break", 42);
 
                   case 8:
                     // TODO removaj ovo
@@ -1251,12 +1251,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     }, function (err) {
                       return console.error(err);
                     });
-                    return _context.abrupt("break", 41);
+                    return _context.abrupt("break", 42);
 
                   case 10:
                     // TODO remove popup
                     this.events.publish("driveAccepted", message);
-                    return _context.abrupt("break", 41);
+                    return _context.abrupt("break", 42);
 
                   case 12:
                     this.router.navigate(["/driver-homepage"], {
@@ -1265,7 +1265,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         driveIsStarted: true
                       }
                     });
-                    return _context.abrupt("break", 41);
+                    return _context.abrupt("break", 42);
 
                   case 14:
                     _context.next = 16;
@@ -1288,7 +1288,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       message: 'Dolazi nova Vožnja!',
                       buttons: ["OK"]
                     });
-                    return _context.abrupt("break", 41);
+                    return _context.abrupt("break", 42);
 
                   case 26:
                     //TODO remove popup
@@ -1299,7 +1299,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       message: '<div style="height: 100%"> Vaše vozilo vas čeka na polazištu! </div>',
                       buttons: ["OK"]
                     });
-                    return _context.abrupt("break", 41);
+                    return _context.abrupt("break", 42);
 
                   case 29:
                     _context.next = 31;
@@ -1315,25 +1315,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                       message: '<div style="height: 100%"> Vozač: ' + message.driver + ' je u nevolji!!! \n Lokacija: ' + this.fromAddress + '</div>',
                       buttons: ["OK"]
                     });
-                    return _context.abrupt("break", 41);
+                    return _context.abrupt("break", 42);
 
                   case 36:
+                    console.log(JSON.stringify(message));
                     this.events.publish("driverInfo", message);
-                    return _context.abrupt("break", 41);
+                    return _context.abrupt("break", 42);
 
-                  case 38:
+                  case 39:
                     this.presentAlert({
                       cssClass: "myClass",
                       header: "Obavijest",
                       message: '<div style="height: 100%">   ' + message.driver + '</div>',
                       buttons: ["OK"]
                     });
-                    return _context.abrupt("break", 41);
-
-                  case 40:
-                    this.events.publish("activeDrives", message);
+                    return _context.abrupt("break", 42);
 
                   case 41:
+                    this.events.publish("activeDrives", message);
+
+                  case 42:
                   case "end":
                     return _context.stop();
                 }
@@ -1396,9 +1397,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "logout",
         value: function logout() {
-          this.isUserLoggedIn = false;
           this.storage.set("username", null);
-          location.reload();
+          this.isUserLoggedIn = false;
+          setTimeout(function () {
+            location.reload();
+          }, 2000);
         }
       }, {
         key: "openPhoneNumberPopup",

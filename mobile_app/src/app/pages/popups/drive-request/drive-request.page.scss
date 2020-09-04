@@ -20,7 +20,7 @@
     }
 
     .buttons {
-        margin: 20px 0;
+        margin: 20px 0 0 0;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -54,8 +54,7 @@
     text-align: center;
     
     img {
-        max-width: 50%;
-        margin-top: 15px;
+        max-width: 40%;
     }
 }
 ion-icon {
@@ -83,28 +82,12 @@ ion-menu-button {
     height: 50px;
     border-radius: 50%;
 }
-.label {
-    color: #000;
-    padding: 0 !important;
-    text-transform: uppercase;
+.text-minutes {
     font-weight: bold;
-}
-.select-time {
-    padding: 0;
-    margin: 0;
-    width: 100%;
     text-transform: uppercase;
-    font-weight: bold;
-}
-.time-wrapper {
-    padding: 0 0 15px 0;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
     border-bottom: 1px solid #000;
-
-    .choose-time::part(icon) {
-        display: none;
-    }
+    padding-bottom: 15px;
+}
+ion-radio {
+    --color-checked: #46e169;
 }

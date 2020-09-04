@@ -139,20 +139,30 @@ ion-item.selected {
   font-size: 14px;
   font-style: italic;
   text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 50px;
+}
+.menu-list-item {
+  height: 50px;
+  padding: 18px 0 15px 0;  
+  margin: 0 !important;
+}
+.login-out {
+  padding: 10px 30px;
 }
 #labels-list ion-label {
   color: white;
     background: #393939;
-    padding: 10px 30px;
     font-size: 12px;
     font-weight: bold;
     font-style: italic;
     text-shadow: 0em 0em 0.3em rgba(0,0,0,0.4);
-    height: 40px;
-    width: 100%;
+
 }
 .menu-list {
-  height: 40px;
+  margin: 0;
+  padding: 0;
   border-bottom: 1px solid;
   text-transform: uppercase;
   font-weight: bold;

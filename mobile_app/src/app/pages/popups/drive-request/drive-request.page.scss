@@ -36,12 +36,14 @@
         }
 
         .accept {
-            background: #46e169;   
+            background: #46e169;
+            border: 1px solid #46e169;
         }
 
         .reject {
             background: #DC143C;
             color: white;
+            border: 1px solid #DC143C;
         }
     }
 }

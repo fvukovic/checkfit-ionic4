@@ -15,6 +15,7 @@ import { catchError } from "rxjs/operators";
 })
 export class InactiveRidesComponent implements OnInit {
   invoiceList: any[] = [];
+  timeSelected: string[] = [];
 
   constructor(
     private router: Router,
@@ -53,10 +54,12 @@ export class InactiveRidesComponent implements OnInit {
                   persons: value["persons"],
                   km: value["km"],
                   phoneNumber: value["phoneNumber"],
-                  customer: value["customer"]
+                  customer: value["customer"],
+                  time: null
                 }); 
               });
           });
+                          this.timeSelected.push(null);
       }); 
     }); 
 
@@ -73,7 +76,7 @@ export class InactiveRidesComponent implements OnInit {
     });
   }
 
-  navigateToDrive(drive): void {
+  navigateToDrive(drive, i ): void {
     this.storage.get("username").then(username => {
       this.socketService.send("/server-receiver", {
         type: "customer",
@@ -84,9 +87,13 @@ export class InactiveRidesComponent implements OnInit {
         fromLong: drive.fromLong,
         toLat: drive.toLat,
         toLong: drive.toLong,
+        time:this.timeSelected[i],
         driver: username
       });
     });
+  }
+  radioGroupChange(event, i){
+    this.timeSelected[i] = event.detail.value;
   }
 
   ngOnInit() {}

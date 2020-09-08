@@ -29,6 +29,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+<<<<<<< HEAD
 const VIEW_STATE_NEW = 1;
 const VIEW_STATE_ATTACHED = 2;
 const VIEW_STATE_DESTROYED = 3;
@@ -112,6 +113,91 @@ const convertToViews = (pages) => {
         }
         return convertToView(page, undefined);
     }).filter(v => v !== null);
+=======
+const VIEW_STATE_NEW = 1;
+const VIEW_STATE_ATTACHED = 2;
+const VIEW_STATE_DESTROYED = 3;
+class ViewController {
+    constructor(component, params) {
+        this.component = component;
+        this.params = params;
+        this.state = VIEW_STATE_NEW;
+    }
+    async init(container) {
+        this.state = VIEW_STATE_ATTACHED;
+        if (!this.element) {
+            const component = this.component;
+            this.element = await Object(_framework_delegate_c2e2e1f4_js__WEBPACK_IMPORTED_MODULE_4__["a"])(this.delegate, container, component, ['ion-page', 'ion-page-invisible'], this.params);
+        }
+    }
+    /**
+     * DOM WRITE
+     */
+    _destroy() {
+        Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["b"])(this.state !== VIEW_STATE_DESTROYED, 'view state must be ATTACHED');
+        const element = this.element;
+        if (element) {
+            if (this.delegate) {
+                this.delegate.removeViewFromDom(element.parentElement, element);
+            }
+            else {
+                element.remove();
+            }
+        }
+        this.nav = undefined;
+        this.state = VIEW_STATE_DESTROYED;
+    }
+}
+const matches = (view, id, params) => {
+    if (!view) {
+        return false;
+    }
+    if (view.component !== id) {
+        return false;
+    }
+    const currentParams = view.params;
+    if (currentParams === params) {
+        return true;
+    }
+    if (!currentParams && !params) {
+        return true;
+    }
+    if (!currentParams || !params) {
+        return false;
+    }
+    const keysA = Object.keys(currentParams);
+    const keysB = Object.keys(params);
+    if (keysA.length !== keysB.length) {
+        return false;
+    }
+    // Test for A's keys different from B.
+    for (const key of keysA) {
+        if (currentParams[key] !== params[key]) {
+            return false;
+        }
+    }
+    return true;
+};
+const convertToView = (page, params) => {
+    if (!page) {
+        return null;
+    }
+    if (page instanceof ViewController) {
+        return page;
+    }
+    return new ViewController(page, params);
+};
+const convertToViews = (pages) => {
+    return pages.map(page => {
+        if (page instanceof ViewController) {
+            return page;
+        }
+        if ('page' in page) {
+            return convertToView(page.page, page.params);
+        }
+        return convertToView(page, undefined);
+    }).filter(v => v !== null);
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
 };
 
 const Nav = class {
@@ -827,6 +913,7 @@ const Nav = class {
     static get style() { return ":host{left:0;right:0;top:0;bottom:0;position:absolute;contain:layout size style;overflow:hidden;z-index:0}"; }
 };
 
+<<<<<<< HEAD
 const navLink = (el, routerDirection, component, componentProps) => {
     const nav = el.closest('ion-nav');
     if (nav) {
@@ -845,6 +932,26 @@ const navLink = (el, routerDirection, component, componentProps) => {
         }
     }
     return Promise.resolve(false);
+=======
+const navLink = (el, routerDirection, component, componentProps) => {
+    const nav = el.closest('ion-nav');
+    if (nav) {
+        if (routerDirection === 'forward') {
+            if (component !== undefined) {
+                return nav.push(component, componentProps, { skipIfBusy: true });
+            }
+        }
+        else if (routerDirection === 'root') {
+            if (component !== undefined) {
+                return nav.setRoot(component, componentProps, { skipIfBusy: true });
+            }
+        }
+        else if (routerDirection === 'back') {
+            return nav.pop({ skipIfBusy: true });
+        }
+    }
+    return Promise.resolve(false);
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
 };
 
 const NavLink = class {

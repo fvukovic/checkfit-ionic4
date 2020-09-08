@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <div class=\"header-box\">\n      <ion-title>Novi zahtjev za vožnju!</ion-title>\n      <img src=\"../../../assets/img/taxiLogo.png\">\n    </div>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div class=container>\n    <div *ngIf=\"!isDriveAccepted\" >\n\n      <div class=\"wrapper-request\">  \n        <ion-icon name=\"checkbox\"></ion-icon>\n        <p>Vaš zahtjev je uspješno poslan!</p>\n      </div>    \n\n      <div class=\"seacrhing-driver\">\n           <p>Tražim slobodnog vozača...</p>\n          <!-- <ion-spinner style=\"width:150px\" color=\"tertiary\" class=\"ion-color ion-color-tertiary ios spinner-lines hydrated\"\n        role=\"progressbar\"></ion-spinner>  -->\n        <ion-spinner name=\"bubbles\"></ion-spinner>\n        <p class=\"details\">Detalji će uskoro biti vidljivi na ekranu:</p>\n      </div>\n\n      <div class=\"logo\">\n        <img src=\"../../../assets/img/taxiLogo.png\" class=\"menu-img\">      \n        <p class=\"rich-text\">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>\n    </div>\n\n    </div>\n\n    <div *ngIf=\"isDriveAccepted\" >\n      <div class=\"accepted-ride\">\n        <img src=\"../../../assets/img/accepted-ride.png\" class=\"menu-img\">\n          <h2>Zahtjev je prihvaćen!</h2>\n          <p class=\"driver\">Vozač {{message.driverUser.login}} će Vas uskoro kontaktirati...</p>\n          <div class=\"distance\">\n          <span>Vaše vozilo je udaljeno:</span> \n          <p class=\"km\">{{kms}}</p>\n        </div>\n        <div class=\"distance\">\n          <span>Vozilo stiže za:</span> \n          <p class=\"km\">{{message.time}} min</p>\n        </div> \n        </div>\n      </div>\n\n  </div>\n\n</ion-content>";
+    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <div class=\"header-box\">\n      <ion-title>Novi zahtjev za vožnju!</ion-title>\n      <img src=\"../../../assets/img/taxiLogo.png\">\n    </div>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div class=container>\n    <div *ngIf=\"!isDriveAccepted\" >\n\n      <div class=\"wrapper-request\">  \n        <ion-icon name=\"checkbox\"></ion-icon>\n        <p>Vaš zahtjev je uspješno poslan!</p>\n      </div>    \n\n      <div class=\"seacrhing-driver\">\n           <p>Tražim slobodnog vozača...</p>\n          <div *ngIf=\"seconds!=0\"> SEKUNDE {{seconds}}</div>\n          <!-- <ion-spinner style=\"width:150px\" color=\"tertiary\" class=\"ion-color ion-color-tertiary ios spinner-lines hydrated\"\n        role=\"progressbar\"></ion-spinner>  -->\n        <ion-spinner name=\"bubbles\"></ion-spinner>\n        <p class=\"details\">Detalji će uskoro biti vidljivi na ekranu:</p>\n      </div>\n\n      <div class=\"logo\">\n        <img src=\"../../../assets/img/taxiLogo.png\" class=\"menu-img\">      \n        <p class=\"rich-text\">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>\n    </div>\n\n    </div>\n\n    <div *ngIf=\"isDriveAccepted\" >\n      <div class=\"accepted-ride\">\n        <img src=\"../../../assets/img/accepted-ride.png\" class=\"menu-img\">\n          <h2>Zahtjev je prihvaćen!</h2>\n          <p class=\"driver\">Vozač {{message.driverUser.login}} će Vas uskoro kontaktirati...</p>\n          <div class=\"distance\">\n          <span>Vaše vozilo je udaljeno:</span> \n          <p class=\"km\">{{kms}}</p>\n        </div>\n        <div class=\"distance\">\n          <span>Vozilo stiže za:</span> \n          <p class=\"km\">{{message.time}} min</p>\n        </div> \n        </div>\n      </div>\n\n  </div>\n\n</ion-content>";
     /***/
   },
 
@@ -241,7 +241,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     "./src/app/services/location.service.ts");
 
     var SearchRidePage = /*#__PURE__*/function () {
-      function SearchRidePage(socketService, route, events, storage, locationService) {
+      function SearchRidePage(socketService, route, events, storage, locationService, router, alertController) {
         var _this2 = this;
 
         _classCallCheck(this, SearchRidePage);
@@ -251,9 +251,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.events = events;
         this.storage = storage;
         this.locationService = locationService;
+        this.router = router;
+        this.alertController = alertController;
         this.isDriveAccepted = false;
+        this.seconds = 20;
         events.subscribe("driveAccepted", function (message) {
           _this2.isDriveAccepted = true;
+          clearInterval(_this2.myVar);
           _this2.message = message;
         });
         events.subscribe("informCustomer", function (message) {
@@ -305,7 +309,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 });
               }, 4000);
             });
+
+            var myVar = setInterval(function () {
+              _this3.seconds -= 1;
+
+              if (_this3.seconds == 0) {
+                clearInterval(myVar);
+
+                _this3.presentAlert({
+                  cssClass: "myClass",
+                  header: "Obavijest",
+                  message: '<div style="color:red" class="myClass"><p>Vaša vožnja je zaprimljena, prvi slobodni vozač će vas uskoro kontaktirati</p> </div>',
+                  buttons: ["OK"]
+                });
+              }
+            }, 1000);
           });
+        }
+      }, {
+        key: "presentAlert",
+        value: function presentAlert(options) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var alert;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.alertController.create(options);
+
+                  case 2:
+                    alert = _context.sent;
+                    _context.next = 5;
+                    return alert.present();
+
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
         }
       }, {
         key: "ngAfterContentInit",
@@ -329,6 +373,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]
       }, {
         type: _services_location_service__WEBPACK_IMPORTED_MODULE_6__["LocationService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]
       }];
     };
 
@@ -340,7 +388,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./search-ride.page.scss */
       "./src/app/pages/search-ride/search-ride.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_socket_service__WEBPACK_IMPORTED_MODULE_2__["SocketService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Events"], _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"], _services_location_service__WEBPACK_IMPORTED_MODULE_6__["LocationService"]])], SearchRidePage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_socket_service__WEBPACK_IMPORTED_MODULE_2__["SocketService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Events"], _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"], _services_location_service__WEBPACK_IMPORTED_MODULE_6__["LocationService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]])], SearchRidePage);
     /***/
   }
 }]);

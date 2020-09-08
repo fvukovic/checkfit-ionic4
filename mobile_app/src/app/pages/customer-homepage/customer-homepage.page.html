@@ -30,9 +30,37 @@
       </div>
       <div class="location-details">
           <span class="text">Putnici:</span>
-          <span class="value">
+          <!-- <span class="value">
             <input class="passengers" type="text" placeholder="Upišite broj putnika!" [(ngModel)]="numberOfPersons" />
-          </span>
+          </span> -->
+          <ion-radio-group (ionChange)="radioGroupChange($event)"> 
+            <ion-row>
+              <ion-col style="padding: 0; margin: 0;">
+            <ion-item lines="none">
+              <ion-label>1</ion-label>
+              <ion-radio value="1"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col style="padding: 0; margin: 0;">
+            <ion-item lines="none">
+             <ion-label>2</ion-label>
+              <ion-radio value="2"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col style="padding: 0; margin: 0;">
+            <ion-item lines="none">
+              <ion-label>3</ion-label>
+              <ion-radio value="3"></ion-radio>
+            </ion-item>
+          </ion-col>
+          <ion-col style="padding: 0; margin: 0;">
+            <ion-item lines="none">
+             <ion-label>4</ion-label>
+              <ion-radio value="4"></ion-radio>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+        </ion-radio-group>
       </div>
       <div class="location-details">
         <button class="order-ride" (click)="orderTaxi()">{{ "customerHomepage.myRides" | translate }}</button>

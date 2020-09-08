@@ -156,6 +156,7 @@ let MyRidesPage = class MyRidesPage {
                     return rxjs__WEBPACK_IMPORTED_MODULE_7__["Observable"].throw(err || 'Internal Server error');
                 }))
                     .subscribe(data => {
+                    alert(JSON.stringify(data));
                     Object.entries(data).forEach(([key, value]) => {
                         // alert("JSON.stringify(value)" + value.fromLat + " - "+  value.fromLong)
                         this.locationService.getReverseGeocode(value.fromLat, value.fromLong).then(from => {

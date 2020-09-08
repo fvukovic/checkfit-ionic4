@@ -801,10 +801,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       var scale = (1 - ev[0].intersectionRatio) * 100 / 75;
       setToolbarBackgroundOpacity(mainHeaderIndex.toolbars[0], scale === 1 ? undefined : scale);
     };
+<<<<<<< HEAD
     /**
      * If toolbars are intersecting, hide the scrollable toolbar content
      * and show the primary toolbar content. If the toolbars are not intersecting,
      * hide the primary toolbar content and show the scrollable toolbar content
+=======
+    /**
+     * If toolbars are intersecting, hide the scrollable toolbar content
+     * and show the primary toolbar content. If the toolbars are not intersecting,
+     * hide the primary toolbar content and show the scrollable toolbar content
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -828,6 +835,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           setHeaderActive(mainHeaderIndex, false);
           setHeaderActive(scrollHeaderIndex);
         } else {
+<<<<<<< HEAD
           /**
            * There is a bug with IntersectionObserver on Safari
            * where `event.isIntersecting === false` when cancelling
@@ -835,6 +843,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
            * x, y, width, and height provides a workaround. This bug
            * does not happen when using Safari + Web Animations,
            * only Safari + CSS Animations.
+=======
+          /**
+           * There is a bug with IntersectionObserver on Safari
+           * where `event.isIntersecting === false` when cancelling
+           * a swipe to go back gesture. Checking the intersection
+           * x, y, width, and height provides a workaround. This bug
+           * does not happen when using Safari + Web Animations,
+           * only Safari + CSS Animations.
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
            */
           var hasValidIntersection = intersection.x === 0 && intersection.y === 0 || intersection.width !== 0 && intersection.height !== 0;
 

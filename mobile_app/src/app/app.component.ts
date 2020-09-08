@@ -58,7 +58,10 @@ export class AppComponent implements OnInit {
     translate.setDefaultLang("en");
     this.platform.ready().then(() => {
       this.nativeAudio
-        .preloadSimple("uniqueId1", "assets/mp3.mp3")
+        .preloadSimple("uniqueId1", "assets/zvuk1.mpeg")
+        .then(this.onSuccess, this.onError);
+        this.nativeAudio
+        .preloadSimple("uniqueId2", "assets/zvuk2.mpeg")
         .then(this.onSuccess, this.onError);
       this.socketService.initializeWebSocketConnection();
       this.storage.get("username").then(username => {
@@ -216,7 +219,7 @@ export class AppComponent implements OnInit {
           streetLocation2[0].subThoroughfare +
           "," +
           streetLocation2[0].locality;
-        this.nativeAudio.play("uniqueId1");
+        this.nativeAudio.play("uniqueId2");
 
         this.presentAlert({
           cssClass: "myClass",

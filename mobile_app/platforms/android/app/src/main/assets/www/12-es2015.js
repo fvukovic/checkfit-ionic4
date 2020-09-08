@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <div class=\"header-box\">\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>Trenutni zahtjevi</ion-title>\n      <img src=\"../../../assets/img/taxiLogo.png\">\n    </div>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <div *ngFor=\"let item of invoiceList\" class=\"my-rides\">\n    <div class=\"details-ride\">\n      <span class=\"text\">Polazište:</span>\n      <span class=\"value\">{{item.fromAddress}}</span>\n    </div>\n\n    <div class=\"details-ride\">\n      <span class=\"text\">Odredište:</span>\n      <span class=\"value\">{{item.toAddress}} </span>\n    </div>\n\n    <div class=\"details-ride\">\n      <span class=\"text\">Udaljenost:</span>\n      <span class=\"value\">{{item.km}} km </span>\n    </div>\n\n    <div class=\"details-ride\">\n      <span class=\"text\">Osoba:</span>\n      <span class=\"value\">{{item.persons}} </span>\n    </div>\n    <div class=\"details-ride\">\n      <span class=\"text\">Datum:</span>\n      <span class=\"value\">{{item.time}} </span>\n    </div>\n    <button class=\"order-ride\" style=\"background-color: green;\" (click)=\"navigateToDrive(item)\">Prihvati vožnju</button>\n  </div>\n</ion-content>");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <div class=\"header-box\">\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>Trenutni zahtjevi</ion-title>\n      <img src=\"../../../assets/img/taxiLogo.png\">\n    </div>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <div *ngFor=\"let item of invoiceList; let i = index\" class=\"my-rides\">\n    <div class=\"details-ride\">\n      <span class=\"text\">Polazište:</span>\n      <span class=\"value\">{{item.fromAddress}}</span>\n    </div>\n\n    <div class=\"details-ride\">\n      <span class=\"text\">Odredište:</span>\n      <span class=\"value\">{{item.toAddress}} </span>\n    </div>\n\n    <div class=\"details-ride\">\n      <span class=\"text\">Udaljenost:</span>\n      <span class=\"value\">{{item.km}} km </span>\n    </div>\n\n    <div class=\"details-ride\">\n      <span class=\"text\">Osoba:</span>\n      <span class=\"value\">{{item.persons}} </span>\n    </div>\n    <div class=\"details-ride\">\n      <span class=\"text\">Datum:</span>\n      <span class=\"value\">{{item.time}} </span>\n    </div>\n\n     \n    <ion-radio-group (ionChange)=\"radioGroupChange($event, i)\"> \n      <ion-row>\n    <ion-col style=\"padding: 0; margin: 0;\">\n      <ion-item lines=\"none\">\n        <ion-label>3</ion-label>\n        <ion-radio value=\"3\"></ion-radio>\n      </ion-item>\n    </ion-col>\n    <ion-col style=\"padding: 0; margin: 0;\">\n      <ion-item lines=\"none\">\n       <ion-label>5</ion-label>\n        <ion-radio value=\"5\"></ion-radio>\n      </ion-item>\n    </ion-col>\n    <ion-col style=\"padding: 0; margin: 0;\">\n      <ion-item lines=\"none\">\n        <ion-label>10</ion-label>\n        <ion-radio value=\"10\"></ion-radio>\n      </ion-item>\n    </ion-col>\n    <ion-col style=\"padding: 0; margin: 0;\">\n      <ion-item lines=\"none\">\n       <ion-label>15</ion-label>\n        <ion-radio value=\"15\"></ion-radio>\n      </ion-item>\n    </ion-col>\n    <ion-col style=\"padding: 0; margin: 0;\">\n      <ion-item lines=\"none\">\n        <ion-label>20</ion-label>\n        <ion-radio value=\"20\"></ion-radio>\n      </ion-item>\n    </ion-col>\n    <ion-col style=\"padding: 0; margin: 0;\">\n      <ion-item lines=\"none\">\n       <ion-label>25</ion-label>\n        <ion-radio value=\"25\"></ion-radio>\n      </ion-item>\n    </ion-col>\n    <ion-col style=\"padding: 0; margin: 0;\">\n      <ion-item lines=\"none\">\n       <ion-label>30</ion-label>\n        <ion-radio value=\"30\"></ion-radio>\n      </ion-item>\n    </ion-col>\n    <ion-col style=\"padding: 0; margin: 0;\">\n      <ion-item lines=\"none\">\n       <ion-label>45</ion-label>\n        <ion-radio value=\"45\"></ion-radio>\n      </ion-item>\n    </ion-col>\n  </ion-row>\n  </ion-radio-group>\n  {{timeSelected[i]==null}}\n    <button class=\"order-ride\"  [disabled]='timeSelected[i]==null' style=\"background-color: green;\" (click)=\"navigateToDrive(item, i)\">Prihvati vožnju</button>\n  </div>\n</ion-content>");
 
 /***/ }),
 
@@ -98,6 +98,7 @@ let InactiveRidesComponent = class InactiveRidesComponent {
         this.socketService = socketService;
         this.events = events;
         this.invoiceList = [];
+        this.timeSelected = [];
         events.subscribe("webDrives", message => {
             // alert(JSON.stringify(message['drives']))
             Object.entries(message['drives']).forEach(([key, value]) => {
@@ -125,10 +126,12 @@ let InactiveRidesComponent = class InactiveRidesComponent {
                             persons: value["persons"],
                             km: value["km"],
                             phoneNumber: value["phoneNumber"],
-                            customer: value["customer"]
+                            customer: value["customer"],
+                            time: null
                         });
                     });
                 });
+                this.timeSelected.push(null);
             });
         });
         this.storage.get("username").then(val => {
@@ -143,7 +146,7 @@ let InactiveRidesComponent = class InactiveRidesComponent {
             }
         });
     }
-    navigateToDrive(drive) {
+    navigateToDrive(drive, i) {
         this.storage.get("username").then(username => {
             this.socketService.send("/server-receiver", {
                 type: "customer",
@@ -154,9 +157,13 @@ let InactiveRidesComponent = class InactiveRidesComponent {
                 fromLong: drive.fromLong,
                 toLat: drive.toLat,
                 toLong: drive.toLong,
+                time: this.timeSelected[i],
                 driver: username
             });
         });
+    }
+    radioGroupChange(event, i) {
+        this.timeSelected[i] = event.detail.value;
     }
     ngOnInit() { }
 };

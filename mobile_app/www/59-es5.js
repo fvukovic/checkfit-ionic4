@@ -145,8 +145,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
           return init;
         }()
+<<<<<<< HEAD
         /**
          * DOM WRITE
+=======
+        /**
+         * DOM WRITE
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
          */
 
       }, {

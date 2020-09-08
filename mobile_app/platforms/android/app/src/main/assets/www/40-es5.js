@@ -92,10 +92,17 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _haptic_c8f1473e_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./haptic-c8f1473e.js */
     "./node_modules/@ionic/core/dist/esm/haptic-c8f1473e.js");
+<<<<<<< HEAD
     /**
      * Gets a date value given a format
      * Defaults to the current date if
      * no date given
+=======
+    /**
+     * Gets a date value given a format
+     * Defaults to the current date if
+     * no date given
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -326,32 +333,57 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         tzOffset: tzOffset
       };
     };
+<<<<<<< HEAD
     /**
      * Converts a valid UTC datetime string
      * To the user's local timezone
      * Note: This is not meant for time strings
      * such as "01:47"
+=======
+    /**
+     * Converts a valid UTC datetime string
+     * To the user's local timezone
+     * Note: This is not meant for time strings
+     * such as "01:47"
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
     var getLocalDateTime = function getLocalDateTime() {
       var dateString = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
+<<<<<<< HEAD
       /**
        * If user passed in undefined
        * or null, convert it to the
        * empty string since the rest
        * of this functions expects
        * a string
+=======
+      /**
+       * If user passed in undefined
+       * or null, convert it to the
+       * empty string since the rest
+       * of this functions expects
+       * a string
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
        */
       if (dateString === undefined || dateString === null) {
         dateString = '';
       }
+<<<<<<< HEAD
       /**
        * Ensures that YYYY-MM-DD, YYYY-MM,
        * YYYY-DD, etc does not get affected
        * by timezones and stays on the day/month
        * that the user provided
+=======
+      /**
+       * Ensures that YYYY-MM-DD, YYYY-MM,
+       * YYYY-DD, etc does not get affected
+       * by timezones and stays on the day/month
+       * that the user provided
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
        */
 
 
@@ -529,9 +561,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       return rtn;
     };
+<<<<<<< HEAD
     /**
      * Use to convert a string of comma separated strings or
      * an array of strings, and clean up any user input
+=======
+    /**
+     * Use to convert a string of comma separated strings or
+     * an array of strings, and clean up any user input
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -561,9 +599,15 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       return values;
     };
+<<<<<<< HEAD
     /**
      * Use to convert a string of comma separated numbers or
      * an array of numbers, and clean up any user input
+=======
+    /**
+     * Use to convert a string of comma separated numbers or
+     * an array of numbers, and clean up any user input
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -1289,8 +1333,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     var DEFAULT_FORMAT = 'MMM D, YYYY';
     var datetimeIds = 0;
+<<<<<<< HEAD
     /**
      * iOS Picker Enter Animation
+=======
+    /**
+     * iOS Picker Enter Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
     var iosEnterAnimation = function iosEnterAnimation(baseEl) {
@@ -1301,8 +1350,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       wrapperAnimation.addElement(baseEl.querySelector('.picker-wrapper')).fromTo('transform', 'translateY(100%)', 'translateY(0%)');
       return baseAnimation.addElement(baseEl).easing('cubic-bezier(.36,.66,.04,1)').duration(400).addAnimation([backdropAnimation, wrapperAnimation]);
     };
+<<<<<<< HEAD
     /**
      * iOS Picker Leave Animation
+=======
+    /**
+     * iOS Picker Leave Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 

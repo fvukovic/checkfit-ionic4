@@ -285,6 +285,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(function (err) {
                 return rxjs__WEBPACK_IMPORTED_MODULE_7__["Observable"].throw(err || 'Internal Server error');
               })).subscribe(function (data) {
+                alert(JSON.stringify(data));
                 Object.entries(data).forEach(function (_ref) {
                   var _ref2 = _slicedToArray(_ref, 2),
                       key = _ref2[0],

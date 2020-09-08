@@ -1,11 +1,3 @@
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
@@ -14,43 +6,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[13], {
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/my-rides/my-rides.page.html":
-  /*!*****************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/my-rides/my-rides.page.html ***!
-    \*****************************************************************************************/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html":
+  /*!***********************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html ***!
+    \***********************************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppPagesMyRidesMyRidesPageHtml(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesLoginLoginPageHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <div class=\"header-box\">\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title>Moje vožnje</ion-title>\n      <img src=\"../../../assets/img/taxiLogo.png\">\n    </div>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<div *ngFor=\"let item of invoiceList\" class=\"my-rides\">\n  <div class=\"details-ride\">\n    <span class=\"text\">Polazište:</span>\n    <span class=\"value\">{{item.fromAddress}}</span>\n  </div>\n\n  <div class=\"details-ride\">\n    <span class=\"text\">Odredište:</span>\n    <span class=\"value\">{{item.toAddress}} </span>\n  </div>\n\n  <div class=\"details-ride\">\n    <span class=\"text\">Udaljenost:</span>\n    <span class=\"value\">{{item.km}} km </span>\n  </div>\n\n  <div class=\"details-ride\">\n      <span class=\"text\">Osoba:</span>\n      <span class=\"value\">{{item.persons}} </span>\n  </div>\n  <div class=\"details-ride\">\n    <span class=\"text\">Datum:</span>\n    <span class=\"value\">{{item.time}} </span>\n</div>\n</div>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <div class=\"header-box\">\r\n      <ion-buttons slot=\"start\">\r\n        <ion-menu-button></ion-menu-button>\r\n      </ion-buttons>\r\n      <ion-title>Prijava vozača</ion-title>\r\n      <button class=\"sos\" *ngIf=\"isUserLoggedIn\" (click)=\"callSOS()\">SOS</button>\r\n      <img src=\"../../../assets/img/taxiLogo.png\">\r\n    </div>\r\n  </ion-toolbar>\r\n</ion-header>\r\n \r\n<ion-content padding class=\"animated fadeIn login auth-page\">\r\n  <div class=\"login-content\">\r\n\r\n    <!-- Logo -->\r\n    <div padding-horizontal text-center class=\"animated fadeInDown\">\r\n      <div class=\"logo\"></div>\r\n      <h2 ion-text class=\"title\">\r\n        <strong>Upišite tražene podatke</strong> \r\n      </h2>\r\n      <img src=\"../../../assets/img/login.png\" class=\"login-img\">\r\n    </div>\r\n\r\n    <!-- Login form -->\r\n    <form class=\"list-form\">\r\n\r\n      <div class=\"box-element\">\r\n          <span class=\"text\">Email:</span>\r\n          <span class=\"value\">\r\n            <input [(ngModel)]=\"email\" name=\"email\" type=\"email\" class=\"destination\"/>\r\n          </span>\r\n      </div>\r\n\r\n      <div class=\"box-element\">\r\n        <span class=\"text\">Lozinka:</span>\r\n        <span class=\"value\">\r\n          <input [(ngModel)]=\"password\" type=\"password\" name=\"password\" class=\"destination\"/>\r\n      </span>\r\n    </div>\r\n\r\n    </form>\r\n\r\n    <div>\r\n      <div class=\"box-element\">\r\n        <button class=\"login-btn\" tappable (click)=\"login()\">\r\n          Prijavi se  \r\n        </button>\r\n      </div>\r\n    </div>\r\n   </div>\r\n</ion-content>\r\n";
     /***/
   },
 
   /***/
-  "./src/app/pages/my-rides/my-rides-routing.module.ts":
-  /*!***********************************************************!*\
-    !*** ./src/app/pages/my-rides/my-rides-routing.module.ts ***!
-    \***********************************************************/
+  "./src/app/pages/login/login-routing.module.ts":
+  /*!*****************************************************!*\
+    !*** ./src/app/pages/login/login-routing.module.ts ***!
+    \*****************************************************/
 
-  /*! exports provided: MyRidesPageRoutingModule */
+  /*! exports provided: LoginPageRoutingModule */
 
   /***/
-  function srcAppPagesMyRidesMyRidesRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesLoginLoginRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "MyRidesPageRoutingModule", function () {
-      return MyRidesPageRoutingModule;
+    __webpack_require__.d(__webpack_exports__, "LoginPageRoutingModule", function () {
+      return LoginPageRoutingModule;
     });
     /* harmony import */
 
@@ -73,44 +65,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _my_rides_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./my-rides.page */
-    "./src/app/pages/my-rides/my-rides.page.ts");
+    var _login_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./login.page */
+    "./src/app/pages/login/login.page.ts");
 
     var routes = [{
       path: '',
-      component: _my_rides_page__WEBPACK_IMPORTED_MODULE_3__["MyRidesPage"]
+      component: _login_page__WEBPACK_IMPORTED_MODULE_3__["LoginPage"]
     }];
 
-    var MyRidesPageRoutingModule = function MyRidesPageRoutingModule() {
-      _classCallCheck(this, MyRidesPageRoutingModule);
+    var LoginPageRoutingModule = function LoginPageRoutingModule() {
+      _classCallCheck(this, LoginPageRoutingModule);
     };
 
-    MyRidesPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+    LoginPageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
       exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
-    })], MyRidesPageRoutingModule);
+    })], LoginPageRoutingModule);
     /***/
   },
 
   /***/
-  "./src/app/pages/my-rides/my-rides.module.ts":
-  /*!***************************************************!*\
-    !*** ./src/app/pages/my-rides/my-rides.module.ts ***!
-    \***************************************************/
+  "./src/app/pages/login/login.module.ts":
+  /*!*********************************************!*\
+    !*** ./src/app/pages/login/login.module.ts ***!
+    \*********************************************/
 
-  /*! exports provided: MyRidesPageModule */
+  /*! exports provided: LoginPageModule */
 
   /***/
-  function srcAppPagesMyRidesMyRidesModuleTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesLoginLoginModuleTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "MyRidesPageModule", function () {
-      return MyRidesPageModule;
+    __webpack_require__.d(__webpack_exports__, "LoginPageModule", function () {
+      return LoginPageModule;
     });
     /* harmony import */
 
@@ -145,65 +137,71 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _my_rides_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! ./my-rides-routing.module */
-    "./src/app/pages/my-rides/my-rides-routing.module.ts");
+    var _login_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./login-routing.module */
+    "./src/app/pages/login/login-routing.module.ts");
     /* harmony import */
 
 
-    var _my_rides_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./my-rides.page */
-    "./src/app/pages/my-rides/my-rides.page.ts");
+    var _login_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./login.page */
+    "./src/app/pages/login/login.page.ts");
+    /* harmony import */
 
-    var MyRidesPageModule = function MyRidesPageModule() {
-      _classCallCheck(this, MyRidesPageModule);
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+    var LoginPageModule = function LoginPageModule() {
+      _classCallCheck(this, LoginPageModule);
     };
 
-    MyRidesPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _my_rides_routing_module__WEBPACK_IMPORTED_MODULE_5__["MyRidesPageRoutingModule"]],
-      declarations: [_my_rides_page__WEBPACK_IMPORTED_MODULE_6__["MyRidesPage"]]
-    })], MyRidesPageModule);
+    LoginPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"], _login_routing_module__WEBPACK_IMPORTED_MODULE_5__["LoginPageRoutingModule"]],
+      declarations: [_login_page__WEBPACK_IMPORTED_MODULE_6__["LoginPage"]]
+    })], LoginPageModule);
     /***/
   },
 
   /***/
-  "./src/app/pages/my-rides/my-rides.page.scss":
-  /*!***************************************************!*\
-    !*** ./src/app/pages/my-rides/my-rides.page.scss ***!
-    \***************************************************/
+  "./src/app/pages/login/login.page.scss":
+  /*!*********************************************!*\
+    !*** ./src/app/pages/login/login.page.scss ***!
+    \*********************************************/
 
   /*! exports provided: default */
 
   /***/
-  function srcAppPagesMyRidesMyRidesPageScss(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesLoginLoginPageScss(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".my-rides {\n  margin: 20px;\n  border-bottom: 2px solid #000;\n  padding: 15px 0 5px 0;\n}\n.my-rides .details-ride {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n          justify-content: space-between;\n  margin-bottom: 10px;\n}\n.my-rides .details-ride .text {\n  font-weight: bold;\n  text-transform: uppercase;\n  font-size: 12px;\n}\n.my-rides .details-ride .value {\n  text-align: right;\n  font-size: 12px;\n}\n.header-box {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  padding: 10px;\n}\nimg {\n  max-width: 50px;\n}\nion-title {\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  --color: #000;\n  text-transform: uppercase;\n  font-size: 20px;\n}\nion-menu-button {\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  --color: #000;\n  --background: #f4f0ec;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9maWxpcC52dWtvdmljL0RldmVsb3BtZW50L2NoZWNrZml0LW1vYmlsZS9tb2JpbGVfYXBwL3NyYy9hcHAvcGFnZXMvbXktcmlkZXMvbXktcmlkZXMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9teS1yaWRlcy9teS1yaWRlcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxZQUFBO0VBQ0EsNkJBQUE7RUFDQSxxQkFBQTtBQ0NKO0FERUk7RUFDSSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0EseUJBQUE7VUFBQSw4QkFBQTtFQUNBLG1CQUFBO0FDQVI7QURHUTtFQUNJLGlCQUFBO0VBQ0EseUJBQUE7RUFDQSxlQUFBO0FDRFo7QURHUTtFQUNJLGlCQUFBO0VBQ0EsZUFBQTtBQ0RaO0FES0E7RUFDSSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0EsYUFBQTtBQ0ZKO0FESUE7RUFDSSxlQUFBO0FDREo7QURHQTtFQUNJLDZDQUFBO0VBQ0EsYUFBQTtFQUNBLHlCQUFBO0VBQ0EsZUFBQTtBQ0FKO0FERUE7RUFDSSw2Q0FBQTtFQUNBLGFBQUE7RUFDQSxxQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL215LXJpZGVzL215LXJpZGVzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5teS1yaWRlcyB7XG4gICAgbWFyZ2luOiAyMHB4O1xuICAgIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjMDAwO1xuICAgIHBhZGRpbmc6IDE1cHggMCA1cHggMDtcbiAgICBcblxuICAgIC5kZXRhaWxzLXJpZGUge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG4gICAgICAgIG1hcmdpbi1ib3R0b206IDEwcHg7XG4gICAgICAgIFxuXG4gICAgICAgIC50ZXh0IHtcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgICAgICAgICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgICAgICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICAgICAgfVxuICAgICAgICAudmFsdWUge1xuICAgICAgICAgICAgdGV4dC1hbGlnbjogcmlnaHQ7XG4gICAgICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICAgIH1cbiAgICB9XG59XG4uaGVhZGVyLWJveCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIHBhZGRpbmc6IDEwcHg7XG59XG5pbWcge1xuICAgIG1heC13aWR0aDogNTBweDtcbn1cbmlvbi10aXRsZSB7XG4gICAgdGV4dC1zaGFkb3c6IDBlbSAwZW0gMC4zZW0gcmdiYSgwLDAsMCwwLjQpO1xuICAgIC0tY29sb3I6ICMwMDA7XG4gICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgICBmb250LXNpemU6IDIwcHg7XG59XG5pb24tbWVudS1idXR0b24ge1xuICAgIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwwLDAsMC40KTtcbiAgICAtLWNvbG9yOiAjMDAwO1xuICAgIC0tYmFja2dyb3VuZDogI2Y0ZjBlYztcbiAgICB3aWR0aDogNTBweDtcbiAgICBoZWlnaHQ6IDUwcHg7XG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xufSIsIi5teS1yaWRlcyB7XG4gIG1hcmdpbjogMjBweDtcbiAgYm9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICMwMDA7XG4gIHBhZGRpbmc6IDE1cHggMCA1cHggMDtcbn1cbi5teS1yaWRlcyAuZGV0YWlscy1yaWRlIHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xufVxuLm15LXJpZGVzIC5kZXRhaWxzLXJpZGUgLnRleHQge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgZm9udC1zaXplOiAxMnB4O1xufVxuLm15LXJpZGVzIC5kZXRhaWxzLXJpZGUgLnZhbHVlIHtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG4gIGZvbnQtc2l6ZTogMTJweDtcbn1cblxuLmhlYWRlci1ib3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBwYWRkaW5nOiAxMHB4O1xufVxuXG5pbWcge1xuICBtYXgtd2lkdGg6IDUwcHg7XG59XG5cbmlvbi10aXRsZSB7XG4gIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwgMCwgMCwgMC40KTtcbiAgLS1jb2xvcjogIzAwMDtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgZm9udC1zaXplOiAyMHB4O1xufVxuXG5pb24tbWVudS1idXR0b24ge1xuICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsIDAsIDAsIDAuNCk7XG4gIC0tY29sb3I6ICMwMDA7XG4gIC0tYmFja2dyb3VuZDogI2Y0ZjBlYztcbiAgd2lkdGg6IDUwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xufSJdfQ== */";
+    __webpack_exports__["default"] = ".header-box {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  padding: 10px;\n}\n\nimg {\n  max-width: 50px;\n}\n\nion-title {\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  --color: #000;\n  text-transform: uppercase;\n}\n\nion-menu-button {\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  --color: #000;\n  --background: #f4f0ec;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n}\n\n.title {\n  margin: 20px 10px;\n  font-size: 18px;\n  text-transform: uppercase;\n  border-bottom: 1px solid #000;\n  padding-bottom: 10px;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  text-align: center;\n  font-weight: bold;\n}\n\n.box-element {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin: 10px 10px 5px 10px;\n}\n\n.box-element .text {\n  font-weight: bold;\n  text-transform: uppercase;\n  font-size: 13px;\n  margin-bottom: 5px;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n}\n\n.box-element .value {\n  border: 1px solid #393939;\n  width: 100%;\n  background: white;\n  box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.3);\n}\n\n.box-element .destination {\n  margin: 0;\n  padding: 12px;\n  font-size: 12px;\n  width: 100%;\n}\n\n.login-btn {\n  width: 100%;\n  background: #393939;\n  color: white;\n  text-align: center;\n  padding: 12px;\n  text-transform: uppercase;\n  margin-top: 10px;\n}\n\n.login-img {\n  max-width: 50%;\n  opacity: 0.8;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbG9naW4vQzpcXG11cmFBcHBcXGNoZWNrZml0LWlvbmljNFxcbW9iaWxlX2FwcC9zcmNcXGFwcFxccGFnZXNcXGxvZ2luXFxsb2dpbi5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2xvZ2luL2xvZ2luLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHlCQUFBO1VBQUEsbUJBQUE7RUFDQSxhQUFBO0FDQ0o7O0FEQ0E7RUFDSSxlQUFBO0FDRUo7O0FEQUE7RUFDSSw2Q0FBQTtFQUNBLGFBQUE7RUFDQSx5QkFBQTtBQ0dKOztBRERBO0VBQ0ksNkNBQUE7RUFDQSxhQUFBO0VBQ0EscUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0FDSUo7O0FERkE7RUFDSSxpQkFBQTtFQUNBLGVBQUE7RUFDQSx5QkFBQTtFQUNBLDZCQUFBO0VBQ0Esb0JBQUE7RUFDQSw2Q0FBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7QUNLSjs7QURGQTtFQUNJLG9CQUFBO0VBQUEsYUFBQTtFQUNBLDRCQUFBO0VBQUEsNkJBQUE7VUFBQSxzQkFBQTtFQUNBLDBCQUFBO0FDS0o7O0FESEk7RUFDSSxpQkFBQTtFQUNBLHlCQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0VBQ0EsNkNBQUE7QUNLUjs7QURGSTtFQUNJLHlCQUFBO0VBQ0EsV0FBQTtFQUNBLGlCQUFBO0VBQ0EsK0NBQUE7QUNJUjs7QURESTtFQUNJLFNBQUE7RUFDQSxhQUFBO0VBQ0EsZUFBQTtFQUNBLFdBQUE7QUNHUjs7QURFQTtFQUNJLFdBQUE7RUFDQSxtQkFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7RUFDQSx5QkFBQTtFQUNBLGdCQUFBO0FDQ0o7O0FEQ0E7RUFDSSxjQUFBO0VBQ0EsWUFBQTtBQ0VKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbG9naW4vbG9naW4ucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWRlci1ib3gge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBwYWRkaW5nOiAxMHB4O1xyXG59XHJcbmltZyB7XHJcbiAgICBtYXgtd2lkdGg6IDUwcHg7XHJcbn1cclxuaW9uLXRpdGxlIHtcclxuICAgIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwwLDAsMC40KTtcclxuICAgIC0tY29sb3I6ICMwMDA7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xyXG59XHJcbmlvbi1tZW51LWJ1dHRvbiB7XHJcbiAgICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsMCwwLDAuNCk7XHJcbiAgICAtLWNvbG9yOiAjMDAwO1xyXG4gICAgLS1iYWNrZ3JvdW5kOiAjZjRmMGVjO1xyXG4gICAgd2lkdGg6IDUwcHg7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbn1cclxuLnRpdGxlIHtcclxuICAgIG1hcmdpbjogMjBweCAxMHB4O1xyXG4gICAgZm9udC1zaXplOiAxOHB4O1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcclxuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMDAwO1xyXG4gICAgcGFkZGluZy1ib3R0b206IDEwcHg7XHJcbiAgICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsMCwwLDAuNCk7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG5cclxuLmJveC1lbGVtZW50IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xyXG4gICAgbWFyZ2luOiAxMHB4IDEwcHggNXB4IDEwcHg7XHJcblxyXG4gICAgLnRleHQge1xyXG4gICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XHJcbiAgICAgICAgZm9udC1zaXplOiAxM3B4O1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206IDVweDtcclxuICAgICAgICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsMCwwLDAuNCk7XHJcbiAgICB9XHJcblxyXG4gICAgLnZhbHVlIHtcclxuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjMzkzOTM5O1xyXG4gICAgICAgIHdpZHRoOiAxMDAlOyAgICAgICAgXHJcbiAgICAgICAgYmFja2dyb3VuZDogd2hpdGU7XHJcbiAgICAgICAgYm94LXNoYWRvdzogNnB4IDZweCAxOHB4IDBweCByZ2JhKDAsMCwwLDAuMyk7XHJcbiAgICB9XHJcblxyXG4gICAgLmRlc3RpbmF0aW9uIHtcclxuICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgcGFkZGluZzogMTJweDsgICAgICAgIFxyXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgICAgICB3aWR0aDogMTAwJTtcclxuICAgIH1cclxuXHJcbn1cclxuXHJcbi5sb2dpbi1idG4ge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBiYWNrZ3JvdW5kOiAjMzkzOTM5O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgcGFkZGluZzogMTJweDtcclxuICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XHJcbiAgICBtYXJnaW4tdG9wOiAxMHB4O1xyXG59XHJcbi5sb2dpbi1pbWcge1xyXG4gICAgbWF4LXdpZHRoOiA1MCU7XHJcbiAgICBvcGFjaXR5OiAwLjg7XHJcbn0iLCIuaGVhZGVyLWJveCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHBhZGRpbmc6IDEwcHg7XG59XG5cbmltZyB7XG4gIG1heC13aWR0aDogNTBweDtcbn1cblxuaW9uLXRpdGxlIHtcbiAgdGV4dC1zaGFkb3c6IDBlbSAwZW0gMC4zZW0gcmdiYSgwLCAwLCAwLCAwLjQpO1xuICAtLWNvbG9yOiAjMDAwO1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xufVxuXG5pb24tbWVudS1idXR0b24ge1xuICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsIDAsIDAsIDAuNCk7XG4gIC0tY29sb3I6ICMwMDA7XG4gIC0tYmFja2dyb3VuZDogI2Y0ZjBlYztcbiAgd2lkdGg6IDUwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xufVxuXG4udGl0bGUge1xuICBtYXJnaW46IDIwcHggMTBweDtcbiAgZm9udC1zaXplOiAxOHB4O1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgIzAwMDtcbiAgcGFkZGluZy1ib3R0b206IDEwcHg7XG4gIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwgMCwgMCwgMC40KTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuLmJveC1lbGVtZW50IHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgbWFyZ2luOiAxMHB4IDEwcHggNXB4IDEwcHg7XG59XG4uYm94LWVsZW1lbnQgLnRleHQge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgZm9udC1zaXplOiAxM3B4O1xuICBtYXJnaW4tYm90dG9tOiA1cHg7XG4gIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwgMCwgMCwgMC40KTtcbn1cbi5ib3gtZWxlbWVudCAudmFsdWUge1xuICBib3JkZXI6IDFweCBzb2xpZCAjMzkzOTM5O1xuICB3aWR0aDogMTAwJTtcbiAgYmFja2dyb3VuZDogd2hpdGU7XG4gIGJveC1zaGFkb3c6IDZweCA2cHggMThweCAwcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xufVxuLmJveC1lbGVtZW50IC5kZXN0aW5hdGlvbiB7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMTJweDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICB3aWR0aDogMTAwJTtcbn1cblxuLmxvZ2luLWJ0biB7XG4gIHdpZHRoOiAxMDAlO1xuICBiYWNrZ3JvdW5kOiAjMzkzOTM5O1xuICBjb2xvcjogd2hpdGU7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcGFkZGluZzogMTJweDtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgbWFyZ2luLXRvcDogMTBweDtcbn1cblxuLmxvZ2luLWltZyB7XG4gIG1heC13aWR0aDogNTAlO1xuICBvcGFjaXR5OiAwLjg7XG59Il19 */";
     /***/
   },
 
   /***/
-  "./src/app/pages/my-rides/my-rides.page.ts":
-  /*!*************************************************!*\
-    !*** ./src/app/pages/my-rides/my-rides.page.ts ***!
-    \*************************************************/
+  "./src/app/pages/login/login.page.ts":
+  /*!*******************************************!*\
+    !*** ./src/app/pages/login/login.page.ts ***!
+    \*******************************************/
 
-  /*! exports provided: MyRidesPage */
+  /*! exports provided: LoginPage */
 
   /***/
-  function srcAppPagesMyRidesMyRidesPageTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppPagesLoginLoginPageTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "MyRidesPage", function () {
-      return MyRidesPage;
+    __webpack_require__.d(__webpack_exports__, "LoginPage", function () {
+      return LoginPage;
     });
     /* harmony import */
 
@@ -220,21 +218,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _services_location_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ../../services/location.service */
-    "./src/app/services/location.service.ts");
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
     /* harmony import */
 
 
-    var _services_socket_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ../../services/socket.service */
-    "./src/app/services/socket.service.ts");
-    /* harmony import */
-
-
-    var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @ionic/storage */
     "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../app.component */
+    "./src/app/app.component.ts");
     /* harmony import */
 
 
@@ -253,145 +251,107 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var rxjs__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! rxjs */
     "./node_modules/rxjs/_esm2015/index.js");
+    /* harmony import */
 
-    var MyRidesPage = /*#__PURE__*/function () {
-      function MyRidesPage(locationService, socketService, storage, http) {
-        var _this = this;
 
-        _classCallCheck(this, MyRidesPage);
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
 
-        this.locationService = locationService;
-        this.socketService = socketService;
+    var LoginPage = /*#__PURE__*/function () {
+      function LoginPage(storage, http, router, appCompoent, alertController) {
+        _classCallCheck(this, LoginPage);
+
         this.storage = storage;
         this.http = http;
-        this.isUserLoggedIn = false;
-        this.invoiceList = [];
-        this.storage.get("username").then(function (val) {
-          if (val != null) {
-            _this.isUserLoggedIn = true;
-          }
-        });
+        this.router = router;
+        this.appCompoent = appCompoent;
+        this.alertController = alertController;
       }
 
-      _createClass(MyRidesPage, [{
+      _createClass(LoginPage, [{
         key: "ngOnInit",
-        value: function ngOnInit() {
-          var _this2 = this;
+        value: function ngOnInit() {}
+      }, {
+        key: "login",
+        value: function login() {
+          var _this = this;
 
-          this.storage.get("username").then(function (val) {
-            if (val != null) {
-              _this2.http.post("https://taxi-mura.herokuapp.com/api/drivesByUsername", {
-                username: "admin"
-              }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(function (err) {
-                return rxjs__WEBPACK_IMPORTED_MODULE_7__["Observable"].throw(err || 'Internal Server error');
-              })).subscribe(function (data) {
-                Object.entries(data).forEach(function (_ref) {
-                  var _ref2 = _slicedToArray(_ref, 2),
-                      key = _ref2[0],
-                      value = _ref2[1];
+          this.http // .post("http://localhost:8080/api/authenticate", {
+          .post("https://taxi-mura.herokuapp.com/api/authenticate", {
+            username: this.email,
+            password: this.password
+          }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_6__["catchError"])(function (err) {
+            _this.presentAlert();
 
-                  // alert("JSON.stringify(value)" + value.fromLat + " - "+  value.fromLong)
-                  _this2.locationService.getReverseGeocode(value.fromLat, value.fromLong).then(function (from) {
-                    _this2.locationService.getReverseGeocode(value.toLat, value.toLong).then(function (to) {
-                      _this2.invoiceList.push({
-                        "fromAddress": from[0].thoroughfare + "," + from[0].subThoroughfare + "," + from[0].locality,
-                        "toAddress": to[0].thoroughfare + "," + to[0].subThoroughfare + "," + to[0].locality,
-                        "persons": value.persons,
-                        km: value.km,
-                        time: value.time.replace("T", " ").replace("Z", "")
-                      });
+            return rxjs__WEBPACK_IMPORTED_MODULE_7__["Observable"].throw(err || "Internal Server error");
+          })).subscribe(function (data) {
+            _this.storage.set("username", _this.email);
 
-                      console.log(JSON.stringify(_this2.invoiceList));
-                    });
-                  });
-                });
-              });
-            }
+            _this.storage.set("id_token", data["id_token"]);
+
+            location.reload();
           });
+          this.appCompoent.isUserLoggedIn = true;
         }
       }, {
-        key: "getAddressFromGeolocation",
-        value: function getAddressFromGeolocation(latitude, longitude) {
+        key: "presentAlert",
+        value: function presentAlert() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var alert;
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    return _context.abrupt("return");
+                    _context.next = 2;
+                    return this.alertController.create({
+                      cssClass: "myClass",
+                      header: "Obavijest",
+                      message: '<div style="height: 100%"> Login je bio neuspješan. </div>',
+                      buttons: ["OK"]
+                    });
 
-                  case 1:
+                  case 2:
+                    alert = _context.sent;
+                    _context.next = 5;
+                    return alert.present();
+
+                  case 5:
                   case "end":
                     return _context.stop();
                 }
               }
-            }, _callee);
-          }));
-        }
-      }, {
-        key: "callSOS",
-        value: function callSOS() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var _this3 = this;
-
-            var currentLocation;
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    _context2.next = 2;
-                    return this.locationService.getUserPosition();
-
-                  case 2:
-                    currentLocation = _context2.sent;
-                    console.log("DSAD");
-                    console.log(currentLocation);
-                    this.storage.get("username").then(function (username) {
-                      _this3.storage.get("username").then(function (phone) {
-                        _this3.socketService.send("/server-receiver", {
-                          type: "customer",
-                          messageType: "SOS",
-                          driver: username,
-                          phoneNumber: phone,
-                          fromLat: currentLocation["cords"]["latitude"],
-                          fromLong: currentLocation["cords"]["latitude"]
-                        });
-                      });
-                    });
-
-                  case 6:
-                  case "end":
-                    return _context2.stop();
-                }
-              }
-            }, _callee2, this);
+            }, _callee, this);
           }));
         }
       }]);
 
-      return MyRidesPage;
+      return LoginPage;
     }();
 
-    MyRidesPage.ctorParameters = function () {
+    LoginPage.ctorParameters = function () {
       return [{
-        type: _services_location_service__WEBPACK_IMPORTED_MODULE_2__["LocationService"]
-      }, {
-        type: _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"]
-      }, {
-        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]
       }, {
         type: _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["AlertController"]
       }];
     };
 
-    MyRidesPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: "app-my-rides",
+    LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: "app-login",
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! raw-loader!./my-rides.page.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/my-rides/my-rides.page.html")).default,
+      /*! raw-loader!./login.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/login/login.page.html")).default,
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
-      /*! ./my-rides.page.scss */
-      "./src/app/pages/my-rides/my-rides.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_location_service__WEBPACK_IMPORTED_MODULE_2__["LocationService"], _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]])], MyRidesPage);
+      /*! ./login.page.scss */
+      "./src/app/pages/login/login.page.scss")).default]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["AlertController"]])], LoginPage);
     /***/
   }
 }]);

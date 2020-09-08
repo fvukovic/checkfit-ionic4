@@ -1,820 +1,347 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[15], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/css-shim-206ea950-3169f23e.js":
-  /*!*************************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/css-shim-206ea950-3169f23e.js ***!
-    \*************************************************************************/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/search-ride/search-ride.page.html":
+  /*!***********************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/search-ride/search-ride.page.html ***!
+    \***********************************************************************************************/
 
-  /*! no static exports found */
+  /*! exports provided: default */
 
   /***/
-  function node_modulesIonicCoreDistEsmCssShim206ea9503169f23eJs(module, exports) {
-    /*
-    Extremely simple css parser. Intended to be not more than what we need
-    and definitely not necessarily correct =).
-    */
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesSearchRideSearchRidePageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
 
-    /** @unrestricted */
-    var StyleNode =
-    /** @class */
-    function () {
-      function StyleNode() {
-        this.start = 0;
-        this.end = 0;
-        this.previous = null;
-        this.parent = null;
-        this.rules = null;
-        this.parsedCssText = '';
-        this.cssText = '';
-        this.atRule = false;
-        this.type = 0;
-        this.keyframesName = '';
-        this.selector = '';
-        this.parsedSelector = '';
-      }
-
-      return StyleNode;
-    }(); // given a string of css, return a simple rule tree
-
-    /**
-     * @param {string} text
-     * @return {StyleNode}
-     */
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
 
 
-    function parse(text) {
-      text = clean(text);
-      return parseCss(lex(text), text);
-    } // remove stuff we don't care about that may hinder parsing
+    __webpack_exports__["default"] = "<ion-header [translucent]=\"true\">\r\n  <ion-toolbar>\r\n    <div class=\"header-box\">\r\n      <ion-title>Novi zahtjev za vožnju!</ion-title>\r\n      <img src=\"../../../assets/img/taxiLogo.png\">\r\n    </div>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <div class=container>\r\n    <div *ngIf=\"!isDriveAccepted\" >\r\n\r\n      <div class=\"wrapper-request\">  \r\n        <ion-icon name=\"checkbox\"></ion-icon>\r\n        <p>Vaš zahtjev je uspješno poslan!</p>\r\n      </div>    \r\n\r\n      <div class=\"seacrhing-driver\">\r\n           <p>Tražim slobodnog vozača...</p>\r\n          <!-- <ion-spinner style=\"width:150px\" color=\"tertiary\" class=\"ion-color ion-color-tertiary ios spinner-lines hydrated\"\r\n        role=\"progressbar\"></ion-spinner>  -->\r\n        <ion-spinner name=\"bubbles\"></ion-spinner>\r\n        <p class=\"details\">Detalji će uskoro biti vidljivi na ekranu:</p>\r\n      </div>\r\n\r\n      <div class=\"logo\">\r\n        <img src=\"../../../assets/img/taxiLogo.png\" class=\"menu-img\">      \r\n        <p class=\"rich-text\">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>\r\n    </div>\r\n\r\n    </div>\r\n\r\n    <div *ngIf=\"isDriveAccepted\" >\r\n      <div class=\"accepted-ride\">\r\n        <img src=\"../../../assets/img/accepted-ride.png\" class=\"menu-img\">\r\n          <h2>Zahtjev je prihvaćen!</h2>\r\n          <p class=\"driver\">Vozač {{message.driverUser.login}} će Vas uskoro kontaktirati...</p>\r\n          <div class=\"distance\">\r\n          <span>Vaše vozilo je udaljeno:</span> \r\n          <p class=\"km\">{{kms}}</p>\r\n        </div>\r\n        <div class=\"distance\">\r\n          <span>Vozilo stiže za:</span> \r\n          <p class=\"km\">{{message.time}} min</p>\r\n        </div> \r\n        </div>\r\n      </div>\r\n\r\n  </div>\r\n\r\n</ion-content>";
+    /***/
+  },
 
-    /**
-     * @param {string} cssText
-     * @return {string}
-     */
+  /***/
+  "./src/app/pages/search-ride/search-ride-routing.module.ts":
+  /*!*****************************************************************!*\
+    !*** ./src/app/pages/search-ride/search-ride-routing.module.ts ***!
+    \*****************************************************************/
 
+  /*! exports provided: SearchRidePageRoutingModule */
 
-    function clean(cssText) {
-      return cssText.replace(RX.comments, '').replace(RX.port, '');
-    } // super simple {...} lexer that returns a node tree
+  /***/
+  function srcAppPagesSearchRideSearchRideRoutingModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
 
-    /**
-     * @param {string} text
-     * @return {StyleNode}
-     */
-
-
-    function lex(text) {
-      var root = new StyleNode();
-      root['start'] = 0;
-      root['end'] = text.length;
-      var n = root;
-
-      for (var i = 0, l = text.length; i < l; i++) {
-        if (text[i] === OPEN_BRACE) {
-          if (!n['rules']) {
-            n['rules'] = [];
-          }
-
-          var p = n;
-          var previous = p['rules'][p['rules'].length - 1] || null;
-          n = new StyleNode();
-          n['start'] = i + 1;
-          n['parent'] = p;
-          n['previous'] = previous;
-          p['rules'].push(n);
-        } else if (text[i] === CLOSE_BRACE) {
-          n['end'] = i + 1;
-          n = n['parent'] || root;
-        }
-      }
-
-      return root;
-    } // add selectors/cssText to node tree
-
-    /**
-     * @param {StyleNode} node
-     * @param {string} text
-     * @return {StyleNode}
-     */
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
 
 
-    function parseCss(node, text) {
-      var t = text.substring(node['start'], node['end'] - 1);
-      node['parsedCssText'] = node['cssText'] = t.trim();
-
-      if (node.parent) {
-        var ss = node.previous ? node.previous['end'] : node.parent['start'];
-        t = text.substring(ss, node['start'] - 1);
-        t = _expandUnicodeEscapes(t);
-        t = t.replace(RX.multipleSpaces, ' '); // TODO(sorvell): ad hoc; make selector include only after last ;
-        // helps with mixin syntax
-
-        t = t.substring(t.lastIndexOf(';') + 1);
-        var s = node['parsedSelector'] = node['selector'] = t.trim();
-        node['atRule'] = s.indexOf(AT_START) === 0; // note, support a subset of rule types...
-
-        if (node['atRule']) {
-          if (s.indexOf(MEDIA_START) === 0) {
-            node['type'] = types.MEDIA_RULE;
-          } else if (s.match(RX.keyframesRule)) {
-            node['type'] = types.KEYFRAMES_RULE;
-            node['keyframesName'] = node['selector'].split(RX.multipleSpaces).pop();
-          }
-        } else {
-          if (s.indexOf(VAR_START) === 0) {
-            node['type'] = types.MIXIN_RULE;
-          } else {
-            node['type'] = types.STYLE_RULE;
-          }
-        }
-      }
-
-      var r$ = node['rules'];
-
-      if (r$) {
-        for (var i = 0, l = r$.length, r = void 0; i < l && (r = r$[i]); i++) {
-          parseCss(r, text);
-        }
-      }
-
-      return node;
-    }
-    /**
-     * conversion of sort unicode escapes with spaces like `\33 ` (and longer) into
-     * expanded form that doesn't require trailing space `\000033`
-     * @param {string} s
-     * @return {string}
-     */
+    __webpack_require__.d(__webpack_exports__, "SearchRidePageRoutingModule", function () {
+      return SearchRidePageRoutingModule;
+    });
+    /* harmony import */
 
 
-    function _expandUnicodeEscapes(s) {
-      return s.replace(/\\([0-9a-f]{1,6})\s/gi, function () {
-        var code = arguments[1],
-            repeat = 6 - code.length;
-
-        while (repeat--) {
-          code = '0' + code;
-        }
-
-        return '\\' + code;
-      });
-    }
-    /** @enum {number} */
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
 
 
-    var types = {
-      STYLE_RULE: 1,
-      KEYFRAMES_RULE: 7,
-      MEDIA_RULE: 4,
-      MIXIN_RULE: 1000
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _search_ride_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ./search-ride.page */
+    "./src/app/pages/search-ride/search-ride.page.ts");
+
+    var routes = [{
+      path: '',
+      component: _search_ride_page__WEBPACK_IMPORTED_MODULE_3__["SearchRidePage"]
+    }];
+
+    var SearchRidePageRoutingModule = function SearchRidePageRoutingModule() {
+      _classCallCheck(this, SearchRidePageRoutingModule);
     };
-    var OPEN_BRACE = '{';
-    var CLOSE_BRACE = '}'; // helper regexp's
 
-    var RX = {
-      comments: /\/\*[^*]*\*+([^/*][^*]*\*+)*\//gim,
-      port: /@import[^;]*;/gim,
-      customProp: /(?:^[^;\-\s}]+)?--[^;{}]*?:[^{};]*?(?:[;\n]|$)/gim,
-      mixinProp: /(?:^[^;\-\s}]+)?--[^;{}]*?:[^{};]*?{[^}]*?}(?:[;\n]|$)?/gim,
-      mixinApply: /@apply\s*\(?[^);]*\)?\s*(?:[;\n]|$)?/gim,
-      varApply: /[^;:]*?:[^;]*?var\([^;]*\)(?:[;\n]|$)?/gim,
-      keyframesRule: /^@[^\s]*keyframes/,
-      multipleSpaces: /\s+/g
+    SearchRidePageRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(routes)],
+      exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+    })], SearchRidePageRoutingModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/search-ride/search-ride.module.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/pages/search-ride/search-ride.module.ts ***!
+    \*********************************************************/
+
+  /*! exports provided: SearchRidePageModule */
+
+  /***/
+  function srcAppPagesSearchRideSearchRideModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "SearchRidePageModule", function () {
+      return SearchRidePageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _search_ride_routing_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./search-ride-routing.module */
+    "./src/app/pages/search-ride/search-ride-routing.module.ts");
+    /* harmony import */
+
+
+    var _search_ride_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./search-ride.page */
+    "./src/app/pages/search-ride/search-ride.page.ts");
+
+    var SearchRidePageModule = function SearchRidePageModule() {
+      _classCallCheck(this, SearchRidePageModule);
     };
-    var VAR_START = '--';
-    var MEDIA_START = '@media';
-    var AT_START = '@';
 
-    function findRegex(regex, cssText, offset) {
-      regex['lastIndex'] = 0;
-      var r = cssText.substring(offset).match(regex);
+    SearchRidePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"], _search_ride_routing_module__WEBPACK_IMPORTED_MODULE_5__["SearchRidePageRoutingModule"]],
+      declarations: [_search_ride_page__WEBPACK_IMPORTED_MODULE_6__["SearchRidePage"]]
+    })], SearchRidePageModule);
+    /***/
+  },
 
-      if (r) {
-        var start = offset + r['index'];
-        return {
-          start: start,
-          end: start + r[0].length
-        };
-      }
+  /***/
+  "./src/app/pages/search-ride/search-ride.page.scss":
+  /*!*********************************************************!*\
+    !*** ./src/app/pages/search-ride/search-ride.page.scss ***!
+    \*********************************************************/
 
-      return null;
-    }
+  /*! exports provided: default */
 
-    var VAR_USAGE_START = /\bvar\(/;
-    var VAR_ASSIGN_START = /\B--[\w-]+\s*:/;
-    var COMMENTS = /\/\*[^*]*\*+([^/*][^*]*\*+)*\//gim;
-    var TRAILING_LINES = /^[\t ]+\n/gm;
+  /***/
+  function srcAppPagesSearchRideSearchRidePageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
 
-    function resolveVar(props, prop, fallback) {
-      if (props[prop]) {
-        return props[prop];
-      }
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
 
-      if (fallback) {
-        return executeTemplate(fallback, props);
-      }
 
-      return '';
-    }
+    __webpack_exports__["default"] = ".container {\n  margin: 0px 20px 20px 20px;\n  padding: 20px;\n}\n.container .wrapper-request {\n  border-bottom: 1px solid #000;\n  text-align: center;\n  font-size: 16px;\n  font-weight: bold;\n  margin-bottom: 0px;\n}\n.container .wrapper-request ion-icon {\n  font-size: 42px;\n  color: #46e169;\n  float: left;\n}\n.container .wrapper-request p {\n  padding-top: 13px;\n  padding-left: 20px;\n  margin: 20px 0;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n}\n.container .seacrhing-driver {\n  text-align: center;\n  text-transform: uppercase;\n  padding: 20px 0;\n  margin: 20px 0 0 0;\n}\n.container .seacrhing-driver p {\n  padding: 0;\n  margin: 0 0 20px 0;\n  font-size: 26px;\n  font-weight: bold;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n}\n.container .seacrhing-driver .details {\n  font-size: 18px;\n  text-transform: initial;\n  margin: 30px 0 0px 0;\n  background: #46e169;\n  color: white;\n  border-radius: 5px;\n  padding: 20px;\n  font-weight: bold;\n}\n.container .seacrhing-driver ion-spinner {\n  --color: #46e169;\n  font-size: 80px;\n  -webkit-transform: scale(2);\n          transform: scale(2);\n}\n.container .logo {\n  text-align: center;\n  border-bottom: 1px solid #000;\n  margin-top: 30px;\n}\n.container .logo .menu-img {\n  max-width: 40%;\n}\n.container .logo p {\n  font-size: 12px;\n  font-weight: bold;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n}\n.container .accepted-ride {\n  text-align: center;\n  margin-bottom: 0px;\n  font-weight: bold;\n}\n.container .accepted-ride h2 {\n  text-transform: uppercase;\n  border-bottom: 1px solid #000;\n  padding-bottom: 15px;\n}\n.container .accepted-ride img {\n  max-width: 55%;\n}\n.container .accepted-ride .distance {\n  color: #46e169;\n  background: #393939;\n  padding: 20px;\n  border-radius: 5px;\n  margin-bottom: 10px;\n}\n.container .accepted-ride span {\n  text-transform: uppercase;\n}\n.container .accepted-ride p {\n  margin: 0;\n  padding: 0;\n}\n.container .accepted-ride .driver {\n  margin: 20px 0;\n  font-style: italic;\n}\n.container .accepted-ride .km {\n  font-size: 30px;\n}\n.header-box {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  padding: 10px;\n}\nimg {\n  max-width: 50px;\n}\nion-title {\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  --color: #000;\n  text-transform: uppercase;\n  font-size: 16px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvc2VhcmNoLXJpZGUvQzpcXG11cmFBcHBcXGNoZWNrZml0LWlvbmljNFxcbW9iaWxlX2FwcC9zcmNcXGFwcFxccGFnZXNcXHNlYXJjaC1yaWRlXFxzZWFyY2gtcmlkZS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3NlYXJjaC1yaWRlL3NlYXJjaC1yaWRlLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLDBCQUFBO0VBQ0EsYUFBQTtBQ0NKO0FEQ0k7RUFDSSw2QkFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtFQUNBLGlCQUFBO0VBQ0Esa0JBQUE7QUNDUjtBRENRO0VBQ0ksZUFBQTtFQUNBLGNBQUE7RUFDQSxXQUFBO0FDQ1o7QURDUTtFQUNJLGlCQUFBO0VBQ0Esa0JBQUE7RUFDQSxjQUFBO0VBQ0EsNkNBQUE7QUNDWjtBREVJO0VBQ0ksa0JBQUE7RUFDQSx5QkFBQTtFQUNBLGVBQUE7RUFDQSxrQkFBQTtBQ0FSO0FERVE7RUFDSSxVQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7RUFDQSw2Q0FBQTtBQ0FaO0FERVE7RUFDSSxlQUFBO0VBQ0EsdUJBQUE7RUFDQSxvQkFBQTtFQUNBLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsYUFBQTtFQUNBLGlCQUFBO0FDQVo7QURHUTtFQUNJLGdCQUFBO0VBQ0EsZUFBQTtFQUNBLDJCQUFBO1VBQUEsbUJBQUE7QUNEWjtBREtJO0VBQ0ksa0JBQUE7RUFDQSw2QkFBQTtFQUNBLGdCQUFBO0FDSFI7QURLUTtFQUNJLGNBQUE7QUNIWjtBRE1RO0VBQ0ksZUFBQTtFQUNBLGlCQUFBO0VBQ0EsNkNBQUE7QUNKWjtBRFFJO0VBQ0ksa0JBQUE7RUFDQSxrQkFBQTtFQUNBLGlCQUFBO0FDTlI7QURRUTtFQUNJLHlCQUFBO0VBQ0EsNkJBQUE7RUFDQSxvQkFBQTtBQ05aO0FEUVE7RUFDSSxjQUFBO0FDTlo7QURTUTtFQUNJLGNBQUE7RUFDQSxtQkFBQTtFQUNBLGFBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FDUFo7QURTUTtFQUNJLHlCQUFBO0FDUFo7QURTUTtFQUNJLFNBQUE7RUFDQSxVQUFBO0FDUFo7QURTUTtFQUNJLGNBQUE7RUFDQSxrQkFBQTtBQ1BaO0FEU1E7RUFDSSxlQUFBO0FDUFo7QURZQTtFQUNJLG9CQUFBO0VBQUEsYUFBQTtFQUNBLHlCQUFBO1VBQUEsbUJBQUE7RUFDQSxhQUFBO0FDVEo7QURXQTtFQUNJLGVBQUE7QUNSSjtBRFVBO0VBQ0ksNkNBQUE7RUFDQSxhQUFBO0VBQ0EseUJBQUE7RUFDQSxlQUFBO0FDUEoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9zZWFyY2gtcmlkZS9zZWFyY2gtcmlkZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY29udGFpbmVyIHtcclxuICAgIG1hcmdpbjogMHB4IDIwcHggMjBweCAyMHB4O1xyXG4gICAgcGFkZGluZzogMjBweDtcclxuXHJcbiAgICAud3JhcHBlci1yZXF1ZXN0IHtcclxuICAgICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgIzAwMDtcclxuICAgICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206IDBweDtcclxuXHJcbiAgICAgICAgaW9uLWljb24ge1xyXG4gICAgICAgICAgICBmb250LXNpemU6IDQycHg7XHJcbiAgICAgICAgICAgIGNvbG9yOiAjNDZlMTY5O1xyXG4gICAgICAgICAgICBmbG9hdDogbGVmdDtcclxuICAgICAgICB9XHJcbiAgICAgICAgcCB7XHJcbiAgICAgICAgICAgIHBhZGRpbmctdG9wOiAxM3B4O1xyXG4gICAgICAgICAgICBwYWRkaW5nLWxlZnQ6IDIwcHg7XHJcbiAgICAgICAgICAgIG1hcmdpbjogMjBweCAwO1xyXG4gICAgICAgICAgICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsMCwwLDAuNCk7XHJcbiAgICAgICAgfVxyXG4gICAgfVxyXG4gICAgLnNlYWNyaGluZy1kcml2ZXIgeyAgICAgICAgXHJcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7ICAgICAgICBcclxuICAgICAgICBwYWRkaW5nOiAyMHB4IDA7XHJcbiAgICAgICAgbWFyZ2luOiAyMHB4IDAgMCAwO1xyXG5cclxuICAgICAgICBwIHtcclxuICAgICAgICAgICAgcGFkZGluZzogMDtcclxuICAgICAgICAgICAgbWFyZ2luOiAwIDAgMjBweCAwO1xyXG4gICAgICAgICAgICBmb250LXNpemU6IDI2cHg7XHJcbiAgICAgICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgICAgICAgICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsMCwwLDAuNCk7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIC5kZXRhaWxzIHtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAxOHB4O1xyXG4gICAgICAgICAgICB0ZXh0LXRyYW5zZm9ybTogaW5pdGlhbDtcclxuICAgICAgICAgICAgbWFyZ2luOiAzMHB4IDAgMHB4IDA7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQ6ICM0NmUxNjk7XHJcbiAgICAgICAgICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgICAgICAgICAgYm9yZGVyLXJhZGl1czogNXB4O1xyXG4gICAgICAgICAgICBwYWRkaW5nOiAyMHB4O1xyXG4gICAgICAgICAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgICAgICB9XHJcblxyXG4gICAgICAgIGlvbi1zcGlubmVyIHtcclxuICAgICAgICAgICAgLS1jb2xvcjogIzQ2ZTE2OTtcclxuICAgICAgICAgICAgZm9udC1zaXplOiA4MHB4O1xyXG4gICAgICAgICAgICB0cmFuc2Zvcm06IHNjYWxlKDIpO1xyXG4gICAgICAgICAgICBcclxuICAgICAgICB9XHJcbiAgICB9XHJcbiAgICAubG9nbyB7XHJcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMDAwOyAgICBcclxuICAgICAgICBtYXJnaW4tdG9wOiAzMHB4OyAgICBcclxuXHJcbiAgICAgICAgLm1lbnUtaW1nIHsgICAgICAgICAgICBcclxuICAgICAgICAgICAgbWF4LXdpZHRoOiA0MCU7XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICBwIHtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAxMnB4O1xyXG4gICAgICAgICAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgICAgICAgICAgdGV4dC1zaGFkb3c6IDBlbSAwZW0gMC4zZW0gcmdiYSgwLDAsMCwwLjQpO1xyXG4gICAgICAgIH1cclxuICAgIH1cclxuXHJcbiAgICAuYWNjZXB0ZWQtcmlkZSB7XHJcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICAgIG1hcmdpbi1ib3R0b206IDBweDtcclxuICAgICAgICBmb250LXdlaWdodDogYm9sZDtcclxuXHJcbiAgICAgICAgaDIge1xyXG4gICAgICAgICAgICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xyXG4gICAgICAgICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgIzAwMDtcclxuICAgICAgICAgICAgcGFkZGluZy1ib3R0b206IDE1cHg7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIGltZyB7XHJcbiAgICAgICAgICAgIG1heC13aWR0aDogNTUlO1xyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgLmRpc3RhbmNlIHtcclxuICAgICAgICAgICAgY29sb3I6ICM0NmUxNjk7XHJcbiAgICAgICAgICAgIGJhY2tncm91bmQ6ICMzOTM5Mzk7XHJcbiAgICAgICAgICAgIHBhZGRpbmc6IDIwcHg7XHJcbiAgICAgICAgICAgIGJvcmRlci1yYWRpdXM6IDVweDtcclxuICAgICAgICAgICAgbWFyZ2luLWJvdHRvbTogMTBweDtcclxuICAgICAgICB9XHJcbiAgICAgICAgc3BhbiB7XHJcbiAgICAgICAgICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIHAge1xyXG4gICAgICAgICAgICBtYXJnaW46IDA7XHJcbiAgICAgICAgICAgIHBhZGRpbmc6IDA7XHJcbiAgICAgICAgfVxyXG4gICAgICAgIC5kcml2ZXIge1xyXG4gICAgICAgICAgICBtYXJnaW46IDIwcHggMDtcclxuICAgICAgICAgICAgZm9udC1zdHlsZTogaXRhbGljOztcclxuICAgICAgICB9XHJcbiAgICAgICAgLmttIHtcclxuICAgICAgICAgICAgZm9udC1zaXplOiAzMHB4O1xyXG4gICAgICAgIH1cclxuICAgIH1cclxuICAgIFxyXG59XHJcbi5oZWFkZXItYm94IHtcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgcGFkZGluZzogMTBweDtcclxufVxyXG5pbWcge1xyXG4gICAgbWF4LXdpZHRoOiA1MHB4O1xyXG59XHJcbmlvbi10aXRsZSB7XHJcbiAgICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsMCwwLDAuNCk7XHJcbiAgICAtLWNvbG9yOiAjMDAwO1xyXG4gICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxufSIsIi5jb250YWluZXIge1xuICBtYXJnaW46IDBweCAyMHB4IDIwcHggMjBweDtcbiAgcGFkZGluZzogMjBweDtcbn1cbi5jb250YWluZXIgLndyYXBwZXItcmVxdWVzdCB7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMDAwO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIG1hcmdpbi1ib3R0b206IDBweDtcbn1cbi5jb250YWluZXIgLndyYXBwZXItcmVxdWVzdCBpb24taWNvbiB7XG4gIGZvbnQtc2l6ZTogNDJweDtcbiAgY29sb3I6ICM0NmUxNjk7XG4gIGZsb2F0OiBsZWZ0O1xufVxuLmNvbnRhaW5lciAud3JhcHBlci1yZXF1ZXN0IHAge1xuICBwYWRkaW5nLXRvcDogMTNweDtcbiAgcGFkZGluZy1sZWZ0OiAyMHB4O1xuICBtYXJnaW46IDIwcHggMDtcbiAgdGV4dC1zaGFkb3c6IDBlbSAwZW0gMC4zZW0gcmdiYSgwLCAwLCAwLCAwLjQpO1xufVxuLmNvbnRhaW5lciAuc2VhY3JoaW5nLWRyaXZlciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgcGFkZGluZzogMjBweCAwO1xuICBtYXJnaW46IDIwcHggMCAwIDA7XG59XG4uY29udGFpbmVyIC5zZWFjcmhpbmctZHJpdmVyIHAge1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IDAgMCAyMHB4IDA7XG4gIGZvbnQtc2l6ZTogMjZweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwgMCwgMCwgMC40KTtcbn1cbi5jb250YWluZXIgLnNlYWNyaGluZy1kcml2ZXIgLmRldGFpbHMge1xuICBmb250LXNpemU6IDE4cHg7XG4gIHRleHQtdHJhbnNmb3JtOiBpbml0aWFsO1xuICBtYXJnaW46IDMwcHggMCAwcHggMDtcbiAgYmFja2dyb3VuZDogIzQ2ZTE2OTtcbiAgY29sb3I6IHdoaXRlO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIHBhZGRpbmc6IDIwcHg7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuLmNvbnRhaW5lciAuc2VhY3JoaW5nLWRyaXZlciBpb24tc3Bpbm5lciB7XG4gIC0tY29sb3I6ICM0NmUxNjk7XG4gIGZvbnQtc2l6ZTogODBweDtcbiAgdHJhbnNmb3JtOiBzY2FsZSgyKTtcbn1cbi5jb250YWluZXIgLmxvZ28ge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMDAwO1xuICBtYXJnaW4tdG9wOiAzMHB4O1xufVxuLmNvbnRhaW5lciAubG9nbyAubWVudS1pbWcge1xuICBtYXgtd2lkdGg6IDQwJTtcbn1cbi5jb250YWluZXIgLmxvZ28gcCB7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwgMCwgMCwgMC40KTtcbn1cbi5jb250YWluZXIgLmFjY2VwdGVkLXJpZGUge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG1hcmdpbi1ib3R0b206IDBweDtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG4uY29udGFpbmVyIC5hY2NlcHRlZC1yaWRlIGgyIHtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICMwMDA7XG4gIHBhZGRpbmctYm90dG9tOiAxNXB4O1xufVxuLmNvbnRhaW5lciAuYWNjZXB0ZWQtcmlkZSBpbWcge1xuICBtYXgtd2lkdGg6IDU1JTtcbn1cbi5jb250YWluZXIgLmFjY2VwdGVkLXJpZGUgLmRpc3RhbmNlIHtcbiAgY29sb3I6ICM0NmUxNjk7XG4gIGJhY2tncm91bmQ6ICMzOTM5Mzk7XG4gIHBhZGRpbmc6IDIwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbn1cbi5jb250YWluZXIgLmFjY2VwdGVkLXJpZGUgc3BhbiB7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG59XG4uY29udGFpbmVyIC5hY2NlcHRlZC1yaWRlIHAge1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDA7XG59XG4uY29udGFpbmVyIC5hY2NlcHRlZC1yaWRlIC5kcml2ZXIge1xuICBtYXJnaW46IDIwcHggMDtcbiAgZm9udC1zdHlsZTogaXRhbGljO1xufVxuLmNvbnRhaW5lciAuYWNjZXB0ZWQtcmlkZSAua20ge1xuICBmb250LXNpemU6IDMwcHg7XG59XG5cbi5oZWFkZXItYm94IHtcbiAgZGlzcGxheTogZmxleDtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbiAgcGFkZGluZzogMTBweDtcbn1cblxuaW1nIHtcbiAgbWF4LXdpZHRoOiA1MHB4O1xufVxuXG5pb24tdGl0bGUge1xuICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsIDAsIDAsIDAuNCk7XG4gIC0tY29sb3I6ICMwMDA7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn0iXX0= */";
+    /***/
+  },
 
-    function findVarEndIndex(cssText, offset) {
-      var count = 0;
-      var i = offset;
+  /***/
+  "./src/app/pages/search-ride/search-ride.page.ts":
+  /*!*******************************************************!*\
+    !*** ./src/app/pages/search-ride/search-ride.page.ts ***!
+    \*******************************************************/
 
-      for (; i < cssText.length; i++) {
-        var c = cssText[i];
+  /*! exports provided: SearchRidePage */
 
-        if (c === '(') {
-          count++;
-        } else if (c === ')') {
-          count--;
+  /***/
+  function srcAppPagesSearchRideSearchRidePageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
 
-          if (count <= 0) {
-            return i + 1;
-          }
-        }
-      }
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
 
-      return i;
-    }
 
-    function parseVar(cssText, offset) {
-      var varPos = findRegex(VAR_USAGE_START, cssText, offset);
+    __webpack_require__.d(__webpack_exports__, "SearchRidePage", function () {
+      return SearchRidePage;
+    });
+    /* harmony import */
 
-      if (!varPos) {
-        return null;
-      }
 
-      var endVar = findVarEndIndex(cssText, varPos.start);
-      var varContent = cssText.substring(varPos.end, endVar - 1);
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
 
-      var _a = varContent.split(','),
-          propName = _a[0],
-          fallback = _a.slice(1);
 
-      return {
-        start: varPos.start,
-        end: endVar,
-        propName: propName.trim(),
-        fallback: fallback.length > 0 ? fallback.join(',').trim() : undefined
-      };
-    }
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
 
-    function compileVar(cssText, template, offset) {
-      var varMeta = parseVar(cssText, offset);
 
-      if (!varMeta) {
-        template.push(cssText.substring(offset, cssText.length));
-        return cssText.length;
-      }
+    var _services_socket_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! ../../services/socket.service */
+    "./src/app/services/socket.service.ts");
+    /* harmony import */
 
-      var propName = varMeta.propName;
-      var fallback = varMeta.fallback != null ? compileTemplate(varMeta.fallback) : undefined;
-      template.push(cssText.substring(offset, varMeta.start), function (params) {
-        return resolveVar(params, propName, fallback);
-      });
-      return varMeta.end;
-    }
 
-    function executeTemplate(template, props) {
-      var final = '';
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
 
-      for (var i = 0; i < template.length; i++) {
-        var s = template[i];
-        final += typeof s === 'string' ? s : s(props);
-      }
 
-      return final;
-    }
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
 
-    function findEndValue(cssText, offset) {
-      var onStr = false;
-      var double = false;
-      var i = offset;
 
-      for (; i < cssText.length; i++) {
-        var c = cssText[i];
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
 
-        if (onStr) {
-          if (double && c === '"') {
-            onStr = false;
-          }
 
-          if (!double && c === '\'') {
-            onStr = false;
-          }
-        } else {
-          if (c === '"') {
-            onStr = true;
-            double = true;
-          } else if (c === '\'') {
-            onStr = true;
-            double = false;
-          } else if (c === ';') {
-            return i + 1;
-          } else if (c === '}') {
-            return i;
-          }
-        }
-      }
+    var _services_location_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../../services/location.service */
+    "./src/app/services/location.service.ts");
 
-      return i;
-    }
+    var SearchRidePage = /*#__PURE__*/function () {
+      function SearchRidePage(socketService, route, events, storage, locationService) {
+        var _this2 = this;
 
-    function removeCustomAssigns(cssText) {
-      var final = '';
-      var offset = 0;
+        _classCallCheck(this, SearchRidePage);
 
-      while (true) {
-        var assignPos = findRegex(VAR_ASSIGN_START, cssText, offset);
-        var start = assignPos ? assignPos.start : cssText.length;
-        final += cssText.substring(offset, start);
-
-        if (assignPos) {
-          offset = findEndValue(cssText, start);
-        } else {
-          break;
-        }
-      }
-
-      return final;
-    }
-
-    function compileTemplate(cssText) {
-      var index = 0;
-      cssText = cssText.replace(COMMENTS, '');
-      cssText = removeCustomAssigns(cssText).replace(TRAILING_LINES, '');
-      var segments = [];
-
-      while (index < cssText.length) {
-        index = compileVar(cssText, segments, index);
-      }
-
-      return segments;
-    }
-
-    function resolveValues(selectors) {
-      var props = {};
-      selectors.forEach(function (selector) {
-        selector.declarations.forEach(function (dec) {
-          props[dec.prop] = dec.value;
+        this.socketService = socketService;
+        this.route = route;
+        this.events = events;
+        this.storage = storage;
+        this.locationService = locationService;
+        this.isDriveAccepted = false;
+        events.subscribe("driveAccepted", function (message) {
+          _this2.isDriveAccepted = true;
+          _this2.message = message;
         });
-      });
-      var propsValues = {};
-      var entries = Object.entries(props);
-
-      var _loop_1 = function _loop_1(i) {
-        var dirty = false;
-        entries.forEach(function (_a) {
-          var key = _a[0],
-              value = _a[1];
-          var propValue = executeTemplate(value, propsValues);
-
-          if (propValue !== propsValues[key]) {
-            propsValues[key] = propValue;
-            dirty = true;
-          }
+        events.subscribe("informCustomer", function (message) {
+          console.log(message);
+          _this2.kms = message;
         });
-
-        if (!dirty) {
-          return "break";
-        }
-      };
-
-      for (var i = 0; i < 10; i++) {
-        var state_1 = _loop_1();
-
-        if (state_1 === "break") break;
-      }
-
-      return propsValues;
-    }
-
-    function getSelectors(root, index) {
-      if (index === void 0) {
-        index = 0;
-      }
-
-      if (!root.rules) {
-        return [];
-      }
-
-      var selectors = [];
-      root.rules.filter(function (rule) {
-        return rule.type === types.STYLE_RULE;
-      }).forEach(function (rule) {
-        var declarations = getDeclarations(rule.cssText);
-
-        if (declarations.length > 0) {
-          rule.parsedSelector.split(',').forEach(function (selector) {
-            selector = selector.trim();
-            selectors.push({
-              selector: selector,
-              declarations: declarations,
-              specificity: computeSpecificity(),
-              nu: index
-            });
-          });
-        }
-
-        index++;
-      });
-      return selectors;
-    }
-
-    function computeSpecificity(_selector) {
-      return 1;
-    }
-
-    var IMPORTANT = '!important';
-    var FIND_DECLARATIONS = /(?:^|[;\s{]\s*)(--[\w-]*?)\s*:\s*(?:((?:'(?:\\'|.)*?'|"(?:\\"|.)*?"|\([^)]*?\)|[^};{])+)|\{([^}]*)\}(?:(?=[;\s}])|$))/gm;
-
-    function getDeclarations(cssText) {
-      var declarations = [];
-      var xArray;
-
-      while (xArray = FIND_DECLARATIONS.exec(cssText.trim())) {
-        var _a = normalizeValue(xArray[2]),
-            value = _a.value,
-            important = _a.important;
-
-        declarations.push({
-          prop: xArray[1].trim(),
-          value: compileTemplate(value),
-          important: important
+        events.subscribe("driveIsFinished", function (message) {
+          _this2.isDriveAccepted = false;
+          _this2.kms = message;
         });
+        this.requestDrive();
       }
 
-      return declarations;
-    }
+      _createClass(SearchRidePage, [{
+        key: "requestDrive",
+        value: function requestDrive() {
+          var _this3 = this;
 
-    function normalizeValue(value) {
-      var regex = /\s+/gim;
-      value = value.replace(regex, ' ').trim();
-      var important = value.endsWith(IMPORTANT);
+          var firstParam = this.route.snapshot.queryParamMap.get("data");
+          var params = JSON.parse(firstParam);
 
-      if (important) {
-        value = value.substr(0, value.length - IMPORTANT.length).trim();
-      }
+          var _this = this;
 
-      return {
-        value: value,
-        important: important
-      };
-    }
-
-    function getActiveSelectors(hostEl, hostScopeMap, globalScopes) {
-      // computes the css scopes that might affect this particular element
-      // avoiding using spread arrays to avoid ts helper fns when in es5
-      var scopes = [];
-      var scopesForElement = getScopesForElement(hostScopeMap, hostEl); // globalScopes are always took into account
-
-      globalScopes.forEach(function (s) {
-        return scopes.push(s);
-      }); // the parent scopes are computed by walking parent dom until <html> is reached
-
-      scopesForElement.forEach(function (s) {
-        return scopes.push(s);
-      }); // each scope might have an array of associated selectors
-      // let's flatten the complete array of selectors from all the scopes
-
-      var selectorSet = getSelectorsForScopes(scopes); // we filter to only the selectors that matches the hostEl
-
-      var activeSelectors = selectorSet.filter(function (selector) {
-        return matches(hostEl, selector.selector);
-      }); // sort selectors by specifity
-
-      return sortSelectors(activeSelectors);
-    }
-
-    function getScopesForElement(hostTemplateMap, node) {
-      var scopes = [];
-
-      while (node) {
-        var scope = hostTemplateMap.get(node);
-
-        if (scope) {
-          scopes.push(scope);
-        }
-
-        node = node.parentElement;
-      }
-
-      return scopes;
-    }
-
-    function getSelectorsForScopes(scopes) {
-      var selectors = [];
-      scopes.forEach(function (scope) {
-        selectors.push.apply(selectors, scope.selectors);
-      });
-      return selectors;
-    }
-
-    function sortSelectors(selectors) {
-      selectors.sort(function (a, b) {
-        if (a.specificity === b.specificity) {
-          return a.nu - b.nu;
-        }
-
-        return a.specificity - b.specificity;
-      });
-      return selectors;
-    }
-
-    function matches(el, selector) {
-      return selector === ':root' || selector === 'html' || el.matches(selector);
-    }
-
-    function parseCSS(original) {
-      var ast = parse(original);
-      var template = compileTemplate(original);
-      var selectors = getSelectors(ast);
-      return {
-        original: original,
-        template: template,
-        selectors: selectors,
-        usesCssVars: template.length > 1
-      };
-    }
-
-    function addGlobalStyle(globalScopes, styleEl) {
-      if (globalScopes.some(function (css) {
-        return css.styleEl === styleEl;
-      })) {
-        return false;
-      }
-
-      var css = parseCSS(styleEl.textContent);
-      css.styleEl = styleEl;
-      globalScopes.push(css);
-      return true;
-    }
-
-    function updateGlobalScopes(scopes) {
-      var selectors = getSelectorsForScopes(scopes);
-      var props = resolveValues(selectors);
-      scopes.forEach(function (scope) {
-        if (scope.usesCssVars) {
-          scope.styleEl.textContent = executeTemplate(scope.template, props);
-        }
-      });
-    }
-
-    function reScope(scope, scopeId) {
-      var template = scope.template.map(function (segment) {
-        return typeof segment === 'string' ? replaceScope(segment, scope.scopeId, scopeId) : segment;
-      });
-      var selectors = scope.selectors.map(function (sel) {
-        return Object.assign(Object.assign({}, sel), {
-          selector: replaceScope(sel.selector, scope.scopeId, scopeId)
-        });
-      });
-      return Object.assign(Object.assign({}, scope), {
-        template: template,
-        selectors: selectors,
-        scopeId: scopeId
-      });
-    }
-
-    function replaceScope(original, oldScopeId, newScopeId) {
-      original = replaceAll(original, "\\." + oldScopeId, "." + newScopeId);
-      return original;
-    }
-
-    function replaceAll(input, find, replace) {
-      return input.replace(new RegExp(find, 'g'), replace);
-    }
-
-    function loadDocument(doc, globalScopes) {
-      loadDocumentStyles(doc, globalScopes);
-      return loadDocumentLinks(doc, globalScopes);
-    }
-
-    function startWatcher(doc, globalScopes) {
-      var mutation = new MutationObserver(function () {
-        if (loadDocumentStyles(doc, globalScopes)) {
-          updateGlobalScopes(globalScopes);
-        }
-      });
-      mutation.observe(document.head, {
-        childList: true
-      });
-    }
-
-    function loadDocumentLinks(doc, globalScopes) {
-      var promises = [];
-      var linkElms = doc.querySelectorAll('link[rel="stylesheet"][href]:not([data-no-shim])');
-
-      for (var i = 0; i < linkElms.length; i++) {
-        promises.push(addGlobalLink(doc, globalScopes, linkElms[i]));
-      }
-
-      return Promise.all(promises);
-    }
-
-    function loadDocumentStyles(doc, globalScopes) {
-      var styleElms = Array.from(doc.querySelectorAll('style:not([data-styles]):not([data-no-shim])'));
-      return styleElms.map(function (style) {
-        return addGlobalStyle(globalScopes, style);
-      }).some(Boolean);
-    }
-
-    function addGlobalLink(doc, globalScopes, linkElm) {
-      var url = linkElm.href;
-      return fetch(url).then(function (rsp) {
-        return rsp.text();
-      }).then(function (text) {
-        if (hasCssVariables(text) && linkElm.parentNode) {
-          if (hasRelativeUrls(text)) {
-            text = fixRelativeUrls(text, url);
-          }
-
-          var styleEl = doc.createElement('style');
-          styleEl.setAttribute('data-styles', '');
-          styleEl.textContent = text;
-          addGlobalStyle(globalScopes, styleEl);
-          linkElm.parentNode.insertBefore(styleEl, linkElm);
-          linkElm.remove();
-        }
-      }).catch(function (err) {
-        console.error(err);
-      });
-    } // This regexp tries to determine when a variable is declared, for example:
-    //
-    // .my-el { --highlight-color: green; }
-    //
-    // but we don't want to trigger when a classname uses "--" or a pseudo-class is
-    // used. We assume that the only characters that can preceed a variable
-    // declaration are "{", from an opening block, ";" from a preceeding rule, or a
-    // space. This prevents the regexp from matching a word in a selector, since
-    // they would need to start with a "." or "#". (We assume element names don't
-    // start with "--").
-
-
-    var CSS_VARIABLE_REGEXP = /[\s;{]--[-a-zA-Z0-9]+\s*:/m;
-
-    function hasCssVariables(css) {
-      return css.indexOf('var(') > -1 || CSS_VARIABLE_REGEXP.test(css);
-    } // This regexp find all url() usages with relative urls
-
-
-    var CSS_URL_REGEXP = /url[\s]*\([\s]*['"]?(?!(?:https?|data)\:|\/)([^\'\"\)]*)[\s]*['"]?\)[\s]*/gim;
-
-    function hasRelativeUrls(css) {
-      CSS_URL_REGEXP.lastIndex = 0;
-      return CSS_URL_REGEXP.test(css);
-    }
-
-    function fixRelativeUrls(css, originalUrl) {
-      // get the basepath from the original import url
-      var basePath = originalUrl.replace(/[^/]*$/, ''); // replace the relative url, with the new relative url
-
-      return css.replace(CSS_URL_REGEXP, function (fullMatch, url) {
-        // rhe new relative path is the base path + uri
-        // TODO: normalize relative URL
-        var relativeUrl = basePath + url;
-        return fullMatch.replace(url, relativeUrl);
-      });
-    }
-
-    var CustomStyle =
-    /** @class */
-    function () {
-      function CustomStyle(win, doc) {
-        this.win = win;
-        this.doc = doc;
-        this.count = 0;
-        this.hostStyleMap = new WeakMap();
-        this.hostScopeMap = new WeakMap();
-        this.globalScopes = [];
-        this.scopesMap = new Map();
-        this.didInit = false;
-      }
-
-      CustomStyle.prototype.initShim = function () {
-        var _this = this;
-
-        if (this.didInit) {
-          return Promise.resolve();
-        } else {
-          this.didInit = true;
-          return new Promise(function (resolve) {
-            _this.win.requestAnimationFrame(function () {
-              startWatcher(_this.doc, _this.globalScopes);
-              loadDocument(_this.doc, _this.globalScopes).then(function () {
-                return resolve();
+          this.storage.get("phoneNumber").then(function (val) {
+            _this3.locationService.getDistanceFromLatLonInKm(params.fromLat, params.fromLong, params.toLat, params.toLong, function (response, status) {
+              _this.socketService.send("/server-receiver", {
+                type: "customer",
+                messageType: "REQUEST_INCOMING",
+                fromLat: params.fromLat,
+                fromLong: params.fromLong,
+                toLat: params.toLat,
+                toLong: params.toLong,
+                persons: params.persons,
+                phoneNumber: val,
+                km: response.rows[0].elements[0].distance.value / 1000
               });
+
+              setTimeout(function (data) {
+                _this.socketService.send("/server-receiver", {
+                  type: "customer",
+                  messageType: "DRIVE_REQUEST",
+                  fromLat: params.fromLat,
+                  fromLong: params.fromLong,
+                  toLat: params.toLat,
+                  toLong: params.toLong,
+                  persons: params.persons,
+                  phoneNumber: val,
+                  km: response.rows[0].elements[0].distance.value / 1000
+                });
+              }, 4000);
             });
           });
         }
-      };
+      }, {
+        key: "ngAfterContentInit",
+        value: function ngAfterContentInit() {}
+      }, {
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }]);
 
-      CustomStyle.prototype.addLink = function (linkEl) {
-        var _this = this;
-
-        return addGlobalLink(this.doc, this.globalScopes, linkEl).then(function () {
-          _this.updateGlobal();
-        });
-      };
-
-      CustomStyle.prototype.addGlobalStyle = function (styleEl) {
-        if (addGlobalStyle(this.globalScopes, styleEl)) {
-          this.updateGlobal();
-        }
-      };
-
-      CustomStyle.prototype.createHostStyle = function (hostEl, cssScopeId, cssText, isScoped) {
-        if (this.hostScopeMap.has(hostEl)) {
-          throw new Error('host style already created');
-        }
-
-        var baseScope = this.registerHostTemplate(cssText, cssScopeId, isScoped);
-        var styleEl = this.doc.createElement('style');
-        styleEl.setAttribute('data-styles', '');
-
-        if (!baseScope.usesCssVars) {
-          // This component does not use (read) css variables
-          styleEl.textContent = cssText;
-        } else if (isScoped) {
-          // This component is dynamic: uses css var and is scoped
-          styleEl['s-sc'] = cssScopeId = baseScope.scopeId + "-" + this.count;
-          styleEl.textContent = '/*needs update*/';
-          this.hostStyleMap.set(hostEl, styleEl);
-          this.hostScopeMap.set(hostEl, reScope(baseScope, cssScopeId));
-          this.count++;
-        } else {
-          // This component uses css vars, but it's no-encapsulation (global static)
-          baseScope.styleEl = styleEl;
-
-          if (!baseScope.usesCssVars) {
-            styleEl.textContent = executeTemplate(baseScope.template, {});
-          }
-
-          this.globalScopes.push(baseScope);
-          this.updateGlobal();
-          this.hostScopeMap.set(hostEl, baseScope);
-        }
-
-        return styleEl;
-      };
-
-      CustomStyle.prototype.removeHost = function (hostEl) {
-        var css = this.hostStyleMap.get(hostEl);
-
-        if (css) {
-          css.remove();
-        }
-
-        this.hostStyleMap.delete(hostEl);
-        this.hostScopeMap.delete(hostEl);
-      };
-
-      CustomStyle.prototype.updateHost = function (hostEl) {
-        var scope = this.hostScopeMap.get(hostEl);
-
-        if (scope && scope.usesCssVars && scope.isScoped) {
-          var styleEl = this.hostStyleMap.get(hostEl);
-
-          if (styleEl) {
-            var selectors = getActiveSelectors(hostEl, this.hostScopeMap, this.globalScopes);
-            var props = resolveValues(selectors);
-            styleEl.textContent = executeTemplate(scope.template, props);
-          }
-        }
-      };
-
-      CustomStyle.prototype.updateGlobal = function () {
-        updateGlobalScopes(this.globalScopes);
-      };
-
-      CustomStyle.prototype.registerHostTemplate = function (cssText, scopeId, isScoped) {
-        var scope = this.scopesMap.get(scopeId);
-
-        if (!scope) {
-          scope = parseCSS(cssText);
-          scope.scopeId = scopeId;
-          scope.isScoped = isScoped;
-          this.scopesMap.set(scopeId, scope);
-        }
-
-        return scope;
-      };
-
-      return CustomStyle;
+      return SearchRidePage;
     }();
 
-    var win = window;
+    SearchRidePage.ctorParameters = function () {
+      return [{
+        type: _services_socket_service__WEBPACK_IMPORTED_MODULE_2__["SocketService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Events"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]
+      }, {
+        type: _services_location_service__WEBPACK_IMPORTED_MODULE_6__["LocationService"]
+      }];
+    };
 
-    function needsShim() {
-      return !(win.CSS && win.CSS.supports && win.CSS.supports('color', 'var(--c)'));
-    }
-
-    if (!win.__stencil_cssshim && needsShim()) {
-      win.__stencil_cssshim = new CustomStyle(win, document);
-    }
+    SearchRidePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: "app-search-ride",
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./search-ride.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/search-ride/search-ride.page.html")).default,
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./search-ride.page.scss */
+      "./src/app/pages/search-ride/search-ride.page.scss")).default]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_socket_service__WEBPACK_IMPORTED_MODULE_2__["SocketService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Events"], _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"], _services_location_service__WEBPACK_IMPORTED_MODULE_6__["LocationService"]])], SearchRidePage);
     /***/
-
   }
 }]);
 //# sourceMappingURL=15-es5.js.map

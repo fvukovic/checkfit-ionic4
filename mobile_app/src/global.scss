@@ -24,3 +24,34 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.myClass .alert-wrapper {
+    background: #393939;
+    text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);
+    border: 1px solid #000;
+    box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.3);
+    color: black;
+    padding: 0;
+    margin: 0;
+}
+.myClass .alert-head {
+    background: #46e169;
+
+    h2 {
+        color: black;
+        text-transform: uppercase;
+        font-size: 22px;
+    }
+}
+.myClass .alert-head.sc-ion-alert-md + .alert-message.sc-ion-alert-md {
+    padding-top: 25px;
+    color: white;
+    text-shadow: 6px 6px 18px 0px rgba(255,255,255,0.3);
+    line-height: 20px;
+    font-size: 18px;
+
+}
+.myClass .alert-button-inner.sc-ion-alert-md {
+    color: #46e169;
+    font-size: 18px;
+}

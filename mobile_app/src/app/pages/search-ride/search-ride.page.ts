@@ -99,8 +99,8 @@ export class SearchRidePage implements OnInit, AfterContentInit {
         this.presentAlert({
           cssClass: "myClass",
           header: "Obavijest", 
-          message: '<div style="color:red" class="myClass"><p>Vaša vožnja je zaprimljena, prvi slobodni vozač će vas uskoro kontaktirati</p> </div>',
-          buttons: ["OK"]
+          message: '<div style="color:red" class="myClass"><p>Vaša vožnja je zaprimljena, prvi slobodni vozač će Vas uskoro kontaktirati.</p> </div>',
+          buttons: ["U redu"]
         })
         }
       }, 1000);

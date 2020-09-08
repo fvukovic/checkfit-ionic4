@@ -92,13 +92,12 @@ export class AppComponent implements OnInit {
           }, 4000);
         }else{
           this.presentAlert({
-            cssClass: "myClass",
+            cssClass: 'myClass',
             header: "Obavijest", 
             message:
-              '<div style="color:red" class="myClass"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Molimo uključite <br/>'
-              + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lokaciju <br/> '
-              +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i <br/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; podatkovni<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; promet</p> </div>',
-            buttons: ["OK"]
+              '<div>Molimo Vas da uključite lokaciju i mobilne podatke kako bi mogli naručiti vožnju.'
+              + ' </div>',
+            buttons: ["U redu"]
           }); 
         }
       });

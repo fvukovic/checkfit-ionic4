@@ -72,8 +72,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _index_3476b023_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./index-3476b023.js */
     "./node_modules/@ionic/core/dist/esm/index-3476b023.js");
+<<<<<<< HEAD
     /**
      * iOS Toast Enter Animation
+=======
+    /**
+     * iOS Toast Enter Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -104,8 +109,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       return baseAnimation.addElement(hostEl).easing('cubic-bezier(.155,1.105,.295,1.12)').duration(400).addAnimation(wrapperAnimation);
     };
+<<<<<<< HEAD
     /**
      * iOS Toast Leave Animation
+=======
+    /**
+     * iOS Toast Leave Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -134,8 +144,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       return baseAnimation.addElement(hostEl).easing('cubic-bezier(.36,.66,.04,1)').duration(300).addAnimation(wrapperAnimation);
     };
+<<<<<<< HEAD
     /**
      * MD Toast Enter Animation
+=======
+    /**
+     * MD Toast Enter Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -168,8 +183,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
       return baseAnimation.addElement(hostEl).easing('cubic-bezier(.36,.66,.04,1)').duration(400).addAnimation(wrapperAnimation);
     };
+<<<<<<< HEAD
     /**
      * md Toast Leave Animation
+=======
+    /**
+     * md Toast Leave Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 

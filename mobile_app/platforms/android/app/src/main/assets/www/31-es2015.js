@@ -114,6 +114,7 @@ const Button = class {
     static get style() { return ":host{--overflow:hidden;--ripple-color:currentColor;--border-width:initial;--border-color:initial;--border-style:initial;--color-hover:initial;--box-shadow:none;display:inline-block;width:auto;color:var(--color);font-family:var(--ion-font-family,inherit);text-align:center;text-decoration:none;text-overflow:ellipsis;white-space:nowrap;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:top;vertical-align:-webkit-baseline-middle;pointer-events:auto;-webkit-font-kerning:none;font-kerning:none}:host(.button-disabled){--opacity:.5;pointer-events:none}:host(.button-disabled) .button-native{cursor:default;pointer-events:none}:host(.button-solid){--background:var(--ion-color-primary,#3880ff);--background-focused:var(--ion-color-primary-shade,#3171e0);--background-hover:var(--ion-color-primary-tint,#4c8dff);--color:var(--ion-color-primary-contrast,#fff);--color-activated:var(--ion-color-primary-contrast,#fff);--color-focused:var(--ion-color-primary-contrast,#fff)}:host(.button-solid.ion-color) .button-native{background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(.button-solid.ion-color.ion-focused) .button-native{background:var(--ion-color-shade)}:host(.button-outline){--border-color:var(--ion-color-primary,#3880ff);--background:transparent;--color:var(--ion-color-primary,#3880ff);--color-focused:var(--ion-color-primary,#3880ff)}:host(.button-outline.ion-color) .button-native{border-color:var(--ion-color-base);background:transparent;color:var(--ion-color-base)}:host(.button-outline.ion-focused.ion-color) .button-native{background:rgba(var(--ion-color-base-rgb),.1);color:var(--ion-color-base)}:host(.button-clear){--border-width:0;--background:transparent;--color:var(--ion-color-primary,#3880ff)}:host(.button-clear.ion-color) .button-native{background:transparent;color:var(--ion-color-base)}:host(.button-clear.ion-focused.ion-color) .button-native{background:rgba(var(--ion-color-base-rgb),.1);color:var(--ion-color-base)}:host(.button-clear.activated.ion-color) .button-native{background:transparent}:host(.button-block){display:block}:host(.button-block) .button-native{margin-left:0;margin-right:0;display:block;width:100%;clear:both;contain:content}:host(.button-block) .button-native:after{clear:both}:host(.button-full){display:block}:host(.button-full) .button-native{margin-left:0;margin-right:0;display:block;width:100%;contain:content}:host(.button-full:not(.button-round)) .button-native{border-radius:0;border-right-width:0;border-left-width:0}.button-native{border-radius:var(--border-radius);-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;margin-left:0;margin-right:0;margin-top:0;margin-bottom:0;padding-left:var(--padding-start);padding-right:var(--padding-end);padding-top:var(--padding-top);padding-bottom:var(--padding-bottom);font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit;display:block;position:relative;width:100%;height:100%;-webkit-transition:var(--transition);transition:var(--transition);border-width:var(--border-width);border-style:var(--border-style);border-color:var(--border-color);outline:none;background:var(--background);line-height:1;-webkit-box-shadow:var(--box-shadow);box-shadow:var(--box-shadow);contain:layout style;cursor:pointer;opacity:var(--opacity);overflow:var(--overflow);z-index:0;-webkit-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.button-native{padding-left:unset;padding-right:unset;-webkit-padding-start:var(--padding-start);padding-inline-start:var(--padding-start);-webkit-padding-end:var(--padding-end);padding-inline-end:var(--padding-end)}}.button-native::-moz-focus-inner{border:0}.button-inner{display:-ms-flexbox;display:flex;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%}::slotted(ion-icon){font-size:1.4em;pointer-events:none}::slotted(ion-icon[slot=start]){margin-left:-.3em;margin-right:.3em;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted(ion-icon[slot=start]){margin-left:unset;margin-right:unset;-webkit-margin-start:-.3em;margin-inline-start:-.3em;-webkit-margin-end:.3em;margin-inline-end:.3em}}::slotted(ion-icon[slot=end]){margin-left:.3em;margin-right:-.2em;margin-top:0;margin-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){::slotted(ion-icon[slot=end]){margin-left:unset;margin-right:unset;-webkit-margin-start:.3em;margin-inline-start:.3em;-webkit-margin-end:-.2em;margin-inline-end:-.2em}}::slotted(ion-icon[slot=icon-only]){font-size:1.8em}ion-ripple-effect{color:var(--ripple-color)}:host(.ion-focused) .button-native{background:var(--background-focused);color:var(--color-focused)}:host(.activated) .button-native{background:var(--background-activated);color:var(--color-activated)}\@media (any-hover:hover){:host(:hover) .button-native{background:var(--background-hover);color:var(--color-hover)}}:host{--border-radius:10px;--padding-top:0;--padding-bottom:0;--padding-start:1em;--padding-end:1em;--transition:background-color,opacity 100ms linear;margin-left:2px;margin-right:2px;margin-top:4px;margin-bottom:4px;height:2.8em;font-size:16px;font-weight:500;letter-spacing:-.03em}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){:host{margin-left:unset;margin-right:unset;-webkit-margin-start:2px;margin-inline-start:2px;-webkit-margin-end:2px;margin-inline-end:2px}}:host(.button-solid){--background-activated:var(--ion-color-primary-shade,#3171e0)}:host(.button-solid.activated){--opacity:1}:host(.button-solid.activated.ion-color) .button-native{background:var(--ion-color-shade)}:host(.button-outline){--border-radius:10px;--border-width:1px;--border-style:solid;--background-activated:var(--ion-color-primary,#3880ff);--background-focused:rgba(var(--ion-color-primary-rgb,56,128,255),0.1);--color-activated:var(--ion-color-primary-contrast,#fff)}:host(.button-outline.activated.ion-color) .button-native{background:var(--ion-color-base);color:var(--ion-color-contrast)}:host(.button-clear.activated){--opacity:0.4}:host(.button-clear){--background-activated:transparent;--background-focused:rgba(var(--ion-color-primary-rgb,56,128,255),0.1);--color-activated:var(--ion-color-primary,#3880ff);--color-focused:var(--ion-color-primary,#3880ff)}:host(.button-large){--border-radius:12px;--padding-top:0;--padding-start:1em;--padding-end:1em;--padding-bottom:0;height:2.8em;font-size:20px}:host(.button-small){--border-radius:6px;--padding-top:0;--padding-start:0.9em;--padding-end:0.9em;--padding-bottom:0;height:2.1em;font-size:13px}:host(.button-round){--border-radius:64px;--padding-top:0;--padding-start:26px;--padding-end:26px;--padding-bottom:0}:host(.button-strong){font-weight:600}\@media (any-hover:hover){:host(.button-solid:hover){--opacity:0.8}:host(.button-clear:hover),:host(.button-outline:hover){--opacity:0.6}:host(.ion-focused:hover){--background-hover:var(--background-focused);--color-hover:var(--color-focused)}:host(.activated:hover){--background-hover:var(--background-activated);--color-hover:var(--color-activated)}}"; }
 };
 
+<<<<<<< HEAD
 let CACHED_MAP;
 const getIconMap = () => {
     if (!CACHED_MAP) {
@@ -259,6 +260,153 @@ const getSvgContent = (url) => {
         requests.set(url, req);
     }
     return req;
+=======
+let CACHED_MAP;
+const getIconMap = () => {
+    if (!CACHED_MAP) {
+        const win = window;
+        win.Ionicons = win.Ionicons || {};
+        CACHED_MAP = win.Ionicons.map = win.Ionicons.map || new Map();
+    }
+    return CACHED_MAP;
+};
+const getUrl = (i) => {
+    let url = getSrc(i.src);
+    if (url) {
+        return url;
+    }
+    url = getName(i.name, i.icon, i.mode, i.ios, i.md);
+    if (url) {
+        return getNamedUrl(url);
+    }
+    if (i.icon) {
+        url = getSrc(i.icon);
+        if (url) {
+            return url;
+        }
+        url = getSrc(i.icon[i.mode]);
+        if (url) {
+            return url;
+        }
+    }
+    return null;
+};
+const getNamedUrl = (name) => {
+    const url = getIconMap().get(name);
+    if (url) {
+        return url;
+    }
+    return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["i"])(`svg/${name}.svg`);
+};
+const getName = (name, icon, mode, ios, md) => {
+    // default to "md" if somehow the mode wasn't set
+    mode = (mode && mode.toLowerCase()) === 'ios' ? 'ios' : 'md';
+    // if an icon was passed in using the ios or md attributes
+    // set the iconName to whatever was passed in
+    if (ios && mode === 'ios') {
+        name = ios.toLowerCase();
+    }
+    else if (md && mode === 'md') {
+        name = md.toLowerCase();
+    }
+    else {
+        if (!name && icon && !isSrc(icon)) {
+            name = icon;
+        }
+        if (isStr(name)) {
+            name = name.toLowerCase();
+            if (!/^md-|^ios-|^logo-/.test(name)) {
+                // this does not have one of the defaults
+                // so lets auto add in the mode prefix for them
+                name = mode + '-' + name;
+            }
+        }
+    }
+    if (!isStr(name) || name.trim() === '') {
+        return null;
+    }
+    // only allow alpha characters and dash
+    const invalidChars = name.replace(/[a-z]|-|\d/gi, '');
+    if (invalidChars !== '') {
+        return null;
+    }
+    return name;
+};
+const getSrc = (src) => {
+    if (isStr(src)) {
+        src = src.trim();
+        if (isSrc(src)) {
+            return src;
+        }
+    }
+    return null;
+};
+const isSrc = (str) => {
+    return str.length > 0 && /(\/|\.)/.test(str);
+};
+const isStr = (val) => typeof val === 'string';
+
+const validateContent = (svgContent) => {
+    if (svgContent) {
+        const div = document.createElement('div');
+        div.innerHTML = svgContent;
+        // setup this way to ensure it works on our buddy IE
+        for (let i = div.childNodes.length - 1; i >= 0; i--) {
+            if (div.childNodes[i].nodeName.toLowerCase() !== 'svg') {
+                div.removeChild(div.childNodes[i]);
+            }
+        }
+        // must only have 1 root element
+        const svgElm = div.firstElementChild;
+        if (svgElm && svgElm.nodeName.toLowerCase() === 'svg') {
+            svgElm.setAttribute('class', 's-ion-icon');
+            // root element must be an svg
+            // lets double check we've got valid elements
+            // do not allow scripts
+            if (isValid(svgElm)) {
+                return div.innerHTML;
+            }
+        }
+    }
+    return '';
+};
+const isValid = (elm) => {
+    if (elm.nodeType === 1) {
+        if (elm.nodeName.toLowerCase() === 'script') {
+            return false;
+        }
+        for (let i = 0; i < elm.attributes.length; i++) {
+            const val = elm.attributes[i].value;
+            if (isStr(val) && val.toLowerCase().indexOf('on') === 0) {
+                return false;
+            }
+        }
+        for (let i = 0; i < elm.childNodes.length; i++) {
+            if (!isValid(elm.childNodes[i])) {
+                return false;
+            }
+        }
+    }
+    return true;
+};
+
+const requests = new Map();
+const getSvgContent = (url) => {
+    // see if we already have a request for this url
+    let req = requests.get(url);
+    if (!req) {
+        // we don't already have a request
+        req = fetch(url).then(rsp => {
+            if (rsp.status <= 299) {
+                return rsp.text();
+            }
+            return Promise.resolve(null);
+        }).then(svgContent => validateContent(svgContent));
+        // cache for the same requests
+        requests.set(url, req);
+    }
+    return req;
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
 };
 
 const Icon = class {

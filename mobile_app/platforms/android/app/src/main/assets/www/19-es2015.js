@@ -23,6 +23,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+<<<<<<< HEAD
 /**
  * iOS Action Sheet Enter Animation
  */
@@ -101,6 +102,86 @@ const mdLeaveAnimation = (baseEl) => {
         .easing('cubic-bezier(.36,.66,.04,1)')
         .duration(450)
         .addAnimation([backdropAnimation, wrapperAnimation]);
+=======
+/**
+ * iOS Action Sheet Enter Animation
+ */
+const iosEnterAnimation = (baseEl) => {
+    const baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    const backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    const wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    backdropAnimation
+        .addElement(baseEl.querySelector('ion-backdrop'))
+        .fromTo('opacity', 0.01, 0.4);
+    wrapperAnimation
+        .addElement(baseEl.querySelector('.action-sheet-wrapper'))
+        .fromTo('transform', 'translateY(100%)', 'translateY(0%)');
+    return baseAnimation
+        .addElement(baseEl)
+        .easing('cubic-bezier(.36,.66,.04,1)')
+        .duration(400)
+        .addAnimation([backdropAnimation, wrapperAnimation]);
+};
+
+/**
+ * iOS Action Sheet Leave Animation
+ */
+const iosLeaveAnimation = (baseEl) => {
+    const baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    const backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    const wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    backdropAnimation
+        .addElement(baseEl.querySelector('ion-backdrop'))
+        .fromTo('opacity', 0.4, 0);
+    wrapperAnimation
+        .addElement(baseEl.querySelector('.action-sheet-wrapper'))
+        .fromTo('transform', 'translateY(0%)', 'translateY(100%)');
+    return baseAnimation
+        .addElement(baseEl)
+        .easing('cubic-bezier(.36,.66,.04,1)')
+        .duration(450)
+        .addAnimation([backdropAnimation, wrapperAnimation]);
+};
+
+/**
+ * MD Action Sheet Enter Animation
+ */
+const mdEnterAnimation = (baseEl) => {
+    const baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    const backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    const wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    backdropAnimation
+        .addElement(baseEl.querySelector('ion-backdrop'))
+        .fromTo('opacity', 0.01, 0.32);
+    wrapperAnimation
+        .addElement(baseEl.querySelector('.action-sheet-wrapper'))
+        .fromTo('transform', 'translateY(100%)', 'translateY(0%)');
+    return baseAnimation
+        .addElement(baseEl)
+        .easing('cubic-bezier(.36,.66,.04,1)')
+        .duration(400)
+        .addAnimation([backdropAnimation, wrapperAnimation]);
+};
+
+/**
+ * MD Action Sheet Leave Animation
+ */
+const mdLeaveAnimation = (baseEl) => {
+    const baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    const backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    const wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
+    backdropAnimation
+        .addElement(baseEl.querySelector('ion-backdrop'))
+        .fromTo('opacity', 0.32, 0);
+    wrapperAnimation
+        .addElement(baseEl.querySelector('.action-sheet-wrapper'))
+        .fromTo('transform', 'translateY(0%)', 'translateY(100%)');
+    return baseAnimation
+        .addElement(baseEl)
+        .easing('cubic-bezier(.36,.66,.04,1)')
+        .duration(450)
+        .addAnimation([backdropAnimation, wrapperAnimation]);
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
 };
 
 const ActionSheet = class {

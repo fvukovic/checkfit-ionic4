@@ -1,8 +1,20 @@
 .myClass {
+  background-color: red !important;
+  width: 400px !important;
   .alert-wrapper {
-    max-width: 400px;
+    background-color: red !important;
+    width: 400px !important;
   }
 }
+@media (prefers-color-scheme: light){
+  body{
+    --ion-background-color: rgb(240, 248, 240);
+  }
+  ion-alert{
+    --ion-background-color: #ffffff;
+   }
+}
+
 ion-menu ion-content {
   --background: var(--ion-item-background, var(--ion-background-color, #fff));
   text-align: center;

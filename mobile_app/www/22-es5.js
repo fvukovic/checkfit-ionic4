@@ -68,8 +68,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _index_3476b023_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! ./index-3476b023.js */
     "./node_modules/@ionic/core/dist/esm/index-3476b023.js");
+<<<<<<< HEAD
     /**
      * iOS Alert Enter Animation
+=======
+    /**
+     * iOS Alert Enter Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -89,8 +94,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }]);
       return baseAnimation.addElement(baseEl).easing('ease-in-out').duration(200).addAnimation([backdropAnimation, wrapperAnimation]);
     };
+<<<<<<< HEAD
     /**
      * iOS Alert Leave Animation
+=======
+    /**
+     * iOS Alert Leave Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -110,8 +120,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }]);
       return baseAnimation.addElement(baseEl).easing('ease-in-out').duration(200).addAnimation([backdropAnimation, wrapperAnimation]);
     };
+<<<<<<< HEAD
     /**
      * Md Alert Enter Animation
+=======
+    /**
+     * Md Alert Enter Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -131,8 +146,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }]);
       return baseAnimation.addElement(baseEl).easing('ease-in-out').duration(150).addAnimation([backdropAnimation, wrapperAnimation]);
     };
+<<<<<<< HEAD
     /**
      * Md Alert Leave Animation
+=======
+    /**
+     * Md Alert Leave Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 

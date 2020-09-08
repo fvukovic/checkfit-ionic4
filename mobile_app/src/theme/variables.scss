@@ -4,7 +4,12 @@
 /** Ionic CSS Variables **/  
 $text-color: #4c6df9;
 $background-color: #fff;
-
+alertCancel{
+  --background: red;
+    button.alertButton{
+      color: white;
+    }
+ }
 // Named Color Variables
 // --------------------------------------------------
 // Named colors makes it easy to reuse colors on various components.

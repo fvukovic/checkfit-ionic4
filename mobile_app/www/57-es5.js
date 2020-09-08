@@ -84,8 +84,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ./index-6826f2f6.js */
     "./node_modules/@ionic/core/dist/esm/index-6826f2f6.js");
+<<<<<<< HEAD
     /**
      * iOS Modal Enter Animation
+=======
+    /**
+     * iOS Modal Enter Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -99,8 +104,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }).fromTo('transform', 'translateY(100%)', 'translateY(0%)');
       return baseAnimation.addElement(baseEl).easing('cubic-bezier(0.36,0.66,0.04,1)').duration(400).beforeAddClass('show-modal').addAnimation([backdropAnimation, wrapperAnimation]);
     };
+<<<<<<< HEAD
     /**
      * Animations for modals
+=======
+    /**
+     * Animations for modals
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
     // export function modalSlideIn(rootEl: HTMLElement) {
     // }
@@ -152,8 +162,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     //   }
     // }
 
+<<<<<<< HEAD
     /**
      * iOS Modal Leave Animation
+=======
+    /**
+     * iOS Modal Leave Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -169,8 +184,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }).fromTo('transform', 'translateY(0%)', "translateY(".concat(baseEl.ownerDocument.defaultView.innerHeight - wrapperElRect.top, "px)"));
       return baseAnimation.addElement(baseEl).easing('ease-out').duration(250).addAnimation([backdropAnimation, wrapperAnimation]);
     };
+<<<<<<< HEAD
     /**
      * Md Modal Enter Animation
+=======
+    /**
+     * Md Modal Enter Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -190,8 +210,13 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }]);
       return baseAnimation.addElement(baseEl).easing('cubic-bezier(0.36,0.66,0.04,1)').duration(280).beforeAddClass('show-modal').addAnimation([backdropAnimation, wrapperAnimation]);
     };
+<<<<<<< HEAD
     /**
      * Md Modal Leave Animation
+=======
+    /**
+     * Md Modal Leave Animation
+>>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 

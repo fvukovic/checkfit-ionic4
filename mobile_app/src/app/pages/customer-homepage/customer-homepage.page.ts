@@ -360,6 +360,11 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     });
   }
 
+    radioGroupChange(event) {
+    console.log("radioGroupChange",event.detail);
+    this.numberOfPersons = event.detail.value;
+    }
+
   async callSOS() {
     let currentLocation = await this.locationService.getUserPosition();
     console.log("DSAD");

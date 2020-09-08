@@ -12,23 +12,65 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[18], {
   /***/
-  "./node_modules/@ionic/core/dist/esm/ion-action-sheet-ios.entry.js":
-  /*!*************************************************************************!*\
-    !*** ./node_modules/@ionic/core/dist/esm/ion-action-sheet-ios.entry.js ***!
-    \*************************************************************************/
+  "./node_modules/@ionic/core/dist/esm/ion-action-sheet-controller_8.entry.js":
+  /*!**********************************************************************************!*\
+    !*** ./node_modules/@ionic/core/dist/esm/ion-action-sheet-controller_8.entry.js ***!
+    \**********************************************************************************/
 
-  /*! exports provided: ion_action_sheet */
+  /*! exports provided: ion_action_sheet_controller, ion_alert_controller, ion_anchor, ion_loading_controller, ion_modal_controller, ion_picker_controller, ion_popover_controller, ion_toast_controller */
 
   /***/
-  function node_modulesIonicCoreDistEsmIonActionSheetIosEntryJs(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesIonicCoreDistEsmIonActionSheetController_8EntryJs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony export (binding) */
 
 
-    __webpack_require__.d(__webpack_exports__, "ion_action_sheet", function () {
-      return ActionSheet;
+    __webpack_require__.d(__webpack_exports__, "ion_action_sheet_controller", function () {
+      return ActionSheetController;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_alert_controller", function () {
+      return AlertController;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_anchor", function () {
+      return Anchor;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_loading_controller", function () {
+      return LoadingController;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_modal_controller", function () {
+      return ModalController;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_picker_controller", function () {
+      return PickerController;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_popover_controller", function () {
+      return PopoverController;
+    });
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ion_toast_controller", function () {
+      return ToastController;
     });
     /* harmony import */
 
@@ -45,263 +87,132 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
-    /*! ./helpers-46f4a262.js */
-    "./node_modules/@ionic/core/dist/esm/helpers-46f4a262.js");
-    /* harmony import */
-
-
-    var _animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! ./animation-af478fe9.js */
-    "./node_modules/@ionic/core/dist/esm/animation-af478fe9.js");
-    /* harmony import */
-
-
-    var _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! ./overlays-10640d86.js */
     "./node_modules/@ionic/core/dist/esm/overlays-10640d86.js");
     /* harmony import */
 
 
-    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
-    /**
-     * iOS Action Sheet Enter Animation
-     */
 
-
-    var iosEnterAnimation = function iosEnterAnimation(baseEl) {
-      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      backdropAnimation.addElement(baseEl.querySelector('ion-backdrop')).fromTo('opacity', 0.01, 0.4);
-      wrapperAnimation.addElement(baseEl.querySelector('.action-sheet-wrapper')).fromTo('transform', 'translateY(100%)', 'translateY(0%)');
-      return baseAnimation.addElement(baseEl).easing('cubic-bezier(.36,.66,.04,1)').duration(400).addAnimation([backdropAnimation, wrapperAnimation]);
-    };
-    /**
-     * iOS Action Sheet Leave Animation
-     */
-
-
-    var iosLeaveAnimation = function iosLeaveAnimation(baseEl) {
-      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      backdropAnimation.addElement(baseEl.querySelector('ion-backdrop')).fromTo('opacity', 0.4, 0);
-      wrapperAnimation.addElement(baseEl.querySelector('.action-sheet-wrapper')).fromTo('transform', 'translateY(0%)', 'translateY(100%)');
-      return baseAnimation.addElement(baseEl).easing('cubic-bezier(.36,.66,.04,1)').duration(450).addAnimation([backdropAnimation, wrapperAnimation]);
-    };
-    /**
-     * MD Action Sheet Enter Animation
-     */
-
-
-    var mdEnterAnimation = function mdEnterAnimation(baseEl) {
-      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      backdropAnimation.addElement(baseEl.querySelector('ion-backdrop')).fromTo('opacity', 0.01, 0.32);
-      wrapperAnimation.addElement(baseEl.querySelector('.action-sheet-wrapper')).fromTo('transform', 'translateY(100%)', 'translateY(0%)');
-      return baseAnimation.addElement(baseEl).easing('cubic-bezier(.36,.66,.04,1)').duration(400).addAnimation([backdropAnimation, wrapperAnimation]);
-    };
-    /**
-     * MD Action Sheet Leave Animation
-     */
-
-
-    var mdLeaveAnimation = function mdLeaveAnimation(baseEl) {
-      var baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var backdropAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      var wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-      backdropAnimation.addElement(baseEl.querySelector('ion-backdrop')).fromTo('opacity', 0.32, 0);
-      wrapperAnimation.addElement(baseEl.querySelector('.action-sheet-wrapper')).fromTo('transform', 'translateY(0%)', 'translateY(100%)');
-      return baseAnimation.addElement(baseEl).easing('cubic-bezier(.36,.66,.04,1)').duration(450).addAnimation([backdropAnimation, wrapperAnimation]);
-    };
-
-    var ActionSheet = /*#__PURE__*/function () {
-      function ActionSheet(hostRef) {
-        var _this = this;
-
-        _classCallCheck(this, ActionSheet);
+    var ActionSheetController = /*#__PURE__*/function () {
+      function ActionSheetController(hostRef) {
+        _classCallCheck(this, ActionSheetController);
 
         Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
-        this.presented = false;
-        this.mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-        /**
-         * If `true`, the keyboard will be automatically dismissed when the overlay is presented.
-         */
-
-        this.keyboardClose = true;
-        /**
-         * An array of buttons for the action sheet.
-         */
-
-        this.buttons = [];
-        /**
-         * If `true`, the action sheet will be dismissed when the backdrop is clicked.
-         */
-
-        this.backdropDismiss = true;
-        /**
-         * If `true`, the action sheet will be translucent.
-         * Only applies when the mode is `"ios"` and the device supports
-         * [`backdrop-filter`](https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter#Browser_compatibility).
-         */
-
-        this.translucent = false;
-        /**
-         * If `true`, the action sheet will animate.
-         */
-
-        this.animated = true;
-
-        this.onBackdropTap = function () {
-          _this.dismiss(undefined, _overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["B"]);
-        };
-
-        this.dispatchCancelHandler = function (ev) {
-          var role = ev.detail.role;
-
-          if (Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["i"])(role)) {
-            var cancelButton = _this.getButtons().find(function (b) {
-              return b.role === 'cancel';
-            });
-
-            _this.callButtonHandler(cancelButton);
-          }
-        };
-
-        Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["d"])(this.el);
-        this.didPresent = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionActionSheetDidPresent", 7);
-        this.willPresent = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionActionSheetWillPresent", 7);
-        this.willDismiss = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionActionSheetWillDismiss", 7);
-        this.didDismiss = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["c"])(this, "ionActionSheetDidDismiss", 7);
       }
       /**
-       * Present the action sheet overlay after it has been created.
+       * Create an action sheet overlay with action sheet options.
+       *
+       * @param options The options to use to create the action sheet.
        */
 
 
-      _createClass(ActionSheet, [{
-        key: "present",
-        value: function present() {
-          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["e"])(this, 'actionSheetEnter', iosEnterAnimation, mdEnterAnimation);
+      _createClass(ActionSheetController, [{
+        key: "create",
+        value: function create(options) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-action-sheet', options);
         }
         /**
-         * Dismiss the action sheet overlay after it has been presented.
+         * Dismiss the open action sheet overlay.
          *
          * @param data Any data to emit in the dismiss events.
          * @param role The role of the element that is dismissing the action sheet.
          * This can be useful in a button handler for determining which button was
          * clicked to dismiss the action sheet.
          * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
+         * @param id The id of the action sheet to dismiss. If an id is not provided, it will dismiss the most recently opened action sheet.
          */
 
       }, {
         key: "dismiss",
-        value: function dismiss(data, role) {
-          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["f"])(this, data, role, 'actionSheetLeave', iosLeaveAnimation, mdLeaveAnimation);
+        value: function dismiss(data, role, id) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-action-sheet', id);
         }
         /**
-         * Returns a promise that resolves when the action sheet did dismiss.
+         * Get the most recently opened action sheet overlay.
          */
 
       }, {
-        key: "onDidDismiss",
-        value: function onDidDismiss() {
-          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["g"])(this.el, 'ionActionSheetDidDismiss');
-        }
-        /**
-         * Returns a promise that resolves when the action sheet will dismiss.
-         *
-         */
-
-      }, {
-        key: "onWillDismiss",
-        value: function onWillDismiss() {
-          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["g"])(this.el, 'ionActionSheetWillDismiss');
-        }
-      }, {
-        key: "buttonClick",
+        key: "getTop",
         value: function () {
-          var _buttonClick = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(button) {
-            var role, shouldDismiss;
+          var _getTop = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
                 switch (_context.prev = _context.next) {
                   case 0:
-                    role = button.role;
+                    return _context.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-action-sheet'));
 
-                    if (!Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["i"])(role)) {
-                      _context.next = 3;
-                      break;
-                    }
-
-                    return _context.abrupt("return", this.dismiss(undefined, role));
-
-                  case 3:
-                    _context.next = 5;
-                    return this.callButtonHandler(button);
-
-                  case 5:
-                    shouldDismiss = _context.sent;
-
-                    if (!shouldDismiss) {
-                      _context.next = 8;
-                      break;
-                    }
-
-                    return _context.abrupt("return", this.dismiss(undefined, button.role));
-
-                  case 8:
-                    return _context.abrupt("return", Promise.resolve());
-
-                  case 9:
+                  case 1:
                   case "end":
                     return _context.stop();
                 }
               }
-            }, _callee, this);
+            }, _callee);
           }));
 
-          function buttonClick(_x) {
-            return _buttonClick.apply(this, arguments);
+          function getTop() {
+            return _getTop.apply(this, arguments);
           }
 
-          return buttonClick;
+          return getTop;
         }()
+      }]);
+
+      return ActionSheetController;
+    }();
+
+    var AlertController = /*#__PURE__*/function () {
+      function AlertController(hostRef) {
+        _classCallCheck(this, AlertController);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+      }
+      /**
+       * Create an alert overlay with alert options.
+       *
+       * @param options The options to use to create the alert.
+       */
+
+
+      _createClass(AlertController, [{
+        key: "create",
+        value: function create(options) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-alert', options);
+        }
+        /**
+         * Dismiss the open alert overlay.
+         *
+         * @param data Any data to emit in the dismiss events.
+         * @param role The role of the element that is dismissing the alert.
+         * This can be useful in a button handler for determining which button was
+         * clicked to dismiss the alert.
+         * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
+         * @param id The id of the alert to dismiss. If an id is not provided, it will dismiss the most recently opened alert.
+         */
+
       }, {
-        key: "callButtonHandler",
+        key: "dismiss",
+        value: function dismiss(data, role, id) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-alert', id);
+        }
+        /**
+         * Get the most recently opened alert overlay.
+         */
+
+      }, {
+        key: "getTop",
         value: function () {
-          var _callButtonHandler = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(button) {
-            var rtn;
+          var _getTop2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
                 switch (_context2.prev = _context2.next) {
                   case 0:
-                    if (!button) {
-                      _context2.next = 6;
-                      break;
-                    }
+                    return _context2.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-alert'));
 
-                    _context2.next = 3;
-                    return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_4__["s"])(button.handler);
-
-                  case 3:
-                    rtn = _context2.sent;
-
-                    if (!(rtn === false)) {
-                      _context2.next = 6;
-                      break;
-                    }
-
-                    return _context2.abrupt("return", false);
-
-                  case 6:
-                    return _context2.abrupt("return", true);
-
-                  case 7:
+                  case 1:
                   case "end":
                     return _context2.stop();
                 }
@@ -309,110 +220,397 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
             }, _callee2);
           }));
 
-          function callButtonHandler(_x2) {
-            return _callButtonHandler.apply(this, arguments);
+          function getTop() {
+            return _getTop2.apply(this, arguments);
           }
 
-          return callButtonHandler;
+          return getTop;
         }()
-      }, {
-        key: "getButtons",
-        value: function getButtons() {
-          return this.buttons.map(function (b) {
-            return typeof b === 'string' ? {
-              text: b
-            } : b;
-          });
+      }]);
+
+      return AlertController;
+    }();
+
+    var Anchor = /*#__PURE__*/function () {
+      function Anchor(hostRef) {
+        var _this = this;
+
+        _classCallCheck(this, Anchor);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+        /**
+         * When using a router, it specifies the transition direction when navigating to
+         * another page using `href`.
+         */
+
+        this.routerDirection = 'forward';
+
+        this.onClick = function (ev) {
+          Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["o"])(_this.href, ev, _this.routerDirection);
+        };
+      }
+
+      _createClass(Anchor, [{
+        key: "componentDidLoad",
+        value: function componentDidLoad() {
+          console.warn('[DEPRECATED][ion-anchor] The <ion-anchor> component has been deprecated. Please use an <ion-router-link> if you are using a vanilla JS or Stencil project or an <a> with the Angular router.');
         }
       }, {
         key: "render",
         value: function render() {
-          var _this2 = this;
+          var _Object$assign;
 
           var mode = Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["d"])(this);
-          var allButtons = this.getButtons();
-          var cancelButton = allButtons.find(function (b) {
-            return b.role === 'cancel';
-          });
-          var buttons = allButtons.filter(function (b) {
-            return b.role !== 'cancel';
-          });
+          var attrs = {
+            href: this.href,
+            rel: this.rel
+          };
           return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["H"], {
-            role: "dialog",
-            "aria-modal": "true",
-            style: {
-              zIndex: "".concat(20000 + this.overlayIndex)
-            },
-            class: Object.assign(Object.assign(_defineProperty({}, mode, true), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(this.cssClass)), {
-              'action-sheet-translucent': this.translucent
-            }),
-            onIonActionSheetWillDismiss: this.dispatchCancelHandler,
-            onIonBackdropTap: this.onBackdropTap
-          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-backdrop", {
-            tappable: this.backdropDismiss
-          }), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "action-sheet-wrapper",
-            role: "dialog"
-          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "action-sheet-container"
-          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "action-sheet-group"
-          }, this.header !== undefined && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "action-sheet-title"
-          }, this.header, this.subHeader && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "action-sheet-sub-title"
-          }, this.subHeader)), buttons.map(function (b) {
-            return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
-              type: "button",
-              "ion-activatable": true,
-              class: buttonClass(b),
-              onClick: function onClick() {
-                return _this2.buttonClick(b);
-              }
-            }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-              class: "action-sheet-button-inner"
-            }, b.icon && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
-              icon: b.icon,
-              lazy: false,
-              class: "action-sheet-icon"
-            }), b.text), mode === 'md' && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-ripple-effect", null));
-          })), cancelButton && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("div", {
-            class: "action-sheet-group action-sheet-group-cancel"
-          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("button", {
-            type: "button",
-            class: buttonClass(cancelButton),
-            onClick: function onClick() {
-              return _this2.buttonClick(cancelButton);
-            }
-          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("span", {
-            class: "action-sheet-button-inner"
-          }, cancelButton.icon && Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("ion-icon", {
-            icon: cancelButton.icon,
-            lazy: false,
-            class: "action-sheet-icon"
-          }), cancelButton.text))))));
-        }
-      }, {
-        key: "el",
-        get: function get() {
-          return Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["e"])(this);
+            onClick: this.onClick,
+            class: Object.assign(Object.assign({}, Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_3__["c"])(this.color)), (_Object$assign = {}, _defineProperty(_Object$assign, mode, true), _defineProperty(_Object$assign, 'ion-activatable', true), _Object$assign))
+          }, Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("a", Object.assign({}, attrs), Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["h"])("slot", null)));
         }
       }], [{
         key: "style",
         get: function get() {
-          return ".sc-ion-action-sheet-ios-h{--color:initial;--min-width:auto;--width:100%;--max-width:500px;--min-height:auto;--height:100%;--max-height:100%;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased;left:0;right:0;top:0;bottom:0;display:block;position:fixed;font-family:var(--ion-font-family,inherit);-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;z-index:1001}.overlay-hidden.sc-ion-action-sheet-ios-h{display:none}.action-sheet-wrapper.sc-ion-action-sheet-ios{left:0;right:0;bottom:0;margin-top:auto;margin-bottom:auto;-webkit-transform:translate3d(0,100%,0);transform:translate3d(0,100%,0);display:block;position:absolute;width:var(--width);min-width:var(--min-width);max-width:var(--max-width);height:var(--height);min-height:var(--min-height);max-height:var(--max-height);z-index:10;pointer-events:none}.action-sheet-button.sc-ion-action-sheet-ios{display:block;width:100%;border:0;outline:none;font-family:inherit}.action-sheet-button.activated.sc-ion-action-sheet-ios{background:var(--background-activated)}.action-sheet-button-inner.sc-ion-action-sheet-ios{display:-ms-flexbox;display:flex;-ms-flex-flow:row nowrap;flex-flow:row nowrap;-ms-flex-negative:0;flex-shrink:0;-ms-flex-align:center;align-items:center;-ms-flex-pack:center;justify-content:center;width:100%;height:100%}.action-sheet-container.sc-ion-action-sheet-ios{display:-ms-flexbox;display:flex;-ms-flex-flow:column;flex-flow:column;-ms-flex-pack:end;justify-content:flex-end;height:100%;max-height:100%}.action-sheet-group.sc-ion-action-sheet-ios{-ms-flex-negative:2;flex-shrink:2;overscroll-behavior-y:contain;overflow-y:auto;-webkit-overflow-scrolling:touch;pointer-events:all;background:var(--background)}.action-sheet-group.sc-ion-action-sheet-ios::-webkit-scrollbar{display:none}.action-sheet-group-cancel.sc-ion-action-sheet-ios{-ms-flex-negative:0;flex-shrink:0;overflow:hidden}.sc-ion-action-sheet-ios-h{--background:var(--ion-overlay-background-color,var(--ion-color-step-100,#f9f9f9));--background-selected:var(--ion-background-color,#fff);--background-activated:rgba(var(--ion-text-color-rgb,0,0,0),0.08);text-align:center}.action-sheet-wrapper.sc-ion-action-sheet-ios{margin-left:auto;margin-right:auto;margin-top:var(--ion-safe-area-top,0);margin-bottom:var(--ion-safe-area-bottom,0)}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.action-sheet-wrapper.sc-ion-action-sheet-ios{margin-left:unset;margin-right:unset;-webkit-margin-start:auto;margin-inline-start:auto;-webkit-margin-end:auto;margin-inline-end:auto}}.action-sheet-container.sc-ion-action-sheet-ios{padding-left:8px;padding-right:8px;padding-top:0;padding-bottom:0}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.action-sheet-container.sc-ion-action-sheet-ios{padding-left:unset;padding-right:unset;-webkit-padding-start:8px;padding-inline-start:8px;-webkit-padding-end:8px;padding-inline-end:8px}}.action-sheet-group.sc-ion-action-sheet-ios{border-radius:13px;margin-bottom:8px;overflow:hidden}.action-sheet-group.sc-ion-action-sheet-ios:first-child{margin-top:10px}.action-sheet-group.sc-ion-action-sheet-ios:last-child{margin-bottom:10px}\@supports ((-webkit-backdrop-filter:blur(0)) or (backdrop-filter:blur(0))){.action-sheet-translucent.sc-ion-action-sheet-ios-h .action-sheet-group.sc-ion-action-sheet-ios{background-color:transparent;-webkit-backdrop-filter:saturate(280%) blur(20px);backdrop-filter:saturate(280%) blur(20px)}.action-sheet-translucent.sc-ion-action-sheet-ios-h .action-sheet-button.sc-ion-action-sheet-ios, .action-sheet-translucent.sc-ion-action-sheet-ios-h .action-sheet-title.sc-ion-action-sheet-ios{background-color:transparent;background-image:-webkit-gradient(linear,left bottom,left top,from(rgba(var(--ion-background-color-rgb,255,255,255),.8)),to(rgba(var(--ion-background-color-rgb,255,255,255),.8))),-webkit-gradient(linear,left bottom,left top,from(rgba(var(--ion-background-color-rgb,255,255,255),.4)),color-stop(50%,rgba(var(--ion-background-color-rgb,255,255,255),.4)),color-stop(50%,rgba(var(--ion-background-color-rgb,255,255,255),.8)));background-image:linear-gradient(0deg,rgba(var(--ion-background-color-rgb,255,255,255),.8),rgba(var(--ion-background-color-rgb,255,255,255),.8) 100%),linear-gradient(0deg,rgba(var(--ion-background-color-rgb,255,255,255),.4),rgba(var(--ion-background-color-rgb,255,255,255),.4) 50%,rgba(var(--ion-background-color-rgb,255,255,255),.8) 0);background-repeat:no-repeat;background-position:top,bottom;background-size:100% calc(100% - 1px),100% 1px;-webkit-backdrop-filter:saturate(120%);backdrop-filter:saturate(120%)}.action-sheet-translucent.sc-ion-action-sheet-ios-h .action-sheet-button.activated.sc-ion-action-sheet-ios{background-color:rgba(var(--ion-background-color-rgb,255,255,255),.7);background-image:none}.action-sheet-translucent.sc-ion-action-sheet-ios-h .action-sheet-cancel.sc-ion-action-sheet-ios{background:var(--background-selected)}}.action-sheet-button.sc-ion-action-sheet-ios, .action-sheet-title.sc-ion-action-sheet-ios{background-color:transparent;background-image:-webkit-gradient(linear,left bottom,left top,from(rgba(var(--ion-text-color-rgb,0,0,0),.08)),color-stop(50%,rgba(var(--ion-text-color-rgb,0,0,0),.08)),color-stop(50%,transparent));background-image:linear-gradient(0deg,rgba(var(--ion-text-color-rgb,0,0,0),.08),rgba(var(--ion-text-color-rgb,0,0,0),.08) 50%,transparent 0);background-repeat:no-repeat;background-position:bottom;background-size:100% 1px}.action-sheet-title.sc-ion-action-sheet-ios{padding-left:10px;padding-right:10px;padding-top:14px;padding-bottom:13px;color:var(--color,var(--ion-color-step-400,#999));font-size:13px;font-weight:400;text-align:center}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.action-sheet-title.sc-ion-action-sheet-ios{padding-left:unset;padding-right:unset;-webkit-padding-start:10px;padding-inline-start:10px;-webkit-padding-end:10px;padding-inline-end:10px}}.action-sheet-sub-title.sc-ion-action-sheet-ios{padding-left:0;padding-right:0;padding-top:15px;padding-bottom:0;font-size:12px}.action-sheet-button.sc-ion-action-sheet-ios{padding-left:18px;padding-right:18px;padding-top:18px;padding-bottom:18px;height:56px;color:var(--color,var(--ion-color-primary,#3880ff));font-size:20px;contain:strict}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.action-sheet-button.sc-ion-action-sheet-ios{padding-left:unset;padding-right:unset;-webkit-padding-start:18px;padding-inline-start:18px;-webkit-padding-end:18px;padding-inline-end:18px}}.action-sheet-button.sc-ion-action-sheet-ios .action-sheet-icon.sc-ion-action-sheet-ios{margin-right:.1em;font-size:28px}\@supports ((-webkit-margin-start:0) or (margin-inline-start:0)) or (-webkit-margin-start:0){.action-sheet-button.sc-ion-action-sheet-ios .action-sheet-icon.sc-ion-action-sheet-ios{margin-right:unset;-webkit-margin-end:.1em;margin-inline-end:.1em}}.action-sheet-button.sc-ion-action-sheet-ios:last-child{background-image:none}.action-sheet-selected.sc-ion-action-sheet-ios{background:var(--background-selected);font-weight:700}.action-sheet-destructive.sc-ion-action-sheet-ios{color:var(--ion-color-danger,#f04141)}.action-sheet-cancel.sc-ion-action-sheet-ios{background:var(--background-selected);font-weight:600}";
+          return ":host{--background:transparent;--color:var(--ion-color-primary,#3880ff);background:var(--background);color:var(--color)}:host(.ion-color){color:var(--ion-color-base)}a{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;letter-spacing:inherit;text-decoration:inherit;text-overflow:inherit;text-transform:inherit;text-align:inherit;white-space:inherit;color:inherit}";
         }
       }]);
 
-      return ActionSheet;
+      return Anchor;
     }();
 
-    var buttonClass = function buttonClass(button) {
-      return Object.assign(_defineProperty({
-        'action-sheet-button': true,
-        'ion-activatable': true
-      }, "action-sheet-".concat(button.role), button.role !== undefined), Object(_theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__["g"])(button.cssClass));
-    };
+    var LoadingController = /*#__PURE__*/function () {
+      function LoadingController(hostRef) {
+        _classCallCheck(this, LoadingController);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+      }
+      /**
+       * Create a loading overlay with loading options.
+       *
+       * @param options The options to use to create the loading.
+       */
+
+
+      _createClass(LoadingController, [{
+        key: "create",
+        value: function create(options) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-loading', options);
+        }
+        /**
+         * Dismiss the open loading overlay.
+         *
+         * @param data Any data to emit in the dismiss events.
+         * @param role The role of the element that is dismissing the loading.
+         * This can be useful in a button handler for determining which button was
+         * clicked to dismiss the loading.
+         * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
+         * @param id The id of the loading to dismiss. If an id is not provided, it will dismiss the most recently opened loading.
+         */
+
+      }, {
+        key: "dismiss",
+        value: function dismiss(data, role, id) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-loading', id);
+        }
+        /**
+         * Get the most recently opened loading overlay.
+         */
+
+      }, {
+        key: "getTop",
+        value: function () {
+          var _getTop3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    return _context3.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-loading'));
+
+                  case 1:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3);
+          }));
+
+          function getTop() {
+            return _getTop3.apply(this, arguments);
+          }
+
+          return getTop;
+        }()
+      }]);
+
+      return LoadingController;
+    }();
+
+    var ModalController = /*#__PURE__*/function () {
+      function ModalController(hostRef) {
+        _classCallCheck(this, ModalController);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+      }
+      /**
+       * Create a modal overlay with modal options.
+       *
+       * @param options The options to use to create the modal.
+       */
+
+
+      _createClass(ModalController, [{
+        key: "create",
+        value: function create(options) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-modal', options);
+        }
+        /**
+         * Dismiss the open modal overlay.
+         *
+         * @param data Any data to emit in the dismiss events.
+         * @param role The role of the element that is dismissing the modal.
+         * This can be useful in a button handler for determining which button was
+         * clicked to dismiss the modal.
+         * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
+         * @param id The id of the modal to dismiss. If an id is not provided, it will dismiss the most recently opened modal.
+         */
+
+      }, {
+        key: "dismiss",
+        value: function dismiss(data, role, id) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-modal', id);
+        }
+        /**
+         * Get the most recently opened modal overlay.
+         */
+
+      }, {
+        key: "getTop",
+        value: function () {
+          var _getTop4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    return _context4.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-modal'));
+
+                  case 1:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4);
+          }));
+
+          function getTop() {
+            return _getTop4.apply(this, arguments);
+          }
+
+          return getTop;
+        }()
+      }]);
+
+      return ModalController;
+    }();
+
+    var PickerController = /*#__PURE__*/function () {
+      function PickerController(hostRef) {
+        _classCallCheck(this, PickerController);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+      }
+      /**
+       * Create a picker overlay with picker options.
+       *
+       * @param options The options to use to create the picker.
+       */
+
+
+      _createClass(PickerController, [{
+        key: "create",
+        value: function create(options) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-picker', options);
+        }
+        /**
+         * Dismiss the open picker overlay.
+         *
+         * @param data Any data to emit in the dismiss events.
+         * @param role The role of the element that is dismissing the picker.
+         * This can be useful in a button handler for determining which button was
+         * clicked to dismiss the picker.
+         * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
+         * @param id The id of the picker to dismiss. If an id is not provided, it will dismiss the most recently opened picker.
+         */
+
+      }, {
+        key: "dismiss",
+        value: function dismiss(data, role, id) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-picker', id);
+        }
+        /**
+         * Get the most recently opened picker overlay.
+         */
+
+      }, {
+        key: "getTop",
+        value: function () {
+          var _getTop5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    return _context5.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-picker'));
+
+                  case 1:
+                  case "end":
+                    return _context5.stop();
+                }
+              }
+            }, _callee5);
+          }));
+
+          function getTop() {
+            return _getTop5.apply(this, arguments);
+          }
+
+          return getTop;
+        }()
+      }]);
+
+      return PickerController;
+    }();
+
+    var PopoverController = /*#__PURE__*/function () {
+      function PopoverController(hostRef) {
+        _classCallCheck(this, PopoverController);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+      }
+      /**
+       * Create a popover overlay with popover options.
+       *
+       * @param options The options to use to create the popover.
+       */
+
+
+      _createClass(PopoverController, [{
+        key: "create",
+        value: function create(options) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-popover', options);
+        }
+        /**
+         * Dismiss the open popover overlay.
+         *
+         * @param data Any data to emit in the dismiss events.
+         * @param role The role of the element that is dismissing the popover.
+         * This can be useful in a button handler for determining which button was
+         * clicked to dismiss the popover.
+         * Some examples include: ``"cancel"`, `"destructive"`, "selected"`, and `"backdrop"`.
+         * @param id The id of the popover to dismiss. If an id is not provided, it will dismiss the most recently opened popover.
+         */
+
+      }, {
+        key: "dismiss",
+        value: function dismiss(data, role, id) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-popover', id);
+        }
+        /**
+         * Get the most recently opened popover overlay.
+         */
+
+      }, {
+        key: "getTop",
+        value: function () {
+          var _getTop6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    return _context6.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-popover'));
+
+                  case 1:
+                  case "end":
+                    return _context6.stop();
+                }
+              }
+            }, _callee6);
+          }));
+
+          function getTop() {
+            return _getTop6.apply(this, arguments);
+          }
+
+          return getTop;
+        }()
+      }]);
+
+      return PopoverController;
+    }();
+
+    var ToastController = /*#__PURE__*/function () {
+      function ToastController(hostRef) {
+        _classCallCheck(this, ToastController);
+
+        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["r"])(this, hostRef);
+      }
+      /**
+       * Create a toast overlay with toast options.
+       *
+       * @param options The options to use to create the toast.
+       */
+
+
+      _createClass(ToastController, [{
+        key: "create",
+        value: function create(options) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["h"])('ion-toast', options);
+        }
+        /**
+         * Dismiss the open toast overlay.
+         *
+         * @param data Any data to emit in the dismiss events.
+         * @param role The role of the element that is dismissing the toast. For example, 'cancel' or 'backdrop'.
+         * @param id The id of the toast to dismiss. If an id is not provided, it will dismiss the most recently opened toast.
+         */
+
+      }, {
+        key: "dismiss",
+        value: function dismiss(data, role, id) {
+          return Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["j"])(document, data, role, 'ion-toast', id);
+        }
+        /**
+         * Get the most recently opened toast overlay.
+         */
+
+      }, {
+        key: "getTop",
+        value: function () {
+          var _getTop7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    return _context7.abrupt("return", Object(_overlays_10640d86_js__WEBPACK_IMPORTED_MODULE_2__["k"])(document, 'ion-toast'));
+
+                  case 1:
+                  case "end":
+                    return _context7.stop();
+                }
+              }
+            }, _callee7);
+          }));
+
+          function getTop() {
+            return _getTop7.apply(this, arguments);
+          }
+
+          return getTop;
+        }()
+      }]);
+
+      return ToastController;
+    }();
     /***/
 
   }

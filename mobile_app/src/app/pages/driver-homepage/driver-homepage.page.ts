@@ -303,7 +303,7 @@ export class DriverHomepagePage implements OnInit {
     location.reload();
   }
 
-  driverIsOnSpot() {
+  driverIsOnSpot() { 
     this.storage.get("username").then(username => {
       this.socketService.send("/server-receiver", {
         type: "customer",

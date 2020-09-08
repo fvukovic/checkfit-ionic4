@@ -75,7 +75,6 @@ export class InactiveRidesComponent implements OnInit {
 
   navigateToDrive(drive): void {
     this.storage.get("username").then(username => {
- 
       this.socketService.send("/server-receiver", {
         type: "customer",
         messageType: "ACCEPT_DRIVE",

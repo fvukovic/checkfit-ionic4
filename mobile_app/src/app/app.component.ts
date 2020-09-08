@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
   task: Variable;
   interval;
   modal: any;
+  inactiveDrives: string;
 
   constructor(
     private platform: Platform,
@@ -61,8 +62,18 @@ export class AppComponent implements OnInit {
         .then(this.onSuccess, this.onError);
       this.socketService.initializeWebSocketConnection();
       this.storage.get("username").then(username => {
-        if (username != null) {
+        if (username != null) {  
+        
           setInterval(() => {
+            this.socketService.send("/server-receiver", {
+              type: "driver",
+              driver: username,
+              messageType: "WEB_DRIVES2",
+              toLat: "46",
+              toLong: "16"
+            });
+
+
             this.locationService.getUserPosition().then(
               val => {
                 this.socketService.send("/server-receiver", {
@@ -76,6 +87,16 @@ export class AppComponent implements OnInit {
               err => console.error(err)
             );
           }, 4000);
+        }else{
+          this.presentAlert({
+            cssClass: "myClass",
+            header: "Obavijest", 
+            message:
+              '<div style="color:red" class="myClass"><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Molimo uključite <br/>'
+              + '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lokaciju <br/> '
+              +'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; i <br/>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; podatkovni<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; promet</p> </div>',
+            buttons: ["OK"]
+          }); 
         }
       });
 
@@ -144,8 +165,6 @@ export class AppComponent implements OnInit {
         break;
       }
       case "INFORM_DRIVE_DRIVER": {
-        // TODO removaj ovo
-
         this.locationService.getUserPosition().then(
           val => {
             this.socketService.send("/server-receiver", {
@@ -154,11 +173,12 @@ export class AppComponent implements OnInit {
               toLat: val["coords"].latitude,
               toLong: val["coords"].longitude,
               fromLat: message.fromLat,
-              fromLong: message.fromLong
+              fromLong: message.fromLong,
+              customer:message.customer
             });
           },
           err => console.error(err)
-        );
+        ); 
         break;
       }
       case "ACCEPT_DRIVE": {
@@ -212,6 +232,7 @@ export class AppComponent implements OnInit {
       case "FINISH_DRIVE_CUSTOMER": {
         //TODO remove popup
         this.router.navigate(["/customer-homepage"]);
+        this.nativeAudio.play("uniqueId1");
         this.presentAlert({
           cssClass: "myClass",
           header: "Obavijest", 
@@ -269,6 +290,10 @@ export class AppComponent implements OnInit {
       }
       case "WEB_DRIVES":{
         this.events.publish("webDrives", message);
+        break;
+      }
+      case "WEB_DRIVES2":{
+        this.inactiveDrives = message['drives'].length;
         break;
       }
       case "REMOVE_REQUEST": {

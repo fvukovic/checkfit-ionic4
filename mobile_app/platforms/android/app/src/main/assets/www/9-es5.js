@@ -203,13 +203,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             _this.locationService.getReverseGeocode(value["fromLat"], value["fromLong"]).then(function (from) {
               _this.locationService.getReverseGeocode(value["toLat"], value["toLong"]).then(function (to) {
                 _this.invoiceList.push({
+                  fromLat: value["fromLat"],
+                  fromLong: value["fromLong"],
+                  toLat: value["toLat"],
+                  toLong: value["toLong"],
                   fromAddress: from[0].thoroughfare + "," + from[0].subThoroughfare + "," + from[0].locality,
                   toAddress: to[0].thoroughfare + "," + to[0].subThoroughfare + "," + to[0].locality,
                   persons: value["persons"],
-                  km: value["km"]
+                  km: value["km"],
+                  phoneNumber: value["phoneNumber"],
+                  customer: value['customer']
                 });
-
-                console.log(JSON.stringify(_this.invoiceList));
               });
             });
           });

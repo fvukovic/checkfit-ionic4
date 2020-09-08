@@ -51,7 +51,8 @@ export class ActiveRidesComponent implements OnInit {
                     to[0].locality,
                   persons: value["persons"],
                   km: value["km"],
-                  phoneNumber: value["phoneNumber"]
+                  phoneNumber: value["phoneNumber"],
+                  customer:value['customer']
                 }); 
               });
           });

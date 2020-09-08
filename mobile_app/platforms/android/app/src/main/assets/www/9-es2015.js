@@ -107,6 +107,10 @@ let ActiveRidesComponent = class ActiveRidesComponent {
                         .getReverseGeocode(value["toLat"], value["toLong"])
                         .then(to => {
                         this.invoiceList.push({
+                            fromLat: value["fromLat"],
+                            fromLong: value["fromLong"],
+                            toLat: value["toLat"],
+                            toLong: value["toLong"],
                             fromAddress: from[0].thoroughfare +
                                 "," +
                                 from[0].subThoroughfare +
@@ -118,9 +122,10 @@ let ActiveRidesComponent = class ActiveRidesComponent {
                                 "," +
                                 to[0].locality,
                             persons: value["persons"],
-                            km: value["km"]
+                            km: value["km"],
+                            phoneNumber: value["phoneNumber"],
+                            customer: value['customer']
                         });
-                        console.log(JSON.stringify(this.invoiceList));
                     });
                 });
             });

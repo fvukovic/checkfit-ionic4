@@ -55,7 +55,7 @@ export class AppComponent implements OnInit {
     //socketService.getUniqueId();
     this.router.navigateByUrl("customer-homepage");
     this.initializeApp();
-    translate.setDefaultLang("en");
+    translate.setDefaultLang("en"); 
     this.platform.ready().then(() => {
       this.nativeAudio
         .preloadSimple("uniqueId1", "assets/zvuk1.mpeg")

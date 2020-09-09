@@ -58,10 +58,10 @@ export class AppComponent implements OnInit {
     translate.setDefaultLang("en");
     this.platform.ready().then(() => {
       this.nativeAudio
-        .preloadSimple("uniqueId1", "assets/zvuk1.mpeg")
+        .preloadSimple("uniqueId2", "assets/zvuk2.mpeg")
         .then(this.onSuccess, this.onError);
         this.nativeAudio
-        .preloadSimple("uniqueId2", "assets/zvuk2.mpeg")
+        .preloadSimple("uniqueId1", "assets/zvuk1.mpeg")
         .then(this.onSuccess, this.onError);
       this.socketService.initializeWebSocketConnection();
       this.storage.get("username").then(username => {
@@ -196,6 +196,7 @@ export class AppComponent implements OnInit {
       }
       case "REQUEST_INCOMING": {
         // this.presentAlert();
+        this.nativeAudio.play("uniqueId2");
         var streetLocation = await this.locationService.getReverseGeocode(
           message.fromLat,
           message.fromLong
@@ -206,8 +207,7 @@ export class AppComponent implements OnInit {
           streetLocation[0].subThoroughfare +
           "," +
           streetLocation[0].locality;
-        this.nativeAudio.play("uniqueId1");
-
+          
         var streetLocation2 = await this.locationService.getReverseGeocode(
           message.toLat,
           message.toLong
@@ -217,8 +217,7 @@ export class AppComponent implements OnInit {
           "," +
           streetLocation2[0].subThoroughfare +
           "," +
-          streetLocation2[0].locality;
-        this.nativeAudio.play("uniqueId2");
+          streetLocation2[0].locality; 
 
         this.presentAlert({
           cssClass: "myClass",
@@ -234,7 +233,7 @@ export class AppComponent implements OnInit {
       case "FINISH_DRIVE_CUSTOMER": {
         //TODO remove popup
         this.router.navigate(["/customer-homepage"]);
-        this.nativeAudio.play("uniqueId1");
+        this.nativeAudio.play("uniqueId2");
         this.presentAlert({
           cssClass: "myClass",
           header: "Obavijest", 
@@ -255,7 +254,7 @@ export class AppComponent implements OnInit {
           streetLocation[0].subThoroughfare +
           "," +
           streetLocation[0].locality;
-        this.nativeAudio.play("uniqueId1");
+        this.nativeAudio.play("uniqueId2");
 
         this.presentAlert({
           cssClass: "myClass",
@@ -275,7 +274,7 @@ export class AppComponent implements OnInit {
         break;
       }
       case "DRIVER_NOTIFICATION": {
-        this.nativeAudio.play("uniqueId1");
+        this.nativeAudio.play("uniqueId2");
         this.presentAlert({
           cssClass: "myClass",
           header: "Obavijest", 
@@ -299,6 +298,7 @@ export class AppComponent implements OnInit {
         break;
       }
       case "REMOVE_REQUEST": {
+        this.nativeAudio.stop("uniqueId1");
         this.modalcontroller.dismiss();
         this.presentAlert({
           cssClass: "myClass",

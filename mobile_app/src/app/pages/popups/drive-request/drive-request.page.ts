@@ -5,6 +5,7 @@ import { SocketService } from "../../../services/socket.service";
 import { LocationService } from "../../../services/location.service";
 import { Router } from "@angular/router";
 import { Storage } from "@ionic/storage";
+import { NativeAudio } from "@ionic-native/native-audio/ngx";
 
 @Component({
   selector: "app-drive-request",
@@ -22,7 +23,8 @@ export class DriveRequestPage implements OnInit {
     private socketService: SocketService,
     private router: Router,
     private locationService: LocationService,
-    private storage: Storage
+    private storage: Storage,
+    private nativeAudio: NativeAudio,
   ) {
     this.message = this.navParams.get("message");
     this.populateAddresses();
@@ -54,12 +56,13 @@ export class DriveRequestPage implements OnInit {
 
   ngOnInit() {}
 
-  closeModal() {
+  closeModal() { 
+    this.nativeAudio.stop("uniqueId1");
     this.modalControler.dismiss();
   }
 
   acceptRequst() { 
-
+    this.nativeAudio.stop("uniqueId1"); 
     this.storage.get("username").then(username => {
      this.socketService.send("/server-receiver", {
       type: "customer",

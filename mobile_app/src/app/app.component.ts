@@ -224,7 +224,7 @@ export class AppComponent implements OnInit {
           header: "Obavijest", 
           message:
             'Dolazi nova Vožnja!',
-          buttons: ["OK"]
+          buttons: ["U redu"]
         });
  
 
@@ -239,7 +239,7 @@ export class AppComponent implements OnInit {
           header: "Obavijest", 
           message:
             '<div style="height: 100%"> Vaše vozilo vas čeka na polazištu! </div>',
-          buttons: ["OK"]
+          buttons: ["U redu"]
         });   
         break;
       }
@@ -264,7 +264,7 @@ export class AppComponent implements OnInit {
             message.driver +
             ' je u nevolji!!! \n Lokacija: ' +
             this.fromAddress + '</div>',
-          buttons: ["OK"]
+          buttons: ["U redu"]
         });
         break;
       }
@@ -281,7 +281,7 @@ export class AppComponent implements OnInit {
           message:
             '<div style="height: 100%">   ' +
             message.driver + '</div>',
-          buttons: ["OK"]
+          buttons: ["U redu"]
         }); 
         break;
       }
@@ -305,7 +305,7 @@ export class AppComponent implements OnInit {
           header: "Obavijest", 
           message:
             '<div style="height: 100%"> Vožnja je prihvaćena od strane drugog vozača!   </div>',
-          buttons: ["OK"]
+          buttons: ["U redu"]
         });
       }
     }

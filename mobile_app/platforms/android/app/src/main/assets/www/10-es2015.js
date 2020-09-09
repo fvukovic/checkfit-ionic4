@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <div class=\"header-box\">\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title *ngIf=\"!isUserLoggedIn\">Nova vožnja</ion-title>\n      <img *ngIf=\"!isUserLoggedIn\" src=\"../../../assets/img/taxiLogo.png\">\n      <ion-title *ngIf=\"isUserLoggedIn\">Lokacije vozača</ion-title>\n      <button class=\"sos\" *ngIf=\"isUserLoggedIn\" (click)=\"callSOS()\">SOS</button>\n      \n    </div>\n  </ion-toolbar>\n</ion-header>\n  <ion-content class=\"mapp\"> \n    <div #mapElement     [ngStyle]=\"{'height': isUserLoggedIn ? '90%' : '35%', 'margin': '20px'}\"></div> \n    <div class=\"location-wrapper\" *ngIf=\"!isUserLoggedIn\">\n      <h3 class=\"title\">Upišite tražene podatke:</h3>\n      <div class=\"location-details\">\n          <span class=\"text\">Polazište:</span>\n          <span class=\"value\">\n            <ion-card class=\"destination\" (click)=\"openStreetPicker('from')\"> {{fromAddress}} </ion-card>\n          </span>\n      </div>\n      <div class=\"location-details\">\n        <span class=\"text\">Odredište:</span>\n        <span class=\"value\">\n          <ion-card class=\"destination\" (click)=\"openStreetPicker('to')\"> {{toAddress}} </ion-card>\n        </span>\n      </div>\n      <div class=\"location-details\">\n          <span class=\"text\">Putnici:</span>\n          <!-- <span class=\"value\">\n            <input class=\"passengers\" type=\"text\" placeholder=\"Upišite broj putnika!\" [(ngModel)]=\"numberOfPersons\" />\n          </span> -->\n          <ion-radio-group (ionChange)=\"radioGroupChange($event)\"> \n            <ion-row>\n              <ion-col style=\"padding: 0; margin: 0;\">\n            <ion-item lines=\"none\">\n              <ion-label>1</ion-label>\n              <ion-radio value=\"1\"></ion-radio>\n            </ion-item>\n          </ion-col>\n          <ion-col style=\"padding: 0; margin: 0;\">\n            <ion-item lines=\"none\">\n             <ion-label>2</ion-label>\n              <ion-radio value=\"2\"></ion-radio>\n            </ion-item>\n          </ion-col>\n          <ion-col style=\"padding: 0; margin: 0;\">\n            <ion-item lines=\"none\">\n              <ion-label>3</ion-label>\n              <ion-radio value=\"3\"></ion-radio>\n            </ion-item>\n          </ion-col>\n          <ion-col style=\"padding: 0; margin: 0;\">\n            <ion-item lines=\"none\">\n             <ion-label>4</ion-label>\n              <ion-radio value=\"4\"></ion-radio>\n            </ion-item>\n          </ion-col>\n        </ion-row>\n        </ion-radio-group>\n      </div>\n      <div class=\"location-details\">\n        <button class=\"order-ride\" (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</button>\n      </div>\n    </div>\n  </ion-content> ");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header [translucent]=\"true\">\n  <ion-toolbar>\n    <div class=\"header-box\">\n      <ion-buttons slot=\"start\">\n        <ion-menu-button></ion-menu-button>\n      </ion-buttons>\n      <ion-title *ngIf=\"!isUserLoggedIn\">Nova vožnja</ion-title>\n      <img *ngIf=\"!isUserLoggedIn\" src=\"../../../assets/img/taxiLogo.png\">\n      <ion-title *ngIf=\"isUserLoggedIn\">Lokacije vozača</ion-title>\n      <button class=\"sos\" *ngIf=\"isUserLoggedIn\" (click)=\"callSOS()\">SOS</button>\n      \n    </div>\n  </ion-toolbar>\n</ion-header>\n  <ion-content class=\"mapp\"> \n    <div #mapElement     [ngStyle]=\"{'height': isUserLoggedIn ? '90%' : '35%', 'margin': '20px'}\">\n    </div> \n    \n    <div class=\"location-wrapper\" *ngIf=\"!isUserLoggedIn\">\n      <h3 class=\"title\">Upišite tražene podatke:</h3>\n      <div class=\"location-details\">\n          <span class=\"text\">Polazište:</span>\n          <ion-searchbar [(ngModel)]=\"fromAddress\" (ionChange)=\"searchChanged()\" ></ion-searchbar>\n          <ion-list class=\"ion-margin-horizontal\">\n            <ion-item (click)=\"selectOption(result.description)\" *ngFor=\"let result of searchResult\">\n                {{result.description}}\n            </ion-item>\n          </ion-list>\n          <!-- <span class=\"value\">\n            <ion-card class=\"destination\" (click)=\"openStreetPicker('from')\"> {{fromAddress}} </ion-card>\n          </span> -->\n      </div>\n      <div class=\"location-details\">\n        <span class=\"text\">Odredište:</span>\n        <ion-searchbar [(ngModel)]=\"toAddress\" (ionChange)=\"searchChanged2()\" ></ion-searchbar>\n        <ion-list class=\"ion-margin-horizontal\">\n          <ion-item (click)=\"selectOption2(result.description)\" *ngFor=\"let result of searchResult2\">\n              {{result.description}}\n          </ion-item>\n        </ion-list>\n        <!-- <span class=\"value\">\n          <ion-card class=\"destination\" (click)=\"openStreetPicker('to')\"> {{toAddress}} </ion-card>\n        </span> -->\n      </div>\n      <div class=\"location-details\">\n          <span class=\"text\">Putnici:</span>\n          <!-- <span class=\"value\">\n            <input class=\"passengers\" type=\"text\" placeholder=\"Upišite broj putnika!\" [(ngModel)]=\"numberOfPersons\" />\n          </span> -->\n          <ion-radio-group (ionChange)=\"radioGroupChange($event)\"> \n            <ion-row>\n              <ion-col style=\"padding: 0; margin: 0;\">\n            <ion-item lines=\"none\">\n              <ion-label>1</ion-label>\n              <ion-radio value=\"1\"></ion-radio>\n            </ion-item>\n          </ion-col>\n          <ion-col style=\"padding: 0; margin: 0;\">\n            <ion-item lines=\"none\">\n             <ion-label>2</ion-label>\n              <ion-radio value=\"2\"></ion-radio>\n            </ion-item>\n          </ion-col>\n          <ion-col style=\"padding: 0; margin: 0;\">\n            <ion-item lines=\"none\">\n              <ion-label>3</ion-label>\n              <ion-radio value=\"3\"></ion-radio>\n            </ion-item>\n          </ion-col>\n          <ion-col style=\"padding: 0; margin: 0;\">\n            <ion-item lines=\"none\">\n             <ion-label>4</ion-label>\n              <ion-radio value=\"4\"></ion-radio>\n            </ion-item>\n          </ion-col>\n        </ion-row>\n        </ion-radio-group>\n      </div>\n      <div class=\"location-details\">\n        <button class=\"order-ride\" (click)=\"orderTaxi()\">{{ \"customerHomepage.myRides\" | translate }}</button>\n      </div>\n    </div>\n  </ion-content> ");
 
 /***/ }),
 
@@ -104,7 +104,7 @@ CustomerHomepagePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = (".header-box {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  padding: 10px;\n}\n\nimg {\n  max-width: 50px;\n}\n\nion-title {\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  --color: #000;\n  text-transform: uppercase;\n}\n\nion-menu-button {\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  --color: #000;\n  --background: #f4f0ec;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n}\n\n.map {\n  height: 37% !important;\n  margin: 10px 10px 10px 10px;\n  border: 1px solid #c8c8c8;\n  box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.3);\n}\n\n.title {\n  margin: 20px 10px;\n  font-size: 14px;\n  text-transform: uppercase;\n  border-bottom: 1px solid #000;\n  padding-bottom: 10px;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  text-align: center;\n  font-weight: bold;\n}\n\n.sos {\n  background: #DC143C;\n  float: right;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  padding: 0;\n  margin: 0 20px 0 0;\n  color: white;\n  font-weight: bold;\n}\n\n.location-details {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin: 10px 10px 5px 10px;\n}\n\n.location-details .text {\n  font-weight: bold;\n  text-transform: uppercase;\n  font-size: 13px;\n  margin-bottom: 5px;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n}\n\n.location-details .value {\n  border: 1px solid #393939;\n  width: 100%;\n  background: white;\n  box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.3);\n}\n\n.location-details .destination {\n  margin: 0;\n  padding: 12px;\n  font-size: 12px;\n}\n\n.location-details .passengers {\n  margin: 0;\n  padding: 10px;\n  border: 0;\n  text-align: left;\n  font-size: 12px;\n  height: 38px;\n  box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.3);\n  width: 100%;\n  font-size: 12px;\n}\n\n.location-details .order-ride {\n  width: 100%;\n  background: #393939;\n  color: white;\n  text-align: center;\n  padding: 12px;\n  text-transform: uppercase;\n  margin-top: 10px;\n}\n\n.location-details ion-row {\n  box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.3);\n}\n\n.location-details ion-radio-group {\n  height: 30px;\n}\n\n.location-details ion-col {\n  background: transparent !important;\n  border-top: 1px solid #000;\n  border-bottom: 1px solid #000;\n  display: -webkit-box;\n  display: flex;\n  justify-content: space-around;\n}\n\n.location-details ion-col:first-child {\n  border-left: 1px solid #000;\n}\n\n.location-details ion-col:last-child {\n  border-right: 1px solid #000;\n}\n\n.location-details ion-col ion-item {\n  --min-height: 30px;\n  margin: 0 !important;\n  padding: 0 !important;\n}\n\n.location-details ion-col ion-label {\n  margin: 0 5px 0 0;\n  padding: 0;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n}\n\n.location-details ion-col ion-radio {\n  --color-checked:#393939;\n  --color:#393939;\n  width: 20px;\n  height: 20px;\n  opacity: 0.9;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9maWxpcC52dWtvdmljL0RldmVsb3BtZW50L2NoZWNrZml0LW1vYmlsZS9tb2JpbGVfYXBwL3NyYy9hcHAvcGFnZXMvY3VzdG9tZXItaG9tZXBhZ2UvY3VzdG9tZXItaG9tZXBhZ2UucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9jdXN0b21lci1ob21lcGFnZS9jdXN0b21lci1ob21lcGFnZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0EsYUFBQTtBQ0NKOztBRENBO0VBQ0ksZUFBQTtBQ0VKOztBREFBO0VBQ0ksNkNBQUE7RUFDQSxhQUFBO0VBQ0EseUJBQUE7QUNHSjs7QUREQTtFQUNJLDZDQUFBO0VBQ0EsYUFBQTtFQUNBLHFCQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtBQ0lKOztBREZBO0VBQ0ksc0JBQUE7RUFDQSwyQkFBQTtFQUNBLHlCQUFBO0VBQ0EsK0NBQUE7QUNLSjs7QURIQTtFQUNJLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLHlCQUFBO0VBQ0EsNkJBQUE7RUFDQSxvQkFBQTtFQUNBLDZDQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtBQ01KOztBREpBO0VBQ0ksbUJBQUE7RUFDQSxZQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxrQkFBQTtFQUNBLFlBQUE7RUFDQSxpQkFBQTtBQ09KOztBREhBO0VBQ0ksb0JBQUE7RUFBQSxhQUFBO0VBQ0EsNEJBQUE7RUFBQSw2QkFBQTtVQUFBLHNCQUFBO0VBQ0EsMEJBQUE7QUNNSjs7QURKSTtFQUNJLGlCQUFBO0VBQ0EseUJBQUE7RUFDQSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSw2Q0FBQTtBQ01SOztBREhJO0VBQ0kseUJBQUE7RUFDQSxXQUFBO0VBQ0EsaUJBQUE7RUFDQSwrQ0FBQTtBQ0tSOztBREZJO0VBQ0ksU0FBQTtFQUNBLGFBQUE7RUFDQSxlQUFBO0FDSVI7O0FERkk7RUFDSSxTQUFBO0VBQ0EsYUFBQTtFQUNBLFNBQUE7RUFDQSxnQkFBQTtFQUNBLGVBQUE7RUFDQSxZQUFBO0VBQ0EsK0NBQUE7RUFDQSxXQUFBO0VBQ0EsZUFBQTtBQ0lSOztBREZJO0VBQ0ksV0FBQTtFQUNBLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsYUFBQTtFQUNBLHlCQUFBO0VBQ0EsZ0JBQUE7QUNJUjs7QURGSTtFQUNJLCtDQUFBO0FDSVI7O0FERkk7RUFDSSxZQUFBO0FDSVI7O0FERkk7RUFDSSxrQ0FBQTtFQUNBLDBCQUFBO0VBQ0EsNkJBQUE7RUFDQSxvQkFBQTtFQUFBLGFBQUE7RUFDQSw2QkFBQTtBQ0lSOztBREFRO0VBQ0ksMkJBQUE7QUNFWjs7QURDUTtFQUNJLDRCQUFBO0FDQ1o7O0FERVE7RUFDSSxrQkFBQTtFQUNBLG9CQUFBO0VBQ0EscUJBQUE7QUNBWjs7QURFUTtFQUNJLGlCQUFBO0VBQ0EsVUFBQTtFQUNBLDZDQUFBO0FDQVo7O0FERVE7RUFDSSx1QkFBQTtFQUNBLGVBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLFlBQUE7QUNBWiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2N1c3RvbWVyLWhvbWVwYWdlL2N1c3RvbWVyLWhvbWVwYWdlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkZXItYm94IHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gICAgcGFkZGluZzogMTBweDtcbn1cbmltZyB7XG4gICAgbWF4LXdpZHRoOiA1MHB4O1xufVxuaW9uLXRpdGxlIHtcbiAgICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsMCwwLDAuNCk7XG4gICAgLS1jb2xvcjogIzAwMDtcbiAgICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xufVxuaW9uLW1lbnUtYnV0dG9uIHtcbiAgICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsMCwwLDAuNCk7XG4gICAgLS1jb2xvcjogIzAwMDtcbiAgICAtLWJhY2tncm91bmQ6ICNmNGYwZWM7XG4gICAgd2lkdGg6IDUwcHg7XG4gICAgaGVpZ2h0OiA1MHB4O1xuICAgIGJvcmRlci1yYWRpdXM6IDUwJTtcbn1cbi5tYXAge1xuICAgIGhlaWdodDogMzclICFpbXBvcnRhbnQ7XG4gICAgbWFyZ2luOiAxMHB4IDEwcHggMTBweCAxMHB4O1xuICAgIGJvcmRlcjogMXB4IHNvbGlkICNjOGM4Yzg7XG4gICAgYm94LXNoYWRvdzogNnB4IDZweCAxOHB4IDBweCByZ2JhKDAsMCwwLDAuMyk7XG59XG4udGl0bGUge1xuICAgIG1hcmdpbjogMjBweCAxMHB4O1xuICAgIGZvbnQtc2l6ZTogMTRweDtcbiAgICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMDAwO1xuICAgIHBhZGRpbmctYm90dG9tOiAxMHB4O1xuICAgIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwwLDAsMC40KTtcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG4uc29zIHtcbiAgICBiYWNrZ3JvdW5kOiAjREMxNDNDO1xuICAgIGZsb2F0OiByaWdodDtcbiAgICB3aWR0aDogNTBweDtcbiAgICBoZWlnaHQ6IDUwcHg7XG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xuICAgIHBhZGRpbmc6IDA7XG4gICAgbWFyZ2luOiAwIDIwcHggMCAwO1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuXG4ubG9jYXRpb24tZGV0YWlscyB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIG1hcmdpbjogMTBweCAxMHB4IDVweCAxMHB4O1xuXG4gICAgLnRleHQge1xuICAgICAgICBmb250LXdlaWdodDogYm9sZDtcbiAgICAgICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgICAgICAgZm9udC1zaXplOiAxM3B4O1xuICAgICAgICBtYXJnaW4tYm90dG9tOiA1cHg7XG4gICAgICAgIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwwLDAsMC40KTtcbiAgICB9XG5cbiAgICAudmFsdWUge1xuICAgICAgICBib3JkZXI6IDFweCBzb2xpZCAjMzkzOTM5O1xuICAgICAgICB3aWR0aDogMTAwJTsgICAgICAgIFxuICAgICAgICBiYWNrZ3JvdW5kOiB3aGl0ZTtcbiAgICAgICAgYm94LXNoYWRvdzogNnB4IDZweCAxOHB4IDBweCByZ2JhKDAsMCwwLDAuMyk7XG4gICAgfVxuXG4gICAgLmRlc3RpbmF0aW9uIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBwYWRkaW5nOiAxMnB4OyAgICAgICAgXG4gICAgICAgIGZvbnQtc2l6ZTogMTJweDtcbiAgICB9XG4gICAgLnBhc3NlbmdlcnMge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIHBhZGRpbmc6IDEwcHg7XG4gICAgICAgIGJvcmRlcjogMDtcbiAgICAgICAgdGV4dC1hbGlnbjogbGVmdDtcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xuICAgICAgICBoZWlnaHQ6IDM4cHg7XG4gICAgICAgIGJveC1zaGFkb3c6IDZweCA2cHggMThweCAwcHggcmdiYSgwLDAsMCwwLjMpO1xuICAgICAgICB3aWR0aDogMTAwJTtcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xuICAgIH1cbiAgICAub3JkZXItcmlkZSB7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBiYWNrZ3JvdW5kOiAjMzkzOTM5O1xuICAgICAgICBjb2xvcjogd2hpdGU7XG4gICAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICAgICAgcGFkZGluZzogMTJweDtcbiAgICAgICAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgICAgICAgbWFyZ2luLXRvcDogMTBweDtcbiAgICB9XG4gICAgaW9uLXJvdyB7XG4gICAgICAgIGJveC1zaGFkb3c6IDZweCA2cHggMThweCAwcHggcmdiYSgwLDAsMCwwLjMpO1xuICAgIH1cbiAgICBpb24tcmFkaW8tZ3JvdXAgeyAgICAgICAgXG4gICAgICAgIGhlaWdodDogMzBweDtcbiAgICB9XG4gICAgaW9uLWNvbCB7XG4gICAgICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50ICFpbXBvcnRhbnQ7ICAgICAgIFxuICAgICAgICBib3JkZXItdG9wOiAxcHggc29saWQgIzAwMDtcbiAgICAgICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICMwMDA7XG4gICAgICAgIGRpc3BsYXk6IGZsZXg7ICAgICAgICBcbiAgICAgICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1hcm91bmQ7ICAgIFxuICAgICAgICBcbiAgICAgICAgXG5cbiAgICAgICAgJjpmaXJzdC1jaGlsZCB7XG4gICAgICAgICAgICBib3JkZXItbGVmdDogMXB4IHNvbGlkICMwMDA7XG4gICAgICAgICAgICBcbiAgICAgICAgfVxuICAgICAgICAmOmxhc3QtY2hpbGQge1xuICAgICAgICAgICAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgIzAwMDtcbiAgICAgICAgICAgIFxuICAgICAgICB9XG4gICAgICAgIGlvbi1pdGVtIHtcbiAgICAgICAgICAgIC0tbWluLWhlaWdodDogMzBweDsgICAgICAgICAgICAgICAgICAgICAgICAgXG4gICAgICAgICAgICBtYXJnaW46IDAgIWltcG9ydGFudDtcbiAgICAgICAgICAgIHBhZGRpbmc6IDAgIWltcG9ydGFudDtcbiAgICAgICAgfVxuICAgICAgICBpb24tbGFiZWwge1xuICAgICAgICAgICAgbWFyZ2luOiAwIDVweCAwIDA7XG4gICAgICAgICAgICBwYWRkaW5nOiAwOyAgICAgXG4gICAgICAgICAgICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsMCwwLDAuNCk7ICAgICAgXG4gICAgICAgIH1cbiAgICAgICAgaW9uLXJhZGlvIHtcbiAgICAgICAgICAgIC0tY29sb3ItY2hlY2tlZDojMzkzOTM5O1xuICAgICAgICAgICAgLS1jb2xvcjojMzkzOTM5O1xuICAgICAgICAgICAgd2lkdGg6IDIwcHg7XG4gICAgICAgICAgICBoZWlnaHQ6IDIwcHg7XG4gICAgICAgICAgICBvcGFjaXR5OiAwLjk7XG4gICAgICAgIH1cbiAgICB9XG59IiwiLmhlYWRlci1ib3gge1xuICBkaXNwbGF5OiBmbGV4O1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBwYWRkaW5nOiAxMHB4O1xufVxuXG5pbWcge1xuICBtYXgtd2lkdGg6IDUwcHg7XG59XG5cbmlvbi10aXRsZSB7XG4gIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwgMCwgMCwgMC40KTtcbiAgLS1jb2xvcjogIzAwMDtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbn1cblxuaW9uLW1lbnUtYnV0dG9uIHtcbiAgdGV4dC1zaGFkb3c6IDBlbSAwZW0gMC4zZW0gcmdiYSgwLCAwLCAwLCAwLjQpO1xuICAtLWNvbG9yOiAjMDAwO1xuICAtLWJhY2tncm91bmQ6ICNmNGYwZWM7XG4gIHdpZHRoOiA1MHB4O1xuICBoZWlnaHQ6IDUwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbn1cblxuLm1hcCB7XG4gIGhlaWdodDogMzclICFpbXBvcnRhbnQ7XG4gIG1hcmdpbjogMTBweCAxMHB4IDEwcHggMTBweDtcbiAgYm9yZGVyOiAxcHggc29saWQgI2M4YzhjODtcbiAgYm94LXNoYWRvdzogNnB4IDZweCAxOHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG59XG5cbi50aXRsZSB7XG4gIG1hcmdpbjogMjBweCAxMHB4O1xuICBmb250LXNpemU6IDE0cHg7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMDAwO1xuICBwYWRkaW5nLWJvdHRvbTogMTBweDtcbiAgdGV4dC1zaGFkb3c6IDBlbSAwZW0gMC4zZW0gcmdiYSgwLCAwLCAwLCAwLjQpO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uc29zIHtcbiAgYmFja2dyb3VuZDogI0RDMTQzQztcbiAgZmxvYXQ6IHJpZ2h0O1xuICB3aWR0aDogNTBweDtcbiAgaGVpZ2h0OiA1MHB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG4gIHBhZGRpbmc6IDA7XG4gIG1hcmdpbjogMCAyMHB4IDAgMDtcbiAgY29sb3I6IHdoaXRlO1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuLmxvY2F0aW9uLWRldGFpbHMge1xuICBkaXNwbGF5OiBmbGV4O1xuICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICBtYXJnaW46IDEwcHggMTBweCA1cHggMTBweDtcbn1cbi5sb2NhdGlvbi1kZXRhaWxzIC50ZXh0IHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgbWFyZ2luLWJvdHRvbTogNXB4O1xuICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsIDAsIDAsIDAuNCk7XG59XG4ubG9jYXRpb24tZGV0YWlscyAudmFsdWUge1xuICBib3JkZXI6IDFweCBzb2xpZCAjMzkzOTM5O1xuICB3aWR0aDogMTAwJTtcbiAgYmFja2dyb3VuZDogd2hpdGU7XG4gIGJveC1zaGFkb3c6IDZweCA2cHggMThweCAwcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xufVxuLmxvY2F0aW9uLWRldGFpbHMgLmRlc3RpbmF0aW9uIHtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAxMnB4O1xuICBmb250LXNpemU6IDEycHg7XG59XG4ubG9jYXRpb24tZGV0YWlscyAucGFzc2VuZ2VycyB7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMTBweDtcbiAgYm9yZGVyOiAwO1xuICB0ZXh0LWFsaWduOiBsZWZ0O1xuICBmb250LXNpemU6IDEycHg7XG4gIGhlaWdodDogMzhweDtcbiAgYm94LXNoYWRvdzogNnB4IDZweCAxOHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG4gIHdpZHRoOiAxMDAlO1xuICBmb250LXNpemU6IDEycHg7XG59XG4ubG9jYXRpb24tZGV0YWlscyAub3JkZXItcmlkZSB7XG4gIHdpZHRoOiAxMDAlO1xuICBiYWNrZ3JvdW5kOiAjMzkzOTM5O1xuICBjb2xvcjogd2hpdGU7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgcGFkZGluZzogMTJweDtcbiAgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTtcbiAgbWFyZ2luLXRvcDogMTBweDtcbn1cbi5sb2NhdGlvbi1kZXRhaWxzIGlvbi1yb3cge1xuICBib3gtc2hhZG93OiA2cHggNnB4IDE4cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbn1cbi5sb2NhdGlvbi1kZXRhaWxzIGlvbi1yYWRpby1ncm91cCB7XG4gIGhlaWdodDogMzBweDtcbn1cbi5sb2NhdGlvbi1kZXRhaWxzIGlvbi1jb2wge1xuICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudCAhaW1wb3J0YW50O1xuICBib3JkZXItdG9wOiAxcHggc29saWQgIzAwMDtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICMwMDA7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogc3BhY2UtYXJvdW5kO1xufVxuLmxvY2F0aW9uLWRldGFpbHMgaW9uLWNvbDpmaXJzdC1jaGlsZCB7XG4gIGJvcmRlci1sZWZ0OiAxcHggc29saWQgIzAwMDtcbn1cbi5sb2NhdGlvbi1kZXRhaWxzIGlvbi1jb2w6bGFzdC1jaGlsZCB7XG4gIGJvcmRlci1yaWdodDogMXB4IHNvbGlkICMwMDA7XG59XG4ubG9jYXRpb24tZGV0YWlscyBpb24tY29sIGlvbi1pdGVtIHtcbiAgLS1taW4taGVpZ2h0OiAzMHB4O1xuICBtYXJnaW46IDAgIWltcG9ydGFudDtcbiAgcGFkZGluZzogMCAhaW1wb3J0YW50O1xufVxuLmxvY2F0aW9uLWRldGFpbHMgaW9uLWNvbCBpb24tbGFiZWwge1xuICBtYXJnaW46IDAgNXB4IDAgMDtcbiAgcGFkZGluZzogMDtcbiAgdGV4dC1zaGFkb3c6IDBlbSAwZW0gMC4zZW0gcmdiYSgwLCAwLCAwLCAwLjQpO1xufVxuLmxvY2F0aW9uLWRldGFpbHMgaW9uLWNvbCBpb24tcmFkaW8ge1xuICAtLWNvbG9yLWNoZWNrZWQ6IzM5MzkzOTtcbiAgLS1jb2xvcjojMzkzOTM5O1xuICB3aWR0aDogMjBweDtcbiAgaGVpZ2h0OiAyMHB4O1xuICBvcGFjaXR5OiAwLjk7XG59Il19 */");
+/* harmony default export */ __webpack_exports__["default"] = (".header-box {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-align: center;\n          align-items: center;\n  padding: 10px;\n}\n\nimg {\n  max-width: 50px;\n}\n\nion-list {\n  background-color: #fff;\n}\n\nion-title {\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  --color: #000;\n  text-transform: uppercase;\n}\n\nion-menu-button {\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  --color: #000;\n  --background: #f4f0ec;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n}\n\n.map {\n  height: 37% !important;\n  margin: 10px 10px 10px 10px;\n  border: 1px solid #c8c8c8;\n  box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.3);\n}\n\n.title {\n  margin: 20px 10px;\n  font-size: 14px;\n  text-transform: uppercase;\n  border-bottom: 1px solid #000;\n  padding-bottom: 10px;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n  text-align: center;\n  font-weight: bold;\n}\n\n.sos {\n  background: #DC143C;\n  float: right;\n  width: 50px;\n  height: 50px;\n  border-radius: 50%;\n  padding: 0;\n  margin: 0 20px 0 0;\n  color: white;\n  font-weight: bold;\n}\n\n.location-details {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  margin: 10px 10px 5px 10px;\n}\n\n.location-details .text {\n  font-weight: bold;\n  text-transform: uppercase;\n  font-size: 13px;\n  margin-bottom: 5px;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n}\n\n.location-details .value {\n  border: 1px solid #393939;\n  width: 100%;\n  background: white;\n  box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.3);\n}\n\n.location-details .destination {\n  margin: 0;\n  padding: 12px;\n  font-size: 12px;\n}\n\n.location-details .passengers {\n  margin: 0;\n  padding: 10px;\n  border: 0;\n  text-align: left;\n  font-size: 12px;\n  height: 38px;\n  box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.3);\n  width: 100%;\n  font-size: 12px;\n}\n\n.location-details .order-ride {\n  width: 100%;\n  background: #393939;\n  color: white;\n  text-align: center;\n  padding: 12px;\n  text-transform: uppercase;\n  margin-top: 10px;\n}\n\n.location-details ion-row {\n  box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.3);\n}\n\n.location-details ion-radio-group {\n  height: 30px;\n}\n\n.location-details ion-col {\n  background: transparent !important;\n  border-top: 1px solid #000;\n  border-bottom: 1px solid #000;\n  display: -webkit-box;\n  display: flex;\n  justify-content: space-around;\n}\n\n.location-details ion-col:first-child {\n  border-left: 1px solid #000;\n}\n\n.location-details ion-col:last-child {\n  border-right: 1px solid #000;\n}\n\n.location-details ion-col ion-item {\n  --min-height: 30px;\n  margin: 0 !important;\n  padding: 0 !important;\n}\n\n.location-details ion-col ion-label {\n  margin: 0 5px 0 0;\n  padding: 0;\n  text-shadow: 0em 0em 0.3em rgba(0, 0, 0, 0.4);\n}\n\n.location-details ion-col ion-radio {\n  --color-checked:#393939;\n  --color:#393939;\n  width: 20px;\n  height: 20px;\n  opacity: 0.9;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi9Vc2Vycy9maWxpcC52dWtvdmljL0RldmVsb3BtZW50L2NoZWNrZml0LW1vYmlsZS9tb2JpbGVfYXBwL3NyYy9hcHAvcGFnZXMvY3VzdG9tZXItaG9tZXBhZ2UvY3VzdG9tZXItaG9tZXBhZ2UucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9jdXN0b21lci1ob21lcGFnZS9jdXN0b21lci1ob21lcGFnZS5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxvQkFBQTtFQUFBLGFBQUE7RUFDQSx5QkFBQTtVQUFBLG1CQUFBO0VBQ0EsYUFBQTtBQ0NKOztBRENBO0VBQ0ksZUFBQTtBQ0VKOztBREFBO0VBQ0ksc0JBQUE7QUNHSjs7QUREQTtFQUNJLDZDQUFBO0VBQ0EsYUFBQTtFQUNBLHlCQUFBO0FDSUo7O0FERkE7RUFDSSw2Q0FBQTtFQUNBLGFBQUE7RUFDQSxxQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7QUNLSjs7QURIQTtFQUNJLHNCQUFBO0VBQ0EsMkJBQUE7RUFDQSx5QkFBQTtFQUNBLCtDQUFBO0FDTUo7O0FESkE7RUFDSSxpQkFBQTtFQUNBLGVBQUE7RUFDQSx5QkFBQTtFQUNBLDZCQUFBO0VBQ0Esb0JBQUE7RUFDQSw2Q0FBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7QUNPSjs7QURMQTtFQUNJLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxVQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsaUJBQUE7QUNRSjs7QURKQTtFQUNJLG9CQUFBO0VBQUEsYUFBQTtFQUNBLDRCQUFBO0VBQUEsNkJBQUE7VUFBQSxzQkFBQTtFQUNBLDBCQUFBO0FDT0o7O0FETEk7RUFDSSxpQkFBQTtFQUNBLHlCQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0VBQ0EsNkNBQUE7QUNPUjs7QURKSTtFQUNJLHlCQUFBO0VBQ0EsV0FBQTtFQUNBLGlCQUFBO0VBQ0EsK0NBQUE7QUNNUjs7QURISTtFQUNJLFNBQUE7RUFDQSxhQUFBO0VBQ0EsZUFBQTtBQ0tSOztBREhJO0VBQ0ksU0FBQTtFQUNBLGFBQUE7RUFDQSxTQUFBO0VBQ0EsZ0JBQUE7RUFDQSxlQUFBO0VBQ0EsWUFBQTtFQUNBLCtDQUFBO0VBQ0EsV0FBQTtFQUNBLGVBQUE7QUNLUjs7QURISTtFQUNJLFdBQUE7RUFDQSxtQkFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLGFBQUE7RUFDQSx5QkFBQTtFQUNBLGdCQUFBO0FDS1I7O0FESEk7RUFDSSwrQ0FBQTtBQ0tSOztBREhJO0VBQ0ksWUFBQTtBQ0tSOztBREhJO0VBQ0ksa0NBQUE7RUFDQSwwQkFBQTtFQUNBLDZCQUFBO0VBQ0Esb0JBQUE7RUFBQSxhQUFBO0VBQ0EsNkJBQUE7QUNLUjs7QUREUTtFQUNJLDJCQUFBO0FDR1o7O0FEQVE7RUFDSSw0QkFBQTtBQ0VaOztBRENRO0VBQ0ksa0JBQUE7RUFDQSxvQkFBQTtFQUNBLHFCQUFBO0FDQ1o7O0FEQ1E7RUFDSSxpQkFBQTtFQUNBLFVBQUE7RUFDQSw2Q0FBQTtBQ0NaOztBRENRO0VBQ0ksdUJBQUE7RUFDQSxlQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSxZQUFBO0FDQ1oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9jdXN0b21lci1ob21lcGFnZS9jdXN0b21lci1ob21lcGFnZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGVhZGVyLWJveCB7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgIHBhZGRpbmc6IDEwcHg7XG59XG5pbWcge1xuICAgIG1heC13aWR0aDogNTBweDtcbn1cbmlvbi1saXN0e1xuICAgIGJhY2tncm91bmQtY29sb3I6ICNmZmY7XG59XG5pb24tdGl0bGUge1xuICAgIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwwLDAsMC40KTtcbiAgICAtLWNvbG9yOiAjMDAwO1xuICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG59XG5pb24tbWVudS1idXR0b24ge1xuICAgIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwwLDAsMC40KTtcbiAgICAtLWNvbG9yOiAjMDAwO1xuICAgIC0tYmFja2dyb3VuZDogI2Y0ZjBlYztcbiAgICB3aWR0aDogNTBweDtcbiAgICBoZWlnaHQ6IDUwcHg7XG4gICAgYm9yZGVyLXJhZGl1czogNTAlO1xufVxuLm1hcCB7XG4gICAgaGVpZ2h0OiAzNyUgIWltcG9ydGFudDtcbiAgICBtYXJnaW46IDEwcHggMTBweCAxMHB4IDEwcHg7XG4gICAgYm9yZGVyOiAxcHggc29saWQgI2M4YzhjODtcbiAgICBib3gtc2hhZG93OiA2cHggNnB4IDE4cHggMHB4IHJnYmEoMCwwLDAsMC4zKTtcbn1cbi50aXRsZSB7XG4gICAgbWFyZ2luOiAyMHB4IDEwcHg7XG4gICAgZm9udC1zaXplOiAxNHB4O1xuICAgIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gICAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICMwMDA7XG4gICAgcGFkZGluZy1ib3R0b206IDEwcHg7XG4gICAgdGV4dC1zaGFkb3c6IDBlbSAwZW0gMC4zZW0gcmdiYSgwLDAsMCwwLjQpO1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICBmb250LXdlaWdodDogYm9sZDtcbn1cbi5zb3Mge1xuICAgIGJhY2tncm91bmQ6ICNEQzE0M0M7XG4gICAgZmxvYXQ6IHJpZ2h0O1xuICAgIHdpZHRoOiA1MHB4O1xuICAgIGhlaWdodDogNTBweDtcbiAgICBib3JkZXItcmFkaXVzOiA1MCU7XG4gICAgcGFkZGluZzogMDtcbiAgICBtYXJnaW46IDAgMjBweCAwIDA7XG4gICAgY29sb3I6IHdoaXRlO1xuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG5cbi5sb2NhdGlvbi1kZXRhaWxzIHtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGZsZXgtZGlyZWN0aW9uOiBjb2x1bW47XG4gICAgbWFyZ2luOiAxMHB4IDEwcHggNXB4IDEwcHg7XG5cbiAgICAudGV4dCB7XG4gICAgICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xuICAgICAgICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICAgICAgICBmb250LXNpemU6IDEzcHg7XG4gICAgICAgIG1hcmdpbi1ib3R0b206IDVweDtcbiAgICAgICAgdGV4dC1zaGFkb3c6IDBlbSAwZW0gMC4zZW0gcmdiYSgwLDAsMCwwLjQpO1xuICAgIH1cblxuICAgIC52YWx1ZSB7XG4gICAgICAgIGJvcmRlcjogMXB4IHNvbGlkICMzOTM5Mzk7XG4gICAgICAgIHdpZHRoOiAxMDAlOyAgICAgICAgXG4gICAgICAgIGJhY2tncm91bmQ6IHdoaXRlO1xuICAgICAgICBib3gtc2hhZG93OiA2cHggNnB4IDE4cHggMHB4IHJnYmEoMCwwLDAsMC4zKTtcbiAgICB9XG5cbiAgICAuZGVzdGluYXRpb24ge1xuICAgICAgICBtYXJnaW46IDA7XG4gICAgICAgIHBhZGRpbmc6IDEycHg7ICAgICAgICBcbiAgICAgICAgZm9udC1zaXplOiAxMnB4O1xuICAgIH1cbiAgICAucGFzc2VuZ2VycyB7XG4gICAgICAgIG1hcmdpbjogMDtcbiAgICAgICAgcGFkZGluZzogMTBweDtcbiAgICAgICAgYm9yZGVyOiAwO1xuICAgICAgICB0ZXh0LWFsaWduOiBsZWZ0O1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgICAgIGhlaWdodDogMzhweDtcbiAgICAgICAgYm94LXNoYWRvdzogNnB4IDZweCAxOHB4IDBweCByZ2JhKDAsMCwwLDAuMyk7XG4gICAgICAgIHdpZHRoOiAxMDAlO1xuICAgICAgICBmb250LXNpemU6IDEycHg7XG4gICAgfVxuICAgIC5vcmRlci1yaWRlIHtcbiAgICAgICAgd2lkdGg6IDEwMCU7XG4gICAgICAgIGJhY2tncm91bmQ6ICMzOTM5Mzk7XG4gICAgICAgIGNvbG9yOiB3aGl0ZTtcbiAgICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xuICAgICAgICBwYWRkaW5nOiAxMnB4O1xuICAgICAgICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICAgICAgICBtYXJnaW4tdG9wOiAxMHB4O1xuICAgIH1cbiAgICBpb24tcm93IHtcbiAgICAgICAgYm94LXNoYWRvdzogNnB4IDZweCAxOHB4IDBweCByZ2JhKDAsMCwwLDAuMyk7XG4gICAgfVxuICAgIGlvbi1yYWRpby1ncm91cCB7ICAgICAgICBcbiAgICAgICAgaGVpZ2h0OiAzMHB4O1xuICAgIH1cbiAgICBpb24tY29sIHtcbiAgICAgICAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDsgICAgICAgXG4gICAgICAgIGJvcmRlci10b3A6IDFweCBzb2xpZCAjMDAwO1xuICAgICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgIzAwMDtcbiAgICAgICAgZGlzcGxheTogZmxleDsgICAgICAgIFxuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDsgICAgXG4gICAgICAgIFxuICAgICAgICBcblxuICAgICAgICAmOmZpcnN0LWNoaWxkIHtcbiAgICAgICAgICAgIGJvcmRlci1sZWZ0OiAxcHggc29saWQgIzAwMDtcbiAgICAgICAgICAgIFxuICAgICAgICB9XG4gICAgICAgICY6bGFzdC1jaGlsZCB7XG4gICAgICAgICAgICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCAjMDAwO1xuICAgICAgICAgICAgXG4gICAgICAgIH1cbiAgICAgICAgaW9uLWl0ZW0ge1xuICAgICAgICAgICAgLS1taW4taGVpZ2h0OiAzMHB4OyAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgICAgICAgICAgIG1hcmdpbjogMCAhaW1wb3J0YW50O1xuICAgICAgICAgICAgcGFkZGluZzogMCAhaW1wb3J0YW50O1xuICAgICAgICB9XG4gICAgICAgIGlvbi1sYWJlbCB7XG4gICAgICAgICAgICBtYXJnaW46IDAgNXB4IDAgMDtcbiAgICAgICAgICAgIHBhZGRpbmc6IDA7ICAgICBcbiAgICAgICAgICAgIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwwLDAsMC40KTsgICAgICBcbiAgICAgICAgfVxuICAgICAgICBpb24tcmFkaW8ge1xuICAgICAgICAgICAgLS1jb2xvci1jaGVja2VkOiMzOTM5Mzk7XG4gICAgICAgICAgICAtLWNvbG9yOiMzOTM5Mzk7XG4gICAgICAgICAgICB3aWR0aDogMjBweDtcbiAgICAgICAgICAgIGhlaWdodDogMjBweDtcbiAgICAgICAgICAgIG9wYWNpdHk6IDAuOTtcbiAgICAgICAgfVxuICAgIH1cbn0iLCIuaGVhZGVyLWJveCB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHBhZGRpbmc6IDEwcHg7XG59XG5cbmltZyB7XG4gIG1heC13aWR0aDogNTBweDtcbn1cblxuaW9uLWxpc3Qge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZmZmO1xufVxuXG5pb24tdGl0bGUge1xuICB0ZXh0LXNoYWRvdzogMGVtIDBlbSAwLjNlbSByZ2JhKDAsIDAsIDAsIDAuNCk7XG4gIC0tY29sb3I6ICMwMDA7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG59XG5cbmlvbi1tZW51LWJ1dHRvbiB7XG4gIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwgMCwgMCwgMC40KTtcbiAgLS1jb2xvcjogIzAwMDtcbiAgLS1iYWNrZ3JvdW5kOiAjZjRmMGVjO1xuICB3aWR0aDogNTBweDtcbiAgaGVpZ2h0OiA1MHB4O1xuICBib3JkZXItcmFkaXVzOiA1MCU7XG59XG5cbi5tYXAge1xuICBoZWlnaHQ6IDM3JSAhaW1wb3J0YW50O1xuICBtYXJnaW46IDEwcHggMTBweCAxMHB4IDEwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkICNjOGM4Yzg7XG4gIGJveC1zaGFkb3c6IDZweCA2cHggMThweCAwcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xufVxuXG4udGl0bGUge1xuICBtYXJnaW46IDIwcHggMTBweDtcbiAgZm9udC1zaXplOiAxNHB4O1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgIzAwMDtcbiAgcGFkZGluZy1ib3R0b206IDEwcHg7XG4gIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwgMCwgMCwgMC40KTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuLnNvcyB7XG4gIGJhY2tncm91bmQ6ICNEQzE0M0M7XG4gIGZsb2F0OiByaWdodDtcbiAgd2lkdGg6IDUwcHg7XG4gIGhlaWdodDogNTBweDtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IDAgMjBweCAwIDA7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5sb2NhdGlvbi1kZXRhaWxzIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgbWFyZ2luOiAxMHB4IDEwcHggNXB4IDEwcHg7XG59XG4ubG9jYXRpb24tZGV0YWlscyAudGV4dCB7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICB0ZXh0LXRyYW5zZm9ybTogdXBwZXJjYXNlO1xuICBmb250LXNpemU6IDEzcHg7XG4gIG1hcmdpbi1ib3R0b206IDVweDtcbiAgdGV4dC1zaGFkb3c6IDBlbSAwZW0gMC4zZW0gcmdiYSgwLCAwLCAwLCAwLjQpO1xufVxuLmxvY2F0aW9uLWRldGFpbHMgLnZhbHVlIHtcbiAgYm9yZGVyOiAxcHggc29saWQgIzM5MzkzOTtcbiAgd2lkdGg6IDEwMCU7XG4gIGJhY2tncm91bmQ6IHdoaXRlO1xuICBib3gtc2hhZG93OiA2cHggNnB4IDE4cHggMHB4IHJnYmEoMCwgMCwgMCwgMC4zKTtcbn1cbi5sb2NhdGlvbi1kZXRhaWxzIC5kZXN0aW5hdGlvbiB7XG4gIG1hcmdpbjogMDtcbiAgcGFkZGluZzogMTJweDtcbiAgZm9udC1zaXplOiAxMnB4O1xufVxuLmxvY2F0aW9uLWRldGFpbHMgLnBhc3NlbmdlcnMge1xuICBtYXJnaW46IDA7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIGJvcmRlcjogMDtcbiAgdGV4dC1hbGlnbjogbGVmdDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBoZWlnaHQ6IDM4cHg7XG4gIGJveC1zaGFkb3c6IDZweCA2cHggMThweCAwcHggcmdiYSgwLCAwLCAwLCAwLjMpO1xuICB3aWR0aDogMTAwJTtcbiAgZm9udC1zaXplOiAxMnB4O1xufVxuLmxvY2F0aW9uLWRldGFpbHMgLm9yZGVyLXJpZGUge1xuICB3aWR0aDogMTAwJTtcbiAgYmFja2dyb3VuZDogIzM5MzkzOTtcbiAgY29sb3I6IHdoaXRlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIHBhZGRpbmc6IDEycHg7XG4gIHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG59XG4ubG9jYXRpb24tZGV0YWlscyBpb24tcm93IHtcbiAgYm94LXNoYWRvdzogNnB4IDZweCAxOHB4IDBweCByZ2JhKDAsIDAsIDAsIDAuMyk7XG59XG4ubG9jYXRpb24tZGV0YWlscyBpb24tcmFkaW8tZ3JvdXAge1xuICBoZWlnaHQ6IDMwcHg7XG59XG4ubG9jYXRpb24tZGV0YWlscyBpb24tY29sIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgIWltcG9ydGFudDtcbiAgYm9yZGVyLXRvcDogMXB4IHNvbGlkICMwMDA7XG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjMDAwO1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWFyb3VuZDtcbn1cbi5sb2NhdGlvbi1kZXRhaWxzIGlvbi1jb2w6Zmlyc3QtY2hpbGQge1xuICBib3JkZXItbGVmdDogMXB4IHNvbGlkICMwMDA7XG59XG4ubG9jYXRpb24tZGV0YWlscyBpb24tY29sOmxhc3QtY2hpbGQge1xuICBib3JkZXItcmlnaHQ6IDFweCBzb2xpZCAjMDAwO1xufVxuLmxvY2F0aW9uLWRldGFpbHMgaW9uLWNvbCBpb24taXRlbSB7XG4gIC0tbWluLWhlaWdodDogMzBweDtcbiAgbWFyZ2luOiAwICFpbXBvcnRhbnQ7XG4gIHBhZGRpbmc6IDAgIWltcG9ydGFudDtcbn1cbi5sb2NhdGlvbi1kZXRhaWxzIGlvbi1jb2wgaW9uLWxhYmVsIHtcbiAgbWFyZ2luOiAwIDVweCAwIDA7XG4gIHBhZGRpbmc6IDA7XG4gIHRleHQtc2hhZG93OiAwZW0gMGVtIDAuM2VtIHJnYmEoMCwgMCwgMCwgMC40KTtcbn1cbi5sb2NhdGlvbi1kZXRhaWxzIGlvbi1jb2wgaW9uLXJhZGlvIHtcbiAgLS1jb2xvci1jaGVja2VkOiMzOTM5Mzk7XG4gIC0tY29sb3I6IzM5MzkzOTtcbiAgd2lkdGg6IDIwcHg7XG4gIGhlaWdodDogMjBweDtcbiAgb3BhY2l0eTogMC45O1xufSJdfQ== */");
 
 /***/ }),
 
@@ -140,7 +140,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CustomerHomepagePage = class CustomerHomepagePage {
-    constructor(modalcontroller, router, locationService, androidPermissions, platform, geolocation, storage, socketService, events) {
+    constructor(modalcontroller, router, locationService, androidPermissions, platform, geolocation, storage, socketService, events, ngZone) {
         this.modalcontroller = modalcontroller;
         this.router = router;
         this.locationService = locationService;
@@ -150,8 +150,14 @@ let CustomerHomepagePage = class CustomerHomepagePage {
         this.storage = storage;
         this.socketService = socketService;
         this.events = events;
+        this.ngZone = ngZone;
         this.isUserLoggedIn = false;
         this.markers = [];
+        this.flag = false;
+        this.googleAutocomplete = new google.maps.places.AutocompleteService();
+        this.searchResult = new Array();
+        this.flag2 = false;
+        this.searchResult2 = new Array();
         this.storage.get("username").then(val => {
             if (val != null) {
                 this.isUserLoggedIn = true;
@@ -160,8 +166,43 @@ let CustomerHomepagePage = class CustomerHomepagePage {
         this.fromAddress = "Unesite adresu polaska!";
         this.toAddress = "Unesite adresu odredišta!";
     }
-    ngOnInit() {
+    searchChanged() {
+        let myLatLng = new google.maps.LatLng({ lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude });
+        if (!this.fromAddress.trim().length)
+            return;
+        if (this.flag) {
+            this.googleAutocomplete.getPlacePredictions({ input: this.fromAddress, location: myLatLng, radius: 40 }, predictions => {
+                this.ngZone.run(() => {
+                    this.searchResult = predictions;
+                });
+            });
+        }
+        this.flag = true;
     }
+    selectOption(destination) {
+        this.flag = false;
+        this.fromAddress = destination;
+        this.searchResult = null;
+    }
+    searchChanged2() {
+        let myLatLng = new google.maps.LatLng({ lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude });
+        if (!this.toAddress.trim().length)
+            return;
+        if (this.flag2) {
+            this.googleAutocomplete.getPlacePredictions({ input: this.toAddress, location: myLatLng, radius: 40 }, predictions => {
+                this.ngZone.run(() => {
+                    this.searchResult2 = predictions;
+                });
+            });
+        }
+        this.flag2 = true;
+    }
+    selectOption2(destination) {
+        this.flag2 = false;
+        this.toAddress = destination;
+        this.searchResult2 = null;
+    }
+    ngOnInit() { }
     ngAfterContentInit() {
         this.events.subscribe("driverInfo", message => {
             this.setMapOnAll(null);
@@ -171,15 +212,15 @@ let CustomerHomepagePage = class CustomerHomepagePage {
                     marker = new google.maps.Marker({
                         map: this.map,
                         animation: google.maps.Animation.BOUNCE,
-                        icon: './assets/available-taxi.svg',
-                        position: new google.maps.LatLng(value["latitude"], value["longitude"]),
+                        icon: "./assets/available-taxi.svg",
+                        position: new google.maps.LatLng(value["latitude"], value["longitude"])
                     });
                 }
                 else {
                     marker = new google.maps.Marker({
                         map: this.map,
                         animation: google.maps.Animation.BOUNCE,
-                        icon: './assets/not-available-taxi.svg',
+                        icon: "./assets/not-available-taxi.svg",
                         position: new google.maps.LatLng(value["latitude"], value["longitude"])
                     });
                 }
@@ -220,166 +261,172 @@ let CustomerHomepagePage = class CustomerHomepagePage {
                 zoom: 16,
                 styles: [
                     {
-                        "elementType": "geometry",
-                        "stylers": [
+                        elementType: "geometry",
+                        stylers: [
                             {
-                                "color": "#242f3e"
+                                color: "#242f3e"
                             }
                         ]
                     },
                     {
-                        "elementType": "labels.text.fill",
-                        "stylers": [
+                        elementType: "labels.text.fill",
+                        stylers: [
                             {
-                                "color": "#746855"
+                                color: "#746855"
                             }
                         ]
                     },
                     {
-                        "elementType": "labels.text.stroke",
-                        "stylers": [
+                        elementType: "labels.text.stroke",
+                        stylers: [
                             {
-                                "color": "#242f3e"
+                                color: "#242f3e"
                             }
                         ]
                     },
                     {
-                        "featureType": "administrative.locality",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
+                        featureType: "administrative.locality",
+                        elementType: "labels.text.fill",
+                        stylers: [
                             {
-                                "color": "#d59563"
+                                color: "#d59563"
                             }
                         ]
                     },
                     {
-                        "featureType": "poi",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
+                        featureType: "poi",
+                        elementType: "labels.text.fill",
+                        stylers: [
                             {
-                                "color": "#d59563"
+                                color: "#d59563"
                             }
                         ]
                     },
                     {
-                        "featureType": "poi.park",
-                        "elementType": "geometry",
-                        "stylers": [
+                        featureType: "poi.park",
+                        elementType: "geometry",
+                        stylers: [
                             {
-                                "color": "#263c3f"
+                                color: "#263c3f"
                             }
                         ]
                     },
                     {
-                        "featureType": "poi.park",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
+                        featureType: "poi.park",
+                        elementType: "labels.text.fill",
+                        stylers: [
                             {
-                                "color": "#6b9a76"
+                                color: "#6b9a76"
                             }
                         ]
                     },
                     {
-                        "featureType": "road",
-                        "elementType": "geometry",
-                        "stylers": [
+                        featureType: "road",
+                        elementType: "geometry",
+                        stylers: [
                             {
-                                "color": "#38414e"
+                                color: "#38414e"
                             }
                         ]
                     },
                     {
-                        "featureType": "road",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
+                        featureType: "road",
+                        elementType: "geometry.stroke",
+                        stylers: [
                             {
-                                "color": "#212a37"
+                                color: "#212a37"
                             }
                         ]
                     },
                     {
-                        "featureType": "road",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
+                        featureType: "road",
+                        elementType: "labels.text.fill",
+                        stylers: [
                             {
-                                "color": "#9ca5b3"
+                                color: "#9ca5b3"
                             }
                         ]
                     },
                     {
-                        "featureType": "road.highway",
-                        "elementType": "geometry",
-                        "stylers": [
+                        featureType: "road.highway",
+                        elementType: "geometry",
+                        stylers: [
                             {
-                                "color": "#746855"
+                                color: "#746855"
                             }
                         ]
                     },
                     {
-                        "featureType": "road.highway",
-                        "elementType": "geometry.stroke",
-                        "stylers": [
+                        featureType: "road.highway",
+                        elementType: "geometry.stroke",
+                        stylers: [
                             {
-                                "color": "#1f2835"
+                                color: "#1f2835"
                             }
                         ]
                     },
                     {
-                        "featureType": "road.highway",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
+                        featureType: "road.highway",
+                        elementType: "labels.text.fill",
+                        stylers: [
                             {
-                                "color": "#f3d19c"
+                                color: "#f3d19c"
                             }
                         ]
                     },
                     {
-                        "featureType": "transit",
-                        "elementType": "geometry",
-                        "stylers": [
+                        featureType: "transit",
+                        elementType: "geometry",
+                        stylers: [
                             {
-                                "color": "#2f3948"
+                                color: "#2f3948"
                             }
                         ]
                     },
                     {
-                        "featureType": "transit.station",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
+                        featureType: "transit.station",
+                        elementType: "labels.text.fill",
+                        stylers: [
                             {
-                                "color": "#d59563"
+                                color: "#d59563"
                             }
                         ]
                     },
                     {
-                        "featureType": "water",
-                        "elementType": "geometry",
-                        "stylers": [
+                        featureType: "water",
+                        elementType: "geometry",
+                        stylers: [
                             {
-                                "color": "#17263c"
+                                color: "#17263c"
                             }
                         ]
                     },
                     {
-                        "featureType": "water",
-                        "elementType": "labels.text.fill",
-                        "stylers": [
+                        featureType: "water",
+                        elementType: "labels.text.fill",
+                        stylers: [
                             {
-                                "color": "#515c6d"
+                                color: "#515c6d"
                             }
                         ]
                     },
                     {
-                        "featureType": "water",
-                        "elementType": "labels.text.stroke",
-                        "stylers": [
+                        featureType: "water",
+                        elementType: "labels.text.stroke",
+                        stylers: [
                             {
-                                "color": "#17263c"
+                                color: "#17263c"
                             }
                         ]
                     }
                 ]
             });
+            var myMarker = new google.maps.Marker({
+                map: this.map,
+                animation: google.maps.Animation.DROP,
+                position: new google.maps.LatLng(this.currentLocation.coords.latitude, this.currentLocation.coords.longitude)
+            });
+            this.addYourLocationButton(this.map, myMarker);
             var streetLocation = yield this.locationService.getReverseGeocode(this.currentLocation.coords.latitude, this.currentLocation.coords.longitude);
             this.fromAddress =
                 streetLocation[0].thoroughfare +
@@ -456,6 +503,54 @@ let CustomerHomepagePage = class CustomerHomepagePage {
         console.log("radioGroupChange", event.detail);
         this.numberOfPersons = event.detail.value;
     }
+    addYourLocationButton(map, marker) {
+        var controlDiv = document.createElement('div');
+        var firstChild = document.createElement('button');
+        firstChild.style.backgroundColor = '#fff';
+        firstChild.style.border = 'none';
+        firstChild.style.outline = 'none';
+        firstChild.style.width = '28px';
+        firstChild.style.height = '28px';
+        firstChild.style.borderRadius = '2px';
+        firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
+        firstChild.style.cursor = 'pointer';
+        firstChild.style["marginLEFT"] = '10px';
+        firstChild.style.padding = '0';
+        firstChild.title = 'Your Location';
+        controlDiv.appendChild(firstChild);
+        var secondChild = document.createElement('div');
+        secondChild.style.margin = '5px';
+        secondChild.style.width = '18px';
+        secondChild.style.height = '18px';
+        secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-2x.png)';
+        secondChild.style.backgroundSize = '180px 18px';
+        secondChild.style.backgroundPosition = '0 0';
+        secondChild.style.backgroundRepeat = 'no-repeat';
+        firstChild.appendChild(secondChild);
+        google.maps.event.addListener(map, 'center_changed', function () {
+            secondChild.style['background-position'] = '0 0';
+        });
+        firstChild.addEventListener('click', function () {
+            var imgX = 0, animationInterval = setInterval(function () {
+                imgX = -imgX - 18;
+                secondChild.style['background-position'] = imgX + 'px 0';
+            }, 500);
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    map.setCenter(latlng);
+                    clearInterval(animationInterval);
+                    secondChild.style['background-position'] = '-144px 0';
+                });
+            }
+            else {
+                clearInterval(animationInterval);
+                secondChild.style['background-position'] = '0 0';
+            }
+        });
+        controlDiv["index"] = 1;
+        map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(controlDiv);
+    }
     callSOS() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             let currentLocation = yield this.locationService.getUserPosition();
@@ -485,7 +580,8 @@ CustomerHomepagePage.ctorParameters = () => [
     { type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_7__["Geolocation"] },
     { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"] },
     { type: _services_socket_service__WEBPACK_IMPORTED_MODULE_9__["SocketService"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"] }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"] }
 ];
 tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])("mapElement", { static: true }),
@@ -505,7 +601,8 @@ CustomerHomepagePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_7__["Geolocation"],
         _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"],
         _services_socket_service__WEBPACK_IMPORTED_MODULE_9__["SocketService"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"]])
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["NgZone"]])
 ], CustomerHomepagePage);
 
 

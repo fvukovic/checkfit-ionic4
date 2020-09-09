@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentInit, ViewChild } from "@angular/core";
+import { Component, OnInit, AfterContentInit, ViewChild, NgZone } from "@angular/core";
 import { ModalController, Platform } from "@ionic/angular";
 import { StreetPickerPage } from "../popups/street-picker/street-picker.page";
 import { Router } from "@angular/router";
@@ -13,8 +13,13 @@ import {
 import { Storage } from "@ionic/storage";
 import { SocketService } from "../../services/socket.service";
 import { Events } from "@ionic/angular";
-
-declare var google;
+import {
+  GoogleMap,
+  GoogleMaps,
+  GoogleMapOptions,
+  GoogleMapsEvent
+} from "@ionic-native/google-maps";
+declare var google: any;
 @Component({
   selector: "app-customer-homepage",
   templateUrl: "./customer-homepage.page.html",
@@ -27,9 +32,56 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
   currentLocation: any;
   numberOfPersons: String;
   isUserLoggedIn: boolean = false;
-  markers: any = [];
-
+  markers: any = []; 
+  flag:boolean = false;
+  public googleAutocomplete = new google.maps.places.AutocompleteService();
+  public searchResult = new Array<any>();
+  flag2:boolean = false; 
+  public searchResult2 = new Array<any>();
   @ViewChild("mapElement", { static: true }) mapElement;
+
+  searchChanged() {
+    let myLatLng = new google.maps.LatLng({lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude}); 
+    if (!this.fromAddress.trim().length) return;
+    if(this.flag){
+    this.googleAutocomplete.getPlacePredictions(
+      { input: this.fromAddress, location: myLatLng, radius: 40  },
+      predictions => {
+       this.ngZone.run(() => {
+        this.searchResult = predictions;
+       })
+      }
+    );
+    }
+    this.flag = true;
+  }
+  selectOption(destination){
+    this.flag = false;
+    this.fromAddress = destination
+    this.searchResult = null
+  }
+
+  searchChanged2() {
+    let myLatLng = new google.maps.LatLng({lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude}); 
+    if (!this.toAddress.trim().length) return;
+    if(this.flag2){
+    this.googleAutocomplete.getPlacePredictions(
+      { input: this.toAddress, location: myLatLng, radius: 40  },
+      predictions => {
+       this.ngZone.run(() => {
+        this.searchResult2 = predictions;
+       })
+      }
+    );
+    }
+    this.flag2 = true;
+  }
+  selectOption2(destination){
+    this.flag2 = false;
+    this.toAddress = destination
+    this.searchResult2 = null
+  }
+
 
   constructor(
     private modalcontroller: ModalController,
@@ -40,45 +92,51 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     private geolocation: Geolocation,
     private storage: Storage,
     private socketService: SocketService,
-    private events: Events
+    private events: Events,
+    private ngZone: NgZone
   ) {
     this.storage.get("username").then(val => {
       if (val != null) {
-        this.isUserLoggedIn = true;       
+        this.isUserLoggedIn = true;
       }
     });
     this.fromAddress = "Unesite adresu polaska!";
     this.toAddress = "Unesite adresu odredišta!";
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   ngAfterContentInit(): void {
+
     this.events.subscribe("driverInfo", message => {
-      this.setMapOnAll(null); 
+      this.setMapOnAll(null);
       Object.entries(JSON.parse(message["drivers"])).forEach(([key, value]) => {
         let marker;
-        if(value["free"]==true){
+        if (value["free"] == true) {
           marker = new google.maps.Marker({
             map: this.map,
             animation: google.maps.Animation.BOUNCE,
-            icon:'./assets/available-taxi.svg',
-            position: new google.maps.LatLng(value["latitude"], value["longitude"]),
+            icon: "./assets/available-taxi.svg",
+            position: new google.maps.LatLng(
+              value["latitude"],
+              value["longitude"]
+            )
           });
-        }else{
-           marker = new google.maps.Marker({
+        } else {
+          marker = new google.maps.Marker({
             map: this.map,
             animation: google.maps.Animation.BOUNCE,
-            icon:'./assets/not-available-taxi.svg',
-            position: new google.maps.LatLng(value["latitude"], value["longitude"])
+            icon: "./assets/not-available-taxi.svg",
+            position: new google.maps.LatLng(
+              value["latitude"],
+              value["longitude"]
+            )
           });
         }
-   
-        this.markers.push(marker); 
+
+        this.markers.push(marker);
       });
-     });
+    });
 
     this.platform.ready().then(() => {
       let perms = [
@@ -109,6 +167,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
   }
 
   async initializeMap() {
+
     this.currentLocation = await this.locationService.getUserPosition();
     this.map = new google.maps.Map(this.mapElement.nativeElement, {
       center: {
@@ -116,168 +175,180 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
         lng: this.currentLocation.coords.longitude
       },
       zoom: 16,
-      styles:[
+      styles: [
         {
-          "elementType": "geometry",
-          "stylers": [
+          elementType: "geometry",
+          stylers: [
             {
-              "color": "#242f3e"
+              color: "#242f3e"
             }
           ]
         },
         {
-          "elementType": "labels.text.fill",
-          "stylers": [
+          elementType: "labels.text.fill",
+          stylers: [
             {
-              "color": "#746855"
+              color: "#746855"
             }
           ]
         },
         {
-          "elementType": "labels.text.stroke",
-          "stylers": [
+          elementType: "labels.text.stroke",
+          stylers: [
             {
-              "color": "#242f3e"
+              color: "#242f3e"
             }
           ]
         },
         {
-          "featureType": "administrative.locality",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          featureType: "administrative.locality",
+          elementType: "labels.text.fill",
+          stylers: [
             {
-              "color": "#d59563"
+              color: "#d59563"
             }
           ]
         },
         {
-          "featureType": "poi",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          featureType: "poi",
+          elementType: "labels.text.fill",
+          stylers: [
             {
-              "color": "#d59563"
+              color: "#d59563"
             }
           ]
         },
         {
-          "featureType": "poi.park",
-          "elementType": "geometry",
-          "stylers": [
+          featureType: "poi.park",
+          elementType: "geometry",
+          stylers: [
             {
-              "color": "#263c3f"
+              color: "#263c3f"
             }
           ]
         },
         {
-          "featureType": "poi.park",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          featureType: "poi.park",
+          elementType: "labels.text.fill",
+          stylers: [
             {
-              "color": "#6b9a76"
+              color: "#6b9a76"
             }
           ]
         },
         {
-          "featureType": "road",
-          "elementType": "geometry",
-          "stylers": [
+          featureType: "road",
+          elementType: "geometry",
+          stylers: [
             {
-              "color": "#38414e"
+              color: "#38414e"
             }
           ]
         },
         {
-          "featureType": "road",
-          "elementType": "geometry.stroke",
-          "stylers": [
+          featureType: "road",
+          elementType: "geometry.stroke",
+          stylers: [
             {
-              "color": "#212a37"
+              color: "#212a37"
             }
           ]
         },
         {
-          "featureType": "road",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          featureType: "road",
+          elementType: "labels.text.fill",
+          stylers: [
             {
-              "color": "#9ca5b3"
+              color: "#9ca5b3"
             }
           ]
         },
         {
-          "featureType": "road.highway",
-          "elementType": "geometry",
-          "stylers": [
+          featureType: "road.highway",
+          elementType: "geometry",
+          stylers: [
             {
-              "color": "#746855"
+              color: "#746855"
             }
           ]
         },
         {
-          "featureType": "road.highway",
-          "elementType": "geometry.stroke",
-          "stylers": [
+          featureType: "road.highway",
+          elementType: "geometry.stroke",
+          stylers: [
             {
-              "color": "#1f2835"
+              color: "#1f2835"
             }
           ]
         },
         {
-          "featureType": "road.highway",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          featureType: "road.highway",
+          elementType: "labels.text.fill",
+          stylers: [
             {
-              "color": "#f3d19c"
+              color: "#f3d19c"
             }
           ]
         },
         {
-          "featureType": "transit",
-          "elementType": "geometry",
-          "stylers": [
+          featureType: "transit",
+          elementType: "geometry",
+          stylers: [
             {
-              "color": "#2f3948"
+              color: "#2f3948"
             }
           ]
         },
         {
-          "featureType": "transit.station",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          featureType: "transit.station",
+          elementType: "labels.text.fill",
+          stylers: [
             {
-              "color": "#d59563"
+              color: "#d59563"
             }
           ]
         },
         {
-          "featureType": "water",
-          "elementType": "geometry",
-          "stylers": [
+          featureType: "water",
+          elementType: "geometry",
+          stylers: [
             {
-              "color": "#17263c"
+              color: "#17263c"
             }
           ]
         },
         {
-          "featureType": "water",
-          "elementType": "labels.text.fill",
-          "stylers": [
+          featureType: "water",
+          elementType: "labels.text.fill",
+          stylers: [
             {
-              "color": "#515c6d"
+              color: "#515c6d"
             }
           ]
         },
         {
-          "featureType": "water",
-          "elementType": "labels.text.stroke",
-          "stylers": [
+          featureType: "water",
+          elementType: "labels.text.stroke",
+          stylers: [
             {
-              "color": "#17263c"
+              color: "#17263c"
             }
           ]
         }
       ]
     });
+
+    var myMarker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: new google.maps.LatLng(
+        this.currentLocation.coords.latitude,
+        this.currentLocation.coords.longitude
+      )
+    });
+    this.addYourLocationButton(this.map, myMarker);
+
+
     var streetLocation = await this.locationService.getReverseGeocode(
       this.currentLocation.coords.latitude,
       this.currentLocation.coords.longitude
@@ -304,7 +375,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       map: map,
       animation: google.maps.Animation.DROP,
       position: map.getCenter()
-    }); 
+    });
   }
 
   async openStreetPicker(picker) {
@@ -340,7 +411,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     );
     let toAddress = await this.locationService.getForwardGeocode2(
       this.toAddress
-    ); 
+    );
     let params = {
       fromLat: fromAddress["latitude"],
       fromLong: fromAddress["longitude"],
@@ -360,10 +431,68 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     });
   }
 
-    radioGroupChange(event) {
-    console.log("radioGroupChange",event.detail);
+  radioGroupChange(event) {
+    console.log("radioGroupChange", event.detail);
     this.numberOfPersons = event.detail.value;
-    }
+  }
+
+  addYourLocationButton(map, marker) 
+  {
+      var controlDiv = document.createElement('div');
+  
+      var firstChild = document.createElement('button');
+      firstChild.style.backgroundColor = '#fff';
+      firstChild.style.border = 'none';
+      firstChild.style.outline = 'none';
+      firstChild.style.width = '28px';
+      firstChild.style.height = '28px';
+      firstChild.style.borderRadius = '2px';
+      firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
+      firstChild.style.cursor = 'pointer';
+      firstChild.style["marginLEFT"] = '10px';
+      firstChild.style.padding = '0';
+      firstChild.title = 'Your Location';
+      controlDiv.appendChild(firstChild);
+  
+      var secondChild = document.createElement('div');
+      secondChild.style.margin = '5px';
+      secondChild.style.width = '18px';
+      secondChild.style.height = '18px';
+      secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-2x.png)';
+      secondChild.style.backgroundSize = '180px 18px';
+      secondChild.style.backgroundPosition = '0 0';
+      secondChild.style.backgroundRepeat = 'no-repeat';
+      firstChild.appendChild(secondChild);
+  
+      google.maps.event.addListener(map, 'center_changed', function () {
+          secondChild.style['background-position'] = '0 0';
+      });
+  
+      firstChild.addEventListener('click', function () {
+          var imgX = 0,
+              animationInterval = setInterval(function () {
+                  imgX = -imgX - 18 ;
+                  secondChild.style['background-position'] = imgX+'px 0';
+              }, 500);
+  
+          if(navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function(position) {
+                  var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                  map.setCenter(latlng);
+                  clearInterval(animationInterval);
+                  secondChild.style['background-position'] = '-144px 0';
+              });
+          } else {
+              clearInterval(animationInterval);
+              secondChild.style['background-position'] = '0 0';
+          }
+      });
+  
+      controlDiv["index"] = 1;
+      map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(controlDiv);
+  }
+  
+
 
   async callSOS() {
     let currentLocation = await this.locationService.getUserPosition();

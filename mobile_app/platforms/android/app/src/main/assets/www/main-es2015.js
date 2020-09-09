@@ -892,10 +892,10 @@ let AppComponent = class AppComponent {
         translate.setDefaultLang("en");
         this.platform.ready().then(() => {
             this.nativeAudio
-                .preloadSimple("uniqueId1", "assets/zvuk1.mpeg")
+                .preloadSimple("uniqueId2", "assets/zvuk2.mpeg")
                 .then(this.onSuccess, this.onError);
             this.nativeAudio
-                .preloadSimple("uniqueId2", "assets/zvuk2.mpeg")
+                .preloadSimple("uniqueId1", "assets/zvuk1.mpeg")
                 .then(this.onSuccess, this.onError);
             this.socketService.initializeWebSocketConnection();
             this.storage.get("username").then(username => {
@@ -1013,6 +1013,7 @@ let AppComponent = class AppComponent {
                 }
                 case "REQUEST_INCOMING": {
                     // this.presentAlert();
+                    this.nativeAudio.play("uniqueId2");
                     var streetLocation = yield this.locationService.getReverseGeocode(message.fromLat, message.fromLong);
                     this.fromAddress =
                         streetLocation[0].thoroughfare +
@@ -1020,7 +1021,6 @@ let AppComponent = class AppComponent {
                             streetLocation[0].subThoroughfare +
                             "," +
                             streetLocation[0].locality;
-                    this.nativeAudio.play("uniqueId1");
                     var streetLocation2 = yield this.locationService.getReverseGeocode(message.toLat, message.toLong);
                     this.toAddress =
                         streetLocation2[0].thoroughfare +
@@ -1028,7 +1028,6 @@ let AppComponent = class AppComponent {
                             streetLocation2[0].subThoroughfare +
                             "," +
                             streetLocation2[0].locality;
-                    this.nativeAudio.play("uniqueId2");
                     this.presentAlert({
                         cssClass: "myClass",
                         header: "Obavijest",
@@ -1040,7 +1039,7 @@ let AppComponent = class AppComponent {
                 case "FINISH_DRIVE_CUSTOMER": {
                     //TODO remove popup
                     this.router.navigate(["/customer-homepage"]);
-                    this.nativeAudio.play("uniqueId1");
+                    this.nativeAudio.play("uniqueId2");
                     this.presentAlert({
                         cssClass: "myClass",
                         header: "Obavijest",
@@ -1057,7 +1056,7 @@ let AppComponent = class AppComponent {
                             streetLocation[0].subThoroughfare +
                             "," +
                             streetLocation[0].locality;
-                    this.nativeAudio.play("uniqueId1");
+                    this.nativeAudio.play("uniqueId2");
                     this.presentAlert({
                         cssClass: "myClass",
                         header: "Obavijest",
@@ -1075,7 +1074,7 @@ let AppComponent = class AppComponent {
                     break;
                 }
                 case "DRIVER_NOTIFICATION": {
-                    this.nativeAudio.play("uniqueId1");
+                    this.nativeAudio.play("uniqueId2");
                     this.presentAlert({
                         cssClass: "myClass",
                         header: "Obavijest",
@@ -1098,6 +1097,7 @@ let AppComponent = class AppComponent {
                     break;
                 }
                 case "REMOVE_REQUEST": {
+                    this.nativeAudio.stop("uniqueId1");
                     this.modalcontroller.dismiss();
                     this.presentAlert({
                         cssClass: "myClass",
@@ -1411,6 +1411,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_location_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../services/location.service */ "./src/app/services/location.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic-native/native-audio/ngx */ "./node_modules/@ionic-native/native-audio/ngx/index.js");
+
 
 
 
@@ -1420,13 +1422,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let DriveRequestPage = class DriveRequestPage {
-    constructor(modalControler, navParams, socketService, router, locationService, storage) {
+    constructor(modalControler, navParams, socketService, router, locationService, storage, nativeAudio) {
         this.modalControler = modalControler;
         this.navParams = navParams;
         this.socketService = socketService;
         this.router = router;
         this.locationService = locationService;
         this.storage = storage;
+        this.nativeAudio = nativeAudio;
         this.message = this.navParams.get("message");
         this.populateAddresses();
     }
@@ -1450,9 +1453,11 @@ let DriveRequestPage = class DriveRequestPage {
     }
     ngOnInit() { }
     closeModal() {
+        this.nativeAudio.stop("uniqueId1");
         this.modalControler.dismiss();
     }
     acceptRequst() {
+        this.nativeAudio.stop("uniqueId1");
         this.storage.get("username").then(username => {
             this.socketService.send("/server-receiver", {
                 type: "customer",
@@ -1483,7 +1488,8 @@ DriveRequestPage.ctorParameters = () => [
     { type: _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
     { type: _services_location_service__WEBPACK_IMPORTED_MODULE_4__["LocationService"] },
-    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"] }
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"] },
+    { type: _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeAudio"] }
 ];
 DriveRequestPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -1496,7 +1502,8 @@ DriveRequestPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"],
         _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
         _services_location_service__WEBPACK_IMPORTED_MODULE_4__["LocationService"],
-        _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]])
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"],
+        _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeAudio"]])
 ], DriveRequestPage);
 
 

@@ -292,6 +292,57 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
         }
       }, {
+        key: "addYourLocationButton",
+        value: function addYourLocationButton(map, marker) {
+          var controlDiv = document.createElement('div');
+          var firstChild = document.createElement('button');
+          firstChild.style.backgroundColor = '#fff';
+          firstChild.style.border = 'none';
+          firstChild.style.outline = 'none';
+          firstChild.style.width = '28px';
+          firstChild.style.height = '28px';
+          firstChild.style.borderRadius = '2px';
+          firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
+          firstChild.style.cursor = 'pointer';
+          firstChild.style["marginLEFT"] = '10px';
+          firstChild.style.padding = '0';
+          firstChild.title = 'Your Location';
+          controlDiv.appendChild(firstChild);
+          var secondChild = document.createElement('div');
+          secondChild.style.margin = '5px';
+          secondChild.style.width = '18px';
+          secondChild.style.height = '18px';
+          secondChild.style.backgroundImage = 'url(https://maps.gstatic.com/tactile/mylocation/mylocation-sprite-2x.png)';
+          secondChild.style.backgroundSize = '180px 18px';
+          secondChild.style.backgroundPosition = '0 0';
+          secondChild.style.backgroundRepeat = 'no-repeat';
+          firstChild.appendChild(secondChild);
+          google.maps.event.addListener(map, 'center_changed', function () {
+            secondChild.style['background-position'] = '0 0';
+          });
+          firstChild.addEventListener('click', function () {
+            var imgX = 0,
+                animationInterval = setInterval(function () {
+              imgX = -imgX - 18;
+              secondChild.style['background-position'] = imgX + 'px 0';
+            }, 500);
+
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(function (position) {
+                var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                map.setCenter(latlng);
+                clearInterval(animationInterval);
+                secondChild.style['background-position'] = '-144px 0';
+              });
+            } else {
+              clearInterval(animationInterval);
+              secondChild.style['background-position'] = '0 0';
+            }
+          });
+          controlDiv["index"] = 1;
+          map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(controlDiv);
+        }
+      }, {
         key: "populateAddress",
         value: function populateAddress(message) {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
@@ -326,7 +377,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "initializeMap",
         value: function initializeMap() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            var directionsDisplay, directionsService;
+            var directionsDisplay, myMarker, directionsService;
             return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
                 switch (_context2.prev = _context2.next) {
@@ -450,13 +501,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                         }]
                       }]
                     });
+                    myMarker = new google.maps.Marker({
+                      map: this.map,
+                      animation: google.maps.Animation.DROP,
+                      position: new google.maps.LatLng(this.currentLocation.coords.latitude, this.currentLocation.coords.longitude)
+                    });
+                    this.addYourLocationButton(this.map, myMarker);
                     this.directionsDisplay.setMap(this.map);
                     directionsService = new google.maps.DirectionsService();
                     directionsDisplay.setMap(this.map);
                     directionsDisplay = new google.maps.DirectionsRenderer();
                     this.displayDirection(directionsService, directionsDisplay);
 
-                  case 10:
+                  case 12:
                   case "end":
                     return _context2.stop();
                 }

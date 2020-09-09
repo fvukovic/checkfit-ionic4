@@ -1146,9 +1146,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.initializeApp();
         translate.setDefaultLang("en");
         this.platform.ready().then(function () {
-          _this2.nativeAudio.preloadSimple("uniqueId1", "assets/zvuk1.mpeg").then(_this2.onSuccess, _this2.onError);
-
           _this2.nativeAudio.preloadSimple("uniqueId2", "assets/zvuk2.mpeg").then(_this2.onSuccess, _this2.onError);
+
+          _this2.nativeAudio.preloadSimple("uniqueId1", "assets/zvuk1.mpeg").then(_this2.onSuccess, _this2.onError);
 
           _this2.socketService.initializeWebSocketConnection();
 
@@ -1242,7 +1242,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 switch (_context.prev = _context.next) {
                   case 0:
                     _context.t0 = message.messageType;
-                    _context.next = _context.t0 === "DRIVE_REQUEST" ? 3 : _context.t0 === "INFORM_DRIVE_CUSTOMER" ? 5 : _context.t0 === "INFORM_DRIVE_DRIVER" ? 7 : _context.t0 === "ACCEPT_DRIVE" ? 9 : _context.t0 === "ACCEPT_DRIVE_DRIVER" ? 11 : _context.t0 === "REQUEST_INCOMING" ? 13 : _context.t0 === "FINISH_DRIVE_CUSTOMER" ? 25 : _context.t0 === "SOS" ? 29 : _context.t0 === 'DRIVER_INFO' ? 36 : _context.t0 === "DRIVER_NOTIFICATION" ? 39 : _context.t0 === "ACTIVE_DRIVES" ? 42 : _context.t0 === "WEB_DRIVES" ? 44 : _context.t0 === "WEB_DRIVES2" ? 46 : _context.t0 === "REMOVE_REQUEST" ? 48 : 50;
+                    _context.next = _context.t0 === "DRIVE_REQUEST" ? 3 : _context.t0 === "INFORM_DRIVE_CUSTOMER" ? 5 : _context.t0 === "INFORM_DRIVE_DRIVER" ? 7 : _context.t0 === "ACCEPT_DRIVE" ? 9 : _context.t0 === "ACCEPT_DRIVE_DRIVER" ? 11 : _context.t0 === "REQUEST_INCOMING" ? 13 : _context.t0 === "FINISH_DRIVE_CUSTOMER" ? 24 : _context.t0 === "SOS" ? 28 : _context.t0 === 'DRIVER_INFO' ? 35 : _context.t0 === "DRIVER_NOTIFICATION" ? 38 : _context.t0 === "ACTIVE_DRIVES" ? 41 : _context.t0 === "WEB_DRIVES" ? 43 : _context.t0 === "WEB_DRIVES2" ? 45 : _context.t0 === "REMOVE_REQUEST" ? 47 : 50;
                     break;
 
                   case 3:
@@ -1295,20 +1295,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     return _context.abrupt("break", 50);
 
                   case 13:
-                    _context.next = 15;
+                    // this.presentAlert();
+                    this.nativeAudio.play("uniqueId2");
+                    _context.next = 16;
                     return this.locationService.getReverseGeocode(message.fromLat, message.fromLong);
 
-                  case 15:
+                  case 16:
                     streetLocation = _context.sent;
                     this.fromAddress = streetLocation[0].thoroughfare + "," + streetLocation[0].subThoroughfare + "," + streetLocation[0].locality;
-                    this.nativeAudio.play("uniqueId1");
                     _context.next = 20;
                     return this.locationService.getReverseGeocode(message.toLat, message.toLong);
 
                   case 20:
                     streetLocation2 = _context.sent;
                     this.toAddress = streetLocation2[0].thoroughfare + "," + streetLocation2[0].subThoroughfare + "," + streetLocation2[0].locality;
-                    this.nativeAudio.play("uniqueId2");
                     this.presentAlert({
                       cssClass: "myClass",
                       header: "Obavijest",
@@ -1317,10 +1317,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
                     return _context.abrupt("break", 50);
 
-                  case 25:
+                  case 24:
                     //TODO remove popup
                     this.router.navigate(["/customer-homepage"]);
-                    this.nativeAudio.play("uniqueId1");
+                    this.nativeAudio.play("uniqueId2");
                     this.presentAlert({
                       cssClass: "myClass",
                       header: "Obavijest",
@@ -1329,14 +1329,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
                     return _context.abrupt("break", 50);
 
-                  case 29:
-                    _context.next = 31;
+                  case 28:
+                    _context.next = 30;
                     return this.locationService.getReverseGeocode(message.fromLat, message.fromLong);
 
-                  case 31:
+                  case 30:
                     streetLocation = _context.sent;
                     this.fromAddress = streetLocation[0].thoroughfare + "," + streetLocation[0].subThoroughfare + "," + streetLocation[0].locality;
-                    this.nativeAudio.play("uniqueId1");
+                    this.nativeAudio.play("uniqueId2");
                     this.presentAlert({
                       cssClass: "myClass",
                       header: "Obavijest",
@@ -1345,13 +1345,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
                     return _context.abrupt("break", 50);
 
-                  case 36:
+                  case 35:
                     console.log(JSON.stringify(message));
                     this.events.publish("driverInfo", message);
                     return _context.abrupt("break", 50);
 
-                  case 39:
-                    this.nativeAudio.play("uniqueId1");
+                  case 38:
+                    this.nativeAudio.play("uniqueId2");
                     this.presentAlert({
                       cssClass: "myClass",
                       header: "Obavijest",
@@ -1360,19 +1360,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     });
                     return _context.abrupt("break", 50);
 
-                  case 42:
+                  case 41:
                     this.events.publish("activeDrives", message);
                     return _context.abrupt("break", 50);
 
-                  case 44:
+                  case 43:
                     this.events.publish("webDrives", message);
                     return _context.abrupt("break", 50);
 
-                  case 46:
+                  case 45:
                     this.inactiveDrives = message['drives'].length;
                     return _context.abrupt("break", 50);
 
-                  case 48:
+                  case 47:
+                    this.nativeAudio.stop("uniqueId1");
                     this.modalcontroller.dismiss();
                     this.presentAlert({
                       cssClass: "myClass",
@@ -1933,9 +1934,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
     /*! @ionic/storage */
     "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ionic-native/native-audio/ngx */
+    "./node_modules/@ionic-native/native-audio/ngx/index.js");
 
     var DriveRequestPage = /*#__PURE__*/function () {
-      function DriveRequestPage(modalControler, navParams, socketService, router, locationService, storage) {
+      function DriveRequestPage(modalControler, navParams, socketService, router, locationService, storage, nativeAudio) {
         _classCallCheck(this, DriveRequestPage);
 
         this.modalControler = modalControler;
@@ -1944,6 +1951,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.router = router;
         this.locationService = locationService;
         this.storage = storage;
+        this.nativeAudio = nativeAudio;
         this.message = this.navParams.get("message");
         this.populateAddresses();
       }
@@ -1984,6 +1992,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "closeModal",
         value: function closeModal() {
+          this.nativeAudio.stop("uniqueId1");
           this.modalControler.dismiss();
         }
       }, {
@@ -1991,6 +2000,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function acceptRequst() {
           var _this5 = this;
 
+          this.nativeAudio.stop("uniqueId1");
           this.storage.get("username").then(function (username) {
             _this5.socketService.send("/server-receiver", {
               type: "customer",
@@ -2034,6 +2044,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _services_location_service__WEBPACK_IMPORTED_MODULE_4__["LocationService"]
       }, {
         type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]
+      }, {
+        type: _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeAudio"]
       }];
     };
 
@@ -2045,7 +2057,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./drive-request.page.scss */
       "./src/app/pages/popups/drive-request/drive-request.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _services_location_service__WEBPACK_IMPORTED_MODULE_4__["LocationService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]])], DriveRequestPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"], _services_socket_service__WEBPACK_IMPORTED_MODULE_3__["SocketService"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _services_location_service__WEBPACK_IMPORTED_MODULE_4__["LocationService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"], _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_7__["NativeAudio"]])], DriveRequestPage);
     /***/
   },
 

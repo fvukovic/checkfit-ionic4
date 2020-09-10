@@ -137,4 +137,11 @@ ion-menu-button {
             opacity: 0.9;
         }
     }
+    .autocomplete-inp {
+        border: 1px solid #000;
+        margin: 0;
+        padding: 0;
+        box-shadow: 6px 6px 18px 0px rgba(0,0,0,0.3);        
+        border-radius: 0 !important;        
+    }
 }

@@ -55,3 +55,12 @@
     color: #46e169;
     font-size: 18px;
 }
+.searchbar-input {
+    text-shadow: 6px 6px 18px 0px rgba(255,255,255,0.3) !important;  
+    font-size: 13px !important;  
+}
+.searchbar-left-aligned.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios {
+    padding: 0px 0 0 35px;
+    border-radius: 0 !important;
+    border: 0;
+}

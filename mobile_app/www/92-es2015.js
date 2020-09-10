@@ -25,7 +25,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-<<<<<<< HEAD
 /**
  * iOS Toast Enter Animation
  */
@@ -135,117 +134,6 @@ const mdLeaveAnimation = (baseEl) => {
         .easing('cubic-bezier(.36,.66,.04,1)')
         .duration(300)
         .addAnimation(wrapperAnimation);
-=======
-/**
- * iOS Toast Enter Animation
- */
-const iosEnterAnimation = (baseEl, position) => {
-    const baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const hostEl = baseEl.host || baseEl;
-    const wrapperEl = baseEl.querySelector('.toast-wrapper');
-    const bottom = `calc(-10px - var(--ion-safe-area-bottom, 0px))`;
-    const top = `calc(10px + var(--ion-safe-area-top, 0px))`;
-    wrapperAnimation.addElement(wrapperEl);
-    switch (position) {
-        case 'top':
-            wrapperAnimation.fromTo('transform', 'translateY(-100%)', `translateY(${top})`);
-            break;
-        case 'middle':
-            const topPosition = Math.floor(hostEl.clientHeight / 2 - wrapperEl.clientHeight / 2);
-            wrapperEl.style.top = `${topPosition}px`;
-            wrapperAnimation.fromTo('opacity', 0.01, 1);
-            break;
-        default:
-            wrapperAnimation.fromTo('transform', 'translateY(100%)', `translateY(${bottom})`);
-            break;
-    }
-    return baseAnimation
-        .addElement(hostEl)
-        .easing('cubic-bezier(.155,1.105,.295,1.12)')
-        .duration(400)
-        .addAnimation(wrapperAnimation);
-};
-
-/**
- * iOS Toast Leave Animation
- */
-const iosLeaveAnimation = (baseEl, position) => {
-    const baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const hostEl = baseEl.host || baseEl;
-    const wrapperEl = baseEl.querySelector('.toast-wrapper');
-    const bottom = `calc(-10px - var(--ion-safe-area-bottom, 0px))`;
-    const top = `calc(10px + var(--ion-safe-area-top, 0px))`;
-    wrapperAnimation.addElement(wrapperEl);
-    switch (position) {
-        case 'top':
-            wrapperAnimation.fromTo('transform', `translateY(${top})`, 'translateY(-100%)');
-            break;
-        case 'middle':
-            wrapperAnimation.fromTo('opacity', 0.99, 0);
-            break;
-        default:
-            wrapperAnimation.fromTo('transform', `translateY(${bottom})`, 'translateY(100%)');
-            break;
-    }
-    return baseAnimation
-        .addElement(hostEl)
-        .easing('cubic-bezier(.36,.66,.04,1)')
-        .duration(300)
-        .addAnimation(wrapperAnimation);
-};
-
-/**
- * MD Toast Enter Animation
- */
-const mdEnterAnimation = (baseEl, position) => {
-    const baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const hostEl = baseEl.host || baseEl;
-    const wrapperEl = baseEl.querySelector('.toast-wrapper');
-    const bottom = `calc(8px + var(--ion-safe-area-bottom, 0px))`;
-    const top = `calc(8px + var(--ion-safe-area-top, 0px))`;
-    wrapperAnimation.addElement(wrapperEl);
-    switch (position) {
-        case 'top':
-            wrapperEl.style.top = top;
-            wrapperAnimation.fromTo('opacity', 0.01, 1);
-            break;
-        case 'middle':
-            const topPosition = Math.floor(hostEl.clientHeight / 2 - wrapperEl.clientHeight / 2);
-            wrapperEl.style.top = `${topPosition}px`;
-            wrapperAnimation.fromTo('opacity', 0.01, 1);
-            break;
-        default:
-            wrapperEl.style.bottom = bottom;
-            wrapperAnimation.fromTo('opacity', 0.01, 1);
-            break;
-    }
-    return baseAnimation
-        .addElement(hostEl)
-        .easing('cubic-bezier(.36,.66,.04,1)')
-        .duration(400)
-        .addAnimation(wrapperAnimation);
-};
-
-/**
- * md Toast Leave Animation
- */
-const mdLeaveAnimation = (baseEl) => {
-    const baseAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const wrapperAnimation = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    const hostEl = baseEl.host || baseEl;
-    const wrapperEl = baseEl.querySelector('.toast-wrapper');
-    wrapperAnimation
-        .addElement(wrapperEl)
-        .fromTo('opacity', 0.99, 0);
-    return baseAnimation
-        .addElement(hostEl)
-        .easing('cubic-bezier(.36,.66,.04,1)')
-        .duration(300)
-        .addAnimation(wrapperAnimation);
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
 };
 
 const Toast = class {

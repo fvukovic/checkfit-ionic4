@@ -17,7 +17,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-<<<<<<< HEAD
 const SIZE_TO_MEDIA = {
     'xs': '(min-width: 0px)',
     'sm': '(min-width: 576px)',
@@ -37,27 +36,6 @@ const matchBreakpoint = (breakpoint) => {
         return window.matchMedia(mediaQuery).matches;
     }
     return false;
-=======
-const SIZE_TO_MEDIA = {
-    'xs': '(min-width: 0px)',
-    'sm': '(min-width: 576px)',
-    'md': '(min-width: 768px)',
-    'lg': '(min-width: 992px)',
-    'xl': '(min-width: 1200px)',
-};
-// Check if the window matches the media query
-// at the breakpoint passed
-// e.g. matchBreakpoint('sm') => true if screen width exceeds 576px
-const matchBreakpoint = (breakpoint) => {
-    if (breakpoint === undefined || breakpoint === '') {
-        return true;
-    }
-    if (window.matchMedia) {
-        const mediaQuery = SIZE_TO_MEDIA[breakpoint];
-        return window.matchMedia(mediaQuery).matches;
-    }
-    return false;
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
 };
 
 const win = window;

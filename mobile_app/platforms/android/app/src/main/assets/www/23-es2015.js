@@ -427,7 +427,6 @@ const Footer = class {
     static get style() { return "ion-footer{display:block;position:relative;-ms-flex-order:1;order:1;width:100%;z-index:10}ion-footer ion-toolbar:last-child{padding-bottom:var(--ion-safe-area-bottom,0)}.footer-ios ion-toolbar:first-child{--border-width:0.55px 0 0}.footer-ios[no-border] ion-toolbar:first-child{--border-width:0}\@supports ((-webkit-backdrop-filter:blur(0)) or (backdrop-filter:blur(0))){.footer-translucent-ios{-webkit-backdrop-filter:saturate(180%) blur(20px);backdrop-filter:saturate(180%) blur(20px)}.footer-translucent-ios ion-toolbar{--opacity:.8;--backdrop-filter:saturate(180%) blur(20px)}}"; }
 };
 
-<<<<<<< HEAD
 const TRANSITION = 'all 0.2s ease-in-out';
 const cloneElement = (tagName) => {
     const getCachedEl = document.querySelector(`${tagName}.ion-cloned-element`);
@@ -545,125 +544,6 @@ const scaleLargeTitles = (toolbars = [], scale = 1, transition = false) => {
         titleDiv.style.transition = (transition) ? TRANSITION : '';
         titleDiv.style.transform = `scale3d(${scale}, ${scale}, 1)`;
     });
-=======
-const TRANSITION = 'all 0.2s ease-in-out';
-const cloneElement = (tagName) => {
-    const getCachedEl = document.querySelector(`${tagName}.ion-cloned-element`);
-    if (getCachedEl !== null) {
-        return getCachedEl;
-    }
-    const clonedEl = document.createElement(tagName);
-    clonedEl.classList.add('ion-cloned-element');
-    clonedEl.style.setProperty('display', 'none');
-    document.body.appendChild(clonedEl);
-    return clonedEl;
-};
-const createHeaderIndex = (headerEl) => {
-    if (!headerEl) {
-        return;
-    }
-    const toolbars = headerEl.querySelectorAll('ion-toolbar');
-    return {
-        el: headerEl,
-        toolbars: Array.from(toolbars).map((toolbar) => {
-            const ionTitleEl = toolbar.querySelector('ion-title');
-            return {
-                el: toolbar,
-                background: toolbar.shadowRoot.querySelector('.toolbar-background'),
-                ionTitleEl,
-                innerTitleEl: (ionTitleEl) ? ionTitleEl.shadowRoot.querySelector('.toolbar-title') : null,
-                ionButtonsEl: Array.from(toolbar.querySelectorAll('ion-buttons')) || []
-            };
-        }) || [[]]
-    };
-};
-const handleContentScroll = (scrollEl, scrollHeaderIndex) => {
-    Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["f"])(() => {
-        const scrollTop = scrollEl.scrollTop;
-        const scale = Object(_helpers_46f4a262_js__WEBPACK_IMPORTED_MODULE_2__["c"])(1, 1 + (-scrollTop / 500), 1.1);
-        Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["w"])(() => {
-            scaleLargeTitles(scrollHeaderIndex.toolbars, scale);
-        });
-    });
-};
-const setToolbarBackgroundOpacity = (toolbar, opacity) => {
-    if (opacity === undefined) {
-        toolbar.background.style.removeProperty('--opacity');
-    }
-    else {
-        toolbar.background.style.setProperty('--opacity', opacity.toString());
-    }
-};
-const handleToolbarBorderIntersection = (ev, mainHeaderIndex) => {
-    if (!ev[0].isIntersecting) {
-        return;
-    }
-    const scale = ((1 - ev[0].intersectionRatio) * 100) / 75;
-    setToolbarBackgroundOpacity(mainHeaderIndex.toolbars[0], (scale === 1) ? undefined : scale);
-};
-/**
- * If toolbars are intersecting, hide the scrollable toolbar content
- * and show the primary toolbar content. If the toolbars are not intersecting,
- * hide the primary toolbar content and show the scrollable toolbar content
- */
-const handleToolbarIntersection = (ev, mainHeaderIndex, scrollHeaderIndex) => {
-    Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["w"])(() => {
-        handleToolbarBorderIntersection(ev, mainHeaderIndex);
-        const event = ev[0];
-        const intersection = event.intersectionRect;
-        const intersectionArea = intersection.width * intersection.height;
-        const rootArea = event.rootBounds.width * event.rootBounds.height;
-        const isPageHidden = intersectionArea === 0 && rootArea === 0;
-        const leftDiff = Math.abs(intersection.left - event.boundingClientRect.left);
-        const rightDiff = Math.abs(intersection.right - event.boundingClientRect.right);
-        const isPageTransitioning = intersectionArea > 0 && (leftDiff >= 5 || rightDiff >= 5);
-        if (isPageHidden || isPageTransitioning) {
-            return;
-        }
-        if (event.isIntersecting) {
-            setHeaderActive(mainHeaderIndex, false);
-            setHeaderActive(scrollHeaderIndex);
-        }
-        else {
-            /**
-             * There is a bug with IntersectionObserver on Safari
-             * where `event.isIntersecting === false` when cancelling
-             * a swipe to go back gesture. Checking the intersection
-             * x, y, width, and height provides a workaround. This bug
-             * does not happen when using Safari + Web Animations,
-             * only Safari + CSS Animations.
-             */
-            const hasValidIntersection = (intersection.x === 0 && intersection.y === 0) || (intersection.width !== 0 && intersection.height !== 0);
-            if (hasValidIntersection) {
-                setHeaderActive(mainHeaderIndex);
-                setHeaderActive(scrollHeaderIndex, false);
-                setToolbarBackgroundOpacity(mainHeaderIndex.toolbars[0], 1);
-            }
-        }
-    });
-};
-const setHeaderActive = (headerIndex, active = true) => {
-    Object(_core_ca0488fc_js__WEBPACK_IMPORTED_MODULE_0__["w"])(() => {
-        if (active) {
-            headerIndex.el.classList.remove('header-collapse-condense-inactive');
-        }
-        else {
-            headerIndex.el.classList.add('header-collapse-condense-inactive');
-        }
-    });
-};
-const scaleLargeTitles = (toolbars = [], scale = 1, transition = false) => {
-    toolbars.forEach(toolbar => {
-        const ionTitle = toolbar.ionTitleEl;
-        const titleDiv = toolbar.innerTitleEl;
-        if (!ionTitle || ionTitle.size !== 'large') {
-            return;
-        }
-        titleDiv.style.transformOrigin = 'left center';
-        titleDiv.style.transition = (transition) ? TRANSITION : '';
-        titleDiv.style.transform = `scale3d(${scale}, ${scale}, 1)`;
-    });
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
 };
 
 const Header = class {

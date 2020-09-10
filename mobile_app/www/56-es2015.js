@@ -451,17 +451,10 @@ const SHOW_MENU = 'show-menu';
 const SHOW_BACKDROP = 'show-backdrop';
 const MENU_CONTENT_OPEN = 'menu-content-open';
 
-<<<<<<< HEAD
 // Given a menu, return whether or not the menu toggle should be visible
 const updateVisibility = async (menu) => {
     const menuEl = await _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].get(menu);
     return !!(menuEl && await menuEl.isActive());
-=======
-// Given a menu, return whether or not the menu toggle should be visible
-const updateVisibility = async (menu) => {
-    const menuEl = await _index_1e5940d5_js__WEBPACK_IMPORTED_MODULE_5__["m"].get(menu);
-    return !!(menuEl && await menuEl.isActive());
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
 };
 
 const MenuButton = class {

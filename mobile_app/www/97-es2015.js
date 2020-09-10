@@ -23,7 +23,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-<<<<<<< HEAD
 const mdTransitionAnimation = (_, opts) => {
     const OFF_BOTTOM = '40px';
     const CENTER = '0px';
@@ -71,55 +70,6 @@ const mdTransitionAnimation = (_, opts) => {
         rootTransition.addAnimation(leavingPage);
     }
     return rootTransition;
-=======
-const mdTransitionAnimation = (_, opts) => {
-    const OFF_BOTTOM = '40px';
-    const CENTER = '0px';
-    const backDirection = (opts.direction === 'back');
-    const enteringEl = opts.enteringEl;
-    const leavingEl = opts.leavingEl;
-    const ionPageElement = Object(_index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_5__["g"])(enteringEl);
-    const enteringToolbarEle = ionPageElement.querySelector('ion-toolbar');
-    const rootTransition = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-    rootTransition
-        .addElement(ionPageElement)
-        .fill('both')
-        .beforeRemoveClass('ion-page-invisible');
-    // animate the component itself
-    if (backDirection) {
-        rootTransition
-            .duration(opts.duration || 200)
-            .easing('cubic-bezier(0.47,0,0.745,0.715)');
-    }
-    else {
-        rootTransition
-            .duration(opts.duration || 280)
-            .easing('cubic-bezier(0.36,0.66,0.04,1)')
-            .fromTo('transform', `translateY(${OFF_BOTTOM})`, `translateY(${CENTER})`)
-            .fromTo('opacity', 0.01, 1);
-    }
-    // Animate toolbar if it's there
-    if (enteringToolbarEle) {
-        const enteringToolBar = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-        enteringToolBar.addElement(enteringToolbarEle);
-        rootTransition.addAnimation(enteringToolBar);
-    }
-    // setup leaving view
-    if (leavingEl && backDirection) {
-        // leaving content
-        rootTransition
-            .duration(opts.duration || 200)
-            .easing('cubic-bezier(0.47,0,0.745,0.715)');
-        const leavingPage = Object(_animation_af478fe9_js__WEBPACK_IMPORTED_MODULE_3__["c"])();
-        leavingPage
-            .addElement(Object(_index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_5__["g"])(leavingEl))
-            .afterStyles({ 'display': 'none' })
-            .fromTo('transform', `translateY(${CENTER})`, `translateY(${OFF_BOTTOM})`)
-            .fromTo('opacity', 1, 0);
-        rootTransition.addAnimation(leavingPage);
-    }
-    return rootTransition;
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
 };
 
 

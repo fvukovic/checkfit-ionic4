@@ -13,20 +13,34 @@
   </ion-toolbar>
 </ion-header>
   <ion-content class="mapp"> 
-    <div #mapElement     [ngStyle]="{'height': isUserLoggedIn ? '90%' : '35%', 'margin': '20px'}"></div> 
+    <div #mapElement     [ngStyle]="{'height': isUserLoggedIn ? '90%' : '35%', 'margin': '20px'}">
+    </div> 
+    
     <div class="location-wrapper" *ngIf="!isUserLoggedIn">
       <h3 class="title">Upišite tražene podatke:</h3>
       <div class="location-details">
           <span class="text">Polazište:</span>
-          <span class="value">
+          <ion-searchbar [(ngModel)]="fromAddress" (ionChange)="searchChanged()" ></ion-searchbar>
+          <ion-list class="ion-margin-horizontal">
+            <ion-item (click)="selectOption(result.description)" *ngFor="let result of searchResult">
+                {{result.description}}
+            </ion-item>
+          </ion-list>
+          <!-- <span class="value">
             <ion-card class="destination" (click)="openStreetPicker('from')"> {{fromAddress}} </ion-card>
-          </span>
+          </span> -->
       </div>
       <div class="location-details">
         <span class="text">Odredište:</span>
-        <span class="value">
+        <ion-searchbar [(ngModel)]="toAddress" (ionChange)="searchChanged2()" ></ion-searchbar>
+        <ion-list class="ion-margin-horizontal">
+          <ion-item (click)="selectOption2(result.description)" *ngFor="let result of searchResult2">
+              {{result.description}}
+          </ion-item>
+        </ion-list>
+        <!-- <span class="value">
           <ion-card class="destination" (click)="openStreetPicker('to')"> {{toAddress}} </ion-card>
-        </span>
+        </span> -->
       </div>
       <div class="location-details">
           <span class="text">Putnici:</span>

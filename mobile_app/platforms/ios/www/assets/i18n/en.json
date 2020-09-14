@@ -1,0 +1,23 @@
+{
+    "HOME": {
+        "title" : "Check-fit"
+    },
+    "menu": {
+        "aboutUs" : "O nama",
+        "customerHomePage" : "Naruči vožnju",
+        "myRides" : "Moje vožnje",
+        "number" : "Promjeni broj",
+        "login" : "Prijava (za vozača)",
+        "logout" : "Odjava",
+        "closeMenu" : "Natrag"
+        
+    },
+    "change": {
+        "number" : "Promjeni broj"
+        
+    },
+    "customerHomepage":{
+        "myRides" : "Naruči vožnju" 
+    }
+ 
+}

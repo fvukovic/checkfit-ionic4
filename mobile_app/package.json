@@ -38,6 +38,7 @@
     "@stomp/ng2-stompjs": "^7.2.0",
     "call-number": "^1.0.1",
     "cordova-android": "8.1.0",
+    "cordova-ios": "^5.1.1",
     "cordova-plugin-android-permissions": "^1.0.2",
     "cordova-plugin-geolocation": "^4.0.2",
     "cordova-plugin-googlemaps": "^2.7.1",

@@ -1,7 +1,8 @@
 {
   "name": "checkfit-mobile",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

@@ -84,13 +84,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _index_6826f2f6_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
     /*! ./index-6826f2f6.js */
     "./node_modules/@ionic/core/dist/esm/index-6826f2f6.js");
-<<<<<<< HEAD
     /**
      * iOS Popover Enter Animation
-=======
-    /**
-     * iOS Popover Enter Animation
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -182,13 +177,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
 
     var POPOVER_IOS_BODY_PADDING = 5;
-<<<<<<< HEAD
     /**
      * iOS Popover Leave Animation
-=======
-    /**
-     * iOS Popover Leave Animation
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
     var iosLeaveAnimation = function iosLeaveAnimation(baseEl) {
@@ -199,13 +189,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       wrapperAnimation.addElement(baseEl.querySelector('.popover-wrapper')).fromTo('opacity', 0.99, 0);
       return baseAnimation.addElement(baseEl).easing('ease').duration(500).addAnimation([backdropAnimation, wrapperAnimation]);
     };
-<<<<<<< HEAD
     /**
      * Md Popover Enter Animation
-=======
-    /**
-     * Md Popover Enter Animation
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -271,13 +256,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       viewportAnimation.addElement(baseEl.querySelector('.popover-viewport')).fromTo('opacity', 0.01, 1);
       return baseAnimation.addElement(baseEl).easing('cubic-bezier(0.36,0.66,0.04,1)').duration(300).addAnimation([backdropAnimation, wrapperAnimation, contentAnimation, viewportAnimation]);
     };
-<<<<<<< HEAD
     /**
      * Md Popover Leave Animation
-=======
-    /**
-     * Md Popover Leave Animation
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 

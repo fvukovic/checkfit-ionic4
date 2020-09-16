@@ -66,13 +66,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _theme_18cbe2cc_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ./theme-18cbe2cc.js */
     "./node_modules/@ionic/core/dist/esm/theme-18cbe2cc.js");
-<<<<<<< HEAD
     /**
      * iOS Action Sheet Enter Animation
-=======
-    /**
-     * iOS Action Sheet Enter Animation
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -84,13 +79,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       wrapperAnimation.addElement(baseEl.querySelector('.action-sheet-wrapper')).fromTo('transform', 'translateY(100%)', 'translateY(0%)');
       return baseAnimation.addElement(baseEl).easing('cubic-bezier(.36,.66,.04,1)').duration(400).addAnimation([backdropAnimation, wrapperAnimation]);
     };
-<<<<<<< HEAD
     /**
      * iOS Action Sheet Leave Animation
-=======
-    /**
-     * iOS Action Sheet Leave Animation
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -102,13 +92,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       wrapperAnimation.addElement(baseEl.querySelector('.action-sheet-wrapper')).fromTo('transform', 'translateY(0%)', 'translateY(100%)');
       return baseAnimation.addElement(baseEl).easing('cubic-bezier(.36,.66,.04,1)').duration(450).addAnimation([backdropAnimation, wrapperAnimation]);
     };
-<<<<<<< HEAD
     /**
      * MD Action Sheet Enter Animation
-=======
-    /**
-     * MD Action Sheet Enter Animation
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -120,13 +105,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       wrapperAnimation.addElement(baseEl.querySelector('.action-sheet-wrapper')).fromTo('transform', 'translateY(100%)', 'translateY(0%)');
       return baseAnimation.addElement(baseEl).easing('cubic-bezier(.36,.66,.04,1)').duration(400).addAnimation([backdropAnimation, wrapperAnimation]);
     };
-<<<<<<< HEAD
     /**
      * MD Action Sheet Leave Animation
-=======
-    /**
-     * MD Action Sheet Leave Animation
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 

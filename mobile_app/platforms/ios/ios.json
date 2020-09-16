@@ -1,4 +1,11 @@
 {
+  "ios": {
+    "debug": {
+      "provisioningProfile": "taxi.mura.hr",
+      "developmentTeam": "RVV3RA32UY",
+      "packageType": "development"
+    }
+  },
   "prepare_queue": {
     "installed": [],
     "uninstalled": []

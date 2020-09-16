@@ -32,19 +32,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     __webpack_require__.d(__webpack_exports__, "g", function () {
       return getTimeGivenProgression;
     });
-<<<<<<< HEAD
     /**
      * Based on:
      * https://stackoverflow.com/questions/7348009/y-coordinate-for-a-given-x-cubic-bezier
      * https://math.stackexchange.com/questions/26846/is-there-an-explicit-form-for-cubic-b%C3%A9zier-curves
      * TODO: Reduce rounding error
-=======
-    /**
-     * Based on:
-     * https://stackoverflow.com/questions/7348009/y-coordinate-for-a-given-x-cubic-bezier
-     * https://math.stackexchange.com/questions/26846/is-there-an-explicit-form-for-cubic-b%C3%A9zier-curves
-     * TODO: Reduce rounding error
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -54,7 +46,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.x = x;
       this.y = y;
     };
-<<<<<<< HEAD
     /**
      * Given a cubic-bezier curve, get the x value (time) given
      * the y value (progression).
@@ -66,19 +57,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
      *
      * If you give a cubic bezier curve that never reaches the
      * provided progression, this function will return NaN.
-=======
-    /**
-     * Given a cubic-bezier curve, get the x value (time) given
-     * the y value (progression).
-     * Ex: cubic-bezier(0.32, 0.72, 0, 1);
-     * P0: (0, 0)
-     * P1: (0.32, 0.72)
-     * P2: (0, 1)
-     * P3: (1, 1)
-     *
-     * If you give a cubic bezier curve that never reaches the
-     * provided progression, this function will return NaN.
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -86,13 +64,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var tValues = solveCubicBezier(p0.y, p1.y, p2.y, p3.y, progression);
       return solveCubicParametricEquation(p0.x, p1.x, p2.x, p3.x, tValues[0]); // TODO: Add better strategy for dealing with multiple solutions
     };
-<<<<<<< HEAD
     /**
      * Solve a cubic equation in one dimension (time)
-=======
-    /**
-     * Solve a cubic equation in one dimension (time)
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -102,13 +75,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       var partC = p0 * Math.pow(t - 1, 3);
       return t * (partA + t * partB) - partC;
     };
-<<<<<<< HEAD
     /**
      * Find the `t` value for a cubic bezier using Cardano's formula
-=======
-    /**
-     * Find the `t` value for a cubic bezier using Cardano's formula
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -307,7 +275,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     __webpack_require__.d(__webpack_exports__, "h", function () {
       return hapticSelection;
     });
-<<<<<<< HEAD
     /**
      * Check to see if the Haptic Plugin is available
      * @return Returns `true` or false if the plugin is available
@@ -316,16 +283,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /**
      * Trigger a selection changed haptic event. Good for one-time events
      * (not for gestures)
-=======
-    /**
-     * Check to see if the Haptic Plugin is available
-     * @return Returns `true` or false if the plugin is available
-     */
-
-    /**
-     * Trigger a selection changed haptic event. Good for one-time events
-     * (not for gestures)
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -336,13 +293,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         engine.selection();
       }
     };
-<<<<<<< HEAD
     /**
      * Tell the haptic engine that a gesture for a selection change is starting.
-=======
-    /**
-     * Tell the haptic engine that a gesture for a selection change is starting.
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -353,13 +305,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         engine.gestureSelectionStart();
       }
     };
-<<<<<<< HEAD
     /**
      * Tell the haptic engine that a selection changed during a gesture.
-=======
-    /**
-     * Tell the haptic engine that a selection changed during a gesture.
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -370,15 +317,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         engine.gestureSelectionChanged();
       }
     };
-<<<<<<< HEAD
     /**
      * Tell the haptic engine we are done with a gesture. This needs to be
      * called lest resources are not properly recycled.
-=======
-    /**
-     * Tell the haptic engine we are done with a gesture. This needs to be
-     * called lest resources are not properly recycled.
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -412,15 +353,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     __webpack_require__.d(__webpack_exports__, "s", function () {
       return sanitizeDOMString;
     });
-<<<<<<< HEAD
     /**
      * Does a simple sanitization of all elements
      * in an untrusted string
-=======
-    /**
-     * Does a simple sanitization of all elements
-     * in an untrusted string
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -429,17 +364,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (typeof untrustedString !== 'string' || untrustedString === '') {
           return untrustedString;
         }
-<<<<<<< HEAD
         /**
          * Create a document fragment
          * separate from the main DOM,
          * create a div to do our work in
-=======
-        /**
-         * Create a document fragment
-         * separate from the main DOM,
-         * create a div to do our work in
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
          */
 
 
@@ -447,15 +375,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         var workingDiv = document.createElement('div');
         documentFragment.appendChild(workingDiv);
         workingDiv.innerHTML = untrustedString;
-<<<<<<< HEAD
         /**
          * Remove any elements
          * that are blocked
-=======
-        /**
-         * Remove any elements
-         * that are blocked
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
          */
 
         blockedTags.forEach(function (blockedTag) {
@@ -469,17 +391,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             } else {
               documentFragment.removeChild(element);
             }
-<<<<<<< HEAD
             /**
              * We still need to sanitize
              * the children of this element
              * as they are left behind
-=======
-            /**
-             * We still need to sanitize
-             * the children of this element
-             * as they are left behind
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
              */
 
 
@@ -491,15 +406,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }
         });
-<<<<<<< HEAD
         /**
          * Go through remaining elements and remove
          * non-allowed attribs
-=======
-        /**
-         * Go through remaining elements and remove
-         * non-allowed attribs
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
          */
         // IE does not support .children on document fragments, only .childNodes
 
@@ -521,17 +430,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         return '';
       }
     };
-<<<<<<< HEAD
     /**
      * Clean up current element based on allowed attributes
      * and then recursively dig down into any child elements to
      * clean those up as well
-=======
-    /**
-     * Clean up current element based on allowed attributes
-     * and then recursively dig down into any child elements to
-     * clean those up as well
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -559,13 +461,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           element.removeAttribute(attributeName);
         }
       }
-<<<<<<< HEAD
       /**
        * Sanitize any nested children
-=======
-      /**
-       * Sanitize any nested children
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
        */
 
 
@@ -576,15 +473,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         sanitizeElement(childElements[_i]);
       }
     };
-<<<<<<< HEAD
     /**
      * IE doesn't always support .children
      * so we revert to .childNodes instead
-=======
-    /**
-     * IE doesn't always support .children
-     * so we revert to .childNodes instead
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 
@@ -1147,13 +1038,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var hostContext = function hostContext(selector, el) {
       return el.closest(selector) !== null;
     };
-<<<<<<< HEAD
     /**
      * Create the mode and color classes for the component based on the classes passed in
-=======
-    /**
-     * Create the mode and color classes for the component based on the classes passed in
->>>>>>> 3f6eaa65e01e2cfb9ba20ada83d62a57fabb6b5c
      */
 
 

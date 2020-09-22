@@ -58,6 +58,7 @@
 		E4962F5741174BE8A3B8822F /* MAURActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = BA73DB177CC04E96844F1638 /* MAURActivity.m */; };
 		F4132009EA634536AA9653E3 /* CDVBackgroundGeolocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F959B7DA31A4D7486539D0A /* CDVBackgroundGeolocation.m */; };
 		FB2C77078CAD48538FCE015D /* CDVDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = A387CDF540104099B5C2FE14 /* CDVDevice.m */; };
+		7B077A20C5664471A8E7ADAE /* CDVStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5341758BB6404E6787544363 /* CDVStatusBar.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +195,8 @@
 		FBBD3BD01A6548A7B13CE4F6 /* MAURConfig.m */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.objc; name = MAURConfig.m; path = "cordova-plugin-background-geolocation/MAURConfig.m"; sourceTree = "<group>"; };
 		FE9F689C1827484EB4E0A35A /* INTURequestIDGenerator.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = INTURequestIDGenerator.h; path = "cordova-plugin-background-geolocation/INTURequestIDGenerator.h"; sourceTree = "<group>"; };
 		FF0BF05BF65A4505931AFFD3 /* MAURLocation.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = MAURLocation.h; path = "cordova-plugin-background-geolocation/MAURLocation.h"; sourceTree = "<group>"; };
+		5341758BB6404E6787544363 /* CDVStatusBar.m */ = {isa = PBXFileReference; name = "CDVStatusBar.m"; path = "cordova-plugin-statusbar/CDVStatusBar.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		09801F7AAC7843F197AF4725 /* CDVStatusBar.h */ = {isa = PBXFileReference; name = "CDVStatusBar.h"; path = "cordova-plugin-statusbar/CDVStatusBar.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,6 +395,8 @@
 				77E90BDC5A6E4C978EA66F9E /* CDVDevice.h */,
 				970799EFEAB640B6A8C78A9C /* CDVLocation.m */,
 				9ABDC2D127A74484833A58DD /* CDVLocation.h */,
+				5341758BB6404E6787544363 /* CDVStatusBar.m */,
+				09801F7AAC7843F197AF4725 /* CDVStatusBar.h */,
 			);
 			name = Plugins;
 			path = "Taxi Mura/Plugins";
@@ -561,6 +566,7 @@
 				B9028285F4A042FDADC08FF9 /* ZIMSqlSelectStatement.m in Sources */,
 				FB2C77078CAD48538FCE015D /* CDVDevice.m in Sources */,
 				6D83E4CA51B94627B8C9B9B0 /* CDVLocation.m in Sources */,
+				7B077A20C5664471A8E7ADAE /* CDVStatusBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

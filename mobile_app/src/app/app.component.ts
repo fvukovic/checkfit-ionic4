@@ -51,22 +51,20 @@ export class AppComponent implements OnInit {
     private nativeAudio: NativeAudio,
     private alertController: AlertController
   ) {
-  
     //socketService.getUniqueId();
     this.router.navigateByUrl("customer-homepage");
     this.initializeApp();
-    translate.setDefaultLang("en"); 
+    translate.setDefaultLang("en");
     this.platform.ready().then(() => {
       this.nativeAudio
         .preloadSimple("uniqueId2", "assets/zvuk2.mpeg")
         .then(this.onSuccess, this.onError);
-        this.nativeAudio
+      this.nativeAudio
         .preloadSimple("uniqueId1", "assets/zvuk1.mpeg")
         .then(this.onSuccess, this.onError);
       this.socketService.initializeWebSocketConnection();
       this.storage.get("username").then(username => {
-        if (username != null) {  
-        
+        if (username != null) {
           setInterval(() => {
             this.socketService.send("/server-receiver", {
               type: "driver",
@@ -75,7 +73,6 @@ export class AppComponent implements OnInit {
               toLat: "46",
               toLong: "16"
             });
-
 
             this.locationService.getUserPosition().then(
               val => {
@@ -90,15 +87,15 @@ export class AppComponent implements OnInit {
               err => console.error(err)
             );
           }, 4000);
-        }else{
+        } else {
           this.presentAlert({
-            cssClass: 'myClass',
-            header: "Obavijest", 
+            cssClass: "myClass",
+            header: "Obavijest",
             message:
-              '<div>Molimo Vas da uključite lokaciju i mobilne podatke kako bi mogli naručiti vožnju.'
-              + ' </div>',
+              "<div>Molimo Vas da uključite lokaciju i mobilne podatke kako bi mogli naručiti vožnju." +
+              " </div>",
             buttons: ["U redu"]
-          }); 
+          });
         }
       });
 
@@ -141,14 +138,14 @@ export class AppComponent implements OnInit {
     });
   }
 
-  async handleMessage(message) { 
+  async handleMessage(message) {
     // if(message.messageType!= "DRIVER_INFO"){
     //   alert(JSON.stringify(message))
     // }
     switch (message.messageType) {
       case "DRIVE_REQUEST": {
-         setTimeout(() => {
-          this.modal =  this.modalcontroller
+        setTimeout(() => {
+          this.modal = this.modalcontroller
             .create({
               component: DriveRequestPage,
               componentProps: { message: message }
@@ -176,11 +173,11 @@ export class AppComponent implements OnInit {
               toLong: val["coords"].longitude,
               fromLat: message.fromLat,
               fromLong: message.fromLong,
-              customer:message.customer
+              customer: message.customer
             });
           },
           err => console.error(err)
-        ); 
+        );
         break;
       }
       case "ACCEPT_DRIVE": {
@@ -207,7 +204,7 @@ export class AppComponent implements OnInit {
           streetLocation[0].subThoroughfare +
           "," +
           streetLocation[0].locality;
-          
+
         var streetLocation2 = await this.locationService.getReverseGeocode(
           message.toLat,
           message.toLong
@@ -217,16 +214,14 @@ export class AppComponent implements OnInit {
           "," +
           streetLocation2[0].subThoroughfare +
           "," +
-          streetLocation2[0].locality; 
+          streetLocation2[0].locality;
 
         this.presentAlert({
           cssClass: "myClass",
-          header: "Obavijest", 
-          message:
-            'Dolazi nova Vožnja!',
+          header: "Obavijest",
+          message: "Dolazi nova Vožnja!",
           buttons: ["U redu"]
         });
- 
 
         break;
       }
@@ -236,11 +231,11 @@ export class AppComponent implements OnInit {
         this.nativeAudio.play("uniqueId2");
         this.presentAlert({
           cssClass: "myClass",
-          header: "Obavijest", 
+          header: "Obavijest",
           message:
             '<div style="height: 100%"> Vaše vozilo vas čeka na polazištu! </div>',
           buttons: ["U redu"]
-        });   
+        });
         break;
       }
       case "SOS": {
@@ -258,18 +253,19 @@ export class AppComponent implements OnInit {
 
         this.presentAlert({
           cssClass: "myClass",
-          header: "Obavijest", 
+          header: "Obavijest",
           message:
             '<div style="height: 100%"> Vozač: ' +
             message.driver +
-            ' je u nevolji!!! \n Lokacija: ' +
-            this.fromAddress + '</div>',
+            " je u nevolji!!! \n Lokacija: " +
+            this.fromAddress +
+            "</div>",
           buttons: ["U redu"]
         });
         break;
       }
-      case 'DRIVER_INFO': {
-        console.log(JSON.stringify(message))
+      case "DRIVER_INFO": {
+        console.log(JSON.stringify(message));
         this.events.publish("driverInfo", message);
         break;
       }
@@ -277,24 +273,22 @@ export class AppComponent implements OnInit {
         this.nativeAudio.play("uniqueId2");
         this.presentAlert({
           cssClass: "myClass",
-          header: "Obavijest", 
-          message:
-            '<div style="height: 100%">   ' +
-            message.driver + '</div>',
+          header: "Obavijest",
+          message: '<div style="height: 100%">   ' + message.driver + "</div>",
           buttons: ["U redu"]
-        }); 
+        });
         break;
       }
-      case "ACTIVE_DRIVES":{
+      case "ACTIVE_DRIVES": {
         this.events.publish("activeDrives", message);
         break;
       }
-      case "WEB_DRIVES":{
+      case "WEB_DRIVES": {
         this.events.publish("webDrives", message);
         break;
       }
-      case "WEB_DRIVES2":{
-        this.inactiveDrives = message['drives'].length;
+      case "WEB_DRIVES2": {
+        this.inactiveDrives = message["drives"].length;
         break;
       }
       case "REMOVE_REQUEST": {
@@ -302,7 +296,7 @@ export class AppComponent implements OnInit {
         this.modalcontroller.dismiss();
         this.presentAlert({
           cssClass: "myClass",
-          header: "Obavijest", 
+          header: "Obavijest",
           message:
             '<div style="height: 100%"> Vožnja je prihvaćena od strane drugog vozača!   </div>',
           buttons: ["U redu"]

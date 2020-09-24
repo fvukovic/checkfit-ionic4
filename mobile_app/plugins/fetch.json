@@ -21,7 +21,9 @@
       "ACCOUNT_NAME": "@string/app_name",
       "ACCOUNT_LABEL": "@string/app_name",
       "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
-      "CONTENT_AUTHORITY": "$PACKAGE_NAME"
+      "CONTENT_AUTHORITY": "$PACKAGE_NAME",
+      "ALWAYS_USAGE_DESCRIPTION": "This app always requires location tracking",
+      "MOTION_USAGE_DESCRIPTION": "This app requires motion detection"
     }
   },
   "cordova-plugin-geolocation": {
@@ -126,6 +128,17 @@
       "id": "cordova-plugin-googlemaps"
     },
     "is_top_level": true,
+    "variables": {
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background."
+    }
+  },
+  "com.googlemaps.ios": {
+    "source": {
+      "type": "registry",
+      "id": "https://github.com/mapsplugin/cordova-plugin-googlemaps-sdk"
+    },
+    "is_top_level": false,
     "variables": {}
   }
 }

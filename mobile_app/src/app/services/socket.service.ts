@@ -5,7 +5,7 @@ import { Injectable } from "@angular/core";
 import { Storage } from "@ionic/storage";
 import { UniqueDeviceID } from "@ionic-native/unique-device-id/ngx";
 
-const WEBSOCKET_URL = "ws://taxi-mura.herokuapp.com/socket";
+const WEBSOCKET_URL = "wss://taxi-mura.herokuapp.com/socket";
 // const WEBSOCKET_URL = "ws://localhost:8080/socket";
 const EXAMPLE_URL = "/topic/server-broadcaster";
 @Injectable({
@@ -17,7 +17,7 @@ export class SocketService {
   public uniqueID: any;
   _this = this;
 
-  initializeWebSocketConnection() {  
+  initializeWebSocketConnection() {
         var userType = "customer";
         this.storage.get("username").then(val => {
           if (val != null) {
@@ -41,9 +41,9 @@ export class SocketService {
           this.stompService = new StompService(stompConfig);
 
           // Connect to a Stream
-     
+
           this.messages = this.stompService.subscribe("/user" + EXAMPLE_URL);
-        }); 
+        });
   }
 
   constructor(private storage: Storage) {}

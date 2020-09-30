@@ -29,7 +29,7 @@ export class LocationService {
 
   getReverseGeocode(latitude, longitude) {
    return this.nativeGeocoder
-      .reverseGeocode(latitude, longitude, this.optionsGeocode)
+      .reverseGeocode(parseFloat(latitude), parseFloat(longitude), this.optionsGeocode)
       .catch((error: any) => console.log(error));
   }
   getForwardGeocode(address) {
@@ -44,16 +44,16 @@ export class LocationService {
         enableHighAccuracy: true,
         timeout: 10000
       };
-  
+
       this.nativeGeocoder
       .forwardGeocode(address, this.optionsGeocode).then((result: NativeGeocoderResult[]) =>
       {
-        resolve(result[0]);  
+        resolve(result[0]);
       }),
         (err: PositionError) => {
           console.log("error : " + err.message);
           reject(err.message);
-        } 
+        }
      });
   }
 
@@ -68,22 +68,22 @@ export class LocationService {
     this.nativeGeocoder
     .reverseGeocode(latitude, longitude, this.optionsGeocode).then((result: NativeGeocoderResult[]) =>
     {
-      resolve(result[0]);  
+      resolve(result[0]);
     }),
       (err: PositionError) => {
         console.log("error : " + err.message);
         reject(err.message);
-      } 
+      }
    });
   }
 
-//   this.locationService.getReverseGeocode(45.5,19).then((result: NativeGeocoderResult[]) => 
-//   { 
+//   this.locationService.getReverseGeocode(45.5,19).then((result: NativeGeocoderResult[]) =>
+//   {
 //     result[0]
 //   });
 //   this.locationService.getForwardGeocode("Berlin, Germany").then((result: NativeGeocoderResult[]) =>
 //   {
-//     alert(JSON.stringify(result[0])) 
+//     alert(JSON.stringify(result[0]))
 //   }
 //  )
 
@@ -102,7 +102,7 @@ export class LocationService {
             lat: pos.coords.latitude,
             lng: pos.coords.longitude,
             time: new Date()
-          }; 
+          };
           resolve(pos);
         },
         (err: PositionError) => {
@@ -141,7 +141,7 @@ export class LocationService {
       avoidTolls: false
     }, callback);
   }
-  
+
    deg2rad(deg) {
     return deg * (Math.PI / 180)
   }

@@ -1,95 +1,95 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <div class="header-box">
-      <ion-title>Novi zahtjev za vožnju!</ion-title>
-      <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
-      <img src="../../../assets/img/taxiLogo.png">
-    </div>
-  </ion-toolbar>
+    <ion-toolbar>
+        <div class="header-box">
+            <ion-title>Novi zahtjev za vožnju!</ion-title>
+            <img src="../../../assets/img/taxiLogo.png">
+        </div>
+    </ion-toolbar>
 </ion-header>
 <!-- "{"username":null,"type":"customer","messageType":"DRIVE_REQUEST","fromLat":"45.333","fromLong":"16.444","toLat":"45.333","toLong":"16.444"}" -->
 <ion-content class="request-wrapper">
-  <div class="img-wrapper">
-    <img src="../../../assets/img/callTaxi1.png" class="menu-img">      
-    
-</div>
- <div class="drive-request">
-    <div class="location-from">
-        <span class="text">Polazište:</span>
-        <span class="value">{{fromAddress}}</span> 
-    </div>
+    <div class="img-wrapper">
+        <img src="../../../assets/img/callTaxi1.png" class="menu-img">
 
-    <div class="location-from">
-        <span class="text">Odredište:</span>
-        <span class="value">{{toAddress}}</span>
     </div>
+    <div class="drive-request">
+        <div class="location-from">
+            <span class="text">Polazište:</span>
+            <span class="value">{{fromAddress}}</span>
+        </div>
 
-    <div class="location-from">
-      <span class="text">Broj putnika:</span>
-    <span class="value">{{message.persons}}</span>
+        <div class="location-from">
+            <span class="text">Odredište:</span>
+            <span class="value">{{toAddress}}</span>
+        </div>
+
+        <div class="location-from">
+            <span class="text">Broj putnika:</span>
+            <span class="value">{{message.persons}}</span>
+        </div>
+        <div class="text-minutes">Dolazak na lokaciju (min):</div>
+        <div class="select-time">
+
+            <ion-radio-group (ionChange)="radioGroupChange($event)">
+                <ion-row>
+                    <ion-col style="padding: 0; margin: 0;">
+                        <ion-item lines="none">
+                            <ion-label>3</ion-label>
+                            <ion-radio value="3"></ion-radio>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col style="padding: 0; margin: 0;">
+                        <ion-item lines="none">
+                            <ion-label>5</ion-label>
+                            <ion-radio value="5"></ion-radio>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col style="padding: 0; margin: 0;">
+                        <ion-item lines="none">
+                            <ion-label>10</ion-label>
+                            <ion-radio value="10"></ion-radio>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col style="padding: 0; margin: 0;">
+                        <ion-item lines="none">
+                            <ion-label>15</ion-label>
+                            <ion-radio value="15"></ion-radio>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col style="padding: 0; margin: 0;">
+                        <ion-item lines="none">
+                            <ion-label>20</ion-label>
+                            <ion-radio value="20"></ion-radio>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col style="padding: 0; margin: 0;">
+                        <ion-item lines="none">
+                            <ion-label>25</ion-label>
+                            <ion-radio value="25"></ion-radio>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col style="padding: 0; margin: 0;">
+                        <ion-item lines="none">
+                            <ion-label>30</ion-label>
+                            <ion-radio value="30"></ion-radio>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col style="padding: 0; margin: 0;">
+                        <ion-item lines="none">
+                            <ion-label>45</ion-label>
+                            <ion-radio value="45"></ion-radio>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-radio-group>
+
+
+        </div>
+        <div class="buttons">
+            <button class="btn accept" [disabled]="!selectedTime" full ion-button round="true" (click)="acceptRequst()">
+                Prihvati</button>
+            <button class="btn reject" (click)="closeModal()"> Odbij</button>
+        </div>
+
     </div>
-    <div class="text-minutes">Dolazak na lokaciju (min):</div>
-    <div class="select-time">     
-      
-        <ion-radio-group (ionChange)="radioGroupChange($event)"> 
-          <ion-row>
-        <ion-col style="padding: 0; margin: 0;">
-          <ion-item lines="none">
-            <ion-label>3</ion-label>
-            <ion-radio value="3"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col style="padding: 0; margin: 0;">
-          <ion-item lines="none">
-           <ion-label>5</ion-label>
-            <ion-radio value="5"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col style="padding: 0; margin: 0;">
-          <ion-item lines="none">
-            <ion-label>10</ion-label>
-            <ion-radio value="10"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col style="padding: 0; margin: 0;">
-          <ion-item lines="none">
-           <ion-label>15</ion-label>
-            <ion-radio value="15"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col style="padding: 0; margin: 0;">
-          <ion-item lines="none">
-            <ion-label>20</ion-label>
-            <ion-radio value="20"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col style="padding: 0; margin: 0;">
-          <ion-item lines="none">
-           <ion-label>25</ion-label>
-            <ion-radio value="25"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col style="padding: 0; margin: 0;">
-          <ion-item lines="none">
-           <ion-label>30</ion-label>
-            <ion-radio value="30"></ion-radio>
-          </ion-item>
-        </ion-col>
-        <ion-col style="padding: 0; margin: 0;">
-          <ion-item lines="none">
-           <ion-label>45</ion-label>
-            <ion-radio value="45"></ion-radio>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      </ion-radio-group>
-      
-  
-    </div>
-    <div class="buttons">
-      <button  class="btn accept" [disabled]="!selectedTime" full ion-button round="true" (click) = "acceptRequst()" > Prihvati</button>
-      <button class="btn reject" (click) = "closeModal()"  > Odbij</button>
-    </div> 
- 
-  </div>
 </ion-content>

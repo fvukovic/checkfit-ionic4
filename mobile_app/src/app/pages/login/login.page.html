@@ -1,53 +1,52 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <div class="header-box">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Prijava vozača</ion-title>
-      <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
-      <img src="../../../assets/img/taxiLogo.png">
-    </div>
-  </ion-toolbar>
+    <ion-toolbar>
+        <div class="header-box">
+            <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title>Prijava vozača</ion-title>
+            <img src="../../../assets/img/taxiLogo.png">
+        </div>
+    </ion-toolbar>
 </ion-header>
- 
+
 <ion-content padding class="animated fadeIn login auth-page">
-  <div class="login-content">
+    <div class="login-content">
 
-    <!-- Logo -->
-    <div padding-horizontal text-center class="animated fadeInDown">
-      <div class="logo"></div>
-      <h2 ion-text class="title">
-        <strong>Upišite tražene podatke</strong> 
-      </h2>
-      <img src="../../../assets/img/login.png" class="login-img">
+        <!-- Logo -->
+        <div padding-horizontal text-center class="animated fadeInDown">
+            <div class="logo"></div>
+            <h2 ion-text class="title">
+                <strong>Upišite tražene podatke</strong>
+            </h2>
+            <img src="../../../assets/img/login.png" class="login-img">
+        </div>
+
+        <!-- Login form -->
+        <form class="list-form">
+
+            <div class="box-element">
+                <span class="text">Email:</span>
+                <span class="value">
+                    <input [(ngModel)]="email" name="email" type="email" class="destination" />
+                </span>
+            </div>
+
+            <div class="box-element">
+                <span class="text">Lozinka:</span>
+                <span class="value">
+                    <input [(ngModel)]="password" type="password" name="password" class="destination" />
+                </span>
+            </div>
+
+        </form>
+
+        <div>
+            <div class="box-element">
+                <button class="login-btn" tappable (click)="login()">
+                    Prijavi se
+                </button>
+            </div>
+        </div>
     </div>
-
-    <!-- Login form -->
-    <form class="list-form">
-
-      <div class="box-element">
-          <span class="text">Email:</span>
-          <span class="value">
-            <input [(ngModel)]="email" name="email" type="email" class="destination"/>
-          </span>
-      </div>
-
-      <div class="box-element">
-        <span class="text">Lozinka:</span>
-        <span class="value">
-          <input [(ngModel)]="password" type="password" name="password" class="destination"/>
-      </span>
-    </div>
-
-    </form>
-
-    <div>
-      <div class="box-element">
-        <button class="login-btn" tappable (click)="login()">
-          Prijavi se  
-        </button>
-      </div>
-    </div>
-   </div>
 </ion-content>

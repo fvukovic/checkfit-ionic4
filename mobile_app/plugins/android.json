@@ -8,7 +8,7 @@
   },
   "installed_plugins": {
     "cordova-plugin-android-permissions": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "taxi.mura.hr"
     },
     "cordova-plugin-background-geolocation": {
       "GOOGLE_PLAY_SERVICES_VERSION": "11+",
@@ -19,48 +19,52 @@
       "ACCOUNT_LABEL": "@string/app_name",
       "ACCOUNT_TYPE": "$PACKAGE_NAME.account",
       "CONTENT_AUTHORITY": "$PACKAGE_NAME",
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "taxi.mura.hr"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "taxi.mura.hr"
     },
     "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "taxi.mura.hr"
+    },
+    "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "taxi.mura.hr"
     },
     "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-nativeaudio": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-nativegeocoder": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-sim": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-uniquedeviceid": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "mx.ferreyra.callnumber": {
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "taxi.mura.hr"
     },
     "cordova-plugin-ionic-webview": {
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
-      "PACKAGE_NAME": "io.ionic.starter"
+      "PACKAGE_NAME": "taxi.mura.hr"
     },
-    "cordova-plugin-googlemaps": {
-      "PACKAGE_NAME": "io.ionic.starter"
+    "cordova-plugin-nativeaudio": {
+      "PACKAGE_NAME": "taxi.mura.hr"
+    },
+    "cordova-plugin-nativegeocoder": {
+      "PACKAGE_NAME": "taxi.mura.hr"
+    },
+    "cordova-plugin-sim": {
+      "PACKAGE_NAME": "taxi.mura.hr"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "taxi.mura.hr"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "taxi.mura.hr"
+    },
+    "cordova-plugin-uniquedeviceid": {
+      "PACKAGE_NAME": "taxi.mura.hr"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "taxi.mura.hr"
+    },
+    "mx.ferreyra.callnumber": {
+      "PACKAGE_NAME": "taxi.mura.hr"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "taxi.mura.hr"
+    }
+  }
 }

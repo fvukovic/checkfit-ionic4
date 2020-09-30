@@ -1,32 +1,31 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <div class="header-box">
-      <ion-title>Promjeni broj</ion-title>
-      <button class="sos" *ngIf="isUserLoggedIn" (click)="callSOS()">SOS</button>
-      <img src="../../../assets/img/taxiLogo.png">
-    </div>
-  </ion-toolbar>
+    <ion-toolbar>
+        <div class="header-box">
+            <ion-title>Promjeni broj</ion-title>
+            <img src="../../../assets/img/taxiLogo.png">
+        </div>
+    </ion-toolbar>
 </ion-header>
-  
-  <ion-content>
-    
-    <div class="wrapper">
-      <div class="title">Kako bi Vas mogli kontaktirati nakon što zaprimimo zahtjev za novu vožnju, molimo Vas da unesete broj mobitela!</div>
-      <div class="form-box">
-         <div class="text">Upišite broj:</div>
-        <ion-input [(ngModel)]="phoneNumber" placeholder="00385 99 366 0304" class="area-number"></ion-input> 
-      </div>
-      <button class="save-number" (click) = "saveNumber()">Spremi</button>
-      <div class="icon">
-        <img src="../../../assets/img/taxiLogo.png">
-        <div class="text">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</div>
-      </div>
-      
-    </div>
-    
-    
-    
-    
 
-   </ion-content>  
-  
+<ion-content>
+
+    <div class="wrapper">
+        <div class="title">Kako bi Vas mogli kontaktirati nakon što zaprimimo zahtjev za novu vožnju, molimo Vas da
+            unesete broj mobitela!</div>
+        <div class="form-box">
+            <div class="text">Upišite broj:</div>
+            <ion-input [(ngModel)]="phoneNumber" placeholder="00385 99 366 0304" class="area-number"></ion-input>
+        </div>
+        <button class="save-number" (click)="saveNumber()">Spremi</button>
+        <div class="icon">
+            <img src="../../../assets/img/taxiLogo.png">
+            <div class="text">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</div>
+        </div>
+
+    </div>
+
+
+
+
+
+</ion-content>

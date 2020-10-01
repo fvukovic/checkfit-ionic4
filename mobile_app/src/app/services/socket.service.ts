@@ -53,7 +53,11 @@ export class SocketService {
   }
 
   public send(url: string, message: any) {
-    return this.stompService.publish(url, JSON.stringify(message));
+      try{
+     this.stompService.publish(url, JSON.stringify(message))
+      }catch(err){
+          
+      }
   }
 
   public state(): BehaviorSubject<StompState> {

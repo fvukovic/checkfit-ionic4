@@ -1,5 +1,16 @@
+import { CustomerHomepagePage } from './pages/customer-homepage/customer-homepage.page';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginPage } from './pages/login/login.page';
+import { AboutUsPage } from './pages/about-us/about-us.page';
+import { DriveRequestPage } from './pages/popups/drive-request/drive-request.page';
+import { MyRidesPage } from './pages/my-rides/my-rides.page';
+import { StreetPickerPage } from './pages/popups/street-picker/street-picker.page';
+import { SearchRidePage } from './pages/search-ride/search-ride.page';
+import { DriverHomepagePage } from './pages/driver-homepage/driver-homepage.page';
+import { PhoneNumberPage } from './pages/popups/phone-number/phone-number.page';
+import { ActiveRidesComponent } from './pages/active-rides/active-rides.component';
+import { InactiveRidesComponent } from './pages/inactive-rides/inactive-rides.component';
 
 const routes: Routes = [
   {
@@ -9,47 +20,47 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+    component: LoginPage
   },
   {
     path: 'about-us',
-    loadChildren: () => import('./pages/about-us/about-us.module').then( m => m.AboutUsPageModule)
+    component: AboutUsPage
   },
   {
     path: 'customer-homepage',
-    loadChildren: () => import('./pages/customer-homepage/customer-homepage.module').then( m => m.CustomerHomepagePageModule)
+   component: CustomerHomepagePage
   },
   {
     path: 'my-rides',
-    loadChildren: () => import('./pages/my-rides/my-rides.module').then( m => m.MyRidesPageModule)
+    component: MyRidesPage,
   },
   {
     path: 'street-picker',
-    loadChildren: () => import('./pages/popups/street-picker/street-picker.module').then( m => m.StreetPickerPageModule)
+    component: StreetPickerPage
   },
   {
     path: 'search-ride',
-    loadChildren: () => import('./pages/search-ride/search-ride.module').then( m => m.SearchRidePageModule)
+    component: SearchRidePage
   },
   {
     path: 'drive-request',
-    loadChildren: () => import('./pages/popups/drive-request/drive-request.module').then( m => m.DriveRequestPageModule)
+    component: DriveRequestPage
   },
   {
     path: 'driver-homepage',
-    loadChildren: () => import('./pages/driver-homepage/driver-homepage.module').then( m => m.DriverHomepagePageModule)
+    component: DriverHomepagePage
   },
   {
     path: 'phone-number',
-    loadChildren: () => import('./pages/popups/phone-number/phone-number.module').then( m => m.PhoneNumberPageModule)
+    component: PhoneNumberPage
   },
   {
     path: 'active-rides',
-    loadChildren: () => import('./pages/active-rides/active-rides.module').then( m => m.ActiveRidesModule)
+    component: ActiveRidesComponent
   },
   {
     path: 'inactive-rides',
-    loadChildren: () => import('./pages/inactive-rides/inactive-rides.module').then( m => m.InactiveRidesModule)
+    component: InactiveRidesComponent
   }
 ];
 

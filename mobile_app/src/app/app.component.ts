@@ -323,8 +323,6 @@ export class AppComponent implements OnInit {
       message.toLat,
       message.toLong,
       function(response, status) {
-        console.log("TUUUUU");
-        console.log(message);
         _this.events.publish(
           "informCustomer",
           response.rows[0].elements[0].distance.text

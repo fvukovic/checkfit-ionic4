@@ -32,16 +32,16 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
   currentLocation: any;
   numberOfPersons: String;
   isUserLoggedIn: boolean = false;
-  markers: any = []; 
+  markers: any = [];
   flag:boolean = false;
   public googleAutocomplete = new google.maps.places.AutocompleteService();
   public searchResult = new Array<any>();
-  flag2:boolean = false; 
+  flag2:boolean = false;
   public searchResult2 = new Array<any>();
   @ViewChild("mapElement", { static: true }) mapElement;
 
   searchChanged() {
-    let myLatLng = new google.maps.LatLng({lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude}); 
+    let myLatLng = new google.maps.LatLng({lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude});
     if (!this.fromAddress.trim().length) return;
     if(this.flag){
     this.googleAutocomplete.getPlacePredictions(
@@ -62,7 +62,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
   }
 
   searchChanged2() {
-    let myLatLng = new google.maps.LatLng({lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude}); 
+    let myLatLng = new google.maps.LatLng({lat: this.currentLocation.coords.latitude, lng: this.currentLocation.coords.longitude});
     if (!this.toAddress.trim().length) return;
     if(this.flag2){
     this.googleAutocomplete.getPlacePredictions(
@@ -417,7 +417,9 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       fromLong: fromAddress["longitude"],
       toLat: toAddress["latitude"],
       toLong: toAddress["longitude"],
-      persons: this.numberOfPersons
+      persons: this.numberOfPersons,
+      toAddress: this.fromAddress,
+      fromAddress: this.toAddress,
     };
 
     //   let params = {
@@ -436,10 +438,10 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
     this.numberOfPersons = event.detail.value;
   }
 
-  addYourLocationButton(map, marker) 
+  addYourLocationButton(map, marker)
   {
       var controlDiv = document.createElement('div');
-  
+
       var firstChild = document.createElement('button');
       firstChild.style.backgroundColor = '#fff';
       firstChild.style.border = 'none';
@@ -453,7 +455,7 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       firstChild.style.padding = '0';
       firstChild.title = 'Your Location';
       controlDiv.appendChild(firstChild);
-  
+
       var secondChild = document.createElement('div');
       secondChild.style.margin = '5px';
       secondChild.style.width = '18px';
@@ -463,18 +465,18 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
       secondChild.style.backgroundPosition = '0 0';
       secondChild.style.backgroundRepeat = 'no-repeat';
       firstChild.appendChild(secondChild);
-  
+
       google.maps.event.addListener(map, 'center_changed', function () {
           secondChild.style['background-position'] = '0 0';
       });
-  
+
       firstChild.addEventListener('click', function () {
           var imgX = 0,
               animationInterval = setInterval(function () {
                   imgX = -imgX - 18 ;
                   secondChild.style['background-position'] = imgX+'px 0';
               }, 500);
-  
+
           if(navigator.geolocation) {
               navigator.geolocation.getCurrentPosition(function(position) {
                   var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -487,11 +489,11 @@ export class CustomerHomepagePage implements OnInit, AfterContentInit {
               secondChild.style['background-position'] = '0 0';
           }
       });
-  
+
       controlDiv["index"] = 1;
       map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(controlDiv);
   }
-  
+
 
 
   async callSOS() {

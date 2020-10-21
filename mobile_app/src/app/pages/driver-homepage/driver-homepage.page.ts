@@ -50,7 +50,7 @@ export class DriverHomepagePage implements OnInit {
 
     const firstParam: string = this.route.snapshot.queryParamMap.get("data");
     if (firstParam != null) {
-      let message = JSON.parse(firstParam); 
+      let message = JSON.parse(firstParam);
       this.message = message;
       this.phoneNumber = message.phoneNumber;
       const driveIsStarted: string = this.route.snapshot.queryParamMap.get(
@@ -87,10 +87,10 @@ export class DriverHomepagePage implements OnInit {
     );
   }
 
-  addYourLocationButton(map, marker) 
+  addYourLocationButton(map, marker)
   {
       var controlDiv = document.createElement('div');
-  
+
       var firstChild = document.createElement('button');
       firstChild.style.backgroundColor = '#fff';
       firstChild.style.border = 'none';
@@ -104,7 +104,7 @@ export class DriverHomepagePage implements OnInit {
       firstChild.style.padding = '0';
       firstChild.title = 'Your Location';
       controlDiv.appendChild(firstChild);
-  
+
       var secondChild = document.createElement('div');
       secondChild.style.margin = '5px';
       secondChild.style.width = '18px';
@@ -114,18 +114,18 @@ export class DriverHomepagePage implements OnInit {
       secondChild.style.backgroundPosition = '0 0';
       secondChild.style.backgroundRepeat = 'no-repeat';
       firstChild.appendChild(secondChild);
-  
+
       google.maps.event.addListener(map, 'center_changed', function () {
           secondChild.style['background-position'] = '0 0';
       });
-  
+
       firstChild.addEventListener('click', function () {
           var imgX = 0,
               animationInterval = setInterval(function () {
                   imgX = -imgX - 18 ;
                   secondChild.style['background-position'] = imgX+'px 0';
               }, 500);
-  
+
           if(navigator.geolocation) {
               navigator.geolocation.getCurrentPosition(function(position) {
                   var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -138,11 +138,11 @@ export class DriverHomepagePage implements OnInit {
               secondChild.style['background-position'] = '0 0';
           }
       });
-  
+
       controlDiv["index"] = 1;
       map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(controlDiv);
   }
-  
+
 
 
 
@@ -373,7 +373,7 @@ export class DriverHomepagePage implements OnInit {
     location.reload();
   }
 
-  driverIsOnSpot() { 
+  driverIsOnSpot() {
     this.storage.get("username").then(username => {
       this.socketService.send("/server-receiver", {
         type: "customer",

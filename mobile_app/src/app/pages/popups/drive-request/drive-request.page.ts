@@ -30,8 +30,7 @@ export class DriveRequestPage implements OnInit {
     this.populateAddresses();
   }
 
-  async populateAddresses() { 
-
+  async populateAddresses() {
     var fromAddress = await this.locationService.getReverseGeocode(
       this.message.fromLat,
       this.message.fromLong
@@ -56,13 +55,13 @@ export class DriveRequestPage implements OnInit {
 
   ngOnInit() {}
 
-  closeModal() { 
+  closeModal() {
     this.nativeAudio.stop("uniqueId1");
     this.modalControler.dismiss();
   }
 
-  acceptRequst() { 
-    this.nativeAudio.stop("uniqueId1"); 
+  acceptRequst() {
+    this.nativeAudio.stop("uniqueId1");
     this.storage.get("username").then(username => {
      this.socketService.send("/server-receiver", {
       type: "customer",

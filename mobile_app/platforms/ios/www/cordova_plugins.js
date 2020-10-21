@@ -372,11 +372,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     }
   ];
   module.exports.metadata = {
+    "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-android-permissions": "1.0.2",
     "cordova-plugin-background-geolocation": "3.1.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-geolocation": "4.0.2",
-    "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-googlemaps": "2.7.1",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "4.2.1",

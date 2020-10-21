@@ -25,46 +25,15 @@ export class InactiveRidesComponent implements OnInit {
     private socketService: SocketService,
     public events: Events
   ) {
-    events.subscribe("webDrives", message => { 
-      // alert(JSON.stringify(message['drives']))
-      Object.entries(message['drives']).forEach(([key, value]) => {   
-        this.locationService
-          .getReverseGeocode(value["fromLat"], value["fromLong"])
-          .then(from => {
-            this.locationService
-              .getReverseGeocode(value["toLat"], value["toLong"])
-              .then(to => {
-                this.invoiceList.push({
-                  fromLat:value["fromLat"],
-                  fromLong:value["fromLong"],
-                  toLat:value["toLat"],
-                  toLong:value["toLong"],
-                  fromAddress:
-                    from[0].thoroughfare +
-                    "," +
-                    from[0].subThoroughfare +
-                    "," +
-                    from[0].locality,
-                  toAddress:
-                    to[0].thoroughfare +
-                    "," +
-                    to[0].subThoroughfare +
-                    "," +
-                    to[0].locality,
-                  persons: value["persons"],
-                  km: value["km"],
-                  phoneNumber: value["phoneNumber"],
-                  customer: value["customer"],
-                  time: null
-                }); 
-              });
-          });
-                          this.timeSelected.push(null);
-      }); 
-    }); 
+    events.subscribe("webDrives", message => {
+      Object.entries(message['drives']).forEach(([key, value]) => {
+        this.invoiceList.push(value)
+        this.timeSelected.push(null);
+      });
+    });
 
     this.storage.get("username").then(val => {
-      if (val != null) { 
+      if (val != null) {
         this.socketService.send("/server-receiver", {
           type: "driver",
           driver: val,

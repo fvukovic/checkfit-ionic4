@@ -200,6 +200,9 @@
     }
   },
   "installed_plugins": {
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
+    },
     "cordova-plugin-android-permissions": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
@@ -212,9 +215,6 @@
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
-    },
-    "com.googlemaps.ios": {
       "PACKAGE_NAME": "$(PRODUCT_BUNDLE_IDENTIFIER)"
     },
     "cordova-plugin-googlemaps": {
@@ -628,11 +628,11 @@
     }
   ],
   "plugin_metadata": {
+    "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-android-permissions": "1.0.2",
     "cordova-plugin-background-geolocation": "3.1.0",
     "cordova-plugin-device": "2.0.2",
     "cordova-plugin-geolocation": "4.0.2",
-    "com.googlemaps.ios": "3.9.0",
     "cordova-plugin-googlemaps": "2.7.1",
     "cordova-plugin-ionic-keyboard": "2.2.0",
     "cordova-plugin-ionic-webview": "4.2.1",

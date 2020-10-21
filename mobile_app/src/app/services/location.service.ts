@@ -25,12 +25,16 @@ export class LocationService {
   constructor(
     private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder
-  ) {}
+  ) {
+    this.nativeGeocoder
+    .reverseGeocode(45.555, 16.666, this.optionsGeocode).then((result: NativeGeocoderResult[]) =>{
+    });
+  }
 
   getReverseGeocode(latitude, longitude) {
    return this.nativeGeocoder
       .reverseGeocode(parseFloat(latitude), parseFloat(longitude), this.optionsGeocode)
-      .catch((error: any) => console.log(error));
+      .catch((error: any) => alert(error));
   }
   getForwardGeocode(address) {
    return this.nativeGeocoder
@@ -42,7 +46,7 @@ export class LocationService {
     return new Promise((resolve, reject) => {
       this.options = {
         enableHighAccuracy: true,
-        timeout: 10000
+        timeout: 2000
       };
 
       this.nativeGeocoder
@@ -62,11 +66,11 @@ export class LocationService {
   return new Promise((resolve, reject) => {
     this.options = {
       enableHighAccuracy: true,
-      timeout: 10000
+      timeout: 3000
     };
 
     this.nativeGeocoder
-    .reverseGeocode(latitude, longitude, this.optionsGeocode).then((result: NativeGeocoderResult[]) =>
+    .reverseGeocode(parseFloat(latitude), parseFloat(longitude), this.optionsGeocode).then((result: NativeGeocoderResult[]) =>
     {
       resolve(result[0]);
     }),

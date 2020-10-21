@@ -2,7 +2,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
       "id": "cordova-plugin-android-permissions.Permissions",
-      "file": "plugins/cordova-plugin-android-permissions/www/permissions.js",
+      "file": "plugins/cordova-plugin-android-permissions/www/permissions-dummy.js",
       "pluginId": "cordova-plugin-android-permissions",
       "clobbers": [
         "cordova.plugins.permissions"
@@ -30,18 +30,36 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-geolocation.geolocation",
-      "file": "plugins/cordova-plugin-geolocation/www/android/geolocation.js",
+      "id": "cordova-plugin-geolocation.Coordinates",
+      "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
       "pluginId": "cordova-plugin-geolocation",
       "clobbers": [
-        "navigator.geolocation"
+        "Coordinates"
       ]
     },
     {
       "id": "cordova-plugin-geolocation.PositionError",
       "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
       "pluginId": "cordova-plugin-geolocation",
-      "runs": true
+      "clobbers": [
+        "PositionError"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.Position",
+      "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "Position"
+      ]
+    },
+    {
+      "id": "cordova-plugin-geolocation.geolocation",
+      "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+      "pluginId": "cordova-plugin-geolocation",
+      "clobbers": [
+        "navigator.geolocation"
+      ]
     },
     {
       "id": "cordova-plugin-googlemaps.Promise",
@@ -274,7 +292,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     },
     {
       "id": "cordova-plugin-ionic-keyboard.keyboard",
-      "file": "plugins/cordova-plugin-ionic-keyboard/www/android/keyboard.js",
+      "file": "plugins/cordova-plugin-ionic-keyboard/www/ios/keyboard.js",
       "pluginId": "cordova-plugin-ionic-keyboard",
       "clobbers": [
         "window.Keyboard"
@@ -286,6 +304,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-ionic-webview",
       "clobbers": [
         "Ionic.WebView"
+      ]
+    },
+    {
+      "id": "cordova-plugin-ionic-webview.ios-wkwebview-exec",
+      "file": "plugins/cordova-plugin-ionic-webview/src/www/ios/ios-wkwebview-exec.js",
+      "pluginId": "cordova-plugin-ionic-webview",
+      "clobbers": [
+        "cordova.exec"
       ]
     },
     {
@@ -307,14 +333,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     {
       "id": "cordova-plugin-sim.Sim",
       "file": "plugins/cordova-plugin-sim/www/sim.js",
-      "pluginId": "cordova-plugin-sim",
-      "merges": [
-        "window.plugins.sim"
-      ]
-    },
-    {
-      "id": "cordova-plugin-sim.SimAndroid",
-      "file": "plugins/cordova-plugin-sim/www/android/sim.js",
       "pluginId": "cordova-plugin-sim",
       "merges": [
         "window.plugins.sim"

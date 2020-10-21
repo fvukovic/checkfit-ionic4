@@ -24,39 +24,8 @@ export class ActiveRidesComponent implements OnInit {
     private socketService: SocketService,
     public events: Events
   ) {
-    events.subscribe("activeDrives", message => { 
-      Object.entries(message['drives']).forEach(([key, value]) => {   
-        this.locationService
-          .getReverseGeocode(value["fromLat"], value["fromLong"])
-          .then(from => {
-            this.locationService
-              .getReverseGeocode(value["toLat"], value["toLong"])
-              .then(to => {
-                this.invoiceList.push({
-                  fromLat:value["fromLat"],
-                  fromLong:value["fromLong"],
-                  toLat:value["toLat"],
-                  toLong:value["toLong"],
-                  fromAddress:
-                    from[0].thoroughfare +
-                    "," +
-                    from[0].subThoroughfare +
-                    "," +
-                    from[0].locality,
-                  toAddress:
-                    to[0].thoroughfare +
-                    "," +
-                    to[0].subThoroughfare +
-                    "," +
-                    to[0].locality,
-                  persons: value["persons"],
-                  km: value["km"],
-                  phoneNumber: value["phoneNumber"],
-                  customer:value['customer']
-                }); 
-              });
-          });
-      }); 
+    events.subscribe("activeDrives", message => {
+        this.invoiceList = message['drives'];
     });
     this.storage.get("username").then(val => {
       if (val != null) {

@@ -33,13 +33,13 @@ export class SearchRidePage implements OnInit, AfterContentInit {
     private router: Router,
     private alertController: AlertController
   ) {
- 
+
     events.subscribe("driveAccepted", message => {
       this.isDriveAccepted = true;
       clearInterval(this.myVar);
-      this.message = message;  
+      this.message = message;
     });
-    
+
 
     events.subscribe("informCustomer", message => {
       console.log(message);
@@ -57,13 +57,12 @@ export class SearchRidePage implements OnInit, AfterContentInit {
     let params = JSON.parse(firstParam);
     var _this = this;
     this.storage.get("phoneNumber").then(val => {
-       
         this.locationService.getDistanceFromLatLonInKm(
         params.fromLat,
         params.fromLong,
         params.toLat,
         params.toLong,
-        function(response, status) {  
+        function(response, status) {
           _this.socketService.send("/server-receiver", {
             type: "customer",
             messageType: "REQUEST_INCOMING",
@@ -71,11 +70,13 @@ export class SearchRidePage implements OnInit, AfterContentInit {
             fromLong: params.fromLong,
             toLat: params.toLat,
             toLong: params.toLong,
+            toAddress: params.toAddress,
+            fromAddress: params.fromAddress,
             persons: params.persons,
             phoneNumber: val,
             km:response.rows[0].elements[0].distance.value / 1000
           });
-    
+
        setTimeout(data => {
         _this.socketService.send("/server-receiver", {
           type: "customer",
@@ -85,12 +86,14 @@ export class SearchRidePage implements OnInit, AfterContentInit {
           toLat: params.toLat,
           toLong: params.toLong,
           persons: params.persons,
+          toAddress: params.toAddress,
+          fromAddress: params.fromAddress,
           phoneNumber: val,
           km:response.rows[0].elements[0].distance.value / 1000
         });
         }, 4000);
         }
-      ); 
+      );
 
       let myVar = setInterval(() => {
         this.seconds -=1;
@@ -98,7 +101,7 @@ export class SearchRidePage implements OnInit, AfterContentInit {
           clearInterval(myVar);
         this.presentAlert({
           cssClass: "myClass",
-          header: "Obavijest", 
+          header: "Obavijest",
           message: '<div style="color:red" class="myClass"><p>Vaša vožnja je zaprimljena, prvi slobodni vozač će Vas uskoro kontaktirati.</p> </div>',
           buttons: ["U redu"]
         })

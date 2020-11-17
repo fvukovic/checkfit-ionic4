@@ -56,7 +56,7 @@ export class SocketService {
       try{
      this.stompService.publish(url, JSON.stringify(message))
       }catch(err){
-          
+
       }
   }
 

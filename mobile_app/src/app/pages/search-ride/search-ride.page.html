@@ -1,53 +1,57 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <div class="header-box">
-      <ion-title>Novi zahtjev za vožnju!</ion-title>
-      <img src="../../../assets/img/taxiLogo.png">
-    </div>
-  </ion-toolbar>
+    <ion-toolbar>
+        <div class="header-box">
+            <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title>Novi zahtjev za vožnju!</ion-title>
+            <img src="../../../assets/img/taxiLogo.png">
+        </div>
+    </ion-toolbar>
 </ion-header>
 
+
 <ion-content>
-  <div class=container>
-    <div *ngIf="!isDriveAccepted" >
+    <div class=container>
+        <div *ngIf="!isDriveAccepted">
 
-      <div class="wrapper-request">  
-        <ion-icon name="checkbox"></ion-icon>
-        <p>Vaš zahtjev je uspješno poslan!</p>
-      </div>    
+            <div class="wrapper-request">
+                <ion-icon name="checkbox"></ion-icon>
+                <p>Vaš zahtjev je uspješno poslan!</p>
+            </div>
 
-      <div class="seacrhing-driver">
-           <p>Tražim slobodnog vozača...</p>
-          <div *ngIf="seconds!=0" class="seconds">{{seconds}}</div>
-          <!-- <ion-spinner style="width:150px" color="tertiary" class="ion-color ion-color-tertiary ios spinner-lines hydrated"
-        role="progressbar"></ion-spinner> 
+            <div class="seacrhing-driver">
+                <p>Tražim slobodnog vozača...</p>
+                <div *ngIf="seconds!=0" class="seconds">{{seconds}}</div>
+                <!-- <ion-spinner style="width:150px" color="tertiary" class="ion-color ion-color-tertiary ios spinner-lines hydrated"
+        role="progressbar"></ion-spinner>
         <ion-spinner name="bubbles"></ion-spinner> -->
-        <p class="details">Detalji će uskoro biti vidljivi na ekranu:</p>
-      </div>
+                <p class="details">Detalji će uskoro biti vidljivi na ekranu:</p>
+            </div>
 
-      <div class="logo">
-        <img src="../../../assets/img/taxiLogo.png" class="menu-img">      
-        <p class="rich-text">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>
-    </div>
+            <div class="logo">
+                <img src="../../../assets/img/taxiLogo.png" class="menu-img">
+                <p class="rich-text">Najmodernija i najkvalitetnija usluga prijevoza u gradu!</p>
+            </div>
 
-    </div>
-
-    <div *ngIf="isDriveAccepted" >
-      <div class="accepted-ride">
-        <img src="../../../assets/img/accepted-ride.png" class="menu-img">
-          <h2>Zahtjev je prihvaćen!</h2>
-          <p class="driver">Vozač {{message.driverUser.login}} će Vas uskoro kontaktirati...</p>
-          <div class="distance">
-          <span>Vaše vozilo je udaljeno:</span> 
-          <p class="km">{{kms}}</p>
         </div>
-        <div class="distance">
-          <span>Vozilo stiže za:</span> 
-          <p class="km">{{message.time}} min</p>
-        </div> 
-        </div>
-      </div>
 
-  </div>
+        <div *ngIf="isDriveAccepted">
+            <div class="accepted-ride">
+                <img src="../../../assets/img/accepted-ride.png" class="menu-img">
+                <h2>Zahtjev je prihvaćen!</h2>
+                <p class="driver">Vozač {{message.driverUser.login}} će Vas uskoro kontaktirati...</p>
+                <div class="distance">
+                    <span>Vaše vozilo je udaljeno:</span>
+                    <p class="km">{{kms}}</p>
+                </div>
+                <div class="distance">
+                    <span>Vozilo stiže za:</span>
+                    <p class="km">{{message.time}} min</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </ion-content>

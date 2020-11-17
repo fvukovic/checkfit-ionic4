@@ -44,7 +44,6 @@ export class MyRidesPage implements OnInit {
       )
     .subscribe((data: any) => {
                 this.invoiceList = data
-                alert(JSON.stringify(data))
 
         //   Object.entries(data).forEach(([key, value]) => {
     //     // alert("JSON.stringify(value)" + value.fromLat + " - "+  value.fromLong)

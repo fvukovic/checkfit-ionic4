@@ -20,7 +20,7 @@ export class LocationService {
   currentPos: Geoposition;
   optionsGeocode: NativeGeocoderOptions = {
     useLocale: true,
-    maxResults: 5
+    maxResults: 5,
   };
   constructor(
     private geolocation: Geolocation,

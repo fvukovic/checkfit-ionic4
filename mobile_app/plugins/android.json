@@ -33,10 +33,6 @@
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "taxi.mura.hr"
     },
-    "cordova-plugin-ionic-webview": {
-      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
-      "PACKAGE_NAME": "taxi.mura.hr"
-    },
     "cordova-plugin-nativeaudio": {
       "PACKAGE_NAME": "taxi.mura.hr"
     },
@@ -59,6 +55,12 @@
       "PACKAGE_NAME": "taxi.mura.hr"
     },
     "mx.ferreyra.callnumber": {
+      "PACKAGE_NAME": "taxi.mura.hr"
+    },
+    "cordova-custom-config": {
+      "PACKAGE_NAME": "taxi.mura.hr"
+    },
+    "cordova-plugin-ionic-webview": {
       "PACKAGE_NAME": "taxi.mura.hr"
     }
   },

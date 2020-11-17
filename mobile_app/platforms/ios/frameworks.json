@@ -16,7 +16,7 @@
     "AudioToolbox.framework": 2,
     "AVFoundation.framework": 2,
     "libsqlite3.dylib": 1,
-    "WebKit.framework": 1,
     "Foundation.framework": 1,
-    "Security.framework": 1
+    "Security.framework": 1,
+    "WebKit.framework": 1
 }
